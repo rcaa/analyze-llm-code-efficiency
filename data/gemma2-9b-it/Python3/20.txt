@@ -1,0 +1,22 @@
+ID: 2441
+Title: Largest Positive Integer That Exists With Its Negative
+URL: https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/
+Status: OK
+
+solution: 
+```python
+def largest_k(nums):
+  seen = set()
+  max_k = -1
+  for num in nums:
+    if -num in seen:
+      max_k = max(max_k, abs(num))
+    seen.add(num)
+  return max_k
+
+```
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: The solution uses a set to efficiently track seen numbers. It iterates through the array, checking if the negative of the current number has been seen before. If so, it updates the maximum k.  The time complexity is linear due to the single pass through the array. The space complexity is also linear due to the set storing seen numbers.

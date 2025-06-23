@@ -1,0 +1,32 @@
+ID: 1178
+Title: Number of Valid Words for Each Puzzle
+URL: https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
+Status: OK
+
+solution: 
+```cpp
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<int> countValidWords(vector<string>& words, vector<string>& puzzles) {
+        vector<int> answer(puzzles.size());
+        for (int i = 0; i < puzzles.size(); ++i) {
+            for (string word : words) {
+                if (word.find(puzzles[i][0]) != string::npos && all_of(word.begin(), word.end(), [&puzzles, &i](char c) { return puzzles[i].find(c) != string::npos; })) {
+                    answer[i]++;
+                }
+            }
+        }
+        return answer;
+    }
+};
+```
+efficiency: HIGH
+time complexity: O(N*M) where N is the number of words and M is the number of puzzles.
+space complexity: O(1)
+energy implications: LOW 
+explanation: The solution iterates through each puzzle and each word in the list. For each word, it checks if it contains the first letter of the puzzle and if all letters in the word are present in the puzzle. If both conditions are met, the count for the corresponding puzzle is incremented.

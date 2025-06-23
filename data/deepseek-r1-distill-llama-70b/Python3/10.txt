@@ -1,0 +1,69 @@
+ID: 3569
+Title: Maximize Count of Distinct Primes After Split
+URL: https://leetcode.com/problems/maximize-count-of-distinct-primes-after-split/
+Status: OK
+
+solution: <code>
+import sys
+
+def main():
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+    idx = 0
+    n = int(data[idx])
+    idx +=1
+    nums = list(map(int, data[idx:idx+n]))
+    idx +=n
+    q = int(data[idx])
+    idx +=1
+    queries = []
+    for _ in range(q):
+        queries.append( (int(data[idx]), int(data[idx+1])) )
+        idx +=2
+
+    # Precompute sieve of Eratosthenes up to 1e5
+    max_num = 10**5
+    sieve = [True] * (max_num +1)
+    sieve[0] = sieve[1] = False
+    for i in range(2, int(max_num**0.5)+1):
+        if sieve[i]:
+            for j in range(i*i, max_num+1, i):
+                sieve[j] = False
+
+    res = []
+    for idx, val in queries:
+        nums[idx] = val
+        # Compute prefix counts
+        prefix_set = set()
+        prefix_counts = [0]*(n+1)
+        for i in range(n):
+            if sieve[nums[i]]:
+                if nums[i] not in prefix_set:
+                    prefix_set.add(nums[i])
+            prefix_counts[i+1] = len(prefix_set)
+        # Compute suffix counts
+        suffix_set = set()
+        suffix_counts = [0]*(n+1)
+        for i in range(n-1, -1, -1):
+            if sieve[nums[i]]:
+                if nums[i] not in suffix_set:
+                    suffix_set.add(nums[i])
+            suffix_counts[i] = len(suffix_set)
+        # Find max sum
+        max_sum = 0
+        for k in range(n+1):
+            s = prefix_counts[k] + suffix_counts[k]
+            if s > max_sum:
+                max_sum = s
+        res.append(max_sum)
+    print(' '.join(map(str, res)))
+
+if __name__ == "__main__":
+    main()
+</code>
+efficiency: LOW
+time complexity: O(n * q)
+space complexity: O(n)
+energy implications: HIGH
+explanation: This solution updates the array for each query and computes the maximum sum of distinct primes in the prefix and suffix by iterating through the array to build prefix and suffix counts. While straightforward, it has high time complexity due to the nested loops, making it inefficient for large inputs.

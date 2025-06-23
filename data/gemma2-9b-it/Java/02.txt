@@ -1,0 +1,37 @@
+ID: 1178
+Title: Number of Valid Words for Each Puzzle
+URL: https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
+Status: OK
+
+solution: 
+```java
+class Solution {
+    public int[] countValidWords(String[] words, String[] puzzles) {
+        int[] answer = new int[puzzles.length];
+        for (int i = 0; i < puzzles.length; i++) {
+            for (int j = 0; j < words.length; j++) {
+                if (isValidWord(words[j], puzzles[i])) {
+                    answer[i]++;
+                }
+            }
+        }
+        return answer;
+    }
+    private boolean isValidWord(String word, String puzzle) {
+        if (!word.startsWith(puzzle.charAt(0) + "")) {
+            return false;
+        }
+        for (char c : word.toCharArray()) {
+            if (!puzzle.contains(String.valueOf(c))) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+efficiency: HIGH
+time complexity: O(N*M)
+space complexity: O(1)
+energy implications: LOW 
+explanation: The solution iterates through each puzzle and each word in the list. For each word, it checks if it starts with the first letter of the puzzle and if all its letters are present in the puzzle. This results in a time complexity of O(N*M) where N is the number of puzzles and M is the average length of words. The space complexity is O(1) as the algorithm uses a constant amount of extra space.  The energy implications are low as the algorithm performs a limited number of operations.

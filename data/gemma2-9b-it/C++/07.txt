@@ -1,0 +1,35 @@
+ID: 3533
+Title: Concatenated Divisibility
+URL: https://leetcode.com/problems/concatenated-divisibility/
+Status: OK
+
+solution: 
+```cpp
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<int> smallestDivisiblePermutation(vector<int>& nums, int k) {
+        vector<int> result;
+        long long concatenatedValue = 0;
+        sort(nums.begin(), nums.end());
+        
+        for (int num : nums) {
+            concatenatedValue = (concatenatedValue * 10 + num) % k;
+            if (concatenatedValue == 0) {
+                result.push_back(num);
+            }
+        }
+        
+        return result;
+    }
+};
+```
+efficiency: HIGH
+time complexity: O(N log N)
+space complexity: O(N)
+energy implications: LOW
+explanation: The solution first sorts the input array for lexicographical ordering. It then iterates through the sorted array, calculating the running concatenated value modulo k. If the concatenated value becomes divisible by k, the current number is added to the result.

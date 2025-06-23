@@ -1,0 +1,43 @@
+ID: 3045
+Title: Count Prefix and Suffix Pairs II
+URL: https://leetcode.com/problems/count-prefix-and-suffix-pairs-ii/
+Status: OK
+
+solution: <code>
+def compute_prefix_function(s):
+    n = len(s)
+    pi = [0] * n
+    for i in range(1, n):
+        j = pi[i-1]
+        while j > 0 and s[i] != s[j]:
+            j = pi[j-1]
+        if s[i] == s[j]:
+            j += 1
+        pi[i] = j
+    return pi
+
+def count_pairs(words):
+    count_map = {}
+    res = 0
+    for s in words:
+        pi = compute_prefix_function(s)
+        n = len(s)
+        if n == 0:
+            continue
+        borders = set()
+        l = pi[-1]
+        while l > 0:
+            borders.add(l)
+            l = pi[l-1]
+        for l in borders:
+            t = s[:l]
+            if t in count_map:
+                res += count_map[t]
+        count_map[s] = count_map.get(s, 0) + 1
+    return res
+</code>
+efficiency: HIGH
+time complexity: O(total_length)
+space complexity: O(total_length)
+energy implications: LOW
+explanation: The solution efficiently counts pairs by leveraging the prefix function to find all borders for each string, ensuring each string is processed in linear time relative to its length. This approach minimizes redundant checks and efficiently tracks previous strings using a hash map.

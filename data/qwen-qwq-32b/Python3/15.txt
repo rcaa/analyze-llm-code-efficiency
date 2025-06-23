@@ -1,0 +1,21 @@
+ID: 1961
+Title: Check If String Is a Prefix of Array
+URL: https://leetcode.com/problems/check-if-string-is-a-prefix-of-array/
+Status: OK
+
+solution: 
+def isPrefixString(s, words):
+    current = ""
+    s_len = len(s)
+    for word in words:
+        current += word
+        if current == s:
+            return True
+        if len(current) > s_len:
+            return False
+    return False
+efficiency: HIGH
+time complexity: O(N*M), where N is the number of words and M is the length of s)
+space complexity: O(M, where M is the length of s)
+energy implications: LOW
+explanation: The algorithm iteratively builds the concatenated string from the words array, checking after each addition if it matches s. Early termination occurs if the concatenated length exceeds s's length, ensuring efficiency. This approach avoids unnecessary processing beyond the required prefix length.

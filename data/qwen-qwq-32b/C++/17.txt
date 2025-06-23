@@ -1,0 +1,40 @@
+ID: 2404
+Title: Most Frequent Even Element
+URL: https://leetcode.com/problems/most-frequent-even-element/
+Status: OK
+
+solution: 
+#include <unordered_map>
+#include <climits>
+using namespace std;
+
+int mostFrequentEven(vector<int>& nums) {
+    unordered_map<int, int> freq;
+    for (int num : nums) {
+        if (num % 2 == 0) {
+            freq[num]++;
+        }
+    }
+    if (freq.empty()) return -1;
+    
+    int max_count = 0;
+    for (const auto& p : freq) {
+        if (p.second > max_count) {
+            max_count = p.second;
+        }
+    }
+    
+    int min_num = INT_MAX;
+    for (const auto& p : freq) {
+        if (p.second == max_count && p.first < min_num) {
+            min_num = p.first;
+        }
+    }
+    return min_num;
+}
+
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: Uses a frequency map to track even elements' counts. Finds the maximum frequency and the smallest element among those with maximum frequency. Linear time and space, optimal for constraints.

@@ -1,0 +1,50 @@
+ID: 1178
+Title: Number of Valid Words for Each Puzzle
+URL: https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
+Status: OK
+
+solution: 
+```cpp
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_set>
+
+std::vector<int> findNumOfValidWords(std::vector<std::string>& words, std::vector<std::string>& puzzles) {
+    std::vector<int> result;
+    for (const auto& puzzle : puzzles) {
+        int count = 0;
+        for (const auto& word : words) {
+            if (word.find(puzzle[0]) != std::string::npos) {
+                bool isValid = true;
+                for (char c : word) {
+                    if (puzzle.find(c) == std::string::npos) {
+                        isValid = false;
+                        break;
+                    }
+                }
+                if (isValid) {
+                    count++;
+                }
+            }
+        }
+        result.push_back(count);
+    }
+    return result;
+}
+
+int main() {
+    std::vector<std::string> words = {"aaaa","asas","able","ability","actt","actor","access"};
+    std::vector<std::string> puzzles = {"aboveyz","abrodyz","abslute","absoryz","actresz","gaswxyz"};
+    std::vector<int> result = findNumOfValidWords(words, puzzles);
+    for (int num : result) {
+        std::cout << num << " ";
+    }
+    return 0;
+}
+```
+efficiency: HIGH
+time complexity: O(n*m*k)
+space complexity: O(1)
+energy implications: LOW
+explanation: The solution iterates over each puzzle and word, checking if the word is valid with respect to the puzzle by verifying that the word contains the first letter of the puzzle and that each letter in the word is present in the puzzle. The time complexity is O(n*m*k), where n is the number of puzzles, m is the number of words, and k is the maximum length of a word. The space complexity is O(1) as no additional space is used that scales with input size. The energy implications are low as the solution only involves simple string operations.

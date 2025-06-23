@@ -1,0 +1,447 @@
+ID: 1157
+Title: Online Majority Element In Subarray
+URL: https://leetcode.com/problems/online-majority-element-in-subarray/
+Status: FALHA
+
+<think>
+Okay, I need to solve this problem where I have to design a MajorityChecker class that can efficiently find the majority element in a subarray given a threshold. The majority element here is one that appears at least threshold times in the subarray. The challenge is to handle up to 10^4 queries efficiently.
+
+Hmm, the straightforward approach for each query would be to count the frequency of each element in the subarray from left to right. But that would be O(n) per query, which with 1e4 queries and n up to 2e4, that's 2e8 operations. That's probably too slow.
+
+So I need a more efficient method. Let me think about possible data structures. The classic majority element problem (more than half) can be solved with a hash map or Mo's algorithm, but here the threshold is variable. 
+
+Wait, the threshold here is given per query. The condition is that an element must occur at least threshold times. The problem requires checking if any element meets that in the subarray. 
+
+One idea is to pre-process the array to store for each element the list of indices where it appears. Then, for a query, for each possible candidate element, we can binary search in their index lists to see if there's a span of at least threshold occurrences within the [left, right] range. 
+
+But how do I efficiently find which elements could possibly have enough occurrences? Because checking all elements each time would be O(unique elements) per query, which might still be too slow if there are many unique elements.
+
+Alternatively, for each position, we can store a structure that allows us to quickly find the majority. Maybe a segment tree where each node stores a frequency map of elements in its range. But the problem is that the frequency maps could be large, leading to high memory and time costs.
+
+Another approach inspired by the Moore's voting algorithm: but that's for linear time in a single pass. Not sure how to adapt that for arbitrary ranges.
+
+Wait, the problem's constraints mention that 2*threshold > (right - left +1). That means threshold > (right-left+1)/2. So the majority element here is actually an element that occurs more than half the time in the subarray. Because threshold must be more than half the length. Wait, the problem says "occurs threshold times or more", but the constraints say 2*threshold > (right - left +1). So threshold > (length)/2. So the majority element here is the one that occurs more than half the time in the subarray. Wait, the problem's threshold is given, but the constraints ensure that the threshold is more than half the length. Wait, the problem's threshold is given per query, but the constraints say that 2*threshold > (right - left +1). So for each query, the threshold is set such that it's more than half the length of the subarray. That's an important point. Because that means that if there is an element that meets the threshold, it must be the majority element (since it's more than half the subarray's length). So there can be at most one such element. 
+
+Ah! That's a key insight. Because if the threshold is more than half the length of the subarray, then there can be at most one element that satisfies the condition. Because if two different elements each had at least threshold occurrences, their counts would sum to at least 2*threshold, which is more than the subarray length (since 2*threshold > length). So that's impossible. Therefore, there can be at most one such element. 
+
+Therefore, for each query, we just need to find if there exists an element that occurs at least threshold times. Since there can be at most one, we can use a method that can find this element efficiently.
+
+So how to find that element?
+
+The classic approach for finding a majority element in a range is to use a segment tree where each node stores a candidate and its count. For a segment, if the left and right children have the same candidate, that's the candidate for the segment. Otherwise, the candidate is none. Then, when querying a range, we can combine the segments and check if any candidate has a count >= threshold. But how to track counts?
+
+Alternatively, for each element, we can store a list of its indices. Then, for a query [L, R], the maximum possible frequency of any element is the maximum between the maximum in the left and right parts. But not sure.
+
+Alternatively, for each element x, we can have a sorted list of its positions. Then, for a query, if an element x has at least threshold occurrences in [L, R], then in its list of indices, there must be at least threshold indices between L and R. To check this, for each x in the array, we can perform a binary search to find the first index >= L and the last index <= R. The number of elements between those positions in x's list would be the count. 
+
+But how do I find which x to check? Since there can be at most one such x, perhaps we can find the candidate quickly.
+
+Wait, the majority element in the subarray (if exists) must be the element that appears the most in that subarray. Since the threshold is more than half the length, the majority element (if exists) is the one with the maximum count. So to find if there's an element with count >= threshold, we can find the element with the maximum count in the subarray, and check if its count is >= threshold. 
+
+So the problem reduces to, for each query, find the element with the maximum frequency in [left, right], and check if its count is >= threshold. If yes, return it, else -1.
+
+Therefore, the problem becomes similar to a range maximum frequency query. 
+
+Now, how to do that efficiently?
+
+One approach is to use a segment tree where each node stores a frequency map. But that might be too memory-intensive. Alternatively, for each position, we can use a structure like a binary indexed tree or a prefix array for each element, but that might not help with arbitrary ranges.
+
+Alternatively, for each element x, store a list of its indices. Then, for a query [L, R], the maximum count for x is the number of x's indices in [L, R]. To find the maximum count, we can iterate over all x's that have at least one occurrence in [L, R], compute their count, and find the maximum. But this is O(k) per query, where k is the number of unique elements in the subarray. In the worst case, this is O(n) per query, which is still too slow for 1e4 queries.
+
+Hmm, perhaps we can use a structure that allows us to quickly find the element with the maximum count in a range. 
+
+Another idea: For each index, we can use a hash map to track the frequency of elements in ranges. But that's not feasible for arbitrary ranges.
+
+Wait, here's an idea inspired by the Moore's voting algorithm. The majority element (if exists) in a range must be the candidate that appears more than half the time. Since the threshold is more than half the length, the majority element (if exists) is exactly the element that appears the most in the subarray. 
+
+So, to find the candidate, perhaps we can use a segment tree where each node stores the candidate (the element with the highest count in that segment) and its count. Then, when querying a range, we can combine the left and right segments' candidates. 
+
+Let me think: Each segment tree node would store a candidate (the element with the maximum count in that segment) and its count. When merging two segments, if the left's candidate is the same as the right's, then the combined candidate is that element with counts added. Otherwise, the candidate with the higher count is kept, and if they are equal, perhaps we need to pick one and set count to the maximum. Wait, but this might not capture the true maximum in the combined segment. 
+
+Alternatively, each node stores a list of (element, count) pairs, but only keeping the top candidates. However, this could get complicated.
+
+Alternatively, the segment tree approach for majority elements: each node stores the majority element of its interval (the element that occurs more than half the time in that interval). Then, when querying a range, the majority of the entire range is either the majority of the left or right child, or some other element. But since the query's threshold is more than half the length, if there is a majority element in the query's subarray, it must be the majority of the entire subarray. 
+
+Wait, the problem's threshold is set such that if an element meets the threshold, it must be the majority element (since threshold > (length)/2). So the majority element (if exists) is the only possible candidate. 
+
+Therefore, to answer a query, we can find the majority element of the subarray [L, R]. If its count in that subarray is >= threshold, return it, else -1. 
+
+So the problem reduces to finding the majority element in a given range, and its count. 
+
+Now, how to find the majority element in a range efficiently?
+
+The standard approach for range majority queries is using a segment tree where each node stores a candidate (the majority of its interval) and its count. 
+
+Here's how the segment tree would work:
+
+Each node represents an interval [l, r]. The node stores:
+
+- candidate: the element that is the majority in this interval (appears more than half the time)
+
+- count: the number of occurrences of the candidate in this interval.
+
+When merging two intervals (left and right children):
+
+If left's candidate == right's candidate, then the combined candidate is that element, count = left.count + right.count.
+
+Else, the combined candidate is the one with higher count, and count is the max of the two counts. 
+
+Wait, but this might not capture the true majority of the combined interval. Because if the two children have different candidates, the combined majority could be neither, but the maximum count could be from one of them. 
+
+However, this approach is used in some range majority algorithms. The key point is that if there is a majority element in the entire interval, then it must be the majority in at least one of the children. Therefore, the candidate stored in the segment tree node would capture that element. 
+
+Therefore, when querying a range, we can query the segment tree to find the candidate and its count in that range. If the count is >= threshold, return it, else -1.
+
+Wait, but the count stored in the segment tree's node for a given interval is the count of its candidate in that interval. However, if the candidate is not the true majority, then the count might not be correct. 
+
+Hmm, perhaps this approach can work for the problem's constraints. Let me think through an example.
+
+Suppose the segment tree's node for a certain interval has a candidate A with count 3, and another candidate B with count 2. The actual majority is A. The count stored is 3, which is correct. 
+
+But if the true majority is not present in either child's candidate, then the stored candidate might not be the true majority. 
+
+Wait, but the segment tree's candidate is the majority of the left and right's candidates. 
+
+Alternatively, perhaps this approach is not sufficient. 
+
+Alternatively, another approach is to use a structure called a "Fischer's Range Majority Structure", which allows O(1) or O(log n) queries for majority elements. 
+
+Alternatively, here's another idea: For each element x, store a list of indices where x occurs. Then, for a query [L, R], the maximum count for any x is the maximum (number of x's indices in [L, R]). To find the maximum count, perhaps we can use a structure that allows us to find the x with the maximum count in O(log n) time. 
+
+To compute the count for x in [L, R], we can perform a binary search on x's list to find how many elements are between L and R. 
+
+The problem is how to find which x has the maximum count in [L, R]. 
+
+This seems challenging. 
+
+Alternatively, since the threshold is more than half the length of the subarray, the majority element (if exists) must be the element that appears the most in the subarray. 
+
+Therefore, to find if there's an element with count >= threshold, we can find the element with the maximum count in the subarray, and check if its count is >= threshold. 
+
+The question is how to find the element with maximum count in a range efficiently. 
+
+This is a classic problem of range mode query. The range mode problem is to find the mode (most frequent element) in a range. 
+
+The range mode problem is known to be challenging. There are some data structures for it, but they can be complex. 
+
+Alternatively, for this problem, given that the threshold is more than half the length, the mode must be the majority element (if it exists). Because if the mode's count is >= threshold, then it's the answer. 
+
+So, if we can find the mode of the subarray, and check its count, that would work. 
+
+The problem is how to compute the mode of a range quickly. 
+
+One possible approach is to use a segment tree where each node stores a frequency array, but that's not feasible for large n. 
+
+Alternatively, for each element x, store a list of its positions. Then, for a query, iterate over all possible candidates (but how to find the best candidate quickly). 
+
+Alternatively, here's an approach inspired by the "Mo's algorithm" but that's O(n^1.5) which might be too slow for 1e4 queries. 
+
+Alternatively, here's an approach using a segment tree where each node stores a hash map of elements and their counts. But that would take O(n log n) space, which is not feasible for n=2e4. 
+
+Hmm, perhaps the best approach here is to pre-process for each element x, the list of indices where x occurs. Then, for a query [L, R], the maximum count is the maximum over all x of (number of x's indices in [L, R]). 
+
+To find the x with maximum count, perhaps we can use a structure like a wavelet tree or a range frequency structure. 
+
+Alternatively, here's an efficient way: 
+
+For each element x, the count in [L, R] can be found via binary search on x's list of indices. 
+
+The problem is to find the x with the maximum count in O(1) or O(log n) time. 
+
+This seems difficult. 
+
+Alternatively, since the threshold is more than half the length of the subarray, the maximum count must be at least threshold. So, if there exists an x with count >= threshold, then it's the mode. 
+
+Therefore, to find if such an x exists, perhaps we can use a segment tree that can track the majority candidate in a range. 
+
+Wait, here's an idea inspired by the majority candidate approach. 
+
+The segment tree can store for each interval the candidate (the element that is the majority in that interval, if it exists). 
+
+Each node stores (candidate, count). 
+
+When querying a range, we can combine the left and right children's candidates. 
+
+The merging process would be: 
+
+If left's candidate is the same as right's, then the combined candidate is that element, count = left.count + right.count. 
+
+Else, if left.count > right.count, then the candidate is left's candidate, count = left.count - right.count. 
+
+Wait, this is similar to the Boyer-Moore algorithm's approach. 
+
+Wait, the standard approach for finding a majority element in a range using a segment tree is to store for each node the majority candidate and its count. 
+
+The merging of two intervals would be done as follows: 
+
+Suppose left has (c1, cnt1), right has (c2, cnt2). 
+
+If c1 == c2, then the combined candidate is c1, count is cnt1 + cnt2. 
+
+Else, if cnt1 > cnt2, then the combined candidate is c1, count is cnt1 - cnt2. 
+
+Else, the combined candidate is c2, count is cnt2 - cnt1. 
+
+This way, if there is a majority element in the entire interval, it will be captured in the combined candidate. 
+
+Wait, but this is an approximate method. The count stored is not the actual count, but the difference. 
+
+However, when querying a range, if the count of the candidate is positive, then it's possible that it is the majority. 
+
+Wait, perhaps the segment tree can be built such that for any interval, if there is a majority element, then the stored candidate is that element. 
+
+The merging process is designed so that if there is a majority in the entire interval, then the candidate stored in the node would be that element. 
+
+This is similar to the approach used in the segment tree for majority queries. 
+
+Let me think of an example. 
+
+Suppose the left interval has a majority of A with count 3 (length 5, so count 3 is majority). The right interval has a majority of A with count 4 (length 7, so count 4 is not majority, but maybe the count is stored as 4. 
+
+Wait, perhaps the count stored is the difference, but the actual count can be computed by traversing the leaves. 
+
+Alternatively, perhaps the segment tree can be built to store for each node the candidate (the majority in that interval, if exists) and its count. 
+
+Wait, here's a better approach: 
+
+Each node of the segment tree stores a candidate (the element that is the majority in that interval, if it exists) and its count. 
+
+When merging two intervals: 
+
+If left's candidate is the same as right's, then the combined candidate is that element, count is left.count + rightCount. 
+
+Else, the combined candidate is whichever has higher count, and the count is leftCount - rightCount (if left's count is higher) or vice versa. 
+
+This way, if there is a majority element in the entire interval, then the candidate stored in the root of the merged nodes would be that element. 
+
+Wait, let's see: 
+
+Suppose the entire interval has a majority element x. 
+
+Then, in the left and right children, x must be the majority in at least one of them. 
+
+Wait, not necessarily. For example, if the entire interval has x appearing exactly half +1, but split equally between left and right. 
+
+Hmm, maybe this approach works only if the majority exists. 
+
+The key point is that if there is a majority element in the entire interval, then the segment tree's candidate for that interval will be that element. 
+
+Therefore, when querying a range, if the candidate's count in the entire interval is >= threshold, then that's the answer. 
+
+Wait, but the count stored in the segment tree's node is not the actual count, but the difference. 
+
+Hmm, perhaps this approach can be used to find the candidate, and then we need to verify its actual count in the subarray. 
+
+Wait, here's the plan: 
+
+The segment tree's nodes store (candidate, count). 
+
+When querying a range, we traverse the segment tree to get the candidate and its stored count. 
+
+However, the stored count may not be accurate. 
+
+But if the candidate is the true majority, then its actual count in the interval is at least (length +1)/2. 
+
+Wait, but the threshold is given, and we need to check if the count is >= threshold. 
+
+Alternatively, perhaps the candidate given by the segment tree is a possible candidate, but we need to verify its actual count. 
+
+Alternatively, the segment tree's candidate is the only possible candidate that could have a count >= threshold. 
+
+Wait, let's think: 
+
+Suppose the true majority element x has a count of m in the subarray. Since threshold is more than half the length, m >= threshold implies that x is the majority. 
+
+The segment tree's candidate for the interval would be x, because if x is the majority, then in at least one of the children, x is the majority, and when merging, the counts would ensure that x is the candidate. 
+
+Therefore, the candidate stored in the segment tree for the query's interval would be x. 
+
+Therefore, to answer the query, we can get the candidate from the segment tree, then compute its actual count in the subarray using binary search on its index list. 
+
+If the count is >= threshold, return it, else -1. 
+
+This way, the steps for a query would be: 
+
+1. Query the segment tree to get the candidate. 
+
+2. Use binary search on the candidate's index list to find the actual count in [L, R]. 
+
+3. If count >= threshold, return it, else -1. 
+
+This reduces the problem to efficiently finding the candidate (the possible majority) and then verify its count. 
+
+The segment tree's candidate is the only possible candidate that could have a count >= threshold. 
+
+Wait, why? Because if there is an element with count >= threshold, then it must be the majority (since threshold > (length)/2). So it is the majority, so the segment tree's candidate would be that element. 
+
+Therefore, the candidate from the segment tree is the only possible candidate that could have a count >= threshold. 
+
+Therefore, the steps are: 
+
+- Query the segment tree for the candidate of the interval [L, R]. 
+
+- Then, compute the actual count of that candidate in [L, R]. 
+
+- If count >= threshold, return it, else -1. 
+
+This way, each query takes O(log n time for the segment tree query, plus O(log m time to compute the count (where m is the number of occurrences of the candidate). 
+
+The steps would be manageable. 
+
+So the plan is: 
+
+Implement a segment tree where each node stores (candidate, count). 
+
+The build process: 
+
+For a leaf node (single element), the candidate is that element, count 1. 
+
+For internal nodes: 
+
+left has (c1, cnt1), right has (c2, cnt2). 
+
+If c1 == c2, then combined candidate is c1, count cnt1 + cnt2. 
+
+Else, if cnt1 > cnt2, then candidate is c1, count cnt1 - cnt2. 
+
+Else, candidate is c2, count cnt2 - cnt1. 
+
+Wait, but this is similar to the Boyer-Moyer algorithm's approach. 
+
+Then, when querying a range, the candidate returned by the segment tree is the candidate that would be returned by the Boyer-Moore algorithm over the entire interval. 
+
+If there is a majority element, then the candidate stored in the segment tree's query result would be that element. 
+
+Therefore, the candidate is correct if there is a majority. 
+
+Therefore, to find the candidate, we can use the segment tree, and then verify its actual count. 
+
+Therefore, the steps for a query are: 
+
+1. Query the segment tree for the candidate of the interval [L, R]. 
+
+2. Compute the actual count of that candidate in [L, R]. 
+
+3. If count >= threshold, return it, else -1. 
+
+This way, the segment tree gives us the candidate that could be the majority, and we need to verify its count. 
+
+The verification step requires, for the candidate x, the number of occurrences in [L, R]. 
+
+To compute that, we can pre-process for each x, a sorted list of indices where x occurs. 
+
+Then, for x, the count is upper_bound(R) - lower_bound(L). 
+
+Thus, for each query, the steps are: 
+
+- Get candidate x from the segment tree. 
+
+- Compute the actual count of x in [L, R]. 
+
+- If count >= threshold, return x, else -1. 
+
+If there is no majority element, then the candidate may not be the true maximum, but since there's no element with count >= threshold, it doesn't matter. 
+
+Wait, but if there is no majority element, then the candidate from the segment tree may not be the true maximum, but since we need to check its count, even if it's not the true maximum, if its count is not enough, we can return -1. 
+
+Wait, but the true maximum could be another element which is not the candidate. 
+
+Wait, but if there is no element with count >= threshold, then even if the candidate's count is less than threshold, but there exists another element with higher count but still less than threshold, then the answer is -1. 
+
+However, the candidate given by the segment tree is the one that would have been the majority if there was one. 
+
+Wait, but if there is no majority element, then the candidate may not be the true maximum. 
+
+Hmm, this could be a problem. 
+
+Wait, let's think of an example where there is no majority, but the segment tree's candidate is not the true maximum. 
+
+SupExample: 
+
+SupArray: [1,2,1,2,1,2]. 
+
+The entire array has length 6. 
+
+The majority threshold would be threshold > 3, so threshold must be at least 4. 
+
+SupSuppose the query is the entire array, threshold 3. 
+
+The counts are 3 for 1 and 3 for 2. 
+
+No element meets threshold 3 (since threshold must be > 3, but if threshold is 3, but the problem's constraints say threshold <= right - left +1, and 2*threshold > (right - left +1). 
+
+Wait, in the problem's constraints, the threshold is given such that 2*threshold > (right - left +1). 
+
+So in the example above, the length is 6, so threshold must be > 3, so threshold >=4. 
+
+In that case, the query would return -1. 
+
+But in the example where the counts are 3 and 3, the segment tree's candidate would be either 1 or 2, but their counts are 3, which is not enough. 
+
+So in that case, the candidate's count is 3, which is not enough. 
+
+So the algorithm would return -1, which is correct. 
+
+Another example: 
+
+SupArray [1,1,2,1,1,1]. 
+
+The majority is 1, count 4 in a subarray of length 5 (threshold must be >2.5, so threshold 3. 
+
+The segment tree would return 1 as the candidate, and the count would be 4, which is correct. 
+
+So the key idea is that the segment tree's candidate is the only possible candidate that could have a count >= threshold. 
+
+Because if there is an element with count >= threshold, then it must be the majority, so the segment tree's candidate would be that element. 
+
+Therefore, the algorithm is safe. 
+
+Therefore, the steps are: 
+
+For a query [L, R, threshold]: 
+
+1. Query the segment tree for the candidate x. 
+
+2. Compute the actual count of x in [L, R]. 
+
+3. If count >= threshold, return x, else -1. 
+
+Thus, the steps are manageable. 
+
+Now, the segment tree's candidate is O(1) per query, and the count can be computed via binary search on x's list of indices. 
+
+Thus, the steps are O(log n for the segment tree query, and O log m for the count lookup. 
+
+The total time per query is O(log n + log m. 
+
+The pre-processing steps: 
+
+- Preprocess for each element x, a sorted list of indices where x occurs. 
+
+- Build the segment tree. 
+
+The segment tree's build time is O(n log n), and each query is O(log n. 
+
+The space for the segment tree is O(n). 
+
+The count for x in [L, R] can be found via binary search in O(log k, where k is the number of occurrences of x. 
+
+Thus, the total time per query is O(log n + log k. 
+
+This should be acceptable for 1e4 queries. 
+
+Now, implementing this approach. 
+
+So the steps for the code: 
+
+First, preprocess for each element x, a list of indices. 
+
+Then, build a segment tree where each node stores (candidate, count). 
+
+The segment tree's query function returns the candidate and its count (the stored count, but we need to actually compute the real count. 
+
+Wait, but the stored count in the segment tree is not the actual count. 
+
+Wait, the count stored in the segment tree's node is not the actual count, but the difference. 
+
+Wait, no, the count stored in the

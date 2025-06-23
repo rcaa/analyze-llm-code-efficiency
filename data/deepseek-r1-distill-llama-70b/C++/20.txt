@@ -1,0 +1,38 @@
+ID: 2441
+Title: Largest Positive Integer That Exists With Its Negative
+URL: https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/
+Status: OK
+
+solution: 
+```cpp
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+int largestPositiveK(vector<int> nums) {
+    unordered_set<int> s(nums.begin(), nums.end());
+    int max_k = -1;
+    for (int num : nums) {
+        if (num > 0) {
+            if (s.count(-num)) {
+                if (num > max_k) {
+                    max_k = num;
+                }
+            }
+        } else {
+            int pos = -num;
+            if (s.count(pos)) {
+                if (pos > max_k) {
+                    max_k = pos;
+                }
+            }
+        }
+    }
+    return max_k;
+}
+```
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: The solution efficiently finds the largest positive integer k by using a set for O(1) lookups, ensuring linear time complexity. It iterates through each element, checking for the presence of its negative counterpart, and keeps track of the maximum k found. This approach ensures optimal performance with minimal energy consumption.

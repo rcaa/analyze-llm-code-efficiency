@@ -1,0 +1,62 @@
+ID: 1157
+Title: Online Majority Element In Subarray
+URL: https://leetcode.com/problems/online-majority-element-in-subarray/
+Status: OK
+
+solution: 
+```cpp
+class MajorityChecker {
+public:
+    MajorityChecker(vector<int>& arr) : arr(arr) {}
+
+    int query(int left, int right, int threshold) {
+        int n = right - left + 1;
+        if (n < threshold) return -1;
+
+        int candidate = arr[left];
+        int count = 0;
+
+        for (int i = left; i <= right; i++) {
+            if (arr[i] == candidate) count++;
+        }
+
+        if (count >= threshold) return candidate;
+
+        for (int i = 0; i < 20; i++) {
+            int mid = left + (right - left) / 2;
+            int leftCount = 0, rightCount = 0;
+
+            for (int j = left; j <= mid; j++) {
+                if (arr[j] == candidate) leftCount++;
+            }
+
+            for (int j = mid + 1; j <= right; j++) {
+                if (arr[j] == candidate) rightCount++;
+            }
+
+            if (leftCount > rightCount) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+
+            count = 0;
+            for (int j = left; j <= right; j++) {
+                if (arr[j] == candidate) count++;
+            }
+
+            if (count >= threshold) return candidate;
+        }
+
+        return -1;
+    }
+
+private:
+    vector<int> arr;
+};
+```
+efficiency: HIGH
+time complexity: O(log(n) * threshold)
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: This solution uses a binary search approach to find the majority element in the subarray. It first checks if the candidate element is the majority element, and if not, it performs a binary search to find the majority element. The binary search is repeated up to 20 times, which is the maximum number of calls allowed to the query function. The time complexity is O(log(n) * threshold) because the binary search is repeated up to 20 times, and each binary search takes O(log(n)) time. The space complexity is O(n) because we need to store the entire array.

@@ -1,0 +1,26 @@
+ID: 2404
+Title: Most Frequent Even Element
+URL: https://leetcode.com/problems/most-frequent-even-element/
+Status: OK
+
+solution: 
+```
+def most_frequent_even(nums):
+    even_count = {}
+    for num in nums:
+        if num % 2 == 0:
+            if num in even_count:
+                even_count[num] += 1
+            else:
+                even_count[num] = 1
+    if not even_count:
+        return -1
+    max_count = max(even_count.values())
+    most_frequent = [num for num, count in even_count.items() if count == max_count]
+    return min(most_frequent)
+```
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: Utiliza um dicionário para contar a frequência de cada número par, então encontra o número par mais frequente e, em caso de empate, retorna o menor.

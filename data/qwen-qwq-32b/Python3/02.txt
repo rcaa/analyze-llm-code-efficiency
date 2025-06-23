@@ -1,0 +1,730 @@
+ID: 1178
+Title: Number of Valid Words for Each Puzzle
+URL: https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
+Status: FALHA
+
+<think>
+Okay, I need to solve this problem efficiently in Python. Let's see the problem again. The task is to count for each puzzle how many words are valid. The valid conditions are: the word must contain the first letter of the puzzle, and every character in the word must be in the puzzle. 
+
+Hmm, the constraints are tight. Words can be up to 1e5 and puzzles up to 1e4. So a brute-force approach where for each puzzle, check each word would be O(N*M) which is 1e9 operations, which is way too slow. Need a smarter way.
+
+Let me think about bitmasking. Since each word and puzzle can be represented as a bitmask of their characters. For a word to be valid with a puzzle, the word's bitmask must be a subset of the puzzle's bitmask. Also, the puzzle's first character must be present in the word.
+
+So steps:
+
+1. Preprocess each word into a bitmask. Also, check if it contains the first character of any puzzle? Wait, no, because each puzzle is different. Hmm, maybe for each word, store its bitmask and the set of characters. But how to efficiently check against all puzzles?
+
+Alternatively, for each puzzle, we can compute its bitmask and first character. Then, for a word to be valid for that puzzle, two conditions:
+
+- The word's bitmask must be a subset of the puzzle's bitmask. (word_mask & puzzle_mask == word_mask)
+- The first character of the puzzle is present in the word. (word_mask has that bit set)
+
+So the problem reduces to, for each puzzle's mask and first character, count the number of words whose mask is a subset of the puzzle's mask and includes the first character.
+
+The challenge is to do this efficiently for all puzzles.
+
+The key idea is to group words by their masks and count frequencies. Then, for each puzzle, iterate over all subsets of its mask that include the first character, and sum the counts of those subsets.
+
+Wait, that's a common subset sum approach. Let me think:
+
+First, we can represent each word as a bitmask. Let's say each character is a bit in a 26-bit integer. For example, 'a' is 1<<0, 'b' is 1<<1, etc. So each word's mask is the OR of all its characters' bits.
+
+Then, we can create a frequency dictionary: a dictionary where the key is the mask, and the value is the count of words with that mask. This way, we can quickly look up how many words have a certain mask.
+
+Now, for each puzzle, we need to compute the sum over all subsets S of the puzzle's mask, where S includes the first character of the puzzle. The count for each such S is added to the answer.
+
+Wait, but how do we efficiently compute all subsets of the puzzle's mask that include the first character?
+
+The standard approach for subset sums here is to iterate over all subsets of the puzzle's mask, but only those that include the first character. However, the number of subsets of a 7-character puzzle (since puzzles are length 7, no repeats) is 2^7 = 128 subsets. Since each puzzle has 7 bits, the subsets are manageable.
+
+Wait, the puzzle's mask has exactly 7 bits set (since each puzzle has 7 unique letters). So the total subsets for a puzzle's mask is 2^7 = 128. For each puzzle, we can generate all subsets of its mask, then check if the subset includes the first character (since the first character is part of the puzzle's mask, so the subset must have that bit set). Wait, no: the subset must include the first character's bit. So when generating subsets, we can enforce that the subset includes that bit.
+
+Alternatively, for each puzzle's mask, the first character is fixed. Let's call it first_char_bit. The valid subsets are those subsets of the puzzle's mask that include first_char_bit. 
+
+So for each puzzle, the process is:
+
+1. Get the puzzle's mask (p_mask) and first_char_bit (f_bit).
+
+2. Iterate over all subsets of p_mask that include f_bit. For each such subset s, if s is present in the frequency map, add the count to the answer.
+
+The total for the puzzle is the sum over all such subsets of the frequency of s.
+
+This way, for each puzzle, we can compute the answer by enumerating all subsets of its mask that include the first character, and sum their frequencies.
+
+The key is that for each puzzle, the number of subsets to check is 2^(k-1), where k is the number of bits in the puzzle's mask. Since each puzzle has exactly 7 bits (since puzzles have 7 unique letters), the number of subsets is 2^7 = 128, but since we must include the first character, it's 2^(7-1) = 64 subsets per puzzle. Because the first character is one of the bits, so the remaining 6 bits can be present or not. Wait, no: the total subsets that include the first character are 2^(number of bits -1). Because the first bit must be set, and the other bits can be anything. Since the puzzle has 7 bits, the number is 2^6 = 64 subsets per puzzle. That's manageable.
+
+So the steps would be:
+
+1. Preprocess all words into their masks, count the frequency of each mask. So a dictionary (like a Counter) where key is the mask, value is count.
+
+2. For each puzzle:
+
+   a. Compute its mask (p_mask) and first_char_bit (f_bit).
+
+   b. Generate all subsets of p_mask that include f_bit. 
+
+   c. For each such subset s, add the count of s (from the frequency dict) to the total for this puzzle.
+
+3. The result for each puzzle is the sum of all those counts.
+
+Now, how to generate all subsets of p_mask that include f_bit?
+
+First, the puzzle's mask is p_mask. To generate all subsets of p_mask that include f_bit, we can iterate over all subsets of (p_mask without the f_bit), then OR with f_bit. Wait, perhaps a better way is to loop through all subsets of p_mask, and check if they include f_bit. But generating all subsets of p_mask can be done via bitmask iteration.
+
+Alternatively, since the puzzle's mask is known, we can loop through all possible subsets of p_mask. Since the mask has 7 bits, there are 2^7=128 subsets. For each subset, check if it includes the first character's bit. If yes, then add the count of that subset to the total.
+
+So for each puzzle, the steps are:
+
+sum = 0
+
+for subset in all subsets of p_mask:
+
+   if (subset & f_bit) != 0:
+
+       sum += freq.get(subset, 0)
+
+But how to generate all subsets of p_mask?
+
+The standard way to iterate over all subsets of a mask is to use a loop with a bitmask and some bit manipulation. Let me recall that for a given mask, all subsets can be generated by the following method:
+
+Initialize a subset as 0, then for each bit set in the mask, you can choose to include or exclude it. But generating all subsets can be done with a loop:
+
+def all_subsets(mask):
+
+    subset = mask
+
+    while True:
+
+        yield subset
+
+        if subset == 0:
+
+            break
+
+        subset = (subset-1) & mask
+
+Wait, that's the standard subset enumeration loop. So for a given mask, this loop will generate all subsets of mask.
+
+So for each puzzle's mask, we can loop through all subsets of it, check if the subset includes the first character's bit, and sum the frequencies.
+
+But how to do this efficiently?
+
+The steps in code would be:
+
+First, precompute the frequency dictionary of word masks.
+
+Then for each puzzle:
+
+   p_mask = mask of the puzzle's characters.
+
+   f_char = first character of the puzzle.
+
+   f_bit = 1 << (ord(f_char) - ord('a'))
+
+   total = 0
+
+   for subset in all_subsets(p_mask):
+
+       if (subset & f_bit) != 0:
+
+           total += freq.get(subset, 0)
+
+   answer for this puzzle is total.
+
+But how to generate all subsets of p_mask?
+
+Yes, using the subset loop as above.
+
+Now, the problem is that for each puzzle, generating all subsets (128 subsets) is manageable, since puzzles are 1e4, so 1e4 * 128 = 1.28e6 operations, which is acceptable.
+
+The preprocessing step for words: for each word, compute its mask. But words can have repeated characters, but the mask is just the OR of all their characters. So for a word like "aaaa", the mask is just 1<<0 (since 'a' is the only character). So that's easy.
+
+So the steps in code:
+
+First, process all words into their masks, count frequencies.
+
+Then for each puzzle:
+
+   compute its mask (p_mask) and first character's bit (f_bit).
+
+   Then iterate over all subsets of p_mask, and check if the subset includes f_bit. For each such subset, add the count from the frequency dict.
+
+Now, the key is to efficiently generate all subsets of p_mask. The subset loop can be done with the standard method.
+
+Now, let's think about the code structure.
+
+First, the mask for a word:
+
+def get_mask(s):
+
+    mask = 0
+
+    for c in s:
+
+        mask |= 1 << (ord(c) - ord('a'))
+
+    return mask
+
+Similarly for puzzles.
+
+Now, the frequency dictionary is a collections.defaultdict or a Counter.
+
+Then, for each puzzle:
+
+puzzle_str = puzzles[i]
+
+p_mask = get_mask(puzzle_str)
+
+f_char = puzzle_str[0]
+
+f_bit = 1 << (ord(f_char) - ord('a'))
+
+Then, generate all subsets of p_mask, and for each subset, if (subset & f_bit) !=0, then add the count.
+
+Wait, but the subset must be a subset of p_mask. Because the word's mask must be a subset of the puzzle's mask. So the subset here is exactly the word's mask. So the logic is correct.
+
+Now, the code for generating all subsets of p_mask:
+
+def all_subsets(mask):
+
+    subset = mask
+
+    while True:
+
+        yield subset
+
+        if subset == 0:
+
+            break
+
+        subset = (subset-1) & mask
+
+Wait, but this loop gives all subsets in some order. So for each subset in all_subsets(p_mask):
+
+   if (subset & f_bit) !=0:
+
+       total += freq.get(subset, 0)
+
+Wait, but the loop for subsets of p_mask includes all subsets, including those that don't have the first character. So we need to check if the subset includes the first character's bit. 
+
+Alternatively, to optimize, we can pre-mask the subset to ensure it includes the first character. Since the first character is part of the puzzle's mask, so f_bit is part of p_mask. 
+
+Wait, since the puzzle's mask includes all its characters, including the first character. So f_bit is part of p_mask. 
+
+Therefore, to generate all subsets that include f_bit, we can set the f_bit as mandatory, and iterate over all subsets of the remaining bits.
+
+Alternatively, to generate all subsets of p_mask that include f_bit, we can set the subset to start with f_bit, and then iterate over the other bits.
+
+Alternatively, in the loop over all subsets of p_mask, we can just check if the subset includes f_bit. Since there are only 128 subsets, this is manageable.
+
+So the code for each puzzle would be:
+
+total = 0
+
+s = p_mask
+
+while True:
+
+    if (s & f_bit) !=0:
+
+        total += freq.get(s, 0)
+
+    if s ==0:
+
+        break
+
+    s = (s-1) & p_mask
+
+Wait, but the loop is written as:
+
+subset starts at p_mask, then goes down to 0. Wait, the standard subset loop:
+
+The standard loop for all subsets of mask is:
+
+subset = mask
+
+while True:
+
+    yield subset
+
+    subset = (subset-1) & mask
+
+This loop yields all subsets in decreasing order. So in code, for each puzzle:
+
+total =0
+
+current_subset = p_mask
+
+while True:
+
+    if (current_subset & f_bit) !=0:
+
+        total += freq.get(current_subset, 0)
+
+    if current_subset ==0:
+
+        break
+
+    current_subset = (current_subset -1) & p_mask
+
+Wait, but when current_subset is 0, we check if it has the f_bit. But since the puzzle's mask includes f_bit, the 0 subset won't have it. So that's okay.
+
+Wait, but the loop starts with subset = p_mask, then subset-1 & mask, etc. So all subsets are generated.
+
+Wait, but the loop will generate all subsets of p_mask. For each of those, we check if it includes f_bit. 
+
+This is manageable.
+
+Now, the problem is to implement this efficiently.
+
+Now, let's think about the time and space.
+
+First, processing words: for each word, compute its mask. Since words can be up to 1e5, and each word's processing is O(L) where L is up to 50, but that's manageable. The mask is O(1) per character, so total O(1e5 * 50) = 5e6 operations, which is okay.
+
+The frequency dictionary is a Counter (or a defaultdict(int)), which is O(N) space, where N is the number of unique masks among all words. Since each mask is a 26-bit number, there are at most 2^26 possible masks, but in practice, it's probably manageable.
+
+Then, for each puzzle (1e4 puzzles), each with 128 subsets, so 1e4 * 128 = 1.28e6 operations. That's acceptable.
+
+Now, the key is to implement this.
+
+Now, let's think about possible optimizations. Since the puzzles have exactly 7 characters (since each puzzle is length 7, and no duplicates), their masks have exactly 7 bits set. So each puzzle's subsets are 128, so 128 iterations per puzzle.
+
+Now, code steps:
+
+Implement the mask functions.
+
+Now, code outline:
+
+from collections import defaultdict
+
+def count_valid_words(words, puzzles):
+
+    # Precompute word masks and their counts
+
+    freq = defaultdict(int)
+
+    for word in words:
+
+        mask = 0
+
+        for c in set(word):  # Wait, no, the mask is the OR of all characters, so even if the word has multiple 'a's, the mask is same as having one 'a'. So to compute the mask, we can process each character, but OR-ing them all. So for a word like "aaaa", the mask is 1<<0. So the code for mask is correct as written.
+
+        mask = 0
+
+        for c in word:
+
+            mask |= 1 << (ord(c) - ord('a'))
+
+        freq[mask] +=1
+
+    # Now process each puzzle
+
+    answer = []
+
+    for puzzle in puzzles:
+
+        p_mask = 0
+
+        for c in puzzle:
+
+            p_mask |= 1 << (ord(c) - ord('a'))
+
+        f_char = puzzle[0]
+
+        f_bit = 1 << (ord(f_char) - ord('a'))
+
+        total =0
+
+        # Generate all subsets of p_mask:
+
+        s = p_mask
+
+        while True:
+
+            if (s & f_bit):
+
+                total += freq.get(s, 0)
+
+            if s ==0:
+
+                break
+
+            s = (s-1) & p_mask
+
+        answer.append(total)
+
+    return answer
+
+Wait, but in the loop, the initial s is p_mask, then s-1 & p_mask gives the next subset. The loop continues until s becomes 0. 
+
+Wait, but in the code above, the loop is:
+
+s starts at p_mask, then in each iteration, we check if s has the f_bit. Then, compute s = (s-1) & p_mask. 
+
+Wait, but the loop is:
+
+Wait, the standard subset iteration loop is:
+
+subset = mask
+
+while True:
+
+    yield subset
+
+    if subset ==0:
+
+        break
+
+    subset = (subset-1) & mask
+
+Wait, so in code, the loop would be:
+
+s = p_mask
+
+while True:
+
+    if (s & f_bit) !=0:
+
+        total += freq.get(s, 0)
+
+    if s ==0:
+
+        break
+
+    s = (s -1) & p_mask
+
+Wait, but in the code above, the loop is written as:
+
+Wait, the code in the code outline above has a loop:
+
+s starts at p_mask, then in each iteration, check if s has f_bit, add to total, then set s to (s-1)&p_mask. But when s becomes 0, we break. 
+
+Wait, but when s is 0, we check if it has f_bit (which it won't, since f_bit is part of p_mask, so 0 can't have it). So the loop is okay.
+
+Wait, but the loop will process all subsets of p_mask, including all subsets. For each subset, check if it includes f_bit. 
+
+Yes, that's correct.
+
+Now, testing the example:
+
+Take example 1:
+
+words = ["aaaa","asas","able","ability","actt","actor","access"]
+
+Wait, let's take the first puzzle "aboveyz".
+
+The puzzle's first character is 'a', so f_bit is 1<<0.
+
+The puzzle's mask includes all its letters: a, b, o, v, e, y, z. So the mask is the OR of all those bits. 
+
+The valid words must have a mask that is a subset of the puzzle's mask, and includes 'a'.
+
+So for each subset of the puzzle's mask that includes 'a', we add the count of words with that mask.
+
+Wait, but the code is correct.
+
+Now, let's see for the first example's first puzzle "aboveyz".
+
+The valid words are those whose mask is a subset of the puzzle's mask, and includes 'a'.
+
+The code loops over all subsets of the puzzle's mask, and for each subset, if it includes 'a', then add the count of that subset.
+
+Yes, that's exactly what's needed.
+
+Now, the code's time complexity:
+
+The preprocessing of words is O(N * L), where N is 1e5 and L is up to 50. That's 5e6 operations, which is okay.
+
+The puzzles processing is O(M * 128), where M is 1e4, so 1.28e6 operations. That's acceptable.
+
+Space-wise, the frequency dictionary can have up to 2^26 entries, but in practice, since words can have varying masks, but 2^26 is about 67M, but with 1e5 words, it's manageable. But in practice, many words may have the same mask. So the space is acceptable.
+
+Now, let's think about possible optimizations. Since the puzzles have exactly 7 bits set, their subsets are 128, so manageable.
+
+Now, code in Python:
+
+Wait, but in Python, loops over 1e4 * 128 steps are okay. Let's see.
+
+Now, let's code this.
+
+Wait, but in the code outline above, when generating the subsets, the loop is:
+
+s starts at p_mask, then each step subtracts 1 and AND with p_mask. 
+
+Wait, the code for the loop in the puzzle processing:
+
+Wait, in code:
+
+for each puzzle in puzzles:
+
+    p_mask = compute mask
+
+    f_bit = first character's bit.
+
+    total =0
+
+    s = p_mask
+
+    while True:
+
+        if (s & f_bit) !=0:
+
+            total += freq.get(s, 0)
+
+        if s ==0:
+
+            break
+
+        s = (s-1) & p_mask
+
+Wait, but when s is 0, the loop breaks. But when s is 0, the code checks if s has f_bit (which it doesn't, so no addition). Then breaks.
+
+Wait, but the loop is:
+
+Wait, the loop is:
+
+s starts at p_mask.
+
+Then, in each iteration:
+
+Check if s has f_bit, add to total.
+
+Then, compute next s as (s-1) & p_mask.
+
+Wait, but the loop continues until s becomes 0, then breaks. 
+
+Wait, but the loop is:
+
+Wait, the code above is missing the initial step. Let me think of the standard subset iteration:
+
+The standard loop for all subsets of mask is:
+
+subset = mask
+
+while True:
+
+    process subset
+
+    if subset ==0:
+
+        break
+
+    subset = (subset-1) & mask
+
+So in the code, the code is:
+
+s starts at p_mask, then in each iteration, we process s, then set s to (s-1) & p_mask. 
+
+Wait, but in the code above, the code is:
+
+Wait, in the code outline, the code is:
+
+s = p_mask
+
+while True:
+
+    if (s & f_bit) !=0:
+
+        total += freq.get(s, 0)
+
+    if s ==0:
+
+        break
+
+    s = (s-1) & p_mask
+
+Wait, but the loop is missing the case when s is 0. Because when s is 0, the loop breaks immediately. 
+
+Wait, the standard loop includes s=0 as the last subset. Because when subset is 0, the loop breaks. Wait, let's see:
+
+Sup
+
+Wait, let's see for mask=3 (binary 11), two bits set). The subsets are 11, 10, 01, 00.
+
+The loop would start with subset=11, then next is 10, then 01, then 00. 
+
+Wait, in the code above, when s is 0, the code checks if s has f_bit (no), then breaks. 
+
+Wait, but in the code, the code checks s's condition before proceeding. 
+
+Wait, the code is correct.
+
+Now, let's test with example 1's first puzzle "aboveyz".
+
+The first character is 'a', so f_bit is 1<<0.
+
+The puzzle's mask includes a, b, o, v, e, y, z. 
+
+The subsets that include 'a' are all subsets that have the a bit set. 
+
+The code loops through all subsets of the puzzle's mask, and for each subset, if it has the a bit, adds the count.
+
+Yes, that's correct.
+
+Now, let's test the first example's first puzzle's first word "aaaa" has mask 0b000000001 (assuming a is bit 0. So mask is 1. 
+
+The puzzle's mask includes a, so the subset 1 (mask of "aaaa") is included. 
+
+So when s is 1, which is a subset of the puzzle's mask (since the puzzle's mask includes a, so 1 is a subset. 
+
+Thus, the code would count that.
+
+Now, the code should work.
+
+Now, let's think about the example 1's third puzzle "abslute". The first character is 'a', so the subsets must include 'a'. 
+
+The valid words for that puzzle are "aaaa", "asas", "able", "ability", etc. 
+
+Wait, the third example's third puzzle's output is 3. Let's see:
+
+The words that are valid are "aaaa", "asas", "able". 
+
+The masks for those words:
+
+"aaaa" has mask 0b000000001 (assuming a is bit 0, but need to check the actual bits.
+
+Wait, let's think of the letters in "abslute":
+
+The puzzle is "abslute". Let's see the letters: a, b, s, l, u, t, e. Wait, the first character is 'a', so f_bit is a's bit. 
+
+The valid words must have their mask subset of the puzzle's mask, and include a.
+
+The words in example 1's words list:
+
+Looking at the words:
+
+"aaaa" → mask has a only → yes, and includes a → counted.
+
+"asas" → letters a and s → mask has a and s. Since the puzzle's mask includes a, s, etc. → yes.
+
+"able" → a, b, l, e → all in the puzzle's mask. So yes.
+
+"ability" → a, b, l, e, i, t? Wait, the puzzle's letters are a, b, s, l, u, t, e. Wait, "ability" has letters a, b, i, l, t, y? Wait, maybe I need to check the example's exact words. 
+
+But the code should handle it.
+
+Now, the code's time complexity:
+
+The time for words: O(N * L), where N is 1e5, L up to 50 → 5e6 steps.
+
+The puzzles processing: for each of M=1e4 puzzles, 128 steps. 1e4 * 128 = 1.28e6 steps. 
+
+Total time is acceptable.
+
+Space: the frequency dictionary can have up to 1e5 entries, but in practice, many words may have the same mask. So it's manageable.
+
+Now, possible edge cases: words with no letters in the puzzle. Their mask would not be a subset, so they won't be counted. 
+
+Another edge case: a word's mask is exactly the puzzle's mask, which is allowed.
+
+Now, what about words that have other letters not in the puzzle? Those masks won't be subsets of the puzzle's mask, so they won't be counted.
+
+Now, code in Python:
+
+Wait, but in Python, for loops over 1e4 puzzles, each with 128 steps, that's manageable.
+
+Now, let's code this.
+
+Wait, but in Python, the mask for a puzzle is computed by OR-ing all its characters. Since the puzzle has 7 unique characters, so the mask is straightforward.
+
+Now, code:
+
+Wait, here's the code:
+
+But in code:
+
+First, compute the frequency:
+
+from collections import defaultdict
+
+def solve(words, puzzles):
+
+    from collections import defaultdict
+
+    freq = defaultdict(int)
+
+    for word in words:
+
+        mask = 0
+
+        for c in word:
+
+            mask |= 1 << (ord(c) - ord('a'))
+
+        freq[mask] ] +=1
+
+    res = []
+
+    for p in puzzles:
+
+        p_mask = 0
+
+        for c in p:
+
+            p_mask |= 1 << (ord(c) - ord('a')
+
+        f_char = p[0]
+
+        f_bit = 1 << (ord(f_char) - ord('a'))
+
+        total =0
+
+        s = p_mask
+
+        while True:
+
+            if (s & f_bit):
+
+                total += freq.get(s, 0)
+
+            if s ==0:
+
+                break
+
+            s = (s-1) & p_mask
+
+        res.append(total)
+
+    return res
+
+Wait, but in the loop, when s is p_mask, then s is the full mask. Then next steps.
+
+Wait, but in the code above, the loop is:
+
+s starts at p_mask, then in each iteration, after processing s, we set s to (s-1) & p_mask. 
+
+Wait, but the loop is:
+
+Wait, the code's loop is:
+
+s = p_mask
+
+then:
+
+process s.
+
+then check if s is 0 → break?
+
+Wait, no, the code is:
+
+Wait, the code's loop is:
+
+s = p_mask
+
+while True:
+
+    if (s & f_bit) → add to total.
+
+    if s ==0 → break.
+
+    s = (s-1) & p_mask
+
+Wait, no, the code's loop is:
+
+Wait, in the code outline above, the code is:
+
+Wait, in the code:
+
+Wait, the code in the loop:
+
+Wait, the

@@ -1,0 +1,75 @@
+ID: 3569
+Title: Maximize Count of Distinct Primes After Split
+URL: https://leetcode.com/problems/maximize-count-of-distinct-primes-after-split/
+Status: FALHA
+
+solution: 
+```cpp
+#include <vector>
+#include <unordered_set>
+#include <unordered_map>
+
+int countDistinctPrimes(int num) {
+    std::unordered_set<int> primes;
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
+            primes.insert(i);
+            while (num % i == 0) {
+                num /= i;
+            }
+        }
+    }
+    if (num > 1) {
+        primes.insert(num);
+    }
+    return primes.size();
+}
+
+std::vector<int> maxSumOfDistinctPrimes(std::vector<int>& nums, std::vector<std::vector<int>>& queries) {
+    int n = nums.size();
+    std::unordered_map<int, int> prefix;
+    std::unordered_map<int, int> suffix;
+    std::unordered_map<int, int> prefixCount;
+    std::unordered_map<int, int> suffixCount;
+    for (int i = 0; i < n; i++) {
+        prefix[i] = 0;
+        suffix[i] = 0;
+        prefixCount[i] = 0;
+        suffixCount[i] = 0;
+    }
+    for (int i = 0; i < n; i++) {
+        int count = countDistinctPrimes(nums[i]);
+        prefix[i] = count;
+        prefixCount[i] = count;
+        suffix[i] = count;
+        suffixCount[i] = count;
+    }
+    for (int i = 1; i < n; i++) {
+        prefix[i] += prefix[i - 1];
+        suffix[i] += suffix[i - 1];
+    }
+    std::vector<int> result;
+    for (auto& query : queries) {
+        int idx = query[0];
+        int val = query[1];
+        nums[idx] = val;
+        int count = countDistinctPrimes(nums[idx]);
+        prefixCount[idx] = count;
+        suffixCount[idx] = count;
+        for (int i = idx + 1; i < n; i++) {
+            prefixCount[i] += prefixCount[i - 1];
+            suffixCount[i] += suffixCount[i - 1];
+        }
+        int maxSum = 0;
+        for (int k = 0; k < idx; k++) {
+            maxSum = std::max(maxSum, prefixCount[k] + suffixCount[idx]);
+        }
+        result.push_back(maxSum);
+    }
+    return result;
+}
+```
+efficiency: HIGH
+time complexity: O(n * log(max_num) + q * n)
+space complexity: O(n)
+energy implications: LOW

@@ -1,0 +1,35 @@
+ID: 3525
+Title: Find X Value of Array II
+URL: https://leetcode.com/problems/find-x-value-of-array-ii/
+Status: OK
+
+solution: 
+```cpp
+vector<int> processQueries(vector<int>& nums, int k, vector<vector<int>>& queries) {
+    int n = nums.size();
+    vector<int> result;
+    for (auto& query : queries) {
+        int index = query[0], value = query[1], start = query[2], x = query[3];
+        nums[index] = value;
+        vector<int> prefix(nums.begin() + start, nums.begin() + index + 1);
+        int product = 1;
+        for (int num : prefix) {
+            product = (product * num) % k;
+        }
+        int count = 0;
+        for (int i = index + 1; i < n; i++) {
+            if ((product * nums[i]) % k == x) {
+                count++;
+            }
+        }
+        result.push_back(count);
+    }
+    return result;
+}
+```
+
+efficiency: HIGH
+time complexity: O(n * q * log(k))
+space complexity: O(n + q)
+energy implications: MEDIUM
+explanation: This solution iterates over each query, updates the corresponding element in the array, calculates the product of the prefix, and then counts the number of suffixes that satisfy the condition. The time complexity is dominated by the multiplication and modulo operations, which are O(log(k)) for each element in the array. The space complexity is O(n + q) for storing the array and the result.

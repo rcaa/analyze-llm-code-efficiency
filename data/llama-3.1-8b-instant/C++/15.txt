@@ -1,0 +1,21 @@
+ID: 1961
+Title: Check If String Is a Prefix of Array
+URL: https://leetcode.com/problems/check-if-string-is-a-prefix-of-array/
+Status: OK
+
+solution: ```cpp
+bool isPrefixString(string s, vector<string>& words) {
+    string prefix;
+    for (const auto& word : words) {
+        prefix += word;
+        if (prefix == s) return true;
+        if (prefix.length() > s.length()) return false;
+    }
+    return prefix == s;
+}
+```
+efficiency: HIGH
+time complexity: O(n*m), where n is the number of words and m is the maximum length of a word
+space complexity: O(m), where m is the maximum length of a word
+energy implications: LOW
+explanation: This solution iterates over the words array, concatenating each word to the prefix string. If the prefix string matches the input string s, it returns true. If the prefix string exceeds the length of s, it returns false. This approach has a high efficiency due to its simplicity and direct approach to the problem.

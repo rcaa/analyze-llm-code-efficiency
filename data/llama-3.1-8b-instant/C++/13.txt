@@ -1,0 +1,31 @@
+ID: 1207
+Title: Unique Number of Occurrences
+URL: https://leetcode.com/problems/unique-number-of-occurrences/
+Status: OK
+
+solution: 
+```cpp
+#include <unordered_map>
+#include <vector>
+
+bool uniqueOccurrences(std::vector<int>& arr) {
+    std::unordered_map<int, int> count;
+    for (int num : arr) {
+        count[num]++;
+    }
+    std::unordered_set<int> uniqueCounts;
+    for (auto& pair : count) {
+        if (uniqueCounts.find(pair.second) != uniqueCounts.end()) {
+            return false;
+        }
+        uniqueCounts.insert(pair.second);
+    }
+    return true;
+}
+```
+
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: This solution uses two hash data structures: an unordered map to count the occurrences of each number and an unordered set to store the unique counts. The time complexity is O(n) because we make two passes through the array, and the space complexity is also O(n) because in the worst case, we might store all numbers in the map and all counts in the set. This solution is efficient because it uses hash data structures for fast lookups and insertions.

@@ -23,12 +23,13 @@ Avaliar e comparar a eficiência energética, utilização de memória e desempe
 4. Execução e monitoramento dos algoritmos utilizando ferramentas de análise de desempenho, consumo de energia e uso de memória.
 5. Análise comparativa dos resultados.
 
-## Estrutura do Repositório
 
 ## Estrutura do Repositório
 
 - `/datasets`: Bases de dados e questões utilizadas para os experimentos.
 - `/data`: Resultados brutos dos experimentos, logs e outputs de execução dos códigos.
+    - `/{modelo-llm}`: 
+        - `/{language}`:  
 - `/src`: Códigos-fonte organizados por função:
     - `/scraping`: Scripts para coleta de questões e dados.
     - `/selection`: Algoritmos para seleção de problemas e desafios.

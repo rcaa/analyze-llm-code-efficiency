@@ -1,0 +1,25 @@
+ID: 1799
+Title: Maximize Score After N Operations
+URL: https://leetcode.com/problems/maximize-score-after-n-operations/
+Status: OK
+
+solution: 
+```python
+def max_score(nums):
+    n = len(nums) // 2
+    nums.sort()
+    total_score = 0
+    for i in range(n):
+        total_score += (i + 1) * gcd(nums[i], nums[n + i])
+    return total_score
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+```
+efficiency: HIGH
+time complexity: O(n log n)
+space complexity: O(1)
+energy implications: LOW
+explanation: The solution sorts the array to efficiently pair elements with the highest possible GCD for each operation, maximizing the score.  The GCD is calculated using Euclid's algorithm, which is efficient.

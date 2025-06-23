@@ -1,0 +1,25 @@
+ID: 1984
+Title: Minimum Difference Between Highest and Lowest of K Scores
+URL: https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/
+Status: OK
+
+solution: 
+class Solution {
+public:
+    int minimumDifference(vector<int>& nums, int k) {
+        sort(nums.begin(), nums.end());
+        int min_diff = INT_MAX;
+        for (int i = 0; i <= nums.size() - k; ++i) {
+            int current_diff = nums[i + k - 1] - nums[i];
+            if (current_diff < min_diff) {
+                min_diff = current_diff;
+            }
+        }
+        return min_diff;
+    }
+};
+efficiency: HIGH
+time complexity: O(n log n)
+space complexity: O(1)
+energy implications: LOW
+explanation: Sorting the array allows sliding a window of size k to find the minimal difference between the first and last element of each window. This approach ensures optimal substructure by leveraging sorted order, minimizing comparisons needed.

@@ -1,0 +1,55 @@
+ID: 3525
+Title: Find X Value of Array II
+URL: https://leetcode.com/problems/find-x-value-of-array-ii/
+Status: OK
+
+solution: 
+```cpp
+#include <vector>
+using namespace std;
+
+vector<int> solve(vector<int>& nums, int k, vector<vector<int>> queries) {
+    vector<int> result;
+    for (auto& query : queries) {
+        int index = query[0];
+        int value = query[1];
+        int start = query[2];
+        int x = query[3];
+        
+        // Update the array
+        nums[index] = value;
+        
+        int count = 0;
+        long long current_product = 1; // Represents P0, not counted
+        
+        for (int i = start; i < nums.size(); ++i) {
+            current_product = (current_product * nums[i]) % k;
+            if (current_product < 0) {
+                current_product += k;
+            }
+            if (current_product == x) {
+                count++;
+            }
+            if (current_product == 0) {
+                if (x == 0) {
+                    count += (nums.size() - i);
+                    break;
+                }
+            }
+        }
+        
+        result.push_back(count);
+    }
+    return result;
+}
+```
+
+efficiency: MEDIUM
+
+time complexity: O(q * m), where q is the number of queries and m is the average length of the subarray processed per query.
+
+space complexity: O(1)
+
+energy implications: MEDIUM
+
+explanation: The solution efficiently handles each query by updating the array and then computing the required count of valid prefixes for the subarray starting at the specified index. It leverages modular arithmetic properties to avoid overflow and breaks early when possible to optimize performance.

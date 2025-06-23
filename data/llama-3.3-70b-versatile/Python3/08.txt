@@ -1,0 +1,29 @@
+ID: 3538
+Title: Merge Operations for Minimum Travel Time
+URL: https://leetcode.com/problems/merge-operations-for-minimum-travel-time/
+Status: OK
+
+solution: 
+```python
+def minTravelTime(l, n, k, position, time):
+    memo = {}
+    def dp(i, j):
+        if (i, j) in memo:
+            return memo[(i, j)]
+        if j == 0:
+            return sum([time[x] * (position[x + 1] - position[x]) for x in range(i, n - 1)])
+        res = float('inf')
+        for x in range(i, n - j - 1):
+            new_time = time[x] + time[x + 1]
+            new_position = position[:x] + [position[x + 1]] + position[x + 2:]
+            new_time_list = time[:x] + [new_time] + time[x + 2:]
+            res = min(res, dp(x, j - 1) + new_time * (position[x + 1] - position[x]))
+        memo[(i, j)] = res
+        return res
+    return dp(0, k)
+```
+efficiency: HIGH
+time complexity: O(n^2 * k)
+space complexity: O(n * k)
+energy implications: LOW
+explanation: This solution uses dynamic programming to calculate the minimum travel time after exactly k merges. It iterates over all possible merge positions and calculates the minimum travel time for each position. The memoization technique is used to avoid redundant calculations and improve efficiency. The time complexity is O(n^2 * k) due to the nested loops, and the space complexity is O(n * k) due to the memoization. The energy implications are low since the algorithm only involves basic arithmetic operations.

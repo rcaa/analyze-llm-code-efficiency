@@ -1,0 +1,14 @@
+{
+  "id": "3539",
+  "titulo": "Find Sum of Array Product of Magical Sequences",
+  "url": "https://leetcode.com/problems/find-sum-of-array-product-of-magical-sequences/",
+  "llm_response": {
+    "resposta_bruta": "solution: \n```python\nimport math\nMOD = 10**9 + 7\n\ndef backtrack(m, k, nums, path, res):\n    if len(path) == m:\n        if bin(2 * sum(path)).count('1') == k:\n            res[0] = (res[0] + math.prod(nums[i] for i in path)) % MOD\n        return\n    for i in range(len(nums)):\n        if i not in path:\n            backtrack(m, k, nums, path + [i], res)\n\ndef sumOfProducts(m, k, nums):\n    res = [0]\n    backtrack(m, k, nums, [], res)\n    return res[0]\n```\n\nefficiency: HIGH\ntime complexity: O(m * 2^m * k)\nspace complexity: O(m)\nenergy implications: MEDIUM\nexplanation: This solution uses a backtracking approach to generate all possible magical sequences. It uses a recursive function to explore all possible combinations of indices, and checks if the binary representation of twice the sum of the current path has k set bits. If it does, it calculates the product of the corresponding numbers in the array and adds it to the result. The time complexity is O(m * 2^m * k) because there are m choices for each of the m indices, and for each choice, there are 2^m possible paths. The space complexity is O(m) because we need to store the current path.",
+    "resposta_formatada": "solution: \n```python\nimport math\nMOD = 10**9 + 7\n\ndef backtrack(m, k, nums, path, res):\n    if len(path) == m:\n        if bin(2 * sum(path)).count('1') == k:\n            res[0] = (res[0] + math.prod(nums[i] for i in path)) % MOD\n        return\n    for i in range(len(nums)):\n        if i not in path:\n            backtrack(m, k, nums, path + [i], res)\n\ndef sumOfProducts(m, k, nums):\n    res = [0]\n    backtrack(m, k, nums, [], res)\n    return res[0]\n```\n\nefficiency: HIGH\ntime complexity: O(m * 2^m * k)\nspace complexity: O(m)\nenergy implications: MEDIUM\nexplanation: This solution uses a backtracking approach to generate all possible magical sequences. It uses a recursive function to explore all possible combinations of indices, and checks if the binary representation of twice the sum of the current path has k set bits. If it does, it calculates the product of the corresponding numbers in the array and adds it to the result. The time complexity is O(m * 2^m * k) because there are m choices for each of the m indices, and for each choice, there are 2^m possible paths. The space complexity is O(m) because we need to store the current path.",
+    "valid": true,
+    "tempo_resposta": 10.155612230300903,
+    "tentativas": 1,
+    "erro": null,
+    "timestamp": "2025-06-22T19:27:53.909617"
+  }
+}

@@ -1,0 +1,66 @@
+ID: 3538
+Title: Merge Operations for Minimum Travel Time
+URL: https://leetcode.com/problems/merge-operations-for-minimum-travel-time/
+Status: OK
+
+solution: 
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+long long minTravelTime(long long l, int n, int k, vector<int>& position, vector<int>& time) {
+    vector<pair<int, int>> segments(n);
+    for (int i = 0; i < n; ++i) {
+        segments[i] = {position[i], time[i]};
+    }
+    sort(segments.begin(), segments.end());
+    long long totalTime = 0;
+    for (int i = 0; i < n - 1; ++i) {
+        totalTime += (segments[i + 1].first - segments[i].first) * segments[i].second;
+    }
+    while (k > 0) {
+        int minMergeTime = INT_MAX;
+        int mergeIndex = -1;
+        for (int i = 1; i < n - 1; ++i) {
+            long long mergeTime = (segments[i].first - segments[i - 1].first) * (segments[i].second + segments[i + 1].second);
+            if (mergeTime < minMergeTime) {
+                minMergeTime = mergeTime;
+                mergeIndex = i;
+            }
+        }
+        if (mergeIndex != -1) {
+            totalTime -= (segments[mergeIndex].first - segments[mergeIndex - 1].first) * segments[mergeIndex].second;
+            totalTime -= (segments[mergeIndex + 1].first - segments[mergeIndex].first) * segments[mergeIndex + 1].second;
+            segments[mergeIndex - 1].first = segments[mergeIndex].first;
+            segments[mergeIndex - 1].second = segments[mergeIndex].second + segments[mergeIndex + 1].second;
+            segments.erase(segments.begin() + mergeIndex);
+            segments.erase(segments.begin() + mergeIndex);
+            k--;
+        }
+    }
+    for (int i = 0; i < n - 1; ++i) {
+        totalTime += (segments[i + 1].first - segments[i].first) * segments[i].second;
+    }
+    return totalTime;
+}
+
+int main() {
+    long long l = 10;
+    int n = 4;
+    int k = 1;
+    vector<int> position = {0, 3, 8, 10};
+    vector<int> time = {5, 8, 3, 6};
+    long long result = minTravelTime(l, n, k, position, time);
+    cout << "Minimum travel time: " << result << endl;
+    return 0;
+}
+```
+
+efficiency: HIGH
+time complexity: O(N log N + K log N)
+space complexity: O(N)
+energy implications: LOW
+explanation: The solution utilizes a greedy approach to minimize travel time. It first calculates the initial travel time based on the given segments. Then, it iteratively merges the segments with the minimum potential time reduction until the desired number of merges (k) is achieved. The sorting of segments and the merging process contribute to the logarithmic time complexity.

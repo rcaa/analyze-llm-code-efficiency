@@ -1,0 +1,32 @@
+ID: 1207
+Title: Unique Number of Occurrences
+URL: https://leetcode.com/problems/unique-number-of-occurrences/
+Status: OK
+
+solution: 
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+        for (int num : arr) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+        Set<Integer> occurrenceSet = new HashSet<>();
+        for (int count : countMap.values()) {
+            if (occurrenceSet.contains(count)) {
+                return false;
+            }
+            occurrenceSet.add(count);
+        }
+        return true;
+    }
+}
+```
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: The solution uses a HashMap to count the occurrences of each element in the array. Then, it uses a HashSet to check if any two counts are the same.  This approach has a time complexity of O(n) because it iterates through the array once to count occurrences and again to check for duplicates. The space complexity is also O(n) due to the potential size of the HashMap and HashSet.

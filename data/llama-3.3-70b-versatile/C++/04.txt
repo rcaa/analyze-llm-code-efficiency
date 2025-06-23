@@ -1,0 +1,44 @@
+ID: 1799
+Title: Maximize Score After N Operations
+URL: https://leetcode.com/problems/maximize-score-after-n-operations/
+Status: OK
+
+solution:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+
+int maxScore(std::vector<int>& nums) {
+    int n = nums.size() / 2;
+    std::sort(nums.begin(), nums.end());
+    int memo[1 << n];
+    std::fill(memo, memo + (1 << n), -1);
+
+    std::function<int(int, int)> dfs = [&](int mask, int i) {
+        if (i > n) return 0;
+        if (memo[mask] != -1) return memo[mask];
+
+        int res = 0;
+        for (int j = 0; j < 2 * n; ++j) {
+            if ((mask & (1 << j)) == 0) {
+                for (int k = j + 1; k < 2 * n; ++k) {
+                    if ((mask & (1 << k)) == 0) {
+                        int newMask = mask | (1 << j) | (1 << k);
+                        res = std::max(res, i * std::gcd(nums[j], nums[k]) + dfs(newMask, i + 1));
+                    }
+                }
+            }
+        }
+        memo[mask] = res;
+        return res;
+    };
+
+    return dfs(0, 1);
+}
+
+efficiency: HIGH
+time complexity: O(2^n * n^2)
+space complexity: O(2^n)
+energy implications: LOW
+explanation: The solution uses a depth-first search approach with memoization to efficiently explore all possible operations and calculate the maximum score. The key strength is the use of memoization to avoid redundant calculations, while the main weakness is the exponential time complexity due to the recursive nature of the algorithm.

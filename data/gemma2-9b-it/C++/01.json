@@ -1,0 +1,14 @@
+{
+  "id": "1157",
+  "titulo": "Online Majority Element In Subarray",
+  "url": "https://leetcode.com/problems/online-majority-element-in-subarray/",
+  "llm_response": {
+    "resposta_bruta": "solution: \n```cpp\nclass MajorityChecker {\npublic:\n    vector<int> count;\n    MajorityChecker(vector<int>& arr) {\n        count.resize(100005, 0);\n        for (int num : arr) {\n            count[num]++;\n        }\n    }\n    \n    int query(int left, int right, int threshold) {\n        int maxCount = 0;\n        int majority = -1;\n        for (int i = left; i <= right; i++) {\n            int num = arr[i];\n            if (count[num] > maxCount) {\n                maxCount = count[num];\n                majority = num;\n            }\n        }\n        return (maxCount >= threshold) ? majority : -1;\n    }\nprivate:\n    vector<int> arr;\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution utilizes a frequency map to store the count of each element in the input array. The `query` function iterates through the subarray, updating the maximum count and corresponding majority element. The efficiency stems from the pre-computed frequency map, enabling constant-time lookups for element counts.\n",
+    "resposta_formatada": "solution: \n```cpp\nclass MajorityChecker {\npublic:\n    vector<int> count;\n    MajorityChecker(vector<int>& arr) {\n        count.resize(100005, 0);\n        for (int num : arr) {\n            count[num]++;\n        }\n    }\n    \n    int query(int left, int right, int threshold) {\n        int maxCount = 0;\n        int majority = -1;\n        for (int i = left; i <= right; i++) {\n            int num = arr[i];\n            if (count[num] > maxCount) {\n                maxCount = count[num];\n                majority = num;\n            }\n        }\n        return (maxCount >= threshold) ? majority : -1;\n    }\nprivate:\n    vector<int> arr;\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution utilizes a frequency map to store the count of each element in the input array. The `query` function iterates through the subarray, updating the maximum count and corresponding majority element. The efficiency stems from the pre-computed frequency map, enabling constant-time lookups for element counts.",
+    "valid": true,
+    "tempo_resposta": 0.8213798999786377,
+    "tentativas": 1,
+    "erro": null,
+    "timestamp": "2025-06-22T19:35:18.103883"
+  }
+}

@@ -1,0 +1,42 @@
+ID: 1799
+Title: Maximize Score After N Operations
+URL: https://leetcode.com/problems/maximize-score-after-n-operations/
+Status: OK
+
+solution: 
+```java
+import java.util.Arrays;
+
+public class Main {
+    public static int maxScore(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length / 2;
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        for (int i = 1; i <= n; i++) {
+            int max = 0;
+            for (int j = i - 1; j >= 0; j--) {
+                max = Math.max(max, dp[j] + i * gcd(nums[2 * j + 1], nums[2 * i - 1]));
+            }
+            dp[i] = max;
+        }
+        return dp[n];
+    }
+
+    public static int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4, 5, 6};
+        System.out.println(maxScore(nums));
+    }
+}
+```
+
+efficiency: HIGH
+time complexity: O(n * m log m)
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: This solution uses dynamic programming to solve the problem. It first sorts the array and then iterates over the array to fill up the dp array. The dp array stores the maximum score that can be achieved for each number of operations. The time complexity is O(n * m log m) due to the sorting and the nested loops, where m is the maximum value in the array. The space complexity is O(n) for the dp array. The energy implications are MEDIUM due to the sorting and the nested loops.

@@ -1,0 +1,42 @@
+ID: 3538
+Title: Merge Operations for Minimum Travel Time
+URL: https://leetcode.com/problems/merge-operations-for-minimum-travel-time/
+Status: OK
+
+solution:
+public class Solution {
+    public int minCost(int l, int n, int k, int[] position, int[] time) {
+        int[][] dp = new int[n][k + 1];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= k; j++) {
+                dp[i][j] = -1;
+            }
+        }
+        return dfs(0, k, position, time, dp);
+    }
+
+    private int dfs(int i, int k, int[] position, int[] time, int[][] dp) {
+        if (i >= position.length - 1) {
+            return 0;
+        }
+        if (dp[i][k] != -1) {
+            return dp[i][k];
+        }
+        int res = Integer.MAX_VALUE;
+        if (k > 0) {
+            for (int j = i + 1; j < position.length - 1; j++) {
+                int cost = (position[j] - position[i]) * time[i] + dfs(j, k - 1, position, time, dp);
+                res = Math.min(res, cost);
+            }
+        } else {
+            res = (position[position.length - 1] - position[i]) * time[i];
+        }
+        dp[i][k] = res;
+        return res;
+    }
+}
+efficiency: HIGH
+time complexity: O(n^2 * k)
+space complexity: O(n * k)
+energy implications: LOW
+explanation: The solution uses dynamic programming to store the minimum cost for each subproblem, reducing the time complexity by avoiding redundant calculations. The dfs function explores all possible merge operations and returns the minimum cost. The time complexity is O(n^2 * k) due to the nested loops, and the space complexity is O(n * k) for the dp array. The energy implications are low since the solution only involves basic arithmetic operations.

@@ -1,0 +1,40 @@
+ID: 3569
+Title: Maximize Count of Distinct Primes After Split
+URL: https://leetcode.com/problems/maximize-count-of-distinct-primes-after-split/
+Status: OK
+
+solution: 
+```python
+def distinctPrimeSum(nums, queries):
+    def is_prime(n):
+        if n < 2: return False
+        for i in range(2, int(n**0.5) + 1):
+            if n % i == 0: return False
+        return True
+
+    prime_count = [0] * (10**5 + 1)
+    for i in range(2, 10**5 + 1):
+        if is_prime(i): prime_count[i] = 1
+        for j in range(2 * i, 10**5 + 1, i):
+            prime_count[j] += 1
+
+    prefix_sum = [0] * (len(nums) + 1)
+    for i in range(len(nums)):
+        prefix_sum[i + 1] = prefix_sum[i] + prime_count[nums[i]]
+
+    result = []
+    for idx, val in queries:
+        nums[idx] = val
+        max_sum = 0
+        for k in range(1, len(nums)):
+            sum1 = prefix_sum[k]
+            sum2 = prefix_sum[-1] - prefix_sum[k]
+            max_sum = max(max_sum, sum1 + sum2)
+        result.append(max_sum)
+    return result
+```
+efficiency: HIGH
+time complexity: O(n log n + q log n)
+space complexity: O(n)
+energy implications: LOW
+explanation: This solution uses a prefix sum array to efficiently calculate the sum of distinct prime values in the prefix and suffix of the array. It then iterates over each query, updating the array and calculating the maximum sum of distinct prime values in the prefix and suffix. The time complexity is O(n log n + q log n) due to the prefix sum calculation and the iteration over each query. The space complexity is O(n) for the prefix sum array and the prime count array.

@@ -1,0 +1,35 @@
+ID: 1354
+Title: Construct Target Array With Multiple Sums
+URL: https://leetcode.com/problems/construct-target-array-with-multiple-sums/
+Status: OK
+
+solution: 
+```java
+import java.util.*;
+
+public class Solution {
+    public boolean isPossible(int[] target) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+        long sum = 0;
+        for (int num : target) {
+            sum += num;
+            pq.offer(num);
+        }
+        while (pq.peek() != 1) {
+            int num = pq.poll();
+            sum -= num;
+            if (sum <= 0 || sum >= num) return false;
+            num %= sum;
+            if (num == 0) num = sum;
+            pq.offer(num);
+            sum += num;
+        }
+        return true;
+    }
+}
+```
+efficiency: HIGH
+time complexity: O(n log n)
+space complexity: O(n)
+energy implications: LOW
+explanation: Utiliza uma fila de prioridade para gerenciar os números do array alvo, começando com a soma dos números e iterativamente substituindo o maior número pelo resto da divisão pelo total, até que todos os números sejam 1 ou não seja possível atingir o array alvo.

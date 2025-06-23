@@ -1,0 +1,22 @@
+ID: 1354
+Title: Construct Target Array With Multiple Sums
+URL: https://leetcode.com/problems/construct-target-array-with-multiple-sums/
+Status: OK
+
+solution: def isPossible(target: list[int]) -> bool:
+    n = len(target)
+    while n and target[-1] == 1:
+        target.pop()
+        n -= 1
+    if n == 0:
+        return True
+    for i in range(n - 1, 0, -1):
+        target[i] %= target[i - 1]
+        if target[i] == 0:
+            return False
+    return target[0] % target[1] == 0
+efficiency: HIGH
+time complexity: O(n log m)
+space complexity: O(n)
+energy implications: LOW
+explanation: This solution uses a greedy approach to reduce the target array by repeatedly applying the given operation. It starts from the end of the array and reduces the elements by taking the modulus with the previous element. If any element becomes zero, it returns False. If the first element can be divided by the second element, it returns True. This approach ensures that the array is reduced in a way that makes it possible to construct the target array.

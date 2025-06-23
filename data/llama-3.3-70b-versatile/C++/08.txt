@@ -1,0 +1,32 @@
+ID: 3538
+Title: Merge Operations for Minimum Travel Time
+URL: https://leetcode.com/problems/merge-operations-for-minimum-travel-time/
+Status: OK
+
+solution: 
+```cpp
+int minTravelTime(int l, int n, int k, vector<int>& position, vector<int>& time) {
+    vector<vector<int>> dp(n, vector<int>(k + 1, INT_MAX));
+    for (int i = 0; i < n; i++) {
+        dp[i][0] = 0;
+        for (int j = 0; j < i; j++) {
+            dp[i][0] += time[j] * (position[i] - position[j]);
+        }
+    }
+    for (int merge = 1; merge <= k; merge++) {
+        for (int i = merge; i < n; i++) {
+            for (int j = merge - 1; j < i; j++) {
+                int newTime = time[j] + time[i];
+                int newDistance = position[i] - position[j];
+                int newTravelTime = dp[j][merge - 1] + newTime * newDistance;
+                dp[i][merge] = min(dp[i][merge], newTravelTime);
+            }
+        }
+    }
+    return dp[n - 1][k];
+}
+efficiency: HIGH
+time complexity: O(n^2 * k)
+space complexity: O(n * k)
+energy implications: LOW
+explanation: This solution uses dynamic programming to calculate the minimum travel time after exactly k merges. It iterates over each possible merge and calculates the new travel time by adding the time of the merged segment to the previous minimum travel time. The solution has a high efficiency due to its use of dynamic programming, which reduces the time complexity from exponential to quadratic. The energy implications are low since the solution only requires a single pass through the input data.

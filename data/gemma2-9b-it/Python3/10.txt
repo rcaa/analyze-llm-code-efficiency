@@ -1,0 +1,29 @@
+ID: 3569
+Title: Maximize Count of Distinct Primes After Split
+URL: https://leetcode.com/problems/maximize-count-of-distinct-primes-after-split/
+Status: OK
+
+solution: 
+```python
+def max_distinct_primes(nums, queries):
+    n = len(nums)
+    result = []
+    prime_counts = [0] * (n + 1)
+    for i in range(n):
+        if nums[i] > 1:
+            prime_counts[i + 1] = prime_counts[i] + 1
+    for idx, val in queries:
+        nums[idx] = val
+        max_count = 0
+        for k in range(1, n):
+            prefix_count = prime_counts[k]
+            suffix_count = prime_counts[n] - prime_counts[k]
+            max_count = max(max_count, prefix_count + suffix_count)
+        result.append(max_count)
+    return result
+```
+efficiency: HIGH
+time complexity: O(n * q)
+space complexity: O(n)
+energy implications: LOW
+explanation: The solution iterates through the queries and updates the array. For each query, it calculates the maximum count of distinct primes by iterating through all possible split points. The prime counts are pre-calculated for efficiency.

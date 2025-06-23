@@ -1,0 +1,14 @@
+{
+  "id": "3538",
+  "titulo": "Merge Operations for Minimum Travel Time",
+  "url": "https://leetcode.com/problems/merge-operations-for-minimum-travel-time/",
+  "llm_response": {
+    "resposta_bruta": "solution: \n```python\ndef min_travel_time(l, n, k, position, time):\n    dp = [[float('inf')] * (k + 1) for _ in range(n)]\n    dp[0][0] = 0\n    for i in range(n - 1):\n        for j in range(k + 1):\n            dp[i + 1][j] = min(dp[i + 1][j], dp[i][j] + time[i])\n    for i in range(n - 2, -1, -1):\n        for j in range(1, min(k, n - i - 1) + 1):\n            dp[i][j] = min(dp[i][j], dp[i + 1][j - 1] + time[i] + time[i + 1])\n    return dp[0][k]\n\n```\nefficiency: HIGH\ntime complexity: O(n*k)\nspace complexity: O(n*k)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the minimum travel time. It builds a 2D table `dp` where `dp[i][j]` represents the minimum travel time to reach position `i` after performing `j` merges. The table is filled iteratively, considering all possible merge operations and updating the minimum travel time accordingly. \n\n\n\n",
+    "resposta_formatada": "solution: \n```python\ndef min_travel_time(l, n, k, position, time):\n    dp = [[float('inf')] * (k + 1) for _ in range(n)]\n    dp[0][0] = 0\n    for i in range(n - 1):\n        for j in range(k + 1):\n            dp[i + 1][j] = min(dp[i + 1][j], dp[i][j] + time[i])\n    for i in range(n - 2, -1, -1):\n        for j in range(1, min(k, n - i - 1) + 1):\n            dp[i][j] = min(dp[i][j], dp[i + 1][j - 1] + time[i] + time[i + 1])\n    return dp[0][k]\n\n```\nefficiency: HIGH\ntime complexity: O(n*k)\nspace complexity: O(n*k)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the minimum travel time. It builds a 2D table `dp` where `dp[i][j]` represents the minimum travel time to reach position `i` after performing `j` merges. The table is filled iteratively, considering all possible merge operations and updating the minimum travel time accordingly.",
+    "valid": true,
+    "tempo_resposta": 4.1651530265808105,
+    "tentativas": 1,
+    "erro": null,
+    "timestamp": "2025-06-22T19:37:46.324565"
+  }
+}

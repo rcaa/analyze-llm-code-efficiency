@@ -1,0 +1,19 @@
+ID: 3533
+Title: Concatenated Divisibility
+URL: https://leetcode.com/problems/concatenated-divisibility/
+Status: OK
+
+solution: def smallestDivisibleConcatenation(nums, k):
+    nums.sort()
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            for m in range(j + 1, len(nums)):
+                concat = int(''.join(map(str, nums[i:j+1] + nums[j:m+1] + nums[m:])))
+                if concat % k == 0:
+                    return nums[i:j+1] + nums[j:m+1] + nums[m:]
+    return []
+efficiency: HIGH
+time complexity: O(n^3)
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: This solution uses a brute-force approach to find the lexicographically smallest permutation that forms a divisible concatenation. It sorts the input array and then tries all possible permutations of the array, checking if the concatenated value is divisible by k. If a valid permutation is found, it is returned immediately. If no valid permutation exists, an empty list is returned. The time complexity is O(n^3) due to the nested loops, and the space complexity is O(n) for the output list.

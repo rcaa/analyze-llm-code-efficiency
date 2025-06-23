@@ -1,0 +1,27 @@
+ID: 1354
+Title: Construct Target Array With Multiple Sums
+URL: https://leetcode.com/problems/construct-target-array-with-multiple-sums/
+Status: OK
+
+solution: 
+```cpp
+bool isPossible(int* target, int targetSize, int* arr, int arrSize) {
+    for (int i = 0; i < targetSize; i++) {
+        int sum = 0;
+        for (int j = 0; j < arrSize; j++) {
+            sum += arr[j];
+        }
+        arr[i] = sum;
+        if (arr[i] != target[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+efficiency: HIGH
+time complexity: O(n^2)
+space complexity: O(1)
+energy implications: LOW
+
+explanation: This solution iterates over the target array and for each element, it calculates the sum of the current array and checks if it matches the target element. If it does, it continues to the next element. If it doesn't, it returns false. This approach has a high efficiency due to its simplicity, but it has a high time complexity due to the nested loops. The space complexity is O(1) because it only uses a constant amount of space to store the sum and the indices. The energy implications are low because it only performs a constant number of operations for each element in the target array.

@@ -1,0 +1,59 @@
+ID: 1157
+Title: Online Majority Element In Subarray
+URL: https://leetcode.com/problems/online-majority-element-in-subarray/
+Status: OK
+
+solution: 
+```java
+class MajorityChecker {
+    int[] arr;
+    int n;
+    Map<Integer, Integer> map;
+
+    public MajorityChecker(int[] arr) {
+        this.arr = arr;
+        this.n = arr.length;
+        this.map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+    }
+
+    public int query(int left, int right, int threshold) {
+        int candidate = -1;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() >= threshold) {
+                candidate = entry.getKey();
+                break;
+            }
+        }
+        if (candidate == -1) return -1;
+
+        int count = 0;
+        for (int i = left; i <= right; i++) {
+            if (arr[i] == candidate) count++;
+        }
+        if (count >= threshold) return candidate;
+
+        int mid = left + (right - left) / 2;
+        int leftCount = 0;
+        for (int i = left; i <= mid; i++) {
+            if (arr[i] == candidate) leftCount++;
+        }
+        if (leftCount >= threshold) return candidate;
+
+        int rightCount = 0;
+        for (int i = mid + 1; i <= right; i++) {
+            if (arr[i] == candidate) rightCount++;
+        }
+        if (rightCount >= threshold) return candidate;
+
+        return -1;
+    }
+}
+```
+efficiency: HIGH
+time complexity: O(n + (log n)^2)
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: This solution uses a HashMap to store the frequency of each element in the array. Then, it uses a binary search approach to find the majority element in the subarray. The time complexity is O(n + (log n)^2) due to the HashMap initialization and the binary search. The space complexity is O(n) for the HashMap. The energy implications are MEDIUM due to the use of HashMap and binary search.

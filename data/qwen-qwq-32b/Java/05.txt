@@ -1,0 +1,561 @@
+ID: 3045
+Title: Count Prefix and Suffix Pairs II
+URL: https://leetcode.com/problems/count-prefix-and-suffix-pairs-ii/
+Status: FALHA
+
+<think>
+Okay, I need to solve this problem efficiently in Java. The task is to count the number of index pairs (i, j) where i < j, and the string at words[i] is both a prefix and suffix of words[j]. The constraints are tight, especially since the words array can be up to 1e5 elements, and the total length of all words is up to 5e5. So a brute-force approach checking all pairs would be O(n^2), which is way too slow for n=1e5. That's definitely not going to work.
+
+Hmm, so I need a smarter way. Let's think about what the condition requires. For a pair (i, j), the string s = words[i] must be both a prefix and suffix of words[j]. So for each j, I need to find all i < j where words[i] is a prefix and suffix of words[j]. 
+
+The key is to find for each word[j], how many words[i] (with i < j) satisfy the condition. If I can compute this efficiently for each j, then summing over all j would give the answer.
+
+The problem is how to do this efficiently. Let's think of for each word[j], check all possible prefixes of words[j] that are also suffixes. Wait, but the words[i] can be any of the previous words. So maybe we can pre-process all possible candidates and store them in a way that allows quick lookups.
+
+Alternatively, for each word s in words, we can note all possible prefixes that are also suffixes. Wait, but the words[i] can be any string that is both a prefix and suffix of words[j]. So for each words[j], the valid words[i] are those strings which are exactly equal to some substring that is both a prefix and suffix of words[j]. 
+
+Wait, but the words[i] must be exactly equal to a prefix and suffix of words[j]. So for each words[j], the valid candidates are all the possible strings s where s is a prefix and suffix of words[j]. Then, for each such s, we need to count how many times s has appeared in the words array before j. 
+
+Ah! That's a better approach. Let me think:
+
+For each j from 0 to n-1:
+
+1. Find all possible s such that s is both a prefix and suffix of words[j]. 
+
+2. For each such s, look up how many times s has appeared in the words array before j (i.e., in indices 0..j-1). 
+
+3. Sum all those counts for all s found in step 1, and add that to the total.
+
+The total over all j would be the answer.
+
+This way, the problem reduces to, for each word[j], finding all possible s that are both prefix and suffix of words[j], and then querying the count of those s's in the previous words.
+
+The key steps here are:
+
+- Efficiently finding all s that are both prefix and suffix of a given string.
+
+- Efficiently maintaining a frequency map of the words seen so far, so that for each s found in step 1, we can get the count quickly.
+
+Now, the first part: how to find all s that are both prefix and suffix of a string. Let's think of the string T. We need to find all possible lengths L where the first L characters equal the last L characters. The maximum possible L is up to the length of T. 
+
+Wait, but for each T, the possible s's are all the prefixes of T that are also suffixes. For example, for "ababa", the possible s's could be "a", "aba", "ababa" (since "a" is prefix and suffix, "aba" is prefix and suffix, and the whole string is trivially both). Wait, but the problem requires that s is both a prefix and suffix. The entire string is a prefix and suffix of itself, but when considering pairs (i,j), since i < j, if s is the entire word[j], then words[i] would have to be equal to words[j], but since j is the current index, the previous words can't have that unless there was a previous occurrence. But in any case, we need to consider all possible s that are both prefix and suffix of T.
+
+The set of all possible s for T is the set of all prefixes of T that are also suffixes. To find all such s, we can compute all possible lengths L where the prefix of length L equals the suffix of length L. 
+
+How do we find all such L efficiently for a given string T?
+
+This sounds similar to the concept of the "border" in string algorithms. The border of a string is a proper prefix that is also a suffix. The set of all borders (including the full string itself?) would be the possible s's here. 
+
+Wait, the problem allows s to be the entire string, but in the context of the problem, when considering a pair (i,j), words[i] must be exactly s. So for each T = words[j], the valid s's are all possible prefixes of T that are also suffixes. 
+
+To find all such s's for T, we can compute all possible lengths L where the prefix of length L equals the suffix of length L. 
+
+The standard way to find all such L's is to compute the failure function (also known as the prefix function) of the KMP algorithm. The failure function for a string T gives, for each position, the length of the longest proper prefix which is also a suffix. But to get all possible L's, not just the maximum, we need to find all possible L's where the prefix of length L equals the suffix of length L. 
+
+Alternatively, for each T, the set of all possible L's where the prefix of length L equals the suffix of length L can be found by considering all divisors of the length of T? Not exactly. Hmm, perhaps we can precompute all possible L's for each T by checking all possible lengths. But for a string of length N, that would take O(N) time per string, which might be acceptable if the total length of all words is 5e5. 
+
+Wait, the total sum of lengths is 5e5, so O(N) per string would be acceptable. 
+
+Alternatively, perhaps we can compute all possible L's for T by using the KMP failure function array. Let me think: the failure function array for KMP gives for each position the maximum possible border length up to that point. But to find all possible L's where the prefix of length L is equal to the suffix of length L, we can traverse the failure function array and collect all possible lengths. 
+
+Alternatively, for each T, we can compute all possible L's where the prefix of length L equals the suffix of length L. Let's think of all possible L's from 1 to len(T). For each L, check if the first L characters equal the last L characters. But doing this naively for each L would be O(L) per check, leading to O(N^2) time for a string of length N, which is too slow for large N (like 1e5). 
+
+Hmm, so that approach is not feasible. 
+
+Therefore, we need a way to find all L's efficiently. 
+
+The KMP failure function approach might help here. Let me recall that the failure function array (pi) for a string T of length n is an array where pi[i] is the length of the longest proper prefix of T[0..i] which is also a suffix. 
+
+Wait, but how can we use that to find all possible L's where the prefix of length L equals the suffix of length L?
+
+Alternatively, the set of all possible L's where the prefix of length L equals the suffix of length L is exactly the set of all possible lengths that are borders (prefixes equal to suffixes). 
+
+The set of all possible L's can be found by considering all possible divisors of the length of T? Not exactly, but perhaps the set of all possible L's can be derived from the failure function array. 
+
+Alternatively, the set of all possible L's is the set of all possible values in the failure function array, but I'm not sure. 
+
+Alternatively, the maximum possible L is the length of the string itself (the entire string is a prefix and suffix of itself). But when considering pairs (i,j), if s is the entire string, then words[i] must be exactly equal to words[j], but since i < j, that would require that words[i] is exactly words[j], but that's a separate case. 
+
+Wait, but for each T = words[j], the possible s's are all prefixes of T that are also suffixes. So for each T, we need to find all L where the first L characters equal the last L characters. 
+
+An efficient way to find all such L's is needed. 
+
+Let me think of the following approach: 
+
+For a given T, the set of all L's where the prefix of length L equals the suffix of length L is exactly the set of all possible lengths of borders of T. 
+
+The borders of a string are all prefixes that are also suffixes. The set of all possible L's is the set of all possible lengths of borders. 
+
+The maximum border length is given by the failure function's value for the last character. But to get all possible L's, perhaps we can traverse the failure function array and collect all possible lengths. 
+
+Wait, here's an idea: 
+
+The set of all possible L's for T is the set of all possible values in the failure function array of T, along with the length of T itself (the full string). Wait, the full string is a prefix and suffix of itself, so L = len(T) is also a possible candidate. 
+
+Wait, but for the problem, when considering a pair (i,j), the s is words[i], which must be exactly equal to a prefix and suffix of words[j]. So for each T = words[j], the valid s's are all the possible borders (including the full length). 
+
+Wait, but the full length would require that words[i] is exactly equal to T, so that's a possible s. 
+
+So to find all possible s's for T, we need all possible L where the prefix of length L equals the suffix of length L. 
+
+To find all such L's, perhaps we can compute all possible L's by traversing the failure function array. 
+
+Alternatively, here's a method to find all possible L's:
+
+Initialize a set for T's possible L's. 
+
+Start with L = 0 (empty string?), but the problem requires s to be a non-empty string? Wait, the problem says "prefix and suffix", so s can be of length 0? Wait, the problem's example shows that "a" is a valid s for "aba". So s can be of length 1. 
+
+Wait, the problem's function isPrefixAndSuffix(str1, str2) returns true if str1 is both a prefix and suffix of str2. So s can be of any length from 1 up to the length of str2. 
+
+So for each T, the possible s's are all the prefixes of T that are also suffixes. 
+
+To find all such s's, perhaps we can compute all possible L where the prefix of length L equals the suffix of length L. 
+
+An efficient way to find all such L's is needed. 
+
+Let me think of the KMP failure function approach. 
+
+The failure function array for T (let's call it pi) has pi[i] as the length of the longest proper prefix of T[0..i] which is also a suffix. 
+
+Wait, perhaps the set of all possible L's can be found by traversing the failure function array. 
+
+Alternatively, here's an approach: 
+
+The set of all possible L's is the set of all possible lengths of borders. 
+
+The borders can be found by starting from the maximum possible border length (pi[n-1], where n is the length of T), and then recursively taking the borders of that border, etc. 
+
+Wait, the standard way to find all borders is to start with the maximum border length (pi[n-1]), then the maximum border of that border, and so on, until we reach 0. 
+
+This gives all possible lengths of borders. 
+
+Wait, for example, if the maximum border length is L, then the borders of length L, then the borders of the border of length L, etc. 
+
+Wait, perhaps the set of all possible L's is exactly the set of all possible values in the chain of failure functions. 
+
+Wait, let me think of an example. 
+
+Take T = "ababa". 
+
+The failure function array for "ababa" would be something like: 
+
+Let me compute it manually. 
+
+Let's index from 0 to 4 (assuming 0-based). 
+
+pi[0] = 0 (since it's the first character). 
+
+pi[1]: compare T[1] (b) with T[0] (a). Not equal, so 0. 
+
+pi[2]: T[2] is 'a'. Compare with T[0], which is 'a', so pi[2] = 1. 
+
+pi[3]: T[3] is 'b'. Compare with T[1] (since pi[2] is 1, so previous length is 1, so next character is T[1+1] = T[2] which is 'a', so compare T[3] (b) with T[1] (b?) Wait, maybe I need to compute the failure function properly. 
+
+Alternatively, perhaps the set of all possible L's can be found by starting from the maximum border length (pi[n-1]), then the maximum border of that, etc. 
+
+Wait, the set of all possible L's is exactly the set of all possible lengths of borders, which can be found by following the failure function chain. 
+
+For example, for T of length n, the maximum border length is L0 = pi[n-1]. Then, the next possible L is pi[L0-1], and so on until we reach 0. 
+
+Wait, but this gives all possible lengths of borders. 
+
+Wait, let me see an example. 
+
+Take T = "ababa". 
+
+Suppose the failure array is computed as follows. 
+
+Let me compute the failure function for "ababa":
+
+Let's denote the string as indices 0 to 4 (length 5). 
+
+pi[0] = 0. 
+
+pi[1]: compare T[1] (b) with T[0] (a). Not equal, so 0. 
+
+pi[2]: T[2] is 'a'. Compare with T[0]. Since T[2] == T[0], so pi[2] = 1. 
+
+pi[3]: T[3] is 'b'. Compare with T[1] (since pi[2] is 1, so previous length is 1. The next character to compare is T[1] (b) vs T[3] (b). So they match, so pi[3] = 2. 
+
+Wait, maybe I'm getting confused here. 
+
+Alternatively, perhaps the set of all possible L's is the set of all possible values in the chain of failure functions. 
+
+Wait, here's an approach: 
+
+The set of all possible L's (lengths) where the prefix of length L equals the suffix of length L is exactly the set of all possible values in the chain of failure functions. 
+
+Wait, let me think of the example "ababa". 
+
+Suppose the failure array for "ababa" is [0,0,1,2,3]. 
+
+Wait, let's compute it step by step:
+
+Let me compute the failure function for "ababa".
+
+Initialize pi array of size 5, all 0 initially. 
+
+i starts at 1:
+
+i=1 (char 'b'):
+
+current length of previous match is 0. Compare T[1] with T[0]. 'b' vs 'a' → no. So pi[1] = 0.
+
+i=2 (char 'a'):
+
+current length is 0. Compare T[2] (a) with T[0] (a). They match, so pi[2] = 1.
+
+i=3 (char 'b'):
+
+current length is 1 (from pi[2]). Compare T[3] (b) with T[1] (b. They match, so pi[3] = 2.
+
+i=4 (char 'a'):
+
+current length is 2 (pi[3] is 2). Compare T[4] (a) with T[2] (a. They match, so pi[4] = 3.
+
+So the failure array is [0,0,1,2,3]. 
+
+The maximum border length is pi[4] = 3. 
+
+Then, the borders would be 3, then the border of that border (pi[2] =1), then the border of that (pi[0] =0). 
+
+Wait, so the borders would be 3,1,0? But 0 is the empty string, which isn't considered here. 
+
+Wait, the borders of length 3, 1, and 0. 
+
+Wait, the borders of length 3: the first 3 characters "aba" and the last 3 characters of "ababa" (positions 2-4: "aba") which matches. 
+
+The border of length 1: the first character 'a' and the last character 'a' (so yes). 
+
+So the valid L's for "ababa" are 1, 3, and 5 (the full length). Wait, the full length is also a border (trivially, since the entire string is a prefix and suffix of itself. 
+
+Wait, but the failure function's maximum border is 3, but the full length is 5, which is also a valid L. 
+
+Hmm, so the failure function gives the maximum proper prefix which is also a suffix. The full length is not considered a "proper" prefix, so it's not included in the failure function. 
+
+Therefore, to include the full length, we need to add it to the list. 
+
+So the set of all possible L's for T is the set of all possible lengths obtained by following the failure function chain, plus the full length. 
+
+Wait, perhaps the correct approach is to collect all possible L's by starting from the maximum border length (pi[n-1]), then the maximum border of that, etc., and also include the full length. 
+
+Wait, let's see for "ababa" (length 5):
+
+The maximum border length is 3 (pi[4] =3). 
+
+Then, the next border length is pi[2] (since the border of length 3 has its own borders. 
+
+pi[2] is 1. 
+
+Then, the next is pi[0] =0. 
+
+So the borders are 3,1,0. 
+
+Adding the full length (5), so the valid L's are 1,3,5. 
+
+Wait, but the full length is 5, which is a valid L. 
+
+So the valid L's are 1,3,5. 
+
+Wait, for "ababa", the full length is 5, so the entire string is a prefix and suffix of itself. 
+
+So for each T, the valid L's are all the lengths in the chain of failure function values, plus the full length. 
+
+Wait, perhaps the correct way to collect all possible L's is to start with the full length (L = len(T)), and then follow the failure function chain to get all possible L's. 
+
+Wait, here's an algorithm to collect all possible L's:
+
+Initialize a list for L's. 
+
+current_L = len(T)
+
+Add current_L to the list. 
+
+Then, current_L = pi[current_L -1]. 
+
+Wait, perhaps not exactly. 
+
+Alternatively, to collect all possible L's:
+
+Initialize a set (to avoid duplicates). 
+
+Start with L = len(T). 
+
+Add L to the set. 
+
+Then, set L = pi[L-1], then add that to the set, and repeat until L becomes 0. 
+
+Wait, let's see for "ababa" (length 5):
+
+Start with L =5. 
+
+Add 5 to the set. 
+
+Then, L = pi[4] (since L-1 is 4, which is the index for the last character. 
+
+pi[4] is 3. 
+
+Add 3 to the set. 
+
+Then, L = pi[2] (since 3-1=2. 
+
+pi[2] is 1. 
+
+Add 1 to the set. 
+
+Then, L = pi[0] (1-1=0. 
+
+pi[0] is 0. 
+
+Adding 0 would not be valid (since L must be at least 1?), but since we started with 5, 3,1, then 0 is not needed. 
+
+Wait, but the 0 would correspond to an empty string, which isn't considered here. 
+
+So the valid L's are 5,3,1. 
+
+Which matches the example. 
+
+Another example: "aaaaa". 
+
+The failure array for "aaaaa" would be [0,1,2,3,4]. 
+
+So starting with L=5, then L=4 (pi[4] =4. 
+
+Then L=3 (pi[3] =3, etc. 
+
+So all lengths from 1 to 5 would be included? 
+
+Wait, let's see: 
+
+Starting with L=5 (the full length). 
+
+Then, L = pi[4] =4. 
+
+Add 4. 
+
+Then L = pi[3] =3. 
+
+Add 3. 
+
+Continue until L=0. 
+
+So all lengths 5,4,3,2,1,0. 
+
+But the 0 is excluded, so the valid L's are 1,2,3,4,5. 
+
+Indeed, for "aaaaa", every prefix of length L is also a suffix. 
+
+So this approach would capture all possible L's. 
+
+Therefore, the algorithm to collect all possible L's for T is:
+
+Initialize a list. 
+
+current_L = len(T). 
+
+Add current_L to the list. 
+
+Then, while current_L >0: 
+
+current_L = pi[current_L -1]. 
+
+Add current_L to the list. 
+
+Wait, no, perhaps:
+
+Wait, let's see for "ababa" example:
+
+Starting with L=5 (the full length. 
+
+Then, next L is pi[4] (since current_L is 5, so current_L-1 is 4, so pi[4] is 3. 
+
+Add 3 to the list. 
+
+Then, next L is pi[2] (since current_L is 3, so current_L-1 is 2, so pi[2] is 1. 
+
+Add 1. 
+
+Next, current_L is 1, so current_L-1 is 0, pi[0] is 0. 
+
+Add 0? But we need to stop when current_L becomes 0. 
+
+Wait, but when current_L is 1, we add 1, then next step is to set current_L to pi[0] (0). 
+
+Then, adding 0 would not be valid, so perhaps we stop when current_L becomes 0. 
+
+Wait, the loop would be:
+
+current_L = 5 → add to list. 
+
+current_L = pi[4] (3 → add 3. 
+
+current_L = pi[2] (1 → add 1. 
+
+current_L = pi[0] (0 → stop. 
+
+So the list is [5,3,1]. 
+
+Which is correct. 
+
+Another example: "aaaaa" (length 5):
+
+current_L starts at 5 → add 5. 
+
+Then, current_L = pi[4] =4 → add 4. 
+
+current_L = pi[3] =3 → add 3. 
+
+current_L = pi[2] =2 → add 2. 
+
+current_L = pi[1] =1 → add 1. 
+
+current_L = pi[0] =0 → stop. 
+
+So the list is [5,4,3,2,1]. 
+
+Which is correct. 
+
+So the algorithm is:
+
+For a string T of length n:
+
+Initialize a list of L's. 
+
+current_L = n → add to list. 
+
+Then, while current_L >0: 
+
+current_L = pi[current_L -1]. 
+
+Add current_L to the list. 
+
+Wait, no, because when current_L is 5, then next is pi[4] (for "aaaaa", which is 4. 
+
+Wait, the loop would be:
+
+current_L starts at 5 (added to list). 
+
+Then, set current_L = pi[4] (4 for "aaaaa"), add to list. 
+
+Then set current_L = pi[3] (3), add to list. 
+
+Continue until current_L becomes 0. 
+
+Wait, but when current_L reaches 0, we stop. 
+
+Wait, but in the loop, after adding current_L, we set current_L to pi[current_L -1]. 
+
+Wait, perhaps the steps are:
+
+Initialize list with n. 
+
+current_L = n. 
+
+Then, while true: 
+
+current_L = pi[current_L -1]. 
+
+if current_L is 0, break. 
+
+Add current_L to the list. 
+
+Wait, perhaps the steps are:
+
+Initialize list with n. 
+
+current_L = n. 
+
+Then, while true: 
+
+current_L = pi[current_L -1]. 
+
+if current_L ==0, break. 
+
+Add current_L to the list. 
+
+Wait, let's test this for "ababa" (n=5):
+
+Initial list has 5. 
+
+current_L = pi[4] (3). 
+
+Add 3 to list. 
+
+current_L = pi[2] (1. 
+
+Add 1 to list. 
+
+current_L = pi[0] (0 → break. 
+
+So the list is [5,3,1]. 
+
+Which is correct. 
+
+Another example: "aaaaa" (n=5):
+
+Initial list has 5. 
+
+current_L = pi[4] (4 → add 4. 
+
+current_L = pi[3] (3 → add 3. 
+
+current_L = pi[2] (2 → add 2. 
+
+current_L = pi[1] (1 → add 1. 
+
+current_L = pi[0] (0 → break. 
+
+So the list is [5,4,3,2,1]. 
+
+Which is correct. 
+
+Another example: "a". 
+
+n=1. 
+
+Initial list has 1. 
+
+current_L = pi[0] (0 → break. 
+
+So the list is [1]. 
+
+So that works. 
+
+Another example: "abab". 
+
+Let's compute its failure array. 
+
+Let me compute the failure array for "abab" (indices 0-3):
+
+pi[0] =0. 
+
+pi[1]: compare T[1] (b) with T[0] (a → no. So 0. 
+
+pi[2]: T[2] is 'a'. Compare with T[0] (a → yes. So pi[2] =1. 
+
+pi[3]: T[3] is 'b'. Compare with T[1] (b → yes. So pi[3] =2. 
+
+So the failure array is [0,0,1,2]. 
+
+So for T of length 4, the initial L is 4. 
+
+Then, current_L = pi[3] (2 → add 2. 
+
+Then current_L = pi[1] (0 → which is 0, so stop. 
+
+So the list is [4,2]. 
+
+Wait, but for "abab", the possible L's are 4 (the full string), 2 (the prefix "ab" and suffix "ab". 
+
+Wait, the prefix of length 2 is "ab", and the suffix of length 2 is "ab", so yes. 
+
+So the valid L's are 4, 2, and 0? Wait, no, the 0 is not added. 
+
+Wait, according to the algorithm, the list would be [4, 2]. 
+
+Wait, but the prefix of length 2 is "ab", which is a suffix. 
+
+Also, the prefix of length 1: "a" vs suffix of length 1: "b" → no. 
+
+So the valid

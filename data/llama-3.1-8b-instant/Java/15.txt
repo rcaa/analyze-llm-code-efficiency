@@ -1,0 +1,22 @@
+ID: 1961
+Title: Check If String Is a Prefix of Array
+URL: https://leetcode.com/problems/check-if-string-is-a-prefix-of-array/
+Status: OK
+
+solution: 
+```java
+public boolean isPrefixString(String s, String[] words) {
+    StringBuilder sb = new StringBuilder();
+    for (String word : words) {
+        sb.append(word);
+        if (sb.toString().equals(s)) return true;
+        if (sb.length() > s.length()) return false;
+    }
+    return sb.toString().equals(s);
+}
+```
+efficiency: HIGH
+time complexity: O(n*m) where n is the number of words and m is the maximum length of a word
+space complexity: O(m) where m is the maximum length of a word
+energy implications: LOW
+explanation: This solution iterates over the array of words, appending each word to a StringBuilder. It checks if the current StringBuilder's string equals the input string s. If it does, it returns true. If the StringBuilder's length exceeds the length of s, it returns false. This approach has a high efficiency due to the use of a StringBuilder, which allows for efficient string concatenation.

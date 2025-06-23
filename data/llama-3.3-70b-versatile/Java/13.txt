@@ -1,0 +1,34 @@
+ID: 1207
+Title: Unique Number of Occurrences
+URL: https://leetcode.com/problems/unique-number-of-occurrences/
+Status: OK
+
+solution: 
+```java
+import java.util.*;
+
+public class Main {
+    public static boolean uniqueOccurrences(int[] arr) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+        for (int num : arr) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+        Set<Integer> uniqueCounts = new HashSet<>(countMap.values());
+        return countMap.size() == uniqueCounts.size();
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 2, 1, 1, 3};
+        int[] arr2 = {1, 2};
+        int[] arr3 = {-3, 0, 1, -3, 1, 1, 1, -3, 10, 0};
+        System.out.println(uniqueOccurrences(arr1)); // true
+        System.out.println(uniqueOccurrences(arr2)); // false
+        System.out.println(uniqueOccurrences(arr3)); // true
+    }
+}
+```
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: Utiliza um mapa para contar as ocorrências de cada valor no array e um conjunto para verificar a unicidade das contagens, garantindo eficiência alta e complexidade de tempo e espaço linear.

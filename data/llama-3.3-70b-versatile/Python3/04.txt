@@ -1,0 +1,29 @@
+ID: 1799
+Title: Maximize Score After N Operations
+URL: https://leetcode.com/problems/maximize-score-after-n-operations/
+Status: OK
+
+solution: 
+```python
+from itertools import combinations
+from math import gcd
+from functools import lru_cache
+
+def maxScore(nums):
+    n = len(nums) // 2
+    @lru_cache(None)
+    def dfs(mask, i):
+        if mask == (1 << (2 * n)) - 1:
+            return 0
+        res = 0
+        for x, y in combinations(range(2 * n), 2):
+            if not (mask & (1 << x)) and not (mask & (1 << y)):
+                res = max(res, i * gcd(nums[x], nums[y]) + dfs(mask | (1 << x) | (1 << y), i + 1))
+        return res
+    return dfs(0, 1)
+```
+efficiency: HIGH
+time complexity: O(2^(2n) * n)
+space complexity: O(2^(2n))
+energy implications: LOW
+explanation: Utiliza uma abordagem de força bruta com otimização via memoização para calcular a pontuação máxima. A função dfs é usada para realizar a busca em profundidade, considerando todas as combinações possíveis de pares de números e calculando a pontuação máxima para cada combinação. A memoização é usada para evitar cálculos repetidos e melhorar a eficiência.

@@ -1,0 +1,27 @@
+ID: 3525
+Title: Find X Value of Array II
+URL: https://leetcode.com/problems/find-x-value-of-array-ii/
+Status: OK
+
+solution: 
+```python
+def x_value(nums, k, queries):
+    result = []
+    for index, value, start, x in queries:
+        nums[index] = value
+        nums = nums[start:]
+        count = 0
+        for i in range(len(nums)):
+            product = 1
+            for j in range(i, len(nums)):
+                product *= nums[j]
+                if product % k == x:
+                    count += 1
+        result.append(count)
+    return result
+```
+efficiency: MEDIUM
+time complexity: O(n^2 * q)
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: The solution iterates over each query, updates the nums array, and then calculates the x-value by checking all possible suffixes of the updated array. The time complexity is quadratic due to the nested loops, and the space complexity is linear as we only need to store the updated array. The energy implications are medium as the solution requires multiple iterations and calculations.

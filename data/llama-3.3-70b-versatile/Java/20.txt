@@ -1,0 +1,30 @@
+ID: 2441
+Title: Largest Positive Integer That Exists With Its Negative
+URL: https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/
+Status: OK
+
+solution: 
+public int findMaxK(int[] nums) {
+    int maxK = -1;
+    for (int num : nums) {
+        if (num > 0 && contains(nums, -num)) {
+            maxK = Math.max(maxK, num);
+        }
+    }
+    return maxK;
+}
+
+public boolean contains(int[] nums, int target) {
+    for (int num : nums) {
+        if (num == target) {
+            return true;
+        }
+    }
+    return false;
+}
+```
+efficiency: MEDIUM
+time complexity: O(n^2)
+space complexity: O(1)
+energy implications: LOW
+explanation: This solution iterates through the array to find the largest positive integer k such that -k exists in the array. It uses a helper function to check if the negative counterpart of a number exists in the array. The time complexity is O(n^2) due to the nested loop, but the space complexity is O(1) since it only uses a constant amount of space.

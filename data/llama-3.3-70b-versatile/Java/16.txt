@@ -1,0 +1,20 @@
+ID: 1984
+Title: Minimum Difference Between Highest and Lowest of K Scores
+URL: https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/
+Status: OK
+
+solution:
+public int minimumDifference(int[] nums, int k) {
+    Arrays.sort(nums);
+    int minDiff = Integer.MAX_VALUE;
+    for (int i = 0; i <= nums.length - k; i++) {
+        int diff = nums[i + k - 1] - nums[i];
+        minDiff = Math.min(minDiff, diff);
+    }
+    return minDiff;
+}
+efficiency: HIGH
+time complexity: O(n log n)
+space complexity: O(1)
+energy implications: LOW
+explanation: The solution sorts the array and then iterates over it to find the minimum difference between the highest and lowest scores of k students. The time complexity is O(n log n) due to the sorting operation, and the space complexity is O(1) as no additional space is used. The energy implications are low as the solution only involves a single pass over the array after sorting.

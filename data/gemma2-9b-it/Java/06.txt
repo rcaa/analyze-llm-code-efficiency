@@ -1,0 +1,35 @@
+ID: 3525
+Title: Find X Value of Array II
+URL: https://leetcode.com/problems/find-x-value-of-array-ii/
+Status: OK
+
+solution: 
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] getValues(int[] nums, int k, int[][] queries) {
+        int n = nums.length;
+        int[] result = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            int index = queries[i][0];
+            int value = queries[i][1];
+            int start = queries[i][2];
+            int x = queries[i][3];
+            nums[index] = value;
+            long product = 1;
+            for (int j = start; j < n; j++) {
+                product = (product * nums[j]) % k;
+                result[i] = (int) ((product == x) ? result[i] + 1 : result[i]);
+            }
+        }
+        return result;
+    }
+}
+```
+efficiency: MEDIUM
+time complexity: O(N * Q)
+space complexity: O(1)
+energy implications: LOW 
+explanation: The solution iterates through each query, updates the `nums` array based on the query, and then calculates the number of ways to remove a suffix to achieve the desired remainder `x`. It uses a single loop to iterate through the remaining elements of `nums` after the specified `start` index, calculating the product modulo `k` and incrementing the result count if the product matches `x`.

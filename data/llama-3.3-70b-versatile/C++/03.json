@@ -1,0 +1,14 @@
+{
+  "id": "1354",
+  "titulo": "Construct Target Array With Multiple Sums",
+  "url": "https://leetcode.com/problems/construct-target-array-with-multiple-sums/",
+  "llm_response": {
+    "resposta_bruta": "```cpp\nsolution:\nclass Solution {\npublic:\n    bool isPossible(vector<int>& target) {\n        priority_queue<long long> pq;\n        long long sum = 0;\n        for (int i = 0; i < target.size(); i++) {\n            sum += target[i];\n            pq.push(target[i]);\n        }\n        while (pq.top() != 1) {\n            long long x = pq.top();\n            pq.pop();\n            sum -= x;\n            if (x <= sum || sum < 1) return false;\n            x %= sum;\n            if (x == 0) x = sum;\n            sum += x;\n            pq.push(x);\n        }\n        return true;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a priority queue to efficiently manage the array elements, repeatedly replacing the largest element with its remainder when divided by the sum of the other elements, until all elements are 1 or it becomes impossible to reach the target array.",
+    "resposta_formatada": "solution:\nclass Solution {\npublic:\n    bool isPossible(vector<int>& target) {\n        priority_queue<long long> pq;\n        long long sum = 0;\n        for (int i = 0; i < target.size(); i++) {\n            sum += target[i];\n            pq.push(target[i]);\n        }\n        while (pq.top() != 1) {\n            long long x = pq.top();\n            pq.pop();\n            sum -= x;\n            if (x <= sum || sum < 1) return false;\n            x %= sum;\n            if (x == 0) x = sum;\n            sum += x;\n            pq.push(x);\n        }\n        return true;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a priority queue to efficiently manage the array elements, repeatedly replacing the largest element with its remainder when divided by the sum of the other elements, until all elements are 1 or it becomes impossible to reach the target array.",
+    "valid": true,
+    "tempo_resposta": 1.1979446411132812,
+    "tentativas": 1,
+    "erro": null,
+    "timestamp": "2025-06-22T19:30:12.708458"
+  }
+}

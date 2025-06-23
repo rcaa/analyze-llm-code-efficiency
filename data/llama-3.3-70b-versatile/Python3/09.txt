@@ -1,0 +1,27 @@
+ID: 3539
+Title: Find Sum of Array Product of Magical Sequences
+URL: https://leetcode.com/problems/find-sum-of-array-product-of-magical-sequences/
+Status: OK
+
+solution: 
+```python
+from itertools import permutations
+from collections import defaultdict
+
+def solve(m, k, nums):
+    MOD = 10**9 + 7
+    res = 0
+    for seq in permutations(range(len(nums)), m):
+        val = sum(2**i for i in seq)
+        if bin(val).count('1') == k:
+            prod = 1
+            for i in seq:
+                prod = (prod * nums[i]) % MOD
+            res = (res + prod) % MOD
+    return res
+```
+efficiency: MEDIUM
+time complexity: O(n^m * m)
+space complexity: O(m)
+energy implications: MEDIUM
+explanation: The solution uses a brute force approach by generating all permutations of the given array and checking if each permutation satisfies the conditions of being a magical sequence. It calculates the product of the sequence and adds it to the result if the sequence is magical. The time complexity is high due to the generation of permutations, but it is necessary to ensure that all possible sequences are considered. The space complexity is relatively low as it only requires storing the current permutation and the result. The energy implications are medium as the solution requires a significant amount of computation to generate and check all permutations.

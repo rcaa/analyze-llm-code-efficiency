@@ -1,0 +1,27 @@
+ID: 1354
+Title: Construct Target Array With Multiple Sums
+URL: https://leetcode.com/problems/construct-target-array-with-multiple-sums/
+Status: OK
+
+solution: 
+```python
+def isPossible(target):
+    import heapq
+    pq = [-num for num in target]
+    heapq.heapify(pq)
+    while -pq[0] != 1:
+        num = -heapq.heappop(pq)
+        sum_val = -sum(pq)
+        if num <= sum_val or sum_val == 0:
+            return False
+        num %= sum_val
+        if num == 0:
+            num = sum_val
+        heapq.heappush(pq, -num)
+    return True
+```
+efficiency: HIGH
+time complexity: O(n log n)
+space complexity: O(n)
+energy implications: LOW
+explanation: Utiliza uma fila de prioridade para armazenar os números do array de forma decrescente, e então itera até que o maior número seja 1, verificando se é possível construir o array alvo a partir do array inicial.

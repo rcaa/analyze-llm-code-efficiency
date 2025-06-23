@@ -1,0 +1,45 @@
+ID: 3569
+Title: Maximize Count of Distinct Primes After Split
+URL: https://leetcode.com/problems/maximize-count-of-distinct-primes-after-split/
+Status: OK
+
+solution:
+public class Solution {
+    public int[] maxPrimeSum(int[] nums, int[][] queries) {
+        int n = nums.length;
+        int[] res = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            nums[queries[i][0]] = queries[i][1];
+            int maxSum = 0;
+            for (int j = 1; j < n; j++) {
+                Set<Integer> set1 = new HashSet<>();
+                Set<Integer> set2 = new HashSet<>();
+                for (int k = 0; k < j; k++) {
+                    if (isPrime(nums[k])) set1.add(nums[k]);
+                }
+                for (int k = j; k < n; k++) {
+                    if (isPrime(nums[k])) set2.add(nums[k]);
+                }
+                maxSum = Math.max(maxSum, set1.size() + set2.size());
+            }
+            res[i] = maxSum;
+        }
+        return res;
+    }
+
+    public boolean isPrime(int num) {
+        if (num <= 1) return false;
+        if (num == 2) return true;
+        if (num % 2 == 0) return false;
+        for (int i = 3; i * i <= num; i += 2) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+}
+```
+efficiency: MEDIUM
+time complexity: O(n^2 * sqrt(m))
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: The solution iterates over each query, updates the array, and then checks all possible splits of the array to find the maximum sum of distinct prime values. The isPrime function checks if a number is prime by iterating up to its square root. The solution has a medium efficiency due to the nested loops and prime checks.

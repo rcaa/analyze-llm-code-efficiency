@@ -1,0 +1,25 @@
+ID: 1037
+Title: Valid Boomerang
+URL: https://leetcode.com/problems/valid-boomerang/
+Status: OK
+
+solution: 
+```java
+public boolean isBoomerang(int[][] points) {
+    // Check if all points are distinct
+    if (points[0][0] == points[1][0] && points[0][1] == points[1][1]) return false;
+    if (points[0][0] == points[2][0] && points[0][1] == points[2][1]) return false;
+    if (points[1][0] == points[2][0] && points[1][1] == points[2][1]) return false;
+    
+    // Calculate the area determinant
+    int area = (points[1][0] - points[0][0]) * (points[2][1] - points[0][1]) 
+              - (points[1][1] - points[0][1]) * (points[2][0] - points[0][0]);
+    
+    return area != 0;
+}
+```
+efficiency: HIGH
+time complexity: O(1)
+space complexity: O(1)
+energy implications: LOW
+explanation: The solution efficiently checks for distinct points and uses a determinant calculation to verify non-collinearity, ensuring optimal performance with constant time and space complexity.

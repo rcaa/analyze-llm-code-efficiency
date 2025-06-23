@@ -1,0 +1,28 @@
+ID: 2441
+Title: Largest Positive Integer That Exists With Its Negative
+URL: https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/
+Status: OK
+
+solution: 
+```java
+import java.util.HashSet;
+
+class Solution {
+    public int findK(int[] nums) {
+        HashSet<Integer> seen = new HashSet<>();
+        int maxK = -1;
+        for (int num : nums) {
+            if (seen.contains(-num)) {
+                maxK = Math.max(maxK, Math.abs(num));
+            }
+            seen.add(num);
+        }
+        return maxK;
+    }
+}
+```
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: The solution uses a HashSet to efficiently track seen numbers. It iterates through the array, checking if the negative counterpart of the current number exists in the set. If found, it updates the maximum k.  The time complexity is linear due to the single pass through the array. The space complexity is also linear due to the HashSet potentially storing all unique elements.

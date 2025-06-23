@@ -1,0 +1,30 @@
+ID: 1207
+Title: Unique Number of Occurrences
+URL: https://leetcode.com/problems/unique-number-of-occurrences/
+Status: OK
+
+solution:
+#include <iostream>
+#include <unordered_map>
+#include <unordered_set>
+
+bool uniqueOccurrences(int* arr, int arrSize) {
+    std::unordered_map<int, int> countMap;
+    for (int i = 0; i < arrSize; i++) {
+        countMap[arr[i]]++;
+    }
+    std::unordered_set<int> uniqueCounts;
+    for (auto& pair : countMap) {
+        if (uniqueCounts.find(pair.second) != uniqueCounts.end()) {
+            return false;
+        }
+        uniqueCounts.insert(pair.second);
+    }
+    return true;
+}
+
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: Utilize an unordered_map to count occurrences of each value and an unordered_set to track unique counts, ensuring efficient lookup and insertion operations. This approach minimizes energy consumption by avoiding unnecessary iterations and comparisons. The main strength lies in its ability to handle large inputs efficiently, while a potential weakness is the reliance on sufficient memory to store the count map and unique counts set.

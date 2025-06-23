@@ -1,0 +1,41 @@
+ID: 3525
+Title: Find X Value of Array II
+URL: https://leetcode.com/problems/find-x-value-of-array-ii/
+Status: OK
+
+solution:
+public int[] xValues(int[] nums, int k, int[][] queries) {
+    int n = nums.length;
+    int m = queries.length;
+    int[] result = new int[m];
+
+    for (int i = 0; i < m; i++) {
+        int index = queries[i][0];
+        int value = queries[i][1];
+        int start = queries[i][2];
+        int x = queries[i][3];
+
+        nums[index] = value;
+
+        int count = 0;
+        for (int j = start; j <= n; j++) {
+            int product = 1;
+            for (int p = start; p < j; p++) {
+                product = (product * nums[p]) % k;
+            }
+            if (product % k == x) {
+                count++;
+            }
+        }
+
+        result[i] = count;
+    }
+
+    return result;
+}
+
+efficiency: MEDIUM
+time complexity: O(m * n^2)
+space complexity: O(1)
+energy implications: MEDIUM
+explanation: The solution iterates over each query, updates the corresponding index in the nums array, and then calculates the x-value by checking all possible suffixes of the array starting from the specified start index. The time complexity is O(m * n^2) due to the nested loops, and the space complexity is O(1) since only a constant amount of space is used. The energy implications are medium due to the computational intensity of the algorithm.

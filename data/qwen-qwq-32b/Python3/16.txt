@@ -1,0 +1,21 @@
+ID: 1984
+Title: Minimum Difference Between Highest and Lowest of K Scores
+URL: https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/
+Status: OK
+
+solution: 
+def minScoreDifference(nums, k):
+    nums.sort()
+    n = len(nums)
+    min_diff = float('inf')
+    for i in range(n - k + 1):
+        current_diff = nums[i + k - 1] - nums[i]
+        if current_diff < min_diff:
+            min_diff = current_diff
+    return min_diff
+
+efficiency: HIGH
+time complexity: O(n log n)
+space complexity: O(1)
+energy implications: LOW
+explanation: Sorting the array allows sliding a window of size k to find the minimal max-min difference in O(n log n) time. The minimal difference is found by evaluating consecutive windows in the sorted array, ensuring optimal performance.

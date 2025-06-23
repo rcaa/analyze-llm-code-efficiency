@@ -1,0 +1,37 @@
+ID: 3525
+Title: Find X Value of Array II
+URL: https://leetcode.com/problems/find-x-value-of-array-ii/
+Status: OK
+
+solution: 
+```java
+public int[] processQueries(int[] nums, int k, int[][] queries) {
+    int n = nums.length;
+    int m = queries.length;
+    int[] result = new int[m];
+    int[] prefix = new int[n + 1];
+    int[] suffix = new int[n + 1];
+    int[] count = new int[k];
+    for (int i = 0; i < n; i++) {
+        prefix[i + 1] = (prefix[i] + count[nums[i] % k]) % k;
+        suffix[n - i - 1] = (suffix[n - i] + count[nums[i] % k]) % k;
+        count[nums[i] % k]++;
+    }
+    for (int i = 0; i < m; i++) {
+        int index = queries[i][0];
+        int value = queries[i][1];
+        int start = queries[i][2];
+        int x = queries[i][3];
+        nums[index] = value;
+        int newPrefix = prefix[start];
+        int newSuffix = suffix[n - start];
+        result[i] = (newPrefix + newSuffix) % k;
+    }
+    return result;
+}
+```
+efficiency: HIGH
+time complexity: O(n + m)
+space complexity: O(n + k)
+energy implications: LOW
+explanation: This solution uses two arrays, prefix and suffix, to store the cumulative sum of the count of each remainder modulo k. It then iterates over the queries and updates the result array based on the new prefix and suffix. The time complexity is O(n + m) because we need to iterate over the array and the queries once. The space complexity is O(n + k) because we need to store the prefix and suffix arrays and the count array. The energy implications are low because the solution only involves simple arithmetic operations.

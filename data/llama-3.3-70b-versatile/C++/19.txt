@@ -1,0 +1,36 @@
+ID: 2432
+Title: The Employee That Worked on the Longest Task
+URL: https://leetcode.com/problems/the-employee-that-worked-on-the-longest-task/
+Status: OK
+
+solution:
+class Solution {
+public:
+    int hardestWorker(int n, vector<vector<int>>& logs) {
+        int maxTime = 0;
+        int maxId = INT_MAX;
+        int prevTime = 0;
+        
+        for (auto& log : logs) {
+            int id = log[0];
+            int time = log[1];
+            int taskTime = time - prevTime;
+            prevTime = time;
+            
+            if (taskTime > maxTime) {
+                maxTime = taskTime;
+                maxId = id;
+            } else if (taskTime == maxTime) {
+                maxId = min(maxId, id);
+            }
+        }
+        
+        return maxId;
+    }
+};
+
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(1)
+energy implications: LOW
+explanation: The solution iterates through the logs array once, keeping track of the maximum task time and the corresponding employee id. It uses a constant amount of space and has a linear time complexity, making it efficient for large inputs. The use of a single pass through the data also minimizes energy implications.

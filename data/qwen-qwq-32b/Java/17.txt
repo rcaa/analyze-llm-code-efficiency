@@ -1,0 +1,29 @@
+ID: 2404
+Title: Most Frequent Even Element
+URL: https://leetcode.com/problems/most-frequent-even-element/
+Status: OK
+
+solution: public int mostFrequentEven(int[] nums) {
+    Map<Integer, Integer> freq = new HashMap<>();
+    for (int num : nums) {
+        if (num % 2 != 0) continue;
+        freq.put(num, freq.getOrDefault(num, 0) + 1);
+    }
+    if (freq.isEmpty()) return -1;
+    int maxFreq = 0;
+    for (int count : freq.values()) {
+        if (count > maxFreq) maxFreq = count;
+    }
+    int minNum = Integer.MAX_VALUE;
+    for (Map.Entry<Integer, Integer> entry : freq.entrySet()) {
+        if (entry.getValue() == maxFreq) {
+            if (entry.getKey() < minNum) minNum = entry.getKey();
+        }
+    }
+    return minNum;
+}
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: Uses a hashmap to track frequencies of even numbers, then determines the smallest element with maximum frequency. Linear time and space complexity ensures efficiency for input sizes up to 2000.

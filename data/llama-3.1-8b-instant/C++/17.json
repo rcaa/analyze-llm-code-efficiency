@@ -1,0 +1,14 @@
+{
+  "id": "2404",
+  "titulo": "Most Frequent Even Element",
+  "url": "https://leetcode.com/problems/most-frequent-even-element/",
+  "llm_response": {
+    "resposta_bruta": "solution: \n```cpp\n#include <unordered_map>\n#include <vector>\n#include <algorithm>\n\nint mostFrequentEven(std::vector<int>& nums) {\n    std::unordered_map<int, int> count;\n    for (int num : nums) {\n        if (num % 2 == 0) {\n            count[num]++;\n        }\n    }\n    int maxCount = 0;\n    int result = -1;\n    for (auto& pair : count) {\n        if (pair.second > maxCount) {\n            maxCount = pair.second;\n            result = pair.first;\n        } else if (pair.second == maxCount && pair.first < result) {\n            result = pair.first;\n        }\n    }\n    return result;\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hash map to count the frequency of each even element in the array. It then iterates through the hash map to find the most frequent even element. If there is a tie, it returns the smallest one. The time complexity is O(n) because we need to iterate through the array and the hash map. The space complexity is also O(n) because in the worst case, all elements in the array are stored in the hash map.",
+    "resposta_formatada": "solution: \n```cpp\n#include <unordered_map>\n#include <vector>\n#include <algorithm>\n\nint mostFrequentEven(std::vector<int>& nums) {\n    std::unordered_map<int, int> count;\n    for (int num : nums) {\n        if (num % 2 == 0) {\n            count[num]++;\n        }\n    }\n    int maxCount = 0;\n    int result = -1;\n    for (auto& pair : count) {\n        if (pair.second > maxCount) {\n            maxCount = pair.second;\n            result = pair.first;\n        } else if (pair.second == maxCount && pair.first < result) {\n            result = pair.first;\n        }\n    }\n    return result;\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hash map to count the frequency of each even element in the array. It then iterates through the hash map to find the most frequent even element. If there is a tie, it returns the smallest one. The time complexity is O(n) because we need to iterate through the array and the hash map. The space complexity is also O(n) because in the worst case, all elements in the array are stored in the hash map.",
+    "valid": true,
+    "tempo_resposta": 4.93977952003479,
+    "tentativas": 1,
+    "erro": null,
+    "timestamp": "2025-06-22T19:18:56.920228"
+  }
+}

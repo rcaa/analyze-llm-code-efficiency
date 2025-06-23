@@ -1,0 +1,27 @@
+ID: 2432
+Title: The Employee That Worked on the Longest Task
+URL: https://leetcode.com/problems/the-employee-that-worked-on-the-longest-task/
+Status: OK
+
+solution: 
+```python
+def findLongestTask(n, logs):
+    max_time = 0
+    max_id = n
+    prev_time = 0
+    for log in logs:
+        id, leave_time = log
+        time = leave_time - prev_time
+        if time > max_time:
+            max_time = time
+            max_id = id
+        elif time == max_time:
+            max_id = min(max_id, id)
+        prev_time = leave_time
+    return max_id
+```
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(1)
+energy implications: LOW
+explanation: A single pass through the logs array is made to calculate the time taken for each task and update the maximum time and corresponding id as needed. The smallest id is returned in case of a tie.

@@ -1,0 +1,70 @@
+ID: 3045
+Title: Count Prefix and Suffix Pairs II
+URL: https://leetcode.com/problems/count-prefix-and-suffix-pairs-ii/
+Status: OK
+
+solution: 
+```cpp
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+
+using namespace std;
+
+vector<string> getAllPrefixSuffixes(const string& s) {
+    int n = s.size();
+    if (n == 0) return {};
+
+    vector<int> pi(n);
+    pi[0] = 0;
+    for (int i = 1; i < n; ++i) {
+        int j = pi[i-1];
+        while (j > 0 && s[i] != s[j]) {
+            j = pi[j-1];
+        }
+        if (s[i] == s[j]) {
+            j++;
+        }
+        pi[i] = j;
+    }
+
+    unordered_set<string> borders;
+    int current = pi.back();
+    while (current > 0) {
+        string border = s.substr(0, current);
+        borders.insert(border);
+        current = pi[current-1];
+    }
+
+    borders.insert(s);
+    return vector<string>(borders.begin(), borders.end());
+}
+
+int countPairs(vector<string>& words) {
+    unordered_map<string, int> freq;
+    int result = 0;
+
+    for (const string& s : words) {
+        vector<string> p_list = getAllPrefixSuffixes(s);
+        for (const string& p : p_list) {
+            if (freq.find(p) != freq.end()) {
+                result += freq[p];
+            }
+        }
+        freq[s]++;
+    }
+
+    return result;
+}
+```
+
+efficiency: HIGH
+
+time complexity: O(total_length), where total_length is the sum of lengths of all strings.
+
+space complexity: O(total_length)
+
+energy implications: LOW
+
+explanation: The solution efficiently counts pairs by leveraging the KMP failure function to find all prefixes that are also suffixes for each string. It uses a hash map to track occurrences of these prefixes, ensuring each string is processed in linear time relative to its length. This approach avoids the O(n^2) complexity and efficiently handles the problem constraints.

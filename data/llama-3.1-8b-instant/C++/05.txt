@@ -1,0 +1,34 @@
+ID: 3045
+Title: Count Prefix and Suffix Pairs II
+URL: https://leetcode.com/problems/count-prefix-and-suffix-pairs-ii/
+Status: OK
+
+solution: 
+```cpp
+int countPrefixAndSuffixPairs(vector<string>& words) {
+    int n = words.size();
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (isPrefixAndSuffix(words[i], words[j])) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+bool isPrefixAndSuffix(string str1, string str2) {
+    int len1 = str1.length();
+    int len2 = str2.length();
+    if (len1 > len2) return false;
+    if (str2.substr(0, len1) != str1 || str2.substr(len2 - len1, len1) != str1) return false;
+    return true;
+}
+```
+
+efficiency: HIGH
+time complexity: O(n^2 * m)
+space complexity: O(1)
+energy implications: MEDIUM
+explanation: This solution has a high efficiency because it uses a simple nested loop to check all pairs of words. However, the time complexity is O(n^2 * m) due to the string substrings, where n is the number of words and m is the maximum length of a word. The space complexity is O(1) because it only uses a constant amount of space to store the indices and strings. The energy implications are medium because the solution has a moderate number of operations.

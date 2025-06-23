@@ -1,0 +1,1039 @@
+ID: 1799
+Title: Maximize Score After N Operations
+URL: https://leetcode.com/problems/maximize-score-after-n-operations/
+Status: FALHA
+
+<think>
+Okay, I need to solve this problem where I have to maximize the score by pairing elements in the array. The score for each pair is the step number multiplied by their GCD. The key here is to choose the pairs in such a way that the higher multipliers (later steps) get as high a GCD as possible. 
+
+Hmm, the constraints say n can be up to 7, so the array can have up to 14 elements. That's manageable for a backtracking approach with memoization, but maybe even better with dynamic programming. Wait, but how do I model the state here?
+
+Let me think: since each step requires choosing two elements, and the order of steps matters because the multiplier increases each time. The optimal approach would be to pair numbers in a way that the largest possible GCDs are used in the later steps (since they get multiplied by higher i values). 
+
+But how do I model this? Maybe using a bitmask to represent which numbers have been used. Since n is up to 7, the total possible masks would be 2^14, which is 16384. That's feasible. 
+
+The idea is to use dynamic programming where the state is the current mask and the step we're on. Wait, but step can be derived from the number of bits set in the mask. Since each step uses two elements, the step number is (number of used elements)/2. 
+
+Wait, the step is 1-indexed. So for a mask with k bits set, the current step is (k)/2 +1? Wait, no. Let's see: when we have 0 bits set, that's step 1 (since we need to choose the first pair). Wait, actually, the number of steps taken is (number of set bits)/2. So the next step would be (current count)/2 +1. 
+
+Hmm, maybe the DP state can be the mask, and the value stored is the maximum score achievable from that state onward. 
+
+The recurrence would be: for each mask, if it's not the end, we try all possible pairs of unselected elements, compute the score for choosing that pair at the current step, then add the result of the DP for the new mask (with those bits set). 
+
+Wait, but the step number is determined by how many elements have been used. For example, if the mask has 2k bits set, then the next step is k+1. 
+
+So the DP function could be something like:
+
+memo[mask] = max over all possible pairs (not yet chosen) of (gcd(x,y)*(step) + dp(new_mask))
+
+The base case is when all bits are set, then the value is 0.
+
+The initial call would be dp(0), starting with no elements chosen. 
+
+The problem is the number of masks. 2^14 is 16384, which is manageable. For each mask, how many pairs do I have to consider? For a mask with m unset bits, the number of possible pairs is C( (14 - count_bits(mask)), 2 ), which could be up to C(14,2) = 91 for the first step, but as the mask fills up, it decreases. 
+
+So the total number of operations would be 16384 * 91, which is around 1.5 million. That's acceptable for Python, but maybe with some optimizations. 
+
+So the plan is:
+
+- Precompute all possible masks and their transitions.
+
+But how to implement this efficiently?
+
+First, let's represent the mask as an integer. For each mask, iterate over all possible pairs of unset bits, compute the next mask, and track the maximum score.
+
+Wait, but for each mask, to find all possible pairs, I can loop through all the available numbers (the indices where the bits are 0), and pick two of them. 
+
+Alternatively, for a given mask, iterate over all possible first elements (i) that are not set, then for each i, iterate over all j > i that are also not set. 
+
+This way, for each mask, we can generate all possible next masks by setting those two bits, and compute the current step's contribution. 
+
+The step number can be calculated as (number of set bits in mask) / 2 + 1. Wait, the current mask has k bits set. The next step is (k/2) +1? Let me see:
+
+Suppose mask has 0 bits set (initial state). The first step is step 1. So step = (0)/2 +1 =1. Correct. 
+
+If mask has 2 bits set, then the next step is step 2. So yes, step is (current count of set bits)/2 +1? Wait, no. Wait, the current step is (number of pairs already chosen) +1. Because each step uses a pair. So the number of pairs chosen so far is (count_set_bits(mask))/2. So the next step is (count_set_bits(mask)/2) +1. 
+
+Wait, the next step's multiplier is (current step) = (number of pairs chosen so far) +1. 
+
+So for each pair we choose now, the multiplier is (current step). 
+
+Wait, the current step is (number of pairs chosen so far) +1. 
+
+So when considering a transition from mask to mask | (1<<i | 1<<j), the step is (number of set bits in mask)/2 +1. 
+
+Therefore, the DP recurrence would be:
+
+dp[mask] = max over all possible pairs (i,j) not in mask of (gcd(nums[i], nums[j]) * step + dp[new_mask])
+
+The base case is when all bits are set, then dp[mask] =0.
+
+So the approach is to precompute all possible masks and compute the DP in a bottom-up way or memoization. Since the transitions depend on masks with fewer bits set, we can compute the DP in order of increasing number of set bits. 
+
+Alternatively, memoization with memoization (top-down approach) using recursion with memoization. 
+
+In Python, for memoization, using a dictionary or a list for the DP table. Since the mask can be up to 2^14 = 16384, a list of size 2^14 is manageable. 
+
+Let me outline the steps:
+
+Initialize a DP array of size 2^14, initialized to -1 or something. 
+
+The maximum mask is 2^(2n) -1. 
+
+The function would be something like:
+
+def dp(mask):
+
+    if mask in memo: return memo[mask]
+
+    if mask has all bits set: return 0
+
+    current_step = (number of set bits in mask) // 2 +1 
+
+    max_score = 0
+
+    for all possible pairs (i,j) not set in mask:
+
+        new_mask = mask | (1<<i | 1<<j)
+
+        current_contribution = gcd(nums[i], nums[j]) * current_step
+
+        current_total = current_contribution + dp(new_mask)
+
+        if current_total > max_score:
+
+            max_score = current_total
+
+    memo[mask] = max_score
+
+    return max_score
+
+Wait, but the order of choosing pairs might be important. 
+
+Wait, but in the DP approach, the mask uniquely represents the state, so the order of choosing pairs doesn't matter because the DP will consider all possibilities. 
+
+The problem is that for each mask, we need to iterate over all possible pairs of unset bits. 
+
+The number of pairs for a mask with k unset bits is (k choose 2). For n=7, the maximum k is 14, so 14*13/2 = 91 pairs. For each mask, this is manageable. 
+
+So the steps are:
+
+1. Precompute all masks in order of increasing number of set bits, so that when computing dp[mask], all the dp[new_mask] have already been computed (since new_mask has more bits set). Wait, no. Because when you choose a pair, the new_mask has two more bits set. So the mask transitions from a state with m bits to m+2 bits. 
+
+Therefore, the DP can be computed in order of the number of set bits in the mask. Starting from masks with 0 bits set, then 2, 4, etc., up to 14. 
+
+Wait, the DP for a mask with m bits set can be computed once all masks with m+2 bits have their DP values computed? No, actually, the DP[mask] depends on the next masks (with m+2 bits). So to compute DP[mask], we need the DP of the next masks. 
+
+Therefore, the computation must be done in reverse order. Starting from the full mask (all bits set) which has 0, then masks with 14 bits set (but that's the full mask, so their DP is 0. Then masks with 12 bits set, etc., down to 0. 
+
+Ah right, so the correct order is to process masks in order of decreasing number of set bits. 
+
+So the bottom-up approach would be better here. 
+
+Initialize dp array as an array of size 2^14. 
+
+Initialize dp[full_mask] =0. 
+
+Then for masks with 14-2 =12 bits set, then 10, etc., down to 0. 
+
+Wait, but how to iterate through all masks in the correct order? 
+
+Alternatively, for all masks, sorted in order of the number of set bits in decreasing order. 
+
+Alternatively, for each possible mask, compute the DP value once all masks with more bits set have been processed. 
+
+So the steps would be:
+
+Initialize dp array with all elements 0 except for the full mask. 
+
+Wait, let's think of it as:
+
+Initialize dp as an array of size 2^14. 
+
+Set dp[full_mask] =0. 
+
+Then for all masks in order from those with 14 bits set down to 0 bits set:
+
+Wait, but the masks with 14 bits set are only the full mask. 
+
+Wait, for a mask with m bits set, the next step is to choose a pair from the remaining (2n - m) elements. 
+
+Wait, perhaps the bottom-up approach would be:
+
+for mask in all possible masks, ordered from the highest number of set bits down to 0:
+
+    if mask is full, dp[mask] =0
+
+    else:
+
+        current_step = (number of set bits)/2 +1 
+
+        max_score = 0
+
+        for all possible pairs (i,j) not set in mask:
+
+            new_mask = mask | (bit_i | bit_j)
+
+            current_contribution = gcd(nums[i], nums[j]) * current_step
+
+            current_total = current_contribution + dp[new_mask]
+
+            if current_total > max_score:
+
+                max_score = current_total
+
+        dp[mask] = max_score
+
+But how to iterate through all masks in the correct order? 
+
+Alternatively, for each mask, the number of set bits can be even, since each step adds two bits. Wait, the mask must have an even number of bits set, since each step adds two. Wait, no. Wait, the mask can have any number of bits set, but the process must end when all bits are set. 
+
+Wait, the mask can have any number of bits, but the step is (count_set_bits(mask) // 2) +1. Wait, but when the mask has an odd number of bits set, that's an invalid state, because you can't have an odd number of elements selected. 
+
+Wait, actually, the mask must have an even number of bits set, because each step adds two bits. So all valid masks must have even number of set bits. 
+
+Therefore, when iterating, we can skip masks with odd counts. 
+
+So the steps:
+
+Initialize dp array as a dictionary or array. 
+
+Initialize dp[full_mask] =0. 
+
+Then for all masks in order from those with 14 bits set down to 0, but only even counts. 
+
+Wait, perhaps the easiest way is to loop over all masks from 0 to 2^14-1, but process them in order of decreasing number of set bits. 
+
+Alternatively, for each possible number of set bits from 14 down to 0 (stepping by 2 each time?), but that might be complicated. 
+
+Alternatively, for each mask in all possible masks, sorted in order of decreasing number of set bits. 
+
+In Python, perhaps precompute all masks, sort them in order of the number of set bits in descending order, then process each mask in that order. 
+
+But generating all masks and sorting them by the number of set bits in reverse order. 
+
+Alternatively, for each mask, the number of set bits is m. The step is (m//2)+1. 
+
+Wait, let's think of the bottom-up approach:
+
+Initialize dp as an array of size 2^14. 
+
+Initialize dp[full_mask] =0. 
+
+Then for each mask in all possible masks except full_mask, in reverse order (i.e., starting from masks with 12 bits set, then 10, etc. down to 0):
+
+Wait, perhaps the easiest way is to loop over all masks from 0 to 2^14-1, but process them in order of the number of set bits in decreasing order. 
+
+Alternatively, for each possible mask, the next steps can be computed once all masks with more bits set have their dp computed. 
+
+So the order is important. 
+
+Alternatively, in code, for each mask in 0..(2^14-1):
+
+    compute the number of set bits. 
+
+    process masks in order of decreasing number of set bits. 
+
+So first, generate all masks, sort them in order of the number of set bits in descending order. 
+
+Then for each mask in that list:
+
+    if mask is full, dp[mask] =0
+
+    else:
+
+        current_step = (number of set bits in mask) //2 +1 
+
+        max_score =0 
+
+        for all possible pairs of unset bits:
+
+            compute the new_mask by setting those two bits. 
+
+            current_contribution = gcd(nums[i], nums[j]) * current_step 
+
+            temp = current_contribution + dp[new_mask]
+
+            if temp > max_score, update max_score. 
+
+        dp[mask] = max_score 
+
+But how to iterate over all possible pairs of unset bits for a given mask?
+
+To find all unset bits, first find all the indices where the bits are 0. 
+
+For example, for a given mask, collect all the indices where the bit is 0. 
+
+Then, for all i < j in those indices, compute the pair (i,j). 
+
+But for each mask, this could take O(k^2) where k is the number of unset bits. 
+
+The maximum k is 14 (when mask is 0). So for mask 0, the number of pairs is 14*13/2 = 91. 
+
+For a mask with 12 bits set (so 2 unset bits), there's only 1 pair. 
+
+So the total number of operations would be manageable. 
+
+Now, in code, how to implement this?
+
+First, precompute for all masks the list of unset bits. 
+
+Alternatively, for each mask, iterate through all possible pairs:
+
+Initialize the dp array as a list of size 2^14. 
+
+Initialize dp[full_mask] =0. 
+
+Then, for all masks in reverse order (from full_mask down to 0, but only those with even number of set bits?), but perhaps it's easier to loop through all masks in order of decreasing number of set bits. 
+
+Wait, here's the plan:
+
+First, precompute for all masks the number of set bits. 
+
+Then, create a list of all masks sorted in order of decreasing number of set bits. 
+
+Then, for each mask in that list:
+
+    if mask is full, dp[mask] =0 
+
+    else:
+
+        current_step = (number of set bits //2) +1 
+
+        current_unset_bits = list of indices where the bits are 0. 
+
+        for each possible pair (i,j) in current_unset_bits:
+
+            new_mask = mask | (1<<i | 1<<j)
+
+            contribution = gcd(nums[i], nums[j]) * current_step 
+
+            current_candidate = contribution + dp[new_mask]
+
+            if this is better than current max, keep track. 
+
+        dp[mask] = max_candidate 
+
+Wait, but how to get the list of unset bits for each mask?
+
+Alternatively, for a given mask, iterate over all possible i from 0 to 13 (assuming n=7, so 14 elements), check if the bit is 0. 
+
+Wait, for each mask, to find all unset bits, loop through all bits (indices 0 to 13) and collect those not set. 
+
+Then, for all pairs of those indices, compute the new mask and the contribution. 
+
+This could be time-consuming, but for n=7, 14 elements, the total number of masks is 16384. For each mask, the number of pairs is (k choose 2), where k is the number of unset bits. 
+
+The total number of operations would be sum over all masks of (k choose 2). 
+
+The maximum for a mask with 14 unset bits (mask 0) is 91 pairs. 
+
+The next mask with 12 unset bits (mask with 2 bits set) would have 66 pairs, etc. 
+
+The total sum would be manageable. 
+
+Now, in code, here's the plan:
+
+First, precompute for all masks the list of unset bits. 
+
+Wait, but in code, for each mask, we can compute the unset bits on the fly. 
+
+Let me outline the code steps:
+
+First, precompute the GCD for all possible pairs. Wait, but the GCD depends on the indices. 
+
+Wait, the array nums is given. So for each possible pair of indices (i,j), i < j), precompute the GCD of nums[i] and nums[j]. 
+
+Wait, but in the code, for a given mask, when considering a pair (i,j), we can compute the GCD on the fly. 
+
+But computing GCD each time might be slow. So precomputing a 2D array of GCDs between all pairs would help. 
+
+Yes, precompute a 2D array where gcd_ij = gcd(nums[i], nums[j]). 
+
+Wait, but for all i < j, since GCD is symmetric. 
+
+So precompute a 2D array for all i and j. 
+
+Wait, in code:
+
+n = len(nums) 
+
+gcd_table = [[0]*(n) for _ in range(n)]
+
+for i in range(n):
+
+    for j in range(i+1, n):
+
+        gcd_table[i][j] = gcd(nums[i], nums[j])
+
+Wait, but in code, perhaps better to compute it on the fly, but for efficiency, precomputing is better. 
+
+Alternatively, in the code, for each pair (i,j) in the current mask's unset bits, compute the GCD each time. 
+
+But since n is up to 14, the GCD is O(1) per pair. 
+
+So the steps in code:
+
+Implement the DP as follows:
+
+Initialize dp as a list of size 2^14. 
+
+full_mask = (1<<n*2) -1? Wait, the mask is for 2n elements. Wait, the array length is 2n. 
+
+Wait, the array length is 2n, so for n up to 7, the array has 14 elements. So the mask is 14 bits. 
+
+Wait, the mask is a 14-bit number. 
+
+Wait, the code steps:
+
+First, precompute the GCD for all possible pairs. 
+
+Then, for all masks in order of decreasing number of set bits:
+
+Wait, but how to iterate through all masks in the correct order. 
+
+Alternatively, for all masks from 0 to (1<<14)-1:
+
+    compute the number of set bits. 
+
+    process the masks in order of decreasing number of set bits. 
+
+So first, generate all masks, sort them in order of the number of set bits in descending order. 
+
+Then, for each mask in that list:
+
+    if mask is full, dp[mask] =0 
+
+    else:
+
+        current_step = (number of set bits //2) +1 
+
+        current_unset_bits = list of indices where the bits are 0. 
+
+        max_score =0 
+
+        for i in 0 to len(current_unset_bits -1:
+
+            for j in i+1 to ...:
+
+                pick the indices a and b (the actual indices in the array). 
+
+                compute the GCD of nums[a] and nums[b]
+
+                new_mask = mask | (1<<a | 1<<b)
+
+                current_contribution = gcd_val * current_step 
+
+                temp = contribution + dp[new_mask]
+
+                if this is better than current max, update. 
+
+        dp[mask] = max_score 
+
+Wait, but how to get the list of unset bits for each mask. 
+
+Alternatively, for a given mask, iterate over all possible pairs of unset bits. 
+
+Let me think of code steps:
+
+First, precompute the list of all masks sorted in order of decreasing number of set bits. 
+
+Wait, in code:
+
+masks = list(range(0, 1<<14))
+
+sorted_masks = sorted(masks, key=lambda x: bin(x).bit_count(), reverse=True)
+
+Wait, in Python, the bit_count() is available in Python 3.10+, but perhaps using bin(x).count('1') 
+
+Wait, in code:
+
+sorted_masks = sorted( all masks, key=lambda m: -bin(m).count('1'))
+
+Then, for each mask in sorted_masks:
+
+    if mask is full, then dp[mask] =0 
+
+    else:
+
+        current_step = (number of set bits in mask) //2 +1 
+
+        unset_bits = list of indices where the bits are 0. 
+
+        max_score =0 
+
+        for i in 0 to len(unset_bits)-1:
+
+            for j in i+1 to len(unset_bits)-1:
+
+                a = unset_bits[i]
+
+                b = unset_bits[j]
+
+                new_mask = mask | (1<<a | 1<<b)
+
+                contribution = gcd(nums[a], nums[b]) * current_step 
+
+                current_candidate = contribution + dp[new_mask]
+
+                if current_candidate > max_score:
+
+                    max_score = current_candidate 
+
+        dp[mask] = max_score 
+
+Wait, but how to get the list of unset bits for a given mask. 
+
+Alternatively, for a given mask, iterate over all possible pairs of indices (i,j) where the bits are 0. 
+
+Wait, here's the code outline:
+
+for mask in sorted_masks:
+
+    if mask == full_mask:
+
+        dp[mask] =0 
+
+        continue 
+
+    count = bin(mask).count('1')
+
+    step = (count //2) +1 
+
+    # collect all unset bits 
+
+    unset = []
+
+    for i in 0..13:
+
+        if not (mask & (1<<i))):
+
+            add to unset list 
+
+    max_score =0 
+
+    for i in 0 to len(unset)-1:
+
+        for j in i+1 to len(unset)-1:
+
+            a = unset[i]
+
+            b = unset[j]
+
+            new_mask = mask | (1<<a | 1<<b)
+
+            current_gcd = gcd(nums[a], nums[b])
+
+            contribution = current_gcd * step 
+
+            current_total = contribution + dp[new_mask]
+
+            if current_total > max_score:
+
+                max_score = current_total 
+
+    dp[mask] = max_score 
+
+Wait, but in code, how to compute the unset bits. 
+
+Alternatively, for each mask, loop through all possible pairs of indices (i,j) where the bits are 0. 
+
+Wait, but for each mask, to find all unset bits, we can loop through all indices from 0 to 13, check if the bit is 0. 
+
+This is O(14) per mask to collect the unset bits. 
+
+Then, for each pair of those bits, compute the new mask and the contribution. 
+
+This should be manageable. 
+
+Now, the problem is the time. Let's see:
+
+Total masks: 16384. 
+
+For each mask, the number of unset bits is (14 - count). 
+
+The number of pairs is (k choose 2), where k is the number of unset bits. 
+
+The total operations would be sum over all masks of (k choose 2). 
+
+The maximum for mask 0 is 14*13/2 =91. 
+
+For a mask with 12 bits set (so 2 unset bits), the number of pairs is 1. 
+
+The total sum would be sum_{k even} ( (14 - m) choose 2 ), where m is the number of set bits. 
+
+Wait, but for each mask with m set bits, the number of unset bits is 14 - m. 
+
+The total number of pairs for that mask is ( (14 - m) * (13 -m) ) /2. 
+
+The total over all masks would be sum over all masks of ( (k choose 2) where k is the number of unset bits. 
+
+But the total over all masks is the same as summing over all possible k (even numbers?), but perhaps it's manageable. 
+
+In Python, even with 16384 masks, and each mask having up to 91 pairs, the total operations are 16384 * 91 ~ 1.5 million operations. That's acceptable. 
+
+Now, the code steps:
+
+Implement the DP as a list of size 2^14. 
+
+First, precompute the full_mask = (1<<14) -1 
+
+Initialize dp as a list of size (1<<14). 
+
+Initialize dp[full_mask] =0 
+
+Then, for all masks in order from full_mask down to 0, but in the correct order. 
+
+Wait, but how to process the masks in the correct order. 
+
+Alternatively, for all masks in the list sorted in order of decreasing number of set bits. 
+
+So in code:
+
+from functools import lru_cache? No, better to do bottom-up. 
+
+Wait, here's the code outline:
+
+n = len(nums) 
+
+Wait, the array length is 2n. 
+
+Wait, the code:
+
+def maxScore(nums):
+
+    n = len(nums)
+
+    m = n 
+
+    # since n is 2n? Wait, the problem says nums has length 2n. 
+
+    # So the length is 2n. 
+
+    # So the mask is 2n bits. 
+
+    # Let me see, for example, in example 1, nums has 2 elements, so mask is 2 bits. 
+
+    # So in code:
+
+    size = len(nums)
+
+    full_mask = (1 << size) -1 
+
+    dp = [0]*(1<<size)
+
+    dp[full_mask] =0 
+
+    for mask in all masks except full_mask, in order of decreasing number of set bits:
+
+        count = bin(mask).bit_count()
+
+        step = (count //2) +1 
+
+        unset_bits = []
+
+        for i in 0..size-1:
+
+            if (mask & (1<<i)) ==0:
+
+                append i to unset_bits 
+
+        max_score =0 
+
+        for i in 0 to len(unset_bits-1:
+
+            for j in i+1 to ...:
+
+                a = unset_bits[i]
+
+                b = unset_bits[j]
+
+                new_mask = mask | (1<<a | 1<<b)
+
+                current_gcd = gcd(nums[a], nums[b])
+
+                candidate = current_gcd * step + dp[new_mask]
+
+                if candidate > max_score:
+
+                    max_score = candidate 
+
+        dp[mask] = max_score 
+
+    return dp[0]
+
+Wait, but how to loop through the masks in the correct order. 
+
+Alternatively, in Python, we can precompute all masks, sort them in order of the number of set bits in descending order. 
+
+Wait, here's the code steps:
+
+sorted_masks = []
+
+for mask in 0 to (1<<size) -1:
+
+    sorted_masks.append( (mask, bin(mask).count('1')) )
+
+sorted_masks.sort(key=lambda x: -x[1])
+
+then, for each mask in the sorted order (excluding the full mask first?), process them in order. 
+
+Wait, but in code, perhaps:
+
+from collections import defaultdict 
+
+But perhaps in code:
+
+size = len(nums)
+
+full_mask = (1 << size) -1 
+
+dp = [ -1 for _ in range(1<<size) ]
+
+dp[full_mask] =0 
+
+for mask in reversed_order:
+
+Wait, perhaps the easiest way is to loop over all masks in order of the number of set bits in reverse order. 
+
+Alternatively, for each possible number of set bits from (size-2) down to 0:
+
+Wait, the maximum number of set bits is size (all set except 0). Wait, the full mask has all bits set. 
+
+Wait, the steps:
+
+for mask in all possible masks except full_mask:
+
+    compute the number of set bits. 
+
+    process the masks in order of decreasing number of set bits. 
+
+So in code:
+
+masks = []
+
+for mask in range(0, 1<<size):
+
+    if mask != full_mask:
+
+        masks.append(mask)
+
+masks.sort(key=lambda x: -bin(x).count('1'))
+
+Then, for mask in masks:
+
+    process mask 
+
+Wait, but the full_mask is already handled. 
+
+Wait, the code steps:
+
+Initialize dp array as a list of size (1<<size). 
+
+Initialize dp[full_mask] =0 
+
+for mask in all masks except full_mask, in order of decreasing number of set bits:
+
+    count = bin(mask).bit_count()
+
+    step = (count//2) +1 
+
+    unset_bits = list of indices where the bits are 0. 
+
+    max_score =0 
+
+    for i in 0 to len(unset_bits-1:
+
+        for j in i+1 to len(unset_bits)-1:
+
+            a = unset_bits[i]
+
+            b = unset_bits[j]
+
+            new_mask = mask | (1<<a | 1<<b)
+
+            current_gcd = gcd(nums[a], nums[b])
+
+            candidate = current_gcd * step + dp[new_mask]
+
+            if candidate > max_score:
+
+                max_score = candidate 
+
+    dp[mask] = max_score 
+
+Wait, but how to get the list of unset bits for each mask. 
+
+Alternatively, for each mask, iterate over all possible pairs of indices (i,j) where the bits are 0. 
+
+Wait, but that's O( (number of unset bits choose 2) per mask. 
+
+Alternatively, for each mask, iterate over all possible i from 0 to size-1:
+
+    if not set, then note it. 
+
+Wait, here's the code:
+
+for mask in the sorted list:
+
+    count = bin(mask).bit_count()
+
+    step = (count//2)+1 
+
+    unset = []
+
+    for i in 0 to size-1:
+
+        if (mask & (1<<i)) ==0:
+
+            add to unset list 
+
+    max_score =0 
+
+    for i in 0 to len(unset)-1:
+
+        for j in i+1 to len(unset)-1:
+
+            a = unset[i]
+
+            b = unset[j]
+
+            new_mask = mask | (1<<a | 1<<b)
+
+            current_gcd = gcd(nums[a], nums[b])
+
+            candidate = current_gcd * step + dp[new_mask]
+
+            if candidate > max_score:
+
+                max_score = candidate 
+
+    dp[mask] = max_score 
+
+Wait, but in Python, the loops may be slow. 
+
+Wait, but for 14 elements, the mask size is 14 bits. 
+
+Wait, let's see for n=7 (size=14), the total steps would be manageable. 
+
+Wait, in Python, loops over 16384 masks, each with up to 91 pairs, that's 16384 * 91 = ~1.5 million operations. 
+
+But in Python, loops can be slow. 
+
+Alternatively, precompute all possible pairs and their GCDs. 
+
+Wait, precompute a 2D array for GCD between all pairs. 
+
+gcd_table = [[0]*size for _ in range(size)]
+
+for i in range(size):
+
+    for j in range(i+1, size):
+
+        gcd_table[i][j] = gcd(nums[i], nums[j])
+
+Wait, but in code, the GCD can be computed on the fly. 
+
+Wait, but in Python, the math.gcd function returns the GCD, but note that math.gcd(a,b) returns the GCD of a and b. 
+
+Wait, but need to import math.gcd, and note that gcd(0,0) is undefined, but the problem states that nums are positive integers, so no zeros. 
+
+So, in code:
+
+import math 
+
+def maxScore(nums):
+
+    size = len(nums)
+
+    full_mask = (1 << size) -1 
+
+    dp = [ -1 for _ in range(1<<size) ]
+
+    dp[full_mask] =0 
+
+    # precompute the GCD table?
+
+    # Alternatively, compute on the fly. 
+
+    # Now, process masks in order of decreasing number of set bits. 
+
+    for mask in range(0, 1<<size):
+
+        # but need to process in order of decreasing set bits. 
+
+    Hmm, perhaps the easiest way is to iterate over all masks in reverse order of their bit counts. 
+
+    So first, create a list of all masks except full_mask, sorted in order of decreasing number of set bits. 
+
+    masks = []
+
+    for mask in range(0, 1<<size):
+
+        if mask != full_mask:
+
+            masks.append(mask)
+
+    masks.sort(key=lambda x: -bin(x).count('1'))
+
+    for mask in masks:
+
+        count = bin(mask).bit_count()
+
+        step = (count//2) +1 
+
+        unset_bits = []
+
+        for i in range(size):
+
+            if (mask & (1<<i)) ==0:
+
+                unset_bits.append(i)
+
+        current_max =0 
+
+        for i in range(len(unset_bits)):
+
+            for j in range(i+1, len(unset_bits)):
+
+                a = unset_bits[i]
+
+                b = unset_bits[j]
+
+                new_mask = mask | ( (1<<a) | (1<<b) )
+
+                current_gcd = math.gcd(nums[a], nums[b])
+
+                candidate = current_gcd * step + dp[new_mask]
+
+                if candidate > current_max:
+
+                    current_max = candidate 
+
+        dp[mask] = current_max 
+
+    return dp[0]
+
+Wait, but in the code above, the 'step' is (count//2)+1. 
+
+Wait, count is the number of set bits in mask. 
+
+Yes. 
+
+Wait, but in the code, the step is (count//2) +1. 
+
+Wait, for mask with 0 set bits (mask 0), count is 0, so step is 1. 
+
+Yes. 
+
+Wait, but in the code, the step is correct. 
+
+Wait, let's test with example 1: nums = [1,2]. 
+
+size is 2. 
+
+full_mask is 3 (binary 11). 
+
+Processing mask 0 (binary 00):
+
+count is 0, step is 1. 
+
+unset_bits is [0,1]
+
+the pair is (0,1). 
+
+new_mask is 3 (full_mask). 
+
+current_gcd is gcd(1,2)=1. 
+
+candidate is 1*1 + dp[3] (which is 0) → 1. 
+
+Thus dp[0] =1, which matches the example. 
+
+Yes. 
+
+Another example: example 2: nums = [3,4,6,8]. 
+
+size is 4. 
+
+The full_mask is 15 (binary 1111). 
+
+The mask 0 (0000):
+
+count is 0 → step 1. 
+
+The unset bits are all 4 elements. 
+
+The best choice is to pick 3 and 6 (indices 0 and 2?), but let's see. 
+
+Wait, in example 2, the optimal is to pair 3 and 6 (gcd 3) in step 1, then 4 and 8 (gcd 4) in step 2. 
+
+The total is 3*1 +4*2 =3+8=11. 
+
+The code should compute that. 
+
+So the code should work. 
+
+Now, the problem is the mask size. For n=7, the mask is 14 bits → 16384 entries. 
+
+In Python, 1<<14 is 16384, which is manageable. 
+
+Now, the code needs to be written in Python3. 
+
+Wait, but in Python, the mask can be up to 1<<14, which is manageable. 
+
+Now, the code:
+
+Wait, but in code, the mask can be up to 1<<14, which is 16384 elements. 
+
+Wait, here's the code:
+
+import math 
+
+class Solution:
+
+    def maxScore(self, nums: List[int]) -> int:
+
+        size = len(nums)
+
+        full_mask = (1 << size) -1 
+
+        dp = [0]*(1 << size)
+
+        dp[full_mask] =0 
+
+        # precompute the masks in order of decreasing set bits 
+
+        masks = []
+
+        for mask in range(0, 1<<size):
+
+            if mask != full_mask:
+
+                masks.append(mask)
+
+        # sort masks in order of decreasing number of set bits 
+
+        masks.sort(key=lambda x: -bin(x).count('1'))
+
+        for mask in masks:
+
+            count = bin(mask).bit_count()
+
+            step = (count //2) +1 
+
+            unset_bits = []
+
+            for i in range(size):
+
+                if (mask & (1<<i))) ==0:
+
+                    unset_bits.append(i)
+
+            current_max =0 
+
+            for i in range(len(unset_bits)):
+
+                for j in range(i+1, len(unset_bits):
+
+                    a = unset

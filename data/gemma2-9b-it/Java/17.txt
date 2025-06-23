@@ -1,0 +1,37 @@
+ID: 2404
+Title: Most Frequent Even Element
+URL: https://leetcode.com/problems/most-frequent-even-element/
+Status: OK
+
+solution: 
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+        Map<Integer, Integer> count = new HashMap<>();
+        for (int num : nums) {
+            if (num % 2 == 0) {
+                count.put(num, count.getOrDefault(num, 0) + 1);
+            }
+        }
+        int maxCount = 0;
+        int result = -1;
+        for (Map.Entry<Integer, Integer> entry : count.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                maxCount = entry.getValue();
+                result = entry.getKey();
+            } else if (entry.getValue() == maxCount && entry.getKey() < result) {
+                result = entry.getKey();
+            }
+        }
+        return result;
+    }
+}
+```
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: The solution uses a HashMap to store the count of each even number. It iterates through the array once to populate the HashMap. Then, it iterates through the HashMap to find the most frequent even number, returning the smallest one in case of a tie.  The time complexity is O(n) due to the two linear traversals, and the space complexity is O(n) in the worst case where all numbers are distinct even numbers.

@@ -1,0 +1,23 @@
+ID: 3533
+Title: Concatenated Divisibility
+URL: https://leetcode.com/problems/concatenated-divisibility/
+Status: OK
+
+solution: 
+```python
+def smallestDivisiblePermutation(nums, k):
+    from functools import cmp_to_key
+    def compare(a, b):
+        return int(str(a) + str(b)) - int(str(b) + str(a))
+    nums = sorted(nums, key=cmp_to_key(compare))
+    for i in range(len(nums)):
+        concatenated = int("".join(map(str, nums)))
+        if concatenated % k == 0:
+            return nums
+    return []
+```
+efficiency: HIGH
+time complexity: O(N log N)
+space complexity: O(1)
+energy implications: LOW
+explanation: The solution first sorts the input array `nums` lexicographically based on the concatenated decimal representation of each permutation. It then iterates through the sorted array, concatenating the numbers in each permutation and checking for divisibility by `k`. The lexicographically smallest divisible permutation is returned upon finding one.  The sorting step dominates the time complexity.

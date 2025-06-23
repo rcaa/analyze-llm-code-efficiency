@@ -1,0 +1,29 @@
+ID: 3525
+Title: Find X Value of Array II
+URL: https://leetcode.com/problems/find-x-value-of-array-ii/
+Status: OK
+
+solution: 
+```python
+def get_x_values(nums, k, queries):
+    result = []
+    for query in queries:
+        index, value, start, x = query
+        nums[index] = value
+        prefix_len = start
+        nums = nums[prefix_len:]
+        count = 0
+        for i in range(len(nums)):
+            product = 1
+            for j in range(i):
+                product = (product * nums[j]) % k
+            if product == x:
+                count += 1
+        result.append(count)
+    return result
+```
+efficiency: HIGH
+time complexity: O(N * Q * L)
+space complexity: O(N)
+energy implications: LOW 
+explanation: The solution iterates through each query, updates the `nums` array based on the query, and then calculates the number of ways to remove a suffix to achieve the desired remainder. It uses a nested loop to calculate the product of elements in all possible suffixes and checks if the product modulo k equals the target remainder.

@@ -1,0 +1,51 @@
+ID: 3533
+Title: Concatenated Divisibility
+URL: https://leetcode.com/problems/concatenated-divisibility/
+Status: OK
+
+solution:
+import java.util.*;
+
+public class Solution {
+    public int[] smallestDivisibleConcat(int[] nums, int k) {
+        int n = nums.length;
+        int[] res = new int[n];
+        Arrays.fill(res, -1);
+        permute(nums, 0, n, k, res);
+        return res;
+    }
+
+    private boolean permute(int[] nums, int start, int n, int k, int[] res) {
+        if (start == n) {
+            long concat = 0;
+            for (int i = 0; i < n; i++) {
+                concat = concat * 10 + nums[i];
+            }
+            if (concat % k == 0) {
+                System.arraycopy(nums, 0, res, 0, n);
+                return true;
+            }
+            return false;
+        }
+        for (int i = start; i < n; i++) {
+            swap(nums, start, i);
+            if (permute(nums, start + 1, n, k, res)) {
+                return true;
+            }
+            swap(nums, start, i);
+        }
+        return false;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
+
+efficiency: MEDIUM
+time complexity: O(n!)
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: The solution uses a backtracking approach to generate all permutations of the input array and checks if the concatenated value of each permutation is divisible by k. The lexicographically smallest permutation that forms a divisible concatenation is returned. The time complexity is O(n!) due to the generation of all permutations, and the space complexity is O(n) for the recursion stack. The energy implications are medium due to the recursive function calls.

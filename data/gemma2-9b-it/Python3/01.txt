@@ -1,0 +1,34 @@
+ID: 1157
+Title: Online Majority Element In Subarray
+URL: https://leetcode.com/problems/online-majority-element-in-subarray/
+Status: OK
+
+solution: 
+```python
+class MajorityChecker:
+    def __init__(self, arr):
+        self.counts = {}
+        for i, num in enumerate(arr):
+            if num in self.counts:
+                self.counts[num] += 1
+            else:
+                self.counts[num] = 1
+
+    def query(self, left, right, threshold):
+        subarray_counts = {}
+        for i in range(left, right + 1):
+            num = arr[i]
+            if num in subarray_counts:
+                subarray_counts[num] += 1
+            else:
+                subarray_counts[num] = 1
+        for num, count in subarray_counts.items():
+            if count >= threshold:
+                return num
+        return -1
+```
+efficiency: HIGH
+time complexity: O(N + Q*M)
+space complexity: O(N + M)
+energy implications: LOW
+explanation: The solution utilizes a dictionary to store element counts within the array during initialization. For each query, it iterates through the subarray, counting occurrences. If an element's count meets the threshold, it's returned. Otherwise, -1 is returned.  The time complexity is dominated by the initial array processing and the query iterations. Space complexity is primarily due to the dictionary storing element counts.

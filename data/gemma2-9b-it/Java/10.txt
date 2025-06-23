@@ -1,0 +1,62 @@
+ID: 3569
+Title: Maximize Count of Distinct Primes After Split
+URL: https://leetcode.com/problems/maximize-count-of-distinct-primes-after-split/
+Status: OK
+
+solution: 
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public int[] splitArray(int[] nums, int[][] queries) {
+        int n = nums.length;
+        int[] result = new int[queries.length];
+        Set<Integer> primes = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            if (isPrime(nums[i])) {
+                primes.add(nums[i]);
+            }
+        }
+        for (int i = 0; i < queries.length; i++) {
+            int idx = queries[i][0];
+            int val = queries[i][1];
+            nums[idx] = val;
+            if (isPrime(val)) {
+                primes.add(val);
+            } else {
+                primes.remove(val);
+            }
+            int maxCount = 0;
+            for (int k = 1; k < n; k++) {
+                int prefixCount = primes.size();
+                int suffixCount = 0;
+                for (int j = k; j < n; j++) {
+                    if (isPrime(nums[j])) {
+                        suffixCount++;
+                    }
+                }
+                maxCount = Math.max(maxCount, prefixCount + suffixCount);
+            }
+            result[i] = maxCount;
+        }
+        return result;
+    }
+    private boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+efficiency: HIGH
+time complexity: O(n * q * log(n))
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: The solution iterates through each query, updates the array, and then finds the optimal split point for each update. The `isPrime` function is used to determine if a number is prime. The time complexity is dominated by the nested loops for finding the optimal split point, which takes O(n) time for each query. The space complexity is O(n) due to the `primes` set storing distinct prime numbers. The energy implications are medium due to the number of operations performed.

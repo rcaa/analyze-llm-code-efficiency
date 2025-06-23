@@ -1,0 +1,32 @@
+ID: 1157
+Title: Online Majority Element In Subarray
+URL: https://leetcode.com/problems/online-majority-element-in-subarray/
+Status: OK
+
+solution:
+class MajorityChecker {
+    int[] arr;
+    public MajorityChecker(int[] arr) {
+        this.arr = arr;
+    }
+    public int query(int left, int right, int threshold) {
+        for (int num : arr) {
+            int count = 0;
+            for (int i = left; i <= right; i++) {
+                if (arr[i] == num) {
+                    count++;
+                }
+            }
+            if (count >= threshold) {
+                return num;
+            }
+        }
+        return -1;
+    }
+}
+
+efficiency: MEDIUM
+time complexity: O(n^2)
+space complexity: O(1)
+energy implications: MEDIUM
+explanation: The MajorityChecker class uses a simple iterative approach to find the majority element in a given subarray. It iterates over each unique element in the array and counts its occurrences in the subarray. If an element occurs at least threshold times, it is returned as the majority element. If no such element exists, -1 is returned. This approach has a time complexity of O(n^2) due to the nested loops, but it is straightforward to implement and understand.

@@ -1,0 +1,39 @@
+ID: 3539
+Title: Find Sum of Array Product of Magical Sequences
+URL: https://leetcode.com/problems/find-sum-of-array-product-of-magical-sequences/
+Status: OK
+
+solution:
+class Solution {
+public:
+    int MOD = 1e9 + 7;
+    int magicalSequenceSum(int m, int k, vector<int>& nums) {
+        int n = nums.size();
+        vector<int> seq(m);
+        long long res = 0;
+        function<void(int)> dfs = [&](int idx) {
+            if (idx == m) {
+                long long sum = 0, prod = 1;
+                for (int i = 0; i < m; i++) {
+                    sum += seq[i];
+                    prod = prod * nums[seq[i]] % MOD;
+                }
+                if (__builtin_popcount(sum) == k) {
+                    res = (res + prod) % MOD;
+                }
+                return;
+            }
+            for (int i = 0; i < n; i++) {
+                seq[idx] = i;
+                dfs(idx + 1);
+            }
+        };
+        dfs(0);
+        return res;
+    }
+};
+efficiency: MEDIUM
+time complexity: O(n^m)
+space complexity: O(m)
+energy implications: MEDIUM
+explanation: The solution uses depth-first search to generate all possible sequences and checks if each sequence is magical by counting the set bits in the binary representation of the sum of the sequence elements. The array product is calculated for each magical sequence and added to the result modulo 10^9 + 7. The time complexity is O(n^m) due to the recursive generation of sequences, and the space complexity is O(m) for storing the current sequence. The energy implications are medium due to the recursive function calls and modulo operations.

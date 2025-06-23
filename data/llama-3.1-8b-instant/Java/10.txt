@@ -1,0 +1,95 @@
+ID: 3569
+Title: Maximize Count of Distinct Primes After Split
+URL: https://leetcode.com/problems/maximize-count-of-distinct-primes-after-split/
+Status: FALHA
+
+solution: 
+```java
+public class Solution {
+    public int[] maxSumOfDistinctElements(int[] nums, int[][] queries) {
+        int n = nums.length;
+        int[] primes = sieveOfEratosthenes(10000);
+        int[] prefixSum = new int[n];
+        int[] distinctPrimes = new int[n];
+        int[] result = new int[queries.length];
+
+        for (int i = 0; i < n; i++) {
+            prefixSum[i] = (i == 0) ? 1 : prefixSum[i - 1] + nums[i];
+            distinctPrimes[i] = countDistinctPrimes(nums, i, primes);
+        }
+
+        for (int i = 0; i < queries.length; i++) {
+            int idx = queries[i][0];
+            int val = queries[i][1];
+            nums[idx] = val;
+            int maxSum = 0;
+            for (int k = 1; k < n; k++) {
+                int sum1 = prefixSum[k - 1];
+                int sum2 = prefixSum[n - 1] - prefixSum[k];
+                int distinctPrimes1 = distinctPrimes[k - 1];
+                int distinctPrimes2 = countDistinctPrimes(nums, k, primes);
+                maxSum = Math.max(maxSum, distinctPrimes1 + distinctPrimes2);
+            }
+            result[i] = maxSum;
+        }
+
+        return result;
+    }
+
+    private int[] sieveOfEratosthenes(int n) {
+        boolean[] isPrime = new boolean[n + 1];
+        for (int i = 0; i <= n; i++) {
+            isPrime[i] = true;
+        }
+        isPrime[0] = isPrime[1] = false;
+        for (int i = 2; i * i <= n; i++) {
+            if (isPrime[i]) {
+                for (int j = i * i; j <= n; j += i) {
+                    isPrime[j] = false;
+                }
+            }
+        }
+        int count = 0;
+        for (int i = 2; i <= n; i++) {
+            if (isPrime[i]) {
+                count++;
+            }
+        }
+        int[] primes = new int[count];
+        int j = 0;
+        for (int i = 2; i <= n; i++) {
+            if (isPrime[i]) {
+                primes[j++] = i;
+            }
+        }
+        return primes;
+    }
+
+    private int countDistinctPrimes(int[] nums, int idx, int[] primes) {
+        int count = 0;
+        for (int i = 0; i < idx; i++) {
+            if (isPrime(nums[i], primes)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private boolean isPrime(int num, int[] primes) {
+        for (int i = 0; i < primes.length; i++) {
+            if (primes[i] == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+efficiency: HIGH
+
+time complexity: O(n log log n + q * n)
+
+space complexity: O(n + q)
+
+energy implications: LOW

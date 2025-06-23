@@ -1,0 +1,30 @@
+ID: 1207
+Title: Unique Number of Occurrences
+URL: https://leetcode.com/problems/unique-number-of-occurrences/
+Status: OK
+
+solution: 
+```cpp
+#include <unordered_map>
+using namespace std;
+
+bool uniqueOccurrences(vector<int>& arr) {
+    unordered_map<int, int> count;
+    for (int num : arr) {
+        count[num]++;
+    }
+    unordered_set<int> occurrences;
+    for (auto it : count) {
+        if (occurrences.count(it.second)) {
+            return false;
+        }
+        occurrences.insert(it.second);
+    }
+    return true;
+}
+```
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: The solution uses a hash map to count the occurrences of each element and a hash set to keep track of unique occurrence counts. Iterating through the hash map and checking for duplicates in the hash set provides an efficient way to determine if all occurrence counts are unique.

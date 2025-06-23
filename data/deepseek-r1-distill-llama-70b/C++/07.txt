@@ -1,0 +1,113 @@
+ID: 3533
+Title: Concatenated Divisibility
+URL: https://leetcode.com/problems/concatenated-divisibility/
+Status: OK
+
+solution: 
+```cpp
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+
+vector<int> lexSmallestDivisibleConcat(vector<int>& nums, int k) {
+    int n = nums.size();
+    if (n == 0) return {};
+
+    sort(nums.begin(), nums.end());
+
+    vector<int> len_array(n);
+    vector<int> power_mod_array(n);
+    vector<int> num_mod_array(n);
+
+    for (int i = 0; i < n; ++i) {
+        int num = nums[i];
+        int len = to_string(num).length();
+        len_array[i] = len;
+        power_mod_array[i] = 1;
+        for (int j = 0; j < len; ++j) {
+            power_mod_array[i] = (power_mod_array[i] * 10) % k;
+        }
+        num_mod_array[i] = num % k;
+    }
+
+    vector<int> result;
+    bool found = false;
+    vector<bool> used(n, false);
+    vector<vector<bool>> memo(1 << n, vector<bool>(k, false));
+
+    function<void(int, int, int, vector<int>&)> backtrack =
+        [&](int bitmask, int current_remainder, int start, vector<int>& path) {
+            if (found) return;
+
+            if (bitmask == (1 << n)) {
+                if (current_remainder == 0) {
+                    result = path;
+                    found = true;
+                }
+                return;
+            }
+
+            for (int i = start; i < n; ++i) {
+                if (!used[i]) {
+                    if (i > 0 && nums[i] == nums[i-1] && !used[i-1]) {
+                        continue;
+                    }
+                    int num = nums[i];
+                    int len = len_array[i];
+                    int power_mod = power_mod_array[i];
+                    int num_mod = num_mod_array[i];
+
+                    int new_remainder = (current_remainder * power_mod + num_mod) % k;
+                    if (new_remainder < 0) new_remainder += k;
+
+                    int new_bitmask = bitmask | (1 << i);
+                    if (!memo[new_bitmask][new_remainder]) {
+                        memo[new_bitmask][new_remainder] = true;
+                        path.push_back(num);
+                        used[i] = true;
+                        backtrack(new_bitmask, new_remainder, i, path);
+                        if (found) return;
+                        path.pop_back();
+                        used[i] = false;
+                    }
+                }
+            }
+        };
+
+    vector<int> path;
+    for (int i = 0; i < n; ++i) {
+        if (used[i]) continue;
+        if (i > 0 && nums[i] == nums[i-1] && !used[i-1]) continue;
+        int num = nums[i];
+        int len = len_array[i];
+        int power_mod = power_mod_array[i];
+        int num_mod = num_mod_array[i];
+        int new_remainder = (0 * power_mod + num_mod) % k;
+        if (new_remainder < 0) new_remainder += k;
+        int new_bitmask = 1 << i;
+        if (!memo[new_bitmask][new_remainder]) {
+            memo[new_bitmask][new_remainder] = true;
+            path.push_back(num);
+            used[i] = true;
+            backtrack(new_bitmask, new_remainder, i, path);
+            if (found) return result;
+            path.pop_back();
+            used[i] = false;
+        }
+    }
+
+    return result;
+}
+```
+
+efficiency: HIGH
+
+time complexity: O(n * 2^n * k)
+
+space complexity: O(n * 2^n * k)
+
+energy implications: LOW
+
+explanation: The solution uses backtracking with memoization to efficiently explore permutations in lexicographic order, ensuring the smallest valid permutation is found first. Memoization prunes redundant states, significantly reducing the search space.

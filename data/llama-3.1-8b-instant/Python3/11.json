@@ -1,0 +1,14 @@
+{
+  "id": "3574",
+  "titulo": "Maximize Subarray GCD Score",
+  "url": "https://leetcode.com/problems/maximize-subarray-gcd-score/",
+  "llm_response": {
+    "resposta_bruta": "solution: \n```python\ndef maximumScore(nums, k):\n    n = len(nums)\n    max_score = 0\n    for i in range(n):\n        max_val = nums[i]\n        for j in range(i, n):\n            max_val = max(max_val, nums[j])\n            score = (j - i + 1) * max_val\n            for m in range(k):\n                if j + 2 * m + 1 < n and nums[j + 2 * m + 1] < max_val:\n                    max_val = nums[j + 2 * m + 1]\n                    score = (j - i + 1) * max_val\n            max_score = max(max_score, score)\n    return max_score\n```\n\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(1)\nenergy implications: MEDIUM\nexplanation: This solution uses a brute force approach to find the maximum score. It iterates over all possible subarrays, and for each subarray, it tries to maximize the GCD by doubling the elements. The time complexity is O(n^3) due to the nested loops, and the space complexity is O(1) as it only uses a constant amount of space. The energy implications are MEDIUM due to the cubic time complexity.",
+    "resposta_formatada": "solution: \n```python\ndef maximumScore(nums, k):\n    n = len(nums)\n    max_score = 0\n    for i in range(n):\n        max_val = nums[i]\n        for j in range(i, n):\n            max_val = max(max_val, nums[j])\n            score = (j - i + 1) * max_val\n            for m in range(k):\n                if j + 2 * m + 1 < n and nums[j + 2 * m + 1] < max_val:\n                    max_val = nums[j + 2 * m + 1]\n                    score = (j - i + 1) * max_val\n            max_score = max(max_score, score)\n    return max_score\n```\n\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(1)\nenergy implications: MEDIUM\nexplanation: This solution uses a brute force approach to find the maximum score. It iterates over all possible subarrays, and for each subarray, it tries to maximize the GCD by doubling the elements. The time complexity is O(n^3) due to the nested loops, and the space complexity is O(1) as it only uses a constant amount of space. The energy implications are MEDIUM due to the cubic time complexity.",
+    "valid": true,
+    "tempo_resposta": 11.009328603744507,
+    "tentativas": 1,
+    "erro": null,
+    "timestamp": "2025-06-22T19:28:28.155116"
+  }
+}

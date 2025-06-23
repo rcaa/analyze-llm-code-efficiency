@@ -1,0 +1,32 @@
+ID: 3525
+Title: Find X Value of Array II
+URL: https://leetcode.com/problems/find-x-value-of-array-ii/
+Status: OK
+
+solution:
+class Solution {
+public:
+    vector<int> waysToFillArray(vector<int>& nums, int k, vector<vector<int>>& queries) {
+        vector<int> result;
+        for (auto& query : queries) {
+            int index = query[0], value = query[1], start = query[2], x = query[3];
+            nums[index] = value;
+            int count = 0;
+            for (int i = start; i < nums.size(); i++) {
+                long long product = 1;
+                for (int j = i; j < nums.size(); j++) {
+                    product = (product * nums[j]) % k;
+                    if (product == x) count++;
+                }
+            }
+            result.push_back(count);
+        }
+        return result;
+    }
+};
+
+efficiency: MEDIUM
+time complexity: O(n^2 * q)
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: The solution iterates over each query, updates the nums array, and then calculates the x-value by iterating over the suffixes of the updated array. The time complexity is quadratic due to the nested loops, and the space complexity is linear as we only need to store the updated array. The energy implications are medium due to the repeated calculations.

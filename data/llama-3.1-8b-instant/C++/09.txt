@@ -1,0 +1,43 @@
+ID: 3539
+Title: Find Sum of Array Product of Magical Sequences
+URL: https://leetcode.com/problems/find-sum-of-array-product-of-magical-sequences/
+Status: OK
+
+solution: 
+```cpp
+class Solution {
+public:
+    long long mod = 1e9 + 7;
+    long long dfs(int m, int k, int n, int idx, int ones, long long prod) {
+        if (ones > k || idx == m) return 0;
+        if (idx == m) return prod;
+        long long res = 0;
+        for (int i = 0; i < n; i++) {
+            if (i < idx) continue;
+            int newOnes = ones + (n - 1 - i) / 2;
+            res += dfs(m, k, n, idx + 1, newOnes, (prod * nums[i]) % mod);
+        }
+        return res % mod;
+    }
+    long long sumOfProducts(vector<int>& nums, int m, int k) {
+        long long res = 0;
+        for (int i = 0; i < (1 << m); i++) {
+            int ones = 0;
+            long long prod = 1;
+            for (int j = 0; j < m; j++) {
+                if ((i >> j) & 1) {
+                    ones++;
+                    prod = (prod * nums[j]) % mod;
+                }
+            }
+            if (ones == k) res = (res + dfs(m, k, m, 0, ones, prod)) % mod;
+        }
+        return res;
+    }
+};
+```
+efficiency: HIGH
+time complexity: O(m * 2^m * n)
+space complexity: O(m * 2^m)
+energy implications: MEDIUM
+explanation: This solution uses a recursive function to calculate the sum of products for each magical sequence. It uses a bitmask to represent the sequence and calculates the product and number of set bits for each sequence. The time complexity is O(m * 2^m * n) due to the recursive function and the loop over the array. The space complexity is O(m * 2^m) due to the recursive call stack. The energy implications are MEDIUM due to the recursive function and the loop over the array.

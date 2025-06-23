@@ -1,0 +1,43 @@
+ID: 1178
+Title: Number of Valid Words for Each Puzzle
+URL: https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
+Status: OK
+
+solution: 
+```cpp
+#include <vector>
+#include <string>
+#include <unordered_set>
+
+std::vector<int> findNumOfValidWords(std::vector<std::string>& words, std::vector<std::string>& puzzles) {
+    std::unordered_map<int, int> wordCount;
+    for (const auto& word : words) {
+        int mask = 0;
+        for (char c : word) {
+            mask |= 1 << (c - 'a');
+        }
+        wordCount[mask]++;
+    }
+    std::vector<int> result(puzzles.size());
+    for (size_t i = 0; i < puzzles.size(); ++i) {
+        int mask = 0;
+        for (char c : puzzles[i]) {
+            mask |= 1 << (c - 'a');
+        }
+        int count = 0;
+        for (int j = 0; j < 26; ++j) {
+            if ((mask & (1 << j)) && wordCount[mask ^ (1 << j)]) {
+                count++;
+            }
+        }
+        result[i] = count;
+    }
+    return result;
+}
+```
+
+efficiency: HIGH
+time complexity: O(n * m * log(m))
+space complexity: O(n * m)
+energy implications: LOW
+explanation: This solution uses a hash map to count the occurrences of each word mask. Then, for each puzzle, it generates all possible masks by removing one letter at a time and checks if the resulting mask is in the hash map. The time complexity is O(n * m * log(m)) due to the bit manipulation and hash map lookups, where n is the number of words and m is the maximum length of a word. The space complexity is O(n * m) for the hash map.

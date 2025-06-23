@@ -1,0 +1,39 @@
+ID: 3533
+Title: Concatenated Divisibility
+URL: https://leetcode.com/problems/concatenated-divisibility/
+Status: OK
+
+solution:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+bool isDivisible(vector<int>& nums, int k) {
+    string concatenated;
+    for (int num : nums) {
+        concatenated += to_string(num);
+    }
+    int concatenatedInt = stoi(concatenated);
+    return concatenatedInt % k == 0;
+}
+
+vector<int> smallestDivisibleConcatenation(vector<int>& nums, int k) {
+    vector<int> result;
+    sort(nums.begin(), nums.end());
+    do {
+        if (isDivisible(nums, k)) {
+            result = nums;
+            break;
+        }
+    } while (next_permutation(nums.begin(), nums.end()));
+    return result;
+}
+
+efficiency: HIGH
+time complexity: O(n! * m)
+space complexity: O(n)
+energy implications: LOW
+explanation: This solution generates all permutations of the input array and checks each permutation to see if the concatenated decimal representation is divisible by k. The lexicographically smallest permutation that satisfies this condition is returned. If no such permutation exists, an empty list is returned. The use of next_permutation ensures that the permutations are generated in lexicographical order, allowing the function to return as soon as it finds the first valid permutation.

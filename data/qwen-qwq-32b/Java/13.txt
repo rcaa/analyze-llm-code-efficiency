@@ -1,0 +1,19 @@
+ID: 1207
+Title: Unique Number of Occurrences
+URL: https://leetcode.com/problems/unique-number-of-occurrences/
+Status: OK
+
+solution: public boolean uniqueOccurrences(int[] arr) {
+    Map<Integer, Integer> freq = new HashMap<>();
+    for (int num : arr) {
+        freq.put(num, freq.getOrDefault(num, 0) + 1);
+    }
+    List<Integer> counts = new ArrayList<>(freq.values());
+    Set<Integer> uniqueCounts = new HashSet<>(counts);
+    return uniqueCounts.size() == counts.size();
+}
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: Uses a frequency map to count occurrences, then checks if counts are unique via a set. Efficiently handles all cases within linear time and space, leveraging hash maps and sets for quick lookups and duplicates detection.

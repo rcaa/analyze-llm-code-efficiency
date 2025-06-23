@@ -1,0 +1,33 @@
+ID: 3569
+Title: Maximize Count of Distinct Primes After Split
+URL: https://leetcode.com/problems/maximize-count-of-distinct-primes-after-split/
+Status: OK
+
+solution:
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def max_prime_counts(nums, queries):
+    result = []
+    for query in queries:
+        idx, val = query
+        nums[idx] = val
+        max_count = 0
+        for k in range(1, len(nums)):
+            prefix = set(num for num in nums[:k] if is_prime(num))
+            suffix = set(num for num in nums[k:] if is_prime(num))
+            max_count = max(max_count, len(prefix) + len(suffix))
+        result.append(max_count)
+    return result
+
+efficiency: MEDIUM
+time complexity: O(n * q * sqrt(m))
+space complexity: O(n)
+energy implications: MEDIUM
+explanation: The solution iterates over each query, updates the array, and then checks all possible splits of the array to find the maximum sum of distinct prime counts in the prefix and suffix. The is_prime function checks if a number is prime. The time complexity is dominated by the nested loops and the prime check. 
+```

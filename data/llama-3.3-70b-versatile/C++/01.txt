@@ -1,0 +1,31 @@
+ID: 1157
+Title: Online Majority Element In Subarray
+URL: https://leetcode.com/problems/online-majority-element-in-subarray/
+Status: OK
+
+solution: 
+```cpp
+class MajorityChecker {
+public:
+    MajorityChecker(vector<int>& arr) : arr_(arr) {}
+
+    int query(int left, int right, int threshold) {
+        unordered_map<int, int> count;
+        for (int i = left; i <= right; ++i) {
+            count[arr_[i]]++;
+            if (count[arr_[i]] >= threshold) {
+                return arr_[i];
+            }
+        }
+        return -1;
+    }
+
+private:
+    vector<int> arr_;
+};
+```
+efficiency: HIGH
+time complexity: O(n)
+space complexity: O(n)
+energy implications: LOW
+explanation: The MajorityChecker class uses an unordered_map to count the occurrences of each element in the subarray. The query function iterates over the subarray and returns the first element that occurs at least threshold times. If no such element exists, it returns -1. This approach ensures efficient queries with a time complexity of O(n), where n is the size of the subarray.
