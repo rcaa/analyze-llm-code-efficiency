@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int count = 0;\n        for (char c : s) {\n            if (c == '0') {\n                count++;\n            }\n        }\n        string bin_k = \"\";\n        while (k > 0) {\n            bin_k = (k % 2 == 0 ? \"0\" : \"1\") + bin_k;\n            k /= 2;\n        }\n        int i = s.size() - 1, j = bin_k.size() - 1;\n        while (i >= 0 && j >= 0) {\n            if (s[i] == bin_k[j]) {\n                count++;\n                j--;\n            }\n            i--;\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + log k)\nspace complexity: O(log k)\nenergy implications: LOW\nexplanation: The solution first counts all '0's in the string s. Then it converts the integer k to a binary string. It iterates through s and bin_k from right to left, incrementing the count whenever a matching bit is found. The count of '0's and matching bits gives the length of the longest subsequence.",
+  "code": "class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int count = 0;\n        for (char c : s) {\n            if (c == '0') {\n                count++;\n            }\n        }\n        string bin_k = \"\";\n        while (k > 0) {\n            bin_k = (k % 2 == 0 ? \"0\" : \"1\") + bin_k;\n            k /= 2;\n        }\n        int i = s.size() - 1, j = bin_k.size() - 1;\n        while (i >= 0 && j >= 0) {\n            if (s[i] == bin_k[j]) {\n                count++;\n                j--;\n            }\n            i--;\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-06T00:59:06.289131",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int count = 0;\n        for (char c : s) {\n            if (c == '0') {\n                count++;\n            }\n        }\n        string bin_k = \"\";\n        while (k > 0) {\n            bin_k = (k % 2 == 0 ? \"0\" : \"1\") + bin_k;\n            k /= 2;\n        }\n        int i = s.size() - 1, j = bin_k.size() - 1;\n        while (i >= 0 && j >= 0) {\n            if (s[i] == bin_k[j]) {\n                count++;\n                j--;\n            }\n            i--;\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.044532"
+}

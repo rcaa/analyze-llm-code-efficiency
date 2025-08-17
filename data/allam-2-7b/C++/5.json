@@ -1,0 +1,15 @@
+{
+  "id": 5,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string longestPalindrome(string s) {\n        int n = s.length();\n        vector<int> dp(n, 0);\n\n        for (int i = 0; i < n; i++) {\n            for (int j = i; j <= n - i; j++) {\n                dp[j] = max(dp[j], dp[j + 1] + 1);\n            }\n        }\n\n        int maxLen = 0;\n        for (int i = 0; i < n; i++) {\n            if (dp[i] > maxLen) {\n                maxLen = dp[i];\n                int start = i;\n            }\n        }\n\n        return s.substr(start, maxLen);\n    }\n};```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\nWe use dynamic programming to solve this problem by iterating over the string and calculating the length of the longest palindromic substring ending at each index. We then find the maximum length and its starting index to return the final result. This approach has a time complexity of O(n^2) and a space complexity of O(n), where n is the length of the string. ",
+  "code": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        int n = s.length();\n        vector<int> dp(n, 0);\n\n        for (int i = 0; i < n; i++) {\n            for (int j = i; j <= n - i; j++) {\n                dp[j] = max(dp[j], dp[j + 1] + 1);\n            }\n        }\n\n        int maxLen = 0;\n        for (int i = 0; i < n; i++) {\n            if (dp[i] > maxLen) {\n                maxLen = dp[i];\n                int start = i;\n            }\n        }\n\n        return s.substr(start, maxLen);\n    }\n};",
+  "timestamp": "2025-08-06T01:33:44.154888",
+  "code_extracted_previous": "public:\n    string longestPalindrome(string s) {\n        int n = s.length();\n        vector<int> dp(n, 0);\n\n        for (int i = 0; i < n; i++) {\n            for (int j = i; j <= n - i; j++) {\n                dp[j] = max(dp[j], dp[j + 1] + 1);\n            }\n        }\n\n        int maxLen = 0;\n        for (int i = 0; i < n; i++) {\n            if (dp[i] > maxLen) {\n                maxLen = dp[i];\n                int start = i;\n            }\n        }\n\n        return s.substr(start, maxLen);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.029382"
+}

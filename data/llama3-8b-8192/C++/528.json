@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    Solution(vector<int>& w) {\n        total = accumulate(w.begin(), w.end(), 0);\n        for (int i = 0; i < w.size(); i++) {\n            w[i] = {w[i], total - w[i]};\n        }\n    }\n    \n    int pickIndex() {\n        int rand_num = rand() % total;\n        for (int i = 0; i < w.size(); i++) {\n            if (rand_num < w[i].first) return i;\n            rand_num -= w[i].first;\n        }\n        return w.size() - 1;\n    }\nprivate:\n    int total;\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a cumulative sum approach to efficiently generate random numbers within the given probability range. It first calculates the total sum of the weights and then constructs a new array where each element is a pair containing the original weight and the remaining sum. The pickIndex function then uses this array to generate a random number and return the corresponding index.",
+  "code": "class Solution {\npublic:\n    Solution(vector<int>& w) {\n        total = accumulate(w.begin(), w.end(), 0);\n        for (int i = 0; i < w.size(); i++) {\n            w[i] = {w[i], total - w[i]};\n        }\n    }\n    \n    int pickIndex() {\n        int rand_num = rand() % total;\n        for (int i = 0; i < w.size(); i++) {\n            if (rand_num < w[i].first) return i;\n            rand_num -= w[i].first;\n        }\n        return w.size() - 1;\n    }\nprivate:\n    int total;\n};",
+  "timestamp": "2025-08-05T12:59:35.547442",
+  "code_extracted_previous": "class Solution {\npublic:\n    Solution(vector<int>& w) {\n        total = accumulate(w.begin(), w.end(), 0);\n        for (int i = 0; i < w.size(); i++) {\n            w[i] = {w[i], total - w[i]};\n        }\n    }\n    \n    int pickIndex() {\n        int rand_num = rand() % total;\n        for (int i = 0; i < w.size(); i++) {\n            if (rand_num < w[i].first) return i;\n            rand_num -= w[i].first;\n        }\n        return w.size() - 1;\n    }\nprivate:\n    int total;\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.512420"
+}

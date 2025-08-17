@@ -1,0 +1,15 @@
+{
+  "id": 1147,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int longestDecomposition(string text) {\n        int k = 1;\n        for (int i = 1; i < text.length(); i++) {\n            for (int j = i + 1; j <= text.length(); j++) {\n                if (text.substr(i, j - i) == text.substr(i, j - i)) {\n                    k = max(k, j - i + 1);\n                }\n            }\n        }\n        return k;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nThe problem requires finding the largest number of substrings that can be formed from a given string such that each substring is equal and the sum of the substrings equals the original string. We can solve this problem using nested loops to iterate through all possible substrings and check if they are equal. If they are equal, we update the value of k, which represents the largest number of substrings. The time complexity is O(n^2), where n is the length of the string. The space complexity is O(1) since we only use a constant amount of space for the variable k. The energy implications are low since the solution only requires a small amount of computational resources. ",
+  "code": "class Solution {\npublic:\n    int longestDecomposition(string text) {\n        int k = 1;\n        for (int i = 1; i < text.length(); i++) {\n            for (int j = i + 1; j <= text.length(); j++) {\n                if (text.substr(i, j - i) == text.substr(i, j - i)) {\n                    k = max(k, j - i + 1);\n                }\n            }\n        }\n        return k;\n    }\n};",
+  "timestamp": "2025-08-06T01:13:55.059322",
+  "code_extracted_previous": "public:\n    int longestDecomposition(string text) {\n        int k = 1;\n        for (int i = 1; i < text.length(); i++) {\n            for (int j = i + 1; j <= text.length(); j++) {\n                if (text.substr(i, j - i) == text.substr(i, j - i)) {\n                    k = max(k, j - i + 1);\n                }\n            }\n        }\n        return k;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.023183"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 884,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    vector<string> uncommonFromSentences(string s1, string s2) {\n        map<string, int> wordCount;\n        vector<string> result;\n        string word;\n\n        stringstream ss1(s1), ss2(s2);\n        while (ss1 >> word) wordCount[word]++;\n        while (ss2 >> word) wordCount[word]++;\n\n        for (auto& [word, count] : wordCount) {\n            if (count == 1) result.push_back(word);\n        }\n\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N + M)\nspace complexity: O(N + M)\nenergy implications: LOW\nexplanation: The solution uses a map to count the frequency of each word in both sentences. Words that appear exactly once are considered uncommon and added to the result. This approach is efficient and leverages standard library utilities for clean and readable code.",
+  "code": "class Solution {\npublic:\n    vector<string> uncommonFromSentences(string s1, string s2) {\n        map<string, int> wordCount;\n        vector<string> result;\n        string word;\n\n        stringstream ss1(s1), ss2(s2);\n        while (ss1 >> word) wordCount[word]++;\n        while (ss2 >> word) wordCount[word]++;\n\n        for (auto& [word, count] : wordCount) {\n            if (count == 1) result.push_back(word);\n        }\n\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T16:01:25.581497",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<string> uncommonFromSentences(string s1, string s2) {\n        map<string, int> wordCount;\n        vector<string> result;\n        string word;\n\n        stringstream ss1(s1), ss2(s2);\n        while (ss1 >> word) wordCount[word]++;\n        while (ss2 >> word) wordCount[word]++;\n\n        for (auto& [word, count] : wordCount) {\n            if (count == 1) result.push_back(word);\n        }\n\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:01.263012"
+}

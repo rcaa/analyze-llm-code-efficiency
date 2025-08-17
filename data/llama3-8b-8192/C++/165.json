@@ -1,0 +1,15 @@
+{
+  "id": 165,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        vector<string> v1, v2;\n        stringstream ss1(version1), ss2(version2);\n        string temp;\n        while (getline(ss1, temp, '.')) v1.push_back(temp);\n        while (getline(ss2, temp, '.')) v2.push_back(temp);\n        int i = 0, j = 0;\n        while (i < v1.size() || j < v2.size()) {\n            int x = (i < v1.size()) ? stoi(v1[i]) : 0;\n            int y = (j < v2.size()) ? stoi(v2[j]) : 0;\n            if (x < y) return -1;\n            if (x > y) return 1;\n            i++; j++;\n        }\n        return 0;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution efficiently compares two version strings by splitting them into revisions, converting each revision to an integer, and comparing them. It uses a two-pointer approach to iterate through the revisions, and returns -1 if version1 is less than version2, 1 if version1 is greater than version2, and 0 if they are equal.",
+  "code": "class Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        vector<string> v1, v2;\n        stringstream ss1(version1), ss2(version2);\n        string temp;\n        while (getline(ss1, temp, '.')) v1.push_back(temp);\n        while (getline(ss2, temp, '.')) v2.push_back(temp);\n        int i = 0, j = 0;\n        while (i < v1.size() || j < v2.size()) {\n            int x = (i < v1.size()) ? stoi(v1[i]) : 0;\n            int y = (j < v2.size()) ? stoi(v2[j]) : 0;\n            if (x < y) return -1;\n            if (x > y) return 1;\n            i++; j++;\n        }\n        return 0;\n    }\n};",
+  "timestamp": "2025-08-06T01:35:31.517669",
+  "code_extracted_previous": "public:\n    int compareVersion(string version1, string version2) {\n        vector<string> v1, v2;\n        stringstream ss1(version1), ss2(version2);\n        string temp;\n        while (getline(ss1, temp, '.')) v1.push_back(temp);\n        while (getline(ss2, temp, '.')) v2.push_back(temp);\n        int i = 0, j = 0;\n        while (i < v1.size() || j < v2.size()) {\n            int x = (i < v1.size()) ? stoi(v1[i]) : 0;\n            int y = (j < v2.size()) ? stoi(v2[j]) : 0;\n            if (x < y) return -1;\n            if (x > y) return 1;\n            i++; j++;\n        }\n        return 0;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.670425"
+}

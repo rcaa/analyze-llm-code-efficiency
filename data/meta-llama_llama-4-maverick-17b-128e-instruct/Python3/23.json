@@ -1,0 +1,15 @@
+{
+  "id": 23,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "```python\n# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nimport heapq\nfrom typing import List, Optional\n\nclass Solution:\n    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        heap = []\n        for i, node in enumerate(lists):\n            if node:\n                heapq.heappush(heap, (node.val, i, node))\n        dummy = ListNode()\n        current = dummy\n        while heap:\n            val, i, node = heapq.heappop(heap)\n            current.next = node\n            current = current.next\n            if node.next:\n                heapq.heappush(heap, (node.next.val, i, node.next))\n        return dummy.next\n```\n\nefficiency: HIGH  \ntime complexity: O(N log k)  \nspace complexity: O(k)  \nenergy implications: LOW  \nexplanation: Utilizes a min-heap to efficiently merge k sorted linked lists. The heap stores the current smallest node from each list, allowing for O(log k) insertion and removal. This results in a time complexity of O(N log k), where N is the total number of nodes across all lists. The space complexity is O(k) due to the heap storage.",
+  "code": "def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        heap = []\n        for i, node in enumerate(lists):\n            if node:\n                heapq.heappush(heap, (node.val, i, node))\n        dummy = ListNode()\n        current = dummy\n        while heap:\n            val, i, node = heapq.heappop(heap)\n            current.next = node\n            current = current.next\n            if node.next:\n                heapq.heappush(heap, (node.next.val, i, node.next))\n        return dummy.next\n```",
+  "timestamp": "2025-08-05T15:14:10.613308",
+  "code_extracted_previous": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nimport heapq\nfrom typing import List, Optional\n\nclass Solution:\n    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        heap = []\n        for i, node in enumerate(lists):\n            if node:\n                heapq.heappush(heap, (node.val, i, node))\n        dummy = ListNode()\n        current = dummy\n        while heap:\n            val, i, node = heapq.heappop(heap)\n            current.next = node\n            current = current.next\n            if node.next:\n                heapq.heappush(heap, (node.next.val, i, node.next))\n        return dummy.next",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.837601"
+}

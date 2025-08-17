@@ -1,0 +1,15 @@
+{
+  "id": 3307,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long len = 1;\n        string word = \"a\";\n        for (int op : operations) {\n            if (op == 0) {\n                len *= 2;\n                word += word;\n            } else {\n                string newWord;\n                for (char c : word) {\n                    if (c == 'z') newWord += 'a';\n                    else newWord += (char)(c + 1);\n                }\n                word = newWord;\n            }\n        }\n        return word[k % len - 1];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: We use a string to store the word and a variable to store its length. We iterate over the operations, performing each operation and updating the word and its length accordingly. Finally, we return the kth character of the word, taking into account the length of the word after all operations.",
+  "code": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long len = 1;\n        string word = \"a\";\n        for (int op : operations) {\n            if (op == 0) {\n                len *= 2;\n                word += word;\n            } else {\n                string newWord;\n                for (char c : word) {\n                    if (c == 'z') newWord += 'a';\n                    else newWord += (char)(c + 1);\n                }\n                word = newWord;\n            }\n        }\n        return word[k % len - 1];\n    }\n};",
+  "timestamp": "2025-08-05T15:23:44.144215",
+  "code_extracted_previous": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long len = 1;\n        string word = \"a\";\n        for (int op : operations) {\n            if (op == 0) {\n                len *= 2;\n                word += word;\n            } else {\n                string newWord;\n                for (char c : word) {\n                    if (c == 'z') newWord += 'a';\n                    else newWord += (char)(c + 1);\n                }\n                word = newWord;\n            }\n        }\n        return word[k % len - 1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.222291"
+}

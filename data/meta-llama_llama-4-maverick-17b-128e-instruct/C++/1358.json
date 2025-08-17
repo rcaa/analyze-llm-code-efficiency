@@ -1,0 +1,15 @@
+{
+  "id": 1358,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int count[3] = {0};\n        int res = 0, left = 0;\n        for (int right = 0; right < s.size(); ++right) {\n            count[s[right] - 'a']++;\n            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {\n                res += s.size() - right;\n                count[s[left] - 'a']--;\n                left++;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a sliding window approach to efficiently count substrings containing 'a', 'b', and 'c'. Maintains a count array for the characters and expands the window to the right, contracting from the left when all characters are present, thus counting valid substrings.",
+  "code": "class Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int count[3] = {0};\n        int res = 0, left = 0;\n        for (int right = 0; right < s.size(); ++right) {\n            count[s[right] - 'a']++;\n            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {\n                res += s.size() - right;\n                count[s[left] - 'a']--;\n                left++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:01:56.601950",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int count[3] = {0};\n        int res = 0, left = 0;\n        for (int right = 0; right < s.size(); ++right) {\n            count[s[right] - 'a']++;\n            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {\n                res += s.size() - right;\n                count[s[left] - 'a']--;\n                left++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.705023"
+}

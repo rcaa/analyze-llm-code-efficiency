@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public String robotWithString(String s) {\n        StringBuilder sb = new StringBuilder();\n        StringBuilder t = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            t.append(c);\n        }\n        while (!t.toString().isEmpty()) {\n            char c = t.charAt(t.length() - 1);\n            t.deleteCharAt(t.length() - 1);\n            if (!sb.toString().isEmpty() && sb.charAt(sb.length() - 1) <= c) {\n                sb.append(c);\n            } else {\n                sb.insert(0, c);\n            }\n        }\n        return sb.toString();\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer approach to efficiently solve the problem. It first constructs the string t by appending the characters of s. Then, it iterates over t, appending characters to sb in a way that maintains the lexicographically smallest order. The time complexity is O(n) because each character is processed once, and the space complexity is O(n) because the maximum size of sb and t is n. The energy implications are LOW because the solution only involves simple string operations.",
+  "code": "class Solution {\n    public String robotWithString(String s) {\n        StringBuilder sb = new StringBuilder();\n        StringBuilder t = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            t.append(c);\n        }\n        while (!t.toString().isEmpty()) {\n            char c = t.charAt(t.length() - 1);\n            t.deleteCharAt(t.length() - 1);\n            if (!sb.toString().isEmpty() && sb.charAt(sb.length() - 1) <= c) {\n                sb.append(c);\n            } else {\n                sb.insert(0, c);\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-05T15:10:04.157772",
+  "code_extracted_previous": "public String robotWithString(String s) {\n        StringBuilder sb = new StringBuilder();\n        StringBuilder t = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            t.append(c);\n        }\n        while (!t.toString().isEmpty()) {\n            char c = t.charAt(t.length() - 1);\n            t.deleteCharAt(t.length() - 1);\n            if (!sb.toString().isEmpty() && sb.charAt(sb.length() - 1) <= c) {\n                sb.append(c);\n            } else {\n                sb.insert(0, c);\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.418322"
+}

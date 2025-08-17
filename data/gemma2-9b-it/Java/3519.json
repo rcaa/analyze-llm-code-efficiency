@@ -1,0 +1,15 @@
+{
+  "id": 3519,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countNumbers(String l, String r, int b) {\n        long left = Long.parseLong(l, b);\n        long right = Long.parseLong(r, b);\n        int count = 0;\n        for (long i = left; i <= right; i++) {\n            if (isNonDecreasing(i, b)) {\n                count++;\n            }\n        }\n        return (int) (count % 1000000007);\n    }\n    private boolean isNonDecreasing(long num, int b) {\n        String numStr = Long.toString(num, b);\n        for (int i = 1; i < numStr.length(); i++) {\n            if (numStr.charAt(i) < numStr.charAt(i - 1)) {\n                return false;\n            }\n        }\n        return true;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N * log(b))\nspace complexity: O(log(b))\nenergy implications: LOW\nexplanation: The solution iterates through the range [l, r] in base b. For each number, it checks if its digits are non-decreasing using a helper function. The time complexity is dominated by the loop and the conversion of numbers to strings in base b. The space complexity is primarily due to the string representation of numbers in base b.\n\n\n\n",
+  "code": "class Solution {\n    public int countNumbers(String l, String r, int b) {\n        long left = Long.parseLong(l, b);\n        long right = Long.parseLong(r, b);\n        int count = 0;\n        for (long i = left; i <= right; i++) {\n            if (isNonDecreasing(i, b)) {\n                count++;\n            }\n        }\n        return (int) (count % 1000000007);\n    }\n    private boolean isNonDecreasing(long num, int b) {\n        String numStr = Long.toString(num, b);\n        for (int i = 1; i < numStr.length(); i++) {\n            if (numStr.charAt(i) < numStr.charAt(i - 1)) {\n                return false;\n            }\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-06T08:41:08.708308",
+  "code_extracted_previous": "class Solution {\n    public int countNumbers(String l, String r, int b) {\n        long left = Long.parseLong(l, b);\n        long right = Long.parseLong(r, b);\n        int count = 0;\n        for (long i = left; i <= right; i++) {\n            if (isNonDecreasing(i, b)) {\n                count++;\n            }\n        }\n        return (int) (count % 1000000007);\n    }\n    private boolean isNonDecreasing(long num, int b) {\n        String numStr = Long.toString(num, b);\n        for (int i = 1; i < numStr.length(); i++) {\n            if (numStr.charAt(i) < numStr.charAt(i - 1)) {\n                return false;\n            }\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.415615"
+}

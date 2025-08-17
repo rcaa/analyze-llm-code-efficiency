@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```\nclass Solution:\n    def longestSemiRepetitiveSubstring(self, s: str) -> int:\n        n = len(s)\n        best = 1\n        for l in range(n):\n            cnt = 0\n            for r in range(l, n):\n                if r > l and s[r] == s[r-1]:\n                    cnt += 1\n                    if cnt > 1:\n                        break\n                best = max(best, r - l + 1)\n        return best\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate over every substring with two nested loops; count adjacent duplicates on the fly and stop early when a second pair is found. The 50-character limit makes the quadratic scan trivial.",
+  "code": "class Solution:\n    def longestSemiRepetitiveSubstring(self, s: str) -> int:\n        n = len(s)\n        best = 1\n        for l in range(n):\n            cnt = 0\n            for r in range(l, n):\n                if r > l and s[r] == s[r-1]:\n                    cnt += 1\n                    if cnt > 1:\n                        break\n                best = max(best, r - l + 1)\n        return best",
+  "timestamp": "2025-08-06T01:06:50.572984",
+  "code_extracted_previous": "class Solution:\n    def longestSemiRepetitiveSubstring(self, s: str) -> int:\n        n = len(s)\n        best = 1\n        for l in range(n):\n            cnt = 0\n            for r in range(l, n):\n                if r > l and s[r] == s[r-1]:\n                    cnt += 1\n                    if cnt > 1:\n                        break\n                best = max(best, r - l + 1)\n        return best",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.807955"
+}

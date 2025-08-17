@@ -1,0 +1,15 @@
+{
+  "id": 692,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public List<String> topKFrequent(String[] words, int k) {\n        Map<String, Integer> freq = new HashMap<>();\n        for (String w : words) freq.merge(w, 1, Integer::sum);\n\n        PriorityQueue<Map.Entry<String, Integer>> pq =\n            new PriorityQueue<>((a, b) -> {\n                int cmp = Integer.compare(b.getValue(), a.getValue());\n                return cmp != 0 ? cmp : a.getKey().compareTo(b.getKey());\n            });\n\n        for (Map.Entry<String, Integer> e : freq.entrySet()) pq.offer(e);\n\n        List<String> res = new ArrayList<>();\n        for (int i = 0; i < k; i++) res.add(pq.poll().getKey());\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Count frequencies in O(n), then use a min-heap of size k to keep the k most frequent words ordered by frequency descending and lexicographical ascending. Each insertion is O(log k) for n unique words, yielding O(n log k) total.",
+  "code": "class Solution {\n    public List<String> topKFrequent(String[] words, int k) {\n        Map<String, Integer> freq = new HashMap<>();\n        for (String w : words) freq.merge(w, 1, Integer::sum);\n\n        PriorityQueue<Map.Entry<String, Integer>> pq =\n            new PriorityQueue<>((a, b) -> {\n                int cmp = Integer.compare(b.getValue(), a.getValue());\n                return cmp != 0 ? cmp : a.getKey().compareTo(b.getKey());\n            });\n\n        for (Map.Entry<String, Integer> e : freq.entrySet()) pq.offer(e);\n\n        List<String> res = new ArrayList<>();\n        for (int i = 0; i < k; i++) res.add(pq.poll().getKey());\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:16:02.327588",
+  "code_extracted_previous": "class Solution {\n    public List<String> topKFrequent(String[] words, int k) {\n        Map<String, Integer> freq = new HashMap<>();\n        for (String w : words) freq.merge(w, 1, Integer::sum);\n\n        PriorityQueue<Map.Entry<String, Integer>> pq =\n            new PriorityQueue<>((a, b) -> {\n                int cmp = Integer.compare(b.getValue(), a.getValue());\n                return cmp != 0 ? cmp : a.getKey().compareTo(b.getKey());\n            });\n\n        for (Map.Entry<String, Integer> e : freq.entrySet()) pq.offer(e);\n\n        List<String> res = new ArrayList<>();\n        for (int i = 0; i < k; i++) res.add(pq.poll().getKey());\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.756836"
+}

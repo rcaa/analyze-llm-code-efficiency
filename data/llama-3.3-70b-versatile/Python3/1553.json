@@ -1,0 +1,15 @@
+{
+  "id": 1553,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nsolution: \nclass Solution:\n    def minDays(self, n: int) -> int:\n        memo = {0: 0}\n        def dp(n):\n            if n in memo:\n                return memo[n]\n            res = 1 + dp(n - 1)\n            if n % 2 == 0:\n                res = min(res, 1 + dp(n // 2))\n            if n % 3 == 0:\n                res = min(res, 1 + dp(n - 2 * (n // 3)))\n            memo[n] = res\n            return res\n        return dp(n)\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming with memoization to efficiently calculate the minimum number of days to eat n oranges, considering all possible actions and their outcomes.\n```",
+  "code": "class Solution:\n    def minDays(self, n: int) -> int:\n        memo = {0: 0}\n        def dp(n):\n            if n in memo:\n                return memo[n]\n            res = 1 + dp(n - 1)\n            if n % 2 == 0:\n                res = min(res, 1 + dp(n // 2))\n            if n % 3 == 0:\n                res = min(res, 1 + dp(n - 2 * (n // 3)))\n            memo[n] = res\n            return res\n        return dp(n)",
+  "timestamp": "2025-08-06T15:17:17.895508",
+  "code_extracted_previous": "solution: \nclass Solution:\n    def minDays(self, n: int) -> int:\n        memo = {0: 0}\n        def dp(n):\n            if n in memo:\n                return memo[n]\n            res = 1 + dp(n - 1)\n            if n % 2 == 0:\n                res = min(res, 1 + dp(n // 2))\n            if n % 3 == 0:\n                res = min(res, 1 + dp(n - 2 * (n // 3)))\n            memo[n] = res\n            return res\n        return dp(n)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:34.851212"
+}

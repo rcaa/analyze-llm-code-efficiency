@@ -1,0 +1,15 @@
+{
+  "id": 1190,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public String reverseParentheses(String s) {\n        Stack<StringBuilder> stack = new Stack<>();\n        StringBuilder current = new StringBuilder();\n\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                stack.push(current);\n                current = new StringBuilder();\n            } else if (c == ')') {\n                current = new StringBuilder(stack.pop().append(current.reverse()).toString());\n            } else {\n                current.append(c);\n            }\n        }\n\n        return current.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a stack to efficiently reverse substrings within parentheses by maintaining a current string and reversing when encountering closing brackets. The stack allows for nested reversal handling. The main weakness is the O(n^2) time complexity due to string reversal operations.",
+  "code": "class Solution {\n    public String reverseParentheses(String s) {\n        Stack<StringBuilder> stack = new Stack<>();\n        StringBuilder current = new StringBuilder();\n\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                stack.push(current);\n                current = new StringBuilder();\n            } else if (c == ')') {\n                current = new StringBuilder(stack.pop().append(current.reverse()).toString());\n            } else {\n                current.append(c);\n            }\n        }\n\n        return current.toString();\n    }\n}",
+  "timestamp": "2025-08-06T00:50:22.006377",
+  "code_extracted_previous": "class Solution {\n    public String reverseParentheses(String s) {\n        Stack<StringBuilder> stack = new Stack<>();\n        StringBuilder current = new StringBuilder();\n\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                stack.push(current);\n                current = new StringBuilder();\n            } else if (c == ')') {\n                current = new StringBuilder(stack.pop().append(current.reverse()).toString());\n            } else {\n                current.append(c);\n            }\n        }\n\n        return current.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:01.535713"
+}

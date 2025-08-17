@@ -1,0 +1,15 @@
+{
+  "id": 1422,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def maxScore(self, s: str) -> int:\n        n = len(s)\n        left_zeros = [0] * (n + 1)\n        for i in range(n):\n            if s[i] == '0':\n                left_zeros[i + 1] = left_zeros[i] + 1\n            else:\n                left_zeros[i + 1] = left_zeros[i]\n        max_score = 0\n        for i in range(1, n):\n            max_score = max(max_score, left_zeros[i] + n - i - 1 - left_zeros[n])\n        return max_score\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently calculate the maximum score. It first calculates the number of zeros in the left substring for each prefix of the string. Then, it iterates over the string to find the maximum score by considering all possible splits. The time complexity is O(n) and the space complexity is O(n), making it efficient for large inputs.",
+  "code": "class Solution:\n    def maxScore(self, s: str) -> int:\n        n = len(s)\n        left_zeros = [0] * (n + 1)\n        for i in range(n):\n            if s[i] == '0':\n                left_zeros[i + 1] = left_zeros[i] + 1\n            else:\n                left_zeros[i + 1] = left_zeros[i]\n        max_score = 0\n        for i in range(1, n):\n            max_score = max(max_score, left_zeros[i] + n - i - 1 - left_zeros[n])\n        return max_score",
+  "timestamp": "2025-08-05T23:40:19.856329",
+  "code_extracted_previous": "class Solution:\n    def maxScore(self, s: str) -> int:\n        n = len(s)\n        left_zeros = [0] * (n + 1)\n        for i in range(n):\n            if s[i] == '0':\n                left_zeros[i + 1] = left_zeros[i] + 1\n            else:\n                left_zeros[i + 1] = left_zeros[i]\n        max_score = 0\n        for i in range(1, n):\n            max_score = max(max_score, left_zeros[i] + n - i - 1 - left_zeros[n])\n        return max_score",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.377997"
+}

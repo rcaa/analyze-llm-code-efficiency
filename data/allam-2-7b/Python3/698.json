@@ -1,0 +1,15 @@
+{
+  "id": 698,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef canPartitionKSubsets(nums, k):\n    n = len(nums)\n    dp = [[False] * (1 << n) for _ in range(k)]\n    for i in range(1 << n):\n        for j in range(k):\n            dp[j][i] = any(nums[j+1:] <= i and dp[j][sum(nums[:j]) ^ i]\n\nefficiency: MEDIUM\ntime complexity: O(n * 2^k)\nspace complexity: O(k)\nenergy implications: LOW\n\nExplanation:\nWe use a dynamic programming approach to solve the problem. We create a 2D array dp of size (2^n) x k, where n is the length of the input array nums. We iterate over each subset size i (0 to 2^n - 1) and for each subset size, we iterate over each subset j (0 to k - 1). We check if the remaining elements after subset j can form a subset with sum i and update the dp array accordingly. The any() function is used to check if the remaining elements can form a subset with the given sum. ",
+  "code": "def canPartitionKSubsets(nums, k):\n    n = len(nums)\n    dp = [[False] * (1 << n) for _ in range(k)]\n    for i in range(1 << n):\n        for j in range(k):\n            dp[j][i] = any(nums[j+1:] <= i and dp[j][sum(nums[:j]) ^ i]",
+  "timestamp": "2025-08-05T13:16:35.718506",
+  "code_extracted_previous": "def canPartitionKSubsets(nums, k):\n    n = len(nums)\n    dp = [[False] * (1 << n) for _ in range(k)]\n    for i in range(1 << n):\n        for j in range(k):\n            dp[j][i] = any(nums[j+1:] <= i and dp[j][sum(nums[:j]) ^ i]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:16.158157"
+}

@@ -1,14 +1,15 @@
 {
-  "id": "2441",
-  "titulo": "Largest Positive Integer That Exists With Its Negative",
-  "url": "https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/",
-  "llm_response": {
-    "resposta_bruta": "solution: def findMaxK(nums):\n    num_set = set(nums)\n    max_k = -1\n    for num in nums:\n        if -num in num_set and num > max_k:\n            max_k = num\n    return max_k if max_k != -1 else -1\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a set to store the input array for efficient lookups, then iterates over the array to find the maximum k. It keeps track of the maximum k found so far and returns it if it's not -1, otherwise returns -1. The time complexity is O(n) because we're doing a constant amount of work for each element in the array, and the space complexity is also O(n) because we're storing all elements in the set.",
-    "resposta_formatada": "solution: def findMaxK(nums):\n    num_set = set(nums)\n    max_k = -1\n    for num in nums:\n        if -num in num_set and num > max_k:\n            max_k = num\n    return max_k if max_k != -1 else -1\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a set to store the input array for efficient lookups, then iterates over the array to find the maximum k. It keeps track of the maximum k found so far and returns it if it's not -1, otherwise returns -1. The time complexity is O(n) because we're doing a constant amount of work for each element in the array, and the space complexity is also O(n) because we're storing all elements in the set.",
-    "valid": true,
-    "tempo_resposta": 14.266366720199585,
-    "tentativas": 2,
-    "erro": null,
-    "timestamp": "2025-06-22T19:30:05.196346"
-  }
+  "id": 20,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution:\n    def isValid(self, s: str) -> bool:\n        stack = []\n        mapping = {\")\": \"(\", \"}\": \"{\", \"]\": \"[\"}\n        for char in s:\n            if char in mapping.values():\n                stack.append(char)\n            elif char in mapping.keys():\n                if not stack or mapping[char] != stack.pop():\n                    return False\n        return not stack\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to keep track of the opening brackets encountered so far. It iterates over the string, pushing opening brackets onto the stack and popping them off when a corresponding closing bracket is encountered. If a closing bracket does not match the top of the stack, or if there are unmatched opening brackets left at the end, the string is invalid. This approach has a high efficiency due to its constant time complexity for stack operations and a single pass through the string.",
+  "code": "class Solution:\n    def isValid(self, s: str) -> bool:\n        stack = []\n        mapping = {\")\": \"(\", \"}\": \"{\", \"]\": \"[\"}\n        for char in s:\n            if char in mapping.values():\n                stack.append(char)\n            elif char in mapping.keys():\n                if not stack or mapping[char] != stack.pop():\n                    return False\n        return not stack",
+  "timestamp": "2025-08-05T22:46:51.071650",
+  "code_extracted_previous": "def isValid(self, s: str) -> bool:\n        stack = []\n        mapping = {\")\": \"(\", \"}\": \"{\", \"]\": \"[\"}\n        for char in s:\n            if char in mapping.values():\n                stack.append(char)\n            elif char in mapping.keys():\n                if not stack or mapping[char] != stack.pop():\n                    return False\n        return not stack",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.519297"
 }

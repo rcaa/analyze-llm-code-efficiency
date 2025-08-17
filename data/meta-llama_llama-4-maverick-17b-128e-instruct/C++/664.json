@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, 0));\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i][i] = 1;\n            for (int j = i + 1; j < n; ++j) {\n                dp[i][j] = dp[i + 1][j] + 1;\n                if (s[i] == s[j]) {\n                    dp[i][j] = min(dp[i][j], dp[i][j - 1] + (j - 1 >= i + 1 ? dp[i + 1][j - 1] : 0));\n                } else {\n                    for (int k = i + 1; k < j; ++k) {\n                        if (s[i] == s[k]) {\n                            dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j]);\n                        }\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n^2)\nenergy implications: MEDIUM\nexplanation: Dynamic programming is used to track the minimum turns required to print substrings of s, optimizing the solution by minimizing the number of turns needed to print the entire string.",
+  "code": "class Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, 0));\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i][i] = 1;\n            for (int j = i + 1; j < n; ++j) {\n                dp[i][j] = dp[i + 1][j] + 1;\n                if (s[i] == s[j]) {\n                    dp[i][j] = min(dp[i][j], dp[i][j - 1] + (j - 1 >= i + 1 ? dp[i + 1][j - 1] : 0));\n                } else {\n                    for (int k = i + 1; k < j; ++k) {\n                        if (s[i] == s[k]) {\n                            dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j]);\n                        }\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};",
+  "timestamp": "2025-08-05T16:08:30.977765",
+  "code_extracted_previous": "class Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, 0));\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i][i] = 1;\n            for (int j = i + 1; j < n; ++j) {\n                dp[i][j] = dp[i + 1][j] + 1;\n                if (s[i] == s[j]) {\n                    dp[i][j] = min(dp[i][j], dp[i][j - 1] + (j - 1 >= i + 1 ? dp[i + 1][j - 1] : 0));\n                } else {\n                    for (int k = i + 1; k < j; ++k) {\n                        if (s[i] == s[k]) {\n                            dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j]);\n                        }\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.757772"
+}

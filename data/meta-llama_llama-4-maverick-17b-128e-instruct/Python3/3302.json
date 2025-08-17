@@ -1,0 +1,15 @@
+{
+  "id": 3302,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def validSequence(self, word1: str, word2: str) -> List[int]:\n        n, m = len(word1), len(word2)\n        pos = [-1] * 26\n        ans = []\n        diff_count = 0\n        i = n - 1\n        j = m - 1\n        while j >= 0:\n            while i >= 0 and (word1[i] != word2[j]):\n                i -= 1\n            if i < 0:\n                return []\n            ans.append(i)\n            if word1[i] != word2[j]:\n                diff_count += 1\n            i -= 1\n            j -= 1\n        if diff_count > 1:\n            return []\n        return ans[::-1]\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution iterates through both strings from the end, maintaining a list of indices where characters in `word1` match those in `word2`. It checks if at most one character needs to be changed to make the substring of `word1` almost equal to `word2`. If so, it returns the lexicographically smallest valid sequence of indices; otherwise, it returns an empty list.",
+  "code": "def validSequence(self, word1: str, word2: str) -> List[int]:\n        n, m = len(word1), len(word2)\n        pos = [-1] * 26\n        ans = []\n        diff_count = 0\n        i = n - 1\n        j = m - 1\n        while j >= 0:\n            while i >= 0 and (word1[i] != word2[j]):\n                i -= 1\n            if i < 0:\n                return []\n            ans.append(i)\n            if word1[i] != word2[j]:\n                diff_count += 1\n            i -= 1\n            j -= 1\n        if diff_count > 1:\n            return []\n        return ans[::-1]\n```",
+  "timestamp": "2025-08-06T01:50:16.258997",
+  "code_extracted_previous": "class Solution:\n    def validSequence(self, word1: str, word2: str) -> List[int]:\n        n, m = len(word1), len(word2)\n        pos = [-1] * 26\n        ans = []\n        diff_count = 0\n        i = n - 1\n        j = m - 1\n        while j >= 0:\n            while i >= 0 and (word1[i] != word2[j]):\n                i -= 1\n            if i < 0:\n                return []\n            ans.append(i)\n            if word1[i] != word2[j]:\n                diff_count += 1\n            i -= 1\n            j -= 1\n        if diff_count > 1:\n            return []\n        return ans[::-1]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.135882"
+}

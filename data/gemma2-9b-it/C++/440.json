@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        int num = 1;\n        k--;\n        while (k > 0) {\n            int count = 0;\n            for (int i = num; i <= n; i++) {\n                if (i < 10) {\n                    count++;\n                } else {\n                    count += i / 10;\n                }\n                if (count > k) {\n                    num = i;\n                    k -= count - k;\n                    break;\n                }\n            }\n        }\n        return num;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a binary search-like approach to efficiently find the k-th lexicographically smallest number. It iteratively narrows down the search range based on the count of numbers less than or equal to the current candidate. \n\n\n",
+  "code": "class Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        int num = 1;\n        k--;\n        while (k > 0) {\n            int count = 0;\n            for (int i = num; i <= n; i++) {\n                if (i < 10) {\n                    count++;\n                } else {\n                    count += i / 10;\n                }\n                if (count > k) {\n                    num = i;\n                    k -= count - k;\n                    break;\n                }\n            }\n        }\n        return num;\n    }\n};",
+  "timestamp": "2025-08-06T01:11:45.054342",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        int num = 1;\n        k--;\n        while (k > 0) {\n            int count = 0;\n            for (int i = num; i <= n; i++) {\n                if (i < 10) {\n                    count++;\n                } else {\n                    count += i / 10;\n                }\n                if (count > k) {\n                    num = i;\n                    k -= count - k;\n                    break;\n                }\n            }\n        }\n        return num;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.075086"
+}

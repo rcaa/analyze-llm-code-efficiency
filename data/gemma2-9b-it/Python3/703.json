@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = nums\n        heapq.heapify(self.min_heap)\n        while len(self.min_heap) > k:\n            heapq.heappop(self.min_heap)\n\n    def add(self, val: int) -> int:\n        heapq.heappush(self.min_heap, val)\n        if len(self.min_heap) > self.k:\n            heapq.heappop(self.min_heap)\n        return self.min_heap[0]\n```\n\nsolution: ```python\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = nums\n        heapq.heapify(self.min_heap)\n        while len(self.min_heap) > k:\n            heapq.heappop(self.min_heap)\n\n    def add(self, val: int) -> int:\n        heapq.heappush(self.min_heap, val)\n        if len(self.min_heap) > self.k:\n            heapq.heappop(self.min_heap)\n        return self.min_heap[0]\n```\nefficiency: HIGH\ntime complexity: O(log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Utilizes a min-heap of size k to efficiently track the kth largest element. Adding a new element takes O(log k) time for heap insertion and potential removal, while retrieving the kth largest is constant time as it's the root of the heap.  \n\n\n\n",
+  "code": "class KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = nums\n        heapq.heapify(self.min_heap)\n        while len(self.min_heap) > k:\n            heapq.heappop(self.min_heap)\n\n    def add(self, val: int) -> int:\n        heapq.heappush(self.min_heap, val)\n        if len(self.min_heap) > self.k:\n            heapq.heappop(self.min_heap)\n        return self.min_heap[0]",
+  "timestamp": "2025-08-06T01:11:09.863655",
+  "code_extracted_previous": "class KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = nums\n        heapq.heapify(self.min_heap)\n        while len(self.min_heap) > k:\n            heapq.heappop(self.min_heap)\n\n    def add(self, val: int) -> int:\n        heapq.heappush(self.min_heap, val)\n        if len(self.min_heap) > self.k:\n            heapq.heappop(self.min_heap)\n        return self.min_heap[0]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:27.049682"
+}

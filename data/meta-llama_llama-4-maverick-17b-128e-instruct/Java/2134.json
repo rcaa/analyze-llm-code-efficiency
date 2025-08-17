@@ -1,0 +1,15 @@
+{
+  "id": 2134,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int minSwaps(int[] nums) {\n        int n = nums.length;\n        int totalOnes = 0;\n        for (int num : nums) {\n            totalOnes += num;\n        }\n        int minSwaps = n;\n        int onesInWindow = 0;\n        for (int i = 0; i < totalOnes; i++) {\n            onesInWindow += nums[i];\n        }\n        minSwaps = Math.min(minSwaps, totalOnes - onesInWindow);\n        for (int i = totalOnes; i < n + totalOnes; i++) {\n            onesInWindow += nums[i % n] - nums[(i - totalOnes) % n];\n            minSwaps = Math.min(minSwaps, totalOnes - onesInWindow);\n        }\n        return minSwaps;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to efficiently count the minimum number of swaps required to group all 1's together in the circular array. It maintains a window of size equal to the total number of 1's and slides it over the array, updating the count of 1's within the window. The minimum number of swaps is calculated as the difference between the total number of 1's and the maximum count of 1's within the window.",
+  "code": "class Solution {\n    public int minSwaps(int[] nums) {\n        int n = nums.length;\n        int totalOnes = 0;\n        for (int num : nums) {\n            totalOnes += num;\n        }\n        int minSwaps = n;\n        int onesInWindow = 0;\n        for (int i = 0; i < totalOnes; i++) {\n            onesInWindow += nums[i];\n        }\n        minSwaps = Math.min(minSwaps, totalOnes - onesInWindow);\n        for (int i = totalOnes; i < n + totalOnes; i++) {\n            onesInWindow += nums[i % n] - nums[(i - totalOnes) % n];\n            minSwaps = Math.min(minSwaps, totalOnes - onesInWindow);\n        }\n        return minSwaps;\n    }\n}",
+  "timestamp": "2025-08-05T13:21:24.468553",
+  "code_extracted_previous": "class Solution {\n    public int minSwaps(int[] nums) {\n        int n = nums.length;\n        int totalOnes = 0;\n        for (int num : nums) {\n            totalOnes += num;\n        }\n        int minSwaps = n;\n        int onesInWindow = 0;\n        for (int i = 0; i < totalOnes; i++) {\n            onesInWindow += nums[i];\n        }\n        minSwaps = Math.min(minSwaps, totalOnes - onesInWindow);\n        for (int i = totalOnes; i < n + totalOnes; i++) {\n            onesInWindow += nums[i % n] - nums[(i - totalOnes) % n];\n            minSwaps = Math.min(minSwaps, totalOnes - onesInWindow);\n        }\n        return minSwaps;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.450228"
+}

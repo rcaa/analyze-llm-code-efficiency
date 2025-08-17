@@ -1,0 +1,15 @@
+{
+  "id": 264,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int nthUglyNumber(int n) {\n        vector<int> ugly;\n        ugly.push_back(1);\n        int i2 = 0, i3 = 0, i5 = 0;\n        while (ugly.size() < n) {\n            int next = min({ugly[i2] * 2, ugly[i3] * 3, ugly[i5] * 5});\n            ugly.push_back(next);\n            if (next == ugly[i2] * 2) i2++;\n            if (next == ugly[i3] * 3) i3++;\n            if (next == ugly[i5] * 5) i5++;\n        }\n        return ugly.back();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to efficiently generate the nth ugly number. It starts with the number 1 and repeatedly multiplies it by 2, 3, or 5 to generate the next ugly number. The priority queue ensures that the next ugly number is always the smallest one that has not been generated yet.",
+  "code": "class Solution {\npublic:\n    int nthUglyNumber(int n) {\n        vector<int> ugly;\n        ugly.push_back(1);\n        int i2 = 0, i3 = 0, i5 = 0;\n        while (ugly.size() < n) {\n            int next = min({ugly[i2] * 2, ugly[i3] * 3, ugly[i5] * 5});\n            ugly.push_back(next);\n            if (next == ugly[i2] * 2) i2++;\n            if (next == ugly[i3] * 3) i3++;\n            if (next == ugly[i5] * 5) i5++;\n        }\n        return ugly.back();\n    }\n};",
+  "timestamp": "2025-08-05T14:51:26.349105",
+  "code_extracted_previous": "class Solution {\npublic:\n    int nthUglyNumber(int n) {\n        vector<int> ugly;\n        ugly.push_back(1);\n        int i2 = 0, i3 = 0, i5 = 0;\n        while (ugly.size() < n) {\n            int next = min({ugly[i2] * 2, ugly[i3] * 3, ugly[i5] * 5});\n            ugly.push_back(next);\n            if (next == ugly[i2] * 2) i2++;\n            if (next == ugly[i3] * 3) i3++;\n            if (next == ugly[i5] * 5) i5++;\n        }\n        return ugly.back();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.083187"
+}

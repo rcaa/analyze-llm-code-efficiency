@@ -1,0 +1,15 @@
+{
+  "id": 23,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    struct Compare {\n        bool operator()(const ListNode* a, const ListNode* b) {\n            return a->val > b->val;\n        }\n    };\n\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        priority_queue<ListNode*, vector<ListNode*>, Compare> pq;\n        for (auto list : lists) {\n            if (list) {\n                pq.push(list);\n            }\n        }\n        ListNode* dummy = new ListNode();\n        ListNode* curr = dummy;\n        while (!pq.empty()) {\n            ListNode* node = pq.top();\n            pq.pop();\n            curr->next = node;\n            curr = curr->next;\n            if (node->next) {\n                pq.push(node->next);\n            }\n        }\n        return dummy->next;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(N log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Utilizes a priority queue to efficiently merge k sorted linked lists, leveraging the heap data structure to minimize time complexity.",
+  "code": "class Solution {\npublic:\n    struct Compare {\n        bool operator()(const ListNode* a, const ListNode* b) {\n            return a->val > b->val;\n        }\n    };\n\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        priority_queue<ListNode*, vector<ListNode*>, Compare> pq;\n        for (auto list : lists) {\n            if (list) {\n                pq.push(list);\n            }\n        }\n        ListNode* dummy = new ListNode();\n        ListNode* curr = dummy;\n        while (!pq.empty()) {\n            ListNode* node = pq.top();\n            pq.pop();\n            curr->next = node;\n            curr = curr->next;\n            if (node->next) {\n                pq.push(node->next);\n            }\n        }\n        return dummy->next;\n    }\n};",
+  "timestamp": "2025-08-06T15:09:37.482459",
+  "code_extracted_previous": "class Solution {\npublic:\n    struct Compare {\n        bool operator()(const ListNode* a, const ListNode* b) {\n            return a->val > b->val;\n        }\n    };\n\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        priority_queue<ListNode*, vector<ListNode*>, Compare> pq;\n        for (auto list : lists) {\n            if (list) {\n                pq.push(list);\n            }\n        }\n        ListNode* dummy = new ListNode();\n        ListNode* curr = dummy;\n        while (!pq.empty()) {\n            ListNode* node = pq.top();\n            pq.pop();\n            curr->next = node;\n            curr = curr->next;\n            if (node->next) {\n                pq.push(node->next);\n            }\n        }\n        return dummy->next;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.203135"
+}

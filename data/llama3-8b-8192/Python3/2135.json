@@ -1,0 +1,15 @@
+{
+  "id": 2135,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```\nclass Solution:\n    def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_set = set(startWords)\n        res = 0\n        for target in targetWords:\n            for i in range(26):\n                new_target = target + chr(ord('a') + i)\n                if sorted(new_target) in map(sorted, start_set):\n                    res += 1\n                    break\n        return res\n```\n\nefficiency: HIGH\n\ntime complexity: O(26 * (5 * 10^4)^2) = O(1.3 * 10^9)\n\nspace complexity: O(5 * 10^4) = O(1)\n\nenergy implications: LOW",
+  "code": "class Solution:\n    def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_set = set(startWords)\n        res = 0\n        for target in targetWords:\n            for i in range(26):\n                new_target = target + chr(ord('a') + i)\n                if sorted(new_target) in map(sorted, start_set):\n                    res += 1\n                    break\n        return res",
+  "timestamp": "2025-08-05T13:22:42.541397",
+  "code_extracted_previous": "class Solution:\n    def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_set = set(startWords)\n        res = 0\n        for target in targetWords:\n            for i in range(26):\n                new_target = target + chr(ord('a') + i)\n                if sorted(new_target) in map(sorted, start_set):\n                    res += 1\n                    break\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.694789"
+}

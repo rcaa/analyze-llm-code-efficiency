@@ -1,0 +1,15 @@
+{
+  "id": 3081,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution:\nclass Solution {\n    public String minimizeStringValue(String s) {\n        StringBuilder sb = new StringBuilder();\n        int[] count = new int[26];\n        int index = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '?') {\n                char newChar = 'a';\n                while (count[newChar - 'a'] > 0) {\n                    newChar++;\n                }\n                count[newChar - 'a']++;\n                sb.append(newChar);\n            } else {\n                count[c - 'a']++;\n                sb.append(c);\n            }\n        }\n        return sb.toString();\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the input string, replacing '?' characters with the lexicographically smallest available character that has not been used before, thus minimizing the value of the resulting string. It uses a count array to keep track of used characters.",
+  "code": "class Solution {\n    public String minimizeStringValue(String s) {\n        StringBuilder sb = new StringBuilder();\n        int[] count = new int[26];\n        int index = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '?') {\n                char newChar = 'a';\n                while (count[newChar - 'a'] > 0) {\n                    newChar++;\n                }\n                count[newChar - 'a']++;\n                sb.append(newChar);\n            } else {\n                count[c - 'a']++;\n                sb.append(c);\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-06T15:14:33.451437",
+  "code_extracted_previous": "class Solution {\n    public String minimizeStringValue(String s) {\n        StringBuilder sb = new StringBuilder();\n        int[] count = new int[26];\n        int index = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '?') {\n                char newChar = 'a';\n                while (count[newChar - 'a'] > 0) {\n                    newChar++;\n                }\n                count[newChar - 'a']++;\n                sb.append(newChar);\n            } else {\n                count[c - 'a']++;\n                sb.append(c);\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.098318"
+}

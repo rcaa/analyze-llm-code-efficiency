@@ -1,0 +1,15 @@
+{
+  "id": 3008,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> aIndices, bIndices, result;\n        for (int i = 0; i <= s.size() - a.size(); ++i) {\n            if (s.substr(i, a.size()) == a) aIndices.push_back(i);\n        }\n        for (int i = 0; i <= s.size() - b.size(); ++i) {\n            if (s.substr(i, b.size()) == b) bIndices.push_back(i);\n        }\n        int bIndex = 0;\n        for (int aIndex : aIndices) {\n            while (bIndex < bIndices.size() && abs(aIndex - bIndices[bIndex]) > k) ++bIndex;\n            if (bIndex < bIndices.size() && abs(aIndex - bIndices[bIndex]) <= k) result.push_back(aIndex);\n        }\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m + l)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: The solution iterates through string `s` to find indices of substrings `a` and `b`, then checks for each index of `a` if there's a nearby index of `b` within distance `k`. It maintains two pointers for efficient searching.",
+  "code": "class Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> aIndices, bIndices, result;\n        for (int i = 0; i <= s.size() - a.size(); ++i) {\n            if (s.substr(i, a.size()) == a) aIndices.push_back(i);\n        }\n        for (int i = 0; i <= s.size() - b.size(); ++i) {\n            if (s.substr(i, b.size()) == b) bIndices.push_back(i);\n        }\n        int bIndex = 0;\n        for (int aIndex : aIndices) {\n            while (bIndex < bIndices.size() && abs(aIndex - bIndices[bIndex]) > k) ++bIndex;\n            if (bIndex < bIndices.size() && abs(aIndex - bIndices[bIndex]) <= k) result.push_back(aIndex);\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T01:20:53.057372",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> aIndices, bIndices, result;\n        for (int i = 0; i <= s.size() - a.size(); ++i) {\n            if (s.substr(i, a.size()) == a) aIndices.push_back(i);\n        }\n        for (int i = 0; i <= s.size() - b.size(); ++i) {\n            if (s.substr(i, b.size()) == b) bIndices.push_back(i);\n        }\n        int bIndex = 0;\n        for (int aIndex : aIndices) {\n            while (bIndex < bIndices.size() && abs(aIndex - bIndices[bIndex]) > k) ++bIndex;\n            if (bIndex < bIndices.size() && abs(aIndex - bIndices[bIndex]) <= k) result.push_back(aIndex);\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.399486"
+}

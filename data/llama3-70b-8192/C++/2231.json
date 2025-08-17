@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int largestInteger(int num) {\n        string strNum = to_string(num);\n        vector<int> odd, even;\n        for (char c : strNum) {\n            if ((c - '0') % 2 == 0) even.push_back(c - '0');\n            else odd.push_back(c - '0');\n        }\n        sort(odd.rbegin(), odd.rend());\n        sort(even.rbegin(), even.rend());\n        int i = 0, j = 0, k = 0;\n        for (char& c : strNum) {\n            if ((c - '0') % 2 == 0) c = even[j++] + '0';\n            else c = odd[k++] + '0';\n        }\n        return stoi(strNum);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(n) log(log(n)))\nspace complexity: O(log(n))\nenergy implications: LOW\nexplanation: The solution separates the digits of the number into two vectors based on their parity, sorts them in descending order, and then reconstructs the number by replacing the original digits with the largest possible digits of the same parity.",
+  "code": "class Solution {\npublic:\n    int largestInteger(int num) {\n        string strNum = to_string(num);\n        vector<int> odd, even;\n        for (char c : strNum) {\n            if ((c - '0') % 2 == 0) even.push_back(c - '0');\n            else odd.push_back(c - '0');\n        }\n        sort(odd.rbegin(), odd.rend());\n        sort(even.rbegin(), even.rend());\n        int i = 0, j = 0, k = 0;\n        for (char& c : strNum) {\n            if ((c - '0') % 2 == 0) c = even[j++] + '0';\n            else c = odd[k++] + '0';\n        }\n        return stoi(strNum);\n    }\n};",
+  "timestamp": "2025-08-05T15:59:53.881123",
+  "code_extracted_previous": "public:\n    int largestInteger(int num) {\n        string strNum = to_string(num);\n        vector<int> odd, even;\n        for (char c : strNum) {\n            if ((c - '0') % 2 == 0) even.push_back(c - '0');\n            else odd.push_back(c - '0');\n        }\n        sort(odd.rbegin(), odd.rend());\n        sort(even.rbegin(), even.rend());\n        int i = 0, j = 0, k = 0;\n        for (char& c : strNum) {\n            if ((c - '0') % 2 == 0) c = even[j++] + '0';\n            else c = odd[k++] + '0';\n        }\n        return stoi(strNum);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.454610"
+}

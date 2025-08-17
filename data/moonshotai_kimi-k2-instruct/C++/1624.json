@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int first[26];\n        fill(first, first + 26, -1);\n        int maxLen = -1;\n        for (int i = 0; i < s.size(); ++i) {\n            int c = s[i] - 'a';\n            if (first[c] == -1) {\n                first[c] = i;\n            } else {\n                maxLen = max(maxLen, i - first[c] - 1);\n            }\n        }\n        return maxLen;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass records first occurrence of each character; subsequent occurrences compute substring length between first and current index. Constant auxiliary space via 26-element array.",
+  "code": "class Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int first[26];\n        fill(first, first + 26, -1);\n        int maxLen = -1;\n        for (int i = 0; i < s.size(); ++i) {\n            int c = s[i] - 'a';\n            if (first[c] == -1) {\n                first[c] = i;\n            } else {\n                maxLen = max(maxLen, i - first[c] - 1);\n            }\n        }\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-06T02:28:58.719310",
+  "code_extracted_previous": "public:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int first[26];\n        fill(first, first + 26, -1);\n        int maxLen = -1;\n        for (int i = 0; i < s.size(); ++i) {\n            int c = s[i] - 'a';\n            if (first[c] == -1) {\n                first[c] = i;\n            } else {\n                maxLen = max(maxLen, i - first[c] - 1);\n            }\n        }\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.288012"
+}

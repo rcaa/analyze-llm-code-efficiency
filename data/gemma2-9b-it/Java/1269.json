@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public int numWays(int steps, int arrLen) {\n        long[][] dp = new long[steps + 1][arrLen];\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j < arrLen; j++) {\n                dp[i][j] = (dp[i - 1][j] + (j > 0 ? dp[i - 1][j - 1] : 0) + (j < arrLen - 1 ? dp[i - 1][j + 1] : 0)) % (1000000007);\n            }\n        }\n        return (int) dp[steps][0];\n    }\n}\n```\n\nsolution: `long[][] dp = new long[steps + 1][arrLen]; dp[0][0] = 1; for (int i = 1; i <= steps; i++) { for (int j = 0; j < arrLen; j++) { dp[i][j] = (dp[i - 1][j] + (j > 0 ? dp[i - 1][j - 1] : 0) + (j < arrLen - 1 ? dp[i - 1][j + 1] : 0)) % (1000000007); } } return (int) dp[steps][0];`\nefficiency: HIGH\ntime complexity: O(steps * arrLen)\nspace complexity: O(steps * arrLen)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to store and reuse calculated results. It iterates through all possible steps and array indices, calculating the number of ways to reach each position. The modulo operation prevents integer overflow.\n",
+  "code": "`long[][] dp = new long[steps + 1][arrLen]; dp[0][0] = 1; for (int i = 1; i <= steps; i++) { for (int j = 0; j < arrLen; j++) { dp[i][j] = (dp[i - 1][j] + (j > 0 ? dp[i - 1][j - 1] : 0) + (j < arrLen - 1 ? dp[i - 1][j + 1] : 0)) % (1000000007); } } return (int) dp[steps][0];`",
+  "timestamp": "2025-08-05T14:19:15.388051",
+  "code_extracted_previous": "class Solution {\n    public int numWays(int steps, int arrLen) {\n        long[][] dp = new long[steps + 1][arrLen];\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j < arrLen; j++) {\n                dp[i][j] = (dp[i - 1][j] + (j > 0 ? dp[i - 1][j - 1] : 0) + (j < arrLen - 1 ? dp[i - 1][j + 1] : 0)) % (1000000007);\n            }\n        }\n        return (int) dp[steps][0];\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.542196"
+}

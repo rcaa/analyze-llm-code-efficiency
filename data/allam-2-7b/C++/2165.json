@@ -1,0 +1,15 @@
+{
+  "id": 2165,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    long long smallestNumber(long long num) {\n        int len = (int)log10(num);\n        long long result = num;\n        for (int i = len - 1; i >= 0; i--) {\n            result /= 10;\n            result *= 10;\n            result += num % 10;\n            num = result;\n        }\n        return num;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nThe problem requires rearranging the digits of a number to minimize its value while avoiding leading zeros. We can solve this problem by iterating through the digits of the number from the rightmost digit to the leftmost digit. For each iteration, we divide the number by 10, append the last digit to the result, multiply the result by 10, and update the original number with the result. This process ensures that the number becomes non-negative and all digits are rearranged. Finally, we return the rearranged number. ",
+  "code": "class Solution {\npublic:\n    long long smallestNumber(long long num) {\n        int len = (int)log10(num);\n        long long result = num;\n        for (int i = len - 1; i >= 0; i--) {\n            result /= 10;\n            result *= 10;\n            result += num % 10;\n            num = result;\n        }\n        return num;\n    }\n};",
+  "timestamp": "2025-08-05T15:56:17.661678",
+  "code_extracted_previous": "public:\n    long long smallestNumber(long long num) {\n        int len = (int)log10(num);\n        long long result = num;\n        for (int i = len - 1; i >= 0; i--) {\n            result /= 10;\n            result *= 10;\n            result += num % 10;\n            num = result;\n        }\n        return num;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.313499"
+}

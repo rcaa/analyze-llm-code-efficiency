@@ -1,0 +1,15 @@
+{
+  "id": 1220,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int countVowelPermutation(int n) {\n        const int MOD = 1e9 + 7;\n        vector<long long> a(n + 1, 1), e(n + 1, 1), i(n + 1, 1), o(n + 1, 1), u(n + 1, 1);\n        for (int j = 2; j <= n; j++) {\n            a[j] = (e[j - 1] + u[j - 1] + i[j - 1]) % MOD;\n            e[j] = (a[j - 1] + i[j - 1]) % MOD;\n            i[j] = (e[j - 1] + o[j - 1]) % MOD;\n            o[j] = (i[j - 1]) % MOD;\n            u[j] = (i[j - 1] + o[j - 1]) % MOD;\n        }\n        return (a[n] + e[n] + i[n] + o[n] + u[n]) % MOD;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently count the number of possible strings of length n, following the given rules. It maintains arrays to store the counts of each vowel at each position, and iteratively updates these counts based on the rules.",
+  "code": "class Solution {\npublic:\n    int countVowelPermutation(int n) {\n        const int MOD = 1e9 + 7;\n        vector<long long> a(n + 1, 1), e(n + 1, 1), i(n + 1, 1), o(n + 1, 1), u(n + 1, 1);\n        for (int j = 2; j <= n; j++) {\n            a[j] = (e[j - 1] + u[j - 1] + i[j - 1]) % MOD;\n            e[j] = (a[j - 1] + i[j - 1]) % MOD;\n            i[j] = (e[j - 1] + o[j - 1]) % MOD;\n            o[j] = (i[j - 1]) % MOD;\n            u[j] = (i[j - 1] + o[j - 1]) % MOD;\n        }\n        return (a[n] + e[n] + i[n] + o[n] + u[n]) % MOD;\n    }\n};",
+  "timestamp": "2025-08-05T14:17:12.508661",
+  "code_extracted_previous": "public:\n    int countVowelPermutation(int n) {\n        const int MOD = 1e9 + 7;\n        vector<long long> a(n + 1, 1), e(n + 1, 1), i(n + 1, 1), o(n + 1, 1), u(n + 1, 1);\n        for (int j = 2; j <= n; j++) {\n            a[j] = (e[j - 1] + u[j - 1] + i[j - 1]) % MOD;\n            e[j] = (a[j - 1] + i[j - 1]) % MOD;\n            i[j] = (e[j - 1] + o[j - 1]) % MOD;\n            o[j] = (i[j - 1]) % MOD;\n            u[j] = (i[j - 1] + o[j - 1]) % MOD;\n        }\n        return (a[n] + e[n] + i[n] + o[n] + u[n]) % MOD;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.040633"
+}

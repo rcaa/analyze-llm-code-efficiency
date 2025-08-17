@@ -1,0 +1,15 @@
+{
+  "id": 3337,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int lengthAfterTransformations(String s, int t, List<Integer> nums) {\n        int mod = 1000000007;\n        int n = s.length();\n        int[] count = new int[26];\n        for (char c : s.toCharArray()) {\n            count[c - 'a']++;\n        }\n        for (int i = 0; i < t; i++) {\n            int[] nextCount = new int[26];\n            for (int j = 0; j < 26; j++) {\n                int k = (j + nums[j]) % 26;\n                nextCount[k] += count[j];\n                nextCount[k] %= mod;\n            }\n            count = nextCount;\n        }\n        int result = 0;\n        for (int i = 0; i < 26; i++) {\n            result = (result + count[i]) % mod;\n        }\n        return result;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(t * n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int lengthAfterTransformations(String s, int t, List<Integer> nums) {\n        int mod = 1000000007;\n        int n = s.length();\n        int[] count = new int[26];\n        for (char c : s.toCharArray()) {\n            count[c - 'a']++;\n        }\n        for (int i = 0; i < t; i++) {\n            int[] nextCount = new int[26];\n            for (int j = 0; j < 26; j++) {\n                int k = (j + nums[j]) % 26;\n                nextCount[k] += count[j];\n                nextCount[k] %= mod;\n            }\n            count = nextCount;\n        }\n        int result = 0;\n        for (int i = 0; i < 26; i++) {\n            result = (result + count[i]) % mod;\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T14:41:28.414622",
+  "code_extracted_previous": "class Solution {\n    public int lengthAfterTransformations(String s, int t, List<Integer> nums) {\n        int mod = 1000000007;\n        int n = s.length();\n        int[] count = new int[26];\n        for (char c : s.toCharArray()) {\n            count[c - 'a']++;\n        }\n        for (int i = 0; i < t; i++) {\n            int[] nextCount = new int[26];\n            for (int j = 0; j < 26; j++) {\n                int k = (j + nums[j]) % 26;\n                nextCount[k] += count[j];\n                nextCount[k] %= mod;\n            }\n            count = nextCount;\n        }\n        int result = 0;\n        for (int i = 0; i < 26; i++) {\n            result = (result + count[i]) % mod;\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.555921"
+}

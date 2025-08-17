@@ -1,0 +1,15 @@
+{
+  "id": 2423,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    bool equalFrequency(string word) {\n        int n = word.size();\n        for (int skip = 0; skip < n; ++skip) {\n            int freq[26] = {};\n            for (int i = 0; i < n; ++i) {\n                if (i == skip) continue;\n                ++freq[word[i] - 'a'];\n            }\n            int target = -1;\n            bool ok = true;\n            for (int c = 0; c < 26; ++c) {\n                if (freq[c] == 0) continue;\n                if (target == -1) target = freq[c];\n                else if (freq[c] != target) { ok = false; break; }\n            }\n            if (ok) return true;\n        }\n        return false;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(26 * N^2)\nspace complexity: O(26)\nenergy implications: LOW\nexplanation: Iterate over every possible single-character removal, rebuild the frequency table in O(N) per removal, then check in O(26) whether all non-zero frequencies are identical. Early exit on first success.",
+  "code": "class Solution {\npublic:\n    bool equalFrequency(string word) {\n        int n = word.size();\n        for (int skip = 0; skip < n; ++skip) {\n            int freq[26] = {};\n            for (int i = 0; i < n; ++i) {\n                if (i == skip) continue;\n                ++freq[word[i] - 'a'];\n            }\n            int target = -1;\n            bool ok = true;\n            for (int c = 0; c < 26; ++c) {\n                if (freq[c] == 0) continue;\n                if (target == -1) target = freq[c];\n                else if (freq[c] != target) { ok = false; break; }\n            }\n            if (ok) return true;\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-06T02:29:23.762894",
+  "code_extracted_previous": "public:\n    bool equalFrequency(string word) {\n        int n = word.size();\n        for (int skip = 0; skip < n; ++skip) {\n            int freq[26] = {};\n            for (int i = 0; i < n; ++i) {\n                if (i == skip) continue;\n                ++freq[word[i] - 'a'];\n            }\n            int target = -1;\n            bool ok = true;\n            for (int c = 0; c < 26; ++c) {\n                if (freq[c] == 0) continue;\n                if (target == -1) target = freq[c];\n                else if (freq[c] != target) { ok = false; break; }\n            }\n            if (ok) return true;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.691225"
+}

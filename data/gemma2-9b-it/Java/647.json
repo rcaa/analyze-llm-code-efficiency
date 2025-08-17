@@ -1,0 +1,15 @@
+{
+  "id": 647,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countSubstrings(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += expandAroundCenter(s, i, i);\n            count += expandAroundCenter(s, i, i + 1);\n        }\n        return count;\n    }\n    private int expandAroundCenter(String s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution utilizes a dynamic programming approach to efficiently count palindromic substrings. It iterates through each character in the string and expands outwards from the center of potential palindromes, incrementing the count for valid palindromes. This approach ensures that each substring is considered only once, leading to an overall efficient solution.\n",
+  "code": "class Solution {\n    public int countSubstrings(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += expandAroundCenter(s, i, i);\n            count += expandAroundCenter(s, i, i + 1);\n        }\n        return count;\n    }\n    private int expandAroundCenter(String s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T01:38:17.525377",
+  "code_extracted_previous": "class Solution {\n    public int countSubstrings(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += expandAroundCenter(s, i, i);\n            count += expandAroundCenter(s, i, i + 1);\n        }\n        return count;\n    }\n    private int expandAroundCenter(String s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.627913"
+}

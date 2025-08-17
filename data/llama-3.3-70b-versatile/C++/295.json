@@ -1,0 +1,15 @@
+{
+  "id": 295,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass MedianFinder {\npublic:\n    MedianFinder() {\n        \n    }\n    \n    void addNum(int num) {\n        maxHeap.push(num);\n        minHeap.push(-maxHeap.top());\n        maxHeap.pop();\n        if (maxHeap.size() < minHeap.size()) {\n            maxHeap.push(-minHeap.top());\n            minHeap.pop();\n        }\n    }\n    \n    double findMedian() {\n        if (maxHeap.size() == minHeap.size()) {\n            return (maxHeap.top() + (-minHeap.top())) / 2.0;\n        } else {\n            return maxHeap.top();\n        }\n    }\nprivate:\n    priority_queue<int> maxHeap;\n    priority_queue<int> minHeap;\n};\n\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes two heaps to maintain a balanced data structure, ensuring efficient median calculation and insertion of new numbers. The max heap stores the smaller half of the numbers, and the min heap stores the larger half. This approach allows for O(log n) time complexity for both addNum and findMedian operations.",
+  "code": "class MedianFinder {\npublic:\n    MedianFinder() {\n        \n    }\n    \n    void addNum(int num) {\n        maxHeap.push(num);\n        minHeap.push(-maxHeap.top());\n        maxHeap.pop();\n        if (maxHeap.size() < minHeap.size()) {\n            maxHeap.push(-minHeap.top());\n            minHeap.pop();\n        }\n    }\n    \n    double findMedian() {\n        if (maxHeap.size() == minHeap.size()) {\n            return (maxHeap.top() + (-minHeap.top())) / 2.0;\n        } else {\n            return maxHeap.top();\n        }\n    }\nprivate:\n    priority_queue<int> maxHeap;\n    priority_queue<int> minHeap;\n};",
+  "timestamp": "2025-08-06T01:13:41.315587",
+  "code_extracted_previous": "class MedianFinder {\npublic:\n    MedianFinder() {\n        \n    }\n    \n    void addNum(int num) {\n        maxHeap.push(num);\n        minHeap.push(-maxHeap.top());\n        maxHeap.pop();\n        if (maxHeap.size() < minHeap.size()) {\n            maxHeap.push(-minHeap.top());\n            minHeap.pop();\n        }\n    }\n    \n    double findMedian() {\n        if (maxHeap.size() == minHeap.size()) {\n            return (maxHeap.top() + (-minHeap.top())) / 2.0;\n        } else {\n            return maxHeap.top();\n        }\n    }\nprivate:\n    priority_queue<int> maxHeap;\n    priority_queue<int> minHeap;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:32.531345"
+}

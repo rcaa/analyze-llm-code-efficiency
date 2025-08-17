@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass MyStack {\nprivate:\n    queue<int> q1;\n    queue<int> q2;\npublic:\n    MyStack() {\n        \n    }\n    \n    void push(int x) {\n        q2.push(x);\n        while (!q1.empty()) {\n            q2.push(q1.front());\n            q1.pop();\n        }\n        swap(q1, q2);\n    }\n    \n    int pop() {\n        int topElement = q1.front();\n        q1.pop();\n        return topElement;\n    }\n    \n    int top() {\n        return q1.front();\n    }\n    \n    bool empty() {\n        return q1.empty();\n    }\n};\n\nsolution: The above C++ code.\nefficiency: HIGH\ntime complexity: O(N) for push, O(1) for pop, top, and empty.\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The provided solution implements a stack using two queues. It maintains the top element of the stack at the front of q1. The push operation involves moving all elements from q1 to q2, pushing the new element to q2, and then swapping q1 and q2. The pop and top operations simply access the front of q1. The empty operation checks if q1 is empty.\n```",
+  "code": "The above C++ code.",
+  "timestamp": "2025-08-05T16:00:26.108815",
+  "code_extracted_previous": "class MyStack {\nprivate:\n    queue<int> q1;\n    queue<int> q2;\npublic:\n    MyStack() {\n        \n    }\n    \n    void push(int x) {\n        q2.push(x);\n        while (!q1.empty()) {\n            q2.push(q1.front());\n            q1.pop();\n        }\n        swap(q1, q2);\n    }\n    \n    int pop() {\n        int topElement = q1.front();\n        q1.pop();\n        return topElement;\n    }\n    \n    int top() {\n        return q1.front();\n    }\n    \n    bool empty() {\n        return q1.empty();\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:45.144018"
+}

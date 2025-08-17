@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) freq[c]++;\n        vector<pair<char, int>> vec(freq.begin(), freq.end());\n        sort(vec.begin(), vec.end(), [](pair<char, int> a, pair<char, int> b) {\n            return a.second > b.second;\n        });\n        string res;\n        for (auto p : vec) {\n            res.append(p.second, p.first);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hashmap to count the frequency of each character, then sorts the characters based on their frequencies in descending order using a vector of pairs. Finally, it constructs the result string by appending each character the corresponding number of times.",
+  "code": "class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) freq[c]++;\n        vector<pair<char, int>> vec(freq.begin(), freq.end());\n        sort(vec.begin(), vec.end(), [](pair<char, int> a, pair<char, int> b) {\n            return a.second > b.second;\n        });\n        string res;\n        for (auto p : vec) {\n            res.append(p.second, p.first);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:53:47.448382",
+  "code_extracted_previous": "public:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) freq[c]++;\n        vector<pair<char, int>> vec(freq.begin(), freq.end());\n        sort(vec.begin(), vec.end(), [](pair<char, int> a, pair<char, int> b) {\n            return a.second > b.second;\n        });\n        string res;\n        for (auto p : vec) {\n            res.append(p.second, p.first);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.919520"
+}

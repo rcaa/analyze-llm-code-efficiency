@@ -1,0 +1,15 @@
+{
+  "id": 1286,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```python\nimport itertools\n\nclass CombinationIterator:\n\n    def __init__(self, characters: str, combinationLength: int):\n        self.combinations = list(itertools.combinations(characters, combinationLength))\n        self.index = 0\n\n    def next(self) -> str:\n        result = ''.join(self.combinations[self.index])\n        self.index += 1\n        return result\n\n    def hasNext(self) -> bool:\n        return self.index < len(self.combinations)\n```\n\nefficiency: HIGH\ntime complexity: O(n choose k) for init, O(1) for next and hasNext\nspace complexity: O(n choose k)\nenergy implications: LOW\nexplanation: The solution utilizes Python's built-in itertools.combinations function to generate all combinations of the given characters with the specified length. It then iterates over these combinations, providing the next one when requested and indicating whether more exist. This approach efficiently handles the problem by leveraging optimized library functions and only storing the necessary combinations.",
+  "code": "class CombinationIterator:\n\n    def __init__(self, characters: str, combinationLength: int):\n        self.combinations = list(itertools.combinations(characters, combinationLength))\n        self.index = 0\n\n    def next(self) -> str:\n        result = ''.join(self.combinations[self.index])\n        self.index += 1\n        return result\n\n    def hasNext(self) -> bool:\n        return self.index < len(self.combinations)",
+  "timestamp": "2025-08-06T00:50:34.949935",
+  "code_extracted_previous": "import itertools\n\nclass CombinationIterator:\n\n    def __init__(self, characters: str, combinationLength: int):\n        self.combinations = list(itertools.combinations(characters, combinationLength))\n        self.index = 0\n\n    def next(self) -> str:\n        result = ''.join(self.combinations[self.index])\n        self.index += 1\n        return result\n\n    def hasNext(self) -> bool:\n        return self.index < len(self.combinations)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:51.781224"
+}

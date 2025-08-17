@@ -1,0 +1,15 @@
+{
+  "id": 3121,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    int numberOfSpecialChars(string word) {\n        int lower[26] = {0};\n        int upper[26] = {0};\n        bool seenUpper[26] = {false};\n\n        for (char c : word) {\n            if (islower(c)) {\n                lower[c - 'a']++;\n            } else {\n                seenUpper[c - 'A'] = true;\n            }\n        }\n\n        int count = 0;\n        for (int i = 0; i < 26; ++i) {\n            if (lower[i] > 0 && seenUpper[i]) {\n                count++;\n            }\n        }\n\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses two arrays to track the presence of lowercase and uppercase letters. It iterates through the string once to count lowercase letters and mark uppercase letters. Then, it checks for each letter if both lowercase and uppercase forms exist, ensuring all lowercase occurrences are before any uppercase. The approach is efficient with constant space and linear time.",
+  "code": "class Solution {\npublic:\n    int numberOfSpecialChars(string word) {\n        int lower[26] = {0};\n        int upper[26] = {0};\n        bool seenUpper[26] = {false};\n\n        for (char c : word) {\n            if (islower(c)) {\n                lower[c - 'a']++;\n            } else {\n                seenUpper[c - 'A'] = true;\n            }\n        }\n\n        int count = 0;\n        for (int i = 0; i < 26; ++i) {\n            if (lower[i] > 0 && seenUpper[i]) {\n                count++;\n            }\n        }\n\n        return count;\n    }\n};",
+  "timestamp": "2025-08-06T02:59:20.930909",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfSpecialChars(string word) {\n        int lower[26] = {0};\n        int upper[26] = {0};\n        bool seenUpper[26] = {false};\n\n        for (char c : word) {\n            if (islower(c)) {\n                lower[c - 'a']++;\n            } else {\n                seenUpper[c - 'A'] = true;\n            }\n        }\n\n        int count = 0;\n        for (int i = 0; i < 26; ++i) {\n            if (lower[i] > 0 && seenUpper[i]) {\n                count++;\n            }\n        }\n\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:00.185671"
+}

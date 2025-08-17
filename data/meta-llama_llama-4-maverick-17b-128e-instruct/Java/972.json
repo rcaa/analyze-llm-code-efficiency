@@ -1,0 +1,15 @@
+{
+  "id": 972,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public boolean isRationalEqual(String s, String t) {\n        return normalize(s).equals(normalize(t));\n    }\n\n    private String normalize(String s) {\n        int i = s.indexOf('(');\n        if (i != -1) {\n            String repeating = s.substring(i + 1, s.length() - 1);\n            s = s.substring(0, i) + repeating.repeat(20);\n        }\n        while (s.length() > 10 && s.charAt(s.length() - 1) == '0') {\n            s = s.substring(0, s.length() - 1);\n        }\n        if (s.endsWith(\".\")) {\n            s = s.substring(0, s.length() - 1);\n        }\n        return s;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: The solution normalizes the input strings by expanding the repeating part and removing trailing zeros, then compares the normalized strings for equality. The key strength is its simplicity and effectiveness in handling different representations of rational numbers. \n```",
+  "code": "class Solution {\n    public boolean isRationalEqual(String s, String t) {\n        return normalize(s).equals(normalize(t));\n    }\n\n    private String normalize(String s) {\n        int i = s.indexOf('(');\n        if (i != -1) {\n            String repeating = s.substring(i + 1, s.length() - 1);\n            s = s.substring(0, i) + repeating.repeat(20);\n        }\n        while (s.length() > 10 && s.charAt(s.length() - 1) == '0') {\n            s = s.substring(0, s.length() - 1);\n        }\n        if (s.endsWith(\".\")) {\n            s = s.substring(0, s.length() - 1);\n        }\n        return s;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: The solution normalizes the input strings by expanding the repeating part and removing trailing zeros, then compares the normalized strings for equality. The key strength is its simplicity and effectiveness in handling different representations of rational numbers.",
+  "timestamp": "2025-08-05T15:19:38.411199",
+  "code_extracted_previous": "class Solution {\n    public boolean isRationalEqual(String s, String t) {\n        return normalize(s).equals(normalize(t));\n    }\n\n    private String normalize(String s) {\n        int i = s.indexOf('(');\n        if (i != -1) {\n            String repeating = s.substring(i + 1, s.length() - 1);\n            s = s.substring(0, i) + repeating.repeat(20);\n        }\n        while (s.length() > 10 && s.charAt(s.length() - 1) == '0') {\n            s = s.substring(0, s.length() - 1);\n        }\n        if (s.endsWith(\".\")) {\n            s = s.substring(0, s.length() - 1);\n        }\n        return s;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:47.197842"
+}

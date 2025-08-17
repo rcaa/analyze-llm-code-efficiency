@@ -1,0 +1,15 @@
+{
+  "id": 3307,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long len = 1;\n        for (int op : operations) {\n            if (op == 0) {\n                len *= 2;\n            } else {\n                len = len * 2 - 1;\n            }\n        }\n        long long index = k % len;\n        long long i = 0;\n        while (index > 0) {\n            if (operations[i] == 0) {\n                index /= 2;\n            } else {\n                index--;\n                index /= 2;\n            }\n            i++;\n        }\n        return 'a' + i;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long len = 1;\n        for (int op : operations) {\n            if (op == 0) {\n                len *= 2;\n            } else {\n                len = len * 2 - 1;\n            }\n        }\n        long long index = k % len;\n        long long i = 0;\n        while (index > 0) {\n            if (operations[i] == 0) {\n                index /= 2;\n            } else {\n                index--;\n                index /= 2;\n            }\n            i++;\n        }\n        return 'a' + i;\n    }\n};",
+  "timestamp": "2025-08-05T15:23:58.444675",
+  "code_extracted_previous": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long len = 1;\n        for (int op : operations) {\n            if (op == 0) {\n                len *= 2;\n            } else {\n                len = len * 2 - 1;\n            }\n        }\n        long long index = k % len;\n        long long i = 0;\n        while (index > 0) {\n            if (operations[i] == 0) {\n                index /= 2;\n            } else {\n                index--;\n                index /= 2;\n            }\n            i++;\n        }\n        return 'a' + i;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.383211"
+}

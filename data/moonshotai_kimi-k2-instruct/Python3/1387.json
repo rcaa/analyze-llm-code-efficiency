@@ -1,0 +1,15 @@
+{
+  "id": 1387,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def getKth(self, lo: int, hi: int, k: int) -> int:\n        memo = {1: 0}\n        \n        def power(x):\n            if x in memo:\n                return memo[x]\n            if x % 2 == 0:\n                memo[x] = 1 + power(x // 2)\n            else:\n                memo[x] = 1 + power(3 * x + 1)\n            return memo[x]\n        \n        nums = list(range(lo, hi + 1))\n        nums.sort(key=lambda x: (power(x), x))\n        return nums[k - 1]\n```\nefficiency: HIGH\ntime complexity: O((hi - lo + 1) * log(hi - lo + 1))\nspace complexity: O(hi)\nenergy implications: LOW\nexplanation: Uses memoized DFS to compute power values in O(1) amortized per number, then sorts the range by (power, value) and picks the k-th element.",
+  "code": "class Solution:\n    def getKth(self, lo: int, hi: int, k: int) -> int:\n        memo = {1: 0}\n        \n        def power(x):\n            if x in memo:\n                return memo[x]\n            if x % 2 == 0:\n                memo[x] = 1 + power(x // 2)\n            else:\n                memo[x] = 1 + power(3 * x + 1)\n            return memo[x]\n        \n        nums = list(range(lo, hi + 1))\n        nums.sort(key=lambda x: (power(x), x))\n        return nums[k - 1]",
+  "timestamp": "2025-08-05T14:26:11.181814",
+  "code_extracted_previous": "class Solution:\n    def getKth(self, lo: int, hi: int, k: int) -> int:\n        memo = {1: 0}\n        \n        def power(x):\n            if x in memo:\n                return memo[x]\n            if x % 2 == 0:\n                memo[x] = 1 + power(x // 2)\n            else:\n                memo[x] = 1 + power(3 * x + 1)\n            return memo[x]\n        \n        nums = list(range(lo, hi + 1))\n        nums.sort(key=lambda x: (power(x), x))\n        return nums[k - 1]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.234860"
+}

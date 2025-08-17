@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        int ans = 0;\n        for (int i = 0; i < n; i++) {\n            int cnt = 0;\n            for (int j = i; j < n; j++) {\n                if (gcd(nums[i], nums[j]) >= 2) {\n                    cnt++;\n                } else {\n                    break;\n                }\n                ans = max(ans, cnt);\n            }\n        }\n        int mod = 0;\n        for (int i = 0; i < n; i++) {\n            if (nums[i] % 2 == 1) {\n                mod++;\n            }\n        }\n        return min(ans, max(0, n - mod - maxC));\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer technique to find the longest stable subarray ending at each position. It then uses a simple iteration to count the number of odd numbers in the array and returns the minimum of the longest stable subarray and the maximum of 0 and the difference between the total number of elements and the number of odd numbers and the maximum number of modifications allowed.",
+  "code": "class Solution {\npublic:\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        int ans = 0;\n        for (int i = 0; i < n; i++) {\n            int cnt = 0;\n            for (int j = i; j < n; j++) {\n                if (gcd(nums[i], nums[j]) >= 2) {\n                    cnt++;\n                } else {\n                    break;\n                }\n                ans = max(ans, cnt);\n            }\n        }\n        int mod = 0;\n        for (int i = 0; i < n; i++) {\n            if (nums[i] % 2 == 1) {\n                mod++;\n            }\n        }\n        return min(ans, max(0, n - mod - maxC));\n    }\n};",
+  "timestamp": "2025-08-05T12:23:31.502176",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        int ans = 0;\n        for (int i = 0; i < n; i++) {\n            int cnt = 0;\n            for (int j = i; j < n; j++) {\n                if (gcd(nums[i], nums[j]) >= 2) {\n                    cnt++;\n                } else {\n                    break;\n                }\n                ans = max(ans, cnt);\n            }\n        }\n        int mod = 0;\n        for (int i = 0; i < n; i++) {\n            if (nums[i] % 2 == 1) {\n                mod++;\n            }\n        }\n        return min(ans, max(0, n - mod - maxC));\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.486127"
+}

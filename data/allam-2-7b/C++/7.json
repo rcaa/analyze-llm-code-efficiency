@@ -1,0 +1,15 @@
+{
+  "id": 7,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: int reverse(int x) {\n    int sign = x;\n    int reversed = 0;\n    int power = 1;\n\n    while (x != 0) {\n        int digit = x % 10;\n        reversed = reversed * power + digit;\n        x /= 10;\n        power *= 10;\n    }\n\n    if (sign * reversed < -2147483648 || sign * reversed > 2147483647) {\n        return 0;\n    }\n\n    return sign * reversed;\n}\n\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\nThe algorithm reverses the digits of the input integer by repeatedly extracting the last digit, multiplying it by the current power of 10, and adding it to the reversed number. After each iteration, the power of 10 is multiplied to handle larger numbers, and the last digit is extracted using the modulo operator.\n\nTo ensure the reversed number stays within the signed 32-bit integer range, we check if the product of the sign and the reversed number is less than -2147483648 or greater than 2147483647. If this condition is true, we return 0 to indicate an overflow. Otherwise, we return the product of the sign and the reversed number. The time complexity is O(log(n)) due to the iterative approach, and the space complexity is O(1) as we only use a constant amount of space for the reversed number and sign. The energy implications are low as the algorithm only performs arithmetic operations and does not consume significant energy. ",
+  "code": "int reverse(int x) {\n    int sign = x;\n    int reversed = 0;\n    int power = 1;\n\n    while (x != 0) {\n        int digit = x % 10;\n        reversed = reversed * power + digit;\n        x /= 10;\n        power *= 10;\n    }\n\n    if (sign * reversed < -2147483648 || sign * reversed > 2147483647) {\n        return 0;\n    }\n\n    return sign * reversed;\n}",
+  "timestamp": "2025-08-05T15:36:56.135387",
+  "code_extracted_previous": "int reverse(int x) {\n    int sign = x;\n    int reversed = 0;\n    int power = 1;\n\n    while (x != 0) {\n        int digit = x % 10;\n        reversed = reversed * power + digit;\n        x /= 10;\n        power *= 10;\n    }\n\n    if (sign * reversed < -2147483648 || sign * reversed > 2147483647) {\n        return 0;\n    }\n\n    return sign * reversed;\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:13.138080"
+}

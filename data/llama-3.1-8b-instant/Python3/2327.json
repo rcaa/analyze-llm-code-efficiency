@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Solution:\n    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, n + 1):\n            start = max(0, i - delay)\n            end = min(i, forget - 1)\n            dp[i] = (dp[i - 1] + sum(dp[start:j] for j in range(start + 1, end + 1))) % MOD\n        return dp[n]\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution:\n    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, n + 1):\n            start = max(0, i - delay)\n            end = min(i, forget - 1)\n            dp[i] = (dp[i - 1] + sum(dp[start:j] for j in range(start + 1, end + 1))) % MOD\n        return dp[n]",
+  "timestamp": "2025-08-05T14:26:32.811700",
+  "code_extracted_previous": "class Solution:\n    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, n + 1):\n            start = max(0, i - delay)\n            end = min(i, forget - 1)\n            dp[i] = (dp[i - 1] + sum(dp[start:j] for j in range(start + 1, end + 1))) % MOD\n        return dp[n]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.682916"
+}

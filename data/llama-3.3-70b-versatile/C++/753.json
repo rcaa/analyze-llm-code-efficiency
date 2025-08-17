@@ -1,0 +1,15 @@
+{
+  "id": 753,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    string crackSafe(int n, int k) {\n        int target = pow(k, n);\n        string res = \"\";\n        for (int i = 0; i < n; i++) res += '0';\n        unordered_set<string> visited;\n        dfs(res, n, k, visited, res);\n        return res;\n    }\n    \n    void dfs(string node, int n, int k, unordered_set<string> &visited, string &res) {\n        for (int i = 0; i < k; i++) {\n            string next_node = node.substr(1, n - 1) + (char)('0' + i);\n            if (visited.find(next_node) == visited.end()) {\n                visited.insert(next_node);\n                res += (char)('0' + i);\n                dfs(next_node, n, k, visited, res);\n            }\n        }\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(k^n)\nspace complexity: O(k^n)\nenergy implications: LOW\nexplanation: The solution uses depth-first search to generate all possible combinations of the password and stores them in a set to avoid duplicates, ensuring that the safe will unlock at some point.",
+  "code": "class Solution {\npublic:\n    string crackSafe(int n, int k) {\n        int target = pow(k, n);\n        string res = \"\";\n        for (int i = 0; i < n; i++) res += '0';\n        unordered_set<string> visited;\n        dfs(res, n, k, visited, res);\n        return res;\n    }\n    \n    void dfs(string node, int n, int k, unordered_set<string> &visited, string &res) {\n        for (int i = 0; i < k; i++) {\n            string next_node = node.substr(1, n - 1) + (char)('0' + i);\n            if (visited.find(next_node) == visited.end()) {\n                visited.insert(next_node);\n                res += (char)('0' + i);\n                dfs(next_node, n, k, visited, res);\n            }\n        }\n    }\n};",
+  "timestamp": "2025-08-06T15:11:42.229290",
+  "code_extracted_previous": "class Solution {\npublic:\n    string crackSafe(int n, int k) {\n        int target = pow(k, n);\n        string res = \"\";\n        for (int i = 0; i < n; i++) res += '0';\n        unordered_set<string> visited;\n        dfs(res, n, k, visited, res);\n        return res;\n    }\n    \n    void dfs(string node, int n, int k, unordered_set<string> &visited, string &res) {\n        for (int i = 0; i < k; i++) {\n            string next_node = node.substr(1, n - 1) + (char)('0' + i);\n            if (visited.find(next_node) == visited.end()) {\n                visited.insert(next_node);\n                res += (char)('0' + i);\n                dfs(next_node, n, k, visited, res);\n            }\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.055823"
+}

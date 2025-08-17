@@ -1,0 +1,15 @@
+{
+  "id": 3302,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<int> validSequence(string word1, string word2) {\n        int m = word1.size(), n = word2.size();\n        vector<int> res;\n        int diff = 0;\n        for (int i = 0, j = 0; i < m && j < n; ++i) {\n            if (word1[i] != word2[j]) {\n                ++diff;\n                if (diff > 1) break;\n                res.push_back(i);\n            } else {\n                ++j;\n            }\n        }\n        if (diff > 1 || j < n) return {};\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(m)\nspace complexity: O(min(m, n))\nenergy implications: LOW\nexplanation: The solution iterates through both strings, counting the differences and storing the indices of the differences. If more than one difference is found, it returns an empty array. Otherwise, it returns the stored indices.",
+  "code": "class Solution {\npublic:\n    vector<int> validSequence(string word1, string word2) {\n        int m = word1.size(), n = word2.size();\n        vector<int> res;\n        int diff = 0;\n        for (int i = 0, j = 0; i < m && j < n; ++i) {\n            if (word1[i] != word2[j]) {\n                ++diff;\n                if (diff > 1) break;\n                res.push_back(i);\n            } else {\n                ++j;\n            }\n        }\n        if (diff > 1 || j < n) return {};\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T22:30:10.273087",
+  "code_extracted_previous": "public:\n    vector<int> validSequence(string word1, string word2) {\n        int m = word1.size(), n = word2.size();\n        vector<int> res;\n        int diff = 0;\n        for (int i = 0, j = 0; i < m && j < n; ++i) {\n            if (word1[i] != word2[j]) {\n                ++diff;\n                if (diff > 1) break;\n                res.push_back(i);\n            } else {\n                ++j;\n            }\n        }\n        if (diff > 1 || j < n) return {};\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.751995"
+}

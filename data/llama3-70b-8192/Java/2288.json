@@ -1,0 +1,15 @@
+{
+  "id": 2288,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public String discountPrices(String sentence, int discount) {\n        String[] words = sentence.split(\" \");\n        for (int i = 0; i < words.length; i++) {\n            if (words[i].length() > 1 && words[i].charAt(0) == '$') {\n                String priceStr = words[i].substring(1);\n                int price = Integer.parseInt(priceStr);\n                double discountedPrice = price * (1 - discount / 100.0);\n                words[i] = String.format(\"$%.2f\", discountedPrice);\n            }\n        }\n        return String.join(\" \", words);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through each word in the sentence, checks if it represents a price, applies the discount, and updates the word. It then joins the updated words back into a sentence.",
+  "code": "class Solution {\n    public String discountPrices(String sentence, int discount) {\n        String[] words = sentence.split(\" \");\n        for (int i = 0; i < words.length; i++) {\n            if (words[i].length() > 1 && words[i].charAt(0) == '$') {\n                String priceStr = words[i].substring(1);\n                int price = Integer.parseInt(priceStr);\n                double discountedPrice = price * (1 - discount / 100.0);\n                words[i] = String.format(\"$%.2f\", discountedPrice);\n            }\n        }\n        return String.join(\" \", words);\n    }\n}",
+  "timestamp": "2025-08-06T00:57:20.703220",
+  "code_extracted_previous": "class Solution {\n    public String discountPrices(String sentence, int discount) {\n        String[] words = sentence.split(\" \");\n        for (int i = 0; i < words.length; i++) {\n            if (words[i].length() > 1 && words[i].charAt(0) == '$') {\n                String priceStr = words[i].substring(1);\n                int price = Integer.parseInt(priceStr);\n                double discountedPrice = price * (1 - discount / 100.0);\n                words[i] = String.format(\"$%.2f\", discountedPrice);\n            }\n        }\n        return String.join(\" \", words);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.110934"
+}

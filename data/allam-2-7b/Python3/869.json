@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef reorderedPowerOf2(self, n: int) -> bool:\n    if n < 2 or n > 100:\n        return False\n    if n & (n - 1) == n - 1:\n        return True\n    for i in range(int(math.log2(n))):\n        if n & (1 << i) != 0:\n            return False\n    return True\n\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\nThe solution checks if the number n is between 2 and 100, and if it is a power of 2 (n & (n - 1) == n - 1). If either of these conditions is not met, the function returns False.\n\nIf n is a power of 2, we can check if it has any bit set by iterating through the binary representation of n using the formula `int(math.log2(n))`. If any bit is set, the function returns False. Otherwise, it returns True.\n\nThe algorithm has a time complexity of O(log(n)) due to the bitwise operations and iterations. The space complexity is O(1) as the function only uses a constant amount of space. The energy implications are low as the algorithm only performs bitwise operations and does not require any significant computational resources. ",
+  "code": "def reorderedPowerOf2(self, n: int) -> bool:\n    if n < 2 or n > 100:\n        return False\n    if n & (n - 1) == n - 1:\n        return True\n    for i in range(int(math.log2(n))):\n        if n & (1 << i) != 0:\n            return False\n    return True",
+  "timestamp": "2025-08-05T14:56:38.840033",
+  "code_extracted_previous": "def reorderedPowerOf2(self, n: int) -> bool:\n    if n < 2 or n > 100:\n        return False\n    if n & (n - 1) == n - 1:\n        return True\n    for i in range(int(math.log2(n))):\n        if n & (1 << i) != 0:\n            return False\n    return True",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:16.233277"
+}

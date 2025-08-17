@@ -1,0 +1,15 @@
+{
+  "id": 2375,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    string smallestNumber(string pattern) {\n        string num = \"123456789\";\n        string res = \"\";\n        for (char c : pattern) {\n            if (c == 'I') {\n                res += num[0];\n                num.erase(num.begin());\n            } else {\n                for (int i = num.size() - 1; i >= 0; --i) {\n                    if (res.empty() || res.back() > num[i]) {\n                        res += num[i];\n                        num.erase(num.begin() + i);\n                        break;\n                    }\n                }\n            }\n        }\n        res += num;\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the pattern, appending the smallest possible digit to the result string based on the pattern. It uses a separate string to keep track of the remaining digits.",
+  "code": "class Solution {\npublic:\n    string smallestNumber(string pattern) {\n        string num = \"123456789\";\n        string res = \"\";\n        for (char c : pattern) {\n            if (c == 'I') {\n                res += num[0];\n                num.erase(num.begin());\n            } else {\n                for (int i = num.size() - 1; i >= 0; --i) {\n                    if (res.empty() || res.back() > num[i]) {\n                        res += num[i];\n                        num.erase(num.begin() + i);\n                        break;\n                    }\n                }\n            }\n        }\n        res += num;\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:00:23.134640",
+  "code_extracted_previous": "class Solution {\npublic:\n    string smallestNumber(string pattern) {\n        string num = \"123456789\";\n        string res = \"\";\n        for (char c : pattern) {\n            if (c == 'I') {\n                res += num[0];\n                num.erase(num.begin());\n            } else {\n                for (int i = num.size() - 1; i >= 0; --i) {\n                    if (res.empty() || res.back() > num[i]) {\n                        res += num[i];\n                        num.erase(num.begin() + i);\n                        break;\n                    }\n                }\n            }\n        }\n        res += num;\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.529201"
+}

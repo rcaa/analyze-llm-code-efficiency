@@ -1,0 +1,15 @@
+{
+  "id": 2423,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) freq[c]++;\n        int cnt[26] = {};\n        for (int f : freq) cnt[f]++;\n        for (int i = 1; i <= 25; i++) {\n            if (cnt[i] == 1 && cnt[i + 1] == freq.size() - 1) return true;\n            if (cnt[i] == freq.size() && cnt[i - 1] == 1) return true;\n        }\n        return false;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses two frequency arrays to count the frequency of each character and the frequency of each frequency. It then checks if there is exactly one character with a different frequency, which can be removed to make all frequencies equal.",
+  "code": "class Solution {\npublic:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) freq[c]++;\n        int cnt[26] = {};\n        for (int f : freq) cnt[f]++;\n        for (int i = 1; i <= 25; i++) {\n            if (cnt[i] == 1 && cnt[i + 1] == freq.size() - 1) return true;\n            if (cnt[i] == freq.size() && cnt[i - 1] == 1) return true;\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T14:47:08.297030",
+  "code_extracted_previous": "public:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) freq[c]++;\n        int cnt[26] = {};\n        for (int f : freq) cnt[f]++;\n        for (int i = 1; i <= 25; i++) {\n            if (cnt[i] == 1 && cnt[i + 1] == freq.size() - 1) return true;\n            if (cnt[i] == freq.size() && cnt[i - 1] == 1) return true;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.537740"
+}

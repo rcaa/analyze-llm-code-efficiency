@@ -1,0 +1,15 @@
+{
+  "id": 155,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass MinStack {\n    private Stack<int[]> stack;\n\n    public MinStack() {\n        stack = new Stack<>();\n    }\n    \n    public void push(int val) {\n        if (stack.isEmpty()) {\n            stack.push(new int[]{val, val});\n        } else {\n            int currentMin = Math.min(val, stack.peek()[1]);\n            stack.push(new int[]{val, currentMin});\n        }\n    }\n    \n    public void pop() {\n        stack.pop();\n    }\n    \n    public int top() {\n        return stack.peek()[0];\n    }\n    \n    public int getMin() {\n        return stack.peek()[1];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: <The solution uses a stack of integer arrays where each element stores the current value and the minimum value up to that point. This allows all operations to be performed in constant time. The main strength is the efficient time complexity for all operations, while the weakness is the increased space usage due to storing the minimum value with each element.>",
+  "code": "class MinStack {\n    private Stack<int[]> stack;\n\n    public MinStack() {\n        stack = new Stack<>();\n    }\n    \n    public void push(int val) {\n        if (stack.isEmpty()) {\n            stack.push(new int[]{val, val});\n        } else {\n            int currentMin = Math.min(val, stack.peek()[1]);\n            stack.push(new int[]{val, currentMin});\n        }\n    }\n    \n    public void pop() {\n        stack.pop();\n    }\n    \n    public int top() {\n        return stack.peek()[0];\n    }\n    \n    public int getMin() {\n        return stack.peek()[1];\n    }\n}",
+  "timestamp": "2025-08-06T17:04:11.112610",
+  "code_extracted_previous": "class MinStack {\n    private Stack<int[]> stack;\n\n    public MinStack() {\n        stack = new Stack<>();\n    }\n    \n    public void push(int val) {\n        if (stack.isEmpty()) {\n            stack.push(new int[]{val, val});\n        } else {\n            int currentMin = Math.min(val, stack.peek()[1]);\n            stack.push(new int[]{val, currentMin});\n        }\n    }\n    \n    public void pop() {\n        stack.pop();\n    }\n    \n    public int top() {\n        return stack.peek()[0];\n    }\n    \n    public int getMin() {\n        return stack.peek()[1];\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:01.775013"
+}

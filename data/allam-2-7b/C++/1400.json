@@ -1,0 +1,15 @@
+{
+  "id": 1400,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    bool canConstruct(string s, int k) {\n        int count[26] = {0}; // count array to store character counts\n        int result = true;\n        for (char c : s) {\n            count[c - 'a']++;\n            if (count[c - 'a'] > k) {\n                result = false;\n                break;\n            }\n        }\n        for (int i = 0; i < s.length(); i++) {\n            if (count[s[i] - 'a'] == 0) {\n                result = false;\n                break;\n            }\n            count[s[i] - 'a']--;\n        }\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n1. Initialize a count array to store character counts.\n2. Iterate through the string s and update the count array accordingly.\n3. Check if the count of any character exceeds k. If so, return false and break the loop.\n4. Iterate through the string s again and decrement the count of each character.\n5. Return the result.\n\nThis solution has a time complexity of O(n) because it only iterates through the string once. The space complexity is O(1) because we only use a constant amount of space for the count array. The energy implications are low because the algorithm is efficient and requires minimal resources. ",
+  "code": "class Solution {\npublic:\n    bool canConstruct(string s, int k) {\n        int count[26] = {0}; // count array to store character counts\n        int result = true;\n        for (char c : s) {\n            count[c - 'a']++;\n            if (count[c - 'a'] > k) {\n                result = false;\n                break;\n            }\n        }\n        for (int i = 0; i < s.length(); i++) {\n            if (count[s[i] - 'a'] == 0) {\n                result = false;\n                break;\n            }\n            count[s[i] - 'a']--;\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T15:06:27.533684",
+  "code_extracted_previous": "public:\n    bool canConstruct(string s, int k) {\n        int count[26] = {0}; // count array to store character counts\n        int result = true;\n        for (char c : s) {\n            count[c - 'a']++;\n            if (count[c - 'a'] > k) {\n                result = false;\n                break;\n            }\n        }\n        for (int i = 0; i < s.length(); i++) {\n            if (count[s[i] - 'a'] == 0) {\n                result = false;\n                break;\n            }\n            count[s[i] - 'a']--;\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.101276"
+}

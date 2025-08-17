@@ -1,0 +1,15 @@
+{
+  "id": 884,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:\n        words1, words2 = s1.split(), s2.split()\n        count1, count2 = {}, {}\n        for word in words1:\n            count1[word] = count1.get(word, 0) + 1\n        for word in words2:\n            count2[word] = count2.get(word, 0) + 1\n        uncommon = [word for word in set(words1 + words2) if (count1.get(word, 0) == 1 and word not in words2) or (count2.get(word, 0) == 1 and word not in words1)]\n        return uncommon\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: This solution uses dictionaries to count the frequency of each word in both sentences, and then uses a list comprehension to find the uncommon words.",
+  "code": "class Solution:\n    def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:\n        words1, words2 = s1.split(), s2.split()\n        count1, count2 = {}, {}\n        for word in words1:\n            count1[word] = count1.get(word, 0) + 1\n        for word in words2:\n            count2[word] = count2.get(word, 0) + 1\n        uncommon = [word for word in set(words1 + words2) if (count1.get(word, 0) == 1 and word not in words2) or (count2.get(word, 0) == 1 and word not in words1)]\n        return uncommon",
+  "timestamp": "2025-08-05T14:41:34.275282",
+  "code_extracted_previous": "class Solution:\n    def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:\n        words1, words2 = s1.split(), s2.split()\n        count1, count2 = {}, {}\n        for word in words1:\n            count1[word] = count1.get(word, 0) + 1\n        for word in words2:\n            count2[word] = count2.get(word, 0) + 1\n        uncommon = [word for word in set(words1 + words2) if (count1.get(word, 0) == 1 and word not in words2) or (count2.get(word, 0) == 1 and word not in words1)]\n        return uncommon",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:40.181432"
+}

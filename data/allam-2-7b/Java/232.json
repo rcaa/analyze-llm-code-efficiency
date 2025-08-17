@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass MyQueue {\n    Stack<Integer> frontStack;\n    Stack<Integer> rearStack;\n\n    public MyQueue() {\n        frontStack = new Stack<>();\n        rearStack = new Stack<>();\n    }\n\n    public void push(int x) {\n        rearStack.push(x);\n    }\n\n    public int pop() {\n        if (frontStack.isEmpty()) {\n            while (!rearStack.isEmpty()) {\n                frontStack.push(rearStack.pop());\n            }\n        }\n        return frontStack.pop();\n    }\n\n    public int peek() {\n        if (frontStack.isEmpty()) {\n            while (!rearStack.isEmpty()) {\n                frontStack.push(rearStack.pop());\n            }\n        }\n        return frontStack.peek();\n    }\n\n    public boolean empty() {\n        return frontStack.isEmpty() && rearStack.isEmpty();\n    }\n}\n```\n\nSolution:\n\nJava code to implement a FIFO queue using two stacks.\n\nEfficiency: HIGH\nTime complexity: O(1) for all operations\nSpace complexity: O(1)\nEnergy implications: LOW\n\nExplanation:\n\nWe use two stacks, one for front elements (frontStack) and another for rear elements (rearStack). When a new element is pushed, we push it to the frontStack and pop from the rearStack. When an element is popped, we check if the frontStack is empty. If it is, we pop from the rearStack and push to the frontStack. This ensures that the frontStack always contains the elements in LIFO order. The time complexity for all operations is O(1) because we only perform constant operations (push and pop) on the stacks. The space complexity is O(1) because we only use two stacks, which have a constant space complexity. The energy implications are low because the operations are efficient and do not consume much energy. ",
+  "code": "Java code to implement a FIFO queue using two stacks.",
+  "timestamp": "2025-08-05T16:01:21.837746",
+  "code_extracted_previous": "class MyQueue {\n    Stack<Integer> frontStack;\n    Stack<Integer> rearStack;\n\n    public MyQueue() {\n        frontStack = new Stack<>();\n        rearStack = new Stack<>();\n    }\n\n    public void push(int x) {\n        rearStack.push(x);\n    }\n\n    public int pop() {\n        if (frontStack.isEmpty()) {\n            while (!rearStack.isEmpty()) {\n                frontStack.push(rearStack.pop());\n            }\n        }\n        return frontStack.pop();\n    }\n\n    public int peek() {\n        if (frontStack.isEmpty()) {\n            while (!rearStack.isEmpty()) {\n                frontStack.push(rearStack.pop());\n            }\n        }\n        return frontStack.peek();\n    }\n\n    public boolean empty() {\n        return frontStack.isEmpty() && rearStack.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:14.018667"
+}

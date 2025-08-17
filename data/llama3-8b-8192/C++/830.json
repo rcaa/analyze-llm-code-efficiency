@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> res;\n        int start = 0, end = 0;\n        for (int i = 0; i < s.size(); i++) {\n            if (i == s.size() - 1 || s[i] != s[i + 1]) {\n                if (i - start + 1 >= 3) {\n                    res.push_back({start, i});\n                }\n                start = i + 1;\n                end = i;\n            } else {\n                end = i;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution iterates through the string once, keeping track of the start and end indices of each group. When a group is found to be large (i.e., having 3 or more characters), its interval is added to the result. The solution has a high efficiency due to its linear time complexity and low space complexity.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> res;\n        int start = 0, end = 0;\n        for (int i = 0; i < s.size(); i++) {\n            if (i == s.size() - 1 || s[i] != s[i + 1]) {\n                if (i - start + 1 >= 3) {\n                    res.push_back({start, i});\n                }\n                start = i + 1;\n                end = i;\n            } else {\n                end = i;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T23:38:40.281358",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> res;\n        int start = 0, end = 0;\n        for (int i = 0; i < s.size(); i++) {\n            if (i == s.size() - 1 || s[i] != s[i + 1]) {\n                if (i - start + 1 >= 3) {\n                    res.push_back({start, i});\n                }\n                start = i + 1;\n                end = i;\n            } else {\n                end = i;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.679234"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2006,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int countKDifference(vector<int>& nums, int k) {\n        int freq[101] = {0};\n        int ans = 0;\n        for (int x : nums) {\n            if (x - k >= 1) ans += freq[x - k];\n            if (x + k <= 100) ans += freq[x + k];\n            ++freq[x];\n        }\n        return ans;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass through the array using a fixed-size frequency array (size 101 due to value constraints). For each element, we check how many previous elements are exactly k units smaller or larger, then update the frequency count. This avoids nested loops and minimizes memory usage.",
+  "code": "class Solution {\npublic:\n    int countKDifference(vector<int>& nums, int k) {\n        int freq[101] = {0};\n        int ans = 0;\n        for (int x : nums) {\n            if (x - k >= 1) ans += freq[x - k];\n            if (x + k <= 100) ans += freq[x + k];\n            ++freq[x];\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T12:44:51.889428",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countKDifference(vector<int>& nums, int k) {\n        int freq[101] = {0};\n        int ans = 0;\n        for (int x : nums) {\n            if (x - k >= 1) ans += freq[x - k];\n            if (x + k <= 100) ans += freq[x + k];\n            ++freq[x];\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.390710"
+}

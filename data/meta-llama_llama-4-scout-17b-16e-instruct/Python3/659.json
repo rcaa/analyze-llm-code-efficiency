@@ -1,0 +1,15 @@
+{
+  "id": 659,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\nfrom collections import defaultdict\n\nclass Solution:\n    def isPossible(self, nums: List[int]) -> bool:\n        count = defaultdict(int)\n        tails = defaultdict(int)\n        \n        for num in nums:\n            count[num] += 1\n        \n        for num in nums:\n            if count[num] > 0:\n                if tails[num - 1] > 0:\n                    tails[num - 1] -= 1\n                    tails[num] += 1\n                elif count[num] > 1:\n                    count[num] -= 1\n                    tails[num + 2] += 1\n                else:\n                    return False\n                count[num] -= 1\n        \n        return True\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses two hash maps, `count` and `tails`, to track the occurrence of each number and the end of each subsequence. It iterates through the array, trying to form subsequences of length 3 or more. If a number can be appended to an existing subsequence or a new subsequence can be started, it updates the maps accordingly. If a number cannot be used to form a subsequence, it returns False. If all numbers are used to form valid subsequences, it returns True.",
+  "code": "class Solution:\n    def isPossible(self, nums: List[int]) -> bool:\n        count = defaultdict(int)\n        tails = defaultdict(int)\n        \n        for num in nums:\n            count[num] += 1\n        \n        for num in nums:\n            if count[num] > 0:\n                if tails[num - 1] > 0:\n                    tails[num - 1] -= 1\n                    tails[num] += 1\n                elif count[num] > 1:\n                    count[num] -= 1\n                    tails[num + 2] += 1\n                else:\n                    return False\n                count[num] -= 1\n        \n        return True",
+  "timestamp": "2025-08-05T13:06:54.224511",
+  "code_extracted_previous": "from typing import List\nfrom collections import defaultdict\n\nclass Solution:\n    def isPossible(self, nums: List[int]) -> bool:\n        count = defaultdict(int)\n        tails = defaultdict(int)\n        \n        for num in nums:\n            count[num] += 1\n        \n        for num in nums:\n            if count[num] > 0:\n                if tails[num - 1] > 0:\n                    tails[num - 1] -= 1\n                    tails[num] += 1\n                elif count[num] > 1:\n                    count[num] -= 1\n                    tails[num + 2] += 1\n                else:\n                    return False\n                count[num] -= 1\n        \n        return True",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.868000"
+}

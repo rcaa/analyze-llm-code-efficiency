@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        cows = 0\n        secret_counts = {}\n        guess_counts = {}\n        for i in range(len(secret)):\n            if secret[i] == guess[i]:\n                bulls += 1\n            else:\n                secret_counts[secret[i]] = secret_counts.get(secret[i], 0) + 1\n                guess_counts[guess[i]] = guess_counts.get(guess[i], 0) + 1\n        for digit, count in guess_counts.items():\n            cows += min(count, secret_counts.get(digit, 0))\n        return f\"{bulls}A{cows}B\"\n```\n\nsolution: ```python\nclass Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        cows = 0\n        secret_counts = {}\n        guess_counts = {}\n        for i in range(len(secret)):\n            if secret[i] == guess[i]:\n                bulls += 1\n            else:\n                secret_counts[secret[i]] = secret_counts.get(secret[i], 0) + 1\n                guess_counts[guess[i]] = guess_counts.get(guess[i], 0) + 1\n        for digit, count in guess_counts.items():\n            cows += min(count, secret_counts.get(digit, 0))\n        return f\"{bulls}A{cows}B\"\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution utilizes dictionaries to efficiently count the occurrences of each digit in both the secret number and the guess. By comparing these counts, it determines the number of bulls and cows. This approach has a linear time complexity due to a single pass through the strings and a constant space complexity dominated by the dictionaries.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T14:52:07.194649",
+  "code_extracted_previous": "class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        cows = 0\n        secret_counts = {}\n        guess_counts = {}\n        for i in range(len(secret)):\n            if secret[i] == guess[i]:\n                bulls += 1\n            else:\n                secret_counts[secret[i]] = secret_counts.get(secret[i], 0) + 1\n                guess_counts[guess[i]] = guess_counts.get(guess[i], 0) + 1\n        for digit, count in guess_counts.items():\n            cows += min(count, secret_counts.get(digit, 0))\n        return f\"{bulls}A{cows}B\"",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.532403"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3226,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int minChanges(int n, int k) {\n        int changes = 0;\n        while (n != 0 && k != 0) {\n            int nBit = n & 1;\n            int kBit = k & 1;\n            if (nBit == 1 && kBit == 0) {\n                changes++;\n            }\n            n >>= 1;\n            k >>= 1;\n        }\n        if (n == 0 && k == 0) {\n            return changes;\n        } else if (n == 0) {\n            return -1;\n        } else {\n            while (n != 0) {\n                int nBit = n & 1;\n                if (nBit == 1) {\n                    changes++;\n                }\n                n >>= 1;\n            }\n            return changes;\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n + log k)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses bitwise operations to compare the binary representations of n and k from the least significant bit to the most significant bit, counting the number of changes needed to make n equal to k. If n becomes 0 before k, it checks if k is also 0; if not, it returns -1. Otherwise, it continues counting changes for the remaining bits in n.",
+  "code": "class Solution {\n    public int minChanges(int n, int k) {\n        int changes = 0;\n        while (n != 0 && k != 0) {\n            int nBit = n & 1;\n            int kBit = k & 1;\n            if (nBit == 1 && kBit == 0) {\n                changes++;\n            }\n            n >>= 1;\n            k >>= 1;\n        }\n        if (n == 0 && k == 0) {\n            return changes;\n        } else if (n == 0) {\n            return -1;\n        } else {\n            while (n != 0) {\n                int nBit = n & 1;\n                if (nBit == 1) {\n                    changes++;\n                }\n                n >>= 1;\n            }\n            return changes;\n        }\n    }\n}",
+  "timestamp": "2025-08-06T15:14:52.303268",
+  "code_extracted_previous": "class Solution {\n    public int minChanges(int n, int k) {\n        int changes = 0;\n        while (n != 0 && k != 0) {\n            int nBit = n & 1;\n            int kBit = k & 1;\n            if (nBit == 1 && kBit == 0) {\n                changes++;\n            }\n            n >>= 1;\n            k >>= 1;\n        }\n        if (n == 0 && k == 0) {\n            return changes;\n        } else if (n == 0) {\n            return -1;\n        } else {\n            while (n != 0) {\n                int nBit = n & 1;\n                if (nBit == 1) {\n                    changes++;\n                }\n                n >>= 1;\n            }\n            return changes;\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.122032"
+}

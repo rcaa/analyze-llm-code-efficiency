@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1, cnt = 9;\n        int start = 1;\n        while (n > len * cnt) {\n            n -= len * cnt;\n            len += 1;\n            cnt *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string s = to_string(start);\n        return s[(n - 1) % len] - '0';\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(log(n))\nenergy implications: LOW\nexplanation: The solution uses mathematical calculations to determine the number and digit position, then converts the number to a string to access the desired digit.",
+  "code": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1, cnt = 9;\n        int start = 1;\n        while (n > len * cnt) {\n            n -= len * cnt;\n            len += 1;\n            cnt *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string s = to_string(start);\n        return s[(n - 1) % len] - '0';\n    }\n};",
+  "timestamp": "2025-08-05T15:42:02.391540",
+  "code_extracted_previous": "public:\n    int findNthDigit(int n) {\n        long long len = 1, cnt = 9;\n        int start = 1;\n        while (n > len * cnt) {\n            n -= len * cnt;\n            len += 1;\n            cnt *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string s = to_string(start);\n        return s[(n - 1) % len] - '0';\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.887063"
+}

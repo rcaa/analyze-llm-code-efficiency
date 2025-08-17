@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        dp = [0.0] * (n + 1)\n        dp[0] = 1.0\n        for i in range(1, n + 1):\n            for j in range(1, min(i, maxPts) + 1):\n                if i - j >= k:\n                    dp[i] += dp[i - j] / maxPts\n        return sum(dp[:n + 1])\n```\nefficiency: HIGH\ntime complexity: O(n * maxPts)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the probability. It iterates through possible points (i) and possible draws (j), updating the probability at each point based on the probabilities of reaching that point from previous points.  The key is the conditional statement `if i - j >= k` which ensures that Alice doesn't exceed the stopping point (k).\n",
+  "code": "class Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        dp = [0.0] * (n + 1)\n        dp[0] = 1.0\n        for i in range(1, n + 1):\n            for j in range(1, min(i, maxPts) + 1):\n                if i - j >= k:\n                    dp[i] += dp[i - j] / maxPts\n        return sum(dp[:n + 1])",
+  "timestamp": "2025-08-06T08:43:10.508010",
+  "code_extracted_previous": "class Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        dp = [0.0] * (n + 1)\n        dp[0] = 1.0\n        for i in range(1, n + 1):\n            for j in range(1, min(i, maxPts) + 1):\n                if i - j >= k:\n                    dp[i] += dp[i - j] / maxPts\n        return sum(dp[:n + 1])",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:27.107110"
+}

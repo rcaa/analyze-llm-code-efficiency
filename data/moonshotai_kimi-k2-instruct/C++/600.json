@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int findIntegers(int n) {\n        int k = 31 - __builtin_clz(n);\n        vector<int> f(k + 2);\n        f[0] = 1;\n        f[1] = 2;\n        for (int i = 2; i <= k; ++i) f[i] = f[i - 1] + f[i - 2];\n        int ans = 0;\n        bool ok = true;\n        for (int i = k; i >= 0; --i) {\n            if (n >> i & 1) {\n                ans += f[i];\n                if (n >> (i + 1) & 1) {\n                    ok = false;\n                    break;\n                }\n            }\n        }\n        return ans + ok;\n    }\n};\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Uses digit DP with Fibonacci pre-computation to count valid numbers ≤ n without consecutive 1s. Pre-computes counts for all bit lengths, then walks the bits of n, adding pre-computed counts when a 1 is encountered and stopping early if two consecutive 1s appear.",
+  "code": "class Solution {\npublic:\n    int findIntegers(int n) {\n        int k = 31 - __builtin_clz(n);\n        vector<int> f(k + 2);\n        f[0] = 1;\n        f[1] = 2;\n        for (int i = 2; i <= k; ++i) f[i] = f[i - 1] + f[i - 2];\n        int ans = 0;\n        bool ok = true;\n        for (int i = k; i >= 0; --i) {\n            if (n >> i & 1) {\n                ans += f[i];\n                if (n >> (i + 1) & 1) {\n                    ok = false;\n                    break;\n                }\n            }\n        }\n        return ans + ok;\n    }\n};",
+  "timestamp": "2025-08-05T14:15:51.736296",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findIntegers(int n) {\n        int k = 31 - __builtin_clz(n);\n        vector<int> f(k + 2);\n        f[0] = 1;\n        f[1] = 2;\n        for (int i = 2; i <= k; ++i) f[i] = f[i - 1] + f[i - 2];\n        int ans = 0;\n        bool ok = true;\n        for (int i = k; i >= 0; --i) {\n            if (n >> i & 1) {\n                ans += f[i];\n                if (n >> (i + 1) & 1) {\n                    ok = false;\n                    break;\n                }\n            }\n        }\n        return ans + ok;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.196385"
+}

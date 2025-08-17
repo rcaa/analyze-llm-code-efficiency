@@ -1,0 +1,15 @@
+{
+  "id": 970,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> res;\n        for (int i = 0; pow(x, i) <= bound; ++i) {\n            for (int j = 0; pow(x, i) + pow(y, j) <= bound; ++j) {\n                res.insert(pow(x, i) + pow(y, j));\n            }\n        }\n        return vector<int>(res.begin(), res.end());\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(bound)^2)\nspace complexity: O(log(bound)^2)\nenergy implications: LOW\nexplanation: The solution uses two nested loops to generate all possible powerful integers within the bound, and an unordered set to store unique results.",
+  "code": "class Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> res;\n        for (int i = 0; pow(x, i) <= bound; ++i) {\n            for (int j = 0; pow(x, i) + pow(y, j) <= bound; ++j) {\n                res.insert(pow(x, i) + pow(y, j));\n            }\n        }\n        return vector<int>(res.begin(), res.end());\n    }\n};",
+  "timestamp": "2025-08-06T03:19:34.724720",
+  "code_extracted_previous": "public:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> res;\n        for (int i = 0; pow(x, i) <= bound; ++i) {\n            for (int j = 0; pow(x, i) + pow(y, j) <= bound; ++j) {\n                res.insert(pow(x, i) + pow(y, j));\n            }\n        }\n        return vector<int>(res.begin(), res.end());\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.186993"
+}

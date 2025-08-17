@@ -1,0 +1,15 @@
+{
+  "id": 2749,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int makeTheIntegerZero(int num1, int num2) {\n        if (num2 == 0) return num1 == 0 ? 0 : -1;\n        int count = 0;\n        while (num1 != 0) {\n            if (num1 * num2 < 0) {\n                return -1;\n            }\n            if (Math.abs(num2) > Math.abs(num1)) {\n                return count + 1;\n            }\n            int i = 0;\n            while ((2 * i + num2) <= num1) {\n                i++;\n            }\n            i--;\n            num1 -= (2 * i + num2);\n            count++;\n        }\n        return count;\n    }\n}\nefficiency: HIGH\ntime complexity: O(log(num1))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The provided solution iterates through possible values of i to subtract from num1, ensuring the minimum number of operations to reach 0, handling edge cases where num2 is 0 or has a different sign than num1.",
+  "code": "class Solution {\n    public int makeTheIntegerZero(int num1, int num2) {\n        if (num2 == 0) return num1 == 0 ? 0 : -1;\n        int count = 0;\n        while (num1 != 0) {\n            if (num1 * num2 < 0) {\n                return -1;\n            }\n            if (Math.abs(num2) > Math.abs(num1)) {\n                return count + 1;\n            }\n            int i = 0;\n            while ((2 * i + num2) <= num1) {\n                i++;\n            }\n            i--;\n            num1 -= (2 * i + num2);\n            count++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T15:14:21.428972",
+  "code_extracted_previous": "class Solution {\n    public int makeTheIntegerZero(int num1, int num2) {\n        if (num2 == 0) return num1 == 0 ? 0 : -1;\n        int count = 0;\n        while (num1 != 0) {\n            if (num1 * num2 < 0) {\n                return -1;\n            }\n            if (Math.abs(num2) > Math.abs(num1)) {\n                return count + 1;\n            }\n            int i = 0;\n            while ((2 * i + num2) <= num1) {\n                i++;\n            }\n            i--;\n            num1 -= (2 * i + num2);\n            count++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.029323"
+}

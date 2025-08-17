@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        long long dp[steps + 1][arrLen + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j < arrLen; j++) {\n                dp[i][j] = (dp[i - 1][j] + dp[i - 1][(j + 1) % arrLen] + dp[i - 1][(j - 1 + arrLen) % arrLen]) % 1000000007;\n            }\n        }\n        return dp[steps][0];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(steps * arrLen)\nspace complexity: O(steps * arrLen)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of ways to stay at index 0 after a given number of steps. It builds a 2D table `dp` where `dp[i][j]` represents the number of ways to reach index `j` after `i` steps. The table is filled iteratively, considering the possible moves (left, right, stay) at each step. The modulo operation ensures that the result does not exceed the specified limit.\n",
+  "code": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        long long dp[steps + 1][arrLen + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j < arrLen; j++) {\n                dp[i][j] = (dp[i - 1][j] + dp[i - 1][(j + 1) % arrLen] + dp[i - 1][(j - 1 + arrLen) % arrLen]) % 1000000007;\n            }\n        }\n        return dp[steps][0];\n    }\n};",
+  "timestamp": "2025-08-05T14:19:14.287965",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        long long dp[steps + 1][arrLen + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j < arrLen; j++) {\n                dp[i][j] = (dp[i - 1][j] + dp[i - 1][(j + 1) % arrLen] + dp[i - 1][(j - 1 + arrLen) % arrLen]) % 1000000007;\n            }\n        }\n        return dp[steps][0];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.169295"
+}

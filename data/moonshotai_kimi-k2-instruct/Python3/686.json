@@ -1,0 +1,15 @@
+{
+  "id": 686,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def repeatedStringMatch(self, a: str, b: str) -> int:\n        if not b:\n            return 0\n        n, m = len(a), len(b)\n        min_repeats = (m + n - 1) // n\n        for k in (min_repeats, min_repeats + 1):\n            if b in (a * k):\n                return k\n        return -1\n```\nefficiency: HIGH\ntime complexity: O(n * (m + n))\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: Compute the minimal repeats needed to cover b's length, then check at most two candidate repeat counts (k and k+1) to see if b appears as a substring; avoids unnecessary large string constructions and leverages Python's efficient substring search.",
+  "code": "class Solution:\n    def repeatedStringMatch(self, a: str, b: str) -> int:\n        if not b:\n            return 0\n        n, m = len(a), len(b)\n        min_repeats = (m + n - 1) // n\n        for k in (min_repeats, min_repeats + 1):\n            if b in (a * k):\n                return k\n        return -1",
+  "timestamp": "2025-08-05T23:52:26.733127",
+  "code_extracted_previous": "class Solution:\n    def repeatedStringMatch(self, a: str, b: str) -> int:\n        if not b:\n            return 0\n        n, m = len(a), len(b)\n        min_repeats = (m + n - 1) // n\n        for k in (min_repeats, min_repeats + 1):\n            if b in (a * k):\n                return k\n        return -1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.389135"
+}

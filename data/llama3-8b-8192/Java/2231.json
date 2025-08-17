@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int largestInteger(int num) {\n        String str = String.valueOf(num);\n        char[] arr = str.toCharArray();\n        Arrays.sort(arr, (a, b) -> {\n            if ((a - '0') % 2 == (b - '0') % 2) {\n                return Integer.compare(b, a);\n            } else {\n                return Integer.compare(a, b);\n            }\n        });\n        StringBuilder sb = new StringBuilder();\n        for (char c : arr) {\n            sb.append(c);\n        }\n        return Integer.parseInt(sb.toString());\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution first converts the integer to a string and then to a character array. It sorts the array based on the parity of the digits, and then constructs the largest possible number by concatenating the sorted digits. The sorting is done using a custom comparator that first compares digits with the same parity, and then compares digits with different parity. This approach ensures that the largest possible number is constructed.",
+  "code": "class Solution {\n    public int largestInteger(int num) {\n        String str = String.valueOf(num);\n        char[] arr = str.toCharArray();\n        Arrays.sort(arr, (a, b) -> {\n            if ((a - '0') % 2 == (b - '0') % 2) {\n                return Integer.compare(b, a);\n            } else {\n                return Integer.compare(a, b);\n            }\n        });\n        StringBuilder sb = new StringBuilder();\n        for (char c : arr) {\n            sb.append(c);\n        }\n        return Integer.parseInt(sb.toString());\n    }\n}",
+  "timestamp": "2025-08-06T01:58:58.108700",
+  "code_extracted_previous": "public int largestInteger(int num) {\n        String str = String.valueOf(num);\n        char[] arr = str.toCharArray();\n        Arrays.sort(arr, (a, b) -> {\n            if ((a - '0') % 2 == (b - '0') % 2) {\n                return Integer.compare(b, a);\n            } else {\n                return Integer.compare(a, b);\n            }\n        });\n        StringBuilder sb = new StringBuilder();\n        for (char c : arr) {\n            sb.append(c);\n        }\n        return Integer.parseInt(sb.toString());\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.202146"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 609,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        files = {}\n        for path in paths:\n            dir_path, file_info = path.split(\" \")\n            for file_data in file_info.split():\n                file_name, content = file_data.split(\"(\")\n                content = content[:-1]  \n                if content in files:\n                    files[content].append(dir_path + \"/\" + file_name)\n                else:\n                    files[content] = [dir_path + \"/\" + file_name]\n        return [files[content] for content in files if len(files[content]) > 1]\n```\nsolution: \n```python\nclass Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        files = {}\n        for path in paths:\n            dir_path, file_info = path.split(\" \")\n            for file_data in file_info.split():\n                file_name, content = file_data.split(\"(\")\n                content = content[:-1]  \n                if content in files:\n                    files[content].append(dir_path + \"/\" + file_name)\n                else:\n                    files[content] = [dir_path + \"/\" + file_name]\n        return [files[content] for content in files if len(files[content]) > 1]\n```\nefficiency: HIGH\ntime complexity: O(N*M)\nspace complexity: O(N*M)\nenergy implications: LOW\nexplanation: The solution uses a dictionary to store file contents as keys and a list of corresponding file paths as values. It iterates through each path, extracts file names and contents, and adds them to the dictionary. If a content already exists, it appends the new file path to the existing list. Finally, it returns a list of file paths for contents that have more than one associated path, indicating duplicates.  The time complexity is O(N*M) due to iterating through all paths and file data. The space complexity is also O(N*M) as the dictionary can store up to N unique contents with M file paths each.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T13:04:12.258062",
+  "code_extracted_previous": "class Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        files = {}\n        for path in paths:\n            dir_path, file_info = path.split(\" \")\n            for file_data in file_info.split():\n                file_name, content = file_data.split(\"(\")\n                content = content[:-1]  \n                if content in files:\n                    files[content].append(dir_path + \"/\" + file_name)\n                else:\n                    files[content] = [dir_path + \"/\" + file_name]\n        return [files[content] for content in files if len(files[content]) > 1]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.994978"
+}

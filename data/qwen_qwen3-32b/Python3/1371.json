@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        from collections import defaultdict\n\n        state_map = {0: -1}\n        vowels = {'a': 0, 'e': 1, 'i': 2, 'o': 3, 'u': 4}\n        max_len = 0\n        mask = 0\n\n        for i, ch in enumerate(s):\n            if ch in vowels:\n                mask ^= (1 << vowels[ch])\n            if mask in state_map:\n                max_len = max(max_len, i - state_map[mask])\n            else:\n                state_map[mask] = i\n\n        return max_len\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(32) = O(1)\nenergy implications: LOW\nexplanation: <The solution uses a bitmask to track the parity (even/odd count) of vowels encountered. It maps the first occurrence of each bitmask to its index and calculates the maximum length of substrings where all vowels appear an even number of times. The key strength is its linear time and constant space complexity, making it highly efficient for large inputs.>",
+  "code": "class Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n\n        state_map = {0: -1}\n        vowels = {'a': 0, 'e': 1, 'i': 2, 'o': 3, 'u': 4}\n        max_len = 0\n        mask = 0\n\n        for i, ch in enumerate(s):\n            if ch in vowels:\n                mask ^= (1 << vowels[ch])\n            if mask in state_map:\n                max_len = max(max_len, i - state_map[mask])\n            else:\n                state_map[mask] = i\n\n        return max_len",
+  "timestamp": "2025-08-06T15:32:03.170125",
+  "code_extracted_previous": "class Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        from collections import defaultdict\n\n        state_map = {0: -1}\n        vowels = {'a': 0, 'e': 1, 'i': 2, 'o': 3, 'u': 4}\n        max_len = 0\n        mask = 0\n\n        for i, ch in enumerate(s):\n            if ch in vowels:\n                mask ^= (1 << vowels[ch])\n            if mask in state_map:\n                max_len = max(max_len, i - state_map[mask])\n            else:\n                state_map[mask] = i\n\n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:04.096184"
+}

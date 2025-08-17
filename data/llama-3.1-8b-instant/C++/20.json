@@ -1,14 +1,15 @@
 {
-  "id": "2441",
-  "titulo": "Largest Positive Integer That Exists With Its Negative",
-  "url": "https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/",
-  "llm_response": {
-    "resposta_bruta": "solution: \n```cpp\nint largestVal(vector<int>& nums) {\n    unordered_map<int, int> num_count;\n    for (int num : nums) {\n        num_count[num]++;\n    }\n    int max_k = -1;\n    for (auto& pair : num_count) {\n        if (pair.second > 1 && -pair.first >= 0 && num_count.count(-pair.first)) {\n            max_k = max(max_k, pair.first);\n        }\n    }\n    return max_k;\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses an unordered map to count the occurrences of each number in the array. It then iterates over the map to find the largest positive integer k such that -k also exists in the array. The time complexity is O(n) because we are iterating over the array once to count the numbers and once to find the largest k. The space complexity is also O(n) because in the worst case, we need to store all numbers in the map.",
-    "resposta_formatada": "solution: \n```cpp\nint largestVal(vector<int>& nums) {\n    unordered_map<int, int> num_count;\n    for (int num : nums) {\n        num_count[num]++;\n    }\n    int max_k = -1;\n    for (auto& pair : num_count) {\n        if (pair.second > 1 && -pair.first >= 0 && num_count.count(-pair.first)) {\n            max_k = max(max_k, pair.first);\n        }\n    }\n    return max_k;\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses an unordered map to count the occurrences of each number in the array. It then iterates over the map to find the largest positive integer k such that -k also exists in the array. The time complexity is O(n) because we are iterating over the array once to count the numbers and once to find the largest k. The space complexity is also O(n) because in the worst case, we need to store all numbers in the map.",
-    "valid": true,
-    "tempo_resposta": 7.353450536727905,
-    "tentativas": 1,
-    "erro": null,
-    "timestamp": "2025-06-22T19:19:42.880725"
-  }
+  "id": 20,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        unordered_map<char, char> mp = {{')', '('}, {'}', '{'}, {']', '['}};\n        for (char c : s) {\n            if (mp.find(c) != mp.end()) {\n                if (st.empty() || st.top() != mp[c]) return false;\n                st.pop();\n            } else {\n                st.push(c);\n            }\n        }\n        return st.empty();\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to keep track of the opening brackets and a hash map to map closing brackets to their corresponding opening brackets. It iterates through the string, pushing opening brackets onto the stack and popping them off when a matching closing bracket is encountered. If a closing bracket does not match the top of the stack or if there are unmatched opening brackets left at the end, the string is invalid. This approach has a high efficiency due to its constant time complexity for stack operations and hash map lookups.",
+  "code": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        unordered_map<char, char> mp = {{')', '('}, {'}', '{'}, {']', '['}};\n        for (char c : s) {\n            if (mp.find(c) != mp.end()) {\n                if (st.empty() || st.top() != mp[c]) return false;\n                st.pop();\n            } else {\n                st.push(c);\n            }\n        }\n        return st.empty();\n    }\n};",
+  "timestamp": "2025-08-05T16:20:02.174385",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        unordered_map<char, char> mp = {{')', '('}, {'}', '{'}, {']', '['}};\n        for (char c : s) {\n            if (mp.find(c) != mp.end()) {\n                if (st.empty() || st.top() != mp[c]) return false;\n                st.pop();\n            } else {\n                st.push(c);\n            }\n        }\n        return st.empty();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.621483"
 }

@@ -1,0 +1,15 @@
+{
+  "id": 647,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int countSubstrings(string s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += expandAroundCenter(s, i, i); // odd length palindrome\n            count += expandAroundCenter(s, i, i + 1); // even length palindrome\n        }\n        return count;\n    }\n    int expandAroundCenter(string s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s[left] == s[right]) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer approach to expand around the center of the palindrome. It counts the number of palindromic substrings by considering both odd and even length palindromes. The expandAroundCenter function is used to expand the palindrome from the center, and the countSubstrings function iterates over the string to find all palindromic substrings.",
+  "code": "class Solution {\npublic:\n    int countSubstrings(string s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += expandAroundCenter(s, i, i); // odd length palindrome\n            count += expandAroundCenter(s, i, i + 1); // even length palindrome\n        }\n        return count;\n    }\n    int expandAroundCenter(string s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s[left] == s[right]) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-06T01:38:14.493270",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countSubstrings(string s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += expandAroundCenter(s, i, i); // odd length palindrome\n            count += expandAroundCenter(s, i, i + 1); // even length palindrome\n        }\n        return count;\n    }\n    int expandAroundCenter(string s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s[left] == s[right]) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.568551"
+}

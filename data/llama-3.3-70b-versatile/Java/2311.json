@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int maxLen = 0;\n        for (int mask = 0; mask < (1 << n); mask++) {\n            StringBuilder sb = new StringBuilder();\n            for (int i = 0; i < n; i++) {\n                if ((mask & (1 << i)) != 0) {\n                    sb.append(s.charAt(i));\n                }\n            }\n            String sub = sb.toString();\n            if (sub.isEmpty()) continue;\n            int num = Integer.parseInt(sub, 2);\n            if (num <= k) {\n                maxLen = Math.max(maxLen, sub.length());\n            }\n        }\n        return maxLen;\n    }\n}\nefficiency: LOW\ntime complexity: O(2^n * n)\nspace complexity: O(n)\nenergy implications: HIGH\nexplanation: The solution uses a bitmask to generate all possible subsequences of the input string, then checks if the decimal value of each subsequence is less than or equal to k, updating the maximum length as needed. However, this approach is inefficient due to its exponential time complexity.",
+  "code": "class Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int maxLen = 0;\n        for (int mask = 0; mask < (1 << n); mask++) {\n            StringBuilder sb = new StringBuilder();\n            for (int i = 0; i < n; i++) {\n                if ((mask & (1 << i)) != 0) {\n                    sb.append(s.charAt(i));\n                }\n            }\n            String sub = sb.toString();\n            if (sub.isEmpty()) continue;\n            int num = Integer.parseInt(sub, 2);\n            if (num <= k) {\n                maxLen = Math.max(maxLen, sub.length());\n            }\n        }\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-06T01:00:21.482301",
+  "code_extracted_previous": "class Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int maxLen = 0;\n        for (int mask = 0; mask < (1 << n); mask++) {\n            StringBuilder sb = new StringBuilder();\n            for (int i = 0; i < n; i++) {\n                if ((mask & (1 << i)) != 0) {\n                    sb.append(s.charAt(i));\n                }\n            }\n            String sub = sb.toString();\n            if (sub.isEmpty()) continue;\n            int num = Integer.parseInt(sub, 2);\n            if (num <= k) {\n                maxLen = Math.max(maxLen, sub.length());\n            }\n        }\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.860193"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2161,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```\nclass Solution {\npublic:\n    vector<int> pivotArray(vector<int>& nums, int pivot) {\n        sort(nums.begin(), nums.end());\n        vector<int> result;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] == pivot) {\n                result.push_back(nums[i]);\n            } else if (nums[i] < pivot) {\n                result.insert(result.end(), nums.begin() + i, nums.begin() + i + 1);\n            } else {\n                result.insert(result.end(), nums.begin() + i + 1, nums.end());\n            }\n        }\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\n1. Sort the input array using the built-in `sort` function, which has a time complexity of O(n log n).\n2. Create an empty result vector to store the elements that meet the given conditions.\n3. Iterate through the sorted array and check if each element is equal to the pivot, less than the pivot, or greater than the pivot.\n4. For elements less than the pivot, insert them into the result vector.\n5. For elements equal to the pivot, insert them into the result vector.\n6. For elements greater than the pivot, insert them into the result vector.\n7. Return the result vector after processing all elements.\n\nThis solution has a time complexity of O(n log n) due to the sorting operation, and a space complexity of O(1) since we only use a small vector to store the result. The energy implications are low since the sorting operation has a low energy consumption. ",
+  "code": "class Solution {\npublic:\n    vector<int> pivotArray(vector<int>& nums, int pivot) {\n        sort(nums.begin(), nums.end());\n        vector<int> result;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] == pivot) {\n                result.push_back(nums[i]);\n            } else if (nums[i] < pivot) {\n                result.insert(result.end(), nums.begin() + i, nums.begin() + i + 1);\n            } else {\n                result.insert(result.end(), nums.begin() + i + 1, nums.end());\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T13:26:32.311293",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> pivotArray(vector<int>& nums, int pivot) {\n        sort(nums.begin(), nums.end());\n        vector<int> result;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] == pivot) {\n                result.push_back(nums[i]);\n            } else if (nums[i] < pivot) {\n                result.insert(result.end(), nums.begin() + i, nums.begin() + i + 1);\n            } else {\n                result.insert(result.end(), nums.begin() + i + 1, nums.end());\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.309903"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int findTheLongestBalancedSubstring(String s) {\n        int maxLen = 0, zeros = 0, ones = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '0') zeros++;\n            else ones++;\n            if (zeros == ones) maxLen = Math.max(maxLen, zeros + ones);\n            else if (ones > zeros) {\n                zeros = ones = 0;\n                zeros++;\n            } else {\n                ones = 0;\n                ones++;\n            }\n        }\n        return maxLen;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a single pass through the string, maintaining counts of zeros and ones, and updating the maximum length of a balanced substring as it goes.",
+  "code": "class Solution {\n    public int findTheLongestBalancedSubstring(String s) {\n        int maxLen = 0, zeros = 0, ones = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '0') zeros++;\n            else ones++;\n            if (zeros == ones) maxLen = Math.max(maxLen, zeros + ones);\n            else if (ones > zeros) {\n                zeros = ones = 0;\n                zeros++;\n            } else {\n                ones = 0;\n                ones++;\n            }\n        }\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-05T23:42:39.626200",
+  "code_extracted_previous": "class Solution {\n    public int findTheLongestBalancedSubstring(String s) {\n        int maxLen = 0, zeros = 0, ones = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '0') zeros++;\n            else ones++;\n            if (zeros == ones) maxLen = Math.max(maxLen, zeros + ones);\n            else if (ones > zeros) {\n                zeros = ones = 0;\n                zeros++;\n            } else {\n                ones = 0;\n                ones++;\n            }\n        }\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.269694"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        add(startTime, 1);\n        add(endTime, -1);\n        int max = 0, sum = 0;\n        for (auto& p : times) {\n            sum += p.second;\n            max = max > sum ? max : sum;\n        }\n        return max;\n    }\nprivate:\n    vector<pair<int, int>> times;\n    void add(int t, int val) {\n        times.push_back({t, val});\n    }\n};\n```\n However, a more efficient approach would utilize a data structure like a map or a segment tree to store and query the values more efficiently.\n\n```cpp\nclass MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        updates[startTime] += 1;\n        updates[endTime] -= 1;\n        int max = 0, sum = 0;\n        for (auto it = updates.begin(); it != updates.end(); ++it) {\n            sum += it->second;\n            max = max > sum ? max : sum;\n        }\n        return max;\n    }\nprivate:\n    map<int, int> updates;\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n log n) \nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The provided solution efficiently solves the problem by utilizing a map to store the updates at each time point. It iterates through the map to calculate the maximum k-booking. The map allows for efficient insertion and traversal of the time points.",
+  "code": "class MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        add(startTime, 1);\n        add(endTime, -1);\n        int max = 0, sum = 0;\n        for (auto& p : times) {\n            sum += p.second;\n            max = max > sum ? max : sum;\n        }\n        return max;\n    }\nprivate:\n    vector<pair<int, int>> times;\n    void add(int t, int val) {\n        times.push_back({t, val});\n    }\n};",
+  "timestamp": "2025-08-05T13:37:58.229902",
+  "code_extracted_previous": "class MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        add(startTime, 1);\n        add(endTime, -1);\n        int max = 0, sum = 0;\n        for (auto& p : times) {\n            sum += p.second;\n            max = max > sum ? max : sum;\n        }\n        return max;\n    }\nprivate:\n    vector<pair<int, int>> times;\n    void add(int t, int val) {\n        times.push_back({t, val});\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:49.934763"
+}

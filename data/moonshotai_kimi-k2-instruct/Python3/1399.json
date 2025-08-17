@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def countLargestGroup(self, n: int) -> int:\n        from collections import Counter\n        def digit_sum(x):\n            s = 0\n            while x:\n                s += x % 10\n                x //= 10\n            return s\n        freq = Counter(digit_sum(i) for i in range(1, n + 1))\n        max_size = max(freq.values())\n        return sum(1 for v in freq.values() if v == max_size)\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Compute digit sums for 1..n, count frequencies with Counter, then count how many groups share the maximum frequency.",
+  "code": "class Solution:\n    def countLargestGroup(self, n: int) -> int:\n        def digit_sum(x):\n            s = 0\n            while x:\n                s += x % 10\n                x //= 10\n            return s\n        freq = Counter(digit_sum(i) for i in range(1, n + 1))\n        max_size = max(freq.values())\n        return sum(1 for v in freq.values() if v == max_size)",
+  "timestamp": "2025-08-06T02:32:42.312173",
+  "code_extracted_previous": "class Solution:\n    def countLargestGroup(self, n: int) -> int:\n        from collections import Counter\n        def digit_sum(x):\n            s = 0\n            while x:\n                s += x % 10\n                x //= 10\n            return s\n        freq = Counter(digit_sum(i) for i in range(1, n + 1))\n        max_size = max(freq.values())\n        return sum(1 for v in freq.values() if v == max_size)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.249028"
+}

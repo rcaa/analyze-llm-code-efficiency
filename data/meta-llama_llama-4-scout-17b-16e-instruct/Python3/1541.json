@@ -1,0 +1,15 @@
+{
+  "id": 1541,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minInsertions(self, s: str) -> int:\n        stack = []\n        insertions = 0\n        for char in s:\n            if char == '(':\n                stack.append(char)\n            elif char == ')':\n                if stack and stack[-1] == '(':\n                    stack.pop()\n                else:\n                    insertions += 1\n        insertions += 2 * len(stack)\n        return insertions\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a stack to track opening parentheses. When encountering a closing parenthesis, it checks if there's a matching opening parenthesis on the stack. If not, it increments the insertions counter. Finally, it adds twice the number of remaining opening parentheses on the stack to the insertions counter, as each one needs two closing parentheses to match.",
+  "code": "class Solution:\n    def minInsertions(self, s: str) -> int:\n        stack = []\n        insertions = 0\n        for char in s:\n            if char == '(':\n                stack.append(char)\n            elif char == ')':\n                if stack and stack[-1] == '(':\n                    stack.pop()\n                else:\n                    insertions += 1\n        insertions += 2 * len(stack)\n        return insertions",
+  "timestamp": "2025-08-06T00:53:48.590858",
+  "code_extracted_previous": "class Solution:\n    def minInsertions(self, s: str) -> int:\n        stack = []\n        insertions = 0\n        for char in s:\n            if char == '(':\n                stack.append(char)\n            elif char == ')':\n                if stack and stack[-1] == '(':\n                    stack.pop()\n                else:\n                    insertions += 1\n        insertions += 2 * len(stack)\n        return insertions",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:51.866608"
+}

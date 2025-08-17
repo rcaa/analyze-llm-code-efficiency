@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        visited = set()\n        stack = [0]\n        while stack:\n            room = stack.pop()\n            if room not in visited:\n                visited.add(room)\n                stack.extend(key for key in rooms[room] if key not in visited)\n        return len(visited) == len(rooms)\n\nefficiency: HIGH\ntime complexity: O(N + E)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses DFS traversal to visit all reachable rooms, checking if the number of visited rooms equals the total number of rooms.\n```",
+  "code": "def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        visited = set()\n        stack = [0]\n        while stack:\n            room = stack.pop()\n            if room not in visited:\n                visited.add(room)\n                stack.extend(key for key in rooms[room] if key not in visited)\n        return len(visited) == len(rooms)",
+  "timestamp": "2025-08-05T14:00:25.978010",
+  "code_extracted_previous": "class Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        visited = set()\n        stack = [0]\n        while stack:\n            room = stack.pop()\n            if room not in visited:\n                visited.add(room)\n                stack.extend(key for key in rooms[room] if key not in visited)\n        return len(visited) == len(rooms)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.471933"
+}

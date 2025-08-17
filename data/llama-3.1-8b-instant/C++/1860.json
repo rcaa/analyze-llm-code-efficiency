@@ -1,0 +1,15 @@
+{
+  "id": 1860,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nvector<int> Solution::memLeak(int memory1, int memory2) {\n    int crashTime = 1;\n    int memory1Crash = memory1;\n    int memory2Crash = memory2;\n    \n    while (memory1 > 0 || memory2 > 0) {\n        int minMemory = min(memory1, memory2);\n        if (memory1 > memory2) {\n            memory1 -= minMemory;\n        } else {\n            memory2 -= minMemory;\n        }\n        crashTime++;\n        if (memory1 == 0) {\n            memory1Crash = minMemory;\n        }\n        if (memory2 == 0) {\n            memory2Crash = minMemory;\n        }\n    }\n    return {crashTime, memory1Crash, memory2Crash};\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "vector<int> Solution::memLeak(int memory1, int memory2) {\n    int crashTime = 1;\n    int memory1Crash = memory1;\n    int memory2Crash = memory2;\n    \n    while (memory1 > 0 || memory2 > 0) {\n        int minMemory = min(memory1, memory2);\n        if (memory1 > memory2) {\n            memory1 -= minMemory;\n        } else {\n            memory2 -= minMemory;\n        }\n        crashTime++;\n        if (memory1 == 0) {\n            memory1Crash = minMemory;\n        }\n        if (memory2 == 0) {\n            memory2Crash = minMemory;\n        }\n    }\n    return {crashTime, memory1Crash, memory2Crash};\n}",
+  "timestamp": "2025-08-05T15:55:14.001487",
+  "code_extracted_previous": "vector<int> Solution::memLeak(int memory1, int memory2) {\n    int crashTime = 1;\n    int memory1Crash = memory1;\n    int memory2Crash = memory2;\n    \n    while (memory1 > 0 || memory2 > 0) {\n        int minMemory = min(memory1, memory2);\n        if (memory1 > memory2) {\n            memory1 -= minMemory;\n        } else {\n            memory2 -= minMemory;\n        }\n        crashTime++;\n        if (memory1 == 0) {\n            memory1Crash = minMemory;\n        }\n        if (memory2 == 0) {\n            memory2Crash = minMemory;\n        }\n    }\n    return {crashTime, memory1Crash, memory2Crash};\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:27.543160"
+}

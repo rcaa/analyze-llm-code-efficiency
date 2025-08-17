@@ -1,0 +1,15 @@
+{
+  "id": 2507,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int smallestValue(int n) {\n        vector<bool> isPrime(n + 1, true);\n        isPrime[0] = isPrime[1] = false;\n        for (int i = 2; i * i <= n; i++) {\n            if (isPrime[i]) {\n                for (int j = i * i; j <= n; j += i) {\n                    isPrime[j] = false;\n                }\n            }\n        }\n        int res = n;\n        while (true) {\n            int sum = 0;\n            for (int i = 2; i <= res; i++) {\n                if (isPrime[i] && res % i == 0) {\n                    while (res % i == 0) {\n                        sum += i;\n                        res /= i;\n                    }\n                }\n            }\n            if (sum == res) break;\n            res = sum;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(sqrt(n) log log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses the Sieve of Eratosthenes algorithm to generate prime numbers up to n, and then iteratively replaces n with the sum of its prime factors until n no longer changes.",
+  "code": "class Solution {\npublic:\n    int smallestValue(int n) {\n        vector<bool> isPrime(n + 1, true);\n        isPrime[0] = isPrime[1] = false;\n        for (int i = 2; i * i <= n; i++) {\n            if (isPrime[i]) {\n                for (int j = i * i; j <= n; j += i) {\n                    isPrime[j] = false;\n                }\n            }\n        }\n        int res = n;\n        while (true) {\n            int sum = 0;\n            for (int i = 2; i <= res; i++) {\n                if (isPrime[i] && res % i == 0) {\n                    while (res % i == 0) {\n                        sum += i;\n                        res /= i;\n                    }\n                }\n            }\n            if (sum == res) break;\n            res = sum;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:58:02.746969",
+  "code_extracted_previous": "public:\n    int smallestValue(int n) {\n        vector<bool> isPrime(n + 1, true);\n        isPrime[0] = isPrime[1] = false;\n        for (int i = 2; i * i <= n; i++) {\n            if (isPrime[i]) {\n                for (int j = i * i; j <= n; j += i) {\n                    isPrime[j] = false;\n                }\n            }\n        }\n        int res = n;\n        while (true) {\n            int sum = 0;\n            for (int i = 2; i <= res; i++) {\n                if (isPrime[i] && res % i == 0) {\n                    while (res % i == 0) {\n                        sum += i;\n                        res /= i;\n                    }\n                }\n            }\n            if (sum == res) break;\n            res = sum;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.574845"
+}

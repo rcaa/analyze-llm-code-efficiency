@@ -1,0 +1,15 @@
+{
+  "id": 970,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> res;\n        for (int i = 0; i <= log2(bound); i++) {\n            for (int j = 0; i + j <= log2(bound); j++) {\n                int val = pow(x, i) + pow(y, j);\n                if (val <= bound) res.insert(val);\n            }\n        }\n        return vector<int>(res.begin(), res.end());\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(bound))\nspace complexity: O(log(bound))\nenergy implications: LOW\nexplanation: This solution uses a two-loop approach to generate all possible combinations of x^i and y^j, and checks if the resulting value is within the bound. The use of unordered_set ensures that each value occurs at most once in the result. The time complexity is O(log(bound)) because the maximum value of i and j is log2(bound).",
+  "code": "class Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> res;\n        for (int i = 0; i <= log2(bound); i++) {\n            for (int j = 0; i + j <= log2(bound); j++) {\n                int val = pow(x, i) + pow(y, j);\n                if (val <= bound) res.insert(val);\n            }\n        }\n        return vector<int>(res.begin(), res.end());\n    }\n};",
+  "timestamp": "2025-08-05T14:57:02.911945",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> res;\n        for (int i = 0; i <= log2(bound); i++) {\n            for (int j = 0; i + j <= log2(bound); j++) {\n                int val = pow(x, i) + pow(y, j);\n                if (val <= bound) res.insert(val);\n            }\n        }\n        return vector<int>(res.begin(), res.end());\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.766550"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        n = len(s)\n        res = 0\n        for i in range(n):\n            v = [0] * 5\n            for j in range(i, n):\n                if s[j] in 'aeiou':\n                    v[ord(s[j]) - ord('a')] += 1\n                if all(x % 2 == 0 for x in v):\n                    res = max(res, j - i + 1)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer technique to find the longest substring with an even number of vowels. It iterates over the string and maintains a count of vowels for each substring. When all vowels have an even count, it updates the result with the length of the current substring.",
+  "code": "class Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        n = len(s)\n        res = 0\n        for i in range(n):\n            v = [0] * 5\n            for j in range(i, n):\n                if s[j] in 'aeiou':\n                    v[ord(s[j]) - ord('a')] += 1\n                if all(x % 2 == 0 for x in v):\n                    res = max(res, j - i + 1)\n        return res",
+  "timestamp": "2025-08-05T15:04:11.726568",
+  "code_extracted_previous": "class Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        n = len(s)\n        res = 0\n        for i in range(n):\n            v = [0] * 5\n            for j in range(i, n):\n                if s[j] in 'aeiou':\n                    v[ord(s[j]) - ord('a')] += 1\n                if all(x % 2 == 0 for x in v):\n                    res = max(res, j - i + 1)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.361400"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 521,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```c++\nclass Solution {\npublic:\n    int findLUSlength(string a, string b) {\n        int n = a.length();\n        int m = b.length();\n        \n        vector<vector<int>> dp(m + 1, vector<int>(n + 1, -1));\n        \n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (a[i - 1] == b[j - 1]) {\n                    dp[j][i] = dp[j - 1][i - 1];\n                } else {\n                    dp[j][i] = max(dp[j][i - 1], dp[j - 1][i]);\n                }\n            }\n        }\n        \n        return dp[m][n];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * m)\nspace complexity: O(n * m)\nenergy implications: LOW\n\nExplanation:\n\nWe use a dynamic programming approach to solve the problem. We create a 2D array (dp) with dimensions (m + 1) x (n + 1), where m and n are the lengths of strings a and b, respectively. We iterate through the strings and update the dp array based on whether the current characters in a and b are equal or not. If they are equal, we take the maximum value from the previous rows or columns. If they are not equal, we take the maximum value from the previous row or column. Finally, we return the value at the bottom-right corner of the dp array, which represents the length of the longest uncommon subsequence. ",
+  "code": "class Solution {\npublic:\n    int findLUSlength(string a, string b) {\n        int n = a.length();\n        int m = b.length();\n        \n        vector<vector<int>> dp(m + 1, vector<int>(n + 1, -1));\n        \n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (a[i - 1] == b[j - 1]) {\n                    dp[j][i] = dp[j - 1][i - 1];\n                } else {\n                    dp[j][i] = max(dp[j][i - 1], dp[j - 1][i]);\n                }\n            }\n        }\n        \n        return dp[m][n];\n    }\n};",
+  "timestamp": "2025-08-05T16:31:17.704265",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findLUSlength(string a, string b) {\n        int n = a.length();\n        int m = b.length();\n        \n        vector<vector<int>> dp(m + 1, vector<int>(n + 1, -1));\n        \n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (a[i - 1] == b[j - 1]) {\n                    dp[j][i] = dp[j - 1][i - 1];\n                } else {\n                    dp[j][i] = max(dp[j][i - 1], dp[j - 1][i]);\n                }\n            }\n        }\n        \n        return dp[m][n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.037601"
+}

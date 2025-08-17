@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass MyCalendarThree {\n    private TreeMap<Integer, Integer> delta;\n\n    public MyCalendarThree() {\n        delta = new TreeMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        delta.put(startTime, delta.getOrDefault(startTime, 0) + 1);\n        delta.put(endTime, delta.getOrDefault(endTime, 0) - 1);\n        \n        int active = 0, max = 0;\n        for (int d : delta.values()) {\n            active += d;\n            max = Math.max(max, active);\n        }\n        return max;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n) per book\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a TreeMap to store start/end events as ±1 deltas; each book inserts two keys and scans the sorted map once to compute the running maximum overlap. Simple, cache-friendly, and optimal for the given constraints.",
+  "code": "class MyCalendarThree {\n    private TreeMap<Integer, Integer> delta;\n\n    public MyCalendarThree() {\n        delta = new TreeMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        delta.put(startTime, delta.getOrDefault(startTime, 0) + 1);\n        delta.put(endTime, delta.getOrDefault(endTime, 0) - 1);\n        \n        int active = 0, max = 0;\n        for (int d : delta.values()) {\n            active += d;\n            max = Math.max(max, active);\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-05T13:38:12.898384",
+  "code_extracted_previous": "class MyCalendarThree {\n    private TreeMap<Integer, Integer> delta;\n\n    public MyCalendarThree() {\n        delta = new TreeMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        delta.put(startTime, delta.getOrDefault(startTime, 0) + 1);\n        delta.put(endTime, delta.getOrDefault(endTime, 0) - 1);\n        \n        int active = 0, max = 0;\n        for (int d : delta.values()) {\n            active += d;\n            max = Math.max(max, active);\n        }\n        return max;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:55.803614"
+}

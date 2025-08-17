@@ -1,0 +1,15 @@
+{
+  "id": 753,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string crackSafe(int n, int k) {\n        string res;\n        for (int i = 0; i < n; i++) res += '0';\n        dfs(res, 0, k, n);\n        res += '0';\n        return res;\n    }\n    void dfs(string path, int start, int k, int n) {\n        for (int i = 0; i < k; i++) {\n            string next = path + std::to_string(i);\n            if (next.length() == n * (k + 1)) return;\n            if (start + i == k) dfs(next, i, k, n);\n            else dfs(next, (start + i) % k, k, n);\n        }\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(k^(n * (k + 1)))\nspace complexity: O(n * (k + 1))\nenergy implications: MEDIUM",
+  "code": "class Solution {\npublic:\n    string crackSafe(int n, int k) {\n        string res;\n        for (int i = 0; i < n; i++) res += '0';\n        dfs(res, 0, k, n);\n        res += '0';\n        return res;\n    }\n    void dfs(string path, int start, int k, int n) {\n        for (int i = 0; i < k; i++) {\n            string next = path + std::to_string(i);\n            if (next.length() == n * (k + 1)) return;\n            if (start + i == k) dfs(next, i, k, n);\n            else dfs(next, (start + i) % k, k, n);\n        }\n    }\n};",
+  "timestamp": "2025-08-05T13:55:27.205804",
+  "code_extracted_previous": "class Solution {\npublic:\n    string crackSafe(int n, int k) {\n        string res;\n        for (int i = 0; i < n; i++) res += '0';\n        dfs(res, 0, k, n);\n        res += '0';\n        return res;\n    }\n    void dfs(string path, int start, int k, int n) {\n        for (int i = 0; i < k; i++) {\n            string next = path + std::to_string(i);\n            if (next.length() == n * (k + 1)) return;\n            if (start + i == k) dfs(next, i, k, n);\n            else dfs(next, (start + i) % k, k, n);\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.716822"
+}

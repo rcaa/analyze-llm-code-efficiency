@@ -1,0 +1,15 @@
+{
+  "id": 1042,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def gardenNoAdj(self, n: int, paths: List[List[int]]) -> List[int]:\n        adj = [[] for _ in range(n + 1)]\n        for x, y in paths:\n            adj[x].append(y)\n            adj[y].append(x)\n        answer = [0] * (n + 1)\n        for i in range(1, n + 1):\n            colors = set()\n            for neighbor in adj[i]:\n                colors.add(answer[neighbor])\n            for color in range(1, 5):\n                if color not in colors:\n                    answer[i] = color\n                    break\n        return answer[1:]\n```\n\nsolution: \n```python\nclass Solution:\n    def gardenNoAdj(self, n: int, paths: List[List[int]]) -> List[int]:\n        adj = [[] for _ in range(n + 1)]\n        for x, y in paths:\n            adj[x].append(y)\n            adj[y].append(x)\n        answer = [0] * (n + 1)\n        for i in range(1, n + 1):\n            colors = set()\n            for neighbor in adj[i]:\n                colors.add(answer[neighbor])\n            for color in range(1, 5):\n                if color not in colors:\n                    answer[i] = color\n                    break\n        return answer[1:]\n```\nefficiency: HIGH\ntime complexity: O(V + E)\nspace complexity: O(V + E)\nenergy implications: LOW\nexplanation: The solution uses a breadth-first search approach to traverse the graph and assign colors to each garden. It maintains a set of colors used by its neighbors for each garden to ensure that adjacent gardens have different colors.  The algorithm's efficiency stems from its linear traversal of the graph and the use of a set for efficient color checking.",
+  "code": "solution:",
+  "timestamp": "2025-08-05T14:02:06.876852",
+  "code_extracted_previous": "class Solution:\n    def gardenNoAdj(self, n: int, paths: List[List[int]]) -> List[int]:\n        adj = [[] for _ in range(n + 1)]\n        for x, y in paths:\n            adj[x].append(y)\n            adj[y].append(x)\n        answer = [0] * (n + 1)\n        for i in range(1, n + 1):\n            colors = set()\n            for neighbor in adj[i]:\n                colors.add(answer[neighbor])\n            for color in range(1, 5):\n                if color not in colors:\n                    answer[i] = color\n                    break\n        return answer[1:]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:25.849368"
+}

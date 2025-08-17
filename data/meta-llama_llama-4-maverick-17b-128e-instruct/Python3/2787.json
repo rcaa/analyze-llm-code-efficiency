@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def numberOfWays(self, n: int, x: int) -> int:\n        MOD = 10**9 + 7\n        max_num = int(n ** (1 / x)) + 1\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, max_num):\n            val = i ** x\n            for j in range(n, val - 1, -1):\n                dp[j] = (dp[j] + dp[j - val]) % MOD\n        return dp[n]\n```\n\nefficiency: HIGH  \ntime complexity: O(n * n^(1/x))  \nspace complexity: O(n)  \nenergy implications: LOW  \nexplanation: This solution uses dynamic programming to efficiently count the number of ways to express n as the sum of the xth power of unique positive integers, handling large results by applying modulo 10^9 + 7.",
+  "code": "def numberOfWays(self, n: int, x: int) -> int:\n        MOD = 10**9 + 7\n        max_num = int(n ** (1 / x)) + 1\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, max_num):\n            val = i ** x\n            for j in range(n, val - 1, -1):\n                dp[j] = (dp[j] + dp[j - val]) % MOD\n        return dp[n]\n```",
+  "timestamp": "2025-08-05T14:28:08.536785",
+  "code_extracted_previous": "class Solution:\n    def numberOfWays(self, n: int, x: int) -> int:\n        MOD = 10**9 + 7\n        max_num = int(n ** (1 / x)) + 1\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, max_num):\n            val = i ** x\n            for j in range(n, val - 1, -1):\n                dp[j] = (dp[j] + dp[j - val]) % MOD\n        return dp[n]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.020100"
+}

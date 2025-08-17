@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        def max_consecutive(target, k):\n            left = 0\n            max_len = 0\n            count = 0\n\n            for right in range(len(answerKey)):\n                if answerKey[right] != target:\n                    count += 1\n                while count > k:\n                    if answerKey[left] != target:\n                        count -= 1\n                    left += 1\n                max_len = max(max_len, right - left + 1)\n            return max_len\n\n        return max(max_consecutive('T', k), max_consecutive('F', k))\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The solution uses a sliding window technique to find the maximum number of consecutive 'T's or 'F's that can be achieved by changing at most k characters. The function `max_consecutive` calculates the maximum window size for a given target character. The main function calls this twice, once for 'T' and once for 'F', and returns the maximum of the two. The approach is efficient as it processes the string in a single pass for each target character.>",
+  "code": "class Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        def max_consecutive(target, k):\n            left = 0\n            max_len = 0\n            count = 0\n\n            for right in range(len(answerKey)):\n                if answerKey[right] != target:\n                    count += 1\n                while count > k:\n                    if answerKey[left] != target:\n                        count -= 1\n                    left += 1\n                max_len = max(max_len, right - left + 1)\n            return max_len\n\n        return max(max_consecutive('T', k), max_consecutive('F', k))",
+  "timestamp": "2025-08-06T00:57:15.865657",
+  "code_extracted_previous": "class Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        def max_consecutive(target, k):\n            left = 0\n            max_len = 0\n            count = 0\n\n            for right in range(len(answerKey)):\n                if answerKey[right] != target:\n                    count += 1\n                while count > k:\n                    if answerKey[left] != target:\n                        count -= 1\n                    left += 1\n                max_len = max(max_len, right - left + 1)\n            return max_len\n\n        return max(max_consecutive('T', k), max_consecutive('F', k))",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:04.395793"
+}

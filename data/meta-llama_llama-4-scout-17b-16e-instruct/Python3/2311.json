@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def longestSubsequence(self, s: str, k: int) -> int:\n        dp = [[0] * (len(s) + 1) for _ in range(32)]\n        for i in range(len(s) - 1, -1, -1):\n            for j in range(31):\n                dp[j][i] = dp[j][i + 1]\n                if s[i] == '1':\n                    if j < 31:\n                        dp[j + 1][i] = max(dp[j + 1][i], dp[j][i + 1] + 1)\n                else:\n                    dp[j][i] = max(dp[j][i], dp[j][i + 1] + 1)\n        for i in range(31):\n            if int('1' * i + '0' * (32 - i), 2) <= k:\n                return dp[i][0]\n        return 0\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming approach to track the longest subsequence that forms a binary number less than or equal to k.",
+  "code": "class Solution:\n    def longestSubsequence(self, s: str, k: int) -> int:\n        dp = [[0] * (len(s) + 1) for _ in range(32)]\n        for i in range(len(s) - 1, -1, -1):\n            for j in range(31):\n                dp[j][i] = dp[j][i + 1]\n                if s[i] == '1':\n                    if j < 31:\n                        dp[j + 1][i] = max(dp[j + 1][i], dp[j][i + 1] + 1)\n                else:\n                    dp[j][i] = max(dp[j][i], dp[j][i + 1] + 1)\n        for i in range(31):\n            if int('1' * i + '0' * (32 - i), 2) <= k:\n                return dp[i][0]\n        return 0",
+  "timestamp": "2025-08-06T00:59:08.142654",
+  "code_extracted_previous": "class Solution:\n    def longestSubsequence(self, s: str, k: int) -> int:\n        dp = [[0] * (len(s) + 1) for _ in range(32)]\n        for i in range(len(s) - 1, -1, -1):\n            for j in range(31):\n                dp[j][i] = dp[j][i + 1]\n                if s[i] == '1':\n                    if j < 31:\n                        dp[j + 1][i] = max(dp[j + 1][i], dp[j][i + 1] + 1)\n                else:\n                    dp[j][i] = max(dp[j][i], dp[j][i + 1] + 1)\n        for i in range(31):\n            if int('1' * i + '0' * (32 - i), 2) <= k:\n                return dp[i][0]\n        return 0",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.130500"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        char_dict = {chars[i]: vals[i] for i in range(len(chars))}\n        max_cost = 0\n        for i in range(len(s)):\n            for j in range(i, len(s)):\n                cost = 0\n                for k in range(i, j + 1):\n                    cost += char_dict.get(s[k], ord(s[k]) - 96)\n                max_cost = max(max_cost, cost)\n        return max_cost\n```\nefficiency: MEDIUM\ntime complexity: O(n^3)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution uses a dictionary to store the custom values of characters and then iterates over all possible substrings of the string, calculating the cost of each substring and updating the maximum cost as needed. The use of a dictionary allows for efficient lookup of custom character values.",
+  "code": "def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        char_dict = {chars[i]: vals[i] for i in range(len(chars))}\n        max_cost = 0\n        for i in range(len(s)):\n            for j in range(i, len(s)):\n                cost = 0\n                for k in range(i, j + 1):\n                    cost += char_dict.get(s[k], ord(s[k]) - 96)\n                max_cost = max(max_cost, cost)\n        return max_cost\n```",
+  "timestamp": "2025-08-06T15:19:06.827007",
+  "code_extracted_previous": "class Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        char_dict = {chars[i]: vals[i] for i in range(len(chars))}\n        max_cost = 0\n        for i in range(len(s)):\n            for j in range(i, len(s)):\n                cost = 0\n                for k in range(i, j + 1):\n                    cost += char_dict.get(s[k], ord(s[k]) - 96)\n                max_cost = max(max_cost, cost)\n        return max_cost",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.317125"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass StockSpanner {\nprivate:\n    std::stack<std::pair<int, int>> stack;\npublic:\n    StockSpanner() {\n        \n    }\n    \n    int next(int price) {\n        int span = 1;\n        while (!stack.empty() && stack.top().first <= price) {\n            span += stack.top().second;\n            stack.pop();\n        }\n        stack.push({price, span});\n        return span;\n    }\n};\n\n/**\n * Your StockSpanner object will be instantiated and called as such:\n * StockSpanner* obj = new StockSpanner();\n * int param_1 = obj->next(price);\n */\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a monotonic stack to efficiently compute the span for each price. For each new price, it pops elements from the stack while the top of the stack has a price less than or equal to the current price, accumulating their spans. The current price and its accumulated span are then pushed onto the stack. This ensures each price is pushed and popped at most once, leading to linear time complexity. The stack helps avoid redundant comparisons, making the approach efficient. The main weakness is the use of extra space proportional to the number of prices processed.",
+  "code": "class StockSpanner {\nprivate:\n    std::stack<std::pair<int, int>> stack;\npublic:\n    StockSpanner() {\n        \n    }\n    \n    int next(int price) {\n        int span = 1;\n        while (!stack.empty() && stack.top().first <= price) {\n            span += stack.top().second;\n            stack.pop();\n        }\n        stack.push({price, span});\n        return span;\n    }\n};\n\n/**\n * Your StockSpanner object will be instantiated and called as such:\n * StockSpanner* obj = new StockSpanner();\n * int param_1 = obj->next(price);\n */",
+  "timestamp": "2025-08-06T16:01:39.151648",
+  "code_extracted_previous": "class StockSpanner {\nprivate:\n    std::stack<std::pair<int, int>> stack;\npublic:\n    StockSpanner() {\n        \n    }\n    \n    int next(int price) {\n        int span = 1;\n        while (!stack.empty() && stack.top().first <= price) {\n            span += stack.top().second;\n            stack.pop();\n        }\n        stack.push({price, span});\n        return span;\n    }\n};\n\n/**\n * Your StockSpanner object will be instantiated and called as such:\n * StockSpanner* obj = new StockSpanner();\n * int param_1 = obj->next(price);\n */",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:01.289135"
+}

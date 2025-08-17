@@ -1,0 +1,15 @@
+{
+  "id": 3574,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    long long maxGCDScore(vector<int>& nums, int k) {\n        int n = nums.size();\n        vector<int> dp(n + 1, 0);\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1] + nums[i - 1];\n        }\n        long long res = 0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = i; j <= n; j++) {\n                long long gcd = 1;\n                for (int x : vector<int>(nums.begin() + i - 1, nums.begin() + j)) {\n                    gcd = __gcd(gcd, x);\n                }\n                if (j - i + 1 <= k) {\n                    res = max(res, (long long)gcd * (j - i + 1));\n                }\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n^2 * log(max(nums)))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: We use dynamic programming to calculate the prefix sum of the array, and then iterate over all possible subarrays to calculate the GCD and score. We use the __gcd function to calculate the GCD, which has a time complexity of O(log(max(nums))). The overall time complexity is O(n^2 * log(max(nums))).",
+  "code": "class Solution {\npublic:\n    long long maxGCDScore(vector<int>& nums, int k) {\n        int n = nums.size();\n        vector<int> dp(n + 1, 0);\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1] + nums[i - 1];\n        }\n        long long res = 0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = i; j <= n; j++) {\n                long long gcd = 1;\n                for (int x : vector<int>(nums.begin() + i - 1, nums.begin() + j)) {\n                    gcd = __gcd(gcd, x);\n                }\n                if (j - i + 1 <= k) {\n                    res = max(res, (long long)gcd * (j - i + 1));\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T12:11:48.420765",
+  "code_extracted_previous": "public:\n    long long maxGCDScore(vector<int>& nums, int k) {\n        int n = nums.size();\n        vector<int> dp(n + 1, 0);\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1] + nums[i - 1];\n        }\n        long long res = 0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = i; j <= n; j++) {\n                long long gcd = 1;\n                for (int x : vector<int>(nums.begin() + i - 1, nums.begin() + j)) {\n                    gcd = __gcd(gcd, x);\n                }\n                if (j - i + 1 <= k) {\n                    res = max(res, (long long)gcd * (j - i + 1));\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.296366"
+}

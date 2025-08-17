@@ -1,0 +1,15 @@
+{
+  "id": 3081,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String minimizeStringValue(String s) {\n        int[] count = new int[26];\n        char[] chars = s.toCharArray();\n        for (int i = 0; i < chars.length; i++) {\n            if (chars[i] == '?') {\n                int min = 0;\n                for (int j = 0; j < 26; j++) {\n                    if (count[j] < count[min]) {\n                        min = j;\n                    }\n                }\n                chars[i] = (char) ('a' + min);\n                count[min]++;\n            } else {\n                count[chars[i] - 'a']++;\n            }\n        }\n        return new String(chars);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, maintaining a count of each character. When encountering a '?', it finds the character with the lowest count and replaces '?' with that character, then increments the count. This approach ensures the minimum value of the string and the lexicographically smallest one.",
+  "code": "class Solution {\n    public String minimizeStringValue(String s) {\n        int[] count = new int[26];\n        char[] chars = s.toCharArray();\n        for (int i = 0; i < chars.length; i++) {\n            if (chars[i] == '?') {\n                int min = 0;\n                for (int j = 0; j < 26; j++) {\n                    if (count[j] < count[min]) {\n                        min = j;\n                    }\n                }\n                chars[i] = (char) ('a' + min);\n                count[min]++;\n            } else {\n                count[chars[i] - 'a']++;\n            }\n        }\n        return new String(chars);\n    }\n}",
+  "timestamp": "2025-08-05T15:11:37.836472",
+  "code_extracted_previous": "class Solution {\n    public String minimizeStringValue(String s) {\n        int[] count = new int[26];\n        char[] chars = s.toCharArray();\n        for (int i = 0; i < chars.length; i++) {\n            if (chars[i] == '?') {\n                int min = 0;\n                for (int j = 0; j < 26; j++) {\n                    if (count[j] < count[min]) {\n                        min = j;\n                    }\n                }\n                chars[i] = (char) ('a' + min);\n                count[min]++;\n            } else {\n                count[chars[i] - 'a']++;\n            }\n        }\n        return new String(chars);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.113768"
+}

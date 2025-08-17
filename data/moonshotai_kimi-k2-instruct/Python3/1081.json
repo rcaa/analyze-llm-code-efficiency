@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        last = {c: i for i, c in enumerate(s)}\n        stack = []\n        seen = set()\n        for i, c in enumerate(s):\n            if c in seen:\n                continue\n            while stack and c < stack[-1] and i < last[stack[-1]]:\n                seen.remove(stack.pop())\n            stack.append(c)\n            seen.add(c)\n        return ''.join(stack)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Greedy stack construction with monotonic ordering. Track last occurrence of each character to ensure every popped character can still be placed later. Guarantees lexicographically smallest subsequence containing all distinct characters exactly once.",
+  "code": "class Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        last = {c: i for i, c in enumerate(s)}\n        stack = []\n        seen = set()\n        for i, c in enumerate(s):\n            if c in seen:\n                continue\n            while stack and c < stack[-1] and i < last[stack[-1]]:\n                seen.remove(stack.pop())\n            stack.append(c)\n            seen.add(c)\n        return ''.join(stack)",
+  "timestamp": "2025-08-06T00:48:00.565462",
+  "code_extracted_previous": "def smallestSubsequence(self, s: str) -> str:\n        last = {c: i for i, c in enumerate(s)}\n        stack = []\n        seen = set()\n        for i, c in enumerate(s):\n            if c in seen:\n                continue\n            while stack and c < stack[-1] and i < last[stack[-1]]:\n                seen.remove(stack.pop())\n            stack.append(c)\n            seen.add(c)\n        return ''.join(stack)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.013796"
+}

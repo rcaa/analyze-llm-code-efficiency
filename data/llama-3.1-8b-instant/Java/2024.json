@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int n = answerKey.length();\n        int maxT = 0, maxF = 0;\n        int left = 0, countT = 0, countF = 0;\n        for (int right = 0; right < n; right++) {\n            char c = answerKey.charAt(right);\n            if (c == 'T') countT++;\n            else countF++;\n            while (Math.max(countT, countF) > k) {\n                char leftC = answerKey.charAt(left);\n                if (leftC == 'T') countT--;\n                else countF--;\n                left++;\n            }\n            maxT = Math.max(maxT, right - left + 1);\n            maxF = Math.max(maxF, right - left + 1);\n        }\n        return Math.max(maxT, maxF);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int n = answerKey.length();\n        int maxT = 0, maxF = 0;\n        int left = 0, countT = 0, countF = 0;\n        for (int right = 0; right < n; right++) {\n            char c = answerKey.charAt(right);\n            if (c == 'T') countT++;\n            else countF++;\n            while (Math.max(countT, countF) > k) {\n                char leftC = answerKey.charAt(left);\n                if (leftC == 'T') countT--;\n                else countF--;\n                left++;\n            }\n            maxT = Math.max(maxT, right - left + 1);\n            maxF = Math.max(maxF, right - left + 1);\n        }\n        return Math.max(maxT, maxF);\n    }\n}",
+  "timestamp": "2025-08-06T00:56:54.330933",
+  "code_extracted_previous": "class Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int n = answerKey.length();\n        int maxT = 0, maxF = 0;\n        int left = 0, countT = 0, countF = 0;\n        for (int right = 0; right < n; right++) {\n            char c = answerKey.charAt(right);\n            if (c == 'T') countT++;\n            else countF++;\n            while (Math.max(countT, countF) > k) {\n                char leftC = answerKey.charAt(left);\n                if (leftC == 'T') countT--;\n                else countF--;\n                left++;\n            }\n            maxT = Math.max(maxT, right - left + 1);\n            maxF = Math.max(maxF, right - left + 1);\n        }\n        return Math.max(maxT, maxF);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.120569"
+}

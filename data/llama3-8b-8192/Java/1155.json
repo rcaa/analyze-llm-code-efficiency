@@ -1,0 +1,15 @@
+{
+  "id": 1155,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        int MOD = 1000000007;\n        int[] dp = new int[target + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            int[] temp = new int[target + 1];\n            for (int j = i; j <= target; j++) {\n                temp[j] = (temp[j - 1] + dp[j - i]) % MOD;\n            }\n            dp = temp;\n        }\n        return dp[target];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n * target)\nspace complexity: O(target)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to solve the problem. It maintains an array dp where dp[i] represents the number of ways to get a sum of i. For each die, it updates the dp array by adding the number of ways to get a sum of i - j to dp[i] for each j from 1 to i. The final answer is stored in dp[target].",
+  "code": "class Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        int MOD = 1000000007;\n        int[] dp = new int[target + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            int[] temp = new int[target + 1];\n            for (int j = i; j <= target; j++) {\n                temp[j] = (temp[j - 1] + dp[j - i]) % MOD;\n            }\n            dp = temp;\n        }\n        return dp[target];\n    }\n}",
+  "timestamp": "2025-08-05T14:24:39.741006",
+  "code_extracted_previous": "class Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        int MOD = 1000000007;\n        int[] dp = new int[target + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            int[] temp = new int[target + 1];\n            for (int j = i; j <= target; j++) {\n                temp[j] = (temp[j - 1] + dp[j - i]) % MOD;\n            }\n            dp = temp;\n        }\n        return dp[target];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.863520"
+}

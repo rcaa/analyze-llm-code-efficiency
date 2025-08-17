@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int hardestWorker(int n, int[][] logs) {\n        int maxTime = logs[0][1];\n        int bestId = logs[0][0];\n        for (int i = 1; i < logs.length; ++i) {\n            int duration = logs[i][1] - logs[i - 1][1];\n            if (duration > maxTime) {\n                maxTime = duration;\n                bestId = logs[i][0];\n            } else if (duration == maxTime && logs[i][0] < bestId) {\n                bestId = logs[i][0];\n            }\n        }\n        return bestId;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(L)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass through logs computing task durations on the fly; constant extra space; optimal for given constraints.",
+  "code": "class Solution {\n    public int hardestWorker(int n, int[][] logs) {\n        int maxTime = logs[0][1];\n        int bestId = logs[0][0];\n        for (int i = 1; i < logs.length; ++i) {\n            int duration = logs[i][1] - logs[i - 1][1];\n            if (duration > maxTime) {\n                maxTime = duration;\n                bestId = logs[i][0];\n            } else if (duration == maxTime && logs[i][0] < bestId) {\n                bestId = logs[i][0];\n            }\n        }\n        return bestId;\n    }\n}",
+  "timestamp": "2025-08-05T12:48:14.568414",
+  "code_extracted_previous": "public int hardestWorker(int n, int[][] logs) {\n        int maxTime = logs[0][1];\n        int bestId = logs[0][0];\n        for (int i = 1; i < logs.length; ++i) {\n            int duration = logs[i][1] - logs[i - 1][1];\n            if (duration > maxTime) {\n                maxTime = duration;\n                bestId = logs[i][0];\n            } else if (duration == maxTime && logs[i][0] < bestId) {\n                bestId = logs[i][0];\n            }\n        }\n        return bestId;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.063252"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass RecentCounter {\n    private Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1) amortized\nspace complexity: O(N) where N is the number of requests within the 3000 ms window\nenergy implications: LOW\nexplanation: The solution uses a queue to store the timestamps of the requests. For each new request, it adds the timestamp to the queue and removes all timestamps that are outside the [t - 3000, t] range. Since the input t is strictly increasing, we can efficiently maintain the window by removing outdated timestamps from the front of the queue. The number of valid requests is simply the size of the queue.",
+  "code": "class RecentCounter {\n    private Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}",
+  "timestamp": "2025-08-06T15:26:49.212343",
+  "code_extracted_previous": "class RecentCounter {\n    private Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:03.796780"
+}

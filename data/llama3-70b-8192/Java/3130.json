@@ -1,0 +1,15 @@
+{
+  "id": 3130,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        int MOD = (int)1e9 + 7;\n        int N = zero + one;\n        int[][] dp = new int[N + 1][N + 1];\n        dp[0][0] = 1;\n        for (int i = 0; i <= N; i++) {\n            for (int j = 0; j <= i; j++) {\n                if (j > 0) dp[i][j] = (dp[i][j] + dp[i - 1][j - 1]) % MOD;\n                if (i - j > 0) dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = Math.max(zero, one); i <= N; i++) {\n            for (int j = Math.max(zero, one); j <= i; j++) {\n                if (i - j > limit) continue;\n                res = (res + dp[i][j]) % MOD;\n            }\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N^2)\nspace complexity: O(N^2)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to count the number of stable binary arrays. It builds a 2D DP table to store the number of arrays with i elements and j 1's, and then iterates over the table to find the total number of stable arrays.",
+  "code": "class Solution {\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        int MOD = (int)1e9 + 7;\n        int N = zero + one;\n        int[][] dp = new int[N + 1][N + 1];\n        dp[0][0] = 1;\n        for (int i = 0; i <= N; i++) {\n            for (int j = 0; j <= i; j++) {\n                if (j > 0) dp[i][j] = (dp[i][j] + dp[i - 1][j - 1]) % MOD;\n                if (i - j > 0) dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = Math.max(zero, one); i <= N; i++) {\n            for (int j = Math.max(zero, one); j <= i; j++) {\n                if (i - j > limit) continue;\n                res = (res + dp[i][j]) % MOD;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:22:48.378805",
+  "code_extracted_previous": "class Solution {\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        int MOD = (int)1e9 + 7;\n        int N = zero + one;\n        int[][] dp = new int[N + 1][N + 1];\n        dp[0][0] = 1;\n        for (int i = 0; i <= N; i++) {\n            for (int j = 0; j <= i; j++) {\n                if (j > 0) dp[i][j] = (dp[i][j] + dp[i - 1][j - 1]) % MOD;\n                if (i - j > 0) dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = Math.max(zero, one); i <= N; i++) {\n            for (int j = Math.max(zero, one); j <= i; j++) {\n                if (i - j > limit) continue;\n                res = (res + dp[i][j]) % MOD;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.404836"
+}

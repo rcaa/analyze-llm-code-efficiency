@@ -1,0 +1,15 @@
+{
+  "id": 2309,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```c++\n#include <unordered_map>\n#include <string>\n\nclass Solution {\npublic:\n    std::string greatestLetter(std::string s) {\n        std::unordered_map<char, int> countMap;\n\n        for (char c : s) {\n            countMap[c]++;\n        }\n\n        char result = 'a';\n        for (char c : s) {\n            if (countMap[c] > countMap[result] && isupper(c)) {\n                result = c;\n            }\n        }\n\n        return char(toupper(result));\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n1. Initialize an unordered map to count the occurrences of each character in the string s.\n2. Iterate through the string and update the countMap for each character.\n3. Iterate through the string again and find the character with the highest count that is also an uppercase letter.\n4. Return the uppercase version of the found character.\n\nThis solution has a time complexity of O(n) since it iterates through the string once, and a space complexity of O(n) due to the countMap. The energy implications are low as the solution only performs a few basic operations on the input string. ",
+  "code": "class Solution {\npublic:\n    std::string greatestLetter(std::string s) {\n        std::unordered_map<char, int> countMap;\n\n        for (char c : s) {\n            countMap[c]++;\n        }\n\n        char result = 'a';\n        for (char c : s) {\n            if (countMap[c] > countMap[result] && isupper(c)) {\n                result = c;\n            }\n        }\n\n        return char(toupper(result));\n    }\n};",
+  "timestamp": "2025-08-05T14:45:52.814812",
+  "code_extracted_previous": "#include <unordered_map>\n#include <string>\n\nclass Solution {\npublic:\n    std::string greatestLetter(std::string s) {\n        std::unordered_map<char, int> countMap;\n\n        for (char c : s) {\n            countMap[c]++;\n        }\n\n        char result = 'a';\n        for (char c : s) {\n            if (countMap[c] > countMap[result] && isupper(c)) {\n                result = c;\n            }\n        }\n\n        return char(toupper(result));\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.369338"
+}

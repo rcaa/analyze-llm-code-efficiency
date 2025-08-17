@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        int[] dp = new int[n + 1];\n        dp[1] = 1;\n        int share = 0;\n        for (int i = 2; i <= n; i++) {\n            if (i > delay) {\n                share = (share + dp[i - delay]) % MOD;\n            }\n            if (i > forget) {\n                share = (share - dp[i - forget] + MOD) % MOD;\n            }\n            dp[i] = share;\n        }\n        int sum = 0;\n        for (int i = Math.max(1, n - forget + 1); i <= n; i++) {\n            sum = (sum + dp[i]) % MOD;\n        }\n        return sum;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to track the number of people who know the secret at each day, taking into account the delay and forget constraints. The final result is the sum of people who know the secret at the end of day n, modulo 10^9 + 7.",
+  "code": "class Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        int[] dp = new int[n + 1];\n        dp[1] = 1;\n        int share = 0;\n        for (int i = 2; i <= n; i++) {\n            if (i > delay) {\n                share = (share + dp[i - delay]) % MOD;\n            }\n            if (i > forget) {\n                share = (share - dp[i - forget] + MOD) % MOD;\n            }\n            dp[i] = share;\n        }\n        int sum = 0;\n        for (int i = Math.max(1, n - forget + 1); i <= n; i++) {\n            sum = (sum + dp[i]) % MOD;\n        }\n        return sum;\n    }\n}",
+  "timestamp": "2025-08-06T15:13:57.502133",
+  "code_extracted_previous": "class Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        int[] dp = new int[n + 1];\n        dp[1] = 1;\n        int share = 0;\n        for (int i = 2; i <= n; i++) {\n            if (i > delay) {\n                share = (share + dp[i - delay]) % MOD;\n            }\n            if (i > forget) {\n                share = (share - dp[i - forget] + MOD) % MOD;\n            }\n            dp[i] = share;\n        }\n        int sum = 0;\n        for (int i = Math.max(1, n - forget + 1); i <= n; i++) {\n            sum = (sum + dp[i]) % MOD;\n        }\n        return sum;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.875600"
+}

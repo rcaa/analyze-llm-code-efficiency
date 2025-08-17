@@ -1,0 +1,15 @@
+{
+  "id": 1540,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        vector<int> cnt(26, 0);\n        for (int i = 0; i < s.size(); i++) {\n            int diff = (t[i] - s[i] + 26) % 26;\n            if (diff == 0) continue;\n            if (diff > k - i) return false;\n            cnt[diff]++;\n        }\n        return true;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the input strings, calculating the difference between characters at each position and checking if it's possible to shift the character in the given number of moves. It uses a vector to count the occurrences of each shift value, but this doesn't affect the overall time complexity. The key strength is the efficient calculation of the shift differences and the early return when a shift is not possible.",
+  "code": "class Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        vector<int> cnt(26, 0);\n        for (int i = 0; i < s.size(); i++) {\n            int diff = (t[i] - s[i] + 26) % 26;\n            if (diff == 0) continue;\n            if (diff > k - i) return false;\n            cnt[diff]++;\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-06T08:43:31.713627",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        vector<int> cnt(26, 0);\n        for (int i = 0; i < s.size(); i++) {\n            int diff = (t[i] - s[i] + 26) % 26;\n            if (diff == 0) continue;\n            if (diff > k - i) return false;\n            cnt[diff]++;\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.823184"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3129,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        final int MOD = (int) (1e9 + 7);\n        long[][] dp = new long[2][Math.max(zero, one) + 1];\n        dp[0][0] = 1;\n        dp[1][0] = 1;\n        for (int i = 1; i <= zero; i++) {\n            dp[0][i] = (dp[0][i - 1] + (i <= limit ? 0 : dp[1][i - limit - 1])) % MOD;\n        }\n        for (int i = 1; i <= one; i++) {\n            dp[1][i] = (dp[1][i - 1] + (i <= limit ? 0 : dp[0][i - limit - 1])) % MOD;\n        }\n        return (int) ((dp[0][zero] + dp[1][one] - 1 + MOD) % MOD);\n    }\n}\nefficiency: HIGH\ntime complexity: O(max(zero, one))\nspace complexity: O(max(zero, one))\nenergy implications: LOW\nexplanation: Utilizes dynamic programming to track the number of stable arrays ending with 0 and 1, ensuring that subarrays longer than the limit contain both 0 and 1.\n```",
+  "code": "class Solution {\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        final int MOD = (int) (1e9 + 7);\n        long[][] dp = new long[2][Math.max(zero, one) + 1];\n        dp[0][0] = 1;\n        dp[1][0] = 1;\n        for (int i = 1; i <= zero; i++) {\n            dp[0][i] = (dp[0][i - 1] + (i <= limit ? 0 : dp[1][i - limit - 1])) % MOD;\n        }\n        for (int i = 1; i <= one; i++) {\n            dp[1][i] = (dp[1][i - 1] + (i <= limit ? 0 : dp[0][i - limit - 1])) % MOD;\n        }\n        return (int) ((dp[0][zero] + dp[1][one] - 1 + MOD) % MOD);\n    }\n}\nefficiency: HIGH\ntime complexity: O(max(zero, one))\nspace complexity: O(max(zero, one))\nenergy implications: LOW\nexplanation: Utilizes dynamic programming to track the number of stable arrays ending with 0 and 1, ensuring that subarrays longer than the limit contain both 0 and 1.",
+  "timestamp": "2025-08-05T14:29:32.132449",
+  "code_extracted_previous": "class Solution {\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        final int MOD = (int) (1e9 + 7);\n        long[][] dp = new long[2][Math.max(zero, one) + 1];\n        dp[0][0] = 1;\n        dp[1][0] = 1;\n        for (int i = 1; i <= zero; i++) {\n            dp[0][i] = (dp[0][i - 1] + (i <= limit ? 0 : dp[1][i - limit - 1])) % MOD;\n        }\n        for (int i = 1; i <= one; i++) {\n            dp[1][i] = (dp[1][i - 1] + (i <= limit ? 0 : dp[0][i - limit - 1])) % MOD;\n        }\n        return (int) ((dp[0][zero] + dp[1][one] - 1 + MOD) % MOD);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.772850"
+}

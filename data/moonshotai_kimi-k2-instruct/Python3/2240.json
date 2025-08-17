@@ -1,0 +1,15 @@
+{
+  "id": 2240,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def waysToBuyPensPencils(self, total: int, cost1: int, cost2: int) -> int:\n        if cost1 == 0 and cost2 == 0:\n            return 0\n        ways = 0\n        max_pens = total // cost1 if cost1 else total\n        for pens in range(0, max_pens + 1):\n            remaining = total - pens * cost1\n            if remaining < 0:\n                continue\n            max_pencils = remaining // cost2 if cost2 else remaining\n            ways += max_pencils + 1\n        return ways\n```\nefficiency: HIGH\ntime complexity: O(total / min(cost1, cost2))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate over every possible count of pens (0 … total//cost1). For each count, compute the remaining money and determine how many pencils can be bought (0 … remaining//cost2). The inner loop is replaced by a constant-time division, yielding an efficient single-pass solution.",
+  "code": "class Solution:\n    def waysToBuyPensPencils(self, total: int, cost1: int, cost2: int) -> int:\n        if cost1 == 0 and cost2 == 0:\n            return 0\n        ways = 0\n        max_pens = total // cost1 if cost1 else total\n        for pens in range(0, max_pens + 1):\n            remaining = total - pens * cost1\n            if remaining < 0:\n                continue\n            max_pencils = remaining // cost2 if cost2 else remaining\n            ways += max_pencils + 1\n        return ways",
+  "timestamp": "2025-08-06T02:33:03.129665",
+  "code_extracted_previous": "class Solution:\n    def waysToBuyPensPencils(self, total: int, cost1: int, cost2: int) -> int:\n        if cost1 == 0 and cost2 == 0:\n            return 0\n        ways = 0\n        max_pens = total // cost1 if cost1 else total\n        for pens in range(0, max_pens + 1):\n            remaining = total - pens * cost1\n            if remaining < 0:\n                continue\n            max_pencils = remaining // cost2 if cost2 else remaining\n            ways += max_pencils + 1\n        return ways",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.575349"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1291,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public List<Integer> sequentialDigits(int low, int high) {\n        List<Integer> res = new ArrayList<>();\n        for (int digits = 1; digits <= 9; digits++) {\n            int num = 0;\n            for (int i = 1; i <= digits; i++) {\n                num = num * 10 + i;\n            }\n            while (num <= high) {\n                if (num >= low) {\n                    res.add(num);\n                }\n                num = num * 10 + (num % 10) + 1;\n                num /= 10;\n            }\n        }\n        Collections.sort(res);\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over possible number of digits and generates sequential digits numbers, adding them to the result list if they fall within the given range. Finally, it sorts the list and returns it.",
+  "code": "class Solution {\n    public List<Integer> sequentialDigits(int low, int high) {\n        List<Integer> res = new ArrayList<>();\n        for (int digits = 1; digits <= 9; digits++) {\n            int num = 0;\n            for (int i = 1; i <= digits; i++) {\n                num = num * 10 + i;\n            }\n            while (num <= high) {\n                if (num >= low) {\n                    res.add(num);\n                }\n                num = num * 10 + (num % 10) + 1;\n                num /= 10;\n            }\n        }\n        Collections.sort(res);\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:30:23.161585",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> sequentialDigits(int low, int high) {\n        List<Integer> res = new ArrayList<>();\n        for (int digits = 1; digits <= 9; digits++) {\n            int num = 0;\n            for (int i = 1; i <= digits; i++) {\n                num = num * 10 + i;\n            }\n            while (num <= high) {\n                if (num >= low) {\n                    res.add(num);\n                }\n                num = num * 10 + (num % 10) + 1;\n                num /= 10;\n            }\n        }\n        Collections.sort(res);\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.472295"
+}

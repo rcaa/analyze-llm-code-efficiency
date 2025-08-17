@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maximumLengthSubstring(self, s: str) -> int:\n        char_count = {}\n        max_length = 0\n        left = 0\n        for right in range(len(s)):\n            char_count[s[right]] = char_count.get(s[right], 0) + 1\n            while any(count > 2 for count in char_count.values()):\n                char_count[s[left]] -= 1\n                if char_count[s[left]] == 0:\n                    del char_count[s[left]]\n                left += 1\n            max_length = max(max_length, right - left + 1)\n        return max_length\n```\n\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with a dictionary to track character counts, efficiently maintaining the condition of having at most two occurrences of each character within the current substring.",
+  "code": "def maximumLengthSubstring(self, s: str) -> int:\n        char_count = {}\n        max_length = 0\n        left = 0\n        for right in range(len(s)):\n            char_count[s[right]] = char_count.get(s[right], 0) + 1\n            while any(count > 2 for count in char_count.values()):\n                char_count[s[left]] -= 1\n                if char_count[s[left]] == 0:\n                    del char_count[s[left]]\n                left += 1\n            max_length = max(max_length, right - left + 1)\n        return max_length\n```",
+  "timestamp": "2025-08-05T14:49:04.741684",
+  "code_extracted_previous": "class Solution:\n    def maximumLengthSubstring(self, s: str) -> int:\n        char_count = {}\n        max_length = 0\n        left = 0\n        for right in range(len(s)):\n            char_count[s[right]] = char_count.get(s[right], 0) + 1\n            while any(count > 2 for count in char_count.values()):\n                char_count[s[left]] -= 1\n                if char_count[s[left]] == 0:\n                    del char_count[s[left]]\n                left += 1\n            max_length = max(max_length, right - left + 1)\n        return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.092752"
+}

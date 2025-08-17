@@ -1,0 +1,15 @@
+{
+  "id": 692,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (string word : words) {\n            count[word]++;\n        }\n        priority_queue<pair<int, string>> pq;\n        for (auto p : count) {\n            pq.push({p.second, p.first});\n        }\n        vector<string> res;\n        while (k--) {\n            res.push_back(pq.top().second);\n            pq.pop();\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to store the words and their frequencies. The priority queue is ordered by frequency in descending order, and then by lexicographical order. The top k elements are then popped from the priority queue and added to the result vector.",
+  "code": "class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (string word : words) {\n            count[word]++;\n        }\n        priority_queue<pair<int, string>> pq;\n        for (auto p : count) {\n            pq.push({p.second, p.first});\n        }\n        vector<string> res;\n        while (k--) {\n            res.push_back(pq.top().second);\n            pq.pop();\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:15:34.328841",
+  "code_extracted_previous": "public:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (string word : words) {\n            count[word]++;\n        }\n        priority_queue<pair<int, string>> pq;\n        for (auto p : count) {\n            pq.push({p.second, p.first});\n        }\n        vector<string> res;\n        while (k--) {\n            res.push_back(pq.top().second);\n            pq.pop();\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.609152"
+}

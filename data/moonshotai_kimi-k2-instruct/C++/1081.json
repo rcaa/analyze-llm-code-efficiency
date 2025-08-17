@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        vector<int> last(26, -1);\n        for (int i = 0; i < s.size(); ++i) last[s[i] - 'a'] = i;\n        vector<bool> seen(26, false);\n        string res;\n        for (int i = 0; i < s.size(); ++i) {\n            char c = s[i];\n            if (seen[c - 'a']) continue;\n            while (!res.empty() && c < res.back() && i < last[res.back() - 'a']) {\n                seen[res.back() - 'a'] = false;\n                res.pop_back();\n            }\n            res.push_back(c);\n            seen[c - 'a'] = true;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Greedy stack approach: record last occurrence of each character, then build result by popping larger characters that appear later, ensuring each distinct character appears once in lexicographically smallest order.",
+  "code": "class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        vector<int> last(26, -1);\n        for (int i = 0; i < s.size(); ++i) last[s[i] - 'a'] = i;\n        vector<bool> seen(26, false);\n        string res;\n        for (int i = 0; i < s.size(); ++i) {\n            char c = s[i];\n            if (seen[c - 'a']) continue;\n            while (!res.empty() && c < res.back() && i < last[res.back() - 'a']) {\n                seen[res.back() - 'a'] = false;\n                res.pop_back();\n            }\n            res.push_back(c);\n            seen[c - 'a'] = true;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:47:58.849782",
+  "code_extracted_previous": "public:\n    string smallestSubsequence(string s) {\n        vector<int> last(26, -1);\n        for (int i = 0; i < s.size(); ++i) last[s[i] - 'a'] = i;\n        vector<bool> seen(26, false);\n        string res;\n        for (int i = 0; i < s.size(); ++i) {\n            char c = s[i];\n            if (seen[c - 'a']) continue;\n            while (!res.empty() && c < res.back() && i < last[res.back() - 'a']) {\n                seen[res.back() - 'a'] = false;\n                res.pop_back();\n            }\n            res.push_back(c);\n            seen[c - 'a'] = true;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.118113"
+}

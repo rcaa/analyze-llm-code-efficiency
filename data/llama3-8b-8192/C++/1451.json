@@ -1,0 +1,15 @@
+{
+  "id": 1451,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string arrangeWords(string text) {\n        vector<pair<int, string>> words;\n        int n = text.size();\n        text[0] = tolower(text[0]);\n        for (int i = 1; i < n; i++) {\n            if (text[i] == ' ') {\n                words.push_back({(int)text.substr(0, i).size(), text.substr(0, i)});\n                text = text.substr(i);\n                i = 0;\n            }\n        }\n        words.push_back({(int)text.size(), text});\n        sort(words.begin(), words.end());\n        string res;\n        res += tolower(words[0].second[0]);\n        for (int i = 1; i < words.size(); i++) {\n            res += ' ' + words[i].second;\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution first separates the input string into words and stores them in a vector along with their lengths. It then sorts the vector based on the lengths of the words. Finally, it constructs the output string by concatenating the words in the sorted order, ensuring that the first word starts with a capital letter.",
+  "code": "class Solution {\npublic:\n    string arrangeWords(string text) {\n        vector<pair<int, string>> words;\n        int n = text.size();\n        text[0] = tolower(text[0]);\n        for (int i = 1; i < n; i++) {\n            if (text[i] == ' ') {\n                words.push_back({(int)text.substr(0, i).size(), text.substr(0, i)});\n                text = text.substr(i);\n                i = 0;\n            }\n        }\n        words.push_back({(int)text.size(), text});\n        sort(words.begin(), words.end());\n        string res;\n        res += tolower(words[0].second[0]);\n        for (int i = 1; i < words.size(); i++) {\n            res += ' ' + words[i].second;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:52:35.030299",
+  "code_extracted_previous": "public:\n    string arrangeWords(string text) {\n        vector<pair<int, string>> words;\n        int n = text.size();\n        text[0] = tolower(text[0]);\n        for (int i = 1; i < n; i++) {\n            if (text[i] == ' ') {\n                words.push_back({(int)text.substr(0, i).size(), text.substr(0, i)});\n                text = text.substr(i);\n                i = 0;\n            }\n        }\n        words.push_back({(int)text.size(), text});\n        sort(words.begin(), words.end());\n        string res;\n        res += tolower(words[0].second[0]);\n        for (int i = 1; i < words.size(); i++) {\n            res += ' ' + words[i].second;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.609188"
+}

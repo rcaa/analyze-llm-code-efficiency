@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```python\nclass FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        freq = self.freq.get(val, 0) + 1\n        self.freq[val] = freq\n        if freq > self.max_freq:\n            self.max_freq = freq\n        if freq not in self.group:\n            self.group[freq] = []\n        self.group[freq].append(val)\n\n    def pop(self) -> int:\n        val = self.group[self.max_freq].pop()\n        self.freq[val] -= 1\n        if not self.group[self.max_freq]:\n            self.max_freq -= 1\n        return val\n\n\n# Your FreqStack object will be instantiated and called as such:\n# obj = FreqStack()\n# obj.push(val)\n# param_2 = obj.pop()\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The FreqStack class uses a dictionary to store the frequency of each element and another dictionary to group elements by their frequency, allowing for efficient push and pop operations.",
+  "code": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        freq = self.freq.get(val, 0) + 1\n        self.freq[val] = freq\n        if freq > self.max_freq:\n            self.max_freq = freq\n        if freq not in self.group:\n            self.group[freq] = []\n        self.group[freq].append(val)\n\n    def pop(self) -> int:\n        val = self.group[self.max_freq].pop()\n        self.freq[val] -= 1\n        if not self.group[self.max_freq]:\n            self.max_freq -= 1\n        return val\n\n\n# Your FreqStack object will be instantiated and called as such:\n# obj = FreqStack()\n# obj.push(val)\n# param_2 = obj.pop()",
+  "timestamp": "2025-08-06T15:21:07.630998",
+  "code_extracted_previous": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        freq = self.freq.get(val, 0) + 1\n        self.freq[val] = freq\n        if freq > self.max_freq:\n            self.max_freq = freq\n        if freq not in self.group:\n            self.group[freq] = []\n        self.group[freq].append(val)\n\n    def pop(self) -> int:\n        val = self.group[self.max_freq].pop()\n        self.freq[val] -= 1\n        if not self.group[self.max_freq]:\n            self.max_freq -= 1\n        return val\n\n\n# Your FreqStack object will be instantiated and called as such:\n# obj = FreqStack()\n# obj.push(val)\n# param_2 = obj.pop()",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.885082"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef findTheLongestBalancedSubstring(s: str) -> int:\n    n = len(s)\n    max_len = 0\n    for i in range(n):\n        count_zero = count_one = 0\n        for j in range(i, n):\n            if s[j] == '0':\n                count_zero += 1\n            elif s[j] == '1':\n                count_one += 1\n            if count_zero == count_one:\n                max_len = max(max_len, j - i + 1)\n    return max_len\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\nThe solution iterates through the string once using two counters to keep track of zero and one counts. Then, it checks if the counts are equal. If they are, it calculates the length of the balanced substring from the current position and updates the maximum length. The solution has a time complexity of O(n) since it iterates through the string once. The space complexity is O(1) as it uses a constant amount of space for the counters. The energy implications are low as the solution only requires a small amount of energy to run. ",
+  "code": "def findTheLongestBalancedSubstring(s: str) -> int:\n    n = len(s)\n    max_len = 0\n    for i in range(n):\n        count_zero = count_one = 0\n        for j in range(i, n):\n            if s[j] == '0':\n                count_zero += 1\n            elif s[j] == '1':\n                count_one += 1\n            if count_zero == count_one:\n                max_len = max(max_len, j - i + 1)\n    return max_len",
+  "timestamp": "2025-08-05T16:41:50.899217",
+  "code_extracted_previous": "def findTheLongestBalancedSubstring(s: str) -> int:\n    n = len(s)\n    max_len = 0\n    for i in range(n):\n        count_zero = count_one = 0\n        for j in range(i, n):\n            if s[j] == '0':\n                count_zero += 1\n            elif s[j] == '1':\n                count_one += 1\n            if count_zero == count_one:\n                max_len = max(max_len, j - i + 1)\n    return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.735840"
+}

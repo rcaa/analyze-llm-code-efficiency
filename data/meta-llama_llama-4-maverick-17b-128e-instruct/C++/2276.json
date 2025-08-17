@@ -1,0 +1,15 @@
+{
+  "id": 2276,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass CountIntervals {\npublic:\n    CountIntervals() {\n        \n    }\n    \n    void add(int left, int right) {\n        if (intervals.empty() || left > intervals.rbegin()->first) {\n            intervals[right] = left;\n            count_ += right - left + 1;\n        } else {\n            auto it = intervals.lower_bound(left);\n            if (it != intervals.begin()) {\n                --it;\n                if (it->second <= left) {\n                    ++it;\n                }\n            }\n            int newLeft = left, newRight = right;\n            while (it != intervals.end() && it->second <= right) {\n                newLeft = min(newLeft, it->second);\n                newRight = max(newRight, it->first);\n                count_ -= it->first - it->second + 1;\n                it = intervals.erase(it);\n            }\n            if (it != intervals.end() && it->second <= newRight) {\n                newLeft = min(newLeft, it->second);\n                newRight = max(newRight, it->first);\n                count_ -= it->first - it->second + 1;\n                intervals.erase(it);\n            }\n            intervals[newRight] = newLeft;\n            count_ += newRight - newLeft + 1;\n        }\n    }\n    \n    int count() {\n        return count_;\n    }\nprivate:\n    map<int, int> intervals; // key is right boundary, value is left boundary\n    int count_ = 0;\n};\n\n/**\n * Your CountIntervals object will be instantiated and called as such:\n * CountIntervals* obj = new CountIntervals();\n * obj->add(left,right);\n * int param_2 = obj->count();\n */\n\nsolution: The provided C++ code.\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The main approach is to use a map to store the intervals, where the key is the right boundary and the value is the left boundary. When adding a new interval, we check if it overlaps with existing intervals and merge them if necessary. The count is updated accordingly. The use of a map allows for efficient insertion and merging of intervals, resulting in a high efficiency solution.",
+  "code": "The provided C++ code.",
+  "timestamp": "2025-08-05T14:06:05.115413",
+  "code_extracted_previous": "The provided C++ code.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:45.149547"
+}

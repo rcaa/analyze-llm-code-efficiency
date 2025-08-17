@@ -1,0 +1,15 @@
+{
+  "id": 3602,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def concatHex36(self, n: int) -> str:\n        def to_hex(x: int) -> str:\n            return hex(x)[2:].upper()\n\n        def to_hexatrigesimal(x: int) -> str:\n            if x == 0:\n                return '0'\n            result = []\n            while x > 0:\n                x, remainder = divmod(x, 36)\n                if remainder < 10:\n                    result.append(str(remainder))\n                else:\n                    result.append(chr(ord('A') + remainder - 10))\n            return ''.join(reversed(result))\n\n        return to_hex(n * n) + to_hexatrigesimal(n * n * n)\n\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: The solution efficiently converts n^2 to hexadecimal and n^3 to hexatrigesimal using custom functions, then concatenates the results. It handles the conversion to different bases correctly and has a low time and space complexity due to the use of built-in operations and efficient algorithms.\n```",
+  "code": "def concatHex36(self, n: int) -> str:\n        def to_hex(x: int) -> str:\n            return hex(x)[2:].upper()\n\n        def to_hexatrigesimal(x: int) -> str:\n            if x == 0:\n                return '0'\n            result = []\n            while x > 0:\n                x, remainder = divmod(x, 36)\n                if remainder < 10:\n                    result.append(str(remainder))\n                else:\n                    result.append(chr(ord('A') + remainder - 10))\n            return ''.join(reversed(result))\n\n        return to_hex(n * n) + to_hexatrigesimal(n * n * n)",
+  "timestamp": "2025-08-05T15:36:08.183531",
+  "code_extracted_previous": "class Solution:\n    def concatHex36(self, n: int) -> str:\n        def to_hex(x: int) -> str:\n            return hex(x)[2:].upper()\n\n        def to_hexatrigesimal(x: int) -> str:\n            if x == 0:\n                return '0'\n            result = []\n            while x > 0:\n                x, remainder = divmod(x, 36)\n                if remainder < 10:\n                    result.append(str(remainder))\n                else:\n                    result.append(chr(ord('A') + remainder - 10))\n            return ''.join(reversed(result))\n\n        return to_hex(n * n) + to_hexatrigesimal(n * n * n)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.233783"
+}

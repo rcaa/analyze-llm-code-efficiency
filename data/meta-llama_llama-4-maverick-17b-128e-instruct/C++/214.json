@@ -1,0 +1,15 @@
+{
+  "id": 214,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 4/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    string shortestPalindrome(string s) {\n        string rev_s = s;\n        reverse(rev_s.begin(), rev_s.end());\n        string combined = s + \"#\" + rev_s;\n        vector<int> lps(combined.size(), 0);\n        for (int i = 1; i < combined.size(); ++i) {\n            int j = lps[i - 1];\n            while (j > 0 && combined[i] != combined[j]) {\n                j = lps[j - 1];\n            }\n            if (combined[i] == combined[j]) {\n                ++j;\n            }\n            lps[i] = j;\n        }\n        return rev_s.substr(0, s.size() - lps.back()) + s;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nexplanation: Uses KMP algorithm to find the longest prefix of the reversed string that is also a suffix of the original string, then appends the remaining characters of the reversed string to the original string.",
+  "code": "class Solution {\npublic:\n    string shortestPalindrome(string s) {\n        string rev_s = s;\n        reverse(rev_s.begin(), rev_s.end());\n        string combined = s + \"#\" + rev_s;\n        vector<int> lps(combined.size(), 0);\n        for (int i = 1; i < combined.size(); ++i) {\n            int j = lps[i - 1];\n            while (j > 0 && combined[i] != combined[j]) {\n                j = lps[j - 1];\n            }\n            if (combined[i] == combined[j]) {\n                ++j;\n            }\n            lps[i] = j;\n        }\n        return rev_s.substr(0, s.size() - lps.back()) + s;\n    }\n};",
+  "timestamp": "2025-08-05T16:04:21.181088",
+  "code_extracted_previous": "class Solution {\npublic:\n    string shortestPalindrome(string s) {\n        string rev_s = s;\n        reverse(rev_s.begin(), rev_s.end());\n        string combined = s + \"#\" + rev_s;\n        vector<int> lps(combined.size(), 0);\n        for (int i = 1; i < combined.size(); ++i) {\n            int j = lps[i - 1];\n            while (j > 0 && combined[i] != combined[j]) {\n                j = lps[j - 1];\n            }\n            if (combined[i] == combined[j]) {\n                ++j;\n            }\n            lps[i] = j;\n        }\n        return rev_s.substr(0, s.size() - lps.back()) + s;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.091427"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2178,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    vector<long long> maximumEvenSplit(long long finalSum) {\n        if (finalSum % 2 != 0) return {};\n        vector<long long> result;\n        long long current = 2;\n        while (finalSum >= current) {\n            result.push_back(current);\n            finalSum -= current;\n            current += 2;\n        }\n        if (finalSum > 0) result.back() += finalSum;\n        return result;\n    }\n};\n```\n\nefficiency: HIGH  \ntime complexity: O(sqrt(n))  \nspace complexity: O(sqrt(n))  \nenergy implications: LOW  \nexplanation: The solution starts by checking if the finalSum is odd. If it is, an empty list is returned as there's no valid split. It then iteratively adds the smallest even numbers to the result list until adding the next even number would exceed the finalSum. If there's a remaining sum after the loop, it's added to the last number in the result list, ensuring the sum of the numbers in the list equals the finalSum.",
+  "code": "class Solution {\npublic:\n    vector<long long> maximumEvenSplit(long long finalSum) {\n        if (finalSum % 2 != 0) return {};\n        vector<long long> result;\n        long long current = 2;\n        while (finalSum >= current) {\n            result.push_back(current);\n            finalSum -= current;\n            current += 2;\n        }\n        if (finalSum > 0) result.back() += finalSum;\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T15:56:39.187219",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<long long> maximumEvenSplit(long long finalSum) {\n        if (finalSum % 2 != 0) return {};\n        vector<long long> result;\n        long long current = 2;\n        while (finalSum >= current) {\n            result.push_back(current);\n            finalSum -= current;\n            current += 2;\n        }\n        if (finalSum > 0) result.back() += finalSum;\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.120353"
+}

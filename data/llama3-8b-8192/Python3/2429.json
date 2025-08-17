@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def minimizeXor(self, num1: int, num2: int) -> int:\n        count = bin(num2).count('1')\n        res = 0\n        for i in range(30, -1, -1):\n            if ((res | (1 << i))).bit_length() <= count:\n                res |= 1 << i\n            else:\n                res ^= 1 << i\n        return res\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a bitwise approach to find the optimal x. It first counts the number of set bits in num2. Then, it iterates from the most significant bit to the least significant bit, and for each bit, it checks if setting it in res would exceed the count of set bits in num2. If it would, it sets the bit in res XORed with the bit in num1. This ensures that the XOR of res and num1 is minimal.",
+  "code": "class Solution:\n    def minimizeXor(self, num1: int, num2: int) -> int:\n        count = bin(num2).count('1')\n        res = 0\n        for i in range(30, -1, -1):\n            if ((res | (1 << i))).bit_length() <= count:\n                res |= 1 << i\n            else:\n                res ^= 1 << i\n        return res",
+  "timestamp": "2025-08-05T14:31:13.050049",
+  "code_extracted_previous": "class Solution:\n    def minimizeXor(self, num1: int, num2: int) -> int:\n        count = bin(num2).count('1')\n        res = 0\n        for i in range(30, -1, -1):\n            if ((res | (1 << i))).bit_length() <= count:\n                res |= 1 << i\n            else:\n                res ^= 1 << i\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.857949"
+}

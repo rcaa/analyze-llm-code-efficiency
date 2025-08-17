@@ -1,0 +1,15 @@
+{
+  "id": 1171,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\n# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:\n        dummy = ListNode(0)\n        dummy.next = head\n        prefix = 0\n        seen = {0: dummy}\n        while head:\n            prefix += head.val\n            if prefix in seen:\n                node = seen[prefix]\n                tmp = node.next\n                tmpPrefix = prefix + tmp.val\n                while tmp != head:\n                    del seen[tmpPrefix]\n                    tmp = tmp.next\n                    tmpPrefix += tmp.val\n                node.next = head.next\n            else:\n                seen[prefix] = head\n            head = head.next\n        return dummy.next\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a dummy node and a hashmap to track prefix sums, allowing for efficient removal of zero-sum sublists.",
+  "code": "def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:\n        dummy = ListNode(0)\n        dummy.next = head\n        prefix = 0\n        seen = {0: dummy}\n        while head:\n            prefix += head.val\n            if prefix in seen:\n                node = seen[prefix]\n                tmp = node.next\n                tmpPrefix = prefix + tmp.val\n                while tmp != head:\n                    del seen[tmpPrefix]\n                    tmp = tmp.next\n                    tmpPrefix += tmp.val\n                node.next = head.next\n            else:\n                seen[prefix] = head\n            head = head.next\n        return dummy.next\n```",
+  "timestamp": "2025-08-06T15:17:02.632328",
+  "code_extracted_previous": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:\n        dummy = ListNode(0)\n        dummy.next = head\n        prefix = 0\n        seen = {0: dummy}\n        while head:\n            prefix += head.val\n            if prefix in seen:\n                node = seen[prefix]\n                tmp = node.next\n                tmpPrefix = prefix + tmp.val\n                while tmp != head:\n                    del seen[tmpPrefix]\n                    tmp = tmp.next\n                    tmpPrefix += tmp.val\n                node.next = head.next\n            else:\n                seen[prefix] = head\n            head = head.next\n        return dummy.next",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.618127"
+}

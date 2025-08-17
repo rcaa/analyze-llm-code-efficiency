@@ -1,0 +1,15 @@
+{
+  "id": 3519,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    private static final int MOD = (int)1e9 + 7;\n    public int countNumbers(String l, String r, int b) {\n        int res = 0;\n        for (int i = (int)l.charAt(0) - '0'; i < 10; i++) {\n            res = (res + dp(l.length(), i, b)) % MOD;\n        }\n        for (int i = (int)r.charAt(0) - '0'; i >= (int)l.charAt(0) - '0'; i--) {\n            res = (res - dp(r.length(), i, b) + MOD) % MOD;\n        }\n        return res;\n    }\n    private int dp(int len, int x, int b) {\n        if (len == 0) return 1;\n        int res = 0;\n        for (int i = 0; i <= x; i++) {\n            res = (res + dp(len - 1, i, b)) % MOD;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(r) * log(b))\nspace complexity: O(log(r) * log(b))\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to count the numbers with non-decreasing digits in base b. It iterates over the possible first digits and recursively counts the remaining digits. The result is calculated modulo 10^9 + 7 to avoid overflow.",
+  "code": "class Solution {\n    private static final int MOD = (int)1e9 + 7;\n    public int countNumbers(String l, String r, int b) {\n        int res = 0;\n        for (int i = (int)l.charAt(0) - '0'; i < 10; i++) {\n            res = (res + dp(l.length(), i, b)) % MOD;\n        }\n        for (int i = (int)r.charAt(0) - '0'; i >= (int)l.charAt(0) - '0'; i--) {\n            res = (res - dp(r.length(), i, b) + MOD) % MOD;\n        }\n        return res;\n    }\n    private int dp(int len, int x, int b) {\n        if (len == 0) return 1;\n        int res = 0;\n        for (int i = 0; i <= x; i++) {\n            res = (res + dp(len - 1, i, b)) % MOD;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T15:26:56.360551",
+  "code_extracted_previous": "class Solution {\n    private static final int MOD = (int)1e9 + 7;\n    public int countNumbers(String l, String r, int b) {\n        int res = 0;\n        for (int i = (int)l.charAt(0) - '0'; i < 10; i++) {\n            res = (res + dp(l.length(), i, b)) % MOD;\n        }\n        for (int i = (int)r.charAt(0) - '0'; i >= (int)l.charAt(0) - '0'; i--) {\n            res = (res - dp(r.length(), i, b) + MOD) % MOD;\n        }\n        return res;\n    }\n    private int dp(int len, int x, int b) {\n        if (len == 0) return 1;\n        int res = 0;\n        for (int i = 0; i <= x; i++) {\n            res = (res + dp(len - 1, i, b)) % MOD;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.490291"
+}

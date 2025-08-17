@@ -1,0 +1,15 @@
+{
+  "id": 1358,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef numberOfSubstrings(self, s: str) -> int:\n    n = len(s)\n    count = [0] * (n + 1)\n    for i in range(1, n + 1):\n        for j in range(i, n + 1):\n            for k in range(i, n + 1):\n                count[j] += count[i] * count[k]\n    return count[n]\n\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\nWe use a nested loop to iterate through all possible substrings of length 3 in the string. For each substring, we update the count of substrings containing all three characters. The outer loop iterates over the first character, the middle loop iterates over the second character, and the innermost loop iterates over the third character. This approach has a time complexity of O(n^3), where n is the length of the string. The space complexity is O(n) due to the array used to store the counts. The energy implications are low because the solution only requires a small amount of computational resources. ",
+  "code": "def numberOfSubstrings(self, s: str) -> int:\n    n = len(s)\n    count = [0] * (n + 1)\n    for i in range(1, n + 1):\n        for j in range(i, n + 1):\n            for k in range(i, n + 1):\n                count[j] += count[i] * count[k]\n    return count[n]",
+  "timestamp": "2025-08-05T15:02:15.846678",
+  "code_extracted_previous": "def numberOfSubstrings(self, s: str) -> int:\n    n = len(s)\n    count = [0] * (n + 1)\n    for i in range(1, n + 1):\n        for j in range(i, n + 1):\n            for k in range(i, n + 1):\n                count[j] += count[i] * count[k]\n    return count[n]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.182201"
+}

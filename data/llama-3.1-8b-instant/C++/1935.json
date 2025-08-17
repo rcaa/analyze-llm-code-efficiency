@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        int count = 0;\n        string word;\n        for (char c : text) {\n            if (c == ' ') {\n                if (word.find_first_not_of(brokenLetters) != string::npos) {\n                    count++;\n                }\n                word.clear();\n            } else {\n                word += c;\n            }\n        }\n        if (word.find_first_not_of(brokenLetters) != string::npos) {\n            count++;\n        }\n        return count;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution iterates through the input string once, checking each word to see if it contains any broken letters. It uses the `find_first_not_of` method to check if a word contains any broken letters, which has a time complexity of O(n). The overall time complexity is O(n) because we only iterate through the string once. The space complexity is also O(n) because in the worst case, we need to store the entire string in the `word` variable.",
+  "code": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        int count = 0;\n        string word;\n        for (char c : text) {\n            if (c == ' ') {\n                if (word.find_first_not_of(brokenLetters) != string::npos) {\n                    count++;\n                }\n                word.clear();\n            } else {\n                word += c;\n            }\n        }\n        if (word.find_first_not_of(brokenLetters) != string::npos) {\n            count++;\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T14:44:06.722150",
+  "code_extracted_previous": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        int count = 0;\n        string word;\n        for (char c : text) {\n            if (c == ' ') {\n                if (word.find_first_not_of(brokenLetters) != string::npos) {\n                    count++;\n                }\n                word.clear();\n            } else {\n                word += c;\n            }\n        }\n        if (word.find_first_not_of(brokenLetters) != string::npos) {\n            count++;\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.596290"
+}

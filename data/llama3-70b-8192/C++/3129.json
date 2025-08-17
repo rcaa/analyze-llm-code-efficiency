@@ -1,0 +1,15 @@
+{
+  "id": 3129,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(zero + 1, vector<int>(one + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 0; i <= zero; ++i) {\n            for (int j = 0; j <= one; ++j) {\n                if (i > 0) dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n                if (j > 0) dp[i][j] = (dp[i][j] + dp[i][j - 1]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = 1; i <= zero; ++i) {\n            for (int j = 1; j <= one; ++j) {\n                if (i + j > limit) continue;\n                res = (res + dp[i][j]) % MOD;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(zero * one)\nspace complexity: O(zero * one)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to count the number of stable binary arrays. It builds a 2D DP table where dp[i][j] represents the number of stable arrays with i zeros and j ones. Then, it iterates over the DP table to count the number of stable arrays that satisfy the given conditions.",
+  "code": "class Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(zero + 1, vector<int>(one + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 0; i <= zero; ++i) {\n            for (int j = 0; j <= one; ++j) {\n                if (i > 0) dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n                if (j > 0) dp[i][j] = (dp[i][j] + dp[i][j - 1]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = 1; i <= zero; ++i) {\n            for (int j = 1; j <= one; ++j) {\n                if (i + j > limit) continue;\n                res = (res + dp[i][j]) % MOD;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:29:27.731388",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(zero + 1, vector<int>(one + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 0; i <= zero; ++i) {\n            for (int j = 0; j <= one; ++j) {\n                if (i > 0) dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n                if (j > 0) dp[i][j] = (dp[i][j] + dp[i][j - 1]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = 1; i <= zero; ++i) {\n            for (int j = 1; j <= one; ++j) {\n                if (i + j > limit) continue;\n                res = (res + dp[i][j]) % MOD;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.723817"
+}

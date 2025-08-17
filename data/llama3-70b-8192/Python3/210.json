@@ -1,0 +1,15 @@
+{
+  "id": 210,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nfrom collections import defaultdict, deque\nclass Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = defaultdict(list)\n        indegree = [0] * numCourses\n        for x, y in prerequisites:\n            graph[y].append(x)\n            indegree[x] += 1\n        queue = deque([i for i in range(numCourses) if indegree[i] == 0])\n        res = []\n        while queue:\n            node = queue.popleft()\n            res.append(node)\n            for neighbor in graph[node]:\n                indegree[neighbor] -= 1\n                if indegree[neighbor] == 0:\n                    queue.append(neighbor)\n        return res if len(res) == numCourses else []\n```\nefficiency: HIGH\ntime complexity: O(N + P)\nspace complexity: O(N + P)\nenergy implications: LOW\nexplanation: This solution uses a topological sorting approach with a queue to efficiently find a valid course order. It builds a graph and calculates the indegree of each node, then iteratively dequeues nodes with zero indegree and updates the graph.",
+  "code": "class Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = defaultdict(list)\n        indegree = [0] * numCourses\n        for x, y in prerequisites:\n            graph[y].append(x)\n            indegree[x] += 1\n        queue = deque([i for i in range(numCourses) if indegree[i] == 0])\n        res = []\n        while queue:\n            node = queue.popleft()\n            res.append(node)\n            for neighbor in graph[node]:\n                indegree[neighbor] -= 1\n                if indegree[neighbor] == 0:\n                    queue.append(neighbor)\n        return res if len(res) == numCourses else []",
+  "timestamp": "2025-08-05T13:58:08.205629",
+  "code_extracted_previous": "from collections import defaultdict, deque\nclass Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = defaultdict(list)\n        indegree = [0] * numCourses\n        for x, y in prerequisites:\n            graph[y].append(x)\n            indegree[x] += 1\n        queue = deque([i for i in range(numCourses) if indegree[i] == 0])\n        res = []\n        while queue:\n            node = queue.popleft()\n            res.append(node)\n            for neighbor in graph[node]:\n                indegree[neighbor] -= 1\n                if indegree[neighbor] == 0:\n                    queue.append(neighbor)\n        return res if len(res) == numCourses else []",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.141991"
+}

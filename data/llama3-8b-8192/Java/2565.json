@@ -1,0 +1,15 @@
+{
+  "id": 2565,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int minimumScore(String s, String t) {\n        int n = s.length(), m = t.length();\n        int res = m, left = 0, right = m - 1;\n        for (int i = 0; i < n; i++) {\n            if (i < m && s.charAt(i) == t.charAt(left)) left++;\n            if (i < m && s.charAt(i) == t.charAt(right)) right--;\n            if (left > right) res = Math.min(res, right - left + 1);\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use two pointers, left and right, to track the remaining characters in t. We iterate through s and update left and right accordingly. If left > right, we update the result with the minimum score.",
+  "code": "class Solution {\n    public int minimumScore(String s, String t) {\n        int n = s.length(), m = t.length();\n        int res = m, left = 0, right = m - 1;\n        for (int i = 0; i < n; i++) {\n            if (i < m && s.charAt(i) == t.charAt(left)) left++;\n            if (i < m && s.charAt(i) == t.charAt(right)) right--;\n            if (left > right) res = Math.min(res, right - left + 1);\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T01:17:49.690793",
+  "code_extracted_previous": "public int minimumScore(String s, String t) {\n        int n = s.length(), m = t.length();\n        int res = m, left = 0, right = m - 1;\n        for (int i = 0; i < n; i++) {\n            if (i < m && s.charAt(i) == t.charAt(left)) left++;\n            if (i < m && s.charAt(i) == t.charAt(right)) right--;\n            if (left > right) res = Math.min(res, right - left + 1);\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.469156"
+}

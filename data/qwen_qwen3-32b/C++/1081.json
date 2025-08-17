@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    string smallestSubsequence(string s) {\n        string result;\n        vector<bool> inResult(26, false);\n        vector<int> count(26, 0);\n        \n        for (char c : s) {\n            count[c - 'a']++;\n        }\n        \n        for (char c : s) {\n            count[c - 'a']--;\n            if (inResult[c - 'a']) continue;\n            while (!result.empty() && result.back() > c && count[result.back() - 'a'] > 0) {\n                inResult[result.back() - 'a'] = false;\n                result.pop_back();\n            }\n            result.push_back(c);\n            inResult[c - 'a'] = true;\n        }\n        \n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a greedy approach with a stack to build the result string. It maintains counts of characters remaining and ensures each character is added only once. The algorithm ensures the lexicographically smallest result by removing larger characters from the result when possible. The time complexity is O(N) as each character is processed once, and the space complexity is O(1) due to fixed-size arrays for character tracking.",
+  "code": "class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        string result;\n        vector<bool> inResult(26, false);\n        vector<int> count(26, 0);\n        \n        for (char c : s) {\n            count[c - 'a']++;\n        }\n        \n        for (char c : s) {\n            count[c - 'a']--;\n            if (inResult[c - 'a']) continue;\n            while (!result.empty() && result.back() > c && count[result.back() - 'a'] > 0) {\n                inResult[result.back() - 'a'] = false;\n                result.pop_back();\n            }\n            result.push_back(c);\n            inResult[c - 'a'] = true;\n        }\n        \n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T00:48:15.166411",
+  "code_extracted_previous": "class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        string result;\n        vector<bool> inResult(26, false);\n        vector<int> count(26, 0);\n        \n        for (char c : s) {\n            count[c - 'a']++;\n        }\n        \n        for (char c : s) {\n            count[c - 'a']--;\n            if (inResult[c - 'a']) continue;\n            while (!result.empty() && result.back() > c && count[result.back() - 'a'] > 0) {\n                inResult[result.back() - 'a'] = false;\n                result.pop_back();\n            }\n            result.push_back(c);\n            inResult[c - 'a'] = true;\n        }\n        \n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:57.917040"
+}

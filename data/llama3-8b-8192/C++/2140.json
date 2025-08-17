@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n, 0);\n        dp[0] = questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = max(dp[i-1], dp[max(0, i-questions[i][1]-1)]);\n            dp[i] += questions[i][0];\n        }\n        return *max_element(dp.begin(), dp.end());\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to keep track of the maximum points that can be earned at each question. It iterates through the questions and for each question, it calculates the maximum points that can be earned by either solving the current question or skipping it. The maximum points are stored in a dynamic programming array and the maximum points earned are returned at the end.",
+  "code": "class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n, 0);\n        dp[0] = questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = max(dp[i-1], dp[max(0, i-questions[i][1]-1)]);\n            dp[i] += questions[i][0];\n        }\n        return *max_element(dp.begin(), dp.end());\n    }\n};",
+  "timestamp": "2025-08-05T13:25:04.886054",
+  "code_extracted_previous": "public:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n, 0);\n        dp[0] = questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = max(dp[i-1], dp[max(0, i-questions[i][1]-1)]);\n            dp[i] += questions[i][0];\n        }\n        return *max_element(dp.begin(), dp.end());\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.850512"
+}

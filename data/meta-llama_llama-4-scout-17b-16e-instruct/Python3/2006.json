@@ -1,0 +1,15 @@
+{
+  "id": 2006,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\nclass Solution:\n    def countKDifference(self, nums: List[int], k: int) -> int:\n        count = 0\n        num_counts = {}\n        for num in nums:\n            if num - k in num_counts:\n                count += num_counts[num - k]\n            if num + k in num_counts:\n                count += num_counts[num + k]\n            num_counts[num] = num_counts.get(num, 0) + 1\n        return count\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a hashmap to store the frequency of each number in the array. It then iterates through the array, checking if the current number plus or minus k exists in the hashmap. If it does, it adds the frequency of that number to the count. This approach allows for efficient counting of pairs with an absolute difference of k.",
+  "code": "class Solution:\n    def countKDifference(self, nums: List[int], k: int) -> int:\n        count = 0\n        num_counts = {}\n        for num in nums:\n            if num - k in num_counts:\n                count += num_counts[num - k]\n            if num + k in num_counts:\n                count += num_counts[num + k]\n            num_counts[num] = num_counts.get(num, 0) + 1\n        return count",
+  "timestamp": "2025-08-05T12:44:46.297593",
+  "code_extracted_previous": "from typing import List\nclass Solution:\n    def countKDifference(self, nums: List[int], k: int) -> int:\n        count = 0\n        num_counts = {}\n        for num in nums:\n            if num - k in num_counts:\n                count += num_counts[num - k]\n            if num + k in num_counts:\n                count += num_counts[num + k]\n            num_counts[num] = num_counts.get(num, 0) + 1\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:51.997658"
+}

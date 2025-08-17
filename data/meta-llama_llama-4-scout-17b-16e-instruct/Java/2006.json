@@ -1,0 +1,15 @@
+{
+  "id": 2006,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countKDifference(int[] nums, int k) {\n        int count = 0;\n        int[] freq = new int[101];\n        \n        for (int num : nums) {\n            freq[num]++;\n        }\n        \n        for (int num : nums) {\n            if (num - k >= 0) {\n                count += freq[num - k];\n            }\n            if (num + k <= 100) {\n                count += freq[num + k];\n            }\n        }\n        \n        return count / 2;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a frequency array to count occurrences of each number in the array. It then iterates through the array, adding the frequency of numbers that are k more or less than the current number to the count. The count is divided by 2 to avoid counting pairs twice.",
+  "code": "class Solution {\n    public int countKDifference(int[] nums, int k) {\n        int count = 0;\n        int[] freq = new int[101];\n        \n        for (int num : nums) {\n            freq[num]++;\n        }\n        \n        for (int num : nums) {\n            if (num - k >= 0) {\n                count += freq[num - k];\n            }\n            if (num + k <= 100) {\n                count += freq[num + k];\n            }\n        }\n        \n        return count / 2;\n    }\n}",
+  "timestamp": "2025-08-05T12:44:45.102636",
+  "code_extracted_previous": "class Solution {\n    public int countKDifference(int[] nums, int k) {\n        int count = 0;\n        int[] freq = new int[101];\n        \n        for (int num : nums) {\n            freq[num]++;\n        }\n        \n        for (int num : nums) {\n            if (num - k >= 0) {\n                count += freq[num - k];\n            }\n            if (num + k <= 100) {\n                count += freq[num + k];\n            }\n        }\n        \n        return count / 2;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.594717"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n + 1];\n        for (int i = n - 1; i >= 0; i--) {\n            dp[i] = Math.max(dp[i + 1], questions[i][0] + (i + questions[i][1] < n ? dp[i + questions[i][1] + 1] : 0));\n        }\n        return dp[0];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to store the maximum points that can be earned for each question. It iterates from the end of the array to the beginning, considering the maximum points that can be earned by solving or skipping each question.",
+  "code": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n + 1];\n        for (int i = n - 1; i >= 0; i--) {\n            dp[i] = Math.max(dp[i + 1], questions[i][0] + (i + questions[i][1] < n ? dp[i + questions[i][1] + 1] : 0));\n        }\n        return dp[0];\n    }\n}",
+  "timestamp": "2025-08-05T13:25:07.945691",
+  "code_extracted_previous": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n + 1];\n        for (int i = n - 1; i >= 0; i--) {\n            dp[i] = Math.max(dp[i + 1], questions[i][0] + (i + questions[i][1] < n ? dp[i + questions[i][1] + 1] : 0));\n        }\n        return dp[0];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.052258"
+}

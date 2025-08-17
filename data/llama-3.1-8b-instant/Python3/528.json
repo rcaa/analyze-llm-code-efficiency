@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```class Solution:\n\n    def __init__(self, w: List[int]):\n        self.prefix_sum = [0] * (len(w) + 1)\n        for i in range(len(w)):\n            self.prefix_sum[i + 1] = self.prefix_sum[i] + w[i]\n\n    def pickIndex(self) -> int:\n        import random\n        target = random.randint(0, self.prefix_sum[-1] - 1)\n        for i in range(len(self.prefix_sum)):\n            if target < self.prefix_sum[i]:\n                return i - 1\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution:\n\n    def __init__(self, w: List[int]):\n        self.prefix_sum = [0] * (len(w) + 1)\n        for i in range(len(w)):\n            self.prefix_sum[i + 1] = self.prefix_sum[i] + w[i]\n\n    def pickIndex(self) -> int:\n        target = random.randint(0, self.prefix_sum[-1] - 1)\n        for i in range(len(self.prefix_sum)):\n            if target < self.prefix_sum[i]:\n                return i - 1",
+  "timestamp": "2025-08-05T13:00:00.014143",
+  "code_extracted_previous": "def __init__(self, w: List[int]):\n        self.prefix_sum = [0] * (len(w) + 1)\n        for i in range(len(w)):\n            self.prefix_sum[i + 1] = self.prefix_sum[i] + w[i]\n\n    def pickIndex(self) -> int:\n        import random\n        target = random.randint(0, self.prefix_sum[-1] - 1)\n        for i in range(len(self.prefix_sum)):\n            if target < self.prefix_sum[i]:\n                return i - 1",
+  "starter_ok": false,
+  "starter_check_reason": "assinatura divergente: esperada '__init__(self, w)'",
+  "reavaliado_em": "2025-08-17T12:23:31.371409"
+}

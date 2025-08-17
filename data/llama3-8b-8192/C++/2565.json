@@ -1,0 +1,15 @@
+{
+  "id": 2565,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int n = s.size(), m = t.size();\n        int res = m, left = 0, right = m - 1, diff = 0;\n        for (int i = 0; i < m; i++) {\n            if (s[i] != t[i]) {\n                diff++;\n                if (i < right) right = i;\n            }\n        }\n        for (int i = m - 1; i >= 0; i--) {\n            if (s[i] != t[i]) {\n                diff++;\n                if (i > left) left = i;\n            }\n        }\n        return min(res - left, right - left + 1);\n    }\n};```\nefficiency: HIGH\ntime complexity: O(m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We first find the maximum and minimum indices of the characters that are different between the two strings. Then we calculate the minimum score by considering the maximum and minimum indices.",
+  "code": "class Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int n = s.size(), m = t.size();\n        int res = m, left = 0, right = m - 1, diff = 0;\n        for (int i = 0; i < m; i++) {\n            if (s[i] != t[i]) {\n                diff++;\n                if (i < right) right = i;\n            }\n        }\n        for (int i = m - 1; i >= 0; i--) {\n            if (s[i] != t[i]) {\n                diff++;\n                if (i > left) left = i;\n            }\n        }\n        return min(res - left, right - left + 1);\n    }\n};",
+  "timestamp": "2025-08-06T01:17:49.076848",
+  "code_extracted_previous": "public:\n    int minimumScore(string s, string t) {\n        int n = s.size(), m = t.size();\n        int res = m, left = 0, right = m - 1, diff = 0;\n        for (int i = 0; i < m; i++) {\n            if (s[i] != t[i]) {\n                diff++;\n                if (i < right) right = i;\n            }\n        }\n        for (int i = m - 1; i >= 0; i--) {\n            if (s[i] != t[i]) {\n                diff++;\n                if (i > left) left = i;\n            }\n        }\n        return min(res - left, right - left + 1);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.061315"
+}

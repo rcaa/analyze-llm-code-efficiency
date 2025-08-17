@@ -1,0 +1,15 @@
+{
+  "id": 2825,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    bool canMakeSubsequence(string str1, string str2) {\n        int n = str1.size(), m = str2.size();\n        if (m > n) return false;\n        int j = 0;\n        for (int i = 0; i < n && j < m; ++i) {\n            char c = str1[i];\n            char next = (c == 'z') ? 'a' : c + 1;\n            if (c == str2[j] || next == str2[j]) {\n                ++j;\n            }\n        }\n        return j == m;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Greedy two-pointer scan: for each character in str1 we check if it matches the current character in str2 either unchanged or after one cyclic increment. If so we advance both pointers; otherwise only the str1 pointer. If we exhaust str2 we succeed. This single pass is optimal and uses constant extra space.",
+  "code": "class Solution {\npublic:\n    bool canMakeSubsequence(string str1, string str2) {\n        int n = str1.size(), m = str2.size();\n        if (m > n) return false;\n        int j = 0;\n        for (int i = 0; i < n && j < m; ++i) {\n            char c = str1[i];\n            char next = (c == 'z') ? 'a' : c + 1;\n            if (c == str2[j] || next == str2[j]) {\n                ++j;\n            }\n        }\n        return j == m;\n    }\n};",
+  "timestamp": "2025-08-06T01:47:21.890566",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canMakeSubsequence(string str1, string str2) {\n        int n = str1.size(), m = str2.size();\n        if (m > n) return false;\n        int j = 0;\n        for (int i = 0; i < n && j < m; ++i) {\n            char c = str1[i];\n            char next = (c == 'z') ? 'a' : c + 1;\n            if (c == str2[j] || next == str2[j]) {\n                ++j;\n            }\n        }\n        return j == m;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.836656"
+}

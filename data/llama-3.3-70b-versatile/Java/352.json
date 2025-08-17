@@ -1,0 +1,15 @@
+{
+  "id": 352,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass SummaryRanges {\n    private TreeSet<Integer> set = new TreeSet<>();\n\n    public SummaryRanges() {\n        \n    }\n    \n    public void addNum(int value) {\n        set.add(value);\n    }\n    \n    public int[][] getIntervals() {\n        int[][] intervals = new int[set.size()][2];\n        int index = 0;\n        Integer start = null, end = null;\n        for (Integer num : set) {\n            if (start == null) {\n                start = num;\n                end = num;\n            } else if (num == end + 1) {\n                end = num;\n            } else {\n                intervals[index++] = new int[] {start, end};\n                start = num;\n                end = num;\n            }\n        }\n        if (start != null) {\n            intervals[index++] = new int[] {start, end};\n        }\n        int[][] result = new int[index][2];\n        System.arraycopy(intervals, 0, result, 0, index);\n        return result;\n    }\n}\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a TreeSet to store unique integers and efficiently generates disjoint intervals by iterating through the sorted set, merging adjacent numbers into intervals.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-06T15:15:31.204141",
+  "code_extracted_previous": "class SummaryRanges {\n    private TreeSet<Integer> set = new TreeSet<>();\n\n    public SummaryRanges() {\n        \n    }\n    \n    public void addNum(int value) {\n        set.add(value);\n    }\n    \n    public int[][] getIntervals() {\n        int[][] intervals = new int[set.size()][2];\n        int index = 0;\n        Integer start = null, end = null;\n        for (Integer num : set) {\n            if (start == null) {\n                start = num;\n                end = num;\n            } else if (num == end + 1) {\n                end = num;\n            } else {\n                intervals[index++] = new int[] {start, end};\n                start = num;\n                end = num;\n            }\n        }\n        if (start != null) {\n            intervals[index++] = new int[] {start, end};\n        }\n        int[][] result = new int[index][2];\n        System.arraycopy(intervals, 0, result, 0, index);\n        return result;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.203687"
+}

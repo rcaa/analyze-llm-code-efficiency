@@ -1,0 +1,15 @@
+{
+  "id": 2034,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass StockPrice {\n    private Map<Integer, Integer> timestampToPrice;\n    private TreeMap<Integer, Integer> priceToCount;\n    private int latestTimestamp;\n\n    public StockPrice() {\n        timestampToPrice = new HashMap<>();\n        priceToCount = new TreeMap<>();\n        latestTimestamp = 0;\n    }\n\n    public void update(int timestamp, int price) {\n        if (timestampToPrice.containsKey(timestamp)) {\n            int oldPrice = timestampToPrice.get(timestamp);\n            priceToCount.put(oldPrice, priceToCount.get(oldPrice) - 1);\n            if (priceToCount.get(oldPrice) == 0) {\n                priceToCount.remove(oldPrice);\n            }\n        }\n        timestampToPrice.put(timestamp, price);\n        priceToCount.put(price, priceToCount.getOrDefault(price, 0) + 1);\n        latestTimestamp = Math.max(latestTimestamp, timestamp);\n    }\n\n    public int current() {\n        return timestampToPrice.get(latestTimestamp);\n    }\n\n    public int maximum() {\n        return priceToCount.lastKey();\n    }\n\n    public int minimum() {\n        return priceToCount.firstKey();\n    }\n}\n\n/**\n * Your StockPrice object will be instantiated and called as such:\n * StockPrice obj = new StockPrice();\n * obj.update(timestamp,price);\n * int param_2 = obj.current();\n * int param_3 = obj.maximum();\n * int param_4 = obj.minimum();\n */\nsolution: The provided Java code in the above format.\nefficiency: HIGH\ntime complexity: O(log n) for update, maximum, and minimum operations; O(1) for current operation.\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The main approach is to use a HashMap to store the timestamp to price mapping and a TreeMap to store the price to count mapping. The TreeMap allows for efficient retrieval of the maximum and minimum prices. The update operation involves updating the price in the HashMap and adjusting the count in the TreeMap. The current operation simply retrieves the price at the latest timestamp. The maximum and minimum operations use the TreeMap to find the last and first keys, respectively. The key strengths are efficient update, maximum, and minimum operations, while the main weakness is the use of extra space to store the price to count mapping.",
+  "code": "The provided Java code in the above format.",
+  "timestamp": "2025-08-05T15:08:09.332145",
+  "code_extracted_previous": "The provided Java code in the above format.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:46.408530"
+}

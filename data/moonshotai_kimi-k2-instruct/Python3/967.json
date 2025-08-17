@@ -1,0 +1,15 @@
+{
+  "id": 967,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \nclass Solution:\n    def numsSameConsecDiff(self, n: int, k: int) -> List[int]:\n        if n == 1:\n            return list(range(10))\n        queue = list(range(1, 10))\n        for _ in range(n - 1):\n            next_queue = []\n            for num in queue:\n                last = num % 10\n                for nxt in {last + k, last - k}:\n                    if 0 <= nxt <= 9:\n                        next_queue.append(num * 10 + nxt)\n            queue = next_queue\n        return queue\nefficiency: HIGH\ntime complexity: O(2^n)\nspace complexity: O(2^n)\nenergy implications: LOW\nexplanation: BFS builds numbers digit-by-digit, pruning invalid branches early. Each step keeps only valid prefixes, avoiding full enumeration. Handles k=0 efficiently by deduplicating next digits.",
+  "code": "class Solution:\n    def numsSameConsecDiff(self, n: int, k: int) -> List[int]:\n        if n == 1:\n            return list(range(10))\n        queue = list(range(1, 10))\n        for _ in range(n - 1):\n            next_queue = []\n            for num in queue:\n                last = num % 10\n                for nxt in {last + k, last - k}:\n                    if 0 <= nxt <= 9:\n                        next_queue.append(num * 10 + nxt)\n            queue = next_queue\n        return queue",
+  "timestamp": "2025-08-05T13:36:59.006692",
+  "code_extracted_previous": "class Solution:\n    def numsSameConsecDiff(self, n: int, k: int) -> List[int]:\n        if n == 1:\n            return list(range(10))\n        queue = list(range(1, 10))\n        for _ in range(n - 1):\n            next_queue = []\n            for num in queue:\n                last = num % 10\n                for nxt in {last + k, last - k}:\n                    if 0 <= nxt <= 9:\n                        next_queue.append(num * 10 + nxt)\n            queue = next_queue\n        return queue",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.745682"
+}

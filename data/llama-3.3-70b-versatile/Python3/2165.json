@@ -1,0 +1,15 @@
+{
+  "id": 2165,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def smallestNumber(self, num: int) -> int:\n        if num == 0:\n            return 0\n        negative = num < 0\n        num = abs(num)\n        digits = sorted(str(num))\n        if negative:\n            digits = digits[::-1]\n            return -int(''.join(digits))\n        else:\n            for i, digit in enumerate(digits):\n                if digit != '0':\n                    digits.insert(0, digits.pop(i))\n                    break\n            return int(''.join(digits))\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution first checks if the number is negative and then sorts the digits in ascending order. If the number is negative, it reverses the sorted digits and returns the negative result. If the number is non-negative, it rearranges the digits to minimize the value without leading zeros by moving the first non-zero digit to the front.",
+  "code": "def smallestNumber(self, num: int) -> int:\n        if num == 0:\n            return 0\n        negative = num < 0\n        num = abs(num)\n        digits = sorted(str(num))\n        if negative:\n            digits = digits[::-1]\n            return -int(''.join(digits))\n        else:\n            for i, digit in enumerate(digits):\n                if digit != '0':\n                    digits.insert(0, digits.pop(i))\n                    break\n            return int(''.join(digits))\n```",
+  "timestamp": "2025-08-06T15:17:40.989235",
+  "code_extracted_previous": "class Solution:\n    def smallestNumber(self, num: int) -> int:\n        if num == 0:\n            return 0\n        negative = num < 0\n        num = abs(num)\n        digits = sorted(str(num))\n        if negative:\n            digits = digits[::-1]\n            return -int(''.join(digits))\n        else:\n            for i, digit in enumerate(digits):\n                if digit != '0':\n                    digits.insert(0, digits.pop(i))\n                    break\n            return int(''.join(digits))",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.076363"
+}

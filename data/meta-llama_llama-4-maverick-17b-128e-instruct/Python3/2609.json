@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        for i in range(len(s)):\n            zeros = 0\n            for j in range(i, len(s)):\n                if s[j] == '0':\n                    zeros += 1\n                else:\n                    if zeros > 0:\n                        zeros -= 1\n                    else:\n                        break\n                if zeros == 0:\n                    max_len = max(max_len, j - i + 1)\n        return max_len\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the string, expanding substrings and checking for balance by counting zeros and matching ones. It keeps track of the maximum length of balanced substrings encountered.",
+  "code": "def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        for i in range(len(s)):\n            zeros = 0\n            for j in range(i, len(s)):\n                if s[j] == '0':\n                    zeros += 1\n                else:\n                    if zeros > 0:\n                        zeros -= 1\n                    else:\n                        break\n                if zeros == 0:\n                    max_len = max(max_len, j - i + 1)\n        return max_len\n```",
+  "timestamp": "2025-08-05T23:42:41.480040",
+  "code_extracted_previous": "class Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        for i in range(len(s)):\n            zeros = 0\n            for j in range(i, len(s)):\n                if s[j] == '0':\n                    zeros += 1\n                else:\n                    if zeros > 0:\n                        zeros -= 1\n                    else:\n                        break\n                if zeros == 0:\n                    max_len = max(max_len, j - i + 1)\n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.969646"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 482,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string licenseKeyFormatting(string s, int k) {\n        string res, temp;\n        for (char c : s) {\n            if (c != '-') {\n                if (islower(c)) c = toupper(c);\n                temp += c;\n            }\n        }\n        int len = temp.length();\n        res += temp.substr(0, len % k ? len % k : k);\n        for (int i = len % k; i < len; i += k) {\n            res += '-';\n            res += temp.substr(i, k);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the input string, removing dashes and converting to uppercase. Then, it constructs the reformatted string by dividing the remaining characters into groups of k, with the first group being shorter if necessary.",
+  "code": "class Solution {\npublic:\n    string licenseKeyFormatting(string s, int k) {\n        string res, temp;\n        for (char c : s) {\n            if (c != '-') {\n                if (islower(c)) c = toupper(c);\n                temp += c;\n            }\n        }\n        int len = temp.length();\n        res += temp.substr(0, len % k ? len % k : k);\n        for (int i = len % k; i < len; i += k) {\n            res += '-';\n            res += temp.substr(i, k);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T16:23:44.300614",
+  "code_extracted_previous": "public:\n    string licenseKeyFormatting(string s, int k) {\n        string res, temp;\n        for (char c : s) {\n            if (c != '-') {\n                if (islower(c)) c = toupper(c);\n                temp += c;\n            }\n        }\n        int len = temp.length();\n        res += temp.substr(0, len % k ? len % k : k);\n        for (int i = len % k; i < len; i += k) {\n            res += '-';\n            res += temp.substr(i, k);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.945662"
+}

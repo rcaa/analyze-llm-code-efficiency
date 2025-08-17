@@ -1,181 +1,246 @@
 import os
 import json
-import matplotlib.pyplot as plt
 import numpy as np
-from collections import defaultdict
-from tqdm import tqdm
+import matplotlib.pyplot as plt
+from collections import defaultdict, Counter
 from matplotlib.patches import Patch
 
-# Define o diretório base onde os resultados estão salvos
-OUTPUT_BASE = "../../data"
-# Diretório para salvar os gráficos gerados
-PLOTS_DIR = "plots"
+# === CONFIGURAÇÕES ===
+DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "../data"))
+PLOTS_DIR = os.path.join(os.path.dirname(__file__), "plots")
 
-def listar_modelos_oficiais():
+MODELOS_OFICIAIS = [
+    "allam-2-7b", "deepseek-r1-distill-llama-70b", "gemma2-9b-it",
+    "llama-3.1-8b-instant", "llama-3.3-70b-versatile", "llama3-70b-8192", "llama3-8b-8192",
+    "meta-llama/llama-4-maverick-17b-128e-instruct",
+    "meta-llama/llama-4-scout-17b-16e-instruct",
+    "moonshotai/kimi-k2-instruct",
+    "qwen/qwen3-32b"
+]
+LINGUAGENS = ["C++", "Java", "Python3"]
+TOP_N_REASONS = 5
+
+# Mapeia nome de pasta (onde "/" virou "_") para ID oficial
+MODEL_DIR_TO_ID = {m.replace("/", "_"): m for m in MODELOS_OFICIAIS}
+
+# === CARREGAR DADOS DIRETO DA PASTA data/ ===
+def load_data_from_files(data_dir):
     """
-    Retorna a lista de nomes de modelos 'oficiais', como vêm da API.
-    Esta é a fonte da verdade para os nomes que serão exibidos no gráfico.
+    Itera por cada modelo e linguagem na pasta data/,
+    Carrega cada JSON e agrupa em:
+      data[qid][model_id][lang] = info_dict
     """
-    return [
-        "allam-2-7b", "deepseek-r1-distill-llama-70b", "gemma2-9b-it",
-        "llama-3.1-8b-instant", "llama-3.3-70b-versatile", "llama3-70b-8192", "llama3-8b-8192",
-        "meta-llama/llama-4-maverick-17b-128e-instruct",
-        "meta-llama/llama-4-scout-17b-16e-instruct",
-        "moonshotai/kimi-k2-instruct",
-        "qwen/qwen3-32b"
-    ]
+    data = defaultdict(lambda: defaultdict(dict))
 
-def get_all_modelos_linguagens(base_path):
-    """
-    Descobre os modelos verificando se os diretórios (incluindo aninhados)
-    correspondentes aos nomes oficiais existem no disco.
-    """
-    LINGUAGENS_VALIDAS = ["C++", "Java", "Python3"]
-    modelos_oficiais = listar_modelos_oficiais()
-    modelos_encontrados = []
+    for dir_name in os.listdir(data_dir):
+        model_path = os.path.join(data_dir, dir_name)
+        if not os.path.isdir(model_path):
+            continue
+        model_id = MODEL_DIR_TO_ID.get(dir_name)
+        if model_id not in MODELOS_OFICIAIS:
+            continue
 
-    if not os.path.isdir(base_path):
-        print(f"Diretório base '{base_path}' não encontrado.")
-        # Criando diretório e alguns arquivos de exemplo para demonstração
-        print("Criando diretórios e arquivos de exemplo para demonstração...")
-        os.makedirs(base_path, exist_ok=True)
-        for modelo in modelos_oficiais[:4]: # Criando para os 4 primeiros modelos
-            for linguagem in LINGUAGENS_VALIDAS:
-                path = os.path.join(base_path, modelo, linguagem)
-                os.makedirs(path, exist_ok=True)
-                for i in range(np.random.randint(15, 25)): # Quantidade variada de arquivos
-                    status = np.random.choice(['ok', 'formato_invalido', 'erro'], p=[0.7, 0.2, 0.1])
-                    with open(os.path.join(path, f'resultado_{i}.json'), 'w') as f:
-                        json.dump({'status': status}, f)
-
-    print("Verificando diretórios de modelos existentes (incluindo aninhados)...")
-    for modelo in modelos_oficiais:
-        caminho_modelo = os.path.join(base_path, modelo)
-        if os.path.isdir(caminho_modelo):
-            modelos_encontrados.append(modelo)
-            print(f"  [OK] Encontrado: {caminho_modelo}")
-        else:
-            print(f"  [--] Não encontrado: {caminho_modelo}")
-
-    return sorted(modelos_encontrados), LINGUAGENS_VALIDAS
-
-def load_all_resultados(base_path, modelos_para_plotar, linguagens):
-    """
-    Carrega os resultados dos arquivos JSON, categorizando por status:
-    'ok', 'formato_invalido' e 'erro'.
-    """
-    resultados = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
-    totais = defaultdict(lambda: defaultdict(int))
-
-    for modelo in tqdm(modelos_para_plotar, desc="Lendo resultados dos modelos"):
-        for linguagem in linguagens:
-            pasta = os.path.join(base_path, modelo, linguagem)
-            if not os.path.isdir(pasta):
+        for lang in LINGUAGENS:
+            lang_path = os.path.join(model_path, lang)
+            if not os.path.isdir(lang_path):
                 continue
-            for fname in os.listdir(pasta):
-                if fname.endswith(".json"):
-                    path = os.path.join(pasta, fname)
-                    try:
-                        with open(path, "r", encoding="utf-8") as f:
-                            data = json.load(f)
-                        totais[modelo][linguagem] += 1
-                        status = data.get("status", "erro")
-                        resultados[modelo][linguagem][status] += 1
-                    except Exception as e:
-                        print(f"Erro ao ler o arquivo {path}: {e}")
-                        resultados[modelo][linguagem]['erro'] += 1
+            for fname in os.listdir(lang_path):
+                if not fname.endswith(".json"):
+                    continue
+                qid = os.path.splitext(fname)[0]
+                try:
+                    with open(os.path.join(lang_path, fname), encoding="utf-8") as f:
+                        info = json.load(f)
+                    data[qid][model_id][lang] = info
+                except Exception:
+                    # pular arquivos inválidos
+                    continue
+    return data
 
-    return resultados, totais
+# === AGREGAR MÉTRICAS DE ACURÁCIA ===
+def compute_metrics(data):
+    acc = defaultdict(lambda: defaultdict(lambda: [0,0]))
+    for qid, modelos in data.items():
+        for modelo, langs in modelos.items():
+            for lang, info in langs.items():
+                is_correct = 1 if info.get('categoria') == 'correct' else 0
+                acc[modelo][lang][0] += is_correct
+                acc[modelo][lang][1] += 1
+    models = [m for m in MODELOS_OFICIAIS if any(acc[m][l][1] > 0 for l in LINGUAGENS)]
+    heat = np.zeros((len(models), len(LINGUAGENS)))
+    for i, m in enumerate(models):
+        for j, l in enumerate(LINGUAGENS):
+            c, t = acc[m][l]
+            heat[i, j] = c / t if t > 0 else np.nan
+    return models, heat
 
-# =============== FUNÇÃO DE PLOTAGEM ATUALIZADA ===============
-def plot_stacked_bar_chart(resultados, totais, modelos, linguagens, export_path=None):
-    """
-    Gera um painel com um gráfico para cada linguagem. Em cada gráfico,
-    os modelos estão no eixo X e as barras empilhadas representam os status.
-    """
-    modelos_ativos = sorted([m for m in modelos if sum(totais[m].values()) > 0])
-    if not modelos_ativos:
-        print("Nenhum modelo com dados encontrado para plotar.")
-        return
+# === AGREGAR CLASSIFICAÇÕES E MOTIVOS ===
+def aggregate_classification(data):
+    contagem = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+    motivos_lang = defaultdict(Counter)
+    motivos_model = defaultdict(Counter)
+    for modelos in data.values():
+        for modelo, langs in modelos.items():
+            for lang, info in langs.items():
+                cat = info.get('categoria', 'unknown')
+                mot = info.get('motivo', '-')
+                contagem[modelo][lang][cat] += 1
+                motivos_lang[lang][mot] += 1
+                motivos_model[modelo][mot] += 1
+    return contagem, motivos_lang, motivos_model
 
-    n_linguagens = len(linguagens)
-    fig, axes = plt.subplots(1, n_linguagens, figsize=(7 * n_linguagens, 8), sharey=True)
-    if n_linguagens == 1:
-        axes = [axes]
-
-    status_order = ['ok', 'formato_invalido', 'erro']
-    status_colors = {
-        'ok': '#2ca02c',
-        'formato_invalido': '#ff7f0e',
-        'erro': '#d62728'
-    }
-
-    for ax, linguagem in zip(axes, linguagens):
-        ax.set_title(f"Linguagem: {linguagem}", fontsize=16, fontweight='bold')
-        
-        bottoms = np.zeros(len(modelos_ativos))
-        data_by_status = {status: np.array([resultados[model][linguagem].get(status, 0) for model in modelos_ativos]) for status in status_order}
-
-        x = np.arange(len(modelos_ativos))
-        
-        for status in status_order:
-            valores = data_by_status[status]
-            bars = ax.bar(x, valores, label=status, color=status_colors.get(status, '#888888'), bottom=bottoms, zorder=3)
-            for bar, valor in zip(bars, valores):
-                if valor > 0:
-                    y_pos = bar.get_y() + bar.get_height() / 2
-                    ax.text(bar.get_x() + bar.get_width() / 2, y_pos, f'{int(valor)}', ha='center', va='center', color='white', fontsize=9, fontweight='bold')
-            bottoms += valores
-
-        ax.set_xticks(x)
-        ax.set_xticklabels([m.split('/')[-1] for m in modelos_ativos], rotation=45, ha='right', fontsize=10)
-        ax.grid(axis='y', linestyle='--', alpha=0.7, zorder=0)
-        ax.spines[['top', 'right']].set_visible(False)
-        #ax.set_xlabel("Modelos", fontsize=12)
-
-    axes[0].set_ylabel("Quantidade de Respostas", fontsize=14)
-    
-    # A forma correta é passar apenas os 'handles'. O Matplotlib extrai os labels de dentro deles.
-    handles = [Patch(color=color, label=label.replace('_', ' ').title()) for label, color in status_colors.items()]
-    fig.legend(handles=handles, loc='upper center', bbox_to_anchor=(0.5, 0.98), ncol=3, title="Status da Resposta")
-    # ---- FIM DA CORREÇÃO ----
-
-    modelos_sem_dados = [m for m in modelos if m not in modelos_ativos]
-    titulo_figura = "Desempenho dos Modelos por Linguagem e Status da Resposta"
-    if modelos_sem_dados:
-        # Quebra a lista de modelos para não ficar muito longa no título
-        nomes_modelos_sem_dados = ", ".join([m.split('/')[-1] for m in modelos_sem_dados])
-        titulo_figura += f"\nModelos sem dados: {nomes_modelos_sem_dados}"
-    
-    fig.suptitle(titulo_figura, fontsize=18, y=1.05)
-    
-    plt.tight_layout(rect=[0, 0, 1, 0.93])
-
+# === PLOT FUNCTIONS ===
+def plot_accuracy_heatmap(models, heat, export_path=None):
+    fig, ax = plt.subplots(figsize=(8, max(4, len(models)*0.4)))
+    im = ax.imshow(heat, aspect='auto', cmap='viridis', vmin=0, vmax=1)
+    ax.set_xticks(np.arange(len(LINGUAGENS)))
+    ax.set_xticklabels(LINGUAGENS)
+    ax.set_yticks(np.arange(len(models)))
+    ax.set_yticklabels([m.split('/')[-1] for m in models])
+    plt.setp(ax.get_xticklabels(), rotation=45, ha='right')
+    for i in range(len(models)):
+        for j in range(len(LINGUAGENS)):
+            val = heat[i, j]
+            label = f"{val*100:.1f}%" if not np.isnan(val) else '-'
+            ax.text(j, i, label, ha='center', va='center',
+                    color='white' if not np.isnan(val) and val >= 0.5 else 'black')
+    cbar = fig.colorbar(im, ax=ax)
+    cbar.set_label('Accuracy')
+    ax.set_title('Heatmap de Acurácia por Modelo e Linguagem')
+    plt.tight_layout()
     if export_path:
         os.makedirs(os.path.dirname(export_path), exist_ok=True)
-        plt.savefig(export_path, dpi=300, bbox_inches='tight')
-        print(f"Gráfico salvo em: {export_path}")
-
+        fig.savefig(export_path, dpi=300, bbox_inches='tight')
     plt.show()
-def main():
-    """
-    Função principal para orquestrar a geração do gráfico.
-    """
-    modelos, linguagens = get_all_modelos_linguagens(OUTPUT_BASE)
 
-    if not modelos:
-        print("Nenhum diretório de modelo válido foi encontrado.")
-        return
+def plot_model_distribution(data, export_path=None):
+    categorias = ['correct', 'plausible', 'invalid']
+    colors = {'correct': '#2ca02c', 'plausible': '#ff7f0e', 'invalid': '#d62728'}
+    dist = defaultdict(lambda: defaultdict(int))
+    for modelos in data.values():
+        for modelo, langs in modelos.items():
+            for info in langs.values():
+                dist[modelo][info.get('categoria','unknown')] += 1
+    models = [m for m in MODELOS_OFICIAIS if sum(dist[m].values()) > 0]
+    x = np.arange(len(models))
+    bottom = np.zeros(len(models))
+    fig, ax = plt.subplots(figsize=(10, 6))
+    for cat in categorias:
+        vals = [dist[m].get(cat, 0) for m in models]
+        ax.bar(x, vals, bottom=bottom, color=colors[cat], label=cat.title())
+        bottom += vals
+    ax.set_xticks(x)
+    ax.set_xticklabels([m.split('/')[-1] for m in models], rotation=45, ha='right')
+    ax.set_ylabel('Total de Respostas')
+    ax.set_title('Distribuição de Classificações por Modelo')
+    ax.legend(title='Categoria')
+    plt.tight_layout()
+    if export_path:
+        os.makedirs(os.path.dirname(export_path), exist_ok=True)
+        fig.savefig(export_path, dpi=300, bbox_inches='tight')
+    plt.show()
 
-    print("\nModelos que serão analisados:", modelos)
-    print("Linguagens a serem analisadas:", linguagens)
+def plot_reason_chart(motivos_lang, export_path=None):
+    fig, ax = plt.subplots(figsize=(10, 6))
+    all_reasons = set()
+    top_by_lang = {}
+    for lang in LINGUAGENS:
+        ctr = motivos_lang.get(lang, Counter())
+        top = ctr.most_common(TOP_N_REASONS)
+        top_by_lang[lang] = dict(top)
+        all_reasons.update(dict(top))
+    all_reasons = sorted(all_reasons, key=lambda r: sum(top_by_lang[l].get(r,0) for l in LINGUAGENS), reverse=True)
+    y = np.arange(len(all_reasons))
+    width = 0.8 / len(LINGUAGENS)
+    offsets = np.linspace(-0.4+width/2, 0.4-width/2, len(LINGUAGENS))
+    for idx, lang in enumerate(LINGUAGENS):
+        vals = [top_by_lang[lang].get(r,0) for r in all_reasons]
+        ax.barh(y+offsets[idx], vals, height=width, label=lang)
+        for i, v in enumerate(vals):
+            if v>0:
+                ax.text(v+0.3, y[i]+offsets[idx], str(v), va='center', fontsize=8)
+    ax.set_yticks(y)
+    ax.set_yticklabels(all_reasons)
+    ax.invert_yaxis()
+    ax.set_xlabel('Frequência')
+    ax.set_title(f'Classificações por Linguagem')
+    ax.legend(title='Linguagem', loc='lower center', bbox_to_anchor=(0.5,-0.2), ncol=len(LINGUAGENS))
+    plt.tight_layout(rect=[0,0.05,1,1])
+    if export_path:
+        os.makedirs(os.path.dirname(export_path), exist_ok=True)
+        fig.savefig(export_path, dpi=300, bbox_inches='tight')
+    plt.show()
 
-    resultados, totais = load_all_resultados(OUTPUT_BASE, modelos, linguagens)
+def plot_reason_by_model(motivos_model, export_path=None):
+    models = [m for m in MODELOS_OFICIAIS]
+    all_reasons = set()
+    top_by_model = {}
+    for m in models:
+        ctr = motivos_model.get(m, Counter())
+        top = ctr.most_common(TOP_N_REASONS)
+        top_by_model[m] = dict(top)
+        all_reasons.update(dict(top))
+    all_reasons = sorted(all_reasons, key=lambda r: sum(top_by_model[m].get(r,0) for m in models), reverse=True)
+    x = np.arange(len(models))
+    width = 0.8 / len(all_reasons) if all_reasons else 0.8
+    fig, ax = plt.subplots(figsize=(max(8,len(models)*0.4), len(all_reasons)*0.4+2))
+    for idx, reason in enumerate(all_reasons):
+        vals = [top_by_model[m].get(reason,0) for m in models]
+        ax.bar(x + (idx - len(all_reasons)/2)*width, vals, width, label=reason)
+        for xi,v in enumerate(vals):
+            if v>0:
+                ax.text(xi + (idx - len(all_reasons)/2)*width, v+0.2, str(v), ha='center', va='bottom', fontsize=7)
+    ax.set_xticks(x)
+    ax.set_xticklabels([m.split('/')[-1] for m in models], rotation=45, ha='right')
+    ax.set_ylabel('Frequência')
+    ax.set_title(f'Classificações por Modelo')
+    ax.legend(title='Motivo', bbox_to_anchor=(1.05,1), loc='upper left')
+    plt.tight_layout()
+    if export_path:
+        os.makedirs(os.path.dirname(export_path), exist_ok=True)
+        fig.savefig(export_path, dpi=300, bbox_inches='tight')
+    plt.show()
 
-    plot_stacked_bar_chart(
-        resultados, totais, modelos, linguagens,
-        export_path=os.path.join(PLOTS_DIR, "desempenho_por_linguagem.png")
-    )
+def plot_classification_by_lang(contagem, export_path=None):
+    modelos = [m for m in MODELOS_OFICIAIS if any(contagem[m][l] for l in LINGUAGENS)]
+    categorias = ["correct","plausible","invalid"]
+    colors = {"correct":"#2ca02c","plausible":"#ff7f0e","invalid":"#d62728","unknown":"#888888"}
+    x = np.arange(len(modelos))
+    fig, axes = plt.subplots(1,len(LINGUAGENS), figsize=(6*len(LINGUAGENS),6), sharey=True)
+    if len(LINGUAGENS)==1: axes=[axes]
+    for ax, lang in zip(axes, LINGUAGENS):
+        bottom = np.zeros(len(modelos))
+        ax.set_title(f"{lang}", fontsize=14)
+        for cat in categorias:
+            vals = np.array([contagem[m][lang].get(cat,0) for m in modelos])
+            ax.bar(x, vals, bottom=bottom, color=colors[cat], label=cat.title())
+            bottom+=vals
+        ax.set_xticks(x)
+        ax.set_xticklabels([m.split('/')[-1] for m in modelos], rotation=45, ha='right')
+        ax.grid(axis='y', linestyle='--', alpha=0.5)
+    axes[0].set_ylabel("Quantidade de Respostas")
+    handles=[Patch(color=colors[c],label=c.title()) for c in categorias]
+    fig.legend(handles=handles,loc='upper center',ncol=len(categorias),bbox_to_anchor=(0.5,1.05),title="Categoria")
+    fig.suptitle("Classificação por Modelo e Linguagem", y=1.12)
+    plt.tight_layout()
+    if export_path:
+        os.makedirs(os.path.dirname(export_path), exist_ok=True)
+        plt.gcf().savefig(export_path, dpi=300, bbox_inches='tight')
+    plt.show()
 
-if __name__ == "__main__":
-    main()
+# === MAIN ===
+if __name__ == '__main__':
+    data = load_data_from_files(DATA_DIR)
+
+    # accuracy heatmap
+    models, heat = compute_metrics(data)
+    plot_accuracy_heatmap(models, heat, export_path=os.path.join(PLOTS_DIR,'accuracy_heatmap.png'))
+
+    # distribution by model
+    plot_model_distribution(data, export_path=os.path.join(PLOTS_DIR,'distribution_by_model.png'))
+
+    # classification & reasons
+    contagem, motivos_lang, motivos_model = aggregate_classification(data)
+    plot_classification_by_lang(contagem, export_path=os.path.join(PLOTS_DIR,'classificacao_por_linguagem.png'))
+    plot_reason_chart(motivos_lang, export_path=os.path.join(PLOTS_DIR,'motivos_por_linguagem.png'))
+    plot_reason_by_model(motivos_model, export_path=os.path.join(PLOTS_DIR,'motivos_por_modelo.png'))

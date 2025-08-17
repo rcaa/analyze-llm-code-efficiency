@@ -1,0 +1,15 @@
+{
+  "id": 2193,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int minMovesToMakePalindrome(String s) {\n        int n = s.length();\n        char[] chars = s.toCharArray();\n        int moves = 0;\n        for (int i = 0; i < n / 2; i++) {\n            int left = i;\n            int right = n - 1 - i;\n            if (chars[left] == chars[right]) {\n                continue;\n            }\n            int j = right;\n            while (j > left && chars[j] != chars[left]) {\n                j--;\n            }\n            while (j > left) {\n                char temp = chars[j];\n                chars[j] = chars[j - 1];\n                chars[j - 1] = temp;\n                j--;\n                moves++;\n            }\n        }\n        return moves;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a two-pointer approach to compare characters from the start and end of the string, swapping characters when necessary to form a palindrome, resulting in a time complexity of O(n^2) due to the nested loops.",
+  "code": "class Solution {\n    public int minMovesToMakePalindrome(String s) {\n        int n = s.length();\n        char[] chars = s.toCharArray();\n        int moves = 0;\n        for (int i = 0; i < n / 2; i++) {\n            int left = i;\n            int right = n - 1 - i;\n            if (chars[left] == chars[right]) {\n                continue;\n            }\n            int j = right;\n            while (j > left && chars[j] != chars[left]) {\n                j--;\n            }\n            while (j > left) {\n                char temp = chars[j];\n                chars[j] = chars[j - 1];\n                chars[j - 1] = temp;\n                j--;\n                moves++;\n            }\n        }\n        return moves;\n    }\n}",
+  "timestamp": "2025-08-06T03:56:13.745576",
+  "code_extracted_previous": "class Solution {\n    public int minMovesToMakePalindrome(String s) {\n        int n = s.length();\n        char[] chars = s.toCharArray();\n        int moves = 0;\n        for (int i = 0; i < n / 2; i++) {\n            int left = i;\n            int right = n - 1 - i;\n            if (chars[left] == chars[right]) {\n                continue;\n            }\n            int j = right;\n            while (j > left && chars[j] != chars[left]) {\n                j--;\n            }\n            while (j > left) {\n                char temp = chars[j];\n                chars[j] = chars[j - 1];\n                chars[j - 1] = temp;\n                j--;\n                moves++;\n            }\n        }\n        return moves;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.799646"
+}

@@ -1,14 +1,15 @@
 {
-  "id": "2441",
-  "titulo": "Largest Positive Integer That Exists With Its Negative",
-  "url": "https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/",
-  "llm_response": {
-    "resposta_bruta": "```java\nsolution: \npublic int findMaxK(int[] nums) {\n    int maxK = -1;\n    for (int num : nums) {\n        if (num > 0 && contains(nums, -num)) {\n            maxK = Math.max(maxK, num);\n        }\n    }\n    return maxK;\n}\n\npublic boolean contains(int[] nums, int target) {\n    for (int num : nums) {\n        if (num == target) {\n            return true;\n        }\n    }\n    return false;\n}\n```\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the array to find the largest positive integer k such that -k exists in the array. It uses a helper function to check if the negative counterpart of a number exists in the array. The time complexity is O(n^2) due to the nested loop, but the space complexity is O(1) since it only uses a constant amount of space.",
-    "resposta_formatada": "solution: \npublic int findMaxK(int[] nums) {\n    int maxK = -1;\n    for (int num : nums) {\n        if (num > 0 && contains(nums, -num)) {\n            maxK = Math.max(maxK, num);\n        }\n    }\n    return maxK;\n}\n\npublic boolean contains(int[] nums, int target) {\n    for (int num : nums) {\n        if (num == target) {\n            return true;\n        }\n    }\n    return false;\n}\n```\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the array to find the largest positive integer k such that -k exists in the array. It uses a helper function to check if the negative counterpart of a number exists in the array. The time complexity is O(n^2) due to the nested loop, but the space complexity is O(1) since it only uses a constant amount of space.",
-    "valid": true,
-    "tempo_resposta": 3.4181535243988037,
-    "tentativas": 1,
-    "erro": null,
-    "timestamp": "2025-06-22T19:32:51.965245"
-  }
+  "id": 20,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean isValid(String s) {\n        Stack<Character> stack = new Stack<>();\n        for (char c : s.toCharArray()) {\n            if (c == '(' || c == '{' || c == '[') {\n                stack.push(c);\n            } else {\n                if (stack.isEmpty()) {\n                    return false;\n                }\n                char top = stack.pop();\n                if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {\n                    return false;\n                }\n            }\n        }\n        return stack.isEmpty();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a stack to track opening brackets, ensuring correct order and matching of closing brackets.",
+  "code": "class Solution {\n    public boolean isValid(String s) {\n        Stack<Character> stack = new Stack<>();\n        for (char c : s.toCharArray()) {\n            if (c == '(' || c == '{' || c == '[') {\n                stack.push(c);\n            } else {\n                if (stack.isEmpty()) {\n                    return false;\n                }\n                char top = stack.pop();\n                if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {\n                    return false;\n                }\n            }\n        }\n        return stack.isEmpty();\n    }\n}",
+  "timestamp": "2025-08-05T23:34:01.125043",
+  "code_extracted_previous": "class Solution {\n    public boolean isValid(String s) {\n        Stack<Character> stack = new Stack<>();\n        for (char c : s.toCharArray()) {\n            if (c == '(' || c == '{' || c == '[') {\n                stack.push(c);\n            } else {\n                if (stack.isEmpty()) {\n                    return false;\n                }\n                char top = stack.pop();\n                if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {\n                    return false;\n                }\n            }\n        }\n        return stack.isEmpty();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.652883"
 }

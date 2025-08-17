@@ -1,0 +1,15 @@
+{
+  "id": 868,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def binaryGap(self, n: int) -> int:\n        max_gap = 0\n        prev_one = -1\n        for i in range(n.bit_length()):\n            if (n >> i) & 1:\n                if prev_one != -1:\n                    max_gap = max(max_gap, i - prev_one)\n                prev_one = i\n        return max_gap\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the bits of the given number `n` from least significant to most significant. When a 1 is encountered, it calculates the gap since the previous 1 and updates the maximum gap found. This approach ensures a linear scan through the bits, making it efficient for large numbers.",
+  "code": "class Solution:\n    def binaryGap(self, n: int) -> int:\n        max_gap = 0\n        prev_one = -1\n        for i in range(n.bit_length()):\n            if (n >> i) & 1:\n                if prev_one != -1:\n                    max_gap = max(max_gap, i - prev_one)\n                prev_one = i\n        return max_gap",
+  "timestamp": "2025-08-05T13:49:48.399191",
+  "code_extracted_previous": "class Solution:\n    def binaryGap(self, n: int) -> int:\n        max_gap = 0\n        prev_one = -1\n        for i in range(n.bit_length()):\n            if (n >> i) & 1:\n                if prev_one != -1:\n                    max_gap = max(max_gap, i - prev_one)\n                prev_one = i\n        return max_gap",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.993013"
+}

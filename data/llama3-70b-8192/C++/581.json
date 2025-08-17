@@ -1,0 +1,15 @@
+{
+  "id": 581,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        vector<int> sortedNums = nums;\n        sort(sortedNums.begin(), sortedNums.end());\n        int left = 0, right = nums.size() - 1;\n        while (left < right && nums[left] == sortedNums[left]) left++;\n        if (left == right) return 0;\n        while (nums[right] == sortedNums[right]) right--;\n        return right - left + 1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution first creates a sorted copy of the input array. Then, it finds the first and last indices where the original array differs from the sorted array, which represent the boundaries of the subarray that needs to be sorted.",
+  "code": "class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        vector<int> sortedNums = nums;\n        sort(sortedNums.begin(), sortedNums.end());\n        int left = 0, right = nums.size() - 1;\n        while (left < right && nums[left] == sortedNums[left]) left++;\n        if (left == right) return 0;\n        while (nums[right] == sortedNums[right]) right--;\n        return right - left + 1;\n    }\n};",
+  "timestamp": "2025-08-06T03:19:33.825476",
+  "code_extracted_previous": "public:\n    int findUnsortedSubarray(vector<int>& nums) {\n        vector<int> sortedNums = nums;\n        sort(sortedNums.begin(), sortedNums.end());\n        int left = 0, right = nums.size() - 1;\n        while (left < right && nums[left] == sortedNums[left]) left++;\n        if (left == right) return 0;\n        while (nums[right] == sortedNums[right]) right--;\n        return right - left + 1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.987809"
+}

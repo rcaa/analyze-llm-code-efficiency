@@ -1,0 +1,15 @@
+{
+  "id": 2076,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```python\nclass Solution:\n    def friendRequests(self, n: int, restrictions: List[List[int]], requests: List[List[int]]) -> List[bool]:\n        result = []\n        for i in range(len(requests)):\n            u, v = requests[i][0], requests[i][1]\n            if (u, v) in restrictions:\n                continue\n            result.append(True)\n            while True:\n                if (u, v) in restrictions:\n                    break\n                (u, v) = (v, u)\n                if (v, u) in restrictions:\n                    break\n                result.append(False)\n        return result\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n1. Iterate through the requests array to process each request.\n2. For each request, check if (u, v) is in the restrictions array.\n3. If (u, v) is in restrictions, break the loop.\n4. Swap u and v.\n5. Check if (v, u) is in restrictions.\n6. If (v, u) is in restrictions, break the loop.\n7. Append True to the result list if the request is successful.\n8. Append False to the result list if the request is not successful.\n9. Return the result list.\n\nThe solution has a high efficiency (O(n)) because it only iterates through the requests array once. The space complexity is O(1) because we only use a single list to store the result. The energy implications are low because the algorithm does not require any additional energy consumption. ",
+  "code": "```python\nclass Solution:\n    def friendRequests(self, n: int, restrictions: List[List[int]], requests: List[List[int]]) -> List[bool]:\n        result = []\n        for i in range(len(requests)):\n            u, v = requests[i][0], requests[i][1]\n            if (u, v) in restrictions:\n                continue\n            result.append(True)\n            while True:\n                if (u, v) in restrictions:\n                    break\n                (u, v) = (v, u)\n                if (v, u) in restrictions:\n                    break\n                result.append(False)\n        return result",
+  "timestamp": "2025-08-05T18:40:39.608541",
+  "code_extracted_previous": "```python\nclass Solution:\n    def friendRequests(self, n: int, restrictions: List[List[int]], requests: List[List[int]]) -> List[bool]:\n        result = []\n        for i in range(len(requests)):\n            u, v = requests[i][0], requests[i][1]\n            if (u, v) in restrictions:\n                continue\n            result.append(True)\n            while True:\n                if (u, v) in restrictions:\n                    break\n                (u, v) = (v, u)\n                if (v, u) in restrictions:\n                    break\n                result.append(False)\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:15.480646"
+}

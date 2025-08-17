@@ -1,0 +1,15 @@
+{
+  "id": 3455,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        p1, p2 = p.replace('*', '.*'), p.replace('*', '')\n        m, n = len(p1), len(s)\n        dp = [[0] * (n + 1) for _ in range(m + 1)]\n        res = n + 1\n        for i in range(1, m + 1):\n            for j in range(1, n + 1):\n                if p1[i - 1] == s[j - 1] or p1[i - 1] == '.':\n                    dp[i][j] = dp[i - 1][j - 1] + 1\n                    if i == m:\n                        res = min(res, j)\n                else:\n                    dp[i][j] = 0\n        return res if res <= n else -1\n```\nefficiency: HIGH\ntime complexity: O(m * n)\nspace complexity: O(m * n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to build a 2D table dp, where dp[i][j] represents the length of the shortest matching substring ending at position j in s and matching the pattern p1 up to position i. The result is the minimum length of the matching substring found in the table.",
+  "code": "class Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        p1, p2 = p.replace('*', '.*'), p.replace('*', '')\n        m, n = len(p1), len(s)\n        dp = [[0] * (n + 1) for _ in range(m + 1)]\n        res = n + 1\n        for i in range(1, m + 1):\n            for j in range(1, n + 1):\n                if p1[i - 1] == s[j - 1] or p1[i - 1] == '.':\n                    dp[i][j] = dp[i - 1][j - 1] + 1\n                    if i == m:\n                        res = min(res, j)\n                else:\n                    dp[i][j] = 0\n        return res if res <= n else -1",
+  "timestamp": "2025-08-06T01:22:21.126418",
+  "code_extracted_previous": "class Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        p1, p2 = p.replace('*', '.*'), p.replace('*', '')\n        m, n = len(p1), len(s)\n        dp = [[0] * (n + 1) for _ in range(m + 1)]\n        res = n + 1\n        for i in range(1, m + 1):\n            for j in range(1, n + 1):\n                if p1[i - 1] == s[j - 1] or p1[i - 1] == '.':\n                    dp[i][j] = dp[i - 1][j - 1] + 1\n                    if i == m:\n                        res = min(res, j)\n                else:\n                    dp[i][j] = 0\n        return res if res <= n else -1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.134524"
+}

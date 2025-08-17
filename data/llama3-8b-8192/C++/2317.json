@@ -1,0 +1,15 @@
+{
+  "id": 2317,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    int maximumXOR(vector<int>& nums) {\n        int res = 0, mask = 0;\n        for (int num : nums) {\n            res = res | (res ^ num);\n            mask |= (1 << (31 - __builtin_clz(res ^ num)));\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a Trie-like approach to efficiently find the maximum possible bitwise XOR of all elements in the array. It iterates through the array, updating the result and a mask accordingly. The mask is used to keep track of the bits that are set in the result, allowing for efficient updates and bitwise operations.",
+  "code": "class Solution {\npublic:\n    int maximumXOR(vector<int>& nums) {\n        int res = 0, mask = 0;\n        for (int num : nums) {\n            res = res | (res ^ num);\n            mask |= (1 << (31 - __builtin_clz(res ^ num)));\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:26:56.106068",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maximumXOR(vector<int>& nums) {\n        int res = 0, mask = 0;\n        for (int num : nums) {\n            res = res | (res ^ num);\n            mask |= (1 << (31 - __builtin_clz(res ^ num)));\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.940534"
+}

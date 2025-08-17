@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> res;\n        int n = s.size();\n        if (n < 3) return res;\n        int start = 0;\n        for (int i = 1; i <= n; ++i) {\n            if (i == n || s[i] != s[start]) {\n                if (i - start >= 3) {\n                    res.push_back({start, i - 1});\n                }\n                start = i;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single linear scan tracking start of each group; when group ends, check length and push interval if ≥3. Minimal extra memory and CPU usage.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> res;\n        int n = s.size();\n        if (n < 3) return res;\n        int start = 0;\n        for (int i = 1; i <= n; ++i) {\n            if (i == n || s[i] != s[start]) {\n                if (i - start >= 3) {\n                    res.push_back({start, i - 1});\n                }\n                start = i;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T23:38:54.730828",
+  "code_extracted_previous": "public:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> res;\n        int n = s.size();\n        if (n < 3) return res;\n        int start = 0;\n        for (int i = 1; i <= n; ++i) {\n            if (i == n || s[i] != s[start]) {\n                if (i - start >= 3) {\n                    res.push_back({start, i - 1});\n                }\n                start = i;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.305517"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass StockSpanner {\n    Stack<Integer> prices;\n    Stack<Integer> spans;\n\n    public StockSpanner() {\n        prices = new Stack<>();\n        spans = new Stack<>();\n    }\n    \n    public int next(int price) {\n        int span = 1;\n        while (!prices.isEmpty() && prices.peek() <= price) {\n            span += spans.pop();\n            prices.pop();\n        }\n        spans.push(span);\n        prices.push(price);\n        return span;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses two stacks to keep track of prices and their corresponding spans. The next method efficiently calculates the span for the current price by popping elements from the stacks until it finds a price greater than the current price.",
+  "code": "class StockSpanner {\n    Stack<Integer> prices;\n    Stack<Integer> spans;\n\n    public StockSpanner() {\n        prices = new Stack<>();\n        spans = new Stack<>();\n    }\n    \n    public int next(int price) {\n        int span = 1;\n        while (!prices.isEmpty() && prices.peek() <= price) {\n            span += spans.pop();\n            prices.pop();\n        }\n        spans.push(span);\n        prices.push(price);\n        return span;\n    }\n}",
+  "timestamp": "2025-08-05T16:03:19.419346",
+  "code_extracted_previous": "class StockSpanner {\n    Stack<Integer> prices;\n    Stack<Integer> spans;\n\n    public StockSpanner() {\n        prices = new Stack<>();\n        spans = new Stack<>();\n    }\n    \n    public int next(int price) {\n        int span = 1;\n        while (!prices.isEmpty() && prices.peek() <= price) {\n            span += spans.pop();\n            prices.pop();\n        }\n        spans.push(span);\n        prices.push(price);\n        return span;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:38.762174"
+}

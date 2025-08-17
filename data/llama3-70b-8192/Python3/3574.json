@@ -1,0 +1,15 @@
+{
+  "id": 3574,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nfrom math import gcd\nfrom functools import reduce\nfrom itertools import accumulate\n\nclass Solution:\n    def maxGCDScore(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        prefix_gcd = [reduce(gcd, nums[:i+1]) for i in range(n)]\n        suffix_gcd = [reduce(gcd, nums[i:]) for i in range(n)]\n        prefix_sum = list(accumulate(nums))\n        suffix_sum = list(accumulate(nums[::-1]))[::-1]\n        \n        res = 0\n        for i in range(n):\n            for j in range(i, n):\n                cur_gcd = gcd(prefix_gcd[i], suffix_gcd[j])\n                cur_sum = prefix_sum[j] - (prefix_sum[i-1] if i > 0 else 0)\n                res = max(res, cur_gcd * (j - i + 1) * ((cur_sum + k) // (j - i + 1)))\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses prefix and suffix arrays to efficiently calculate the GCD and sum of subarrays, and then iterates over all possible subarrays to find the maximum score.",
+  "code": "class Solution:\n    def maxGCDScore(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        prefix_gcd = [reduce(gcd, nums[:i+1]) for i in range(n)]\n        suffix_gcd = [reduce(gcd, nums[i:]) for i in range(n)]\n        prefix_sum = list(accumulate(nums))\n        suffix_sum = list(accumulate(nums[::-1]))[::-1]\n        \n        res = 0\n        for i in range(n):\n            for j in range(i, n):\n                cur_gcd = gcd(prefix_gcd[i], suffix_gcd[j])\n                cur_sum = prefix_sum[j] - (prefix_sum[i-1] if i > 0 else 0)\n                res = max(res, cur_gcd * (j - i + 1) * ((cur_sum + k) // (j - i + 1)))\n        return res",
+  "timestamp": "2025-08-05T12:11:54.230053",
+  "code_extracted_previous": "from math import gcd\nfrom functools import reduce\nfrom itertools import accumulate\n\nclass Solution:\n    def maxGCDScore(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        prefix_gcd = [reduce(gcd, nums[:i+1]) for i in range(n)]\n        suffix_gcd = [reduce(gcd, nums[i:]) for i in range(n)]\n        prefix_sum = list(accumulate(nums))\n        suffix_sum = list(accumulate(nums[::-1]))[::-1]\n        \n        res = 0\n        for i in range(n):\n            for j in range(i, n):\n                cur_gcd = gcd(prefix_gcd[i], suffix_gcd[j])\n                cur_sum = prefix_sum[j] - (prefix_sum[i-1] if i > 0 else 0)\n                res = max(res, cur_gcd * (j - i + 1) * ((cur_sum + k) // (j - i + 1)))\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.783964"
+}

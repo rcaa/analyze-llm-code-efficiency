@@ -1,0 +1,15 @@
+{
+  "id": 77,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> res;\n        vector<int> path;\n        backtrack(res, path, 1, n, k);\n        return res;\n    }\n    void backtrack(vector<vector<int>>& res, vector<int>& path, int start, int n, int k) {\n        if (path.size() == k) {\n            res.push_back(path);\n            return;\n        }\n        for (int i = start; i <= n; i++) {\n            path.push_back(i);\n            backtrack(res, path, i + 1, n, k);\n            path.pop_back();\n        }\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n choose k)\nspace complexity: O(n choose k)\nenergy implications: LOW\nexplanation: This solution uses backtracking to generate all combinations of k numbers chosen from the range [1, n]. The backtrack function recursively adds numbers to the current path until it reaches the desired length k, then adds the path to the result vector. The time complexity is O(n choose k) because there are n choose k possible combinations, and the space complexity is also O(n choose k) because we need to store all combinations.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> res;\n        vector<int> path;\n        backtrack(res, path, 1, n, k);\n        return res;\n    }\n    void backtrack(vector<vector<int>>& res, vector<int>& path, int start, int n, int k) {\n        if (path.size() == k) {\n            res.push_back(path);\n            return;\n        }\n        for (int i = start; i <= n; i++) {\n            path.push_back(i);\n            backtrack(res, path, i + 1, n, k);\n            path.pop_back();\n        }\n    }\n};",
+  "timestamp": "2025-08-05T13:35:22.520515",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> res;\n        vector<int> path;\n        backtrack(res, path, 1, n, k);\n        return res;\n    }\n    void backtrack(vector<vector<int>>& res, vector<int>& path, int start, int n, int k) {\n        if (path.size() == k) {\n            res.push_back(path);\n            return;\n        }\n        for (int i = start; i <= n; i++) {\n            path.push_back(i);\n            backtrack(res, path, i + 1, n, k);\n            path.pop_back();\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.670214"
+}

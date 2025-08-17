@@ -1,0 +1,15 @@
+{
+  "id": 1370,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def sortString(self, s: str) -> str:\n        count = [0] * 26\n        for char in s:\n            count[ord(char) - ord('a')] += 1\n        result = []\n        while len(result) < len(s):\n            for i in range(26):\n                if count[i] > 0:\n                    result.append(chr(i + ord('a')))\n                    count[i] -= 1\n            for i in range(25, -1, -1):\n                if count[i] > 0:\n                    result.append(chr(i + ord('a')))\n                    count[i] -= 1\n        return ''.join(result)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a count array to store the frequency of each character, then iterates through the count array in ascending and descending order to construct the result string, achieving a linear time complexity.",
+  "code": "def sortString(self, s: str) -> str:\n        count = [0] * 26\n        for char in s:\n            count[ord(char) - ord('a')] += 1\n        result = []\n        while len(result) < len(s):\n            for i in range(26):\n                if count[i] > 0:\n                    result.append(chr(i + ord('a')))\n                    count[i] -= 1\n            for i in range(25, -1, -1):\n                if count[i] > 0:\n                    result.append(chr(i + ord('a')))\n                    count[i] -= 1\n        return ''.join(result)\n```",
+  "timestamp": "2025-08-05T14:42:23.514647",
+  "code_extracted_previous": "class Solution:\n    def sortString(self, s: str) -> str:\n        count = [0] * 26\n        for char in s:\n            count[ord(char) - ord('a')] += 1\n        result = []\n        while len(result) < len(s):\n            for i in range(26):\n                if count[i] > 0:\n                    result.append(chr(i + ord('a')))\n                    count[i] -= 1\n            for i in range(25, -1, -1):\n                if count[i] > 0:\n                    result.append(chr(i + ord('a')))\n                    count[i] -= 1\n        return ''.join(result)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.499071"
+}

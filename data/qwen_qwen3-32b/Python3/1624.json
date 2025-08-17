@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def maxLengthBetweenEqualCharacters(self, s: str) -> int:\n        first_occurrence = {}\n        max_length = -1\n        for i, char in enumerate(s):\n            if char in first_occurrence:\n                max_length = max(max_length, i - first_occurrence[char] - 1)\n            else:\n                first_occurrence[char] = i\n        return max_length\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The solution uses a dictionary to store the first occurrence of each character. As we iterate through the string, we check if the character has been seen before. If it has, we calculate the distance between the current index and the first occurrence, subtracting 1 to exclude the two equal characters. We keep track of the maximum such distance. Since the dictionary size is bounded by the number of lowercase English letters (26), the space complexity is effectively O(1).>",
+  "code": "class Solution:\n    def maxLengthBetweenEqualCharacters(self, s: str) -> int:\n        first_occurrence = {}\n        max_length = -1\n        for i, char in enumerate(s):\n            if char in first_occurrence:\n                max_length = max(max_length, i - first_occurrence[char] - 1)\n            else:\n                first_occurrence[char] = i\n        return max_length",
+  "timestamp": "2025-08-06T15:33:28.001240",
+  "code_extracted_previous": "class Solution:\n    def maxLengthBetweenEqualCharacters(self, s: str) -> int:\n        first_occurrence = {}\n        max_length = -1\n        for i, char in enumerate(s):\n            if char in first_occurrence:\n                max_length = max(max_length, i - first_occurrence[char] - 1)\n            else:\n                first_occurrence[char] = i\n        return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:04.212542"
+}

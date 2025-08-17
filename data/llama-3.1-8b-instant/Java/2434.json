@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String robotWithString(String s) {\n        int n = s.length();\n        char[] res = new char[n];\n        int p = 0, t = 0;\n        int[] count = new int[26];\n        for (int i = n - 1; i >= 0; i--) {\n            count[s.charAt(i) - 'a']++;\n        }\n        for (int i = 0; i < n; i++) {\n            while (t < n && (p == n || s.charAt(p) - 'a' >= s.charAt(t) - 'a')) {\n                res[i] = s.charAt(t);\n                t++;\n                i--;\n            }\n            count[s.charAt(p) - 'a']--;\n            p++;\n        }\n        return new String(res);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer approach to track the minimum character that can be appended to the result string. It also uses a count array to keep track of the frequency of each character in the string. The time complexity is O(n) as we are scanning the string twice, and the space complexity is O(n) for the result string. The energy implications are low as we are only using a constant amount of extra memory.",
+  "code": "class Solution {\n    public String robotWithString(String s) {\n        int n = s.length();\n        char[] res = new char[n];\n        int p = 0, t = 0;\n        int[] count = new int[26];\n        for (int i = n - 1; i >= 0; i--) {\n            count[s.charAt(i) - 'a']++;\n        }\n        for (int i = 0; i < n; i++) {\n            while (t < n && (p == n || s.charAt(p) - 'a' >= s.charAt(t) - 'a')) {\n                res[i] = s.charAt(t);\n                t++;\n                i--;\n            }\n            count[s.charAt(p) - 'a']--;\n            p++;\n        }\n        return new String(res);\n    }\n}",
+  "timestamp": "2025-08-05T15:10:38.206457",
+  "code_extracted_previous": "class Solution {\n    public String robotWithString(String s) {\n        int n = s.length();\n        char[] res = new char[n];\n        int p = 0, t = 0;\n        int[] count = new int[26];\n        for (int i = n - 1; i >= 0; i--) {\n            count[s.charAt(i) - 'a']++;\n        }\n        for (int i = 0; i < n; i++) {\n            while (t < n && (p == n || s.charAt(p) - 'a' >= s.charAt(t) - 'a')) {\n                res[i] = s.charAt(t);\n                t++;\n                i--;\n            }\n            count[s.charAt(p) - 'a']--;\n            p++;\n        }\n        return new String(res);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.295038"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2318,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```java\nclass Solution {\n    public int distinctSequences(int n) {\n        final int MOD = (int) (1e9 + 7);\n        int[][][] dp = new int[n + 1][7][7];\n        dp[0][6][6] = 1;\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j <= 6; j++) {\n                for (int k = 0; k <= 6; k++) {\n                    if (dp[i][j][k] == 0) continue;\n                    for (int curr = 1; curr <= 6; curr++) {\n                        if (gcd(curr, j) != 1) continue;\n                        if (k == curr) continue;\n                        dp[i + 1][curr][j] = (dp[i + 1][curr][j] + dp[i][j][k]) % MOD;\n                    }\n                }\n            }\n        }\n        int ans = 0;\n        for (int j = 0; j <= 6; j++) {\n            for (int k = 0; k <= 6; k++) {\n                ans = (ans + dp[n][j][k]) % MOD;\n            }\n        }\n        return ans;\n    }\n\n    private int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the number of distinct sequences for each roll, considering the last two rolls. The gcd function is used to check if the greatest common divisor of two numbers is 1. The solution iterates over all possible rolls and updates the dp array accordingly, ensuring that the conditions are met. The final answer is calculated by summing up the values in the dp array for the nth roll.",
+  "code": "```java\nclass Solution {\n    public int distinctSequences(int n) {\n        final int MOD = (int) (1e9 + 7);\n        int[][][] dp = new int[n + 1][7][7];\n        dp[0][6][6] = 1;\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j <= 6; j++) {\n                for (int k = 0; k <= 6; k++) {\n                    if (dp[i][j][k] == 0) continue;\n                    for (int curr = 1; curr <= 6; curr++) {\n                        if (gcd(curr, j) != 1) continue;\n                        if (k == curr) continue;\n                        dp[i + 1][curr][j] = (dp[i + 1][curr][j] + dp[i][j][k]) % MOD;\n                    }\n                }\n            }\n        }\n        int ans = 0;\n        for (int j = 0; j <= 6; j++) {\n            for (int k = 0; k <= 6; k++) {\n                ans = (ans + dp[n][j][k]) % MOD;\n            }\n        }\n        return ans;\n    }\n\n    private int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "timestamp": "2025-08-05T14:21:51.271179",
+  "code_extracted_previous": "",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.540573"
+}

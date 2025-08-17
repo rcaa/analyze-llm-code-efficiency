@@ -1,0 +1,15 @@
+{
+  "id": 2337,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool canChange(string start, string target) {\n        int n = start.size();\n        int i = 0, j = 0;\n        while (i < n && j < n) {\n            while (i < n && start[i] == '_') i++;\n            while (j < n && target[j] == '_') j++;\n            if (i == n || j == n) break;\n            if (start[i] != target[j]) return false;\n            if (start[i] == 'L' && i < j) return false;\n            if (start[i] == 'R' && i > j) return false;\n            i++; j++;\n        }\n        while (i < n && start[i] == '_') i++;\n        while (j < n && target[j] == '_') j++;\n        return i == n && j == n;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through both strings simultaneously, skipping '_' characters. It checks if the non-'_' characters match and if their movement is valid according to the problem constraints. If all checks pass and both strings are fully traversed, it returns true; otherwise, it returns false.",
+  "code": "class Solution {\npublic:\n    bool canChange(string start, string target) {\n        int n = start.size();\n        int i = 0, j = 0;\n        while (i < n && j < n) {\n            while (i < n && start[i] == '_') i++;\n            while (j < n && target[j] == '_') j++;\n            if (i == n || j == n) break;\n            if (start[i] != target[j]) return false;\n            if (start[i] == 'L' && i < j) return false;\n            if (start[i] == 'R' && i > j) return false;\n            i++; j++;\n        }\n        while (i < n && start[i] == '_') i++;\n        while (j < n && target[j] == '_') j++;\n        return i == n && j == n;\n    }\n};",
+  "timestamp": "2025-08-06T01:45:22.998299",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canChange(string start, string target) {\n        int n = start.size();\n        int i = 0, j = 0;\n        while (i < n && j < n) {\n            while (i < n && start[i] == '_') i++;\n            while (j < n && target[j] == '_') j++;\n            if (i == n || j == n) break;\n            if (start[i] != target[j]) return false;\n            if (start[i] == 'L' && i < j) return false;\n            if (start[i] == 'R' && i > j) return false;\n            i++; j++;\n        }\n        while (i < n && start[i] == '_') i++;\n        while (j < n && target[j] == '_') j++;\n        return i == n && j == n;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.205809"
+}

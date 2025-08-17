@@ -1,0 +1,15 @@
+{
+  "id": 3455,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int shortestMatchingSubstring(string s, string p) {\n        int m = p.size();\n        int n = s.size();\n        int res = n + 1;\n        for (int i = 0; i <= n - m; i++) {\n            int j = 0, k = 0;\n            while (j < m) {\n                if (p[j] == '*') {\n                    while (k < m && p[k] == '*') k++;\n                    j = k;\n                } else if (s[i + j] == p[j]) {\n                    j++;\n                } else {\n                    break;\n                }\n            }\n            if (j == m) res = min(res, i + m);\n        }\n        return res > n ? -1 : res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a two-pointer approach to iterate through the string and pattern. It keeps track of the shortest matching substring found so far and returns it if it exists, or -1 if no matching substring is found. The time complexity is O(n*m) where n is the length of the string and m is the length of the pattern, and the space complexity is O(1) as it only uses a constant amount of space.",
+  "code": "class Solution {\npublic:\n    int shortestMatchingSubstring(string s, string p) {\n        int m = p.size();\n        int n = s.size();\n        int res = n + 1;\n        for (int i = 0; i <= n - m; i++) {\n            int j = 0, k = 0;\n            while (j < m) {\n                if (p[j] == '*') {\n                    while (k < m && p[k] == '*') k++;\n                    j = k;\n                } else if (s[i + j] == p[j]) {\n                    j++;\n                } else {\n                    break;\n                }\n            }\n            if (j == m) res = min(res, i + m);\n        }\n        return res > n ? -1 : res;\n    }\n};",
+  "timestamp": "2025-08-06T01:22:19.847228",
+  "code_extracted_previous": "class Solution {\npublic:\n    int shortestMatchingSubstring(string s, string p) {\n        int m = p.size();\n        int n = s.size();\n        int res = n + 1;\n        for (int i = 0; i <= n - m; i++) {\n            int j = 0, k = 0;\n            while (j < m) {\n                if (p[j] == '*') {\n                    while (k < m && p[k] == '*') k++;\n                    j = k;\n                } else if (s[i + j] == p[j]) {\n                    j++;\n                } else {\n                    break;\n                }\n            }\n            if (j == m) res = min(res, i + m);\n        }\n        return res > n ? -1 : res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.260140"
+}

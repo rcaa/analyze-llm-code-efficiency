@@ -1,0 +1,15 @@
+{
+  "id": 1163,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string lastSubstring(string s) {\n        int n = s.size();\n        int maxIndex = 0;\n        for (int i = 1; i < n; ++i) {\n            if (s[i] > s[maxIndex]) {\n                maxIndex = i;\n            } else if (s[i] == s[maxIndex]) {\n                int j = maxIndex;\n                while (j < n && s[j] == s[i]) ++j;\n                if (j < n && s[j] < s[i + j - maxIndex]) {\n                    maxIndex = i;\n                }\n            }\n        }\n        return s.substr(maxIndex);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterates through the string once, maintaining the lexicographically maximum substring ending position. When a character matches the current maximum, it compares the subsequent substrings to determine if the new position should be updated.",
+  "code": "class Solution {\npublic:\n    string lastSubstring(string s) {\n        int n = s.size();\n        int maxIndex = 0;\n        for (int i = 1; i < n; ++i) {\n            if (s[i] > s[maxIndex]) {\n                maxIndex = i;\n            } else if (s[i] == s[maxIndex]) {\n                int j = maxIndex;\n                while (j < n && s[j] == s[i]) ++j;\n                if (j < n && s[j] < s[i + j - maxIndex]) {\n                    maxIndex = i;\n                }\n            }\n        }\n        return s.substr(maxIndex);\n    }\n};",
+  "timestamp": "2025-08-06T01:15:14.907751",
+  "code_extracted_previous": "class Solution {\npublic:\n    string lastSubstring(string s) {\n        int n = s.size();\n        int maxIndex = 0;\n        for (int i = 1; i < n; ++i) {\n            if (s[i] > s[maxIndex]) {\n                maxIndex = i;\n            } else if (s[i] == s[maxIndex]) {\n                int j = maxIndex;\n                while (j < n && s[j] == s[i]) ++j;\n                if (j < n && s[j] < s[i + j - maxIndex]) {\n                    maxIndex = i;\n                }\n            }\n        }\n        return s.substr(maxIndex);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.639186"
+}

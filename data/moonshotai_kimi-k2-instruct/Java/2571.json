@@ -1,0 +1,15 @@
+{
+  "id": 2571,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int minOperations(int n) {\n        int ops = 0;\n        while (n != 0) {\n            if ((n & 3) == 3) {\n                n++;\n                ops++;\n            } else {\n                n >>= Integer.numberOfTrailingZeros(n);\n                n >>= 1;\n                ops++;\n            }\n        }\n        return ops;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The algorithm greedily clears the least-significant set bit. Whenever two consecutive 1s appear (n & 3 == 3), adding 1 merges them into a single 1 at the next higher bit, reducing future operations. Otherwise, a single subtraction clears the lowest set bit. This minimizes total steps and uses only bit operations.",
+  "code": "class Solution {\n    public int minOperations(int n) {\n        int ops = 0;\n        while (n != 0) {\n            if ((n & 3) == 3) {\n                n++;\n                ops++;\n            } else {\n                n >>= Integer.numberOfTrailingZeros(n);\n                n >>= 1;\n                ops++;\n            }\n        }\n        return ops;\n    }\n}",
+  "timestamp": "2025-08-05T14:27:57.264320",
+  "code_extracted_previous": "public int minOperations(int n) {\n        int ops = 0;\n        while (n != 0) {\n            if ((n & 3) == 3) {\n                n++;\n                ops++;\n            } else {\n                n >>= Integer.numberOfTrailingZeros(n);\n                n >>= 1;\n                ops++;\n            }\n        }\n        return ops;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.122780"
+}

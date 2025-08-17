@@ -1,0 +1,15 @@
+{
+  "id": 3574,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    long long maxGCDScore(vector<int>& nums, int k) {\n        int n = nums.size();\n        vector<long long> dp(n + 1, 0);\n        long long gcd = nums[0];\n        for (int i = 1; i < n; i++) {\n            gcd = __gcd(gcd, nums[i]);\n        }\n        dp[0] = gcd;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < i; j++) {\n                dp[i] = max(dp[i], dp[j] * (i - j) * gcd);\n                if (k > 0 && i - j > 1) {\n                    dp[i] = max(dp[i], dp[j] * (i - j) * __gcd(gcd, nums[j]));\n                    k--;\n                }\n            }\n        }\n        return dp[n];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2 * log(max(nums[i])))\nspace complexity: O(n)\nenergy implications: MEDIUM",
+  "code": "class Solution {\npublic:\n    long long maxGCDScore(vector<int>& nums, int k) {\n        int n = nums.size();\n        vector<long long> dp(n + 1, 0);\n        long long gcd = nums[0];\n        for (int i = 1; i < n; i++) {\n            gcd = __gcd(gcd, nums[i]);\n        }\n        dp[0] = gcd;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < i; j++) {\n                dp[i] = max(dp[i], dp[j] * (i - j) * gcd);\n                if (k > 0 && i - j > 1) {\n                    dp[i] = max(dp[i], dp[j] * (i - j) * __gcd(gcd, nums[j]));\n                    k--;\n                }\n            }\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-05T12:12:15.096413",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long maxGCDScore(vector<int>& nums, int k) {\n        int n = nums.size();\n        vector<long long> dp(n + 1, 0);\n        long long gcd = nums[0];\n        for (int i = 1; i < n; i++) {\n            gcd = __gcd(gcd, nums[i]);\n        }\n        dp[0] = gcd;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < i; j++) {\n                dp[i] = max(dp[i], dp[j] * (i - j) * gcd);\n                if (k > 0 && i - j > 1) {\n                    dp[i] = max(dp[i], dp[j] * (i - j) * __gcd(gcd, nums[j]));\n                    k--;\n                }\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.456834"
+}

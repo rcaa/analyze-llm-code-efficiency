@@ -1,0 +1,15 @@
+{
+  "id": 609,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```python\nfrom collections import defaultdict\nimport re\n\nclass Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = defaultdict(list)\n        pattern = re.compile(r'([^\\s]+)\\(([^)]+)\\)')\n        \n        for entry in paths:\n            parts = entry.split(' ', 1)\n            directory = parts[0]\n            files = parts[1] if len(parts) > 1 else ''\n            \n            for match in pattern.finditer(files):\n                filename, content = match.groups()\n                full_path = f\"{directory}/{filename}\"\n                content_map[content].append(full_path)\n        \n        return [group for group in content_map.values() if len(group) > 1]\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: MEDIUM\nexplanation: Parse each directory entry once, extract file names and content via regex, group by content using a hash map, and return only groups with duplicates. Regex avoids manual string splitting and handles arbitrary file names. Linear time and space proportional to total input size.",
+  "code": "class Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = defaultdict(list)\n        pattern = re.compile(r'([^\\s]+)\\(([^)]+)\\)')\n        \n        for entry in paths:\n            parts = entry.split(' ', 1)\n            directory = parts[0]\n            files = parts[1] if len(parts) > 1 else ''\n            \n            for match in pattern.finditer(files):\n                filename, content = match.groups()\n                full_path = f\"{directory}/{filename}\"\n                content_map[content].append(full_path)\n        \n        return [group for group in content_map.values() if len(group) > 1]",
+  "timestamp": "2025-08-05T13:04:44.490913",
+  "code_extracted_previous": "from collections import defaultdict\nimport re\n\nclass Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = defaultdict(list)\n        pattern = re.compile(r'([^\\s]+)\\(([^)]+)\\)')\n        \n        for entry in paths:\n            parts = entry.split(' ', 1)\n            directory = parts[0]\n            files = parts[1] if len(parts) > 1 else ''\n            \n            for match in pattern.finditer(files):\n                filename, content = match.groups()\n                full_path = f\"{directory}/{filename}\"\n                content_map[content].append(full_path)\n        \n        return [group for group in content_map.values() if len(group) > 1]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.341342"
+}

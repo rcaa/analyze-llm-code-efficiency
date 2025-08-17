@@ -1,0 +1,15 @@
+{
+  "id": 1278,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int palindromePartition(string s, int k) {\n        int n = s.size();\n        vector<vector<int>> changes(n, vector<int>(n, 0));\n        for (int length = 2; length <= n; ++length) {\n            for (int i = 0; i <= n - length; ++i) {\n                int j = i + length - 1;\n                changes[i][j] = changes[i + 1][j - 1] + (s[i] != s[j]);\n            }\n        }\n        \n        vector<vector<int>> dp(n + 1, vector<int>(k + 1, n));\n        dp[0][0] = 0;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= min(i, k); ++j) {\n                for (int m = j - 1; m < i; ++m) {\n                    dp[i][j] = min(dp[i][j], dp[m][j - 1] + changes[m][i - 1]);\n                }\n            }\n        }\n        \n        return dp[n][k];\n    }\n};\nefficiency: HIGH\ntime complexity: O(n^2 + nk*n)\nspace complexity: O(n^2 + n*k)\nenergy implications: LOW\nexplanation: Dynamic programming is used to pre-calculate the number of changes required to make substrings palindromes and then to find the minimum number of changes to divide the string into k palindromic substrings. The solution has a high efficiency due to the avoidance of redundant computations.",
+  "code": "```cpp\nclass Solution {\npublic:\n    int palindromePartition(string s, int k) {\n        int n = s.size();\n        vector<vector<int>> changes(n, vector<int>(n, 0));\n        for (int length = 2; length <= n; ++length) {\n            for (int i = 0; i <= n - length; ++i) {\n                int j = i + length - 1;\n                changes[i][j] = changes[i + 1][j - 1] + (s[i] != s[j]);\n            }\n        }\n        \n        vector<vector<int>> dp(n + 1, vector<int>(k + 1, n));\n        dp[0][0] = 0;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= min(i, k); ++j) {\n                for (int m = j - 1; m < i; ++m) {\n                    dp[i][j] = min(dp[i][j], dp[m][j - 1] + changes[m][i - 1]);\n                }\n            }\n        }\n        \n        return dp[n][k];\n    }\n};",
+  "timestamp": "2025-08-05T16:10:36.414950",
+  "code_extracted_previous": "",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.669242"
+}

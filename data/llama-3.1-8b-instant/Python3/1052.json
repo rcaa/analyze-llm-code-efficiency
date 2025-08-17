@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        total_customers = sum(customers)\n        grumpy_customers = 0\n        max_grumpy_customers = 0\n        left = 0\n        for right in range(n):\n            grumpy_customers += customers[right] * grumpy[right]\n            max_grumpy_customers = max(max_grumpy_customers, grumpy_customers)\n            if right - left + 1 > minutes:\n                grumpy_customers -= customers[left] * grumpy[left]\n                left += 1\n        return total_customers - (max_grumpy_customers - total_customers)\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach to efficiently calculate the maximum number of customers that can be satisfied. It iterates over the customers and grumpy arrays, keeping track of the total number of customers, the number of grumpy customers within the current window, and the maximum number of grumpy customers seen so far. The time complexity is O(n) and the space complexity is O(1), making it efficient for large inputs.",
+  "code": "class Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        total_customers = sum(customers)\n        grumpy_customers = 0\n        max_grumpy_customers = 0\n        left = 0\n        for right in range(n):\n            grumpy_customers += customers[right] * grumpy[right]\n            max_grumpy_customers = max(max_grumpy_customers, grumpy_customers)\n            if right - left + 1 > minutes:\n                grumpy_customers -= customers[left] * grumpy[left]\n                left += 1\n        return total_customers - (max_grumpy_customers - total_customers)",
+  "timestamp": "2025-08-05T13:19:26.357148",
+  "code_extracted_previous": "class Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        total_customers = sum(customers)\n        grumpy_customers = 0\n        max_grumpy_customers = 0\n        left = 0\n        for right in range(n):\n            grumpy_customers += customers[right] * grumpy[right]\n            max_grumpy_customers = max(max_grumpy_customers, grumpy_customers)\n            if right - left + 1 > minutes:\n                grumpy_customers -= customers[left] * grumpy[left]\n                left += 1\n        return total_customers - (max_grumpy_customers - total_customers)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.172401"
+}

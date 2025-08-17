@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nfrom collections import deque\n\nclass MyStack:\n\n    def __init__(self):\n        self.q = deque()\n\n    def push(self, x: int) -> None:\n        self.q.append(x)\n        for _ in range(len(self.q) - 1):\n            self.q.append(self.q.popleft())\n\n    def pop(self) -> int:\n        return self.q.popleft()\n\n    def top(self) -> int:\n        return self.q[0]\n\n    def empty(self) -> bool:\n        return not self.q\n```\nefficiency: HIGH\ntime complexity: push O(n), pop O(1), top O(1), empty O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a single queue and rotates it after each push so the newest element is always at the front, enabling O(1) pop/top. This meets the follow-up requirement of one queue while keeping energy usage low due to minimal extra operations.",
+  "code": "class MyStack:\n\n    def __init__(self):\n        self.q = deque()\n\n    def push(self, x: int) -> None:\n        self.q.append(x)\n        for _ in range(len(self.q) - 1):\n            self.q.append(self.q.popleft())\n\n    def pop(self) -> int:\n        return self.q.popleft()\n\n    def top(self) -> int:\n        return self.q[0]\n\n    def empty(self) -> bool:\n        return not self.q",
+  "timestamp": "2025-08-06T02:33:04.075440",
+  "code_extracted_previous": "from collections import deque\n\nclass MyStack:\n\n    def __init__(self):\n        self.q = deque()\n\n    def push(self, x: int) -> None:\n        self.q.append(x)\n        for _ in range(len(self.q) - 1):\n            self.q.append(self.q.popleft())\n\n    def pop(self) -> int:\n        return self.q.popleft()\n\n    def top(self) -> int:\n        return self.q[0]\n\n    def empty(self) -> bool:\n        return not self.q",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:56.578348"
+}

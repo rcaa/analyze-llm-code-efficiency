@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int n = s.length();\n        int maxLength = 0;\n        int left = 0;\n        java.util.HashMap<Character, Integer> charIndexMap = new java.util.HashMap<>();\n        \n        for (int right = 0; right < n; right++) {\n            char c = s.charAt(right);\n            if (charIndexMap.containsKey(c)) {\n                left = Math.max(left, charIndexMap.get(c) + 1);\n            }\n            charIndexMap.put(c, right);\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        \n        return maxLength;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(min(N, M))\nenergy implications: LOW\nexplanation: Uses a sliding window approach with a HashMap to track character indices, efficiently updating the maximum length of substring without duplicates.",
+  "code": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int n = s.length();\n        int maxLength = 0;\n        int left = 0;\n        java.util.HashMap<Character, Integer> charIndexMap = new java.util.HashMap<>();\n        \n        for (int right = 0; right < n; right++) {\n            char c = s.charAt(right);\n            if (charIndexMap.containsKey(c)) {\n                left = Math.max(left, charIndexMap.get(c) + 1);\n            }\n            charIndexMap.put(c, right);\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        \n        return maxLength;\n    }\n}",
+  "timestamp": "2025-08-05T14:49:24.816971",
+  "code_extracted_previous": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int n = s.length();\n        int maxLength = 0;\n        int left = 0;\n        java.util.HashMap<Character, Integer> charIndexMap = new java.util.HashMap<>();\n        \n        for (int right = 0; right < n; right++) {\n            char c = s.charAt(right);\n            if (charIndexMap.containsKey(c)) {\n                left = Math.max(left, charIndexMap.get(c) + 1);\n            }\n            charIndexMap.put(c, right);\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        \n        return maxLength;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.736024"
+}

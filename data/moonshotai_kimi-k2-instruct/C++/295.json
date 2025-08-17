@@ -1,0 +1,15 @@
+{
+  "id": 295,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass MedianFinder {\n    priority_queue<int> lo;                              // max-heap for lower half\n    priority_queue<int, vector<int>, greater<int>> hi;  // min-heap for upper half\npublic:\n    MedianFinder() {}\n    \n    void addNum(int num) {\n        lo.push(num);\n        hi.push(lo.top());\n        lo.pop();\n        if (lo.size() < hi.size()) {\n            lo.push(hi.top());\n            hi.pop();\n        }\n    }\n    \n    double findMedian() {\n        return lo.size() > hi.size() ? lo.top() : (lo.top() + hi.top()) * 0.5;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log N) addNum, O(1) findMedian\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses two heaps to partition the stream into lower and upper halves; the max-heap always contains the median or the larger half, ensuring constant-time median retrieval and logarithmic insertion.",
+  "code": "class MedianFinder {\n    priority_queue<int> lo;                              // max-heap for lower half\n    priority_queue<int, vector<int>, greater<int>> hi;  // min-heap for upper half\npublic:\n    MedianFinder() {}\n    \n    void addNum(int num) {\n        lo.push(num);\n        hi.push(lo.top());\n        lo.pop();\n        if (lo.size() < hi.size()) {\n            lo.push(hi.top());\n            hi.pop();\n        }\n    }\n    \n    double findMedian() {\n        return lo.size() > hi.size() ? lo.top() : (lo.top() + hi.top()) * 0.5;\n    }\n};",
+  "timestamp": "2025-08-06T01:13:00.495783",
+  "code_extracted_previous": "class MedianFinder {\n    priority_queue<int> lo;                              // max-heap for lower half\n    priority_queue<int, vector<int>, greater<int>> hi;  // min-heap for upper half\npublic:\n    MedianFinder() {}\n    \n    void addNum(int num) {\n        lo.push(num);\n        hi.push(lo.top());\n        lo.pop();\n        if (lo.size() < hi.size()) {\n            lo.push(hi.top());\n            hi.pop();\n        }\n    }\n    \n    double findMedian() {\n        return lo.size() > hi.size() ? lo.top() : (lo.top() + hi.top()) * 0.5;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.851960"
+}

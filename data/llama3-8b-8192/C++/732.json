@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        events = new vector<pair<int, int>>();\n    }\n    \n    int book(int startTime, int endTime) {\n        events->push_back({startTime, 1});\n        events->push_back({endTime, -1});\n        events->sort();\n        int k = 0, maxK = 0;\n        for (auto& event : events) {\n            k += event.second;\n            maxK = max(maxK, k);\n        }\n        return maxK;\n    }\nprivate:\n    vector<pair<int, int>>* events;\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: We use a priority queue to store the events, and for each event, we update the count of overlapping events. We then return the maximum count of overlapping events.",
+  "code": "class MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        events = new vector<pair<int, int>>();\n    }\n    \n    int book(int startTime, int endTime) {\n        events->push_back({startTime, 1});\n        events->push_back({endTime, -1});\n        events->sort();\n        int k = 0, maxK = 0;\n        for (auto& event : events) {\n            k += event.second;\n            maxK = max(maxK, k);\n        }\n        return maxK;\n    }\nprivate:\n    vector<pair<int, int>>* events;\n};",
+  "timestamp": "2025-08-05T13:37:41.965790",
+  "code_extracted_previous": "class MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        events = new vector<pair<int, int>>();\n    }\n    \n    int book(int startTime, int endTime) {\n        events->push_back({startTime, 1});\n        events->push_back({endTime, -1});\n        events->sort();\n        int k = 0, maxK = 0;\n        for (auto& event : events) {\n            k += event.second;\n            maxK = max(maxK, k);\n        }\n        return maxK;\n    }\nprivate:\n    vector<pair<int, int>>* events;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:41.643902"
+}

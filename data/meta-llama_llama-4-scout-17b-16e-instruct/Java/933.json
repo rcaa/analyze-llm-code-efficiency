@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```java\nimport java.util.Queue;\nimport java.util.LinkedList;\n\nclass RecentCounter {\n\n    private Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (!queue.isEmpty() && queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}\n\n/**\n * Your RecentCounter object will be instantiated and called as such:\n * RecentCounter obj = new RecentCounter();\n * int param_1 = obj.ping(t);\n */\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a queue data structure to efficiently track recent requests within the specified time frame. By maintaining a queue of timestamps and removing outdated requests when a new ping is added, it ensures that only requests within the last 3000 milliseconds are counted. This approach allows for a straightforward and efficient implementation.",
+  "code": "class RecentCounter {\n\n    private Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (!queue.isEmpty() && queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}\n\n/**\n * Your RecentCounter object will be instantiated and called as such:\n * RecentCounter obj = new RecentCounter();\n * int param_1 = obj.ping(t);\n */",
+  "timestamp": "2025-08-05T14:07:54.464293",
+  "code_extracted_previous": "import java.util.Queue;\nimport java.util.LinkedList;\n\nclass RecentCounter {\n\n    private Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (!queue.isEmpty() && queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}\n\n/**\n * Your RecentCounter object will be instantiated and called as such:\n * RecentCounter obj = new RecentCounter();\n * int param_1 = obj.ping(t);\n */",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:51.632951"
+}

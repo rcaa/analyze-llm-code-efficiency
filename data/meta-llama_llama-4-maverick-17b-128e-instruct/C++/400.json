@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1;\n        long long count = 9;\n        long long start = 1;\n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string s = to_string(start);\n        return s[(n - 1) % len] - '0';\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: The solution efficiently calculates the nth digit by determining the length of the numbers that the nth digit belongs to, then finding the specific number and digit. It uses a while loop to narrow down the range and finally converts the number to a string to access the required digit.",
+  "code": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1;\n        long long count = 9;\n        long long start = 1;\n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string s = to_string(start);\n        return s[(n - 1) % len] - '0';\n    }\n};",
+  "timestamp": "2025-08-05T15:42:06.062372",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1;\n        long long count = 9;\n        long long start = 1;\n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string s = to_string(start);\n        return s[(n - 1) % len] - '0';\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.619108"
+}

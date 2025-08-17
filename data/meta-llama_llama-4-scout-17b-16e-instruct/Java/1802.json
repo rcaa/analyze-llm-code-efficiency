@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = index, right = n - index - 1;\n        int low = 1, high = maxSum;\n        while (low < high) {\n            int mid = low + (high - low + 1) / 2;\n            if ((mid - 1) * mid / 2 <= maxSum - mid - (mid - 1) * right) {\n                low = mid;\n            } else {\n                high = mid - 1;\n            }\n        }\n        return low;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(maxSum))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses binary search to find the maximum possible value at the given index. It calculates the minimum sum required for the left and right parts of the array given a certain value at the index, and adjusts the search range accordingly. This approach efficiently finds the maximum value while ensuring the total sum does not exceed maxSum.",
+  "code": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = index, right = n - index - 1;\n        int low = 1, high = maxSum;\n        while (low < high) {\n            int mid = low + (high - low + 1) / 2;\n            if ((mid - 1) * mid / 2 <= maxSum - mid - (mid - 1) * right) {\n                low = mid;\n            } else {\n                high = mid - 1;\n            }\n        }\n        return low;\n    }\n}",
+  "timestamp": "2025-08-06T02:28:21.126623",
+  "code_extracted_previous": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = index, right = n - index - 1;\n        int low = 1, high = maxSum;\n        while (low < high) {\n            int mid = low + (high - low + 1) / 2;\n            if ((mid - 1) * mid / 2 <= maxSum - mid - (mid - 1) * right) {\n                low = mid;\n            } else {\n                high = mid - 1;\n            }\n        }\n        return low;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.526937"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        \n        left, right = 0, len(passengers) - 1\n        for bus in buses:\n            idx = left\n            while idx < len(passengers) and passengers[idx] <= bus and idx - left < capacity:\n                idx += 1\n            if idx == len(passengers):\n                return passengers[-1]\n            left = idx\n        \n        return passengers[left - 1]\n```\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution sorts both the buses and passengers arrays. It then iterates through each bus, finding the maximum number of passengers that can board the bus given its capacity. If all passengers have been assigned to a bus, the function returns the last passenger's arrival time. Otherwise, it returns the arrival time of the last passenger who couldn't board a bus, which is the latest time one can arrive to catch a bus.",
+  "code": "class Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        \n        left, right = 0, len(passengers) - 1\n        for bus in buses:\n            idx = left\n            while idx < len(passengers) and passengers[idx] <= bus and idx - left < capacity:\n                idx += 1\n            if idx == len(passengers):\n                return passengers[-1]\n            left = idx\n        \n        return passengers[left - 1]",
+  "timestamp": "2025-08-05T13:28:07.386373",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        \n        left, right = 0, len(passengers) - 1\n        for bus in buses:\n            idx = left\n            while idx < len(passengers) and passengers[idx] <= bus and idx - left < capacity:\n                idx += 1\n            if idx == len(passengers):\n                return passengers[-1]\n            left = idx\n        \n        return passengers[left - 1]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.150134"
+}

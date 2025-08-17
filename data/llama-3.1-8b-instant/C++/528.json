@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    Solution(vector<int>& w) {\n        int sum = 0;\n        for (int i : w) sum += i;\n        for (int i = 0; i < w.size(); i++) {\n            w[i] = (long long)w[i] * (sum - w[i]) + i;\n            sum--;\n        }\n    }\n    \n    int pickIndex() {\n        int target = rand() % (int)(1e9) + 1;\n        for (int i = 0; i < w.size(); i++) {\n            if (target <= w[i]) return i;\n        }\n        return -1; // This should never happen\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n + m) where n is the size of the input array and m is the maximum value in the array\nspace complexity: O(1)\nenergy implications: MEDIUM",
+  "code": "class Solution {\npublic:\n    Solution(vector<int>& w) {\n        int sum = 0;\n        for (int i : w) sum += i;\n        for (int i = 0; i < w.size(); i++) {\n            w[i] = (long long)w[i] * (sum - w[i]) + i;\n            sum--;\n        }\n    }\n    \n    int pickIndex() {\n        int target = rand() % (int)(1e9) + 1;\n        for (int i = 0; i < w.size(); i++) {\n            if (target <= w[i]) return i;\n        }\n        return -1; // This should never happen\n    }\n};",
+  "timestamp": "2025-08-05T12:59:53.237551",
+  "code_extracted_previous": "class Solution {\npublic:\n    Solution(vector<int>& w) {\n        int sum = 0;\n        for (int i : w) sum += i;\n        for (int i = 0; i < w.size(); i++) {\n            w[i] = (long long)w[i] * (sum - w[i]) + i;\n            sum--;\n        }\n    }\n    \n    int pickIndex() {\n        int target = rand() % (int)(1e9) + 1;\n        for (int i = 0; i < w.size(); i++) {\n            if (target <= w[i]) return i;\n        }\n        return -1; // This should never happen\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.601234"
+}

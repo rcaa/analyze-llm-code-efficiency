@@ -1,0 +1,15 @@
+{
+  "id": 2165,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    long long smallestNumber(long long num) {\n        string s = to_string(abs(num));\n        sort(s.begin(), s.end());\n        if (s[0] == '0') {\n            for (int i = 1; i < s.size(); i++) {\n                if (s[i] != '0') {\n                    swap(s[0], s[i]);\n                    break;\n                }\n            }\n        }\n        return (num < 0) ? -stoll(s) : stoll(s);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution first converts the absolute value of the input number to a string, then sorts the string. If the first character of the sorted string is '0', it swaps the first character with the first non-zero character. Finally, it converts the string back to a long long integer and returns the result, considering the original sign of the input number.",
+  "code": "class Solution {\npublic:\n    long long smallestNumber(long long num) {\n        string s = to_string(abs(num));\n        sort(s.begin(), s.end());\n        if (s[0] == '0') {\n            for (int i = 1; i < s.size(); i++) {\n                if (s[i] != '0') {\n                    swap(s[0], s[i]);\n                    break;\n                }\n            }\n        }\n        return (num < 0) ? -stoll(s) : stoll(s);\n    }\n};",
+  "timestamp": "2025-08-05T15:55:16.394667",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long smallestNumber(long long num) {\n        string s = to_string(abs(num));\n        sort(s.begin(), s.end());\n        if (s[0] == '0') {\n            for (int i = 1; i < s.size(); i++) {\n                if (s[i] != '0') {\n                    swap(s[0], s[i]);\n                    break;\n                }\n            }\n        }\n        return (num < 0) ? -stoll(s) : stoll(s);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.860595"
+}

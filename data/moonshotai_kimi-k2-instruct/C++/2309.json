@@ -1,0 +1,15 @@
+{
+  "id": 2309,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    string greatestLetter(string s) {\n        bool lower[26] = {false};\n        bool upper[26] = {false};\n        for (char c : s) {\n            if (c >= 'a' && c <= 'z') lower[c - 'a'] = true;\n            else if (c >= 'A' && c <= 'Z') upper[c - 'A'] = true;\n        }\n        for (int i = 25; i >= 0; --i) {\n            if (lower[i] && upper[i]) {\n                return string(1, 'A' + i);\n            }\n        }\n        return \"\";\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass to mark presence of each letter in both cases, then scan backwards from 'Z' to 'A' to find the greatest letter with both cases present. Uses only two fixed-size boolean arrays.",
+  "code": "class Solution {\npublic:\n    string greatestLetter(string s) {\n        bool lower[26] = {false};\n        bool upper[26] = {false};\n        for (char c : s) {\n            if (c >= 'a' && c <= 'z') lower[c - 'a'] = true;\n            else if (c >= 'A' && c <= 'Z') upper[c - 'A'] = true;\n        }\n        for (int i = 25; i >= 0; --i) {\n            if (lower[i] && upper[i]) {\n                return string(1, 'A' + i);\n            }\n        }\n        return \"\";\n    }\n};",
+  "timestamp": "2025-08-06T02:29:19.591515",
+  "code_extracted_previous": "public:\n    string greatestLetter(string s) {\n        bool lower[26] = {false};\n        bool upper[26] = {false};\n        for (char c : s) {\n            if (c >= 'a' && c <= 'z') lower[c - 'a'] = true;\n            else if (c >= 'A' && c <= 'Z') upper[c - 'A'] = true;\n        }\n        for (int i = 25; i >= 0; --i) {\n            if (lower[i] && upper[i]) {\n                return string(1, 'A' + i);\n            }\n        }\n        return \"\";\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.636509"
+}

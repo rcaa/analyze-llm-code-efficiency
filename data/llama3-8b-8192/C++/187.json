@@ -1,0 +1,15 @@
+{
+  "id": 187,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    vector<string> findRepeatedDnaSequences(string s) {\n        unordered_map<string, int> seen;\n        vector<string> res;\n        for (int i = 0; i <= s.length() - 10; i++) {\n            string t = s.substr(i, 10);\n            if (seen[t] == 1) {\n                res.push_back(t);\n            }\n            seen[t]++;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hash map to store the frequency of each 10-letter-long DNA sequence. It iterates through the string and for each sequence, it checks if it has been seen before. If it has, it adds it to the result vector. The time complexity is O(n) because we are iterating through the string once, and the space complexity is O(n) because in the worst case, we might store all unique sequences in the hash map.",
+  "code": "class Solution {\npublic:\n    vector<string> findRepeatedDnaSequences(string s) {\n        unordered_map<string, int> seen;\n        vector<string> res;\n        for (int i = 0; i <= s.length() - 10; i++) {\n            string t = s.substr(i, 10);\n            if (seen[t] == 1) {\n                res.push_back(t);\n            }\n            seen[t]++;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:50:19.741130",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<string> findRepeatedDnaSequences(string s) {\n        unordered_map<string, int> seen;\n        vector<string> res;\n        for (int i = 0; i <= s.length() - 10; i++) {\n            string t = s.substr(i, 10);\n            if (seen[t] == 1) {\n                res.push_back(t);\n            }\n            seen[t]++;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.741246"
+}

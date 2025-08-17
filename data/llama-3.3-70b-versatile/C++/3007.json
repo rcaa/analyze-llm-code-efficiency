@@ -1,0 +1,15 @@
+{
+  "id": 3007,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        long long l = 1, r = k * 100;\n        while (l < r) {\n            long long mid = l + (r - l) / 2;\n            long long sum = 0;\n            for (long long i = 1; i <= mid; i++) {\n                long long j = i, cnt = 0;\n                while (j > 0) {\n                    if (j & 1) cnt++;\n                    j /= x;\n                }\n                sum += cnt;\n            }\n            if (sum <= k) l = mid + 1;\n            else r = mid;\n        }\n        return l - 1;\n    }\n};\nefficiency: HIGH\ntime complexity: O(log(k) * log(k))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the greatest cheap number, and for each number, the price is calculated by counting the set bits at positions x, 2x, 3x, etc., in its binary representation.",
+  "code": "class Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        long long l = 1, r = k * 100;\n        while (l < r) {\n            long long mid = l + (r - l) / 2;\n            long long sum = 0;\n            for (long long i = 1; i <= mid; i++) {\n                long long j = i, cnt = 0;\n                while (j > 0) {\n                    if (j & 1) cnt++;\n                    j /= x;\n                }\n                sum += cnt;\n            }\n            if (sum <= k) l = mid + 1;\n            else r = mid;\n        }\n        return l - 1;\n    }\n};",
+  "timestamp": "2025-08-06T15:10:46.579316",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        long long l = 1, r = k * 100;\n        while (l < r) {\n            long long mid = l + (r - l) / 2;\n            long long sum = 0;\n            for (long long i = 1; i <= mid; i++) {\n                long long j = i, cnt = 0;\n                while (j > 0) {\n                    if (j & 1) cnt++;\n                    j /= x;\n                }\n                sum += cnt;\n            }\n            if (sum <= k) l = mid + 1;\n            else r = mid;\n        }\n        return l - 1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.562829"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3352,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int countKReducibleNumbers(String s, int k) {\n        int n = Integer.parseInt(s, 2);\n        int MOD = (int)1e9 + 7;\n        int res = 0;\n        for (int i = 1; i < n; i++) {\n            int cnt = 0, x = i;\n            while (x > 1) {\n                x = Integer.bitCount(x);\n                cnt++;\n                if (cnt > k) break;\n            }\n            if (cnt <= k) res = (res + 1) % MOD;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over all numbers less than n and checks if each number is k-reducible by repeatedly counting the set bits in its binary representation.",
+  "code": "class Solution {\n    public int countKReducibleNumbers(String s, int k) {\n        int n = Integer.parseInt(s, 2);\n        int MOD = (int)1e9 + 7;\n        int res = 0;\n        for (int i = 1; i < n; i++) {\n            int cnt = 0, x = i;\n            while (x > 1) {\n                x = Integer.bitCount(x);\n                cnt++;\n                if (cnt > k) break;\n            }\n            if (cnt <= k) res = (res + 1) % MOD;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T15:26:24.401317",
+  "code_extracted_previous": "class Solution {\n    public int countKReducibleNumbers(String s, int k) {\n        int n = Integer.parseInt(s, 2);\n        int MOD = (int)1e9 + 7;\n        int res = 0;\n        for (int i = 1; i < n; i++) {\n            int cnt = 0, x = i;\n            while (x > 1) {\n                x = Integer.bitCount(x);\n                cnt++;\n                if (cnt > k) break;\n            }\n            if (cnt <= k) res = (res + 1) % MOD;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.459462"
+}

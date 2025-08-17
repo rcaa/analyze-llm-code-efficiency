@@ -1,0 +1,15 @@
+{
+  "id": 20,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        unordered_map<char, char> brackets = {\n            {')', '('},\n            {'}', '{'},\n            {']', '['}\n        };\n\n        for (char c : s) {\n            if (brackets.count(c) == 0) {\n                st.push(c);\n            } else {\n                if (st.empty() || st.top() != brackets[c]) {\n                    return false;\n                }\n                st.pop();\n            }\n        }\n\n        return st.empty();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a stack to efficiently track and validate the order of brackets. Each opening bracket is pushed onto the stack, and each closing bracket is checked against the top of the stack. If they match, the top is popped; otherwise, the string is invalid. The stack ensures correct bracket ordering and nesting. The time and space complexity are both O(n), where n is the length of the string.",
+  "code": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        unordered_map<char, char> brackets = {\n            {')', '('},\n            {'}', '{'},\n            {']', '['}\n        };\n\n        for (char c : s) {\n            if (brackets.count(c) == 0) {\n                st.push(c);\n            } else {\n                if (st.empty() || st.top() != brackets[c]) {\n                    return false;\n                }\n                st.pop();\n            }\n        }\n\n        return st.empty();\n    }\n};",
+  "timestamp": "2025-08-05T22:46:53.351478",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        unordered_map<char, char> brackets = {\n            {')', '('},\n            {'}', '{'},\n            {']', '['}\n        };\n\n        for (char c : s) {\n            if (brackets.count(c) == 0) {\n                st.push(c);\n            } else {\n                if (st.empty() || st.top() != brackets[c]) {\n                    return false;\n                }\n                st.pop();\n            }\n        }\n\n        return st.empty();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:58.589138"
+}

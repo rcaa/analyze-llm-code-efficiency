@@ -1,0 +1,15 @@
+{
+  "id": 2983,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<bool> canMakePalindromeQueries(string s, vector<vector<int>>& queries) {\n        int n = s.size();\n        vector<int> left(n / 2 + 1), right(n / 2 + 1);\n        for (int i = 0; i < n / 2; i++) {\n            left[i + 1] = left[i] + (s[i] == s[n - i - 1] ? 0 : 1);\n        }\n        for (int i = n / 2; i < n; i++) {\n            right[i - n / 2 + 1] = right[i - n / 2] + (s[i] == s[n - i - 1] ? 0 : 1);\n        }\n        vector<bool> ans(queries.size());\n        for (int i = 0; i < queries.size(); i++) {\n            int a = queries[i][0], b = queries[i][1], c = queries[i][2], d = queries[i][3];\n            ans[i] = (left[b + 1] - left[a] + right[d + 1] - right[c] <= 1);\n        }\n        return ans;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n + q)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    vector<bool> canMakePalindromeQueries(string s, vector<vector<int>>& queries) {\n        int n = s.size();\n        vector<int> left(n / 2 + 1), right(n / 2 + 1);\n        for (int i = 0; i < n / 2; i++) {\n            left[i + 1] = left[i] + (s[i] == s[n - i - 1] ? 0 : 1);\n        }\n        for (int i = n / 2; i < n; i++) {\n            right[i - n / 2 + 1] = right[i - n / 2] + (s[i] == s[n - i - 1] ? 0 : 1);\n        }\n        vector<bool> ans(queries.size());\n        for (int i = 0; i < queries.size(); i++) {\n            int a = queries[i][0], b = queries[i][1], c = queries[i][2], d = queries[i][3];\n            ans[i] = (left[b + 1] - left[a] + right[d + 1] - right[c] <= 1);\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T14:39:01.011801",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<bool> canMakePalindromeQueries(string s, vector<vector<int>>& queries) {\n        int n = s.size();\n        vector<int> left(n / 2 + 1), right(n / 2 + 1);\n        for (int i = 0; i < n / 2; i++) {\n            left[i + 1] = left[i] + (s[i] == s[n - i - 1] ? 0 : 1);\n        }\n        for (int i = n / 2; i < n; i++) {\n            right[i - n / 2 + 1] = right[i - n / 2] + (s[i] == s[n - i - 1] ? 0 : 1);\n        }\n        vector<bool> ans(queries.size());\n        for (int i = 0; i < queries.size(); i++) {\n            int a = queries[i][0], b = queries[i][1], c = queries[i][2], d = queries[i][3];\n            ans[i] = (left[b + 1] - left[a] + right[d + 1] - right[c] <= 1);\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.290562"
+}

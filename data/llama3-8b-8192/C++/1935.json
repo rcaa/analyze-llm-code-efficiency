@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> brokenSet(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        string word;\n        for (char c : text) {\n            if (c == ' ') {\n                word.clear();\n                count++;\n            } else {\n                word += c;\n                if (brokenSet.count(c)) {\n                    return count;\n                }\n            }\n        }\n        return count + 1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: We use a set to store the broken letters for efficient lookup. We iterate through the text, counting the number of words and checking each character against the broken set. If a broken letter is found, we return the current count. If the end of the text is reached, we return the count plus one for the last word.",
+  "code": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> brokenSet(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        string word;\n        for (char c : text) {\n            if (c == ' ') {\n                word.clear();\n                count++;\n            } else {\n                word += c;\n                if (brokenSet.count(c)) {\n                    return count;\n                }\n            }\n        }\n        return count + 1;\n    }\n};",
+  "timestamp": "2025-08-05T14:43:44.870024",
+  "code_extracted_previous": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> brokenSet(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        string word;\n        for (char c : text) {\n            if (c == ' ') {\n                word.clear();\n                count++;\n            } else {\n                word += c;\n                if (brokenSet.count(c)) {\n                    return count;\n                }\n            }\n        }\n        return count + 1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.762041"
+}

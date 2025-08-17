@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        final int MOD = 1000000007;\n        int[][] dp = new int[n + 1][goal + 1];\n\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= goal; j++) {\n                dp[i][j] = dp[i - 1][j - 1] % MOD; // Add a new song\n                if (i > k) {\n                    dp[i][j] = (dp[i][j] + (long) dp[i][j - 1] * (i - k)) % MOD); // Repeat a song\n                }\n            }\n        }\n        return dp[n][goal];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n * goal)\nspace complexity: O(n * goal)\nenergy implications: MEDIUM\nexplanation: This solution uses dynamic programming to count the number of valid playlists. The key idea is to define `dp[i][j]` as the number of playlists of length `j` using exactly `i` unique songs. We build the solution by considering two cases: adding a new song or repeating a song (only if `k` other songs have been played). The recurrence relation ensures all constraints are met efficiently.",
+  "code": "class Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        final int MOD = 1000000007;\n        int[][] dp = new int[n + 1][goal + 1];\n\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= goal; j++) {\n                dp[i][j] = dp[i - 1][j - 1] % MOD; // Add a new song\n                if (i > k) {\n                    dp[i][j] = (dp[i][j] + (long) dp[i][j - 1] * (i - k)) % MOD); // Repeat a song\n                }\n            }\n        }\n        return dp[n][goal];\n    }\n}",
+  "timestamp": "2025-08-06T15:26:48.526906",
+  "code_extracted_previous": "class Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        final int MOD = 1000000007;\n        int[][] dp = new int[n + 1][goal + 1];\n\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= goal; j++) {\n                dp[i][j] = dp[i - 1][j - 1] % MOD; // Add a new song\n                if (i > k) {\n                    dp[i][j] = (dp[i][j] + (long) dp[i][j - 1] * (i - k)) % MOD); // Repeat a song\n                }\n            }\n        }\n        return dp[n][goal];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:03.772533"
+}

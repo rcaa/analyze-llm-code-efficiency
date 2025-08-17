@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        int res = 0;\n        int n = answerKey.size();\n        for (char c : {'T', 'F'}) {\n            int left = 0, remain = k;\n            for (int right = 0; right < n; right++) {\n                if (answerKey[right] != c) remain--;\n                while (remain < 0) {\n                    if (answerKey[left] != c) remain++;\n                    left++;\n                }\n                res = max(res, right - left + 1);\n            }\n        }\n        return res;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to track the maximum number of consecutive answers that can be achieved by changing at most k answers. It iterates over the string twice, once for 'T' and once for 'F', and maintains a window of consecutive answers that can be achieved within the given limit of k changes. The maximum length of this window is updated at each step to keep track of the maximum number of consecutive answers that can be achieved.",
+  "code": "class Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        int res = 0;\n        int n = answerKey.size();\n        for (char c : {'T', 'F'}) {\n            int left = 0, remain = k;\n            for (int right = 0; right < n; right++) {\n                if (answerKey[right] != c) remain--;\n                while (remain < 0) {\n                    if (answerKey[left] != c) remain++;\n                    left++;\n                }\n                res = max(res, right - left + 1);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:57:16.866094",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        int res = 0;\n        int n = answerKey.size();\n        for (char c : {'T', 'F'}) {\n            int left = 0, remain = k;\n            for (int right = 0; right < n; right++) {\n                if (answerKey[right] != c) remain--;\n                while (remain < 0) {\n                    if (answerKey[left] != c) remain++;\n                    left++;\n                }\n                res = max(res, right - left + 1);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.969664"
+}

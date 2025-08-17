@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int findKthNumber(int n, int k) {\n        long cur = 1;\n        k--;\n        while (k > 0) {\n            long step = 0, first = cur, last = cur + 1;\n            while (first <= n) {\n                step += Math.min(n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k >= step) {\n                k -= step;\n                cur++;\n            } else {\n                k--;\n                cur *= 10;\n            }\n        }\n        return (int) cur;\n    }\n}\nefficiency: HIGH\ntime complexity: O(log(n) + log(k))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a trie-like approach to traverse numbers in lexicographical order, efficiently calculating the number of nodes (step) between the current number and the next number at the same level, and decides whether to move to the next number or go deeper based on k and step.\n```",
+  "code": "class Solution {\n    public int findKthNumber(int n, int k) {\n        long cur = 1;\n        k--;\n        while (k > 0) {\n            long step = 0, first = cur, last = cur + 1;\n            while (first <= n) {\n                step += Math.min(n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k >= step) {\n                k -= step;\n                cur++;\n            } else {\n                k--;\n                cur *= 10;\n            }\n        }\n        return (int) cur;\n    }\n}\nefficiency: HIGH\ntime complexity: O(log(n) + log(k))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a trie-like approach to traverse numbers in lexicographical order, efficiently calculating the number of nodes (step) between the current number and the next number at the same level, and decides whether to move to the next number or go deeper based on k and step.",
+  "timestamp": "2025-08-06T01:11:42.041713",
+  "code_extracted_previous": "class Solution {\n    public int findKthNumber(int n, int k) {\n        long cur = 1;\n        k--;\n        while (k > 0) {\n            long step = 0, first = cur, last = cur + 1;\n            while (first <= n) {\n                step += Math.min(n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k >= step) {\n                k -= step;\n                cur++;\n            } else {\n                k--;\n                cur *= 10;\n            }\n        }\n        return (int) cur;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.915294"
+}

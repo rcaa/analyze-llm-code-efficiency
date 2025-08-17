@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    bool checkInclusion(string s1, string s2) {\n        if (s1.length() > s2.length()) return false;\n        vector<int> s1_count(26, 0);\n        vector<int> s2_count(26, 0);\n        \n        for (int i = 0; i < s1.length(); i++) {\n            s1_count[s1[i] - 'a']++;\n            s2_count[s2[i] - 'a']++;\n        }\n        \n        if (s1_count == s2_count) return true;\n        \n        for (int i = s1.length(); i < s2.length(); i++) {\n            s2_count[s2[i] - 'a']++;\n            s2_count[s2[i - s1.length()] - 'a']--;\n            if (s1_count == s2_count) return true;\n        }\n        \n        return false;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with two frequency arrays to efficiently compare the characters in the two strings, allowing it to determine if a permutation of s1 exists in s2 in linear time.",
+  "code": "class Solution {\npublic:\n    bool checkInclusion(string s1, string s2) {\n        if (s1.length() > s2.length()) return false;\n        vector<int> s1_count(26, 0);\n        vector<int> s2_count(26, 0);\n        \n        for (int i = 0; i < s1.length(); i++) {\n            s1_count[s1[i] - 'a']++;\n            s2_count[s2[i] - 'a']++;\n        }\n        \n        if (s1_count == s2_count) return true;\n        \n        for (int i = s1.length(); i < s2.length(); i++) {\n            s2_count[s2[i] - 'a']++;\n            s2_count[s2[i - s1.length()] - 'a']--;\n            if (s1_count == s2_count) return true;\n        }\n        \n        return false;\n    }\n};",
+  "timestamp": "2025-08-06T15:11:30.855062",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool checkInclusion(string s1, string s2) {\n        if (s1.length() > s2.length()) return false;\n        vector<int> s1_count(26, 0);\n        vector<int> s2_count(26, 0);\n        \n        for (int i = 0; i < s1.length(); i++) {\n            s1_count[s1[i] - 'a']++;\n            s2_count[s2[i] - 'a']++;\n        }\n        \n        if (s1_count == s2_count) return true;\n        \n        for (int i = s1.length(); i < s2.length(); i++) {\n            s2_count[s2[i] - 'a']++;\n            s2_count[s2[i - s1.length()] - 'a']--;\n            if (s1_count == s2_count) return true;\n        }\n        \n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.952811"
+}

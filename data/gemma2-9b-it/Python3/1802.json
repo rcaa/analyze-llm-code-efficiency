@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maxValue(self, n: int, index: int, maxSum: int) -> int:\n        nums = [0] * n\n        left_sum = 0\n        right_sum = maxSum - left_sum\n        for i in range(n):\n            if i == index:\n                nums[i] = min(right_sum, maxSum - left_sum)\n            else:\n                nums[i] = min(left_sum + 1, right_sum - 1)\n            if i < index:\n                left_sum += nums[i]\n            else:\n                right_sum -= nums[i]\n        return nums[index]\n```\nsolution: ```python\nclass Solution:\n    def maxValue(self, n: int, index: int, maxSum: int) -> int:\n        nums = [0] * n\n        left_sum = 0\n        right_sum = maxSum - left_sum\n        for i in range(n):\n            if i == index:\n                nums[i] = min(right_sum, maxSum - left_sum)\n            else:\n                nums[i] = min(left_sum + 1, right_sum - 1)\n            if i < index:\n                left_sum += nums[i]\n            else:\n                right_sum -= nums[i]\n        return nums[index]\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the array, calculating the optimal value for each element based on the constraints and maximizing the value at the given index. It utilizes a two-pointer approach to efficiently manage the sum on both sides of the target index.",
+  "code": "solution:",
+  "timestamp": "2025-08-06T01:56:09.800065",
+  "code_extracted_previous": "class Solution:\n    def maxValue(self, n: int, index: int, maxSum: int) -> int:\n        nums = [0] * n\n        left_sum = 0\n        right_sum = maxSum - left_sum\n        for i in range(n):\n            if i == index:\n                nums[i] = min(right_sum, maxSum - left_sum)\n            else:\n                nums[i] = min(left_sum + 1, right_sum - 1)\n            if i < index:\n                left_sum += nums[i]\n            else:\n                right_sum -= nums[i]\n        return nums[index]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.039261"
+}

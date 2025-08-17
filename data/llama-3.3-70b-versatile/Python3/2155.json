@@ -1,0 +1,15 @@
+{
+  "id": 2155,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        n = len(nums)\n        max_score = 0\n        result = []\n        for i in range(n + 1):\n            left_zeros = nums[:i].count(0)\n            right_ones = nums[i:].count(1)\n            score = left_zeros + right_ones\n            if score > max_score:\n                max_score = score\n                result = [i]\n            elif score == max_score:\n                result.append(i)\n        return result\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over all possible division indices, calculates the division score for each index, and keeps track of the indices with the maximum score. It uses a simple and efficient approach to count the zeros in the left array and the ones in the right array.",
+  "code": "def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        n = len(nums)\n        max_score = 0\n        result = []\n        for i in range(n + 1):\n            left_zeros = nums[:i].count(0)\n            right_ones = nums[i:].count(1)\n            score = left_zeros + right_ones\n            if score > max_score:\n                max_score = score\n                result = [i]\n            elif score == max_score:\n                result.append(i)\n        return result\n```",
+  "timestamp": "2025-08-06T15:17:39.394918",
+  "code_extracted_previous": "class Solution:\n    def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        n = len(nums)\n        max_score = 0\n        result = []\n        for i in range(n + 1):\n            left_zeros = nums[:i].count(0)\n            right_ones = nums[i:].count(1)\n            score = left_zeros + right_ones\n            if score > max_score:\n                max_score = score\n                result = [i]\n            elif score == max_score:\n                result.append(i)\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.068809"
+}

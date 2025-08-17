@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        final int MOD = (int) (1e9 + 7);\n        long[][] dp = new long[goal + 1][n + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            for (int j = 1; j <= Math.min(i, n); j++) {\n                dp[i][j] = (dp[i - 1][j - 1] * (n - j + 1) + dp[i - 1][j] * Math.max(j - k, 0)) % MOD;\n            }\n        }\n        return (int) dp[goal][n];\n    }\n}\nefficiency: HIGH\ntime complexity: O(goal * n)\nspace complexity: O(goal * n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently compute the number of possible playlists by breaking down the problem into smaller subproblems and storing their results to avoid redundant computation.\n```",
+  "code": "class Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        final int MOD = (int) (1e9 + 7);\n        long[][] dp = new long[goal + 1][n + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            for (int j = 1; j <= Math.min(i, n); j++) {\n                dp[i][j] = (dp[i - 1][j - 1] * (n - j + 1) + dp[i - 1][j] * Math.max(j - k, 0)) % MOD;\n            }\n        }\n        return (int) dp[goal][n];\n    }\n}\nefficiency: HIGH\ntime complexity: O(goal * n)\nspace complexity: O(goal * n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently compute the number of possible playlists by breaking down the problem into smaller subproblems and storing their results to avoid redundant computation.",
+  "timestamp": "2025-08-05T15:18:17.421517",
+  "code_extracted_previous": "class Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        final int MOD = (int) (1e9 + 7);\n        long[][] dp = new long[goal + 1][n + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            for (int j = 1; j <= Math.min(i, n); j++) {\n                dp[i][j] = (dp[i - 1][j - 1] * (n - j + 1) + dp[i - 1][j] * Math.max(j - k, 0)) % MOD;\n            }\n        }\n        return (int) dp[goal][n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:47.173045"
+}

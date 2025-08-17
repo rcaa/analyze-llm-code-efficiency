@@ -1,0 +1,15 @@
+{
+  "id": 1540,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        int diff[26] = {0};\n        for (int i = 0; i < s.size(); i++) {\n            int d = (t[i] - s[i] + 26) % 26;\n            diff[d]++;\n        }\n        for (int i = 1; i <= 26; i++) {\n            if (diff[i]) {\n                if (k < i) return false;\n                k -= i;\n            }\n        }\n        return true;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution works by first checking if the two strings have the same length. If not, it immediately returns false. Then, it calculates the differences between the characters at the same positions in the two strings, and counts the occurrences of each difference. Finally, it checks if it's possible to make the required shifts within the given number of moves k.",
+  "code": "class Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        int diff[26] = {0};\n        for (int i = 0; i < s.size(); i++) {\n            int d = (t[i] - s[i] + 26) % 26;\n            diff[d]++;\n        }\n        for (int i = 1; i <= 26; i++) {\n            if (diff[i]) {\n                if (k < i) return false;\n                k -= i;\n            }\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-05T15:07:39.905494",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        int diff[26] = {0};\n        for (int i = 0; i < s.size(); i++) {\n            int d = (t[i] - s[i] + 26) % 26;\n            diff[d]++;\n        }\n        for (int i = 1; i <= 26; i++) {\n            if (diff[i]) {\n                if (k < i) return false;\n                k -= i;\n            }\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.797530"
+}

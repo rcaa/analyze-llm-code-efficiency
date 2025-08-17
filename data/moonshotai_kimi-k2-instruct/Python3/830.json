@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def largeGroupPositions(self, s: str) -> List[List[int]]:\n        if not s:\n            return []\n        res = []\n        start = 0\n        for i in range(1, len(s)):\n            if s[i] != s[start]:\n                if i - start >= 3:\n                    res.append([start, i - 1])\n                start = i\n        if len(s) - start >= 3:\n            res.append([start, len(s) - 1])\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass scans the string while tracking the start of each group; when a character change is detected, the current group's length is checked and the interval is recorded if it is large. The final group is handled after the loop.",
+  "code": "class Solution:\n    def largeGroupPositions(self, s: str) -> List[List[int]]:\n        if not s:\n            return []\n        res = []\n        start = 0\n        for i in range(1, len(s)):\n            if s[i] != s[start]:\n                if i - start >= 3:\n                    res.append([start, i - 1])\n                start = i\n        if len(s) - start >= 3:\n            res.append([start, len(s) - 1])\n        return res",
+  "timestamp": "2025-08-05T23:38:56.330764",
+  "code_extracted_previous": "class Solution:\n    def largeGroupPositions(self, s: str) -> List[List[int]]:\n        if not s:\n            return []\n        res = []\n        start = 0\n        for i in range(1, len(s)):\n            if s[i] != s[start]:\n                if i - start >= 3:\n                    res.append([start, i - 1])\n                start = i\n        if len(s) - start >= 3:\n            res.append([start, len(s) - 1])\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.518039"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3007,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```python\nclass Solution:\n    def findMaximumNumber(self, k: int, x: int) -> int:\n        num_list = [i for i in range(1, k+1) if (1 << i) & (1 << x)]\n        result = 0\n        for num in num_list:\n            price = 0\n            for i in range(1, k+1):\n                price += (1 << i) & num\n            if price <= k:\n                result = max(result, num)\n        return result\n```\n\nefficiency:\n\nEfficiency: HIGH\nTime complexity: O(n)\nSpace complexity: O(n)\nEnergy implications: LOW\n\nExplanation:\n\n1. Create a list of numbers from 1 to k using list comprehension.\n2. Iterate through the list of numbers and calculate the price for each number.\n3. Check if the price is less than or equal to k.\n4. Update the maximum result if the current number has a higher price.\n5. Return the maximum result. ",
+  "code": "class Solution:\n    def findMaximumNumber(self, k: int, x: int) -> int:\n        num_list = [i for i in range(1, k+1) if (1 << i) & (1 << x)]\n        result = 0\n        for num in num_list:\n            price = 0\n            for i in range(1, k+1):\n                price += (1 << i) & num\n            if price <= k:\n                result = max(result, num)\n        return result",
+  "timestamp": "2025-08-05T13:46:46.816198",
+  "code_extracted_previous": "class Solution:\n    def findMaximumNumber(self, k: int, x: int) -> int:\n        num_list = [i for i in range(1, k+1) if (1 << i) & (1 << x)]\n        result = 0\n        for num in num_list:\n            price = 0\n            for i in range(1, k+1):\n                price += (1 << i) & num\n            if price <= k:\n                result = max(result, num)\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:15.814927"
+}

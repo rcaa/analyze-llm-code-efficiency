@@ -1,0 +1,15 @@
+{
+  "id": 1825,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass MKAverage {\npublic:\n    int m, k;\n    deque<int> dq;\n    MKAverage(int m, int k) : m(m), k(k) {}\n    \n    void addElement(int num) {\n        dq.push_back(num);\n        if (dq.size() > m) dq.pop_front();\n    }\n    \n    int calculateMKAverage() {\n        if (dq.size() < m) return -1;\n        vector<int> v(dq.begin(), dq.end());\n        sort(v.begin(), v.end());\n        int sum = 0;\n        for (int i = k; i < m - k; i++) sum += v[i];\n        return sum / (m - 2 * k);\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(m log m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution uses a deque to store the last m elements and calculates the MKAverage by sorting the deque and summing the middle elements. The time complexity is O(m log m) due to sorting, and the space complexity is O(m) for storing the deque. The energy implications are low since the solution only uses a single data structure and performs a constant number of operations.",
+  "code": "class MKAverage {\npublic:\n    int m, k;\n    deque<int> dq;\n    MKAverage(int m, int k) : m(m), k(k) {}\n    \n    void addElement(int num) {\n        dq.push_back(num);\n        if (dq.size() > m) dq.pop_front();\n    }\n    \n    int calculateMKAverage() {\n        if (dq.size() < m) return -1;\n        vector<int> v(dq.begin(), dq.end());\n        sort(v.begin(), v.end());\n        int sum = 0;\n        for (int i = k; i < m - k; i++) sum += v[i];\n        return sum / (m - 2 * k);\n    }\n};",
+  "timestamp": "2025-08-06T08:44:26.743512",
+  "code_extracted_previous": "class MKAverage {\npublic:\n    int m, k;\n    deque<int> dq;\n    MKAverage(int m, int k) : m(m), k(k) {}\n    \n    void addElement(int num) {\n        dq.push_back(num);\n        if (dq.size() > m) dq.pop_front();\n    }\n    \n    int calculateMKAverage() {\n        if (dq.size() < m) return -1;\n        vector<int> v(dq.begin(), dq.end());\n        sort(v.begin(), v.end());\n        int sum = 0;\n        for (int i = k; i < m - k; i++) sum += v[i];\n        return sum / (m - 2 * k);\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:31.904219"
+}

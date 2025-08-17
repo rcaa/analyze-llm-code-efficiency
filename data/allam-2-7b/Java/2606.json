@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int n = s.length();\n        int[][] dp = new int[n + 1][n + 1];\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= n; j++) {\n                if (s.charAt(i - 1) == chars.charAt(j - 1)) {\n                    dp[i][j] = dp[i - 1][j - 1] + vals[j - 1];\n                } else {\n                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n        return dp[n][n];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n^2)\nenergy implications: LOW\n\nExplanation:\n\nWe use a dynamic programming approach to solve the problem. We create a 2D array (dp) with dimensions (n+1)x(n+1), where n is the length of the string s. We iterate through the string s to fill the dp array. If the characters at positions i-1 and j-1 are the same (indicating a matched pair), we update the value at position (i, j) as the sum of the values at positions (i-1, j) and (i, j-1). Otherwise, we take the maximum value between positions (i-1, j) and (i, j-1). Finally, we return the maximum value from the last row of the dp array, which represents the maximum cost of the substring.\n\nThe time complexity is O(n^2), where n is the length of the string s. The space complexity is O(n^2), as we use a 2D array with dimensions (n+1)x(n+1). The energy implications are low, as the algorithm only requires a small amount of energy to run. ",
+  "code": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int n = s.length();\n        int[][] dp = new int[n + 1][n + 1];\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= n; j++) {\n                if (s.charAt(i - 1) == chars.charAt(j - 1)) {\n                    dp[i][j] = dp[i - 1][j - 1] + vals[j - 1];\n                } else {\n                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n        return dp[n][n];\n    }\n}",
+  "timestamp": "2025-08-05T13:33:20.815486",
+  "code_extracted_previous": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int n = s.length();\n        int[][] dp = new int[n + 1][n + 1];\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= n; j++) {\n                if (s.charAt(i - 1) == chars.charAt(j - 1)) {\n                    dp[i][j] = dp[i - 1][j - 1] + vals[j - 1];\n                } else {\n                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n        return dp[n][n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.297276"
+}

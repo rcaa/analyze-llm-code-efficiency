@@ -1,0 +1,15 @@
+{
+  "id": 481,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int magicalString(int n) {\n        if (n == 0) return 0;\n        if (n <= 3) return 1;\n        int[] s = new int[n];\n        s[0] = 1;\n        s[1] = 2;\n        s[2] = 2;\n        int idx = 2;\n        int tail = 3;\n        int count = 1;\n        while (tail < n) {\n            int size = s[idx];\n            int num = 3 - s[tail - 1];\n            for (int i = 0; i < size && tail < n; i++) {\n                s[tail] = num;\n                if (num == 1) count++;\n                tail++;\n            }\n            idx++;\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Build the magical string iteratively using the self-referential rule: the value at index i tells how many times the next alternating digit (1 or 2) should be appended. Track the count of 1s while generating the first n characters.",
+  "code": "class Solution {\n    public int magicalString(int n) {\n        if (n == 0) return 0;\n        if (n <= 3) return 1;\n        int[] s = new int[n];\n        s[0] = 1;\n        s[1] = 2;\n        s[2] = 2;\n        int idx = 2;\n        int tail = 3;\n        int count = 1;\n        while (tail < n) {\n            int size = s[idx];\n            int num = 3 - s[tail - 1];\n            for (int i = 0; i < size && tail < n; i++) {\n                s[tail] = num;\n                if (num == 1) count++;\n                tail++;\n            }\n            idx++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T01:37:08.213241",
+  "code_extracted_previous": "public int magicalString(int n) {\n        if (n == 0) return 0;\n        if (n <= 3) return 1;\n        int[] s = new int[n];\n        s[0] = 1;\n        s[1] = 2;\n        s[2] = 2;\n        int idx = 2;\n        int tail = 3;\n        int count = 1;\n        while (tail < n) {\n            int size = s[idx];\n            int num = 3 - s[tail - 1];\n            for (int i = 0; i < size && tail < n; i++) {\n                s[tail] = num;\n                if (num == 1) count++;\n                tail++;\n            }\n            idx++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.588140"
+}

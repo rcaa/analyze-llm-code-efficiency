@@ -1,0 +1,15 @@
+{
+  "id": 470,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```\nclass Solution extends SolBase {\n    public int rand10() {\n        int num;\n        do {\n            int r1 = rand7();\n            int r2 = rand7();\n            num = (r1 - 1) * 7 + r2; // 1..49 uniform\n        } while (num > 40);         // reject 41..49\n        return (num - 1) % 10 + 1;  // 1..10 uniform\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1) expected\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses rejection sampling on a 7×7 grid (49 outcomes) to map 40 equally-likely values to 1..10. Rejection rate 9/49 keeps expected calls to ~2.45 per rand10(), minimizing energy use.",
+  "code": "class Solution extends SolBase {\n    public int rand10() {\n        int num;\n        do {\n            int r1 = rand7();\n            int r2 = rand7();\n            num = (r1 - 1) * 7 + r2; // 1..49 uniform\n        } while (num > 40);         // reject 41..49\n        return (num - 1) % 10 + 1;  // 1..10 uniform\n    }\n}",
+  "timestamp": "2025-08-06T02:32:05.967293",
+  "code_extracted_previous": "class Solution extends SolBase {\n    public int rand10() {\n        int num;\n        do {\n            int r1 = rand7();\n            int r2 = rand7();\n            num = (r1 - 1) * 7 + r2; // 1..49 uniform\n        } while (num > 40);         // reject 41..49\n        return (num - 1) % 10 + 1;  // 1..10 uniform\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.576061"
+}

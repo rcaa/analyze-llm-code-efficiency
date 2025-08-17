@@ -1,0 +1,15 @@
+{
+  "id": 2071,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {\n        sort(tasks.rbegin(), tasks.rend());\n        sort(workers.rbegin(), workers.rend());\n        int i = 0, j = 0, ans = 0;\n        while (i < tasks.size() && j < workers.size()) {\n            if (workers[j] >= tasks[i]) {\n                if (pills > 0) {\n                    pills--;\n                    j++;\n                    i++;\n                    ans++;\n                } else {\n                    j++;\n                }\n            } else {\n                i++;\n            }\n        }\n        return ans;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {\n        sort(tasks.rbegin(), tasks.rend());\n        sort(workers.rbegin(), workers.rend());\n        int i = 0, j = 0, ans = 0;\n        while (i < tasks.size() && j < workers.size()) {\n            if (workers[j] >= tasks[i]) {\n                if (pills > 0) {\n                    pills--;\n                    j++;\n                    i++;\n                    ans++;\n                } else {\n                    j++;\n                }\n            } else {\n                i++;\n            }\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T12:01:27.274266",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {\n        sort(tasks.rbegin(), tasks.rend());\n        sort(workers.rbegin(), workers.rend());\n        int i = 0, j = 0, ans = 0;\n        while (i < tasks.size() && j < workers.size()) {\n            if (workers[j] >= tasks[i]) {\n                if (pills > 0) {\n                    pills--;\n                    j++;\n                    i++;\n                    ans++;\n                } else {\n                    j++;\n                }\n            } else {\n                i++;\n            }\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.689630"
+}

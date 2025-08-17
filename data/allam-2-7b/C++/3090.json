@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        int count[256] = {0}; // 256 is the number of characters in the ASCII table\n        int max_length = 0;\n        int start = 0;\n\n        for (int i = 0; i < s.length(); i++) {\n            int char_index = s[i] - 'a'; // convert character to ASCII value\n            count[char_index]++;\n\n            if (count[char_index] > 2) {\n                count[char_index]--;\n                start = i + 1;\n            }\n\n            max_length = max(max_length, i - start + 1);\n        }\n\n        return max_length;\n    }\n};```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\nWe use a 256-element array to store the count of each character in the string. We iterate through the string and update the count for each character. If the count exceeds 2, we reset the count and update the starting index for the next iteration. Finally, we keep track of the maximum length of the substring found so far and return it. The time complexity is O(n) because we iterate through the string once. The space complexity is O(1) because we only use a fixed-size array for the count. The energy implications are low because the algorithm only requires a small amount of energy to run. ",
+  "code": "class Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        int count[256] = {0}; // 256 is the number of characters in the ASCII table\n        int max_length = 0;\n        int start = 0;\n\n        for (int i = 0; i < s.length(); i++) {\n            int char_index = s[i] - 'a'; // convert character to ASCII value\n            count[char_index]++;\n\n            if (count[char_index] > 2) {\n                count[char_index]--;\n                start = i + 1;\n            }\n\n            max_length = max(max_length, i - start + 1);\n        }\n\n        return max_length;\n    }\n};",
+  "timestamp": "2025-08-05T14:49:13.038809",
+  "code_extracted_previous": "public:\n    int maximumLengthSubstring(string s) {\n        int count[256] = {0}; // 256 is the number of characters in the ASCII table\n        int max_length = 0;\n        int start = 0;\n\n        for (int i = 0; i < s.length(); i++) {\n            int char_index = s[i] - 'a'; // convert character to ASCII value\n            count[char_index]++;\n\n            if (count[char_index] > 2) {\n                count[char_index]--;\n                start = i + 1;\n            }\n\n            max_length = max(max_length, i - start + 1);\n        }\n\n        return max_length;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.655683"
+}

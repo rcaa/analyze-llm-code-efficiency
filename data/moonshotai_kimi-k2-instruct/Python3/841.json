@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        n = len(rooms)\n        seen = [False] * n\n        stack = [0]\n        seen[0] = True\n        while stack:\n            room = stack.pop()\n            for key in rooms[room]:\n                if not seen[key]:\n                    seen[key] = True\n                    stack.append(key)\n        return all(seen)\n```\nefficiency: HIGH\ntime complexity: O(N + K) where N is the number of rooms and K is the total number of keys\nspace complexity: O(N) for the seen array and stack\nenergy implications: LOW\nexplanation: Uses iterative DFS with a stack to traverse all reachable rooms from room 0, marking each visited room. After traversal, checks if every room was visited.",
+  "code": "class Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        n = len(rooms)\n        seen = [False] * n\n        stack = [0]\n        seen[0] = True\n        while stack:\n            room = stack.pop()\n            for key in rooms[room]:\n                if not seen[key]:\n                    seen[key] = True\n                    stack.append(key)\n        return all(seen)",
+  "timestamp": "2025-08-05T14:00:46.602717",
+  "code_extracted_previous": "class Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        n = len(rooms)\n        seen = [False] * n\n        stack = [0]\n        seen[0] = True\n        while stack:\n            room = stack.pop()\n            for key in rooms[room]:\n                if not seen[key]:\n                    seen[key] = True\n                    stack.append(key)\n        return all(seen)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.557913"
+}

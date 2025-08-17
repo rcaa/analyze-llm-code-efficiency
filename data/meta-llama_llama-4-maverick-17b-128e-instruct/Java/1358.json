@@ -1,0 +1,15 @@
+{
+  "id": 1358,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int numberOfSubstrings(String s) {\n        int[] count = new int[3];\n        int res = 0, left = 0;\n        for (int right = 0; right < s.length(); right++) {\n            count[s.charAt(right) - 'a']++;\n            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {\n                res += s.length() - right;\n                count[s.charAt(left++) - 'a']--;\n            }\n        }\n        return res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with two pointers, maintaining a count of characters 'a', 'b', and 'c' within the current window. When all three characters are present, it calculates the number of valid substrings ending at the current 'right' index and updates the result accordingly.\n```",
+  "code": "class Solution {\n    public int numberOfSubstrings(String s) {\n        int[] count = new int[3];\n        int res = 0, left = 0;\n        for (int right = 0; right < s.length(); right++) {\n            count[s.charAt(right) - 'a']++;\n            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {\n                res += s.length() - right;\n                count[s.charAt(left++) - 'a']--;\n            }\n        }\n        return res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with two pointers, maintaining a count of characters 'a', 'b', and 'c' within the current window. When all three characters are present, it calculates the number of valid substrings ending at the current 'right' index and updates the result accordingly.",
+  "timestamp": "2025-08-05T15:02:02.982476",
+  "code_extracted_previous": "class Solution {\n    public int numberOfSubstrings(String s) {\n        int[] count = new int[3];\n        int res = 0, left = 0;\n        for (int right = 0; right < s.length(); right++) {\n            count[s.charAt(right) - 'a']++;\n            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {\n                res += s.length() - right;\n                count[s.charAt(left++) - 'a']--;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.223712"
+}

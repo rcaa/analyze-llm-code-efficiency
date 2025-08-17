@@ -1,0 +1,15 @@
+{
+  "id": 970,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> powerful_nums;\n        for (long long i = 0, num_x = 1; num_x <= bound; ++i, num_x *= x) {\n            for (long long j = 0, num_y = 1; num_y <= bound; ++j, num_y *= y) {\n                int sum = num_x + num_y;\n                if (sum <= bound) {\n                    powerful_nums.insert(sum);\n                }\n                if (y == 1) break;\n            }\n            if (x == 1) break;\n        }\n        return vector<int>(powerful_nums.begin(), powerful_nums.end());\n    }\n};\nefficiency: HIGH\ntime complexity: O(log(bound) * log(bound))\nspace complexity: O(log(bound) * log(bound))\nenergy implications: LOW\nexplanation: The solution iterates through possible values of x^i and y^j, storing unique sums in an unordered_set to avoid duplicates, and finally returns the set as a vector. It handles edge cases where x or y equals 1. \n```",
+  "code": "class Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> powerful_nums;\n        for (long long i = 0, num_x = 1; num_x <= bound; ++i, num_x *= x) {\n            for (long long j = 0, num_y = 1; num_y <= bound; ++j, num_y *= y) {\n                int sum = num_x + num_y;\n                if (sum <= bound) {\n                    powerful_nums.insert(sum);\n                }\n                if (y == 1) break;\n            }\n            if (x == 1) break;\n        }\n        return vector<int>(powerful_nums.begin(), powerful_nums.end());\n    }\n};\nefficiency: HIGH\ntime complexity: O(log(bound) * log(bound))\nspace complexity: O(log(bound) * log(bound))\nenergy implications: LOW\nexplanation: The solution iterates through possible values of x^i and y^j, storing unique sums in an unordered_set to avoid duplicates, and finally returns the set as a vector. It handles edge cases where x or y equals 1.",
+  "timestamp": "2025-08-05T14:57:08.481498",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> powerful_nums;\n        for (long long i = 0, num_x = 1; num_x <= bound; ++i, num_x *= x) {\n            for (long long j = 0, num_y = 1; num_y <= bound; ++j, num_y *= y) {\n                int sum = num_x + num_y;\n                if (sum <= bound) {\n                    powerful_nums.insert(sum);\n                }\n                if (y == 1) break;\n            }\n            if (x == 1) break;\n        }\n        return vector<int>(powerful_nums.begin(), powerful_nums.end());\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.945870"
+}

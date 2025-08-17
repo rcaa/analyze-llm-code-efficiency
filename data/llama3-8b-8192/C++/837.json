@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        double res = 0.0;\n        double sum = 0.0;\n        for (int i = k; i <= n; i++) {\n            sum += 1.0;\n            if (i <= k + maxPts) {\n                sum += (i - k + 1);\n            }\n        }\n        if (k > 0) {\n            res = sum / (1.0 + maxPts);\n        } else {\n            res = 1.0;\n        }\n        for (int i = k - 1; i >= 1; i--) {\n            sum -= (i - k + 1);\n            res += sum / (1.0 + maxPts);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a prefix sum approach to calculate the probability. It first calculates the sum of probabilities for all possible scores from k to n, then adjusts the sum for scores from 1 to k-1. The final result is the sum of probabilities for all possible scores divided by the total number of possible scores.",
+  "code": "class Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        double res = 0.0;\n        double sum = 0.0;\n        for (int i = k; i <= n; i++) {\n            sum += 1.0;\n            if (i <= k + maxPts) {\n                sum += (i - k + 1);\n            }\n        }\n        if (k > 0) {\n            res = sum / (1.0 + maxPts);\n        } else {\n            res = 1.0;\n        }\n        for (int i = k - 1; i >= 1; i--) {\n            sum -= (i - k + 1);\n            res += sum / (1.0 + maxPts);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:45:20.269358",
+  "code_extracted_previous": "class Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        double res = 0.0;\n        double sum = 0.0;\n        for (int i = k; i <= n; i++) {\n            sum += 1.0;\n            if (i <= k + maxPts) {\n                sum += (i - k + 1);\n            }\n        }\n        if (k > 0) {\n            res = sum / (1.0 + maxPts);\n        } else {\n            res = 1.0;\n        }\n        for (int i = k - 1; i >= 1; i--) {\n            sum -= (i - k + 1);\n            res += sum / (1.0 + maxPts);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.683798"
+}

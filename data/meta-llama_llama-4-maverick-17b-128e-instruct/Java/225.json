@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass MyStack {\n    private java.util.Queue<Integer> q1;\n    private java.util.Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new java.util.LinkedList<>();\n        q2 = new java.util.LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        java.util.Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}\n\nsolution: The provided Java code implements the MyStack class.\nefficiency: HIGH\ntime complexity: O(N) for push, O(1) for pop, top, and empty\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses two queues to implement a stack. The push operation involves moving all elements from one queue to the other, then swapping the queues, resulting in the newly added element being at the front. The pop, top, and empty operations are straightforward queue operations. \n```",
+  "code": "The provided Java code implements the MyStack class.",
+  "timestamp": "2025-08-05T16:00:27.166631",
+  "code_extracted_previous": "class MyStack {\n    private java.util.Queue<Integer> q1;\n    private java.util.Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new java.util.LinkedList<>();\n        q2 = new java.util.LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        java.util.Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:46.499470"
+}

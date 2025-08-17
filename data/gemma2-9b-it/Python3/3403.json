@@ -1,0 +1,15 @@
+{
+  "id": 3403,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def answerString(self, word: str, numFriends: int) -> str:\n        def backtrack(index, current):\n            if index == len(word):\n                return current\n            for i in range(index + 1, len(word) + 1, numFriends):\n                current += word[index:i]\n                result = backtrack(i, current)\n                if result:\n                    return result\n                current = current[:-len(word[index:i])]\n            return None\n        return backtrack(0, \"\")\n```\n\nsolution: \n```python\nclass Solution:\n    def answerString(self, word: str, numFriends: int) -> str:\n        def backtrack(index, current):\n            if index == len(word):\n                return current\n            for i in range(index + 1, len(word) + 1, numFriends):\n                current += word[index:i]\n                result = backtrack(i, current)\n                if result:\n                    return result\n                current = current[:-len(word[index:i])]\n            return None\n        return backtrack(0, \"\")\n```\nefficiency: HIGH\ntime complexity: O(n * 2^(n/k))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a recursive backtracking approach to explore all possible splits of the word. It iteratively splits the word into substrings of length `numFriends` and recursively calls itself to explore further splits. The lexicographically largest string is returned when all splits have been explored. The time complexity is exponential due to the branching nature of the backtracking, while the space complexity is linear due to the recursive call stack.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T21:55:06.464375",
+  "code_extracted_previous": "class Solution:\n    def answerString(self, word: str, numFriends: int) -> str:\n        def backtrack(index, current):\n            if index == len(word):\n                return current\n            for i in range(index + 1, len(word) + 1, numFriends):\n                current += word[index:i]\n                result = backtrack(i, current)\n                if result:\n                    return result\n                current = current[:-len(word[index:i])]\n            return None\n        return backtrack(0, \"\")",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.712138"
+}

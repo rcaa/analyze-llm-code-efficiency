@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class StockSpanner {\n    private final Deque<int[]> stack;\n\n    public StockSpanner() {\n        stack = new ArrayDeque<>();\n    }\n    \n    public int next(int price) {\n        int span = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            span += stack.pop()[1];\n        }\n        stack.push(new int[]{price, span});\n        return span;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1) amortized per next call, O(N) worst-case for N calls\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses a monotonic stack to store (price, span) pairs. Each price is pushed and popped at most once, giving amortized O(1) per next call. The stack collapses consecutive smaller prices into a single entry, avoiding repeated scans.",
+  "code": "class StockSpanner {\n    private final Deque<int[]> stack;\n\n    public StockSpanner() {\n        stack = new ArrayDeque<>();\n    }\n    \n    public int next(int price) {\n        int span = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            span += stack.pop()[1];\n        }\n        stack.push(new int[]{price, span});\n        return span;\n    }\n}",
+  "timestamp": "2025-08-06T02:32:25.563840",
+  "code_extracted_previous": "private final Deque<int[]> stack;\n\n    public StockSpanner() {\n        stack = new ArrayDeque<>();\n    }\n    \n    public int next(int price) {\n        int span = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            span += stack.pop()[1];\n        }\n        stack.push(new int[]{price, span});\n        return span;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:55.896818"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass MyQueue {\npublic:\n    MyQueue() {\n        \n    }\n    \n    void push(int x) {\n        stack1.push(x);\n    }\n    \n    int pop() {\n        while(stack2.empty() || stack2.top() != stack1.top()) {\n            stack2.push(stack1.top());\n            stack1.pop();\n        }\n        int res = stack2.top();\n        stack2.pop();\n        return res;\n    }\n    \n    int peek() {\n        while(stack2.empty() || stack2.top() != stack1.top()) {\n            stack2.push(stack1.top());\n            stack1.pop();\n        }\n        return stack2.top();\n    }\n    \n    bool empty() {\n        return stack1.empty() && stack2.empty();\n    }\nprivate:\n    stack<int> stack1;\n    stack<int> stack2;\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: We use two stacks, stack1 and stack2, to implement the queue. The push operation simply pushes the element onto stack1. The pop and peek operations first move all elements from stack1 to stack2, and then return the top element of stack2. The empty operation checks if both stacks are empty. This approach ensures that each operation takes constant time, and the space complexity is linear with respect to the number of elements in the queue.",
+  "code": "class MyQueue {\npublic:\n    MyQueue() {\n        \n    }\n    \n    void push(int x) {\n        stack1.push(x);\n    }\n    \n    int pop() {\n        while(stack2.empty() || stack2.top() != stack1.top()) {\n            stack2.push(stack1.top());\n            stack1.pop();\n        }\n        int res = stack2.top();\n        stack2.pop();\n        return res;\n    }\n    \n    int peek() {\n        while(stack2.empty() || stack2.top() != stack1.top()) {\n            stack2.push(stack1.top());\n            stack1.pop();\n        }\n        return stack2.top();\n    }\n    \n    bool empty() {\n        return stack1.empty() && stack2.empty();\n    }\nprivate:\n    stack<int> stack1;\n    stack<int> stack2;\n};",
+  "timestamp": "2025-08-06T01:58:53.507487",
+  "code_extracted_previous": "class MyQueue {\npublic:\n    MyQueue() {\n        \n    }\n    \n    void push(int x) {\n        stack1.push(x);\n    }\n    \n    int pop() {\n        while(stack2.empty() || stack2.top() != stack1.top()) {\n            stack2.push(stack1.top());\n            stack1.pop();\n        }\n        int res = stack2.top();\n        stack2.pop();\n        return res;\n    }\n    \n    int peek() {\n        while(stack2.empty() || stack2.top() != stack1.top()) {\n            stack2.push(stack1.top());\n            stack1.pop();\n        }\n        return stack2.top();\n    }\n    \n    bool empty() {\n        return stack1.empty() && stack2.empty();\n    }\nprivate:\n    stack<int> stack1;\n    stack<int> stack2;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:40.947074"
+}

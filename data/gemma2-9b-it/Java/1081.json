@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String smallestSubsequence(String s) {\n        Stack<Character> stack = new Stack<>();\n        boolean[] seen = new boolean[26];\n        for (char c : s.toCharArray()) {\n            if (seen[c - 'a']) continue;\n            while (!stack.isEmpty() && stack.peek() > c && s.indexOf(stack.peek()) > s.indexOf(c)) {\n                seen[stack.pop() - 'a'] = false;\n            }\n            stack.push(c);\n            seen[c - 'a'] = true;\n        }\n        return stack.toString().replaceAll(\"[^a-z]\", \"\").substring(1, stack.size());\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a stack to build the lexicographically smallest subsequence. It iterates through the string, adding characters to the stack while ensuring that the stack maintains a decreasing order and all distinct characters are included.  The `seen` array tracks visited characters to avoid duplicates.\n",
+  "code": "class Solution {\n    public String smallestSubsequence(String s) {\n        Stack<Character> stack = new Stack<>();\n        boolean[] seen = new boolean[26];\n        for (char c : s.toCharArray()) {\n            if (seen[c - 'a']) continue;\n            while (!stack.isEmpty() && stack.peek() > c && s.indexOf(stack.peek()) > s.indexOf(c)) {\n                seen[stack.pop() - 'a'] = false;\n            }\n            stack.push(c);\n            seen[c - 'a'] = true;\n        }\n        return stack.toString().replaceAll(\"[^a-z]\", \"\").substring(1, stack.size());\n    }\n}",
+  "timestamp": "2025-08-06T00:48:13.407222",
+  "code_extracted_previous": "class Solution {\n    public String smallestSubsequence(String s) {\n        Stack<Character> stack = new Stack<>();\n        boolean[] seen = new boolean[26];\n        for (char c : s.toCharArray()) {\n            if (seen[c - 'a']) continue;\n            while (!stack.isEmpty() && stack.peek() > c && s.indexOf(stack.peek()) > s.indexOf(c)) {\n                seen[stack.pop() - 'a'] = false;\n            }\n            stack.push(c);\n            seen[c - 'a'] = true;\n        }\n        return stack.toString().replaceAll(\"[^a-z]\", \"\").substring(1, stack.size());\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.475241"
+}

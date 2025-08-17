@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass MyStack {\n\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.add(x);\n        while (!q1.isEmpty()) {\n            q2.add(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution uses two queues to simulate a stack. The push operation involves moving all elements from the first queue to the second queue and then adding the new element to the second queue. This effectively reverses the order of the elements, allowing the last element to be at the front of the second queue. The pop operation simply removes the front element from the first queue. The top operation returns the front element of the first queue, and the empty operation checks if the first queue is empty. The time complexity is O(n) for the push operation due to the need to move all elements from one queue to the other.",
+  "code": "class MyStack {\n\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.add(x);\n        while (!q1.isEmpty()) {\n            q2.add(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "timestamp": "2025-08-05T16:01:01.400846",
+  "code_extracted_previous": "class MyStack {\n\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.add(x);\n        while (!q1.isEmpty()) {\n            q2.add(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:29.204729"
+}

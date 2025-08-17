@@ -1,0 +1,15 @@
+{
+  "id": 2716,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int minimizedStringLength(String s) {\n        int res = s.length();\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            int left = i, right = i;\n            while (left >= 0 && s.charAt(left) == c) left--;\n            while (right < s.length() && s.charAt(right) == c) right++;\n            res = Math.min(res, s.length() - (right - left - 1));\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the string once, maintaining two pointers (left and right) to track the closest occurrences of the current character to the left and right. It updates the result with the minimum length obtained by subtracting the distance between the two pointers from the original length.",
+  "code": "class Solution {\n    public int minimizedStringLength(String s) {\n        int res = s.length();\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            int left = i, right = i;\n            while (left >= 0 && s.charAt(left) == c) left--;\n            while (right < s.length() && s.charAt(right) == c) right++;\n            res = Math.min(res, s.length() - (right - left - 1));\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:47:27.759272",
+  "code_extracted_previous": "public int minimizedStringLength(String s) {\n        int res = s.length();\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            int left = i, right = i;\n            while (left >= 0 && s.charAt(left) == c) left--;\n            while (right < s.length() && s.charAt(right) == c) right++;\n            res = Math.min(res, s.length() - (right - left - 1));\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.512358"
+}

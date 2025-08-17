@@ -1,0 +1,15 @@
+{
+  "id": 2048,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int nextBeautifulNumber(int n) {\n        for (int i = n + 1; ; i++) {\n            if (isNumericallyBalanced(i)) {\n                return i;\n            }\n        }\n    }\n\n    private boolean isNumericallyBalanced(int num) {\n        int[] count = new int[10];\n        String str = String.valueOf(num);\n        for (char c : str.toCharArray()) {\n            count[c - '0']++;\n        }\n        for (char c : str.toCharArray()) {\n            if (count[c - '0'] != c - '0') {\n                return false;\n            }\n        }\n        return true;\n    }\n}\n```\nefficiency: MEDIUM\ntime complexity: O(k log k) where k is the next numerically balanced number after n\nspace complexity: O(log k) for storing the count array and converting the number to a string\nenergy implications: LOW\nexplanation: The solution iterates through numbers greater than n until it finds a numerically balanced number. It checks if a number is numerically balanced by counting the occurrences of each digit and comparing them with the digit values.",
+  "code": "class Solution {\n    public int nextBeautifulNumber(int n) {\n        for (int i = n + 1; ; i++) {\n            if (isNumericallyBalanced(i)) {\n                return i;\n            }\n        }\n    }\n\n    private boolean isNumericallyBalanced(int num) {\n        int[] count = new int[10];\n        String str = String.valueOf(num);\n        for (char c : str.toCharArray()) {\n            count[c - '0']++;\n        }\n        for (char c : str.toCharArray()) {\n            if (count[c - '0'] != c - '0') {\n                return false;\n            }\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-05T15:08:31.132282",
+  "code_extracted_previous": "class Solution {\n    public int nextBeautifulNumber(int n) {\n        for (int i = n + 1; ; i++) {\n            if (isNumericallyBalanced(i)) {\n                return i;\n            }\n        }\n    }\n\n    private boolean isNumericallyBalanced(int num) {\n        int[] count = new int[10];\n        String str = String.valueOf(num);\n        for (char c : str.toCharArray()) {\n            count[c - '0']++;\n        }\n        for (char c : str.toCharArray()) {\n            if (count[c - '0'] != c - '0') {\n                return false;\n            }\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.410532"
+}

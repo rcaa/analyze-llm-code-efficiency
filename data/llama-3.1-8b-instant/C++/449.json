@@ -1,0 +1,15 @@
+{
+  "id": 449,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Codec {\npublic:\n\n    // Encodes a tree to a single string.\n    string serialize(TreeNode* root) {\n        if (!root) return \"#\";\n        string res = to_string(root->val) + \",\";\n        res += serialize(root->left);\n        res += serialize(root->right);\n        return res;\n    }\n\n    // Decodes your encoded data to tree.\n    TreeNode* deserialize(string data) {\n        function<TreeNode*(char*)> dfs = [&](char* data) {\n            if (*data == '#') return nullptr;\n            TreeNode* node = new TreeNode(*data);\n            data++;\n            node->left = dfs(data);\n            node->right = dfs(data);\n            return node;\n        };\n        return dfs((char*)data.c_str());\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: This solution uses a depth-first search (DFS) approach to serialize and deserialize the binary search tree. The serialize function traverses the tree in a pre-order manner, appending the node values and commas to the result string. The deserialize function uses a recursive DFS to reconstruct the tree from the serialized string. The use of a function pointer and a lambda function allows for a clean and efficient implementation.",
+  "code": "class Codec {\npublic:\n\n    // Encodes a tree to a single string.\n    string serialize(TreeNode* root) {\n        if (!root) return \"#\";\n        string res = to_string(root->val) + \",\";\n        res += serialize(root->left);\n        res += serialize(root->right);\n        return res;\n    }\n\n    // Decodes your encoded data to tree.\n    TreeNode* deserialize(string data) {\n        function<TreeNode*(char*)> dfs = [&](char* data) {\n            if (*data == '#') return nullptr;\n            TreeNode* node = new TreeNode(*data);\n            data++;\n            node->left = dfs(data);\n            node->right = dfs(data);\n            return node;\n        };\n        return dfs((char*)data.c_str());\n    }\n};",
+  "timestamp": "2025-08-05T16:49:55.707668",
+  "code_extracted_previous": "class Codec {\npublic:\n\n    // Encodes a tree to a single string.\n    string serialize(TreeNode* root) {\n        if (!root) return \"#\";\n        string res = to_string(root->val) + \",\";\n        res += serialize(root->left);\n        res += serialize(root->right);\n        return res;\n    }\n\n    // Decodes your encoded data to tree.\n    TreeNode* deserialize(string data) {\n        function<TreeNode*(char*)> dfs = [&](char* data) {\n            if (*data == '#') return nullptr;\n            TreeNode* node = new TreeNode(*data);\n            data++;\n            node->left = dfs(data);\n            node->right = dfs(data);\n            return node;\n        };\n        return dfs((char*)data.c_str());\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:28.538313"
+}

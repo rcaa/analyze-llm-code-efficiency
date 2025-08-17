@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```c++\n#include <unordered_map>\n#include <string>\n#include <algorithm>\n#include <iostream>\n\nstring frequencySort(string s) {\n    unordered_map<char, int> charFrequency;\n    for (char c : s) {\n        ++charFrequency[c];\n    }\n\n    string result;\n    for (char c : s) {\n        result += charFrequency[c] > 1 ? c : '';\n        charFrequency[c]--;\n    }\n\n    return result;\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\n1. Initialize an unordered_map to store character frequencies.\n2. Iterate over the input string and update the frequency of each character in the map.\n3. Create an empty string result to store the sorted string.\n4. Iterate over the input string again. If the frequency of a character is greater than 1, add it to the result string; otherwise, add an empty string.\n5. Decrease the frequency of the current character in the map.\n6. Return the sorted string.\n\nThis solution has a time complexity of O(n) and space complexity of O(n), where n is the length of the input string. The efficiency is high because we only iterate over the string once and use a constant-time lookup in the map. ",
+  "code": "string frequencySort(string s) {\n    unordered_map<char, int> charFrequency;\n    for (char c : s) {\n        ++charFrequency[c];\n    }\n\n    string result;\n    for (char c : s) {\n        result += charFrequency[c] > 1 ? c : '';\n        charFrequency[c]--;\n    }\n\n    return result;\n}",
+  "timestamp": "2025-08-05T14:54:04.666231",
+  "code_extracted_previous": "#include <unordered_map>\n#include <string>\n#include <algorithm>\n#include <iostream>\n\nstring frequencySort(string s) {\n    unordered_map<char, int> charFrequency;\n    for (char c : s) {\n        ++charFrequency[c];\n    }\n\n    string result;\n    for (char c : s) {\n        result += charFrequency[c] > 1 ? c : '';\n        charFrequency[c]--;\n    }\n\n    return result;\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:12.986304"
+}

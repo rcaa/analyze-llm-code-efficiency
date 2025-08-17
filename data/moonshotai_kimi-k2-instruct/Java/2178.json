@@ -1,0 +1,15 @@
+{
+  "id": 2178,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> res = new ArrayList<>();\n        if ((finalSum & 1) == 1) return res;\n        long sum = 0;\n        long even = 2;\n        while (sum + even <= finalSum) {\n            res.add(even);\n            sum += even;\n            even += 2;\n        }\n        if (sum < finalSum) {\n            long last = res.remove(res.size() - 1);\n            res.add(last + finalSum - sum);\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(sqrt(finalSum))\nspace complexity: O(sqrt(finalSum))\nenergy implications: LOW\nexplanation: Greedy construction of the longest strictly increasing sequence of distinct even numbers starting from 2. The loop runs until the cumulative sum would exceed finalSum, then the last element is adjusted to absorb the remainder, guaranteeing uniqueness and maximality.",
+  "code": "class Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> res = new ArrayList<>();\n        if ((finalSum & 1) == 1) return res;\n        long sum = 0;\n        long even = 2;\n        while (sum + even <= finalSum) {\n            res.add(even);\n            sum += even;\n            even += 2;\n        }\n        if (sum < finalSum) {\n            long last = res.remove(res.size() - 1);\n            res.add(last + finalSum - sum);\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T02:30:58.951666",
+  "code_extracted_previous": "class Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> res = new ArrayList<>();\n        if ((finalSum & 1) == 1) return res;\n        long sum = 0;\n        long even = 2;\n        while (sum + even <= finalSum) {\n            res.add(even);\n            sum += even;\n            even += 2;\n        }\n        if (sum < finalSum) {\n            long last = res.remove(res.size() - 1);\n            res.add(last + finalSum - sum);\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.865817"
+}

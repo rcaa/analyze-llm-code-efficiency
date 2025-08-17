@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1'000'000'007;\n        vector<int> bases;\n        for (int i = 1; ; ++i) {\n            long long val = 1;\n            for (int j = 0; j < x; ++j) {\n                val *= i;\n                if (val > n) break;\n            }\n            if (val > n) break;\n            bases.push_back((int)val);\n        }\n        int m = bases.size();\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 0; i < m; ++i) {\n            int b = bases[i];\n            for (int j = n; j >= b; --j) {\n                dp[j] = (dp[j] + dp[j - b]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * sqrt[n](n))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Generate all possible bases i^x ≤ n, then use a 1-D knapsack DP to count subsets summing to n. The inner loop runs backwards to ensure uniqueness.",
+  "code": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1'000'000'007;\n        vector<int> bases;\n        for (int i = 1; ; ++i) {\n            long long val = 1;\n            for (int j = 0; j < x; ++j) {\n                val *= i;\n                if (val > n) break;\n            }\n            if (val > n) break;\n            bases.push_back((int)val);\n        }\n        int m = bases.size();\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 0; i < m; ++i) {\n            int b = bases[i];\n            for (int j = n; j >= b; --j) {\n                dp[j] = (dp[j] + dp[j - b]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-05T14:28:22.000862",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1'000'000'007;\n        vector<int> bases;\n        for (int i = 1; ; ++i) {\n            long long val = 1;\n            for (int j = 0; j < x; ++j) {\n                val *= i;\n                if (val > n) break;\n            }\n            if (val > n) break;\n            bases.push_back((int)val);\n        }\n        int m = bases.size();\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 0; i < m; ++i) {\n            int b = bases[i];\n            for (int j = n; j >= b; --j) {\n                dp[j] = (dp[j] + dp[j - b]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.830124"
+}

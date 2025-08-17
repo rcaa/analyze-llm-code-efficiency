@@ -1,0 +1,15 @@
+{
+  "id": 3557,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxSubstrings(string word) {\n        int res = 0, i = 0, n = word.size();\n        unordered_map<char, int> mp;\n        while (i < n) {\n            char c = word[i];\n            mp[c]++;\n            while (mp[c] > 1) {\n                mp[word[i]]--;\n                i++;\n            }\n            if (i < n && word[i] == c) {\n                res++;\n                i++;\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach to keep track of the current substring. It uses a hashmap to store the frequency of each character in the current substring. When the frequency of a character exceeds 1, it means the current substring has at least one repeated character, so it moves the window forward until the frequency of the character becomes 1 again. If the current character is the same as the starting character of the substring, it means the substring is non-intersecting and starts and ends with the same letter, so it increments the result.",
+  "code": "class Solution {\npublic:\n    int maxSubstrings(string word) {\n        int res = 0, i = 0, n = word.size();\n        unordered_map<char, int> mp;\n        while (i < n) {\n            char c = word[i];\n            mp[c]++;\n            while (mp[c] > 1) {\n                mp[word[i]]--;\n                i++;\n            }\n            if (i < n && word[i] == c) {\n                res++;\n                i++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:13:36.147493",
+  "code_extracted_previous": "public:\n    int maxSubstrings(string word) {\n        int res = 0, i = 0, n = word.size();\n        unordered_map<char, int> mp;\n        while (i < n) {\n            char c = word[i];\n            mp[c]++;\n            while (mp[c] > 1) {\n                mp[word[i]]--;\n                i++;\n            }\n            if (i < n && word[i] == c) {\n                res++;\n                i++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.285062"
+}

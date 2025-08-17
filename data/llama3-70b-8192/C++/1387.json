@@ -1,0 +1,15 @@
+{
+  "id": 1387,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> v;\n        for (int i = lo; i <= hi; i++) {\n            int cnt = 0, x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                cnt++;\n            }\n            v.push_back({cnt, i});\n        }\n        sort(v.begin(), v.end());\n        return v[k - 1].second;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a vector to store the power values and corresponding integers, then sorts the vector based on the power values. The kth integer in the sorted vector is the result.",
+  "code": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> v;\n        for (int i = lo; i <= hi; i++) {\n            int cnt = 0, x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                cnt++;\n            }\n            v.push_back({cnt, i});\n        }\n        sort(v.begin(), v.end());\n        return v[k - 1].second;\n    }\n};",
+  "timestamp": "2025-08-05T14:25:23.305612",
+  "code_extracted_previous": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> v;\n        for (int i = lo; i <= hi; i++) {\n            int cnt = 0, x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                cnt++;\n            }\n            v.push_back({cnt, i});\n        }\n        sort(v.begin(), v.end());\n        return v[k - 1].second;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.180435"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2937,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def findMinimumOperations(self, s1: str, s2: str, s3: str) -> int:\n        l1, l2, l3 = len(s1), len(s2), len(s3)\n        min_len = min(l1, l2, l3)\n        for i in range(min_len + 1):\n            if i == min_len:\n                if s1[:i] == s2[:i] == s3[:i]:\n                    return (l1 - i) + (l2 - i) + (l3 - i)\n                else:\n                    return -1\n            if not (s1[i] == s2[i] == s3[i]):\n                if i == 0:\n                    return -1\n                return (l1 - i) + (l2 - i) + (l3 - i)\n        return -1\n```\nefficiency: HIGH\ntime complexity: O(min(L1, L2, L3))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate left-to-right until the first mismatch; the longest common prefix length gives the target string. The required deletions are the sum of the excess characters beyond this prefix. If no common prefix exists, return -1.",
+  "code": "class Solution:\n    def findMinimumOperations(self, s1: str, s2: str, s3: str) -> int:\n        l1, l2, l3 = len(s1), len(s2), len(s3)\n        min_len = min(l1, l2, l3)\n        for i in range(min_len + 1):\n            if i == min_len:\n                if s1[:i] == s2[:i] == s3[:i]:\n                    return (l1 - i) + (l2 - i) + (l3 - i)\n                else:\n                    return -1\n            if not (s1[i] == s2[i] == s3[i]):\n                if i == 0:\n                    return -1\n                return (l1 - i) + (l2 - i) + (l3 - i)\n        return -1",
+  "timestamp": "2025-08-05T23:47:29.114113",
+  "code_extracted_previous": "def findMinimumOperations(self, s1: str, s2: str, s3: str) -> int:\n        l1, l2, l3 = len(s1), len(s2), len(s3)\n        min_len = min(l1, l2, l3)\n        for i in range(min_len + 1):\n            if i == min_len:\n                if s1[:i] == s2[:i] == s3[:i]:\n                    return (l1 - i) + (l2 - i) + (l3 - i)\n                else:\n                    return -1\n            if not (s1[i] == s2[i] == s3[i]):\n                if i == 0:\n                    return -1\n                return (l1 - i) + (l2 - i) + (l3 - i)\n        return -1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.868440"
+}

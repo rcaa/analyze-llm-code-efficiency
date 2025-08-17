@@ -1,0 +1,15 @@
+{
+  "id": 1160,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int countCharacters(String[] words, String chars) {\n        int[] charCount = new int[26];\n        for (char c : chars.toCharArray()) {\n            charCount[c - 'a']++;\n        }\n        int res = 0;\n        for (String word : words) {\n            int[] wordCount = new int[26];\n            boolean good = true;\n            for (char c : word.toCharArray()) {\n                wordCount[c - 'a']++;\n            }\n            for (int i = 0; i < 26; i++) {\n                if (wordCount[i] > charCount[i]) {\n                    good = false;\n                    break;\n                }\n            }\n            if (good) {\n                res += word.length();\n            }\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(NM)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses two arrays to count the frequency of characters in the `chars` string and each word in the `words` array. It then checks if the frequency of each character in a word does not exceed the frequency in `chars`. If a word is good, its length is added to the result.",
+  "code": "class Solution {\n    public int countCharacters(String[] words, String chars) {\n        int[] charCount = new int[26];\n        for (char c : chars.toCharArray()) {\n            charCount[c - 'a']++;\n        }\n        int res = 0;\n        for (String word : words) {\n            int[] wordCount = new int[26];\n            boolean good = true;\n            for (char c : word.toCharArray()) {\n                wordCount[c - 'a']++;\n            }\n            for (int i = 0; i < 26; i++) {\n                if (wordCount[i] > charCount[i]) {\n                    good = false;\n                    break;\n                }\n            }\n            if (good) {\n                res += word.length();\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T12:38:12.745977",
+  "code_extracted_previous": "class Solution {\n    public int countCharacters(String[] words, String chars) {\n        int[] charCount = new int[26];\n        for (char c : chars.toCharArray()) {\n            charCount[c - 'a']++;\n        }\n        int res = 0;\n        for (String word : words) {\n            int[] wordCount = new int[26];\n            boolean good = true;\n            for (char c : word.toCharArray()) {\n                wordCount[c - 'a']++;\n            }\n            for (int i = 0; i < 26; i++) {\n                if (wordCount[i] > charCount[i]) {\n                    good = false;\n                    break;\n                }\n            }\n            if (good) {\n                res += word.length();\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.419202"
+}

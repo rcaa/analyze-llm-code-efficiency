@@ -1,0 +1,15 @@
+{
+  "id": 352,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass SummaryRanges {\npublic:\n    set<int> nums;\n    vector<vector<int>> getIntervals() {\n        vector<vector<int>> intervals;\n        if (nums.empty()) return intervals;\n        int start = *nums.begin();\n        int end = start;\n        for (auto it = ++nums.begin(); it != nums.end(); ++it) {\n            if (*it == end + 1) {\n                end = *it;\n            } else {\n                intervals.push_back({start, end});\n                start = *it;\n                end = start;\n            }\n        }\n        intervals.push_back({start, end});\n        return intervals;\n    }\n    \n    void addNum(int value) {\n        nums.insert(value);\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a set to store unique numbers and generates intervals on the fly when getIntervals is called, minimizing memory usage and allowing for efficient interval merging. \n```",
+  "code": "class SummaryRanges {\npublic:\n    set<int> nums;\n    vector<vector<int>> getIntervals() {\n        vector<vector<int>> intervals;\n        if (nums.empty()) return intervals;\n        int start = *nums.begin();\n        int end = start;\n        for (auto it = ++nums.begin(); it != nums.end(); ++it) {\n            if (*it == end + 1) {\n                end = *it;\n            } else {\n                intervals.push_back({start, end});\n                start = *it;\n                end = start;\n            }\n        }\n        intervals.push_back({start, end});\n        return intervals;\n    }\n    \n    void addNum(int value) {\n        nums.insert(value);\n    }\n};",
+  "timestamp": "2025-08-06T15:11:07.647012",
+  "code_extracted_previous": "solution:\nclass SummaryRanges {\npublic:\n    set<int> nums;\n    vector<vector<int>> getIntervals() {\n        vector<vector<int>> intervals;\n        if (nums.empty()) return intervals;\n        int start = *nums.begin();\n        int end = start;\n        for (auto it = ++nums.begin(); it != nums.end(); ++it) {\n            if (*it == end + 1) {\n                end = *it;\n            } else {\n                intervals.push_back({start, end});\n                start = *it;\n                end = start;\n            }\n        }\n        intervals.push_back({start, end});\n        return intervals;\n    }\n    \n    void addNum(int value) {\n        nums.insert(value);\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:32.742862"
+}

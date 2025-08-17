@@ -1,0 +1,15 @@
+{
+  "id": 2076,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```c++\nclass Solution {\npublic:\n    vector<bool> friendRequests(int n, vector<vector<int>>& restrictions, vector<vector<int>>& requests) {\n        vector<bool> result(n, false);\n        for (int i = 0; i < requests.size(); i++) {\n            int u = requests[i][0], v = requests[i][1];\n            if (restrictions[u - 1][v - 1] == -1) {\n                result[u] = true;\n                result[v] = true;\n            }\n        }\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\n1. Initialize a boolean array result with size n to store the result of each request.\n2. Iterate through the requests array.\n3. For each request, check if the restriction between the two people involved is -1 (indicating no restriction).\n4. If there is no restriction, mark both people as friends in the result array.\n5. Return the result array.\n\nThis solution has a time complexity of O(n) because there is only one iteration through the requests array. The space complexity is O(n) because we store the result in an array of size n. The energy implications are low because the algorithm only performs simple operations and does not consume significant energy. ",
+  "code": "class Solution {\npublic:\n    vector<bool> friendRequests(int n, vector<vector<int>>& restrictions, vector<vector<int>>& requests) {\n        vector<bool> result(n, false);\n        for (int i = 0; i < requests.size(); i++) {\n            int u = requests[i][0], v = requests[i][1];\n            if (restrictions[u - 1][v - 1] == -1) {\n                result[u] = true;\n                result[v] = true;\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T18:40:37.925019",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<bool> friendRequests(int n, vector<vector<int>>& restrictions, vector<vector<int>>& requests) {\n        vector<bool> result(n, false);\n        for (int i = 0; i < requests.size(); i++) {\n            int u = requests[i][0], v = requests[i][1];\n            if (restrictions[u - 1][v - 1] == -1) {\n                result[u] = true;\n                result[v] = true;\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.262955"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1492,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int kthFactor(int n, int k) {\n        int count = 0;\n        for (int i = 1; i <= Math.sqrt(n); i++) {\n            if (n % i == 0) {\n                count++;\n                if (count == k) {\n                    return i;\n                }\n            }\n        }\n        int j = (int) Math.sqrt(n);\n        for (int i = j; i >= 1; i--) {\n            if (n % i == 0 && i * i != n) {\n                count++;\n                if (count == k) {\n                    return n / i;\n                }\n            }\n        }\n        return -1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(sqrt(n))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through numbers up to the square root of n to find factors. When a factor is found, it checks if it's the kth factor. If not, it continues checking the corresponding larger factor. This approach ensures efficiency by avoiding unnecessary iterations.",
+  "code": "class Solution {\n    public int kthFactor(int n, int k) {\n        int count = 0;\n        for (int i = 1; i <= Math.sqrt(n); i++) {\n            if (n % i == 0) {\n                count++;\n                if (count == k) {\n                    return i;\n                }\n            }\n        }\n        int j = (int) Math.sqrt(n);\n        for (int i = j; i >= 1; i--) {\n            if (n % i == 0 && i * i != n) {\n                count++;\n                if (count == k) {\n                    return n / i;\n                }\n            }\n        }\n        return -1;\n    }\n}",
+  "timestamp": "2025-08-06T00:43:45.356772",
+  "code_extracted_previous": "class Solution {\n    public int kthFactor(int n, int k) {\n        int count = 0;\n        for (int i = 1; i <= Math.sqrt(n); i++) {\n            if (n % i == 0) {\n                count++;\n                if (count == k) {\n                    return i;\n                }\n            }\n        }\n        int j = (int) Math.sqrt(n);\n        for (int i = j; i >= 1; i--) {\n            if (n % i == 0 && i * i != n) {\n                count++;\n                if (count == k) {\n                    return n / i;\n                }\n            }\n        }\n        return -1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.439984"
+}

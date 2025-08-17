@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1, count = 9, start = 1;\n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string str = to_string(start);\n        return str[(n - 1) % len];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: The solution works by first determining the length of the numbers that the nth digit falls into, then calculating the specific number and digit position. It uses a while loop to find the correct length and starting number, then converts the starting number to a string to extract the nth digit.",
+  "code": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1, count = 9, start = 1;\n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string str = to_string(start);\n        return str[(n - 1) % len];\n    }\n};",
+  "timestamp": "2025-08-05T15:42:12.559659",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1, count = 9, start = 1;\n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string str = to_string(start);\n        return str[(n - 1) % len];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.615825"
+}

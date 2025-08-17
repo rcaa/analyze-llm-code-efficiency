@@ -1,0 +1,15 @@
+{
+  "id": 1131,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def maxAbsValExpr(self, arr1: List[int], arr2: List[int]) -> int:\n        res = 0\n        for d1, d2 in [(1, 1), (1, -1), (-1, 1), (-1, -1)]:\n            mx, mn = float('-inf'), float('inf')\n            for i in range(len(arr1)):\n                mx = max(mx, arr1[i] + arr2[i] + i * d1)\n                mn = min(mn, arr1[i] + arr2[i] + i * d1)\n                res = max(res, mx - mn)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the arrays four times, each time considering a different combination of signs for the absolute differences. It keeps track of the maximum and minimum values seen so far and updates the result accordingly.",
+  "code": "class Solution:\n    def maxAbsValExpr(self, arr1: List[int], arr2: List[int]) -> int:\n        res = 0\n        for d1, d2 in [(1, 1), (1, -1), (-1, 1), (-1, -1)]:\n            mx, mn = float('-inf'), float('inf')\n            for i in range(len(arr1)):\n                mx = max(mx, arr1[i] + arr2[i] + i * d1)\n                mn = min(mn, arr1[i] + arr2[i] + i * d1)\n                res = max(res, mx - mn)\n        return res",
+  "timestamp": "2025-08-05T13:19:42.735794",
+  "code_extracted_previous": "class Solution:\n    def maxAbsValExpr(self, arr1: List[int], arr2: List[int]) -> int:\n        res = 0\n        for d1, d2 in [(1, 1), (1, -1), (-1, 1), (-1, -1)]:\n            mx, mn = float('-inf'), float('inf')\n            for i in range(len(arr1)):\n                mx = max(mx, arr1[i] + arr2[i] + i * d1)\n                mn = min(mn, arr1[i] + arr2[i] + i * d1)\n                res = max(res, mx - mn)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:38.847708"
+}

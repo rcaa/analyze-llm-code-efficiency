@@ -1,0 +1,15 @@
+{
+  "id": 2343,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        answer = []\n        for k, trim in queries:\n            trimmed_nums = [(int(num[-trim:]), i) for i, num in enumerate(nums)]\n            trimmed_nums.sort()\n            answer.append(trimmed_nums[k-1][1])\n        return answer\n```\nefficiency: HIGH\ntime complexity: O(q * n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over each query, trims the numbers, sorts them, and finds the kth smallest number. The time complexity is dominated by the sorting operation, which is O(n log n) for each query. The space complexity is O(n) for storing the trimmed numbers.",
+  "code": "def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        answer = []\n        for k, trim in queries:\n            trimmed_nums = [(int(num[-trim:]), i) for i, num in enumerate(nums)]\n            trimmed_nums.sort()\n            answer.append(trimmed_nums[k-1][1])\n        return answer\n```",
+  "timestamp": "2025-08-06T15:18:33.275867",
+  "code_extracted_previous": "class Solution:\n    def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        answer = []\n        for k, trim in queries:\n            trimmed_nums = [(int(num[-trim:]), i) for i, num in enumerate(nums)]\n            trimmed_nums.sort()\n            answer.append(trimmed_nums[k-1][1])\n        return answer",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.196937"
+}

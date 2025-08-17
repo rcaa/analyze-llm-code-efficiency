@@ -1,0 +1,15 @@
+{
+  "id": 2134,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        total_ones = sum(nums)\n        min_swaps = float('inf')\n        \n        for i in range(n):\n            ones_in_window = 0\n            for j in range(total_ones):\n                ones_in_window += nums[(i + j) % n]\n            min_swaps = min(min_swaps, total_ones - ones_in_window)\n        \n        return min_swaps\n```\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to find the minimum number of swaps required to group all 1's together, taking advantage of the circular property of the array. It iterates over the array and for each position, it calculates the number of 1's in the window of size equal to the total number of 1's in the array. The minimum number of swaps is then updated based on the difference between the total number of 1's and the number of 1's in the current window.",
+  "code": "def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        total_ones = sum(nums)\n        min_swaps = float('inf')\n        \n        for i in range(n):\n            ones_in_window = 0\n            for j in range(total_ones):\n                ones_in_window += nums[(i + j) % n]\n            min_swaps = min(min_swaps, total_ones - ones_in_window)\n        \n        return min_swaps\n```",
+  "timestamp": "2025-08-06T15:17:36.462547",
+  "code_extracted_previous": "class Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        total_ones = sum(nums)\n        min_swaps = float('inf')\n        \n        for i in range(n):\n            ones_in_window = 0\n            for j in range(total_ones):\n                ones_in_window += nums[(i + j) % n]\n            min_swaps = min(min_swaps, total_ones - ones_in_window)\n        \n        return min_swaps",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.049234"
+}

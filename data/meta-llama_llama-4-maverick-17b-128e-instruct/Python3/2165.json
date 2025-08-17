@@ -1,0 +1,15 @@
+{
+  "id": 2165,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def smallestNumber(self, num: int) -> int:\n        if num == 0:\n            return 0\n        \n        negative = False\n        if num < 0:\n            negative = True\n            num = -num\n        \n        digits = sorted(str(num))\n        \n        if negative:\n            return -int(''.join(reversed(digits)))\n        else:\n            if digits[0] == '0':\n                for i, d in enumerate(digits):\n                    if d != '0':\n                        digits[0], digits[i] = digits[i], digits[0]\n                        break\n            return int(''.join(digits))\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution first checks if the number is zero or negative. It then sorts the digits. If the number is negative, it reverses the sorted digits to get the largest possible number (which becomes the smallest when negated). If the number is positive, it swaps the first non-zero digit with the first digit to avoid leading zeros. The efficiency is high due to the use of built-in sorting.\n```",
+  "code": "def smallestNumber(self, num: int) -> int:\n        if num == 0:\n            return 0\n        \n        negative = False\n        if num < 0:\n            negative = True\n            num = -num\n        \n        digits = sorted(str(num))\n        \n        if negative:\n            return -int(''.join(reversed(digits)))\n        else:\n            if digits[0] == '0':\n                for i, d in enumerate(digits):\n                    if d != '0':\n                        digits[0], digits[i] = digits[i], digits[0]\n                        break\n            return int(''.join(digits))",
+  "timestamp": "2025-08-05T15:55:28.628664",
+  "code_extracted_previous": "class Solution:\n    def smallestNumber(self, num: int) -> int:\n        if num == 0:\n            return 0\n        \n        negative = False\n        if num < 0:\n            negative = True\n            num = -num\n        \n        digits = sorted(str(num))\n        \n        if negative:\n            return -int(''.join(reversed(digits)))\n        else:\n            if digits[0] == '0':\n                for i, d in enumerate(digits):\n                    if d != '0':\n                        digits[0], digits[i] = digits[i], digits[0]\n                        break\n            return int(''.join(digits))",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.785529"
+}

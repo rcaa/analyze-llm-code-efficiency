@@ -1,0 +1,15 @@
+{
+  "id": 2134,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        ones = sum(nums)\n        if ones == 0 or ones == n:\n            return 0\n        window_ones = sum(nums[:ones])\n        res = ones - window_ones\n        for i in range(n):\n            window_ones = window_ones - nums[i] + nums[(i + ones) % n]\n            res = min(res, ones - window_ones)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to find the minimum number of swaps required to group all 1's together. It maintains a window of size equal to the number of 1's in the array and slides it over the array, keeping track of the minimum number of swaps required.",
+  "code": "class Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        ones = sum(nums)\n        if ones == 0 or ones == n:\n            return 0\n        window_ones = sum(nums[:ones])\n        res = ones - window_ones\n        for i in range(n):\n            window_ones = window_ones - nums[i] + nums[(i + ones) % n]\n            res = min(res, ones - window_ones)\n        return res",
+  "timestamp": "2025-08-05T13:21:20.072098",
+  "code_extracted_previous": "class Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        ones = sum(nums)\n        if ones == 0 or ones == n:\n            return 0\n        window_ones = sum(nums[:ones])\n        res = ones - window_ones\n        for i in range(n):\n            window_ones = window_ones - nums[i] + nums[(i + ones) % n]\n            res = min(res, ones - window_ones)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.154239"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass MyStack {\n    private Queue<Integer> q1 = new LinkedList<>();\n    private Queue<Integer> q2 = new LinkedList<>();\n\n    public MyStack() {\n        \n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses two queues to implement a stack. The `push` operation is done by adding the element to the second queue and then reversing the first queue. The `pop` and `top` operations are done by removing/polling the front of the first queue. The `empty` operation checks if the first queue is empty. The time complexity is O(1) for all operations, and the space complexity is O(n) where n is the number of elements in the stack.",
+  "code": "class MyStack {\n    private Queue<Integer> q1 = new LinkedList<>();\n    private Queue<Integer> q2 = new LinkedList<>();\n\n    public MyStack() {\n        \n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "timestamp": "2025-08-06T01:58:58.824285",
+  "code_extracted_previous": "class MyStack {\n    private Queue<Integer> q1 = new LinkedList<>();\n    private Queue<Integer> q2 = new LinkedList<>();\n\n    public MyStack() {\n        \n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:42.207987"
+}

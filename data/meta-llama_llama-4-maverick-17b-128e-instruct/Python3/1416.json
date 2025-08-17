@@ -1,0 +1,15 @@
+{
+  "id": 1416,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def numberOfArrays(self, s: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = len(s)\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, n + 1):\n            num = 0\n            for j in range(i, 0, -1):\n                if s[j - 1] == '0':\n                    break\n                num = num * 10 + int(s[j - 1])\n                if num > k:\n                    break\n                dp[i] = (dp[i] + dp[j - 1]) % MOD\n        return dp[n]\n```\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the number of valid arrays ending at each position in the string. The key insight is to iterate backwards from each position, parsing valid numbers and accumulating the count of valid arrays from previous positions. The use of modulo operation prevents overflow.",
+  "code": "def numberOfArrays(self, s: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = len(s)\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, n + 1):\n            num = 0\n            for j in range(i, 0, -1):\n                if s[j - 1] == '0':\n                    break\n                num = num * 10 + int(s[j - 1])\n                if num > k:\n                    break\n                dp[i] = (dp[i] + dp[j - 1]) % MOD\n        return dp[n]\n```",
+  "timestamp": "2025-08-06T02:28:01.207602",
+  "code_extracted_previous": "class Solution:\n    def numberOfArrays(self, s: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = len(s)\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, n + 1):\n            num = 0\n            for j in range(i, 0, -1):\n                if s[j - 1] == '0':\n                    break\n                num = num * 10 + int(s[j - 1])\n                if num > k:\n                    break\n                dp[i] = (dp[i] + dp[j - 1]) % MOD\n        return dp[n]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.521277"
+}

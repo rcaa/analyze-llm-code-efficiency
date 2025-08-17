@@ -1,0 +1,15 @@
+{
+  "id": 2937,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int findMinimumOperations(string s1, string s2, string s3) {\n        int m = s1.size(), n = s2.size(), o = s3.size();\n        int res = INT_MAX;\n        for (int i = 0; i <= m; i++) {\n            for (int j = 0; j <= n; j++) {\n                for (int k = 0; k <= o; k++) {\n                    int op1 = i + j + k;\n                    if (i > 0 && s1.substr(0, i) != s2.substr(0, i)) op1++;\n                    if (i > 0 && s1.substr(0, i) != s3.substr(0, i)) op1++;\n                    if (j > 0 && s2.substr(0, j) != s3.substr(0, j)) op1++;\n                    res = min(res, op1);\n                }\n            }\n        }\n        return res == INT_MAX ? -1 : res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(m*n*o)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a brute-force approach to find the minimum number of operations required to make the strings equal. It iterates over all possible substrings of the given strings and calculates the minimum number of operations required to make them equal. The time complexity is high due to the three nested loops, but the space complexity is low as it only uses a constant amount of space.",
+  "code": "class Solution {\npublic:\n    int findMinimumOperations(string s1, string s2, string s3) {\n        int m = s1.size(), n = s2.size(), o = s3.size();\n        int res = INT_MAX;\n        for (int i = 0; i <= m; i++) {\n            for (int j = 0; j <= n; j++) {\n                for (int k = 0; k <= o; k++) {\n                    int op1 = i + j + k;\n                    if (i > 0 && s1.substr(0, i) != s2.substr(0, i)) op1++;\n                    if (i > 0 && s1.substr(0, i) != s3.substr(0, i)) op1++;\n                    if (j > 0 && s2.substr(0, j) != s3.substr(0, j)) op1++;\n                    res = min(res, op1);\n                }\n            }\n        }\n        return res == INT_MAX ? -1 : res;\n    }\n};",
+  "timestamp": "2025-08-05T23:47:15.070505",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findMinimumOperations(string s1, string s2, string s3) {\n        int m = s1.size(), n = s2.size(), o = s3.size();\n        int res = INT_MAX;\n        for (int i = 0; i <= m; i++) {\n            for (int j = 0; j <= n; j++) {\n                for (int k = 0; k <= o; k++) {\n                    int op1 = i + j + k;\n                    if (i > 0 && s1.substr(0, i) != s2.substr(0, i)) op1++;\n                    if (i > 0 && s1.substr(0, i) != s3.substr(0, i)) op1++;\n                    if (j > 0 && s2.substr(0, j) != s3.substr(0, j)) op1++;\n                    res = min(res, op1);\n                }\n            }\n        }\n        return res == INT_MAX ? -1 : res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.136022"
+}

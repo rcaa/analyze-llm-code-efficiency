@@ -1,0 +1,15 @@
+{
+  "id": 1131,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int maxAbsValExpr(int[] arr1, int[] arr2) {\n        int max = 0;\n        for (int i = 0; i < 4; i++) {\n            int sum = 0;\n            int min = Integer.MAX_VALUE;\n            for (int j = 0; j < arr1.length; j++) {\n                int val = arr1[j] * ((i & 1) == 1 ? 1 : -1) + arr2[j] * ((i >> 1) == 1 ? 1 : -1) + j;\n                sum = Math.max(sum, val - min);\n                min = Math.min(min, val);\n            }\n            max = Math.max(max, sum);\n        }\n        return max;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over all possible combinations of signs for arr1 and arr2, and for each combination, it calculates the maximum value of the expression by maintaining a running sum and minimum value. This approach ensures that all possible pairs of indices are considered, resulting in an efficient solution with a linear time complexity.",
+  "code": "class Solution {\n    public int maxAbsValExpr(int[] arr1, int[] arr2) {\n        int max = 0;\n        for (int i = 0; i < 4; i++) {\n            int sum = 0;\n            int min = Integer.MAX_VALUE;\n            for (int j = 0; j < arr1.length; j++) {\n                int val = arr1[j] * ((i & 1) == 1 ? 1 : -1) + arr2[j] * ((i >> 1) == 1 ? 1 : -1) + j;\n                sum = Math.max(sum, val - min);\n                min = Math.min(min, val);\n            }\n            max = Math.max(max, sum);\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-06T15:12:36.927198",
+  "code_extracted_previous": "class Solution {\n    public int maxAbsValExpr(int[] arr1, int[] arr2) {\n        int max = 0;\n        for (int i = 0; i < 4; i++) {\n            int sum = 0;\n            int min = Integer.MAX_VALUE;\n            for (int j = 0; j < arr1.length; j++) {\n                int val = arr1[j] * ((i & 1) == 1 ? 1 : -1) + arr2[j] * ((i >> 1) == 1 ? 1 : -1) + j;\n                sum = Math.max(sum, val - min);\n                min = Math.min(min, val);\n            }\n            max = Math.max(max, sum);\n        }\n        return max;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.252127"
+}

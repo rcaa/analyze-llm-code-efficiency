@@ -1,0 +1,15 @@
+{
+  "id": 2983,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    vector<bool> canMakePalindromeQueries(string s, vector<vector<int>>& queries) {\n        int n = s.length();\n        vector<bool> answer(queries.size(), true);\n        for (int i = 0; i < queries.size(); i++) {\n            int a = queries[i][0], b = queries[i][1], c = queries[i][2], d = queries[i][3];\n            string t1 = s.substr(a, b - a + 1);\n            string t2 = s.substr(c, d - c + 1);\n            sort(t1.begin(), t1.end());\n            sort(t2.begin(), t2.end());\n            if (t1 != t2) {\n                answer[i] = false;\n            }\n        }\n        return answer;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * queries.size())\nspace complexity: O(n * queries.size())\nenergy implications: LOW\nexplanation: We iterate over each query and for each query, we extract the two substrings and sort them. If the sorted substrings are not equal, it means that the query cannot make the string a palindrome, so we set the answer to false. Otherwise, we set the answer to true.",
+  "code": "class Solution {\npublic:\n    vector<bool> canMakePalindromeQueries(string s, vector<vector<int>>& queries) {\n        int n = s.length();\n        vector<bool> answer(queries.size(), true);\n        for (int i = 0; i < queries.size(); i++) {\n            int a = queries[i][0], b = queries[i][1], c = queries[i][2], d = queries[i][3];\n            string t1 = s.substr(a, b - a + 1);\n            string t2 = s.substr(c, d - c + 1);\n            sort(t1.begin(), t1.end());\n            sort(t2.begin(), t2.end());\n            if (t1 != t2) {\n                answer[i] = false;\n            }\n        }\n        return answer;\n    }\n};",
+  "timestamp": "2025-08-05T14:38:37.675027",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<bool> canMakePalindromeQueries(string s, vector<vector<int>>& queries) {\n        int n = s.length();\n        vector<bool> answer(queries.size(), true);\n        for (int i = 0; i < queries.size(); i++) {\n            int a = queries[i][0], b = queries[i][1], c = queries[i][2], d = queries[i][3];\n            string t1 = s.substr(a, b - a + 1);\n            string t2 = s.substr(c, d - c + 1);\n            sort(t1.begin(), t1.end());\n            sort(t2.begin(), t2.end());\n            if (t1 != t2) {\n                answer[i] = false;\n            }\n        }\n        return answer;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.147203"
+}

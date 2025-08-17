@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[][] dp = new int[n][n];\n        for (int i = 0; i < n; i++) {\n            dp[i][i] = 1;\n        }\n        for (int len = 2; len <= n; len++) {\n            for (int i = 0; i < n - len + 1; i++) {\n                int j = i + len - 1;\n                dp[i][j] = dp[i + 1][j - 1] + 1;\n                for (int k = i + 1; k < j; k++) {\n                    if (s.charAt(i) == s.charAt(k)) {\n                        dp[i][j] = Math.min(dp[i][j], dp[i + 1][k] + dp[k][j - 1]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n^2)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to build up a table of minimum turns required to print each substring of the input string. It takes advantage of the property that if the first and last characters of a substring are the same, we can print them together in one turn.",
+  "code": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[][] dp = new int[n][n];\n        for (int i = 0; i < n; i++) {\n            dp[i][i] = 1;\n        }\n        for (int len = 2; len <= n; len++) {\n            for (int i = 0; i < n - len + 1; i++) {\n                int j = i + len - 1;\n                dp[i][j] = dp[i + 1][j - 1] + 1;\n                for (int k = i + 1; k < j; k++) {\n                    if (s.charAt(i) == s.charAt(k)) {\n                        dp[i][j] = Math.min(dp[i][j], dp[i + 1][k] + dp[k][j - 1]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}",
+  "timestamp": "2025-08-05T19:54:32.147193",
+  "code_extracted_previous": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[][] dp = new int[n][n];\n        for (int i = 0; i < n; i++) {\n            dp[i][i] = 1;\n        }\n        for (int len = 2; len <= n; len++) {\n            for (int i = 0; i < n - len + 1; i++) {\n                int j = i + len - 1;\n                dp[i][j] = dp[i + 1][j - 1] + 1;\n                for (int k = i + 1; k < j; k++) {\n                    if (s.charAt(i) == s.charAt(k)) {\n                        dp[i][j] = Math.min(dp[i][j], dp[i + 1][k] + dp[k][j - 1]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.654777"
+}

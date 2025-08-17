@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int totalY = 0, prefixY = 0, res = 0, minPenalty = n;\n        for (int i = 0; i < n; i++) {\n            if (customers[i] == 'Y') totalY++;\n        }\n        for (int i = 0; i < n; i++) {\n            int penalty = i - prefixY + (totalY - prefixY);\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                res = i;\n            }\n            if (customers[i] == 'Y') prefixY++;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a single pass through the string to calculate the total number of 'Y's and then iterates through the string again to calculate the penalty for each hour, keeping track of the minimum penalty and the corresponding hour.",
+  "code": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int totalY = 0, prefixY = 0, res = 0, minPenalty = n;\n        for (int i = 0; i < n; i++) {\n            if (customers[i] == 'Y') totalY++;\n        }\n        for (int i = 0; i < n; i++) {\n            int penalty = i - prefixY + (totalY - prefixY);\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                res = i;\n            }\n            if (customers[i] == 'Y') prefixY++;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:02:02.190952",
+  "code_extracted_previous": "public:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int totalY = 0, prefixY = 0, res = 0, minPenalty = n;\n        for (int i = 0; i < n; i++) {\n            if (customers[i] == 'Y') totalY++;\n        }\n        for (int i = 0; i < n; i++) {\n            int penalty = i - prefixY + (totalY - prefixY);\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                res = i;\n            }\n            if (customers[i] == 'Y') prefixY++;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.570322"
+}

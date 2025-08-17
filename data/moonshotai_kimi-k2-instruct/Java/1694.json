@@ -1,0 +1,15 @@
+{
+  "id": 1694,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public String reformatNumber(String number) {\n        StringBuilder sb = new StringBuilder();\n        for (char c : number.toCharArray()) {\n            if (Character.isDigit(c)) {\n                sb.append(c);\n            }\n        }\n        String digits = sb.toString();\n        sb.setLength(0);\n        int n = digits.length();\n        int i = 0;\n        while (i < n) {\n            if (n - i > 4) {\n                sb.append(digits, i, i + 3).append('-');\n                i += 3;\n            } else if (n - i == 4) {\n                sb.append(digits, i, i + 2).append('-').append(digits, i + 2, i + 4);\n                break;\n            } else {\n                sb.append(digits, i, n);\n                break;\n            }\n        }\n        return sb.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Single pass to strip non-digits, then another pass to group into 3s until ≤4 remain, handling 4 as 2-2. Uses StringBuilder for O(1) amortized appends.",
+  "code": "class Solution {\n    public String reformatNumber(String number) {\n        StringBuilder sb = new StringBuilder();\n        for (char c : number.toCharArray()) {\n            if (Character.isDigit(c)) {\n                sb.append(c);\n            }\n        }\n        String digits = sb.toString();\n        sb.setLength(0);\n        int n = digits.length();\n        int i = 0;\n        while (i < n) {\n            if (n - i > 4) {\n                sb.append(digits, i, i + 3).append('-');\n                i += 3;\n            } else if (n - i == 4) {\n                sb.append(digits, i, i + 2).append('-').append(digits, i + 2, i + 4);\n                break;\n            } else {\n                sb.append(digits, i, n);\n                break;\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-05T23:41:33.851835",
+  "code_extracted_previous": "class Solution {\n    public String reformatNumber(String number) {\n        StringBuilder sb = new StringBuilder();\n        for (char c : number.toCharArray()) {\n            if (Character.isDigit(c)) {\n                sb.append(c);\n            }\n        }\n        String digits = sb.toString();\n        sb.setLength(0);\n        int n = digits.length();\n        int i = 0;\n        while (i < n) {\n            if (n - i > 4) {\n                sb.append(digits, i, i + 3).append('-');\n                i += 3;\n            } else if (n - i == 4) {\n                sb.append(digits, i, i + 2).append('-').append(digits, i + 2, i + 4);\n                break;\n            } else {\n                sb.append(digits, i, n);\n                break;\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.612691"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        self.freq[val] = self.freq.get(val, 0) + 1\n        if self.freq[val] > self.max_freq:\n            self.max_freq = self.freq[val]\n        if self.freq[val] not in self.group:\n            self.group[self.freq[val]] = []\n        self.group[self.freq[val]].append(val)\n\n    def pop(self) -> int:\n        if self.max_freq == 0:\n            return -1\n        val = self.group[self.max_freq].pop()\n        self.freq[val] -= 1\n        if not self.group[self.max_freq]:\n            self.max_freq -= 1\n        return val\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses three data structures: a frequency map (freq), a group map (group), and a max frequency tracker (max_freq). When pushing, it updates the frequency and adds the value to the corresponding group. When popping, it removes the most frequent element (closest to the top if there's a tie). This approach ensures all operations are constant time.",
+  "code": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        self.freq[val] = self.freq.get(val, 0) + 1\n        if self.freq[val] > self.max_freq:\n            self.max_freq = self.freq[val]\n        if self.freq[val] not in self.group:\n            self.group[self.freq[val]] = []\n        self.group[self.freq[val]].append(val)\n\n    def pop(self) -> int:\n        if self.max_freq == 0:\n            return -1\n        val = self.group[self.max_freq].pop()\n        self.freq[val] -= 1\n        if not self.group[self.max_freq]:\n            self.max_freq -= 1\n        return val",
+  "timestamp": "2025-08-06T15:43:44.630135",
+  "code_extracted_previous": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        self.freq[val] = self.freq.get(val, 0) + 1\n        if self.freq[val] > self.max_freq:\n            self.max_freq = self.freq[val]\n        if self.freq[val] not in self.group:\n            self.group[self.freq[val]] = []\n        self.group[self.freq[val]].append(val)\n\n    def pop(self) -> int:\n        if self.max_freq == 0:\n            return -1\n        val = self.group[self.max_freq].pop()\n        self.freq[val] -= 1\n        if not self.group[self.max_freq]:\n            self.max_freq -= 1\n        return val",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:06.711100"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 89,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    vector<int> grayCode(int n) {\n        vector<int> grayCode(n+1);\n        grayCode[0] = 0;\n        for (int i = 1; i <= n; i++) {\n            int prev = grayCode[i-1];\n            grayCode[i] = (prev ^ (1 << (i-1))) & ~(prev >> (i-1));\n        }\n        return grayCode;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use a vector to store the gray code sequence. Initialize the first element as 0. Then, for each subsequent element, calculate it using XOR and bitwise operations on the previous element and a mask representing the most significant bit set to 1. This ensures that the new element is one bit different from the previous element, fulfilling the gray code sequence requirements. ",
+  "code": "class Solution {\npublic:\n    vector<int> grayCode(int n) {\n        vector<int> grayCode(n+1);\n        grayCode[0] = 0;\n        for (int i = 1; i <= n; i++) {\n            int prev = grayCode[i-1];\n            grayCode[i] = (prev ^ (1 << (i-1))) & ~(prev >> (i-1));\n        }\n        return grayCode;\n    }\n};",
+  "timestamp": "2025-08-06T00:41:20.832524",
+  "code_extracted_previous": "public:\n    vector<int> grayCode(int n) {\n        vector<int> grayCode(n+1);\n        grayCode[0] = 0;\n        for (int i = 1; i <= n; i++) {\n            int prev = grayCode[i-1];\n            grayCode[i] = (prev ^ (1 << (i-1))) & ~(prev >> (i-1));\n        }\n        return grayCode;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.295162"
+}

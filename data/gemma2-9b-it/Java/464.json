@@ -1,0 +1,15 @@
+{
+  "id": 464,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {\n        if (desiredTotal <= 0) {\n            return true;\n        }\n        if (maxChoosableInteger * (maxChoosableInteger + 1) / 2 < desiredTotal) {\n            return false;\n        }\n        Set<Integer> used = new HashSet<>();\n        return canIWinHelper(maxChoosableInteger, desiredTotal, used);\n    }\n    private boolean canIWinHelper(int maxChoosableInteger, int desiredTotal, Set<Integer> used) {\n        if (desiredTotal == 0) {\n            return true;\n        }\n        for (int i = 1; i <= maxChoosableInteger; i++) {\n            if (!used.contains(i)) {\n                used.add(i);\n                if (!canIWinHelper(maxChoosableInteger, desiredTotal - i, used)) {\n                    return true;\n                }\n                used.remove(i);\n            }\n        }\n        return false;\n    }\n}\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(2^n * n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses recursion with memoization to explore all possible game states. It checks if the first player can force a win by iterating through available numbers and recursively checking the opponent's possible moves.  The use of a set to track used numbers prevents redundant calculations.  The time complexity is exponential due to the branching nature of the game tree.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-06T08:41:26.122347",
+  "code_extracted_previous": "class Solution {\n    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {\n        if (desiredTotal <= 0) {\n            return true;\n        }\n        if (maxChoosableInteger * (maxChoosableInteger + 1) / 2 < desiredTotal) {\n            return false;\n        }\n        Set<Integer> used = new HashSet<>();\n        return canIWinHelper(maxChoosableInteger, desiredTotal, used);\n    }\n    private boolean canIWinHelper(int maxChoosableInteger, int desiredTotal, Set<Integer> used) {\n        if (desiredTotal == 0) {\n            return true;\n        }\n        for (int i = 1; i <= maxChoosableInteger; i++) {\n            if (!used.contains(i)) {\n                used.add(i);\n                if (!canIWinHelper(maxChoosableInteger, desiredTotal - i, used)) {\n                    return true;\n                }\n                used.remove(i);\n            }\n        }\n        return false;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:25.542781"
+}

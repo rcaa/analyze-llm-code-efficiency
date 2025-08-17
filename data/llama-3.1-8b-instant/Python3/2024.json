@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        T, F = 'T', 'F'\n        left = 0\n        max_len = 0\n        T_count, F_count = 0, 0\n        for right in range(len(answerKey)):\n            if answerKey[right] == T:\n                T_count += 1\n            else:\n                F_count += 1\n            while right - left + 1 - max(T_count, F_count) > k:\n                if answerKey[left] == T:\n                    T_count -= 1\n                else:\n                    F_count -= 1\n                left += 1\n            max_len = max(max_len, right - left + 1)\n        return max_len\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        T, F = 'T', 'F'\n        left = 0\n        max_len = 0\n        T_count, F_count = 0, 0\n        for right in range(len(answerKey)):\n            if answerKey[right] == T:\n                T_count += 1\n            else:\n                F_count += 1\n            while right - left + 1 - max(T_count, F_count) > k:\n                if answerKey[left] == T:\n                    T_count -= 1\n                else:\n                    F_count -= 1\n                left += 1\n            max_len = max(max_len, right - left + 1)\n        return max_len",
+  "timestamp": "2025-08-06T00:56:55.188694",
+  "code_extracted_previous": "class Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        T, F = 'T', 'F'\n        left = 0\n        max_len = 0\n        T_count, F_count = 0, 0\n        for right in range(len(answerKey)):\n            if answerKey[right] == T:\n                T_count += 1\n            else:\n                F_count += 1\n            while right - left + 1 - max(T_count, F_count) > k:\n                if answerKey[left] == T:\n                    T_count -= 1\n                else:\n                    F_count -= 1\n                left += 1\n            max_len = max(max_len, right - left + 1)\n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.533924"
+}

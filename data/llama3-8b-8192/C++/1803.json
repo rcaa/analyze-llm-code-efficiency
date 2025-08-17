@@ -1,0 +1,15 @@
+{
+  "id": 1803,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int countPairs(vector<int>& nums, int low, int high) {\n        int count = 0;\n        unordered_map<int, int> freq;\n        for (int num : nums) {\n            freq[num] = (freq.find(num) == freq.end()) ? 1 : freq[num] + 1;\n        }\n        for (int num : freq) {\n            if (freq.find(num ^ low) != freq.end()) {\n                count += freq[num] * freq[num ^ low];\n            }\n            if (freq.find(num ^ high) != freq.end()) {\n                count += freq[num] * freq[num ^ high];\n            }\n        }\n        return count;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: We use a frequency map to count the occurrences of each number in the array. Then, for each number, we calculate the XOR with low and high, and add the product of their frequencies to the count. This approach has a high efficiency due to the use of a frequency map and the constant time complexity of XOR operations.",
+  "code": "class Solution {\npublic:\n    int countPairs(vector<int>& nums, int low, int high) {\n        int count = 0;\n        unordered_map<int, int> freq;\n        for (int num : nums) {\n            freq[num] = (freq.find(num) == freq.end()) ? 1 : freq[num] + 1;\n        }\n        for (int num : freq) {\n            if (freq.find(num ^ low) != freq.end()) {\n                count += freq[num] * freq[num ^ low];\n            }\n            if (freq.find(num ^ high) != freq.end()) {\n                count += freq[num] * freq[num ^ high];\n            }\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T11:56:41.574653",
+  "code_extracted_previous": "public:\n    int countPairs(vector<int>& nums, int low, int high) {\n        int count = 0;\n        unordered_map<int, int> freq;\n        for (int num : nums) {\n            freq[num] = (freq.find(num) == freq.end()) ? 1 : freq[num] + 1;\n        }\n        for (int num : freq) {\n            if (freq.find(num ^ low) != freq.end()) {\n                count += freq[num] * freq[num ^ low];\n            }\n            if (freq.find(num ^ high) != freq.end()) {\n                count += freq[num] * freq[num ^ high];\n            }\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.720525"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int maxLength = 0;\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j <= s.length(); j++) {\n                string substring = s.substr(i, j - i);\n                if (isSemiRepetitive(substring)) {\n                    maxLength = max(maxLength, (int)substring.length());\n                }\n            }\n        }\n        return maxLength;\n    }\n    bool isSemiRepetitive(string s) {\n        for (int i = 1; i < s.length(); i++) {\n            if (s[i] == s[i - 1] && i > 1 && s[i - 1] == s[i - 2]) {\n                return false;\n            }\n        }\n        return true;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a nested loop to generate all possible substrings of the input string. For each substring, it checks if it is semi-repetitive using a helper function. The maximum length of a semi-repetitive substring is then returned. The time complexity is O(n^2) due to the nested loops, and the space complexity is O(n) due to the storage of substrings.\n\n\n\n",
+  "code": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int maxLength = 0;\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j <= s.length(); j++) {\n                string substring = s.substr(i, j - i);\n                if (isSemiRepetitive(substring)) {\n                    maxLength = max(maxLength, (int)substring.length());\n                }\n            }\n        }\n        return maxLength;\n    }\n    bool isSemiRepetitive(string s) {\n        for (int i = 1; i < s.length(); i++) {\n            if (s[i] == s[i - 1] && i > 1 && s[i - 1] == s[i - 2]) {\n                return false;\n            }\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-06T01:07:01.880192",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int maxLength = 0;\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j <= s.length(); j++) {\n                string substring = s.substr(i, j - i);\n                if (isSemiRepetitive(substring)) {\n                    maxLength = max(maxLength, (int)substring.length());\n                }\n            }\n        }\n        return maxLength;\n    }\n    bool isSemiRepetitive(string s) {\n        for (int i = 1; i < s.length(); i++) {\n            if (s[i] == s[i - 1] && i > 1 && s[i - 1] == s[i - 2]) {\n                return false;\n            }\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.658153"
+}

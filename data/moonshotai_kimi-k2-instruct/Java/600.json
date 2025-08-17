@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int findIntegers(int n) {\n        int k = 31 - Integer.numberOfLeadingZeros(n);\n        int[] fib = new int[k + 3];\n        fib[0] = 1;\n        fib[1] = 2;\n        for (int i = 2; i <= k + 1; ++i) {\n            fib[i] = fib[i - 1] + fib[i - 2];\n        }\n        int res = 0;\n        int prev = 0;\n        for (int i = k; i >= 0; --i) {\n            if ((n & (1 << i)) != 0) {\n                res += fib[i + 1];\n                if (prev == 1) return res;\n                prev = 1;\n            } else {\n                prev = 0;\n            }\n        }\n        return res + 1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Uses digit-DP with Fibonacci pre-computation to count valid numbers ≤ n without consecutive 1s. Iterates over each bit once, leveraging the Fibonacci sequence for counts of valid prefixes.",
+  "code": "class Solution {\n    public int findIntegers(int n) {\n        int k = 31 - Integer.numberOfLeadingZeros(n);\n        int[] fib = new int[k + 3];\n        fib[0] = 1;\n        fib[1] = 2;\n        for (int i = 2; i <= k + 1; ++i) {\n            fib[i] = fib[i - 1] + fib[i - 2];\n        }\n        int res = 0;\n        int prev = 0;\n        for (int i = k; i >= 0; --i) {\n            if ((n & (1 << i)) != 0) {\n                res += fib[i + 1];\n                if (prev == 1) return res;\n                prev = 1;\n            } else {\n                prev = 0;\n            }\n        }\n        return res + 1;\n    }\n}",
+  "timestamp": "2025-08-05T14:15:56.528367",
+  "code_extracted_previous": "class Solution {\n    public int findIntegers(int n) {\n        int k = 31 - Integer.numberOfLeadingZeros(n);\n        int[] fib = new int[k + 3];\n        fib[0] = 1;\n        fib[1] = 2;\n        for (int i = 2; i <= k + 1; ++i) {\n            fib[i] = fib[i - 1] + fib[i - 2];\n        }\n        int res = 0;\n        int prev = 0;\n        for (int i = k; i >= 0; --i) {\n            if ((n & (1 << i)) != 0) {\n                res += fib[i + 1];\n                if (prev == 1) return res;\n                prev = 1;\n            } else {\n                prev = 0;\n            }\n        }\n        return res + 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.664944"
+}

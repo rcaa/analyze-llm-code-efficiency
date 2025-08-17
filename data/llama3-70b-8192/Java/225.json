@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass MyStack {\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.add(x);\n        while (!q1.isEmpty()) {\n            q2.add(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses two queues to implement a stack. The push operation is O(n) because it involves moving all elements from one queue to another. The pop, top, and empty operations are O(1) because they only involve accessing the front of the queue.",
+  "code": "class MyStack {\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.add(x);\n        while (!q1.isEmpty()) {\n            q2.add(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "timestamp": "2025-08-06T03:19:36.902496",
+  "code_extracted_previous": "class MyStack {\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.add(x);\n        while (!q1.isEmpty()) {\n            q2.add(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:38.094317"
+}

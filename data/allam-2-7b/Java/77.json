@@ -1,0 +1,15 @@
+{
+  "id": 77,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public List<List<Integer>> combine(int n, int k) {\n        List<List<Integer>> result = new ArrayList<>();\n        dfs(n, k, new ArrayList<Integer>(), result);\n        return result;\n    }\n\n    private void dfs(int n, int k, List<Integer> curr, List<List<Integer>> result) {\n        if (k == 0) {\n            result.add(new ArrayList<>(curr));\n            return;\n        }\n\n        for (int i = 1; i <= n; i++) {\n            curr.add(i);\n            dfs(n, k - 1, curr, result);\n            curr.remove(curr.size() - 1);\n        }\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n^k)\nspace complexity: O(n^k)\nenergy implications: LOW\n\nExplanation:\nWe use a recursive function (dfs) to generate all combinations. The base case is when k becomes 0, which means we have used all numbers. In the recursive part, we iterate from 1 to n and for each number, add it to the current combination, call the function recursively with k decremented, and then remove the last number from the combination. This ensures that we generate all combinations and avoid duplicates. ",
+  "code": "class Solution {\n    public List<List<Integer>> combine(int n, int k) {\n        List<List<Integer>> result = new ArrayList<>();\n        dfs(n, k, new ArrayList<Integer>(), result);\n        return result;\n    }\n\n    private void dfs(int n, int k, List<Integer> curr, List<List<Integer>> result) {\n        if (k == 0) {\n            result.add(new ArrayList<>(curr));\n            return;\n        }\n\n        for (int i = 1; i <= n; i++) {\n            curr.add(i);\n            dfs(n, k - 1, curr, result);\n            curr.remove(curr.size() - 1);\n        }\n    }\n}",
+  "timestamp": "2025-08-05T13:35:37.567881",
+  "code_extracted_previous": "class Solution {\n    public List<List<Integer>> combine(int n, int k) {\n        List<List<Integer>> result = new ArrayList<>();\n        dfs(n, k, new ArrayList<Integer>(), result);\n        return result;\n    }\n\n    private void dfs(int n, int k, List<Integer> curr, List<List<Integer>> result) {\n        if (k == 0) {\n            result.add(new ArrayList<>(curr));\n            return;\n        }\n\n        for (int i = 1; i <= n; i++) {\n            curr.add(i);\n            dfs(n, k - 1, curr, result);\n            curr.remove(curr.size() - 1);\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.905869"
+}

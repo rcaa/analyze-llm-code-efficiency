@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        longest = 0\n        start = 0\n        used_char = {}\n        for i, char in enumerate(s):\n            if char in used_char and start <= used_char[char]:\n                start = used_char[char] + 1\n            else:\n                longest = max(longest, i - start + 1)\n            used_char[char] = i\n        return longest\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a sliding window approach and a dictionary to track the last seen index of each character.  The window expands until a duplicate is encountered, at which point the window slides forward.  The maximum window size is recorded as the longest substring without duplicates.  \n\n\n\n",
+  "code": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        longest = 0\n        start = 0\n        used_char = {}\n        for i, char in enumerate(s):\n            if char in used_char and start <= used_char[char]:\n                start = used_char[char] + 1\n            else:\n                longest = max(longest, i - start + 1)\n            used_char[char] = i\n        return longest",
+  "timestamp": "2025-08-05T14:49:28.341501",
+  "code_extracted_previous": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        longest = 0\n        start = 0\n        used_char = {}\n        for i, char in enumerate(s):\n            if char in used_char and start <= used_char[char]:\n                start = used_char[char] + 1\n            else:\n                longest = max(longest, i - start + 1)\n            used_char[char] = i\n        return longest",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:26.539455"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 925,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public boolean isLongPressedName(String name, String typed) {\n        int i = 0, j = 0;\n        while (i < name.length() && j < typed.length()) {\n            if (name.charAt(i) != typed.charAt(j)) return false;\n            int countName = 1;\n            while (i + 1 < name.length() && name.charAt(i) == name.charAt(i + 1)) {\n                i++;\n                countName++;\n            }\n            int countTyped = 1;\n            while (j + 1 < typed.length() && typed.charAt(j) == typed.charAt(j + 1)) {\n                j++;\n                countTyped++;\n            }\n            if (countTyped < countName) return false;\n            i++;\n            j++;\n        }\n        return i == name.length();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N + T) where N is the length of name and T is the length of typed\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses two pointers to traverse both strings, comparing character groups and ensuring typed has at least as many of each character as name. It is efficient and avoids unnecessary memory usage.",
+  "code": "class Solution {\n    public boolean isLongPressedName(String name, String typed) {\n        int i = 0, j = 0;\n        while (i < name.length() && j < typed.length()) {\n            if (name.charAt(i) != typed.charAt(j)) return false;\n            int countName = 1;\n            while (i + 1 < name.length() && name.charAt(i) == name.charAt(i + 1)) {\n                i++;\n                countName++;\n            }\n            int countTyped = 1;\n            while (j + 1 < typed.length() && typed.charAt(j) == typed.charAt(j + 1)) {\n                j++;\n                countTyped++;\n            }\n            if (countTyped < countName) return false;\n            i++;\n            j++;\n        }\n        return i == name.length();\n    }\n}",
+  "timestamp": "2025-08-06T01:31:12.555981",
+  "code_extracted_previous": "class Solution {\n    public boolean isLongPressedName(String name, String typed) {\n        int i = 0, j = 0;\n        while (i < name.length() && j < typed.length()) {\n            if (name.charAt(i) != typed.charAt(j)) return false;\n            int countName = 1;\n            while (i + 1 < name.length() && name.charAt(i) == name.charAt(i + 1)) {\n                i++;\n                countName++;\n            }\n            int countTyped = 1;\n            while (j + 1 < typed.length() && typed.charAt(j) == typed.charAt(j + 1)) {\n                j++;\n                countTyped++;\n            }\n            if (countTyped < countName) return false;\n            i++;\n            j++;\n        }\n        return i == name.length();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:03.787671"
+}

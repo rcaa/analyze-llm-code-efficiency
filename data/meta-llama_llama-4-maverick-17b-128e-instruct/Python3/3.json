@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        char_set = set()\n        left = 0\n        max_length = 0\n        for right in range(len(s)):\n            while s[right] in char_set:\n                char_set.remove(s[left])\n                left += 1\n            char_set.add(s[right])\n            max_length = max(max_length, right - left + 1)\n        return max_length\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, m))\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with a set to track unique characters within the current substring, efficiently updating the maximum length as it iterates through the string.",
+  "code": "def lengthOfLongestSubstring(self, s: str) -> int:\n        char_set = set()\n        left = 0\n        max_length = 0\n        for right in range(len(s)):\n            while s[right] in char_set:\n                char_set.remove(s[left])\n                left += 1\n            char_set.add(s[right])\n            max_length = max(max_length, right - left + 1)\n        return max_length\n```",
+  "timestamp": "2025-08-05T14:49:26.105951",
+  "code_extracted_previous": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        char_set = set()\n        left = 0\n        max_length = 0\n        for right in range(len(s)):\n            while s[right] in char_set:\n                char_set.remove(s[left])\n                left += 1\n            char_set.add(s[right])\n            max_length = max(max_length, right - left + 1)\n        return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.060546"
+}

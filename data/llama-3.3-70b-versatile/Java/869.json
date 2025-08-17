@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean reorderedPowerOf2(int n) {\n        String sn = String.valueOf(n);\n        for (int i = 0; i <= 30; i++) {\n            String sp = String.valueOf(1 << i);\n            int[] count1 = countDigits(sn);\n            int[] count2 = countDigits(sp);\n            if (Arrays.equals(count1, count2)) {\n                return true;\n            }\n        }\n        return false;\n    }\n\n    private int[] countDigits(String s) {\n        int[] count = new int[10];\n        for (char c : s.toCharArray()) {\n            count[c - '0']++;\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through all possible powers of 2, converts them to strings, and compares the digit counts with the input number, returning true if a match is found, indicating the input can be reordered into a power of 2.",
+  "code": "class Solution {\n    public boolean reorderedPowerOf2(int n) {\n        String sn = String.valueOf(n);\n        for (int i = 0; i <= 30; i++) {\n            String sp = String.valueOf(1 << i);\n            int[] count1 = countDigits(sn);\n            int[] count2 = countDigits(sp);\n            if (Arrays.equals(count1, count2)) {\n                return true;\n            }\n        }\n        return false;\n    }\n\n    private int[] countDigits(String s) {\n        int[] count = new int[10];\n        for (char c : s.toCharArray()) {\n            count[c - '0']++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T15:16:17.892995",
+  "code_extracted_previous": "class Solution {\n    public boolean reorderedPowerOf2(int n) {\n        String sn = String.valueOf(n);\n        for (int i = 0; i <= 30; i++) {\n            String sp = String.valueOf(1 << i);\n            int[] count1 = countDigits(sn);\n            int[] count2 = countDigits(sp);\n            if (Arrays.equals(count1, count2)) {\n                return true;\n            }\n        }\n        return false;\n    }\n\n    private int[] countDigits(String s) {\n        int[] count = new int[10];\n        for (char c : s.toCharArray()) {\n            count[c - '0']++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.487247"
+}

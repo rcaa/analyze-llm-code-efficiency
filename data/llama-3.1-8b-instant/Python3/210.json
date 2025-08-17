@@ -1,0 +1,15 @@
+{
+  "id": 210,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nfrom typing import List\nfrom collections import defaultdict, deque\n\nclass Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = defaultdict(list)\n        indegree = [0] * numCourses\n        for course, pre in prerequisites:\n            graph[pre].append(course)\n            indegree[course] += 1\n\n        queue = deque([i for i in range(numCourses) if indegree[i] == 0])\n        res = []\n        while queue:\n            course = queue.popleft()\n            res.append(course)\n            for neighbor in graph[course]:\n                indegree[neighbor] -= 1\n                if indegree[neighbor] == 0:\n                    queue.append(neighbor)\n\n        return res if len(res) == numCourses else []\n```\n\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW",
+  "code": "class Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = defaultdict(list)\n        indegree = [0] * numCourses\n        for course, pre in prerequisites:\n            graph[pre].append(course)\n            indegree[course] += 1\n\n        queue = deque([i for i in range(numCourses) if indegree[i] == 0])\n        res = []\n        while queue:\n            course = queue.popleft()\n            res.append(course)\n            for neighbor in graph[course]:\n                indegree[neighbor] -= 1\n                if indegree[neighbor] == 0:\n                    queue.append(neighbor)\n\n        return res if len(res) == numCourses else []",
+  "timestamp": "2025-08-05T13:59:17.560577",
+  "code_extracted_previous": "from typing import List\nfrom collections import defaultdict, deque\n\nclass Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = defaultdict(list)\n        indegree = [0] * numCourses\n        for course, pre in prerequisites:\n            graph[pre].append(course)\n            indegree[course] += 1\n\n        queue = deque([i for i in range(numCourses) if indegree[i] == 0])\n        res = []\n        while queue:\n            course = queue.popleft()\n            res.append(course)\n            for neighbor in graph[course]:\n                indegree[neighbor] -= 1\n                if indegree[neighbor] == 0:\n                    queue.append(neighbor)\n\n        return res if len(res) == numCourses else []",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.563186"
+}

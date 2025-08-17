@@ -1,0 +1,15 @@
+{
+  "id": 3519,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def countNumbers(self, l: str, r: str, b: int) -> int:\n        def is_non_decreasing(num_str):\n            return all(int(num_str[i]) <= int(num_str[i+1]) for i in range(len(num_str)-1))\n        \n        l_int = int(l, b)\n        r_int = int(r, b)\n        count = 0\n        for i in range(l_int, r_int + 1):\n            num_str = bin(i)[2:]\n            if is_non_decreasing(num_str):\n                count += 1\n        return count % (10**9 + 7)\n```\n\nsolution: ```python\ndef is_non_decreasing(num_str):\n    return all(int(num_str[i]) <= int(num_str[i+1]) for i in range(len(num_str)-1))\n    \nl_int = int(l, b)\nr_int = int(r, b)\ncount = 0\nfor i in range(l_int, r_int + 1):\n    num_str = bin(i)[2:]\n    if is_non_decreasing(num_str):\n        count += 1\nreturn count % (10**9 + 7)\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the range of integers, converts each to a binary string, and checks if the digits are non-decreasing. This approach has a linear time complexity due to the single loop. The space complexity is constant as the algorithm uses a fixed amount of space regardless of the input size. The energy implications are low as the operations are primarily bitwise and arithmetic.",
+  "code": "solution:",
+  "timestamp": "2025-08-06T01:57:09.875932",
+  "code_extracted_previous": "def is_non_decreasing(num_str):\n    return all(int(num_str[i]) <= int(num_str[i+1]) for i in range(len(num_str)-1))\n    \nl_int = int(l, b)\nr_int = int(r, b)\ncount = 0\nfor i in range(l_int, r_int + 1):\n    num_str = bin(i)[2:]\n    if is_non_decreasing(num_str):\n        count += 1\nreturn count % (10**9 + 7)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.758086"
+}

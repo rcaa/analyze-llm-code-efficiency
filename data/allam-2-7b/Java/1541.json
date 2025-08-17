@@ -1,0 +1,15 @@
+{
+  "id": 1541,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int minInsertions(String s) {\n        int countLeft = 0;\n        int countRight = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '(') {\n                countLeft++;\n            } else if (s.charAt(i) == ')') {\n                countRight++;\n                if (countLeft > countRight) {\n                    countLeft -= countRight;\n                }\n            }\n        }\n        return countLeft;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nWe iterate through the string character by character. For each character, we check if it is an opening parenthesis '(' or a closing parenthesis ')'. If it is an opening parenthesis, we increment the countLeft variable. If it is a closing parenthesis, we increment countRight and check if there are more opening parentheses than closing parentheses. If so, we decrement countLeft by countRight. This ensures that the number of closing parentheses is always less than or equal to the number of opening parentheses. Finally, we return the countLeft, which represents the minimum number of insertions needed to make the string balanced. ",
+  "code": "class Solution {\n    public int minInsertions(String s) {\n        int countLeft = 0;\n        int countRight = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '(') {\n                countLeft++;\n            } else if (s.charAt(i) == ')') {\n                countRight++;\n                if (countLeft > countRight) {\n                    countLeft -= countRight;\n                }\n            }\n        }\n        return countLeft;\n    }\n}",
+  "timestamp": "2025-08-06T00:53:55.046711",
+  "code_extracted_previous": "class Solution {\n    public int minInsertions(String s) {\n        int countLeft = 0;\n        int countRight = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '(') {\n                countLeft++;\n            } else if (s.charAt(i) == ')') {\n                countRight++;\n                if (countLeft > countRight) {\n                    countLeft -= countRight;\n                }\n            }\n        }\n        return countLeft;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.620764"
+}

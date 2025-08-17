@@ -1,0 +1,15 @@
+{
+  "id": 2092,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y, _ in meetings:\n            graph[x].append(y)\n            graph[y].append(x)\n        uf = list(range(n))\n        def find(x):\n            if uf[x] != x:\n                uf[x] = find(uf[x])\n            return uf[x]\n        def union(x, y):\n            uf[find(x)] = find(y)\n        union(0, firstPerson)\n        for x, y, time in sorted(meetings, key=lambda x: x[2]):\n            if find(x) == find(0):\n                union(x, y)\n            if find(y) == find(0):\n                union(y, x)\n        return [i for i in range(n) if find(i) == find(0)]\n```\nefficiency: HIGH\ntime complexity: O(m log m + n)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: This solution uses a Union-Find data structure to efficiently group people who have the secret. It first builds a graph of meetings, then iterates through the meetings in chronological order, unioning people who meet and have the secret. Finally, it returns a list of people who are in the same group as person 0.",
+  "code": "class Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y, _ in meetings:\n            graph[x].append(y)\n            graph[y].append(x)\n        uf = list(range(n))\n        def find(x):\n            if uf[x] != x:\n                uf[x] = find(uf[x])\n            return uf[x]\n        def union(x, y):\n            uf[find(x)] = find(y)\n        union(0, firstPerson)\n        for x, y, time in sorted(meetings, key=lambda x: x[2]):\n            if find(x) == find(0):\n                union(x, y)\n            if find(y) == find(0):\n                union(y, x)\n        return [i for i in range(n) if find(i) == find(0)]",
+  "timestamp": "2025-08-05T13:55:45.496458",
+  "code_extracted_previous": "class Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y, _ in meetings:\n            graph[x].append(y)\n            graph[y].append(x)\n        uf = list(range(n))\n        def find(x):\n            if uf[x] != x:\n                uf[x] = find(uf[x])\n            return uf[x]\n        def union(x, y):\n            uf[find(x)] = find(y)\n        union(0, firstPerson)\n        for x, y, time in sorted(meetings, key=lambda x: x[2]):\n            if find(x) == find(0):\n                union(x, y)\n            if find(y) == find(0):\n                union(y, x)\n        return [i for i in range(n) if find(i) == find(0)]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.133447"
+}

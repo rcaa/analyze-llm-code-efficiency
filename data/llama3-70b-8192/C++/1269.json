@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(steps + 1, vector<int>(steps + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j <= min(i, arrLen - 1); j++) {\n                dp[i][j] = (dp[i - 1][j] + dp[i - 1][j - 1] + dp[i - 1][j + 1]) % MOD;\n            }\n        }\n        return dp[steps][0];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(steps * arrLen)\nspace complexity: O(steps * arrLen)\nenergy implications: LOW\nexplanation: Dynamic programming is used to store the number of ways to reach each position at each step, and the result is calculated by summing the ways to reach the current position from the previous step.",
+  "code": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(steps + 1, vector<int>(steps + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j <= min(i, arrLen - 1); j++) {\n                dp[i][j] = (dp[i - 1][j] + dp[i - 1][j - 1] + dp[i - 1][j + 1]) % MOD;\n            }\n        }\n        return dp[steps][0];\n    }\n};",
+  "timestamp": "2025-08-05T14:19:05.105246",
+  "code_extracted_previous": "public:\n    int numWays(int steps, int arrLen) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(steps + 1, vector<int>(steps + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j <= min(i, arrLen - 1); j++) {\n                dp[i][j] = (dp[i - 1][j] + dp[i - 1][j - 1] + dp[i - 1][j + 1]) % MOD;\n            }\n        }\n        return dp[steps][0];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.052728"
+}

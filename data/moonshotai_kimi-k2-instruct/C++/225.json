@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class MyStack {\npublic:\n    queue<int> q;\n    MyStack() {}\n    \n    void push(int x) {\n        q.push(x);\n        for (int i = 0; i < q.size() - 1; ++i) {\n            q.push(q.front());\n            q.pop();\n        }\n    }\n    \n    int pop() {\n        int val = q.front();\n        q.pop();\n        return val;\n    }\n    \n    int top() {\n        return q.front();\n    }\n    \n    bool empty() {\n        return q.empty();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: push O(n), pop O(1), top O(1), empty O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a single queue and rotates elements on each push so the newest element is always at the front, giving LIFO behavior. Push is O(n) due to rotation, but pop/top/empty are O(1). Minimal memory overhead and no extra queues.",
+  "code": "class MyStack {\npublic:\n    queue<int> q;\n    MyStack() {}\n    \n    void push(int x) {\n        q.push(x);\n        for (int i = 0; i < q.size() - 1; ++i) {\n            q.push(q.front());\n            q.pop();\n        }\n    }\n    \n    int pop() {\n        int val = q.front();\n        q.pop();\n        return val;\n    }\n    \n    int top() {\n        return q.front();\n    }\n    \n    bool empty() {\n        return q.empty();\n    }\n};",
+  "timestamp": "2025-08-06T02:29:13.004462",
+  "code_extracted_previous": "public:\n    queue<int> q;\n    MyStack() {}\n    \n    void push(int x) {\n        q.push(x);\n        for (int i = 0; i < q.size() - 1; ++i) {\n            q.push(q.front());\n            q.pop();\n        }\n    }\n    \n    int pop() {\n        int val = q.front();\n        q.pop();\n        return val;\n    }\n    \n    int top() {\n        return q.front();\n    }\n    \n    bool empty() {\n        return q.empty();\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.600711"
+}

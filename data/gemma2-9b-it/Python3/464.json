@@ -1,0 +1,15 @@
+{
+  "id": 464,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:\n        total = sum(range(1, maxChoosableInteger + 1))\n        if desiredTotal <= total // 2:\n            return True\n        return self.dfs(set(range(1, maxChoosableInteger + 1)), desiredTotal, 0)\n\n    def dfs(self, nums, target, current_sum):\n        if target <= 0:\n            return True\n        if current_sum >= target:\n            return False\n        for num in nums:\n            nums.remove(num)\n            if not self.dfs(nums, target - num, current_sum + num):\n                return True\n            nums.add(num)\n        return False\n```\n\nsolution: \n```python\nclass Solution:\n    def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:\n        total = sum(range(1, maxChoosableInteger + 1))\n        if desiredTotal <= total // 2:\n            return True\n        return self.dfs(set(range(1, maxChoosableInteger + 1)), desiredTotal, 0)\n\n    def dfs(self, nums, target, current_sum):\n        if target <= 0:\n            return True\n        if current_sum >= target:\n            return False\n        for num in nums:\n            nums.remove(num)\n            if not self.dfs(nums, target - num, current_sum + num):\n                return True\n            nums.add(num)\n        return False\n```\nefficiency: HIGH\ntime complexity: O(2^n * n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a recursive depth-first search (DFS) approach to explore all possible game states. It maintains a set of available numbers and recursively calculates the outcome of the game for each possible move. The base cases are when the target sum is reached or exceeded, or when the current sum is greater than or equal to the target sum. The algorithm prunes the search space by checking if the opponent can force a win in the remaining game states.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-06T08:42:35.475786",
+  "code_extracted_previous": "class Solution:\n    def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:\n        total = sum(range(1, maxChoosableInteger + 1))\n        if desiredTotal <= total // 2:\n            return True\n        return self.dfs(set(range(1, maxChoosableInteger + 1)), desiredTotal, 0)\n\n    def dfs(self, nums, target, current_sum):\n        if target <= 0:\n            return True\n        if current_sum >= target:\n            return False\n        for num in nums:\n            nums.remove(num)\n            if not self.dfs(nums, target - num, current_sum + num):\n                return True\n            nums.add(num)\n        return False",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.910649"
+}

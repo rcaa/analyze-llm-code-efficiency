@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class MyQueue {\npublic:\n    stack<int> in, out;\n    MyQueue() {}\n    \n    void push(int x) {\n        in.push(x);\n    }\n    \n    int pop() {\n        if (out.empty()) {\n            while (!in.empty()) {\n                out.push(in.top());\n                in.pop();\n            }\n        }\n        int val = out.top();\n        out.pop();\n        return val;\n    }\n    \n    int peek() {\n        if (out.empty()) {\n            while (!in.empty()) {\n                out.push(in.top());\n                in.pop();\n            }\n        }\n        return out.top();\n    }\n    \n    bool empty() {\n        return in.empty() && out.empty();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: Amortized O(1) per operation\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses two stacks (in and out). Elements are pushed onto in; pop/peek move elements from in to out only when out is empty, reversing order to achieve FIFO. Each element is moved at most once, giving amortized O(1) per operation.",
+  "code": "class MyQueue {\npublic:\n    stack<int> in, out;\n    MyQueue() {}\n    \n    void push(int x) {\n        in.push(x);\n    }\n    \n    int pop() {\n        if (out.empty()) {\n            while (!in.empty()) {\n                out.push(in.top());\n                in.pop();\n            }\n        }\n        int val = out.top();\n        out.pop();\n        return val;\n    }\n    \n    int peek() {\n        if (out.empty()) {\n            while (!in.empty()) {\n                out.push(in.top());\n                in.pop();\n            }\n        }\n        return out.top();\n    }\n    \n    bool empty() {\n        return in.empty() && out.empty();\n    }\n};",
+  "timestamp": "2025-08-06T02:29:20.418586",
+  "code_extracted_previous": "public:\n    stack<int> in, out;\n    MyQueue() {}\n    \n    void push(int x) {\n        in.push(x);\n    }\n    \n    int pop() {\n        if (out.empty()) {\n            while (!in.empty()) {\n                out.push(in.top());\n                in.pop();\n            }\n        }\n        int val = out.top();\n        out.pop();\n        return val;\n    }\n    \n    int peek() {\n        if (out.empty()) {\n            while (!in.empty()) {\n                out.push(in.top());\n                in.pop();\n            }\n        }\n        return out.top();\n    }\n    \n    bool empty() {\n        return in.empty() && out.empty();\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.649567"
+}

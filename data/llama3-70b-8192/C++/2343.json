@@ -1,0 +1,15 @@
+{
+  "id": 2343,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {\n        vector<int> res;\n        for (auto& q : queries) {\n            int k = q[0], trim = q[1];\n            vector<pair<string, int>> v;\n            for (int i = 0; i < nums.size(); i++) {\n                string s = nums[i].substr(nums[i].size() - trim);\n                v.push_back({s, i});\n            }\n            sort(v.begin(), v.end());\n            res.push_back(v[k - 1].second);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(Q * N * logN + N * M)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: This solution uses sorting to find the kth smallest trimmed number for each query. It trims each number in nums to the rightmost trim digits and stores them along with their original indices. Then, it sorts these trimmed numbers and finds the kth smallest one.",
+  "code": "class Solution {\npublic:\n    vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {\n        vector<int> res;\n        for (auto& q : queries) {\n            int k = q[0], trim = q[1];\n            vector<pair<string, int>> v;\n            for (int i = 0; i < nums.size(); i++) {\n                string s = nums[i].substr(nums[i].size() - trim);\n                v.push_back({s, i});\n            }\n            sort(v.begin(), v.end());\n            res.push_back(v[k - 1].second);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:29:31.185644",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {\n        vector<int> res;\n        for (auto& q : queries) {\n            int k = q[0], trim = q[1];\n            vector<pair<string, int>> v;\n            for (int i = 0; i < nums.size(); i++) {\n                string s = nums[i].substr(nums[i].size() - trim);\n                v.push_back({s, i});\n            }\n            sort(v.begin(), v.end());\n            res.push_back(v[k - 1].second);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.517948"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass MyCalendarThree {\n    private TreeMap<Integer, Integer> delta;\n\n    public MyCalendarThree() {\n        delta = new TreeMap<>();\n    }\n\n    public int book(int startTime, int endTime) {\n        delta.put(startTime, delta.getOrDefault(startTime, 0) + 1);\n        delta.put(endTime, delta.getOrDefault(endTime, 0) - 1);\n        int active = 0, maxK = 0;\n        for (int d : delta.values()) {\n            active += d;\n            maxK = Math.max(maxK, active);\n        }\n        return maxK;\n    }\n}\n\nsolution: \n```java\nclass MyCalendarThree {\n    private TreeMap<Integer, Integer> delta;\n\n    public MyCalendarThree() {\n        delta = new TreeMap<>();\n    }\n\n    public int book(int startTime, int endTime) {\n        delta.put(startTime, delta.getOrDefault(startTime, 0) + 1);\n        delta.put(endTime, delta.getOrDefault(endTime, 0) - 1);\n        int active = 0, maxK = 0;\n        for (int d : delta.values()) {\n            active += d;\n            maxK = Math.max(maxK, active);\n        }\n        return maxK;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a TreeMap to track the change in the number of active events at each time point, allowing for efficient calculation of the maximum k-booking.",
+  "code": "class MyCalendarThree {\n    private TreeMap<Integer, Integer> delta;\n\n    public MyCalendarThree() {\n        delta = new TreeMap<>();\n    }\n\n    public int book(int startTime, int endTime) {\n        delta.put(startTime, delta.getOrDefault(startTime, 0) + 1);\n        delta.put(endTime, delta.getOrDefault(endTime, 0) - 1);\n        int active = 0, maxK = 0;\n        for (int d : delta.values()) {\n            active += d;\n            maxK = Math.max(maxK, active);\n        }\n        return maxK;\n    }\n}",
+  "timestamp": "2025-08-05T13:37:48.974326",
+  "code_extracted_previous": "class MyCalendarThree {\n    private TreeMap<Integer, Integer> delta;\n\n    public MyCalendarThree() {\n        delta = new TreeMap<>();\n    }\n\n    public int book(int startTime, int endTime) {\n        delta.put(startTime, delta.getOrDefault(startTime, 0) + 1);\n        delta.put(endTime, delta.getOrDefault(endTime, 0) - 1);\n        int active = 0, maxK = 0;\n        for (int d : delta.values()) {\n            active += d;\n            maxK = Math.max(maxK, active);\n        }\n        return maxK;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.097498"
+}

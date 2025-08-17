@@ -1,0 +1,15 @@
+{
+  "id": 1160,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countCharacters(String[] words, String chars) {\n        int sum = 0;\n        for (String word : words) {\n            if (isGoodString(word, chars)) {\n                sum += word.length();\n            }\n        }\n        return sum;\n    }\n\n    private boolean isGoodString(String word, String chars) {\n        int[] charCount = new int[26];\n        for (char c : chars.toCharArray()) {\n            charCount[c - 'a']++;\n        }\n        for (char c : word.toCharArray()) {\n            if (--charCount[c - 'a'] < 0) {\n                return false;\n            }\n        }\n        return true;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * m)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int countCharacters(String[] words, String chars) {\n        int sum = 0;\n        for (String word : words) {\n            if (isGoodString(word, chars)) {\n                sum += word.length();\n            }\n        }\n        return sum;\n    }\n\n    private boolean isGoodString(String word, String chars) {\n        int[] charCount = new int[26];\n        for (char c : chars.toCharArray()) {\n            charCount[c - 'a']++;\n        }\n        for (char c : word.toCharArray()) {\n            if (--charCount[c - 'a'] < 0) {\n                return false;\n            }\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-05T12:38:53.140850",
+  "code_extracted_previous": "class Solution {\n    public int countCharacters(String[] words, String chars) {\n        int sum = 0;\n        for (String word : words) {\n            if (isGoodString(word, chars)) {\n                sum += word.length();\n            }\n        }\n        return sum;\n    }\n\n    private boolean isGoodString(String word, String chars) {\n        int[] charCount = new int[26];\n        for (char c : chars.toCharArray()) {\n            charCount[c - 'a']++;\n        }\n        for (char c : word.toCharArray()) {\n            if (--charCount[c - 'a'] < 0) {\n                return false;\n            }\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.901482"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public String smallestSubsequence(String s) {\n        int[] last = new int[26];\n        boolean[] used = new boolean[26];\n        char[] ch = s.toCharArray();\n        for (int i = 0; i < ch.length; i++) last[ch[i] - 'a'] = i;\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < ch.length; i++) {\n            int c = ch[i] - 'a';\n            if (used[c]) continue;\n            while (sb.length() > 0 && sb.charAt(sb.length() - 1) > ch[i] && last[sb.charAt(sb.length() - 1) - 'a'] > i) {\n                used[sb.charAt(sb.length() - 1) - 'a'] = false;\n                sb.setLength(sb.length() - 1);\n            }\n            used[c] = true;\n            sb.append(ch[i]);\n        }\n        return sb.toString();\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Greedy stack approach: record last index of each char, then build result by popping larger chars that appear later. Single pass, constant extra space.",
+  "code": "class Solution {\n    public String smallestSubsequence(String s) {\n        int[] last = new int[26];\n        boolean[] used = new boolean[26];\n        char[] ch = s.toCharArray();\n        for (int i = 0; i < ch.length; i++) last[ch[i] - 'a'] = i;\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < ch.length; i++) {\n            int c = ch[i] - 'a';\n            if (used[c]) continue;\n            while (sb.length() > 0 && sb.charAt(sb.length() - 1) > ch[i] && last[sb.charAt(sb.length() - 1) - 'a'] > i) {\n                used[sb.charAt(sb.length() - 1) - 'a'] = false;\n                sb.setLength(sb.length() - 1);\n            }\n            used[c] = true;\n            sb.append(ch[i]);\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-06T00:47:59.776877",
+  "code_extracted_previous": "public String smallestSubsequence(String s) {\n        int[] last = new int[26];\n        boolean[] used = new boolean[26];\n        char[] ch = s.toCharArray();\n        for (int i = 0; i < ch.length; i++) last[ch[i] - 'a'] = i;\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < ch.length; i++) {\n            int c = ch[i] - 'a';\n            if (used[c]) continue;\n            while (sb.length() > 0 && sb.charAt(sb.length() - 1) > ch[i] && last[sb.charAt(sb.length() - 1) - 'a'] > i) {\n                used[sb.charAt(sb.length() - 1) - 'a'] = false;\n                sb.setLength(sb.length() - 1);\n            }\n            used[c] = true;\n            sb.append(ch[i]);\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.440586"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int numWays(int steps, int arrLen) {\n        if (arrLen > steps / 2 + 1) arrLen = steps / 2 + 1;\n        int[][] dp = new int[steps + 1][arrLen];\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j < arrLen; j++) {\n                if (j > 0) dp[i][j] += dp[i - 1][j - 1];\n                dp[i][j] += dp[i - 1][j];\n                if (j < arrLen - 1) dp[i][j] += dp[i - 1][j + 1];\n                dp[i][j] %= 1000000007;\n            }\n        }\n        return dp[steps][0];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(steps * arrLen)\nspace complexity: O(steps * arrLen)\nenergy implications: MEDIUM",
+  "code": "class Solution {\n    public int numWays(int steps, int arrLen) {\n        if (arrLen > steps / 2 + 1) arrLen = steps / 2 + 1;\n        int[][] dp = new int[steps + 1][arrLen];\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j < arrLen; j++) {\n                if (j > 0) dp[i][j] += dp[i - 1][j - 1];\n                dp[i][j] += dp[i - 1][j];\n                if (j < arrLen - 1) dp[i][j] += dp[i - 1][j + 1];\n                dp[i][j] %= 1000000007;\n            }\n        }\n        return dp[steps][0];\n    }\n}",
+  "timestamp": "2025-08-05T14:19:23.640737",
+  "code_extracted_previous": "class Solution {\n    public int numWays(int steps, int arrLen) {\n        if (arrLen > steps / 2 + 1) arrLen = steps / 2 + 1;\n        int[][] dp = new int[steps + 1][arrLen];\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j < arrLen; j++) {\n                if (j > 0) dp[i][j] += dp[i - 1][j - 1];\n                dp[i][j] += dp[i - 1][j];\n                if (j < arrLen - 1) dp[i][j] += dp[i - 1][j + 1];\n                dp[i][j] %= 1000000007;\n            }\n        }\n        return dp[steps][0];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.923859"
+}

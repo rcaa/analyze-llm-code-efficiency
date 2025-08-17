@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countBinarySubstrings(String s) {\n        int count = 0;\n        int prev = 0, curr = 1;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1)) {\n                curr++;\n            } else {\n                count += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return count + Math.min(prev, curr);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the string once, counting the number of consecutive equal characters and updating the count of substrings with equal number of consecutive 1's and 0's. It uses a sliding window approach to keep track of the previous and current counts of consecutive equal characters. The time complexity is O(n) where n is the length of the string, and the space complexity is O(1) as it uses a constant amount of space.",
+  "code": "class Solution {\n    public int countBinarySubstrings(String s) {\n        int count = 0;\n        int prev = 0, curr = 1;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1)) {\n                curr++;\n            } else {\n                count += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return count + Math.min(prev, curr);\n    }\n}",
+  "timestamp": "2025-08-06T01:29:34.914540",
+  "code_extracted_previous": "class Solution {\n    public int countBinarySubstrings(String s) {\n        int count = 0;\n        int prev = 0, curr = 1;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1)) {\n                curr++;\n            } else {\n                count += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return count + Math.min(prev, curr);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.981263"
+}

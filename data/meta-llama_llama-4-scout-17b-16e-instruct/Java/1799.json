@@ -1,0 +1,15 @@
+{
+  "id": 1799,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maxScore(int[] nums) {\n        Arrays.sort(nums);\n        int n = nums.length / 2;\n        int res = 0;\n        for (int i = n - 1; i >= 0; i--) {\n            res += (n - i) * gcd(nums[i], nums[2 * n - 1 - i]);\n        }\n        return res;\n    }\n\n    private int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Sorting the array and pairing the largest numbers with their corresponding gcd maximizes the score. The Euclidean algorithm is used for efficient gcd calculation.",
+  "code": "class Solution {\n    public int maxScore(int[] nums) {\n        Arrays.sort(nums);\n        int n = nums.length / 2;\n        int res = 0;\n        for (int i = n - 1; i >= 0; i--) {\n            res += (n - i) * gcd(nums[i], nums[2 * n - 1 - i]);\n        }\n        return res;\n    }\n\n    private int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}",
+  "timestamp": "2025-08-05T11:54:18.273173",
+  "code_extracted_previous": "class Solution {\n    public int maxScore(int[] nums) {\n        Arrays.sort(nums);\n        int n = nums.length / 2;\n        int res = 0;\n        for (int i = n - 1; i >= 0; i--) {\n            res += (n - i) * gcd(nums[i], nums[2 * n - 1 - i]);\n        }\n        return res;\n    }\n\n    private int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.522848"
+}

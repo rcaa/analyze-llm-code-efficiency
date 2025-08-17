@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution:\n    def findNthDigit(self, n: int) -> int:\n        if n < 10: return n\n        digits = 1\n        count = 9\n        start = 10\n        while n > digits * count:\n            n -= digits * count\n            digits += 1\n            count *= 10\n            start *= 10\n        start += (n - 1) // digits\n        return int(str(start)[(n - 1) % digits])\n```\n\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution efficiently calculates the nth digit by first determining the number of digits in the sequence that we need to consider. It then calculates the starting number of this sequence and the digit at the nth position. The time complexity is O(log n) because we are essentially doing a logarithmic number of operations to find the correct sequence and digit. The space complexity is O(1) because we are only using a constant amount of space to store our variables.",
+  "code": "class Solution:\n    def findNthDigit(self, n: int) -> int:\n        if n < 10: return n\n        digits = 1\n        count = 9\n        start = 10\n        while n > digits * count:\n            n -= digits * count\n            digits += 1\n            count *= 10\n            start *= 10\n        start += (n - 1) // digits\n        return int(str(start)[(n - 1) % digits])",
+  "timestamp": "2025-08-05T15:42:25.709019",
+  "code_extracted_previous": "def findNthDigit(self, n: int) -> int:\n        if n < 10: return n\n        digits = 1\n        count = 9\n        start = 10\n        while n > digits * count:\n            n -= digits * count\n            digits += 1\n            count *= 10\n            start *= 10\n        start += (n - 1) // digits\n        return int(str(start)[(n - 1) % digits])",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.270359"
+}

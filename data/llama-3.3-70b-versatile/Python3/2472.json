@@ -1,0 +1,15 @@
+{
+  "id": 2472,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maxPalindromes(self, s: str, k: int) -> int:\n        n = len(s)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            for j in range(i + k, n + 1):\n                if s[i:j] == s[i:j][::-1]:\n                    dp[i] = max(dp[i], 1 + dp[j])\n        return dp[0]\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to track the maximum number of non-overlapping palindromic substrings that can be selected from the string s. It iterates over all possible substrings of s and checks if each substring is a palindrome. If it is, the solution updates the dynamic programming table dp to store the maximum number of palindromic substrings that can be selected up to the current position. The final result is stored in dp[0].",
+  "code": "def maxPalindromes(self, s: str, k: int) -> int:\n        n = len(s)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            for j in range(i + k, n + 1):\n                if s[i:j] == s[i:j][::-1]:\n                    dp[i] = max(dp[i], 1 + dp[j])\n        return dp[0]\n```",
+  "timestamp": "2025-08-06T08:40:53.759213",
+  "code_extracted_previous": "class Solution:\n    def maxPalindromes(self, s: str, k: int) -> int:\n        n = len(s)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            for j in range(i + k, n + 1):\n                if s[i:j] == s[i:j][::-1]:\n                    dp[i] = max(dp[i], 1 + dp[j])\n        return dp[0]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.256048"
+}

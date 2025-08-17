@@ -1,0 +1,15 @@
+{
+  "id": 970,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        Set<Integer> set = new HashSet<>();\n        int maxI = (x == 1) ? 0 : (int) (Math.log(bound) / Math.log(x)) + 1;\n        int maxJ = (y == 1) ? 0 : (int) (Math.log(bound) / Math.log(y)) + 1;\n        for (int i = 0; i <= maxI; i++) {\n            int xi = (int) Math.pow(x, i);\n            if (xi > bound) break;\n            for (int j = 0; j <= maxJ; j++) {\n                int yj = (int) Math.pow(y, j);\n                int sum = xi + yj;\n                if (sum <= bound) {\n                    set.add(sum);\n                } else {\n                    break;\n                }\n            }\n        }\n        return new ArrayList<>(set);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log_x(bound) * log_y(bound))\nspace complexity: O(log_x(bound) * log_y(bound))\nenergy implications: LOW\nexplanation: Iterate over all feasible exponents i and j such that x^i + y^j ≤ bound. Use a HashSet to avoid duplicates. Early-exit loops when x^i or y^j exceeds bound.",
+  "code": "class Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        Set<Integer> set = new HashSet<>();\n        int maxI = (x == 1) ? 0 : (int) (Math.log(bound) / Math.log(x)) + 1;\n        int maxJ = (y == 1) ? 0 : (int) (Math.log(bound) / Math.log(y)) + 1;\n        for (int i = 0; i <= maxI; i++) {\n            int xi = (int) Math.pow(x, i);\n            if (xi > bound) break;\n            for (int j = 0; j <= maxJ; j++) {\n                int yj = (int) Math.pow(y, j);\n                int sum = xi + yj;\n                if (sum <= bound) {\n                    set.add(sum);\n                } else {\n                    break;\n                }\n            }\n        }\n        return new ArrayList<>(set);\n    }\n}",
+  "timestamp": "2025-08-06T02:32:28.716158",
+  "code_extracted_previous": "public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        Set<Integer> set = new HashSet<>();\n        int maxI = (x == 1) ? 0 : (int) (Math.log(bound) / Math.log(x)) + 1;\n        int maxJ = (y == 1) ? 0 : (int) (Math.log(bound) / Math.log(y)) + 1;\n        for (int i = 0; i <= maxI; i++) {\n            int xi = (int) Math.pow(x, i);\n            if (xi > bound) break;\n            for (int j = 0; j <= maxJ; j++) {\n                int yj = (int) Math.pow(y, j);\n                int sum = xi + yj;\n                if (sum <= bound) {\n                    set.add(sum);\n                } else {\n                    break;\n                }\n            }\n        }\n        return new ArrayList<>(set);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.941219"
+}

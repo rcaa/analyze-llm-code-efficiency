@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def largestInteger(self, num: int) -> int:\n        num_str = list(str(num))\n        odd, even = [], []\n        for digit in num_str:\n            if int(digit) % 2 == 0:\n                even.append(digit)\n            else:\n                odd.append(digit)\n        even.sort(reverse=True)\n        odd.sort(reverse=True)\n        for i in range(len(num_str)):\n            if int(num_str[i]) % 2 == 0:\n                num_str[i] = even.pop(0)\n            else:\n                num_str[i] = odd.pop(0)\n        return int(''.join(num_str))\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Sort the digits of the same parity separately and then replace the original digits with the sorted ones, resulting in the largest possible number.",
+  "code": "class Solution:\n    def largestInteger(self, num: int) -> int:\n        num_str = list(str(num))\n        odd, even = [], []\n        for digit in num_str:\n            if int(digit) % 2 == 0:\n                even.append(digit)\n            else:\n                odd.append(digit)\n        even.sort(reverse=True)\n        odd.sort(reverse=True)\n        for i in range(len(num_str)):\n            if int(num_str[i]) % 2 == 0:\n                num_str[i] = even.pop(0)\n            else:\n                num_str[i] = odd.pop(0)\n        return int(''.join(num_str))",
+  "timestamp": "2025-08-05T15:59:55.956225",
+  "code_extracted_previous": "class Solution:\n    def largestInteger(self, num: int) -> int:\n        num_str = list(str(num))\n        odd, even = [], []\n        for digit in num_str:\n            if int(digit) % 2 == 0:\n                even.append(digit)\n            else:\n                odd.append(digit)\n        even.sort(reverse=True)\n        odd.sort(reverse=True)\n        for i in range(len(num_str)):\n            if int(num_str[i]) % 2 == 0:\n                num_str[i] = even.pop(0)\n            else:\n                num_str[i] = odd.pop(0)\n        return int(''.join(num_str))",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.196051"
+}

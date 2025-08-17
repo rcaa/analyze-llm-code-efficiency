@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int min_penalty = INT_MAX, res = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = 0;\n            for (int j = 0; j < i; j++) {\n                if (customers[j] == 'N') penalty++;\n            }\n            for (int j = i; j < n; j++) {\n                if (customers[j] == 'Y') penalty++;\n            }\n            if (penalty < min_penalty) {\n                min_penalty = penalty;\n                res = i;\n            }\n        }\n        return res;\n    }\n};```\n\nefficiency: HIGH\n\ntime complexity: O(n^2)\n\nspace complexity: O(1)\n\nenergy implications: LOW\n\nexplanation: This solution uses a brute-force approach to find the earliest hour at which the shop must be closed to incur a minimum penalty. It iterates over each possible closing time and calculates the penalty for that time. The time complexity is O(n^2) due to the nested loops, but the space complexity is O(1) as it only uses a constant amount of space.",
+  "code": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int min_penalty = INT_MAX, res = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = 0;\n            for (int j = 0; j < i; j++) {\n                if (customers[j] == 'N') penalty++;\n            }\n            for (int j = i; j < n; j++) {\n                if (customers[j] == 'Y') penalty++;\n            }\n            if (penalty < min_penalty) {\n                min_penalty = penalty;\n                res = i;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:02:15.002131",
+  "code_extracted_previous": "public:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int min_penalty = INT_MAX, res = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = 0;\n            for (int j = 0; j < i; j++) {\n                if (customers[j] == 'N') penalty++;\n            }\n            for (int j = i; j < n; j++) {\n                if (customers[j] == 'Y') penalty++;\n            }\n            if (penalty < min_penalty) {\n                min_penalty = penalty;\n                res = i;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.038169"
+}

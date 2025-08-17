@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        unordered_map<char, int> mp;\n        int res = 0, left = 0;\n        for (int right = 0; right < s.size(); right++) {\n            if (mp.count(s[right])) {\n                left = max(left, mp[s[right]] + 1);\n            }\n            mp[s[right]] = right;\n            res = max(res, right - left + 1);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, m))\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach with a hash map to keep track of the characters in the current substring. It iterates through the string, updating the left pointer when a duplicate character is found, and keeps track of the maximum length of the substring seen so far.",
+  "code": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        unordered_map<char, int> mp;\n        int res = 0, left = 0;\n        for (int right = 0; right < s.size(); right++) {\n            if (mp.count(s[right])) {\n                left = max(left, mp[s[right]] + 1);\n            }\n            mp[s[right]] = right;\n            res = max(res, right - left + 1);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:49:17.461455",
+  "code_extracted_previous": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        unordered_map<char, int> mp;\n        int res = 0, left = 0;\n        for (int right = 0; right < s.size(); right++) {\n            if (mp.count(s[right])) {\n                left = max(left, mp[s[right]] + 1);\n            }\n            mp[s[right]] = right;\n            res = max(res, right - left + 1);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.157750"
+}

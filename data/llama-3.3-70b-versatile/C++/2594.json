@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        sort(ranks.begin(), ranks.end());\n        long long low = 0, high = 1e14;\n        while (low < high) {\n            long long mid = low + (high - low) / 2;\n            long long total = 0;\n            for (int rank : ranks) {\n                total += mid / (rank * 2);\n            }\n            if (total >= cars) {\n                high = mid;\n            } else {\n                low = mid + 1;\n            }\n        }\n        return low;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the minimum time required to repair all cars, where the search space is the possible time range and the condition is whether all cars can be repaired within the current time. The time complexity is O(n log m) due to the sorting and binary search, where n is the number of mechanics and m is the maximum possible time. The space complexity is O(1) as only a constant amount of space is used. The energy implications are low as the algorithm only involves basic arithmetic operations and comparisons.",
+  "code": "class Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        sort(ranks.begin(), ranks.end());\n        long long low = 0, high = 1e14;\n        while (low < high) {\n            long long mid = low + (high - low) / 2;\n            long long total = 0;\n            for (int rank : ranks) {\n                total += mid / (rank * 2);\n            }\n            if (total >= cars) {\n                high = mid;\n            } else {\n                low = mid + 1;\n            }\n        }\n        return low;\n    }\n};",
+  "timestamp": "2025-08-06T15:10:04.170421",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        sort(ranks.begin(), ranks.end());\n        long long low = 0, high = 1e14;\n        while (low < high) {\n            long long mid = low + (high - low) / 2;\n            long long total = 0;\n            for (int rank : ranks) {\n                total += mid / (rank * 2);\n            }\n            if (total >= cars) {\n                high = mid;\n            } else {\n                low = mid + 1;\n            }\n        }\n        return low;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.430319"
+}

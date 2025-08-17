@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j * j * ... * j <= i; j++) {\n                int p = pow(j, x);\n                if (p <= i) {\n                    dp[i] = (dp[i] + dp[i - p]) % MOD;\n                }\n            }\n        }\n        return dp[n];\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n^(1 + 1/x))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming approach to store and reuse the results of subproblems, reducing redundant calculations and improving efficiency. The use of modulo operation prevents overflow and ensures the result is within the specified range.",
+  "code": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j * j * ... * j <= i; j++) {\n                int p = pow(j, x);\n                if (p <= i) {\n                    dp[i] = (dp[i] + dp[i - p]) % MOD;\n                }\n            }\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-06T15:10:39.502524",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j * j * ... * j <= i; j++) {\n                int p = pow(j, x);\n                if (p <= i) {\n                    dp[i] = (dp[i] + dp[i - p]) % MOD;\n                }\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.501474"
+}

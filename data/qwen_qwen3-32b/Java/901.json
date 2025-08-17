@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass StockSpanner {\n    private Stack<int[]> stack;\n\n    public StockSpanner() {\n        stack = new Stack<>();\n    }\n    \n    public int next(int price) {\n        int span = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            span += stack.pop()[1];\n        }\n        stack.push(new int[]{price, span});\n        return span;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1) amortized\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a stack to keep track of prices and their corresponding spans. For each new price, it calculates the span by popping all previous prices that are less than or equal to the current price and summing their spans. This approach ensures that each price is pushed and popped at most once, leading to an amortized O(1) time complexity. The stack-based approach is efficient and avoids redundant comparisons.",
+  "code": "class StockSpanner {\n    private Stack<int[]> stack;\n\n    public StockSpanner() {\n        stack = new Stack<>();\n    }\n    \n    public int next(int price) {\n        int span = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            span += stack.pop()[1];\n        }\n        stack.push(new int[]{price, span});\n        return span;\n    }\n}",
+  "timestamp": "2025-08-06T15:26:47.711332",
+  "code_extracted_previous": "class StockSpanner {\n    private Stack<int[]> stack;\n\n    public StockSpanner() {\n        stack = new Stack<>();\n    }\n    \n    public int next(int price) {\n        int span = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            span += stack.pop()[1];\n        }\n        stack.push(new int[]{price, span});\n        return span;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:03.760447"
+}

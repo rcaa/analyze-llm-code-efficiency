@@ -1,0 +1,15 @@
+{
+  "id": 23,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        priority_queue<pair<int, ListNode*>, vector<pair<int, ListNode*>>, greater<pair<int, ListNode*>>> pq;\n        ListNode dummy(0);\n        ListNode* cur = &dummy;\n        for (ListNode* list : lists) {\n            if (list) pq.push({list->val, list});\n        }\n        while (!pq.empty()) {\n            cur->next = pq.top().second;\n            cur = cur->next;\n            pq.pop();\n            if (cur->next) pq.push({cur->next->val, cur->next});\n        }\n        return dummy.next;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to efficiently merge the linked lists. The priority queue is ordered by the values of the nodes, and the smallest value is always at the top. The solution iterates through the priority queue, adding the smallest value to the result list and removing it from the queue. This process is repeated until the queue is empty, resulting in a sorted linked list.",
+  "code": "class Solution {\npublic:\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        priority_queue<pair<int, ListNode*>, vector<pair<int, ListNode*>>, greater<pair<int, ListNode*>>> pq;\n        ListNode dummy(0);\n        ListNode* cur = &dummy;\n        for (ListNode* list : lists) {\n            if (list) pq.push({list->val, list});\n        }\n        while (!pq.empty()) {\n            cur->next = pq.top().second;\n            cur = cur->next;\n            pq.pop();\n            if (cur->next) pq.push({cur->next->val, cur->next});\n        }\n        return dummy.next;\n    }\n};",
+  "timestamp": "2025-08-05T15:14:03.506798",
+  "code_extracted_previous": "class Solution {\npublic:\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        priority_queue<pair<int, ListNode*>, vector<pair<int, ListNode*>>, greater<pair<int, ListNode*>>> pq;\n        ListNode dummy(0);\n        ListNode* cur = &dummy;\n        for (ListNode* list : lists) {\n            if (list) pq.push({list->val, list});\n        }\n        while (!pq.empty()) {\n            cur->next = pq.top().second;\n            cur = cur->next;\n            pq.pop();\n            if (cur->next) pq.push({cur->next->val, cur->next});\n        }\n        return dummy.next;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.925868"
+}

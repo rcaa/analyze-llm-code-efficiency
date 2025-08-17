@@ -1,0 +1,15 @@
+{
+  "id": 466,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int m = 0, i = 0, j = 0;\n        int s1_len = s1.length(), s2_len = s2.length();\n        int[] s1_count = new int[s1_len];\n        while (m < n1) {\n            while (i < s1_len && j < s2_len && s1[i] == s2[j]) {\n                s1_count[i] = j + 1;\n                i++;\n                j++;\n            }\n            if (j == s2_len) {\n                m++;\n                j = 0;\n            }\n            i = (i == s1_len) ? 0 : s1_count[i];\n        }\n        return m / n2;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n1 * s2_len)\nspace complexity: O(s1_len)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int m = 0, i = 0, j = 0;\n        int s1_len = s1.length(), s2_len = s2.length();\n        int[] s1_count = new int[s1_len];\n        while (m < n1) {\n            while (i < s1_len && j < s2_len && s1[i] == s2[j]) {\n                s1_count[i] = j + 1;\n                i++;\n                j++;\n            }\n            if (j == s2_len) {\n                m++;\n                j = 0;\n            }\n            i = (i == s1_len) ? 0 : s1_count[i];\n        }\n        return m / n2;\n    }\n};",
+  "timestamp": "2025-08-06T01:57:32.818831",
+  "code_extracted_previous": "class Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int m = 0, i = 0, j = 0;\n        int s1_len = s1.length(), s2_len = s2.length();\n        int[] s1_count = new int[s1_len];\n        while (m < n1) {\n            while (i < s1_len && j < s2_len && s1[i] == s2[j]) {\n                s1_count[i] = j + 1;\n                i++;\n                j++;\n            }\n            if (j == s2_len) {\n                m++;\n                j = 0;\n            }\n            i = (i == s1_len) ? 0 : s1_count[i];\n        }\n        return m / n2;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.557947"
+}

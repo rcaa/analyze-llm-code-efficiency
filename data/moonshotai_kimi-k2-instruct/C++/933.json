@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class RecentCounter {\n    std::queue<int> q;\npublic:\n    RecentCounter() {}\n    \n    int ping(int t) {\n        q.push(t);\n        while (q.front() < t - 3000) q.pop();\n        return q.size();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1) amortized per ping\nspace complexity: O(1) amortized per ping\nenergy implications: LOW\nexplanation: Uses a FIFO queue to store timestamps. Each ping appends the new time and evicts all times older than t-3000. Because pings are strictly increasing, each element is enqueued and dequeued at most once, giving amortized O(1) cost and minimal memory footprint.",
+  "code": "class RecentCounter {\n    std::queue<int> q;\npublic:\n    RecentCounter() {}\n    \n    int ping(int t) {\n        q.push(t);\n        while (q.front() < t - 3000) q.pop();\n        return q.size();\n    }\n};",
+  "timestamp": "2025-08-05T14:08:44.331868",
+  "code_extracted_previous": "std::queue<int> q;\npublic:\n    RecentCounter() {}\n    \n    int ping(int t) {\n        q.push(t);\n        while (q.front() < t - 3000) q.pop();\n        return q.size();\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:54.369427"
+}

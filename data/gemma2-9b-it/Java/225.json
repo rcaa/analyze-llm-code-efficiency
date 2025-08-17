@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass MyStack {\n    Queue<Integer> q1 = new LinkedList<>();\n    Queue<Integer> q2 = new LinkedList<>();\n\n    public MyStack() {\n        \n    }\n    \n    public void push(int x) {\n        q1.add(x);\n    }\n    \n    public int pop() {\n        while (q1.size() > 1) {\n            q2.add(q1.remove());\n        }\n        int top = q1.remove();\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n        return top;\n    }\n    \n    public int top() {\n        while (q1.size() > 1) {\n            q2.add(q1.remove());\n        }\n        int top = q1.peek();\n        q2.add(q1.remove());\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n        return top;\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution utilizes two queues to simulate a stack. Push operations add elements to the first queue. Pop and top operations transfer all but the last element to the second queue, effectively reversing the order. The last element in the first queue becomes the top of the stack. This approach ensures efficient retrieval of the top element and removal of elements from the stack.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-06T08:40:57.455377",
+  "code_extracted_previous": "class MyStack {\n    Queue<Integer> q1 = new LinkedList<>();\n    Queue<Integer> q2 = new LinkedList<>();\n\n    public MyStack() {\n        \n    }\n    \n    public void push(int x) {\n        q1.add(x);\n    }\n    \n    public int pop() {\n        while (q1.size() > 1) {\n            q2.add(q1.remove());\n        }\n        int top = q1.remove();\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n        return top;\n    }\n    \n    public int top() {\n        while (q1.size() > 1) {\n            q2.add(q1.remove());\n        }\n        int top = q1.peek();\n        q2.add(q1.remove());\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n        return top;\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.914628"
+}

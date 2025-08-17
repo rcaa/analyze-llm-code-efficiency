@@ -1,0 +1,15 @@
+{
+  "id": 1689,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef minPartitions(self, n: str) -> int:\n    n_length = len(n)\n    result = [int(digit) for digit in n]\n    result.sort()\n    count = [0] * 10\n    count[result[0]] += 1\n    for i in range(1, n_length):\n        count[result[i]] -= 1\n        count[result[i - 1]] += 1\n    return sum(count[digit] for digit in result if count[digit] > 0)\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n1. Convert the input string to a list of integers using a list comprehension.\n2. Sort the list of integers.\n3. Initialize a count list to keep track of the number of occurrences of each digit in the sorted list.\n4. Iterate through the sorted list and update the count of each digit.\n5. Calculate the minimum number of deci-binary numbers needed by summing up the count of non-zero digits in the sorted list. ",
+  "code": "def minPartitions(self, n: str) -> int:\n    n_length = len(n)\n    result = [int(digit) for digit in n]\n    result.sort()\n    count = [0] * 10\n    count[result[0]] += 1\n    for i in range(1, n_length):\n        count[result[i]] -= 1\n        count[result[i - 1]] += 1\n    return sum(count[digit] for digit in result if count[digit] > 0)",
+  "timestamp": "2025-08-06T00:55:16.398140",
+  "code_extracted_previous": "def minPartitions(self, n: str) -> int:\n    n_length = len(n)\n    result = [int(digit) for digit in n]\n    result.sort()\n    count = [0] * 10\n    count[result[0]] += 1\n    for i in range(1, n_length):\n        count[result[i]] -= 1\n        count[result[i - 1]] += 1\n    return sum(count[digit] for digit in result if count[digit] > 0)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.262233"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1387,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> powers;\n        for (int i = lo; i <= hi; i++) {\n            int power = 0, x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                power++;\n            }\n            powers.push_back({power, i});\n        }\n        sort(powers.begin(), powers.end());\n        return powers[k - 1].second;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a vector to store pairs of power values and corresponding integers, then sorts this vector based on the power values and returns the kth integer in the sorted vector.",
+  "code": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> powers;\n        for (int i = lo; i <= hi; i++) {\n            int power = 0, x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                power++;\n            }\n            powers.push_back({power, i});\n        }\n        sort(powers.begin(), powers.end());\n        return powers[k - 1].second;\n    }\n};",
+  "timestamp": "2025-08-06T08:43:27.138733",
+  "code_extracted_previous": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> powers;\n        for (int i = lo; i <= hi; i++) {\n            int power = 0, x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                power++;\n            }\n            powers.push_back({power, i});\n        }\n        sort(powers.begin(), powers.end());\n        return powers[k - 1].second;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.768422"
+}

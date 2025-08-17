@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\n#include <string>\n#include <vector>\n#include <set>\n#include <utility>\n\nclass SORTracker {\nprivate:\n    std::set<std::pair<int, std::string>, std::greater<>> bestLocations;\n    std::vector<std::pair<int, std::string>> queryResults;\n    int queryCount = 0;\n\npublic:\n    SORTracker() {\n    }\n    \n    void add(std::string name, int score) {\n        bestLocations.insert({score, name});\n    }\n    \n    std::string get() {\n        if (queryCount < bestLocations.size()) {\n            auto it = bestLocations.begin();\n            std::advance(it, queryCount);\n            queryResults.push_back(*it);\n            queryCount++;\n            return queryResults.back().second;\n        }\n        return \"\";\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N log N) for add, O(N) for get\nspace complexity: O(N)\nenergy implications: MEDIUM\nexplanation: The solution uses a set to maintain locations sorted by score and name. The `add` method inserts a new location in O(log N) time. The `get` method retrieves the i-th best location by traversing the set, which takes O(N) time in the worst case. The approach is efficient for maintaining sorted order but may be slower for frequent `get` calls due to linear traversal.",
+  "code": "class SORTracker {\nprivate:\n    std::set<std::pair<int, std::string>, std::greater<>> bestLocations;\n    std::vector<std::pair<int, std::string>> queryResults;\n    int queryCount = 0;\n\npublic:\n    SORTracker() {\n    }\n    \n    void add(std::string name, int score) {\n        bestLocations.insert({score, name});\n    }\n    \n    std::string get() {\n        if (queryCount < bestLocations.size()) {\n            auto it = bestLocations.begin();\n            std::advance(it, queryCount);\n            queryResults.push_back(*it);\n            queryCount++;\n            return queryResults.back().second;\n        }\n        return \"\";\n    }\n};",
+  "timestamp": "2025-08-06T02:44:28.782360",
+  "code_extracted_previous": "#include <string>\n#include <vector>\n#include <set>\n#include <utility>\n\nclass SORTracker {\nprivate:\n    std::set<std::pair<int, std::string>, std::greater<>> bestLocations;\n    std::vector<std::pair<int, std::string>> queryResults;\n    int queryCount = 0;\n\npublic:\n    SORTracker() {\n    }\n    \n    void add(std::string name, int score) {\n        bestLocations.insert({score, name});\n    }\n    \n    std::string get() {\n        if (queryCount < bestLocations.size()) {\n            auto it = bestLocations.begin();\n            std::advance(it, queryCount);\n            queryResults.push_back(*it);\n            queryCount++;\n            return queryResults.back().second;\n        }\n        return \"\";\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:58.701087"
+}

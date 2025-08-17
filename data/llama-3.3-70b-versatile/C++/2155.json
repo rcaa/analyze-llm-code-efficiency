@@ -1,0 +1,15 @@
+{
+  "id": 2155,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    vector<int> maxScoreIndices(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> res;\n        int maxScore = 0;\n        \n        for (int i = 0; i <= n; i++) {\n            int score = 0;\n            for (int j = 0; j < i; j++) {\n                if (nums[j] == 0) score++;\n            }\n            for (int j = i; j < n; j++) {\n                if (nums[j] == 1) score++;\n            }\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.push_back(i);\n            } else if (score == maxScore) {\n                res.push_back(i);\n            }\n        }\n        return res;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over all possible divisions of the array and calculates the division score for each index, keeping track of the maximum score and the indices that achieve it. The time complexity is O(n^2) due to the nested loops, but the space complexity is O(n) as we only store the result in a vector. The energy implications are low as the algorithm only uses a small amount of memory and does not perform any energy-intensive operations.",
+  "code": "class Solution {\npublic:\n    vector<int> maxScoreIndices(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> res;\n        int maxScore = 0;\n        \n        for (int i = 0; i <= n; i++) {\n            int score = 0;\n            for (int j = 0; j < i; j++) {\n                if (nums[j] == 0) score++;\n            }\n            for (int j = i; j < n; j++) {\n                if (nums[j] == 1) score++;\n            }\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.push_back(i);\n            } else if (score == maxScore) {\n                res.push_back(i);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T12:38:42.515368",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> maxScoreIndices(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> res;\n        int maxScore = 0;\n        \n        for (int i = 0; i <= n; i++) {\n            int score = 0;\n            for (int j = 0; j < i; j++) {\n                if (nums[j] == 0) score++;\n            }\n            for (int j = i; j < n; j++) {\n                if (nums[j] == 1) score++;\n            }\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.push_back(i);\n            } else if (score == maxScore) {\n                res.push_back(i);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.042420"
+}

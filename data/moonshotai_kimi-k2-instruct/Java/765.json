@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int minSwapsCouples(int[] row) {\n        int n = row.length;\n        int[] pos = new int[n];\n        for (int i = 0; i < n; i++) pos[row[i]] = i;\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            int x = row[i];\n            int y = x ^ 1;\n            if (row[i + 1] != y) {\n                int j = pos[y];\n                row[i + 1] ^= row[j];\n                row[j] ^= row[i + 1];\n                row[i + 1] ^= row[j];\n                pos[row[j]] = j;\n                pos[row[i + 1]] = i + 1;\n                swaps++;\n            }\n        }\n        return swaps;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Treat each couple as a node in a graph; the required swaps equal the number of misplaced couples minus the number of cycles. By greedily fixing each even seat with its partner we perform exactly that count in one linear pass using an auxiliary position array for O(1) lookups.",
+  "code": "class Solution {\n    public int minSwapsCouples(int[] row) {\n        int n = row.length;\n        int[] pos = new int[n];\n        for (int i = 0; i < n; i++) pos[row[i]] = i;\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            int x = row[i];\n            int y = x ^ 1;\n            if (row[i + 1] != y) {\n                int j = pos[y];\n                row[i + 1] ^= row[j];\n                row[j] ^= row[i + 1];\n                row[i + 1] ^= row[j];\n                pos[row[j]] = j;\n                pos[row[i + 1]] = i + 1;\n                swaps++;\n            }\n        }\n        return swaps;\n    }\n}",
+  "timestamp": "2025-08-05T14:31:08.788051",
+  "code_extracted_previous": "public int minSwapsCouples(int[] row) {\n        int n = row.length;\n        int[] pos = new int[n];\n        for (int i = 0; i < n; i++) pos[row[i]] = i;\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            int x = row[i];\n            int y = x ^ 1;\n            if (row[i + 1] != y) {\n                int j = pos[y];\n                row[i + 1] ^= row[j];\n                row[j] ^= row[i + 1];\n                row[i + 1] ^= row[j];\n                pos[row[j]] = j;\n                pos[row[i + 1]] = i + 1;\n                swaps++;\n            }\n        }\n        return swaps;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.817968"
+}

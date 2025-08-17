@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def robotWithString(self, s: str) -> str:\n        t, stack, ans = [], [], []\n        min_future_char = 'z'\n        for char in s:\n            while stack and stack[-1] <= min_future_char:\n                ans.append(stack.pop())\n            stack.append(char)\n            min_future_char = min(min_future_char, char)\n        while stack:\n            ans.append(stack.pop())\n        return ''.join(ans)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The main approach is to maintain a stack to simulate the string t and iterate over the string s. We keep track of the minimum character that will appear in the future to decide whether to write the top character of the stack to the answer. The key strength is that it only requires a single pass through the string s.",
+  "code": "def robotWithString(self, s: str) -> str:\n        t, stack, ans = [], [], []\n        min_future_char = 'z'\n        for char in s:\n            while stack and stack[-1] <= min_future_char:\n                ans.append(stack.pop())\n            stack.append(char)\n            min_future_char = min(min_future_char, char)\n        while stack:\n            ans.append(stack.pop())\n        return ''.join(ans)\n```",
+  "timestamp": "2025-08-05T15:10:12.134683",
+  "code_extracted_previous": "class Solution:\n    def robotWithString(self, s: str) -> str:\n        t, stack, ans = [], [], []\n        min_future_char = 'z'\n        for char in s:\n            while stack and stack[-1] <= min_future_char:\n                ans.append(stack.pop())\n            stack.append(char)\n            min_future_char = min(min_future_char, char)\n        while stack:\n            ans.append(stack.pop())\n        return ''.join(ans)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.905972"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int[] prefix = new int[n + 1];\n        int[] suffix = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefix[i + 1] = prefix[i] + (customers.charAt(i) == 'N' ? 1 : 0);\n        }\n        for (int i = n - 1; i >= 0; i--) {\n            suffix[i] = suffix[i + 1] + (customers.charAt(i) == 'Y' ? 1 : 0);\n        }\n        int minPenalty = Integer.MAX_VALUE;\n        int bestTime = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = prefix[i] + suffix[i];\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestTime = i;\n            }\n        }\n        return bestTime;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses prefix and suffix arrays to efficiently calculate the penalty for each closing time, and then finds the minimum penalty and the corresponding best closing time.",
+  "code": "class Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int[] prefix = new int[n + 1];\n        int[] suffix = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefix[i + 1] = prefix[i] + (customers.charAt(i) == 'N' ? 1 : 0);\n        }\n        for (int i = n - 1; i >= 0; i--) {\n            suffix[i] = suffix[i + 1] + (customers.charAt(i) == 'Y' ? 1 : 0);\n        }\n        int minPenalty = Integer.MAX_VALUE;\n        int bestTime = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = prefix[i] + suffix[i];\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestTime = i;\n            }\n        }\n        return bestTime;\n    }\n}",
+  "timestamp": "2025-08-06T01:02:03.252298",
+  "code_extracted_previous": "class Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int[] prefix = new int[n + 1];\n        int[] suffix = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefix[i + 1] = prefix[i] + (customers.charAt(i) == 'N' ? 1 : 0);\n        }\n        for (int i = n - 1; i >= 0; i--) {\n            suffix[i] = suffix[i + 1] + (customers.charAt(i) == 'Y' ? 1 : 0);\n        }\n        int minPenalty = Integer.MAX_VALUE;\n        int bestTime = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = prefix[i] + suffix[i];\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestTime = i;\n            }\n        }\n        return bestTime;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.230667"
+}

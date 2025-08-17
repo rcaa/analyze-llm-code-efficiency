@@ -1,0 +1,15 @@
+{
+  "id": 686,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```c++\n#include <string>\n#include <unordered_map>\n\nclass Solution {\npublic:\n    int repeatedStringMatch(std::string a, std::string b) {\n        int count = 0;\n        std::unordered_map<char, int> charCount;\n\n        for (char c : a) {\n            charCount[c]++;\n        }\n\n        for (char c : b) {\n            if (charCount[c] > 0) {\n                charCount[c]--;\n                count += charCount[c];\n            }\n        }\n\n        if (count < 0) {\n            return -1;\n        }\n\n        return count;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n) (where n is the length of string b)\nspace complexity: O(n) (where n is the length of string a)\nenergy implications: LOW\n\nExplanation:\n\n1. Initialize a count variable to store the number of occurrences of characters in string b.\n2. Create an unordered map to store the character count in string a.\n3. Iterate through string b and decrement the count of each character if it exists in string a. If the count becomes zero, it means the character is not present in string a, so return -1.\n4. If the count is non-negative after iterating through string b, return the count as the minimum number of repetitions needed.\n\nThis solution uses a hash map to store character counts and iterates through the second string to find the minimum number of repetitions needed. The time complexity is O(n), where n is the length of string b. The space complexity is O(n), where n is the length of string a. ",
+  "code": "class Solution {\npublic:\n    int repeatedStringMatch(std::string a, std::string b) {\n        int count = 0;\n        std::unordered_map<char, int> charCount;\n\n        for (char c : a) {\n            charCount[c]++;\n        }\n\n        for (char c : b) {\n            if (charCount[c] > 0) {\n                charCount[c]--;\n                count += charCount[c];\n            }\n        }\n\n        if (count < 0) {\n            return -1;\n        }\n\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T16:52:09.362628",
+  "code_extracted_previous": "#include <string>\n#include <unordered_map>\n\nclass Solution {\npublic:\n    int repeatedStringMatch(std::string a, std::string b) {\n        int count = 0;\n        std::unordered_map<char, int> charCount;\n\n        for (char c : a) {\n            charCount[c]++;\n        }\n\n        for (char c : b) {\n            if (charCount[c] > 0) {\n                charCount[c]--;\n                count += charCount[c];\n            }\n        }\n\n        if (count < 0) {\n            return -1;\n        }\n\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.116448"
+}

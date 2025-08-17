@@ -1,0 +1,15 @@
+{
+  "id": 2006,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int countKDifference(int[] nums, int k) {\n        int count = 0;\n        Map<Integer, Integer> map = new HashMap<>();\n        for (int num : nums) {\n            count += map.getOrDefault(num - k, 0) + map.getOrDefault(num + k, 0);\n            map.put(num, map.getOrDefault(num, 0) + 1);\n        }\n        return count;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a HashMap to store the frequency of each number in the array. For each number, it calculates the count of pairs with an absolute difference of k by summing the frequencies of the numbers k less than and k more than the current number. This approach has a high efficiency due to the use of a HashMap for fast lookups and updates.",
+  "code": "class Solution {\n    public int countKDifference(int[] nums, int k) {\n        int count = 0;\n        Map<Integer, Integer> map = new HashMap<>();\n        for (int num : nums) {\n            count += map.getOrDefault(num - k, 0) + map.getOrDefault(num + k, 0);\n            map.put(num, map.getOrDefault(num, 0) + 1);\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T12:44:35.783140",
+  "code_extracted_previous": "public int countKDifference(int[] nums, int k) {\n        int count = 0;\n        Map<Integer, Integer> map = new HashMap<>();\n        for (int num : nums) {\n            count += map.getOrDefault(num - k, 0) + map.getOrDefault(num + k, 0);\n            map.put(num, map.getOrDefault(num, 0) + 1);\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.119119"
+}

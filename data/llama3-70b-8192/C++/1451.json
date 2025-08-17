@@ -1,0 +1,15 @@
+{
+  "id": 1451,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string arrangeWords(string text) {\n        vector<string> words;\n        istringstream iss(text);\n        string word;\n        while (iss >> word) {\n            words.push_back(word);\n        }\n        sort(words.begin(), words.end(), [](string a, string b) {\n            return a.size() < b.size() || (a.size() == b.size() && a < b);\n        });\n        for (int i = 1; i < words.size(); i++) {\n            words[i][0] = tolower(words[i][0]);\n        }\n        words[0][0] = toupper(words[0][0]);\n        string res;\n        for (string word : words) {\n            res += word + \" \";\n        }\n        res.pop_back();\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Sort the words by length and original order, then reconstruct the sentence with proper capitalization.",
+  "code": "class Solution {\npublic:\n    string arrangeWords(string text) {\n        vector<string> words;\n        istringstream iss(text);\n        string word;\n        while (iss >> word) {\n            words.push_back(word);\n        }\n        sort(words.begin(), words.end(), [](string a, string b) {\n            return a.size() < b.size() || (a.size() == b.size() && a < b);\n        });\n        for (int i = 1; i < words.size(); i++) {\n            words[i][0] = tolower(words[i][0]);\n        }\n        words[0][0] = toupper(words[0][0]);\n        string res;\n        for (string word : words) {\n            res += word + \" \";\n        }\n        res.pop_back();\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:52:22.763448",
+  "code_extracted_previous": "public:\n    string arrangeWords(string text) {\n        vector<string> words;\n        istringstream iss(text);\n        string word;\n        while (iss >> word) {\n            words.push_back(word);\n        }\n        sort(words.begin(), words.end(), [](string a, string b) {\n            return a.size() < b.size() || (a.size() == b.size() && a < b);\n        });\n        for (int i = 1; i < words.size(); i++) {\n            words[i][0] = tolower(words[i][0]);\n        }\n        words[0][0] = toupper(words[0][0]);\n        string res;\n        for (string word : words) {\n            res += word + \" \";\n        }\n        res.pop_back();\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.198095"
+}

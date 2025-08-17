@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int maxLen = 1;\n        int lastSeen = -1;\n        int pairIndex = -1;\n        \n        for (int i = 1; i < s.size(); ++i) {\n            if (s[i] == s[i - 1]) {\n                if (lastSeen != -1 && s[i] != s[lastSeen]) {\n                    pairIndex = lastSeen;\n                }\n                lastSeen = i;\n            }\n            if (pairIndex != -1 && i - pairIndex > maxLen) {\n                maxLen = i - pairIndex;\n            }\n            if (lastSeen != -1 && i - lastSeen > maxLen) {\n                maxLen = i - lastSeen;\n            }\n        }\n        return maxLen;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, maintaining a running track of the last seen pair and the maximum length substring. It efficiently handles semi-repetitive substrings by updating the maximum length based on pair occurrences.",
+  "code": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int maxLen = 1;\n        int lastSeen = -1;\n        int pairIndex = -1;\n        \n        for (int i = 1; i < s.size(); ++i) {\n            if (s[i] == s[i - 1]) {\n                if (lastSeen != -1 && s[i] != s[lastSeen]) {\n                    pairIndex = lastSeen;\n                }\n                lastSeen = i;\n            }\n            if (pairIndex != -1 && i - pairIndex > maxLen) {\n                maxLen = i - pairIndex;\n            }\n            if (lastSeen != -1 && i - lastSeen > maxLen) {\n                maxLen = i - lastSeen;\n            }\n        }\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-06T01:06:51.520374",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int maxLen = 1;\n        int lastSeen = -1;\n        int pairIndex = -1;\n        \n        for (int i = 1; i < s.size(); ++i) {\n            if (s[i] == s[i - 1]) {\n                if (lastSeen != -1 && s[i] != s[lastSeen]) {\n                    pairIndex = lastSeen;\n                }\n                lastSeen = i;\n            }\n            if (pairIndex != -1 && i - pairIndex > maxLen) {\n                maxLen = i - pairIndex;\n            }\n            if (lastSeen != -1 && i - lastSeen > maxLen) {\n                maxLen = i - lastSeen;\n            }\n        }\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.309133"
+}

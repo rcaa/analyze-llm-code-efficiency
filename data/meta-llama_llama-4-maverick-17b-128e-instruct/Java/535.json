@@ -1,0 +1,15 @@
+{
+  "id": 535,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\npublic class Codec {\n    private static final String BASE_URL = \"http://tinyurl.com/\";\n    private static final String CHARACTERS = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\";\n    private final java.util.HashMap<String, String> urlMap = new java.util.HashMap<>();\n\n    // Encodes a URL to a shortened URL.\n    public String encode(String longUrl) {\n        StringBuilder shortUrl = new StringBuilder(BASE_URL);\n        String key = generateKey();\n        while (urlMap.containsKey(key)) {\n            key = generateKey();\n        }\n        urlMap.put(key, longUrl);\n        shortUrl.append(key);\n        return shortUrl.toString();\n    }\n\n    // Decodes a shortened URL to its original URL.\n    public String decode(String shortUrl) {\n        return urlMap.get(shortUrl.substring(BASE_URL.length()));\n    }\n\n    private String generateKey() {\n        StringBuilder key = new StringBuilder();\n        for (int i = 0; i < 6; i++) {\n            key.append(CHARACTERS.charAt((int) (Math.random() * CHARACTERS.length())));\n        }\n        return key.toString();\n    }\n}\nsolution: The provided Java code in the Codec class.\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The Codec class uses a HashMap to store the mapping between the short URL key and the original long URL. The encode method generates a random 6-character key and checks for collisions. The decode method retrieves the original URL from the HashMap using the key from the short URL. This approach ensures efficient encoding and decoding with an average time complexity of O(1).",
+  "code": "The provided Java code in the Codec class.",
+  "timestamp": "2025-08-05T14:55:13.936858",
+  "code_extracted_previous": "The provided Java code in the Codec class.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:46.979443"
+}

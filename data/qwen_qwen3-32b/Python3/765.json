@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row)\n        pos = {person: i for i, person in enumerate(row)}\n        swaps = 0\n\n        for i in range(0, n, 2):\n            first = row[i]\n            second = first ^ 1  # XOR with 1 gives the partner\n            if row[i + 1] != second:\n                swaps += 1\n                # Find the position of the partner\n                j = pos[second]\n                # Swap the partner to the correct position\n                row[i + 1], row[j] = row[j], row[i + 1]\n                # Update positions in the map\n                pos[row[j]] = j\n                pos[row[i + 1]] = i + 1\n\n        return swaps\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: <The algorithm uses a greedy approach to ensure each person is paired with their partner by swapping only when necessary. It tracks positions using a hash map for efficient lookups and updates, minimizing the number of swaps. The main strength is its linear time complexity, while the hash map increases space usage slightly.>",
+  "code": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row)\n        pos = {person: i for i, person in enumerate(row)}\n        swaps = 0\n\n        for i in range(0, n, 2):\n            first = row[i]\n            second = first ^ 1  # XOR with 1 gives the partner\n            if row[i + 1] != second:\n                swaps += 1\n                # Find the position of the partner\n                j = pos[second]\n                # Swap the partner to the correct position\n                row[i + 1], row[j] = row[j], row[i + 1]\n                # Update positions in the map\n                pos[row[j]] = j\n                pos[row[i + 1]] = i + 1\n\n        return swaps",
+  "timestamp": "2025-08-06T15:42:05.068643",
+  "code_extracted_previous": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row)\n        pos = {person: i for i, person in enumerate(row)}\n        swaps = 0\n\n        for i in range(0, n, 2):\n            first = row[i]\n            second = first ^ 1  # XOR with 1 gives the partner\n            if row[i + 1] != second:\n                swaps += 1\n                # Find the position of the partner\n                j = pos[second]\n                # Swap the partner to the correct position\n                row[i + 1], row[j] = row[j], row[i + 1]\n                # Update positions in the map\n                pos[row[j]] = j\n                pos[row[i + 1]] = i + 1\n\n        return swaps",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:06.619014"
+}

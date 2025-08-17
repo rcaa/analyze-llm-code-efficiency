@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        dp = [0.0] * (n + 1)\n        dp[0] = 1.0\n        total = 1.0\n        for i in range(1, n + 1):\n            dp[i] = total / maxPts\n            if i < k:\n                total += 1\n            if i > k:\n                total -= dp[i - k]\n        return sum(dp[:n + 1 - k]) if k > 0 else sum(dp)\n```\n\nefficiency: HIGH\n\ntime complexity: O(n)\n\nspace complexity: O(n)\n\nenergy implications: LOW\n\nexplanation: This problem can be solved using dynamic programming. We maintain a dynamic programming array dp where dp[i] represents the probability that Alice has i or fewer points. We iterate from 1 to n, and for each i, we calculate the probability that Alice has i or fewer points by summing the probabilities of the previous points. If i is less than k, we increment the total number of points. If i is greater than k, we decrement the total number of points. Finally, we return the sum of the probabilities of the points from 0 to n - k if k is greater than 0, or the sum of all probabilities if k is 0.",
+  "code": "class Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        dp = [0.0] * (n + 1)\n        dp[0] = 1.0\n        total = 1.0\n        for i in range(1, n + 1):\n            dp[i] = total / maxPts\n            if i < k:\n                total += 1\n            if i > k:\n                total -= dp[i - k]\n        return sum(dp[:n + 1 - k]) if k > 0 else sum(dp)",
+  "timestamp": "2025-08-05T15:45:21.584835",
+  "code_extracted_previous": "class Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        dp = [0.0] * (n + 1)\n        dp[0] = 1.0\n        total = 1.0\n        for i in range(1, n + 1):\n            dp[i] = total / maxPts\n            if i < k:\n                total += 1\n            if i > k:\n                total -= dp[i - k]\n        return sum(dp[:n + 1 - k]) if k > 0 else sum(dp)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.443736"
+}

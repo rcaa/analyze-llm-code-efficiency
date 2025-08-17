@@ -1,0 +1,15 @@
+{
+  "id": 3007,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public long findMaximumNumber(long k, int x) {\n        long res = 0;\n        for (long i = 1; i <= k; i++) {\n            long price = 0;\n            long num = i;\n            while (num > 0) {\n                if ((num & x) != 0) {\n                    price++;\n                }\n                num >>= 1;\n            }\n            if (price * (i + 1) / 2 <= k) {\n                res = i;\n            } else {\n                break;\n            }\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(log k)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a binary search approach to find the maximum cheap number. It iterates through numbers from 1 to k and calculates the price of each number. If the accumulated price of the current number is less than or equal to k, it updates the result. The time complexity is O(log k) due to the binary search, and the space complexity is O(1) as it only uses a constant amount of space.",
+  "code": "class Solution {\n    public long findMaximumNumber(long k, int x) {\n        long res = 0;\n        for (long i = 1; i <= k; i++) {\n            long price = 0;\n            long num = i;\n            while (num > 0) {\n                if ((num & x) != 0) {\n                    price++;\n                }\n                num >>= 1;\n            }\n            if (price * (i + 1) / 2 <= k) {\n                res = i;\n            } else {\n                break;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:46:29.156029",
+  "code_extracted_previous": "public long findMaximumNumber(long k, int x) {\n        long res = 0;\n        for (long i = 1; i <= k; i++) {\n            long price = 0;\n            long num = i;\n            while (num > 0) {\n                if ((num & x) != 0) {\n                    price++;\n                }\n                num >>= 1;\n            }\n            if (price * (i + 1) / 2 <= k) {\n                res = i;\n            } else {\n                break;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.582163"
+}

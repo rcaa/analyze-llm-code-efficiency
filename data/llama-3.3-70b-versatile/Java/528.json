@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution:\nclass Solution {\n    private int[] w;\n    private int sum;\n    private Random random;\n\n    public Solution(int[] w) {\n        this.w = w;\n        this.sum = 0;\n        this.random = new Random();\n        for (int weight : w) {\n            sum += weight;\n        }\n    }\n    \n    public int pickIndex() {\n        int target = random.nextInt(sum);\n        int cumulativeSum = 0;\n        for (int i = 0; i < w.length; i++) {\n            cumulativeSum += w[i];\n            if (target < cumulativeSum) {\n                return i;\n            }\n        }\n        return w.length - 1;\n    }\n}\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a cumulative sum approach to efficiently pick an index based on the given weights, ensuring the probability of picking an index is proportional to its weight.",
+  "code": "class Solution {\n    private int[] w;\n    private int sum;\n    private Random random;\n\n    public Solution(int[] w) {\n        this.w = w;\n        this.sum = 0;\n        this.random = new Random();\n        for (int weight : w) {\n            sum += weight;\n        }\n    }\n    \n    public int pickIndex() {\n        int target = random.nextInt(sum);\n        int cumulativeSum = 0;\n        for (int i = 0; i < w.length; i++) {\n            cumulativeSum += w[i];\n            if (target < cumulativeSum) {\n                return i;\n            }\n        }\n        return w.length - 1;\n    }\n}",
+  "timestamp": "2025-08-05T13:01:35.132448",
+  "code_extracted_previous": "class Solution {\n    private int[] w;\n    private int sum;\n    private Random random;\n\n    public Solution(int[] w) {\n        this.w = w;\n        this.sum = 0;\n        this.random = new Random();\n        for (int weight : w) {\n            sum += weight;\n        }\n    }\n    \n    public int pickIndex() {\n        int target = random.nextInt(sum);\n        int cumulativeSum = 0;\n        for (int i = 0; i < w.length; i++) {\n            cumulativeSum += w[i];\n            if (target < cumulativeSum) {\n                return i;\n            }\n        }\n        return w.length - 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.345108"
+}

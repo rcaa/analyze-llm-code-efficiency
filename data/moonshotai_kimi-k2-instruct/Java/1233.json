@@ -1,0 +1,15 @@
+{
+  "id": 1233,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public List<String> removeSubfolders(String[] folder) {\n        Arrays.sort(folder);\n        List<String> res = new ArrayList<>();\n        String prev = \"\";\n        for (String f : folder) {\n            if (prev.isEmpty() || !f.startsWith(prev) || f.charAt(prev.length()) != '/') {\n                res.add(f);\n                prev = f;\n            }\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N log N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Sort the paths lexicographically so every parent folder appears before its sub-folders. Iterate once, adding a folder only if it is not a sub-folder of the last kept folder (checked via prefix match and a trailing '/'). This avoids building a trie and uses only sorting plus a single pass.",
+  "code": "class Solution {\n    public List<String> removeSubfolders(String[] folder) {\n        Arrays.sort(folder);\n        List<String> res = new ArrayList<>();\n        String prev = \"\";\n        for (String f : folder) {\n            if (prev.isEmpty() || !f.startsWith(prev) || f.charAt(prev.length()) != '/') {\n                res.add(f);\n                prev = f;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:20:39.418293",
+  "code_extracted_previous": "class Solution {\n    public List<String> removeSubfolders(String[] folder) {\n        Arrays.sort(folder);\n        List<String> res = new ArrayList<>();\n        String prev = \"\";\n        for (String f : folder) {\n            if (prev.isEmpty() || !f.startsWith(prev) || f.charAt(prev.length()) != '/') {\n                res.add(f);\n                prev = f;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.489136"
+}

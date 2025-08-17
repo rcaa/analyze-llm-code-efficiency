@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) {\n        maxHeap = new priority_queue<int>();\n        for (int num : nums) {\n            add(num);\n        }\n        kthLargest = k;\n    }\n    \n    int add(int val) {\n        maxHeap->push(val);\n        if (maxHeap->size() > kthLargest) {\n            maxHeap->pop();\n        }\n        return maxHeap->top();\n    }\nprivate:\n    priority_queue<int> maxHeap;\n    int kthLargest;\n};\n```\nefficiency: HIGH\ntime complexity: O(logk)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: We use a max heap to store the kth largest elements. In the constructor, we add all the initial scores to the heap. In the add function, we add the new score to the heap and if the heap size exceeds k, we remove the smallest element (which is the largest in a max heap). The time complexity is O(logk) for each add operation, and the space complexity is O(k) for storing the kth largest elements.",
+  "code": "class KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) {\n        maxHeap = new priority_queue<int>();\n        for (int num : nums) {\n            add(num);\n        }\n        kthLargest = k;\n    }\n    \n    int add(int val) {\n        maxHeap->push(val);\n        if (maxHeap->size() > kthLargest) {\n            maxHeap->pop();\n        }\n        return maxHeap->top();\n    }\nprivate:\n    priority_queue<int> maxHeap;\n    int kthLargest;\n};",
+  "timestamp": "2025-08-06T01:11:05.675998",
+  "code_extracted_previous": "class KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) {\n        maxHeap = new priority_queue<int>();\n        for (int num : nums) {\n            add(num);\n        }\n        kthLargest = k;\n    }\n    \n    int add(int val) {\n        maxHeap->push(val);\n        if (maxHeap->size() > kthLargest) {\n            maxHeap->pop();\n        }\n        return maxHeap->top();\n    }\nprivate:\n    priority_queue<int> maxHeap;\n    int kthLargest;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:41.626737"
+}

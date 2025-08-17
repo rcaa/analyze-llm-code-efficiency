@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j <= n; j++) {\n                string t = s.substr(i, j - i);\n                int count = 0;\n                for (int k = 1; k < t.size(); k++) {\n                    if (t[k] == t[k - 1]) {\n                        count++;\n                    }\n                    if (count > 1) {\n                        break;\n                    }\n                }\n                if (count <= 1) {\n                    res = max(res, (int)t.size());\n                }\n            }\n        }\n        return res;\n    }\n};\n\nefficiency: MEDIUM\ntime complexity: O(n^3)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution uses a brute-force approach with three nested loops to generate all possible substrings and check if each one is semi-repetitive. It keeps track of the maximum length of semi-repetitive substrings found so far.",
+  "code": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j <= n; j++) {\n                string t = s.substr(i, j - i);\n                int count = 0;\n                for (int k = 1; k < t.size(); k++) {\n                    if (t[k] == t[k - 1]) {\n                        count++;\n                    }\n                    if (count > 1) {\n                        break;\n                    }\n                }\n                if (count <= 1) {\n                    res = max(res, (int)t.size());\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:08:03.687741",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j <= n; j++) {\n                string t = s.substr(i, j - i);\n                int count = 0;\n                for (int k = 1; k < t.size(); k++) {\n                    if (t[k] == t[k - 1]) {\n                        count++;\n                    }\n                    if (count > 1) {\n                        break;\n                    }\n                }\n                if (count <= 1) {\n                    res = max(res, (int)t.size());\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.481273"
+}

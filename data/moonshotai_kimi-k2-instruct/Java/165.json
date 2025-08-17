@@ -1,0 +1,15 @@
+{
+  "id": 165,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int compareVersion(String version1, String version2) {\n        int i = 0, j = 0;\n        int n1 = version1.length(), n2 = version2.length();\n        \n        while (i < n1 || j < n2) {\n            int v1 = 0;\n            while (i < n1 && version1.charAt(i) != '.') {\n                v1 = v1 * 10 + (version1.charAt(i) - '0');\n                i++;\n            }\n            i++; // skip '.'\n            \n            int v2 = 0;\n            while (j < n2 && version2.charAt(j) != '.') {\n                v2 = v2 * 10 + (version2.charAt(j) - '0');\n                j++;\n            }\n            j++; // skip '.'\n            \n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n        }\n        return 0;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(max(N, M))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass through both strings, parsing each revision on the fly as integers without storing substrings or arrays. Early exit on first difference.",
+  "code": "class Solution {\n    public int compareVersion(String version1, String version2) {\n        int i = 0, j = 0;\n        int n1 = version1.length(), n2 = version2.length();\n        \n        while (i < n1 || j < n2) {\n            int v1 = 0;\n            while (i < n1 && version1.charAt(i) != '.') {\n                v1 = v1 * 10 + (version1.charAt(i) - '0');\n                i++;\n            }\n            i++; // skip '.'\n            \n            int v2 = 0;\n            while (j < n2 && version2.charAt(j) != '.') {\n                v2 = v2 * 10 + (version2.charAt(j) - '0');\n                j++;\n            }\n            j++; // skip '.'\n            \n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n        }\n        return 0;\n    }\n}",
+  "timestamp": "2025-08-06T01:35:27.933045",
+  "code_extracted_previous": "class Solution {\n    public int compareVersion(String version1, String version2) {\n        int i = 0, j = 0;\n        int n1 = version1.length(), n2 = version2.length();\n        \n        while (i < n1 || j < n2) {\n            int v1 = 0;\n            while (i < n1 && version1.charAt(i) != '.') {\n                v1 = v1 * 10 + (version1.charAt(i) - '0');\n                i++;\n            }\n            i++; // skip '.'\n            \n            int v2 = 0;\n            while (j < n2 && version2.charAt(j) != '.') {\n                v2 = v2 * 10 + (version2.charAt(j) - '0');\n                j++;\n            }\n            j++; // skip '.'\n            \n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n        }\n        return 0;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.601086"
+}

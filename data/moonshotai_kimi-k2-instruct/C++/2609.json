@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int maxLen = 0;\n        int n = s.size();\n        for (int l = 0; l < n; ++l) {\n            int zeros = 0, ones = 0;\n            for (int r = l; r < n; ++r) {\n                if (s[r] == '0') {\n                    if (ones == 0) zeros++;\n                    else break;\n                } else {\n                    ones++;\n                }\n                if (zeros == ones) maxLen = max(maxLen, r - l + 1);\n            }\n        }\n        return maxLen;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate every start index l and expand rightwards r while maintaining counts of zeros and ones. Break early if a '0' appears after any '1', ensuring the substring remains valid. Update maxLen whenever counts match.",
+  "code": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int maxLen = 0;\n        int n = s.size();\n        for (int l = 0; l < n; ++l) {\n            int zeros = 0, ones = 0;\n            for (int r = l; r < n; ++r) {\n                if (s[r] == '0') {\n                    if (ones == 0) zeros++;\n                    else break;\n                } else {\n                    ones++;\n                }\n                if (zeros == ones) maxLen = max(maxLen, r - l + 1);\n            }\n        }\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-05T16:43:06.665852",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int maxLen = 0;\n        int n = s.size();\n        for (int l = 0; l < n; ++l) {\n            int zeros = 0, ones = 0;\n            for (int r = l; r < n; ++r) {\n                if (s[r] == '0') {\n                    if (ones == 0) zeros++;\n                    else break;\n                } else {\n                    ones++;\n                }\n                if (zeros == ones) maxLen = max(maxLen, r - l + 1);\n            }\n        }\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.791472"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 482,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String licenseKeyFormatting(String s, int k) {\n        s = s.replaceAll(\"-\", \"\").toUpperCase();\n        int n = s.length();\n        StringBuilder sb = new StringBuilder();\n        int remainder = n % k;\n        if (remainder != 0) {\n            sb.append(s.substring(0, remainder));\n            for (int i = remainder; i < n; i += k) {\n                sb.append(\"-\").append(s.substring(i, i + k));\n            }\n        } else {\n            for (int i = 0; i < n; i += k) {\n                sb.append(s.substring(i, i + k));\n            }\n        }\n        return sb.toString();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution first removes all dashes and converts the string to uppercase. It then calculates the remainder of the string length divided by k. If the remainder is not zero, it appends the first remainder characters to the result and then appends the rest of the string in groups of k characters, separated by dashes. If the remainder is zero, it simply appends the string in groups of k characters. This approach ensures that the first group can be shorter than k but still contains at least one character.",
+  "code": "class Solution {\n    public String licenseKeyFormatting(String s, int k) {\n        s = s.replaceAll(\"-\", \"\").toUpperCase();\n        int n = s.length();\n        StringBuilder sb = new StringBuilder();\n        int remainder = n % k;\n        if (remainder != 0) {\n            sb.append(s.substring(0, remainder));\n            for (int i = remainder; i < n; i += k) {\n                sb.append(\"-\").append(s.substring(i, i + k));\n            }\n        } else {\n            for (int i = 0; i < n; i += k) {\n                sb.append(s.substring(i, i + k));\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-05T22:51:59.073332",
+  "code_extracted_previous": "class Solution {\n    public String licenseKeyFormatting(String s, int k) {\n        s = s.replaceAll(\"-\", \"\").toUpperCase();\n        int n = s.length();\n        StringBuilder sb = new StringBuilder();\n        int remainder = n % k;\n        if (remainder != 0) {\n            sb.append(s.substring(0, remainder));\n            for (int i = remainder; i < n; i += k) {\n                sb.append(\"-\").append(s.substring(i, i + k));\n            }\n        } else {\n            for (int i = 0; i < n; i += k) {\n                sb.append(s.substring(i, i + k));\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.892860"
+}

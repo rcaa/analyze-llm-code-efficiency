@@ -1,0 +1,15 @@
+{
+  "id": 3594,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public double minTime(int n, int k, int m, int[] time, double[] mul) {\n        double res = 0;\n        int stage = 0;\n        int left = n;\n        Arrays.sort(time);\n        while (left > 0) {\n            int depart = Math.min(left, k);\n            double departTime = time[time.length - depart] * mul[stage];\n            res += departTime;\n            left -= depart;\n            stage = (stage + 1 + (int) Math.floor(departTime)) % m;\n            if (left > 0) {\n                res += time[time.length - left] * mul[stage];\n                left = 0;\n            }\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution sorts the time array to ensure that the maximum time is always chosen for the current stage. It then iterates over the stages, calculating the departure time for each group and updating the stage accordingly. If there are remaining individuals, it calculates the return time and updates the stage again. The solution has a high efficiency due to the use of sorting and the efficient calculation of the departure and return times.",
+  "code": "class Solution {\n    public double minTime(int n, int k, int m, int[] time, double[] mul) {\n        double res = 0;\n        int stage = 0;\n        int left = n;\n        Arrays.sort(time);\n        while (left > 0) {\n            int depart = Math.min(left, k);\n            double departTime = time[time.length - depart] * mul[stage];\n            res += departTime;\n            left -= depart;\n            stage = (stage + 1 + (int) Math.floor(departTime)) % m;\n            if (left > 0) {\n                res += time[time.length - left] * mul[stage];\n                left = 0;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T12:20:18.702159",
+  "code_extracted_previous": "public double minTime(int n, int k, int m, int[] time, double[] mul) {\n        double res = 0;\n        int stage = 0;\n        int left = n;\n        Arrays.sort(time);\n        while (left > 0) {\n            int depart = Math.min(left, k);\n            double departTime = time[time.length - depart] * mul[stage];\n            res += departTime;\n            left -= depart;\n            stage = (stage + 1 + (int) Math.floor(departTime)) % m;\n            if (left > 0) {\n                res += time[time.length - left] * mul[stage];\n                left = 0;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.732021"
+}

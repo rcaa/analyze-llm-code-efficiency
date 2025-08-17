@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        pos = {x: i for i, x in enumerate(row)}\n        swaps = 0\n        for i in range(n):\n            j = row[2 * i]\n            partner = j ^ 1\n            if row[2 * i + 1] != partner:\n                idx = pos[partner]\n                row[2 * i + 1], row[idx] = row[idx], row[2 * i + 1]\n                pos[row[idx]] = idx\n                pos[partner] = 2 * i + 1\n                swaps += 1\n        return swaps\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a dictionary to store the positions of each person and then iterates through the row, swapping partners if they are not sitting next to each other. The approach takes advantage of the properties of XOR to easily find the partner of each person.",
+  "code": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        pos = {x: i for i, x in enumerate(row)}\n        swaps = 0\n        for i in range(n):\n            j = row[2 * i]\n            partner = j ^ 1\n            if row[2 * i + 1] != partner:\n                idx = pos[partner]\n                row[2 * i + 1], row[idx] = row[idx], row[2 * i + 1]\n                pos[row[idx]] = idx\n                pos[partner] = 2 * i + 1\n                swaps += 1\n        return swaps",
+  "timestamp": "2025-08-05T14:30:57.586030",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        pos = {x: i for i, x in enumerate(row)}\n        swaps = 0\n        for i in range(n):\n            j = row[2 * i]\n            partner = j ^ 1\n            if row[2 * i + 1] != partner:\n                idx = pos[partner]\n                row[2 * i + 1], row[idx] = row[idx], row[2 * i + 1]\n                pos[row[idx]] = idx\n                pos[partner] = 2 * i + 1\n                swaps += 1\n        return swaps",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.955003"
+}

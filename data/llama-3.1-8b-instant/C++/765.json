@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size() / 2;\n        vector<int> couple(n);\n        for (int i = 0; i < n; i++) {\n            couple[i] = row[2 * i];\n        }\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            if (couple[i] != row[2 * i]) {\n                int j = find(couple, i, row[2 * i]);\n                swap(couple[i], couple[j]);\n                res += abs(i - j);\n            }\n        }\n        return res;\n    }\n    int find(vector<int>& couple, int i, int target) {\n        while (couple[i] != target) {\n            i = (i + 1) % couple.size();\n        }\n        return i;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a greedy approach to find the minimum number of swaps. It first creates a vector of couples and then iterates over the vector to find the couple that needs to be swapped. The find function is used to find the position of the target couple in the vector. The swap operation is performed by swapping the couple at the current position with the couple at the found position. The number of swaps is incremented by the absolute difference between the current position and the found position.",
+  "code": "class Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size() / 2;\n        vector<int> couple(n);\n        for (int i = 0; i < n; i++) {\n            couple[i] = row[2 * i];\n        }\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            if (couple[i] != row[2 * i]) {\n                int j = find(couple, i, row[2 * i]);\n                swap(couple[i], couple[j]);\n                res += abs(i - j);\n            }\n        }\n        return res;\n    }\n    int find(vector<int>& couple, int i, int target) {\n        while (couple[i] != target) {\n            i = (i + 1) % couple.size();\n        }\n        return i;\n    }\n};",
+  "timestamp": "2025-08-05T14:31:00.513816",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size() / 2;\n        vector<int> couple(n);\n        for (int i = 0; i < n; i++) {\n            couple[i] = row[2 * i];\n        }\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            if (couple[i] != row[2 * i]) {\n                int j = find(couple, i, row[2 * i]);\n                swap(couple[i], couple[j]);\n                res += abs(i - j);\n            }\n        }\n        return res;\n    }\n    int find(vector<int>& couple, int i, int target) {\n        while (couple[i] != target) {\n            i = (i + 1) % couple.size();\n        }\n        return i;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.726579"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1416,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    private static final int MOD = 1000000007;\n    public int numberOfArrays(String s, int k) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= 10 && j <= i; j++) {\n                String substr = s.substring(i - j, i);\n                if (substr.length() > 1 && substr.charAt(0) == '0') {\n                    continue;\n                }\n                long num = Long.parseLong(substr);\n                if (1 <= num && num <= k) {\n                    dp[i] = (dp[i] + dp[i - j]) % MOD;\n                }\n            }\n        }\n        return dp[n];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to calculate the number of possible arrays, iterating over the string and considering all possible substrings that can form a valid integer within the given range.",
+  "code": "class Solution {\n    private static final int MOD = 1000000007;\n    public int numberOfArrays(String s, int k) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= 10 && j <= i; j++) {\n                String substr = s.substring(i - j, i);\n                if (substr.length() > 1 && substr.charAt(0) == '0') {\n                    continue;\n                }\n                long num = Long.parseLong(substr);\n                if (1 <= num && num <= k) {\n                    dp[i] = (dp[i] + dp[i - j]) % MOD;\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T23:22:43.606798",
+  "code_extracted_previous": "class Solution {\n    private static final int MOD = 1000000007;\n    public int numberOfArrays(String s, int k) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= 10 && j <= i; j++) {\n                String substr = s.substring(i - j, i);\n                if (substr.length() > 1 && substr.charAt(0) == '0') {\n                    continue;\n                }\n                long num = Long.parseLong(substr);\n                if (1 <= num && num <= k) {\n                    dp[i] = (dp[i] + dp[i - j]) % MOD;\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.487745"
+}

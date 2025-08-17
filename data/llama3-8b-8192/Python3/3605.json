@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        n = len(nums)\n        res = n\n        for i in range(n):\n            hcf = nums[i]\n            for j in range(i, n):\n                hcf = self.gcd(hcf, nums[j])\n                if hcf < 2:\n                    break\n                res = min(res, j - i + 1)\n        for i in range(n):\n            for j in range(i + 1, n):\n                if self.gcd(nums[i], nums[j]) < 2:\n                    break\n                res = min(res, j - i)\n        return min(res, maxC)\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution first tries to find the longest stable subarray by iterating over all possible subarrays and checking their HCF. Then, it tries to find the longest stable subarray by iterating over all pairs of elements and checking their HCF. Finally, it returns the minimum of the two results and maxC.",
+  "code": "class Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        n = len(nums)\n        res = n\n        for i in range(n):\n            hcf = nums[i]\n            for j in range(i, n):\n                hcf = self.gcd(hcf, nums[j])\n                if hcf < 2:\n                    break\n                res = min(res, j - i + 1)\n        for i in range(n):\n            for j in range(i + 1, n):\n                if self.gcd(nums[i], nums[j]) < 2:\n                    break\n                res = min(res, j - i)\n        return min(res, maxC)",
+  "timestamp": "2025-08-05T12:22:54.256714",
+  "code_extracted_previous": "class Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        n = len(nums)\n        res = n\n        for i in range(n):\n            hcf = nums[i]\n            for j in range(i, n):\n                hcf = self.gcd(hcf, nums[j])\n                if hcf < 2:\n                    break\n                res = min(res, j - i + 1)\n        for i in range(n):\n            for j in range(i + 1, n):\n                if self.gcd(nums[i], nums[j]) < 2:\n                    break\n                res = min(res, j - i)\n        return min(res, maxC)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.185812"
+}

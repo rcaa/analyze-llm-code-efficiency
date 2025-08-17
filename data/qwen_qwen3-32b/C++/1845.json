@@ -1,0 +1,15 @@
+{
+  "id": 1845,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass SeatManager {\nprivate:\n    priority_queue<int, vector<int>, greater<int>> availableSeats;\n\npublic:\n    SeatManager(int n) {\n        for (int i = 1; i <= n; ++i) {\n            availableSeats.push(i);\n        }\n    }\n    \n    int reserve() {\n        int seat = availableSeats.top();\n        availableSeats.pop();\n        return seat;\n    }\n    \n    void unreserve(int seatNumber) {\n        availableSeats.push(seatNumber);\n    }\n};\n\n/**\n * Your SeatManager object will be instantiated and called as such:\n * SeatManager* obj = new SeatManager(n);\n * int param_1 = obj->reserve();\n * obj->unreserve(seatNumber);\n */\n```\nefficiency: HIGH\ntime complexity: O(log n) for reserve and unreserve\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a min-heap (priority_queue) to efficiently manage available seats. reserve() fetches the smallest-numbered seat in O(log n) time, and unreserve() adds a seat back to the heap in O(log n) time. The heap ensures optimal performance for both operations.",
+  "code": "class SeatManager {\nprivate:\n    priority_queue<int, vector<int>, greater<int>> availableSeats;\n\npublic:\n    SeatManager(int n) {\n        for (int i = 1; i <= n; ++i) {\n            availableSeats.push(i);\n        }\n    }\n    \n    int reserve() {\n        int seat = availableSeats.top();\n        availableSeats.pop();\n        return seat;\n    }\n    \n    void unreserve(int seatNumber) {\n        availableSeats.push(seatNumber);\n    }\n};\n\n/**\n * Your SeatManager object will be instantiated and called as such:\n * SeatManager* obj = new SeatManager(n);\n * int param_1 = obj->reserve();\n * obj->unreserve(seatNumber);\n */",
+  "timestamp": "2025-08-06T02:41:03.898992",
+  "code_extracted_previous": "class SeatManager {\nprivate:\n    priority_queue<int, vector<int>, greater<int>> availableSeats;\n\npublic:\n    SeatManager(int n) {\n        for (int i = 1; i <= n; ++i) {\n            availableSeats.push(i);\n        }\n    }\n    \n    int reserve() {\n        int seat = availableSeats.top();\n        availableSeats.pop();\n        return seat;\n    }\n    \n    void unreserve(int seatNumber) {\n        availableSeats.push(seatNumber);\n    }\n};\n\n/**\n * Your SeatManager object will be instantiated and called as such:\n * SeatManager* obj = new SeatManager(n);\n * int param_1 = obj->reserve();\n * obj->unreserve(seatNumber);\n */",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:58.490275"
+}

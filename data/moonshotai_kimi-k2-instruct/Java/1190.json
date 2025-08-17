@@ -1,0 +1,15 @@
+{
+  "id": 1190,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public String reverseParentheses(String s) {\n        int n = s.length();\n        int[] open = new int[n];\n        int[] close = new int[n];\n        int top = -1;\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) == '(') {\n                open[++top] = i;\n            } else if (s.charAt(i) == ')') {\n                close[open[top--]] = i;\n            }\n        }\n        StringBuilder res = new StringBuilder();\n        int dir = 1;\n        for (int i = 0; i < n; i += dir) {\n            char c = s.charAt(i);\n            if (c == '(' || c == ')') {\n                i = close[i];\n                dir = -dir;\n            } else {\n                res.append(c);\n            }\n        }\n        return res.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses two auxiliary arrays to store the matching parenthesis positions in one pass, then simulates a bidirectional scan that reverses substrings on the fly by flipping direction at each parenthesis. Avoids explicit substring reversals and extra string allocations.",
+  "code": "class Solution {\n    public String reverseParentheses(String s) {\n        int n = s.length();\n        int[] open = new int[n];\n        int[] close = new int[n];\n        int top = -1;\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) == '(') {\n                open[++top] = i;\n            } else if (s.charAt(i) == ')') {\n                close[open[top--]] = i;\n            }\n        }\n        StringBuilder res = new StringBuilder();\n        int dir = 1;\n        for (int i = 0; i < n; i += dir) {\n            char c = s.charAt(i);\n            if (c == '(' || c == ')') {\n                i = close[i];\n                dir = -dir;\n            } else {\n                res.append(c);\n            }\n        }\n        return res.toString();\n    }\n}",
+  "timestamp": "2025-08-06T00:49:57.033330",
+  "code_extracted_previous": "class Solution {\n    public String reverseParentheses(String s) {\n        int n = s.length();\n        int[] open = new int[n];\n        int[] close = new int[n];\n        int top = -1;\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) == '(') {\n                open[++top] = i;\n            } else if (s.charAt(i) == ')') {\n                close[open[top--]] = i;\n            }\n        }\n        StringBuilder res = new StringBuilder();\n        int dir = 1;\n        for (int i = 0; i < n; i += dir) {\n            char c = s.charAt(i);\n            if (c == '(' || c == ')') {\n                i = close[i];\n                dir = -dir;\n            } else {\n                res.append(c);\n            }\n        }\n        return res.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.479335"
+}

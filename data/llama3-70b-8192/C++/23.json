@@ -1,0 +1,15 @@
+{
+  "id": 23,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        auto cmp = [](ListNode* a, ListNode* b) { return a->val > b->val; };\n        priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> pq(cmp);\n        for (auto node : lists) {\n            if (node) pq.push(node);\n        }\n        ListNode dummy;\n        ListNode* cur = &dummy;\n        while (!pq.empty()) {\n            cur->next = pq.top();\n            pq.pop();\n            cur = cur->next;\n            if (cur->next) pq.push(cur->next);\n        }\n        return dummy.next;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Using a priority queue to store the current smallest node from each list, and repeatedly extract the smallest node and add it to the result list.",
+  "code": "class Solution {\npublic:\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        auto cmp = [](ListNode* a, ListNode* b) { return a->val > b->val; };\n        priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> pq(cmp);\n        for (auto node : lists) {\n            if (node) pq.push(node);\n        }\n        ListNode dummy;\n        ListNode* cur = &dummy;\n        while (!pq.empty()) {\n            cur->next = pq.top();\n            pq.pop();\n            cur = cur->next;\n            if (cur->next) pq.push(cur->next);\n        }\n        return dummy.next;\n    }\n};",
+  "timestamp": "2025-08-05T15:14:05.576495",
+  "code_extracted_previous": "class Solution {\npublic:\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        auto cmp = [](ListNode* a, ListNode* b) { return a->val > b->val; };\n        priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> pq(cmp);\n        for (auto node : lists) {\n            if (node) pq.push(node);\n        }\n        ListNode dummy;\n        ListNode* cur = &dummy;\n        while (!pq.empty()) {\n            cur->next = pq.top();\n            pq.pop();\n            cur = cur->next;\n            if (cur->next) pq.push(cur->next);\n        }\n        return dummy.next;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.485911"
+}

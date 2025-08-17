@@ -1,0 +1,15 @@
+{
+  "id": 2178,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def maximumEvenSplit(self, finalSum: int) -> List[int]:\n        if finalSum % 2:\n            return []\n        res, cur, s = [], 2, 0\n        while s + cur <= finalSum:\n            res.append(cur)\n            s += cur\n            cur += 2\n        if s < finalSum:\n            res[-1] += finalSum - s\n        return res\n```\nefficiency: HIGH\ntime complexity: O(√finalSum)\nspace complexity: O(√finalSum)\nenergy implications: LOW\nexplanation: Greedy construction of the longest strictly increasing sequence of even numbers starting from 2; the last term absorbs any remainder to keep uniqueness and exact sum.",
+  "code": "class Solution:\n    def maximumEvenSplit(self, finalSum: int) -> List[int]:\n        if finalSum % 2:\n            return []\n        res, cur, s = [], 2, 0\n        while s + cur <= finalSum:\n            res.append(cur)\n            s += cur\n            cur += 2\n        if s < finalSum:\n            res[-1] += finalSum - s\n        return res",
+  "timestamp": "2025-08-06T02:33:00.164267",
+  "code_extracted_previous": "class Solution:\n    def maximumEvenSplit(self, finalSum: int) -> List[int]:\n        if finalSum % 2:\n            return []\n        res, cur, s = [], 2, 0\n        while s + cur <= finalSum:\n            res.append(cur)\n            s += cur\n            cur += 2\n        if s < finalSum:\n            res[-1] += finalSum - s\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.550540"
+}

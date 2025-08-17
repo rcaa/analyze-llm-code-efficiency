@@ -1,0 +1,15 @@
+{
+  "id": 165,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        int i = 0, j = 0, n1 = version1.size(), n2 = version2.size();\n        int v1 = 0, v2 = 0;\n        while (i < n1 || j < n2) {\n            while (i < n1 && version1[i] != '.') {\n                v1 = v1 * 10 + (version1[i++] - '0');\n            }\n            while (j < n2 && version2[j] != '.') {\n                v2 = v2 * 10 + (version2[j++] - '0');\n            }\n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n            v1 = v2 = 0;\n            i++; j++;\n        }\n        return 0;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through both version strings simultaneously, parsing and comparing revisions in a single pass. It efficiently handles leading zeros and differing numbers of revisions.",
+  "code": "class Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        int i = 0, j = 0, n1 = version1.size(), n2 = version2.size();\n        int v1 = 0, v2 = 0;\n        while (i < n1 || j < n2) {\n            while (i < n1 && version1[i] != '.') {\n                v1 = v1 * 10 + (version1[i++] - '0');\n            }\n            while (j < n2 && version2[j] != '.') {\n                v2 = v2 * 10 + (version2[j++] - '0');\n            }\n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n            v1 = v2 = 0;\n            i++; j++;\n        }\n        return 0;\n    }\n};",
+  "timestamp": "2025-08-06T01:36:08.214835",
+  "code_extracted_previous": "class Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        int i = 0, j = 0, n1 = version1.size(), n2 = version2.size();\n        int v1 = 0, v2 = 0;\n        while (i < n1 || j < n2) {\n            while (i < n1 && version1[i] != '.') {\n                v1 = v1 * 10 + (version1[i++] - '0');\n            }\n            while (j < n2 && version2[j] != '.') {\n                v2 = v2 * 10 + (version2[j++] - '0');\n            }\n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n            v1 = v2 = 0;\n            i++; j++;\n        }\n        return 0;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.256722"
+}

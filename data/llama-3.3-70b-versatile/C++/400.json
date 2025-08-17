@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long length = 1;\n        long long count = 9;\n        long long start = 1;\n        while (n > length * count) {\n            n -= length * count;\n            length += 1;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / length;\n        string s = to_string(start);\n        return s[(n - 1) % length] - '0';\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: The solution iterates through the sequence of numbers, calculating the length and count of numbers at each step, until it finds the number containing the nth digit, then converts the number to a string to extract the digit.",
+  "code": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long length = 1;\n        long long count = 9;\n        long long start = 1;\n        while (n > length * count) {\n            n -= length * count;\n            length += 1;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / length;\n        string s = to_string(start);\n        return s[(n - 1) % length] - '0';\n    }\n};",
+  "timestamp": "2025-08-06T15:11:15.685033",
+  "code_extracted_previous": "public:\n    int findNthDigit(int n) {\n        long long length = 1;\n        long long count = 9;\n        long long start = 1;\n        while (n > length * count) {\n            n -= length * count;\n            length += 1;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / length;\n        string s = to_string(start);\n        return s[(n - 1) % length] - '0';\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.826222"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string smallestSubsequence(string s) {\n        int last[26] = {0};\n        for (int i = 0; i < s.size(); i++) {\n            last[s[i] - 'a'] = i;\n        }\n        string res;\n        bool used[26] = {false};\n        for (int i = 0; i < s.size(); i++) {\n            if (used[s[i] - 'a']) continue;\n            while (res.size() && res.back() > s[i] && i < last[s.back() - 'a']) {\n                used[res.back() - 'a'] = false;\n                res.pop_back();\n            }\n            res.push_back(s[i]);\n            used[s[i] - 'a'] = true;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a greedy approach with two arrays: last to track the last occurrence of each character and used to track characters that have been added to the result. It iterates through the string, adding characters to the result if they are not used and removing characters from the result if a smaller character appears later.",
+  "code": "class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        int last[26] = {0};\n        for (int i = 0; i < s.size(); i++) {\n            last[s[i] - 'a'] = i;\n        }\n        string res;\n        bool used[26] = {false};\n        for (int i = 0; i < s.size(); i++) {\n            if (used[s[i] - 'a']) continue;\n            while (res.size() && res.back() > s[i] && i < last[s.back() - 'a']) {\n                used[res.back() - 'a'] = false;\n                res.pop_back();\n            }\n            res.push_back(s[i]);\n            used[s[i] - 'a'] = true;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:48:01.490678",
+  "code_extracted_previous": "class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        int last[26] = {0};\n        for (int i = 0; i < s.size(); i++) {\n            last[s[i] - 'a'] = i;\n        }\n        string res;\n        bool used[26] = {false};\n        for (int i = 0; i < s.size(); i++) {\n            if (used[s[i] - 'a']) continue;\n            while (res.size() && res.back() > s[i] && i < last[s.back() - 'a']) {\n                used[res.back() - 'a'] = false;\n                res.pop_back();\n            }\n            res.push_back(s[i]);\n            used[s[i] - 'a'] = true;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.595543"
+}

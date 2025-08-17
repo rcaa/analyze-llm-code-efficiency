@@ -1,0 +1,15 @@
+{
+  "id": 345,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String reverseVowels(String s) {\n        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));\n        char[] chars = s.toCharArray();\n        int left = 0;\n        int right = chars.length - 1;\n        while (left < right) {\n            if (vowels.contains(chars[left]) && vowels.contains(chars[right])) {\n                char temp = chars[left];\n                chars[left] = chars[right];\n                chars[right] = temp;\n                left++;\n                right--;\n            } else if (vowels.contains(chars[left])) {\n                right--;\n            } else {\n                left++;\n            }\n        }\n        return new String(chars);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution utilizes a two-pointer approach. It identifies vowels using a set for efficient lookup. The pointers move inwards, swapping vowels until they meet. This ensures all vowels are reversed in linear time.  \n\n\n\n",
+  "code": "class Solution {\n    public String reverseVowels(String s) {\n        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));\n        char[] chars = s.toCharArray();\n        int left = 0;\n        int right = chars.length - 1;\n        while (left < right) {\n            if (vowels.contains(chars[left]) && vowels.contains(chars[right])) {\n                char temp = chars[left];\n                chars[left] = chars[right];\n                chars[right] = temp;\n                left++;\n                right--;\n            } else if (vowels.contains(chars[left])) {\n                right--;\n            } else {\n                left++;\n            }\n        }\n        return new String(chars);\n    }\n}",
+  "timestamp": "2025-08-06T01:25:49.363847",
+  "code_extracted_previous": "class Solution {\n    public String reverseVowels(String s) {\n        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));\n        char[] chars = s.toCharArray();\n        int left = 0;\n        int right = chars.length - 1;\n        while (left < right) {\n            if (vowels.contains(chars[left]) && vowels.contains(chars[right])) {\n                char temp = chars[left];\n                chars[left] = chars[right];\n                chars[right] = temp;\n                left++;\n                right--;\n            } else if (vowels.contains(chars[left])) {\n                right--;\n            } else {\n                left++;\n            }\n        }\n        return new String(chars);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.387826"
+}

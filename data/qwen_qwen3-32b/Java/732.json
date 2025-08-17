@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass MyCalendarThree {\n    TreeMap<Integer, Integer> timeline;\n\n    public MyCalendarThree() {\n        timeline = new TreeMap<>();\n    }\n\n    public int book(int start, int end) {\n        timeline.put(start, timeline.getOrDefault(start, 0) + 1);\n        timeline.put(end, timeline.getOrDefault(end, 0) - 1);\n        int k = 0, curr = 0;\n        for (int val : timeline.values()) {\n            curr += val;\n            k = Math.max(k, curr);\n        }\n        return k;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a TreeMap to track the changes in the number of overlapping events at each start and end time. It increments the count at the start and decrements at the end. By iterating through the TreeMap values, it calculates the maximum number of overlapping events (k). The TreeMap ensures efficient insertion and retrieval.",
+  "code": "class MyCalendarThree {\n    TreeMap<Integer, Integer> timeline;\n\n    public MyCalendarThree() {\n        timeline = new TreeMap<>();\n    }\n\n    public int book(int start, int end) {\n        timeline.put(start, timeline.getOrDefault(start, 0) + 1);\n        timeline.put(end, timeline.getOrDefault(end, 0) - 1);\n        int k = 0, curr = 0;\n        for (int val : timeline.values()) {\n            curr += val;\n            k = Math.max(k, curr);\n        }\n        return k;\n    }\n}",
+  "timestamp": "2025-08-06T15:23:37.109030",
+  "code_extracted_previous": "class MyCalendarThree {\n    TreeMap<Integer, Integer> timeline;\n\n    public MyCalendarThree() {\n        timeline = new TreeMap<>();\n    }\n\n    public int book(int start, int end) {\n        timeline.put(start, timeline.getOrDefault(start, 0) + 1);\n        timeline.put(end, timeline.getOrDefault(end, 0) - 1);\n        int k = 0, curr = 0;\n        for (int val : timeline.values()) {\n            curr += val;\n            k = Math.max(k, curr);\n        }\n        return k;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:03.583676"
+}

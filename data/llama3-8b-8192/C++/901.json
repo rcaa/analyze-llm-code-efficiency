@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass StockSpanner {\npublic:\n    StockSpanner() {\n        stack_.push({INT_MAX, 0});\n    }\n    \n    int next(int price) {\n        int span = 1;\n        while (!stack_.empty() && stack_.top().first <= price) {\n            stack_.pop();\n            span += stack_.top().second;\n        }\n        stack_.push({price, span});\n        return span;\n    }\nprivate:\n    stack<pair<int, int>> stack_;\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to keep track of the stock prices and their corresponding spans. It iterates through the stack to find the maximum number of consecutive days for which the stock price was less than or equal to the current price. The time complexity is O(1) because each operation takes constant time, and the space complexity is O(n) because the stack can store up to n elements. The energy implications are low because the algorithm only performs a constant number of operations for each input.",
+  "code": "class StockSpanner {\npublic:\n    StockSpanner() {\n        stack_.push({INT_MAX, 0});\n    }\n    \n    int next(int price) {\n        int span = 1;\n        while (!stack_.empty() && stack_.top().first <= price) {\n            stack_.pop();\n            span += stack_.top().second;\n        }\n        stack_.push({price, span});\n        return span;\n    }\nprivate:\n    stack<pair<int, int>> stack_;\n};",
+  "timestamp": "2025-08-05T16:03:17.424753",
+  "code_extracted_previous": "class StockSpanner {\npublic:\n    StockSpanner() {\n        stack_.push({INT_MAX, 0});\n    }\n    \n    int next(int price) {\n        int span = 1;\n        while (!stack_.empty() && stack_.top().first <= price) {\n            stack_.pop();\n            span += stack_.top().second;\n        }\n        stack_.push({price, span});\n        return span;\n    }\nprivate:\n    stack<pair<int, int>> stack_;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:41.730267"
+}

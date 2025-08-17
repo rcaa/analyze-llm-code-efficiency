@@ -1,0 +1,15 @@
+{
+  "id": 1553,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int minDays(int n) {\n        unordered_map<int,int> dp;\n        dp[0] = 0;\n        dp[1] = 1;\n        return dfs(n, dp);\n    }\nprivate:\n    int dfs(int n, unordered_map<int,int>& dp) {\n        if (dp.count(n)) return dp[n];\n        int ans = 1 + min(\n            n % 2 + dfs(n/2, dp),\n            n % 3 + dfs(n/3, dp)\n        );\n        dp[n] = ans;\n        return ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Uses memoized DFS with pruning: only explores the two optimal branches (divide by 2 or 3) and adds the remainder as the cost to reach a multiple. Memoization keeps the recursion depth and cache size logarithmic in n.",
+  "code": "class Solution {\npublic:\n    int minDays(int n) {\n        unordered_map<int,int> dp;\n        dp[0] = 0;\n        dp[1] = 1;\n        return dfs(n, dp);\n    }\nprivate:\n    int dfs(int n, unordered_map<int,int>& dp) {\n        if (dp.count(n)) return dp[n];\n        int ans = 1 + min(\n            n % 2 + dfs(n/2, dp),\n            n % 3 + dfs(n/3, dp)\n        );\n        dp[n] = ans;\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T14:20:12.961308",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minDays(int n) {\n        unordered_map<int,int> dp;\n        dp[0] = 0;\n        dp[1] = 1;\n        return dfs(n, dp);\n    }\nprivate:\n    int dfs(int n, unordered_map<int,int>& dp) {\n        if (dp.count(n)) return dp[n];\n        int ans = 1 + min(\n            n % 2 + dfs(n/2, dp),\n            n % 3 + dfs(n/3, dp)\n        );\n        dp[n] = ans;\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.273419"
+}

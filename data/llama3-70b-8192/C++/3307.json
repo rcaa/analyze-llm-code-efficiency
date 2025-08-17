@@ -1,0 +1,15 @@
+{
+  "id": 3307,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long n = 1;\n        for (int op : operations) {\n            if (op == 0) n *= 2;\n            else n = (n * 26) % 1000000007;\n        }\n        k %= n;\n        char res = 'a';\n        for (int op : operations) {\n            if (op == 0) k /= 2;\n            else {\n                k = (k % 26) + (k / 26) * 25;\n                res = (res - 'a' + 1) % 26 + 'a';\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(operations.length)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to efficiently calculate the length of the final string and then iterates through the operations again to find the kth character.",
+  "code": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long n = 1;\n        for (int op : operations) {\n            if (op == 0) n *= 2;\n            else n = (n * 26) % 1000000007;\n        }\n        k %= n;\n        char res = 'a';\n        for (int op : operations) {\n            if (op == 0) k /= 2;\n            else {\n                k = (k % 26) + (k / 26) * 25;\n                res = (res - 'a' + 1) % 26 + 'a';\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:23:46.437675",
+  "code_extracted_previous": "public:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long n = 1;\n        for (int op : operations) {\n            if (op == 0) n *= 2;\n            else n = (n * 26) % 1000000007;\n        }\n        k %= n;\n        char res = 'a';\n        for (int op : operations) {\n            if (op == 0) k /= 2;\n            else {\n                k = (k % 26) + (k / 26) * 25;\n                res = (res - 'a' + 1) % 26 + 'a';\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.758026"
+}

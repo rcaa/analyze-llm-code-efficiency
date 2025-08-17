@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findNthDigit(int n) {\n        long len = 1;\n        long count = 9;\n        long start = 1;\n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            start *= 10;\n            count *= 10;\n        }\n        start += (n - 1) / len;\n        String s = Long.toString(start);\n        return Character.getNumericValue(s.charAt((int) ((n - 1) % len)));\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: The solution works by first determining the length of the numbers that the nth digit falls into, then finding the specific number and digit position. It uses a while loop to increment the length and count of numbers until it finds the correct range, then calculates the start number and digit position. The main approach is based on mathematical calculations, making it efficient with a low energy implication.",
+  "code": "class Solution {\n    public int findNthDigit(int n) {\n        long len = 1;\n        long count = 9;\n        long start = 1;\n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            start *= 10;\n            count *= 10;\n        }\n        start += (n - 1) / len;\n        String s = Long.toString(start);\n        return Character.getNumericValue(s.charAt((int) ((n - 1) % len)));\n    }\n}",
+  "timestamp": "2025-08-05T15:42:16.612334",
+  "code_extracted_previous": "class Solution {\n    public int findNthDigit(int n) {\n        long len = 1;\n        long count = 9;\n        long start = 1;\n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            start *= 10;\n            count *= 10;\n        }\n        start += (n - 1) / len;\n        String s = Long.toString(start);\n        return Character.getNumericValue(s.charAt((int) ((n - 1) % len)));\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.273625"
+}

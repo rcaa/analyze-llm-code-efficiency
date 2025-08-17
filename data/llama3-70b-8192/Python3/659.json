@@ -1,0 +1,15 @@
+{
+  "id": 659,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def isPossible(self, nums: List[int]) -> bool:\n        count = {}\n        for num in nums:\n            if num - 1 in count:\n                count[num - 1] -= 1\n                if count[num - 1] == 0:\n                    del count[num - 1]\n                count[num] = count.get(num, 0) + 1\n            else:\n                count[num] = count.get(num, 0) + 1\n        for k, v in count.items():\n            if v < 3:\n                return False\n        return True\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hashmap to count the frequency of each number in the array. It then iterates through the hashmap to check if each number can be part of a subsequence of length 3 or more.",
+  "code": "class Solution:\n    def isPossible(self, nums: List[int]) -> bool:\n        count = {}\n        for num in nums:\n            if num - 1 in count:\n                count[num - 1] -= 1\n                if count[num - 1] == 0:\n                    del count[num - 1]\n                count[num] = count.get(num, 0) + 1\n            else:\n                count[num] = count.get(num, 0) + 1\n        for k, v in count.items():\n            if v < 3:\n                return False\n        return True",
+  "timestamp": "2025-08-05T13:06:41.615709",
+  "code_extracted_previous": "class Solution:\n    def isPossible(self, nums: List[int]) -> bool:\n        count = {}\n        for num in nums:\n            if num - 1 in count:\n                count[num - 1] -= 1\n                if count[num - 1] == 0:\n                    del count[num - 1]\n                count[num] = count.get(num, 0) + 1\n            else:\n                count[num] = count.get(num, 0) + 1\n        for k, v in count.items():\n            if v < 3:\n                return False\n        return True",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.972182"
+}

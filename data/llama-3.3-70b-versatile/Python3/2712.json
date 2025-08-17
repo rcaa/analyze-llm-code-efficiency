@@ -1,0 +1,15 @@
+{
+  "id": 2712,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minimumCost(self, s: str) -> int:\n        n = len(s)\n        res = float('inf')\n        for target in ['0', '1']:\n            cost = 0\n            for i in range(n):\n                if s[i] != target:\n                    if i == 0:\n                        cost += n\n                    else:\n                        cost += i + 1 if i < n - i else n - i\n                    target = '1' if target == '0' else '0'\n            res = min(res, cost)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the string, considering each character and the cost to make it equal to the target character, either '0' or '1', and updates the minimum cost accordingly.",
+  "code": "def minimumCost(self, s: str) -> int:\n        n = len(s)\n        res = float('inf')\n        for target in ['0', '1']:\n            cost = 0\n            for i in range(n):\n                if s[i] != target:\n                    if i == 0:\n                        cost += n\n                    else:\n                        cost += i + 1 if i < n - i else n - i\n                    target = '1' if target == '0' else '0'\n            res = min(res, cost)\n        return res\n```",
+  "timestamp": "2025-08-06T01:06:44.850745",
+  "code_extracted_previous": "class Solution:\n    def minimumCost(self, s: str) -> int:\n        n = len(s)\n        res = float('inf')\n        for target in ['0', '1']:\n            cost = 0\n            for i in range(n):\n                if s[i] != target:\n                    if i == 0:\n                        cost += n\n                    else:\n                        cost += i + 1 if i < n - i else n - i\n                    target = '1' if target == '0' else '0'\n            res = min(res, cost)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.344614"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 886,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```python\nclass Solution:\n    def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:\n        graph = [[False] * (n + 1) for _ in range(n)]\n        for a, b in dislikes:\n            graph[a][b] = True\n            graph[b][a] = True\n        return max_degree(graph) == n // 2\n\ndef max_degree(graph):\n    degree = [0] * (n + 1)\n    for i in range(n):\n        for j in graph[i]:\n            degree[j] += 1\n    for i in range(n):\n        for j in range(n):\n            if graph[i][j]:\n                degree[i] += degree[j]\n    return max(degree)\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n1. Create a graph where each node represents a person and edges represent dislikes between them.\n2. Calculate the maximum degree of the graph to check if it equals half of the total number of people (n).\n3. If the maximum degree equals n/2, then there is a bipartition. Otherwise, there is no bipartition.\n``` ",
+  "code": "class Solution:\n    def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:\n        graph = [[False] * (n + 1) for _ in range(n)]\n        for a, b in dislikes:\n            graph[a][b] = True\n            graph[b][a] = True\n        return max_degree(graph) == n // 2\n\ndef max_degree(graph):\n    degree = [0] * (n + 1)\n    for i in range(n):\n        for j in graph[i]:\n            degree[j] += 1\n    for i in range(n):\n        for j in range(n):\n            if graph[i][j]:\n                degree[i] += degree[j]\n    return max(degree)\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n1. Create a graph where each node represents a person and edges represent dislikes between them.\n2. Calculate the maximum degree of the graph to check if it equals half of the total number of people (n).\n3. If the maximum degree equals n/2, then there is a bipartition. Otherwise, there is no bipartition.",
+  "timestamp": "2025-08-05T14:01:11.813043",
+  "code_extracted_previous": "class Solution:\n    def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:\n        graph = [[False] * (n + 1) for _ in range(n)]\n        for a, b in dislikes:\n            graph[a][b] = True\n            graph[b][a] = True\n        return max_degree(graph) == n // 2\n\ndef max_degree(graph):\n    degree = [0] * (n + 1)\n    for i in range(n):\n        for j in graph[i]:\n            degree[j] += 1\n    for i in range(n):\n        for j in range(n):\n            if graph[i][j]:\n                degree[i] += degree[j]\n    return max(degree)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:16.238793"
+}

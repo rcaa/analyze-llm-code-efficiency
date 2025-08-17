@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        vector<bool> visited(rooms.size(), false);\n        visited[0] = true;\n        dfs(rooms, 0, visited);\n        for (bool visit : visited) {\n            if (!visit) return false;\n        }\n        return true;\n    }\n\n    void dfs(vector<vector<int>>& rooms, int room, vector<bool>& visited) {\n        for (int key : rooms[room]) {\n            if (!visited[key]) {\n                visited[key] = true;\n                dfs(rooms, key, visited);\n            }\n        }\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N + E)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses Depth-First Search (DFS) to traverse the rooms. It starts from room 0, marks it as visited, and then recursively visits all the rooms that can be unlocked with the keys found in the current room. The algorithm checks if all rooms have been visited and returns true if they have, false otherwise.",
+  "code": "class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        vector<bool> visited(rooms.size(), false);\n        visited[0] = true;\n        dfs(rooms, 0, visited);\n        for (bool visit : visited) {\n            if (!visit) return false;\n        }\n        return true;\n    }\n\n    void dfs(vector<vector<int>>& rooms, int room, vector<bool>& visited) {\n        for (int key : rooms[room]) {\n            if (!visited[key]) {\n                visited[key] = true;\n                dfs(rooms, key, visited);\n            }\n        }\n    }\n};",
+  "timestamp": "2025-08-05T14:00:23.812398",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        vector<bool> visited(rooms.size(), false);\n        visited[0] = true;\n        dfs(rooms, 0, visited);\n        for (bool visit : visited) {\n            if (!visit) return false;\n        }\n        return true;\n    }\n\n    void dfs(vector<vector<int>>& rooms, int room, vector<bool>& visited) {\n        for (int key : rooms[room]) {\n            if (!visited[key]) {\n                visited[key] = true;\n                dfs(rooms, key, visited);\n            }\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.852370"
+}

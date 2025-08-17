@@ -1,0 +1,15 @@
+{
+  "id": 1037,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    bool isBoomerang(vector<vector<int>>& points) {\n        int n = points.size();\n        if (n != 3) return false;\n        \n        vector<int> xDist(3, 0);\n        vector<int> yDist(3, 0);\n        \n        for (int i = 0; i < n; i++) {\n            xDist[i] = points[i][0] - points[(i + 1) % 3][0];\n            yDist[i] = points[i][1] - points[(i + 1) % 3][1];\n        }\n        \n        return checkBoomerang(points[0], points[1], points[2]);\n    }\n    \n    bool checkBoomerang(int x1, int y1, int x2) {\n        return abs(x2 - x1) * abs(y2 - y1) == abs(x1 - x2) * abs(y1 - y2);\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\n1. Initialize two vectors to store the differences in x and y coordinates for each point.\n2. Iterate through the points and calculate the differences in x and y coordinates.\n3. Call the helper function `checkBoomerang` to check if the points form a boomerang.\n4. Return the result of the helper function.\n\nThe `checkBoomerang` function checks if the squared differences of the x and y coordinates of the first and second points are equal to the squared differences of the x and y coordinates of the second and third points. This ensures that the points are not in a straight line. ",
+  "code": "class Solution {\npublic:\n    bool isBoomerang(vector<vector<int>>& points) {\n        int n = points.size();\n        if (n != 3) return false;\n        \n        vector<int> xDist(3, 0);\n        vector<int> yDist(3, 0);\n        \n        for (int i = 0; i < n; i++) {\n            xDist[i] = points[i][0] - points[(i + 1) % 3][0];\n            yDist[i] = points[i][1] - points[(i + 1) % 3][1];\n        }\n        \n        return checkBoomerang(points[0], points[1], points[2]);\n    }\n    \n    bool checkBoomerang(int x1, int y1, int x2) {\n        return abs(x2 - x1) * abs(y2 - y1) == abs(x1 - x2) * abs(y1 - y2);\n    }\n};",
+  "timestamp": "2025-08-05T12:37:34.834992",
+  "code_extracted_previous": "public:\n    bool isBoomerang(vector<vector<int>>& points) {\n        int n = points.size();\n        if (n != 3) return false;\n        \n        vector<int> xDist(3, 0);\n        vector<int> yDist(3, 0);\n        \n        for (int i = 0; i < n; i++) {\n            xDist[i] = points[i][0] - points[(i + 1) % 3][0];\n            yDist[i] = points[i][1] - points[(i + 1) % 3][1];\n        }\n        \n        return checkBoomerang(points[0], points[1], points[2]);\n    }\n    \n    bool checkBoomerang(int x1, int y1, int x2) {\n        return abs(x2 - x1) * abs(y2 - y1) == abs(x1 - x2) * abs(y1 - y2);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:11.994572"
+}

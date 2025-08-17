@@ -1,0 +1,15 @@
+{
+  "id": 523,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool checkSubarraySum(vector<int>& nums, int k) {\n        unordered_map<int, int> remainderMap;\n        remainderMap[0] = -1;\n        int runningSum = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            runningSum = (runningSum + nums[i]) % k;\n            if (remainderMap.find(runningSum) != remainderMap.end()) {\n                if (i - remainderMap[runningSum] >= 2) {\n                    return true;\n                }\n            } else {\n                remainderMap[runningSum] = i;\n            }\n        }\n        return false;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, k))\nenergy implications: LOW\nexplanation: Utilizes a hashmap to track the remainder of the running sum modulo k, enabling efficient detection of subarrays with sums that are multiples of k.",
+  "code": "class Solution {\npublic:\n    bool checkSubarraySum(vector<int>& nums, int k) {\n        unordered_map<int, int> remainderMap;\n        remainderMap[0] = -1;\n        int runningSum = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            runningSum = (runningSum + nums[i]) % k;\n            if (remainderMap.find(runningSum) != remainderMap.end()) {\n                if (i - remainderMap[runningSum] >= 2) {\n                    return true;\n                }\n            } else {\n                remainderMap[runningSum] = i;\n            }\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T12:57:10.461134",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool checkSubarraySum(vector<int>& nums, int k) {\n        unordered_map<int, int> remainderMap;\n        remainderMap[0] = -1;\n        int runningSum = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            runningSum = (runningSum + nums[i]) % k;\n            if (remainderMap.find(runningSum) != remainderMap.end()) {\n                if (i - remainderMap[runningSum] >= 2) {\n                    return true;\n                }\n            } else {\n                remainderMap[runningSum] = i;\n            }\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.706892"
+}

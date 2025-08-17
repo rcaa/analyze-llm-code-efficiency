@@ -1,0 +1,15 @@
+{
+  "id": 523,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\n    public boolean checkSubarraySum(int[] nums, int k) {\n        Map<Integer, Integer> map = new HashMap<>();\n        map.put(0, -1);\n        int sum = 0;\n        for (int i = 0; i < nums.length; i++) {\n            sum += nums[i];\n            int rem = k == 0 ? sum : sum % k;\n            if (map.containsKey(rem)) {\n                if (i - map.get(rem) > 1) return true;\n            } else {\n                map.put(rem, i);\n            }\n        }\n        return false;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, k))\nenergy implications: LOW\nexplanation: Uses prefix-sum remainder tracking with a hash map to detect subarrays whose sum is a multiple of k in one pass. The key insight is that if two prefix sums have the same remainder mod k, the subarray between them has sum divisible by k.",
+  "code": "class Solution {\n    public boolean checkSubarraySum(int[] nums, int k) {\n        Map<Integer, Integer> map = new HashMap<>();\n        map.put(0, -1);\n        int sum = 0;\n        for (int i = 0; i < nums.length; i++) {\n            sum += nums[i];\n            int rem = k == 0 ? sum : sum % k;\n            if (map.containsKey(rem)) {\n                if (i - map.get(rem) > 1) return true;\n            } else {\n                map.put(rem, i);\n            }\n        }\n        return false;\n    }\n}",
+  "timestamp": "2025-08-05T12:57:26.174516",
+  "code_extracted_previous": "class Solution {\n    public boolean checkSubarraySum(int[] nums, int k) {\n        Map<Integer, Integer> map = new HashMap<>();\n        map.put(0, -1);\n        int sum = 0;\n        for (int i = 0; i < nums.length; i++) {\n            sum += nums[i];\n            int rem = k == 0 ? sum : sum % k;\n            if (map.containsKey(rem)) {\n                if (i - map.get(rem) > 1) return true;\n            } else {\n                map.put(rem, i);\n            }\n        }\n        return false;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.628587"
+}

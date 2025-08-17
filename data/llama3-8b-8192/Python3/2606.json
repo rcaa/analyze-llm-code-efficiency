@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        char_map = {c: v for c, v in zip(chars, vals)}\n        max_cost = 0\n        current_cost = 0\n        char_count = {c: 0 for c in chars}\n        \n        for c in s:\n            if c in char_map:\n                current_cost += char_map[c]\n                char_count[c] += 1\n            else:\n                current_cost += ord(c) - ord('a') + 1\n            max_cost = max(max_cost, current_cost)\n            for c in char_count:\n                current_cost -= min(char_count[c], char_map[c])\n                char_count[c] -= min(char_count[c], char_map[c])\n        return max_cost\n```\n\nefficiency: HIGH\n\ntime complexity: O(n)\n\nspace complexity: O(1)\n\nenergy implications: LOW\n\nexplanation: This solution uses a hashmap to store the values of the characters in the string `chars`. It then iterates over the string `s`, updating the current cost and the maximum cost as it goes. It also keeps track of the count of each character in the string `chars` to ensure that the cost is not overestimated. The time complexity is O(n), where n is the length of the string `s`, and the space complexity is O(1) because the space usage does not grow with the size of the input.",
+  "code": "class Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        char_map = {c: v for c, v in zip(chars, vals)}\n        max_cost = 0\n        current_cost = 0\n        char_count = {c: 0 for c in chars}\n        \n        for c in s:\n            if c in char_map:\n                current_cost += char_map[c]\n                char_count[c] += 1\n            else:\n                current_cost += ord(c) - ord('a') + 1\n            max_cost = max(max_cost, current_cost)\n            for c in char_count:\n                current_cost -= min(char_count[c], char_map[c])\n                char_count[c] -= min(char_count[c], char_map[c])\n        return max_cost",
+  "timestamp": "2025-08-05T13:33:06.188253",
+  "code_extracted_previous": "class Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        char_map = {c: v for c, v in zip(chars, vals)}\n        max_cost = 0\n        current_cost = 0\n        char_count = {c: 0 for c in chars}\n        \n        for c in s:\n            if c in char_map:\n                current_cost += char_map[c]\n                char_count[c] += 1\n            else:\n                current_cost += ord(c) - ord('a') + 1\n            max_cost = max(max_cost, current_cost)\n            for c in char_count:\n                current_cost -= min(char_count[c], char_map[c])\n                char_count[c] -= min(char_count[c], char_map[c])\n        return max_cost",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.930580"
+}

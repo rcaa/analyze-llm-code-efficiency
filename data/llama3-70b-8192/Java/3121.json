@@ -1,0 +1,15 @@
+{
+  "id": 3121,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int numberOfSpecialChars(String word) {\n        int res = 0;\n        for (char c = 'a'; c <= 'z'; c++) {\n            int lower = -1, upper = -1;\n            for (int i = 0; i < word.length(); i++) {\n                if (word.charAt(i) == c) lower = i;\n                if (word.charAt(i) == (char)(c - 'a' + 'A')) upper = i;\n                if (upper != -1 && lower != -1 && lower > upper) break;\n            }\n            if (upper != -1 && lower != -1 && lower < upper) res++;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate through each lowercase letter and find its first occurrence in the word, then find the first occurrence of its uppercase counterpart. If the lowercase occurrence comes before the uppercase, increment the count of special characters.",
+  "code": "class Solution {\n    public int numberOfSpecialChars(String word) {\n        int res = 0;\n        for (char c = 'a'; c <= 'z'; c++) {\n            int lower = -1, upper = -1;\n            for (int i = 0; i < word.length(); i++) {\n                if (word.charAt(i) == c) lower = i;\n                if (word.charAt(i) == (char)(c - 'a' + 'A')) upper = i;\n                if (upper != -1 && lower != -1 && lower > upper) break;\n            }\n            if (upper != -1 && lower != -1 && lower < upper) res++;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T15:12:10.531085",
+  "code_extracted_previous": "class Solution {\n    public int numberOfSpecialChars(String word) {\n        int res = 0;\n        for (char c = 'a'; c <= 'z'; c++) {\n            int lower = -1, upper = -1;\n            for (int i = 0; i < word.length(); i++) {\n                if (word.charAt(i) == c) lower = i;\n                if (word.charAt(i) == (char)(c - 'a' + 'A')) upper = i;\n                if (upper != -1 && lower != -1 && lower > upper) break;\n            }\n            if (upper != -1 && lower != -1 && lower < upper) res++;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.397757"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2343,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {\n        List<int[]> result = new ArrayList<>();\n        for (int[] query : queries) {\n            int k = query[0], trim = query[1];\n            List<String> trimmedNums = new ArrayList<>();\n            for (String num : nums) {\n                trimmedNums.add(num.substring(num.length() - trim));\n            }\n            Collections.sort(trimmedNums);\n            result.add(trimmedNums.get(k - 1).equals(\"0\") ? trimmedNums.indexOf(trimmedNums.get(k - 1)) : trimmedNums.indexOf(trimmedNums.get(k - 1).replace(\"0\", \"\")));\n        }\n        return result.stream().mapToInt(i -> i).toArray();\n    }\n}```\nefficiency: HIGH\ntime complexity: O(NMlogM)\nspace complexity: O(NM)\nenergy implications: LOW\nexplanation: This solution uses a combination of string manipulation and sorting to efficiently solve the problem. It first trims each number in the input array to the specified length, then sorts the trimmed numbers. Finally, it finds the kth smallest trimmed number and returns its index. The time complexity is O(NMlogM) due to the sorting operation, where N is the number of input strings and M is the maximum length of a string. The space complexity is O(NM) due to the storage of the trimmed numbers.",
+  "code": "class Solution {\n    public int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {\n        List<int[]> result = new ArrayList<>();\n        for (int[] query : queries) {\n            int k = query[0], trim = query[1];\n            List<String> trimmedNums = new ArrayList<>();\n            for (String num : nums) {\n                trimmedNums.add(num.substring(num.length() - trim));\n            }\n            Collections.sort(trimmedNums);\n            result.add(trimmedNums.get(k - 1).equals(\"0\") ? trimmedNums.indexOf(trimmedNums.get(k - 1)) : trimmedNums.indexOf(trimmedNums.get(k - 1).replace(\"0\", \"\")));\n        }\n        return result.stream().mapToInt(i -> i).toArray();\n    }\n}",
+  "timestamp": "2025-08-05T13:29:28.986135",
+  "code_extracted_previous": "public int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {\n        List<int[]> result = new ArrayList<>();\n        for (int[] query : queries) {\n            int k = query[0], trim = query[1];\n            List<String> trimmedNums = new ArrayList<>();\n            for (String num : nums) {\n                trimmedNums.add(num.substring(num.length() - trim));\n            }\n            Collections.sort(trimmedNums);\n            result.add(trimmedNums.get(k - 1).equals(\"0\") ? trimmedNums.indexOf(trimmedNums.get(k - 1)) : trimmedNums.indexOf(trimmedNums.get(k - 1).replace(\"0\", \"\")));\n        }\n        return result.stream().mapToInt(i -> i).toArray();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.379095"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1456,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int maxCount = 0, windowCount = 0;\n        unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u'};\n        for (int i = 0; i < s.length(); i++) {\n            if (vowels.count(s[i])) windowCount++;\n            if (i >= k && vowels.count(s[i - k])) windowCount--;\n            if (i >= k - 1) maxCount = max(maxCount, windowCount);\n        }\n        return maxCount;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding window approach with a set to track vowels, maintaining a window of size k and updating the maximum count of vowels.",
+  "code": "class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int maxCount = 0, windowCount = 0;\n        unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u'};\n        for (int i = 0; i < s.length(); i++) {\n            if (vowels.count(s[i])) windowCount++;\n            if (i >= k && vowels.count(s[i - k])) windowCount--;\n            if (i >= k - 1) maxCount = max(maxCount, windowCount);\n        }\n        return maxCount;\n    }\n};",
+  "timestamp": "2025-08-06T00:53:18.956109",
+  "code_extracted_previous": "public:\n    int maxVowels(string s, int k) {\n        int maxCount = 0, windowCount = 0;\n        unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u'};\n        for (int i = 0; i < s.length(); i++) {\n            if (vowels.count(s[i])) windowCount++;\n            if (i >= k && vowels.count(s[i - k])) windowCount--;\n            if (i >= k - 1) maxCount = max(maxCount, windowCount);\n        }\n        return maxCount;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.205171"
+}

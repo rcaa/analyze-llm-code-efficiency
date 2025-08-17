@@ -1,0 +1,15 @@
+{
+  "id": 1171,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```\n# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:\n        dummy = ListNode(0, head)\n        prefix = 0\n        seen = {}\n        cur = dummy\n        while cur:\n            prefix += cur.val\n            seen[prefix] = cur\n            cur = cur.next\n        \n        prefix = 0\n        cur = dummy\n        while cur:\n            prefix += cur.val\n            cur.next = seen[prefix].next\n            cur = cur.next\n        \n        return dummy.next\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses prefix sums to detect zero-sum ranges in one pass, storing the last occurrence of each prefix. A second pass splices out ranges whose start and end share the same prefix sum, achieving linear time and space.",
+  "code": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:\n        dummy = ListNode(0, head)\n        prefix = 0\n        seen = {}\n        cur = dummy\n        while cur:\n            prefix += cur.val\n            seen[prefix] = cur\n            cur = cur.next\n        \n        prefix = 0\n        cur = dummy\n        while cur:\n            prefix += cur.val\n            cur.next = seen[prefix].next\n            cur = cur.next\n        \n        return dummy.next",
+  "timestamp": "2025-08-06T02:32:35.321145",
+  "code_extracted_previous": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:\n        dummy = ListNode(0, head)\n        prefix = 0\n        seen = {}\n        cur = dummy\n        while cur:\n            prefix += cur.val\n            seen[prefix] = cur\n            cur = cur.next\n        \n        prefix = 0\n        cur = dummy\n        while cur:\n            prefix += cur.val\n            cur.next = seen[prefix].next\n            cur = cur.next\n        \n        return dummy.next",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.057070"
+}

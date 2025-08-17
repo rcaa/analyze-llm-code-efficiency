@@ -1,0 +1,15 @@
+{
+  "id": 3133,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public long minEnd(int n, int x) {\n        long res = (long) x;\n        long bit = 1;\n        for (int i = 1; i < n; i++) {\n            long next = res;\n            while ((next & x) != x) {\n                next += bit;\n            }\n            res = next;\n            bit <<= 1;\n        }\n        return res;\n    }\n}\n```\nefficiency: MEDIUM\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The algorithm iteratively builds the array by finding the next number greater than the previous one that maintains the bitwise AND result as x. It uses a bit-shifting approach to incrementally find the next valid number. The main strength is its simplicity and clarity, but the linear time complexity may be a limitation for very large n.",
+  "code": "class Solution {\n    public long minEnd(int n, int x) {\n        long res = (long) x;\n        long bit = 1;\n        for (int i = 1; i < n; i++) {\n            long next = res;\n            while ((next & x) != x) {\n                next += bit;\n            }\n            res = next;\n            bit <<= 1;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T08:38:19.834806",
+  "code_extracted_previous": "class Solution {\n    public long minEnd(int n, int x) {\n        long res = (long) x;\n        long bit = 1;\n        for (int i = 1; i < n; i++) {\n            long next = res;\n            while ((next & x) != x) {\n                next += bit;\n            }\n            res = next;\n            bit <<= 1;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:02.906929"
+}

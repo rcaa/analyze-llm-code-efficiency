@@ -1,0 +1,15 @@
+{
+  "id": 692,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def topKFrequent(self, words: List[str], k: int) -> List[str]:\n        count = Counter(words)\n        heap = [(-freq, word) for word, freq in count.items()]\n        heapq.heapify(heap)\n        return [heapq.heappop(heap)[1] for _ in range(k)]\n```\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a heap to efficiently select the top k frequent words. It first counts the frequency of each word using a Counter, then builds a heap with the frequency and word as a tuple. The heap is ordered by the frequency in descending order and the word in ascending order. Finally, it pops the top k elements from the heap to get the result.",
+  "code": "class Solution:\n    def topKFrequent(self, words: List[str], k: int) -> List[str]:\n        count = Counter(words)\n        heap = [(-freq, word) for word, freq in count.items()]\n        heapq.heapify(heap)\n        return [heapq.heappop(heap)[1] for _ in range(k)]",
+  "timestamp": "2025-08-05T13:15:37.759522",
+  "code_extracted_previous": "class Solution:\n    def topKFrequent(self, words: List[str], k: int) -> List[str]:\n        count = Counter(words)\n        heap = [(-freq, word) for word, freq in count.items()]\n        heapq.heapify(heap)\n        return [heapq.heappop(heap)[1] for _ in range(k)]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:40.000464"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1799,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nfrom math import gcd\nfrom functools import lru_cache\nfrom itertools import combinations\n\nclass Solution:\n    def maxScore(self, nums: List[int]) -> int:\n        @lru_cache(None)\n        def dfs(mask):\n            if mask == 0:\n                return 0\n            res = 0\n            for i, j in combinations(range(len(nums)), 2):\n                if (mask >> i) & 1 and (mask >> j) & 1:\n                    res = max(res, dfs(mask ^ (1 << i) ^ (1 << j)) + gcd(nums[i], nums[j]) * ((mask.bit_count() + 1) // 2))\n            return res\n        return dfs((1 << len(nums)) - 1)\n```\nefficiency: HIGH\ntime complexity: O(3^n * n^2)\nspace complexity: O(2^n)\nenergy implications: LOW\nexplanation: This solution uses a depth-first search approach with memoization to explore all possible combinations of operations. It uses the bit manipulation technique to represent the state of the array and the lru_cache decorator to store the results of subproblems. The time complexity is exponential due to the recursive nature of the solution, but the memoization helps to reduce the number of redundant computations.",
+  "code": "class Solution:\n    def maxScore(self, nums: List[int]) -> int:\n        @lru_cache(None)\n        def dfs(mask):\n            if mask == 0:\n                return 0\n            res = 0\n            for i, j in combinations(range(len(nums)), 2):\n                if (mask >> i) & 1 and (mask >> j) & 1:\n                    res = max(res, dfs(mask ^ (1 << i) ^ (1 << j)) + gcd(nums[i], nums[j]) * ((mask.bit_count() + 1) // 2))\n            return res\n        return dfs((1 << len(nums)) - 1)",
+  "timestamp": "2025-08-05T11:54:06.756703",
+  "code_extracted_previous": "from math import gcd\nfrom functools import lru_cache\nfrom itertools import combinations\n\nclass Solution:\n    def maxScore(self, nums: List[int]) -> int:\n        @lru_cache(None)\n        def dfs(mask):\n            if mask == 0:\n                return 0\n            res = 0\n            for i, j in combinations(range(len(nums)), 2):\n                if (mask >> i) & 1 and (mask >> j) & 1:\n                    res = max(res, dfs(mask ^ (1 << i) ^ (1 << j)) + gcd(nums[i], nums[j]) * ((mask.bit_count() + 1) // 2))\n            return res\n        return dfs((1 << len(nums)) - 1)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.026588"
+}

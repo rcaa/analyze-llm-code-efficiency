@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int res = 0, zeros = 0, ones = 0;\n        for (int i = 0; i < s.size(); i++) {\n            if (s[i] == '0') zeros++;\n            else ones++;\n            if (zeros == ones) res = max(res, zeros * 2);\n            else if (zeros > ones) zeros = 0, ones = 0;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a single pass through the string, keeping track of the number of zeroes and ones. When the number of zeroes equals the number of ones, it updates the result with the current length of the balanced substring. If the number of zeroes exceeds the number of ones, it resets the counts. This approach has a high efficiency due to its linear time complexity and constant space complexity.",
+  "code": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int res = 0, zeros = 0, ones = 0;\n        for (int i = 0; i < s.size(); i++) {\n            if (s[i] == '0') zeros++;\n            else ones++;\n            if (zeros == ones) res = max(res, zeros * 2);\n            else if (zeros > ones) zeros = 0, ones = 0;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T16:41:42.825557",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int res = 0, zeros = 0, ones = 0;\n        for (int i = 0; i < s.size(); i++) {\n            if (s[i] == '0') zeros++;\n            else ones++;\n            if (zeros == ones) res = max(res, zeros * 2);\n            else if (zeros > ones) zeros = 0, ones = 0;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.079626"
+}

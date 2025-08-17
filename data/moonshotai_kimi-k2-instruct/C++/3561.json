@@ -1,0 +1,15 @@
+{
+  "id": 3561,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    string resultingString(string s) {\n        vector<char> st;\n        for (char c : s) {\n            if (!st.empty()) {\n                char prev = st.back();\n                if ((c == 'a' && prev == 'z') || (c == 'z' && prev == 'a') ||\n                    abs(c - prev) == 1) {\n                    st.pop_back();\n                    continue;\n                }\n            }\n            st.push_back(c);\n        }\n        return string(st.begin(), st.end());\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a stack to simulate the removals in a single left-to-right pass. Each character is pushed and popped at most once, achieving linear time. The stack stores at most n characters, giving linear space.",
+  "code": "class Solution {\npublic:\n    string resultingString(string s) {\n        vector<char> st;\n        for (char c : s) {\n            if (!st.empty()) {\n                char prev = st.back();\n                if ((c == 'a' && prev == 'z') || (c == 'z' && prev == 'a') ||\n                    abs(c - prev) == 1) {\n                    st.pop_back();\n                    continue;\n                }\n            }\n            st.push_back(c);\n        }\n        return string(st.begin(), st.end());\n    }\n};",
+  "timestamp": "2025-08-06T01:08:08.697145",
+  "code_extracted_previous": "class Solution {\npublic:\n    string resultingString(string s) {\n        vector<char> st;\n        for (char c : s) {\n            if (!st.empty()) {\n                char prev = st.back();\n                if ((c == 'a' && prev == 'z') || (c == 'z' && prev == 'a') ||\n                    abs(c - prev) == 1) {\n                    st.pop_back();\n                    continue;\n                }\n            }\n            st.push_back(c);\n        }\n        return string(st.begin(), st.end());\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.033361"
+}

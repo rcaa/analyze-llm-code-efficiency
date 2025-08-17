@@ -1,0 +1,15 @@
+{
+  "id": 753,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def crackSafe(self, n: int, k: int) -> str:\n        result = \"0\" * n\n        visited = set()\n        for _ in range(k ** n):\n            prefix = result[-(n - 1):]\n            for i in range(k - 1, -1, -1):\n                combination = prefix + str(i)\n                if combination not in visited:\n                    visited.add(combination)\n                    result += str(i)\n                    break\n        return result\n```\nefficiency: HIGH\ntime complexity: O(k^n)\nspace complexity: O(k^n)\nenergy implications: LOW\nexplanation: The solution uses a set to keep track of visited combinations and iterates through all possible combinations of digits, appending the next unvisited combination to the result string.",
+  "code": "def crackSafe(self, n: int, k: int) -> str:\n        result = \"0\" * n\n        visited = set()\n        for _ in range(k ** n):\n            prefix = result[-(n - 1):]\n            for i in range(k - 1, -1, -1):\n                combination = prefix + str(i)\n                if combination not in visited:\n                    visited.add(combination)\n                    result += str(i)\n                    break\n        return result\n```",
+  "timestamp": "2025-08-06T15:20:53.260731",
+  "code_extracted_previous": "class Solution:\n    def crackSafe(self, n: int, k: int) -> str:\n        result = \"0\" * n\n        visited = set()\n        for _ in range(k ** n):\n            prefix = result[-(n - 1):]\n            for i in range(k - 1, -1, -1):\n                combination = prefix + str(i)\n                if combination not in visited:\n                    visited.add(combination)\n                    result += str(i)\n                    break\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.819558"
+}

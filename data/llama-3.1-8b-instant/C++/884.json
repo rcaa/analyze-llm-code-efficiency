@@ -1,0 +1,15 @@
+{
+  "id": 884,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nvector<string> uncommonFromSentences(string s1, string s2) {\n    unordered_map<string, int> count;\n    string word;\n    for (char c : s1 + \" \" + s2) {\n        if (c == ' ') {\n            if (!word.empty()) {\n                count[word]++;\n                word.clear();\n            }\n        } else {\n            word += c;\n        }\n    }\n    if (!word.empty()) {\n        count[word]++;\n    }\n    vector<string> result;\n    for (auto& pair : count) {\n        if (pair.second == 1) {\n            result.push_back(pair.first);\n        }\n    }\n    return result;\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a single pass through both strings to count the occurrences of each word. It then iterates over the count map to find words that appear only once. This approach has a high efficiency due to its linear time complexity and low memory usage.",
+  "code": "vector<string> uncommonFromSentences(string s1, string s2) {\n    unordered_map<string, int> count;\n    string word;\n    for (char c : s1 + \" \" + s2) {\n        if (c == ' ') {\n            if (!word.empty()) {\n                count[word]++;\n                word.clear();\n            }\n        } else {\n            word += c;\n        }\n    }\n    if (!word.empty()) {\n        count[word]++;\n    }\n    vector<string> result;\n    for (auto& pair : count) {\n        if (pair.second == 1) {\n            result.push_back(pair.first);\n        }\n    }\n    return result;\n}",
+  "timestamp": "2025-08-05T14:41:47.066223",
+  "code_extracted_previous": "vector<string> uncommonFromSentences(string s1, string s2) {\n    unordered_map<string, int> count;\n    string word;\n    for (char c : s1 + \" \" + s2) {\n        if (c == ' ') {\n            if (!word.empty()) {\n                count[word]++;\n                word.clear();\n            }\n        } else {\n            word += c;\n        }\n    }\n    if (!word.empty()) {\n        count[word]++;\n    }\n    vector<string> result;\n    for (auto& pair : count) {\n        if (pair.second == 1) {\n            result.push_back(pair.first);\n        }\n    }\n    return result;\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:28.772187"
+}

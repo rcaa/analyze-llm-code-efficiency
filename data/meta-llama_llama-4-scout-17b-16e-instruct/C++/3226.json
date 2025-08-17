@@ -1,0 +1,15 @@
+{
+  "id": 3226,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int minChanges(int n, int k) {\n        if ((n & k) != k) return -1;\n        int changes = 0;\n        while (n || k) {\n            if (n & 1 && !(k & 1)) changes++;\n            n >>= 1;\n            k >>= 1;\n        }\n        return changes;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log min(n, k))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The approach checks if it's possible to make n equal to k by verifying if k is a subset of n in terms of bit representation. Then, it counts the number of bits that need to be changed from 1 to 0 in n to match k.",
+  "code": "class Solution {\npublic:\n    int minChanges(int n, int k) {\n        if ((n & k) != k) return -1;\n        int changes = 0;\n        while (n || k) {\n            if (n & 1 && !(k & 1)) changes++;\n            n >>= 1;\n            k >>= 1;\n        }\n        return changes;\n    }\n};",
+  "timestamp": "2025-08-05T13:52:09.330288",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minChanges(int n, int k) {\n        if ((n & k) != k) return -1;\n        int changes = 0;\n        while (n || k) {\n            if (n & 1 && !(k & 1)) changes++;\n            n >>= 1;\n            k >>= 1;\n        }\n        return changes;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.446854"
+}

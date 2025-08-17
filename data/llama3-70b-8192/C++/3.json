@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        unordered_map<char, int> charIndexMap;\n        int maxLength = 0, windowStart = 0;\n        for (int windowEnd = 0; windowEnd < s.length(); windowEnd++) {\n            char rightChar = s[windowEnd];\n            if (charIndexMap.find(rightChar) != charIndexMap.end()) {\n                windowStart = max(windowStart, charIndexMap[rightChar] + 1);\n            }\n            charIndexMap[rightChar] = windowEnd;\n            maxLength = max(maxLength, windowEnd - windowStart + 1);\n        }\n        return maxLength;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, m))\nenergy implications: LOW\nexplanation: Uses a sliding window approach with a hashmap to keep track of character indices, efficiently finding the longest substring without duplicates.",
+  "code": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        unordered_map<char, int> charIndexMap;\n        int maxLength = 0, windowStart = 0;\n        for (int windowEnd = 0; windowEnd < s.length(); windowEnd++) {\n            char rightChar = s[windowEnd];\n            if (charIndexMap.find(rightChar) != charIndexMap.end()) {\n                windowStart = max(windowStart, charIndexMap[rightChar] + 1);\n            }\n            charIndexMap[rightChar] = windowEnd;\n            maxLength = max(maxLength, windowEnd - windowStart + 1);\n        }\n        return maxLength;\n    }\n};",
+  "timestamp": "2025-08-05T14:49:19.802324",
+  "code_extracted_previous": "public:\n    int lengthOfLongestSubstring(string s) {\n        unordered_map<char, int> charIndexMap;\n        int maxLength = 0, windowStart = 0;\n        for (int windowEnd = 0; windowEnd < s.length(); windowEnd++) {\n            char rightChar = s[windowEnd];\n            if (charIndexMap.find(rightChar) != charIndexMap.end()) {\n                windowStart = max(windowStart, charIndexMap[rightChar] + 1);\n            }\n            charIndexMap[rightChar] = windowEnd;\n            maxLength = max(maxLength, windowEnd - windowStart + 1);\n        }\n        return maxLength;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.686066"
+}

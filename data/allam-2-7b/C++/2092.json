@@ -1,0 +1,15 @@
+{
+  "id": 2092,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```c++\n#include <vector>\n#include <unordered_map>\n\nclass Solution {\npublic:\n    vector<int> findAllPeople(int n, vector<vector<int>>& meetings, int firstPerson) {\n        unordered_map<int, int> personSeen;\n        vector<int> result;\n\n        for (int i = 0; i < n; i++) {\n            for (auto meeting : meetings[i]) {\n                if (personSeen.find(meeting[0]) != personSeen.end()) {\n                    result.push_back(meeting[1]);\n                }\n            }\n        }\n\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * (n - 1) * (n - 2) * ... * 2 * 1\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use a hash map (unordered_map) to store the person's index as the key and the person's index as the value. We iterate through all meetings and check if the person at meeting[0] is already in the hash map. If found, we add the person at meeting[1] to the result vector. This approach has a high efficiency because we only need to iterate through meetings once and hash map lookups are constant time operations. The time complexity is O(n * (n - 1) * (n - 2) * ... * 2 * 1, which is O(n^2). The space complexity is O(n) due to the hash map. The energy implications are low because the algorithm only requires a constant amount of energy to perform the hash map lookups and vector operations. ",
+  "code": "class Solution {\npublic:\n    vector<int> findAllPeople(int n, vector<vector<int>>& meetings, int firstPerson) {\n        unordered_map<int, int> personSeen;\n        vector<int> result;\n\n        for (int i = 0; i < n; i++) {\n            for (auto meeting : meetings[i]) {\n                if (personSeen.find(meeting[0]) != personSeen.end()) {\n                    result.push_back(meeting[1]);\n                }\n            }\n        }\n\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T13:55:58.446769",
+  "code_extracted_previous": "#include <vector>\n#include <unordered_map>\n\nclass Solution {\npublic:\n    vector<int> findAllPeople(int n, vector<vector<int>>& meetings, int firstPerson) {\n        unordered_map<int, int> personSeen;\n        vector<int> result;\n\n        for (int i = 0; i < n; i++) {\n            for (auto meeting : meetings[i]) {\n                if (personSeen.find(meeting[0]) != personSeen.end()) {\n                    result.push_back(meeting[1]);\n                }\n            }\n        }\n\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.267978"
+}

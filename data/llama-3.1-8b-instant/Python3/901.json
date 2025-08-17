@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        count = 1\n        while self.stack and self.stack[-1][0] <= price:\n            count += self.stack.pop()[1]\n        self.stack.append((price, count))\n        return count\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to keep track of the prices and their corresponding counts. It iterates through the stack to find the maximum count for the current price, and then appends the current price and count to the stack. This approach has a high efficiency due to its constant time complexity for each operation.",
+  "code": "class StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        count = 1\n        while self.stack and self.stack[-1][0] <= price:\n            count += self.stack.pop()[1]\n        self.stack.append((price, count))\n        return count",
+  "timestamp": "2025-08-06T01:57:58.014873",
+  "code_extracted_previous": "class StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        count = 1\n        while self.stack and self.stack[-1][0] <= price:\n            count += self.stack.pop()[1]\n        self.stack.append((price, count))\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:31.545929"
+}

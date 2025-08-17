@@ -1,0 +1,15 @@
+{
+  "id": 698,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool canPartitionKSubsets(vector<int>& nums, int k) {\n        int sum = 0;\n        for (int num : nums) sum += num;\n        if (sum % k != 0) return false;\n        int target = sum / k;\n        vector<bool> visited(nums.size(), false);\n        sort(nums.begin(), nums.end(), greater<int>());\n        return dfs(nums, target, 0, visited, k);\n    }\n    \n    bool dfs(vector<int>& nums, int target, int index, vector<bool>& visited, int k) {\n        if (k == 1) return true;\n        for (int i = index; i < nums.size(); i++) {\n            if (visited[i] || nums[i] > target) continue;\n            visited[i] = true;\n            if (dfs(nums, target, i + 1, visited, k - 1)) return true;\n            visited[i] = false;\n        }\n        return false;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * 2^n)\nspace complexity: O(n)\nenergy implications: MEDIUM",
+  "code": "class Solution {\npublic:\n    bool canPartitionKSubsets(vector<int>& nums, int k) {\n        int sum = 0;\n        for (int num : nums) sum += num;\n        if (sum % k != 0) return false;\n        int target = sum / k;\n        vector<bool> visited(nums.size(), false);\n        sort(nums.begin(), nums.end(), greater<int>());\n        return dfs(nums, target, 0, visited, k);\n    }\n    \n    bool dfs(vector<int>& nums, int target, int index, vector<bool>& visited, int k) {\n        if (k == 1) return true;\n        for (int i = index; i < nums.size(); i++) {\n            if (visited[i] || nums[i] > target) continue;\n            visited[i] = true;\n            if (dfs(nums, target, i + 1, visited, k - 1)) return true;\n            visited[i] = false;\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T13:16:36.393269",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canPartitionKSubsets(vector<int>& nums, int k) {\n        int sum = 0;\n        for (int num : nums) sum += num;\n        if (sum % k != 0) return false;\n        int target = sum / k;\n        vector<bool> visited(nums.size(), false);\n        sort(nums.begin(), nums.end(), greater<int>());\n        return dfs(nums, target, 0, visited, k);\n    }\n    \n    bool dfs(vector<int>& nums, int target, int index, vector<bool>& visited, int k) {\n        if (k == 1) return true;\n        for (int i = index; i < nums.size(); i++) {\n            if (visited[i] || nums[i] > target) continue;\n            visited[i] = true;\n            if (dfs(nums, target, i + 1, visited, k - 1)) return true;\n            visited[i] = false;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.680186"
+}

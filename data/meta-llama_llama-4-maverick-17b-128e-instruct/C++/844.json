@@ -1,0 +1,15 @@
+{
+  "id": 844,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool backspaceCompare(string s, string t) {\n        int i = s.size() - 1, j = t.size() - 1;\n        int skipS = 0, skipT = 0;\n        while (i >= 0 || j >= 0) {\n            while (i >= 0) {\n                if (s[i] == '#') {\n                    skipS++;\n                    i--;\n                } else if (skipS > 0) {\n                    skipS--;\n                    i--;\n                } else {\n                    break;\n                }\n            }\n            while (j >= 0) {\n                if (t[j] == '#') {\n                    skipT++;\n                    j--;\n                } else if (skipT > 0) {\n                    skipT--;\n                    j--;\n                } else {\n                    break;\n                }\n            }\n            if (i >= 0 && j >= 0 && s[i] != t[j]) {\n                return false;\n            }\n            if ((i >= 0) != (j >= 0)) {\n                return false;\n            }\n            i--;\n            j--;\n        }\n        return true;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The two-pointer technique is used to compare characters from the end of both strings, handling backspace characters by skipping over them. This approach efficiently solves the problem within the given constraints.",
+  "code": "```cpp\nclass Solution {\npublic:\n    bool backspaceCompare(string s, string t) {\n        int i = s.size() - 1, j = t.size() - 1;\n        int skipS = 0, skipT = 0;\n        while (i >= 0 || j >= 0) {\n            while (i >= 0) {\n                if (s[i] == '#') {\n                    skipS++;\n                    i--;\n                } else if (skipS > 0) {\n                    skipS--;\n                    i--;\n                } else {\n                    break;\n                }\n            }\n            while (j >= 0) {\n                if (t[j] == '#') {\n                    skipT++;\n                    j--;\n                } else if (skipT > 0) {\n                    skipT--;\n                    j--;\n                } else {\n                    break;\n                }\n            }\n            if (i >= 0 && j >= 0 && s[i] != t[j]) {\n                return false;\n            }\n            if ((i >= 0) != (j >= 0)) {\n                return false;\n            }\n            i--;\n            j--;\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-06T01:29:39.309637",
+  "code_extracted_previous": "",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.860271"
+}

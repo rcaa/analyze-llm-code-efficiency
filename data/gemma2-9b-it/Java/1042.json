@@ -1,0 +1,15 @@
+{
+  "id": 1042,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public int[] gardenNoAdj(int n, int[][] paths) {\n        int[] adj = new int[n];\n        for (int[] path : paths) {\n            adj[path[0] - 1] |= 1 << (path[1] - 1);\n            adj[path[1] - 1] |= 1 << (path[0] - 1);\n        }\n        int[] answer = new int[n];\n        for (int i = 0; i < n; i++) {\n            int flower = 1;\n            while ((adj[i] & (1 << (flower - 1))) != 0) {\n                flower++;\n            }\n            answer[i] = flower;\n        }\n        return answer;\n    }\n}\n```\nsolution: \n```java\nclass Solution {\n    public int[] gardenNoAdj(int n, int[][] paths) {\n        int[] adj = new int[n];\n        for (int[] path : paths) {\n            adj[path[0] - 1] |= 1 << (path[1] - 1);\n            adj[path[1] - 1] |= 1 << (path[0] - 1);\n        }\n        int[] answer = new int[n];\n        for (int i = 0; i < n; i++) {\n            int flower = 1;\n            while ((adj[i] & (1 << (flower - 1))) != 0) {\n                flower++;\n            }\n            answer[i] = flower;\n        }\n        return answer;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n)\nenergy implications: LOW \nexplanation: The solution uses an adjacency list representation to store the connections between gardens. It iterates through the paths to populate the adjacency list. Then, it iterates through each garden and finds the first available flower type that is not connected to any of its neighbors. This approach is efficient because it avoids redundant checks and utilizes bit manipulation for efficient neighbor checking.\n",
+  "code": "class Solution {\n    public int[] gardenNoAdj(int n, int[][] paths) {\n        int[] adj = new int[n];\n        for (int[] path : paths) {\n            adj[path[0] - 1] |= 1 << (path[1] - 1);\n            adj[path[1] - 1] |= 1 << (path[0] - 1);\n        }\n        int[] answer = new int[n];\n        for (int i = 0; i < n; i++) {\n            int flower = 1;\n            while ((adj[i] & (1 << (flower - 1))) != 0) {\n                flower++;\n            }\n            answer[i] = flower;\n        }\n        return answer;\n    }\n}",
+  "timestamp": "2025-08-05T14:02:05.709659",
+  "code_extracted_previous": "class Solution {\n    public int[] gardenNoAdj(int n, int[][] paths) {\n        int[] adj = new int[n];\n        for (int[] path : paths) {\n            adj[path[0] - 1] |= 1 << (path[1] - 1);\n            adj[path[1] - 1] |= 1 << (path[0] - 1);\n        }\n        int[] answer = new int[n];\n        for (int i = 0; i < n; i++) {\n            int flower = 1;\n            while ((adj[i] & (1 << (flower - 1))) != 0) {\n                flower++;\n            }\n            answer[i] = flower;\n        }\n        return answer;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.457785"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 151,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    string reverseWords(string s) {\n        int n = s.size();\n        int left = 0, right = n - 1;\n        while (left < n && s[left] == ' ') ++left;\n        while (right >= 0 && s[right] == ' ') --right;\n        if (left > right) return \"\";\n        \n        string res;\n        int i = right;\n        while (i >= left) {\n            while (i >= left && s[i] == ' ') --i;\n            int j = i;\n            while (j >= left && s[j] != ' ') --j;\n            if (i >= left) {\n                res += s.substr(j + 1, i - j);\n                if (j >= left) res += ' ';\n            }\n            i = j;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1) extra (output string excluded)\nenergy implications: LOW\nexplanation: Scan from right to left, skipping spaces and extracting each word in reverse order. Uses two pointers to mark word boundaries and appends each word to the result string with a single space. Achieves linear time and constant extra space.",
+  "code": "class Solution {\npublic:\n    string reverseWords(string s) {\n        int n = s.size();\n        int left = 0, right = n - 1;\n        while (left < n && s[left] == ' ') ++left;\n        while (right >= 0 && s[right] == ' ') --right;\n        if (left > right) return \"\";\n        \n        string res;\n        int i = right;\n        while (i >= left) {\n            while (i >= left && s[i] == ' ') --i;\n            int j = i;\n            while (j >= left && s[j] != ' ') --j;\n            if (i >= left) {\n                res += s.substr(j + 1, i - j);\n                if (j >= left) res += ' ';\n            }\n            i = j;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:34:41.615678",
+  "code_extracted_previous": "class Solution {\npublic:\n    string reverseWords(string s) {\n        int n = s.size();\n        int left = 0, right = n - 1;\n        while (left < n && s[left] == ' ') ++left;\n        while (right >= 0 && s[right] == ' ') --right;\n        if (left > right) return \"\";\n        \n        string res;\n        int i = right;\n        while (i >= left) {\n            while (i >= left && s[i] == ' ') --i;\n            int j = i;\n            while (j >= left && s[j] != ' ') --j;\n            if (i >= left) {\n                res += s.substr(j + 1, i - j);\n                if (j >= left) res += ' ';\n            }\n            i = j;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.256719"
+}

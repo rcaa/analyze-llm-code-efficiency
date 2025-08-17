@@ -1,0 +1,15 @@
+{
+  "id": 970,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        List<Integer> result = new ArrayList<>();\n        for (int i = Math.max(x, y); i <= bound; i += x) {\n            for (int j = Math.max(x, y); j <= bound; j += y) {\n                int product = i * j;\n                if (product <= bound && (x * product / i) % y == 0 && (y * product / j) % x == 0) {\n                    result.add(product);\n                }\n            }\n        }\n        return result;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * m)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use nested loops to iterate over all possible values of i and j, checking if the product i * j is less than or equal to the bound and if the quotients (x * product / i) % y and (y * product / j) % x are equal. This ensures that the integer is a powerful integer. The result is stored in a list and returned. The time complexity is O(n * m) because of the nested loops, where n is the number of values checked for i and m is the number of values checked for j. The space complexity is O(n) because we create a list to store the result. The energy implications are low because the algorithm only performs simple arithmetic operations and does not require any complex calculations or data structures. ",
+  "code": "class Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        List<Integer> result = new ArrayList<>();\n        for (int i = Math.max(x, y); i <= bound; i += x) {\n            for (int j = Math.max(x, y); j <= bound; j += y) {\n                int product = i * j;\n                if (product <= bound && (x * product / i) % y == 0 && (y * product / j) % x == 0) {\n                    result.add(product);\n                }\n            }\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T14:57:24.869864",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        List<Integer> result = new ArrayList<>();\n        for (int i = Math.max(x, y); i <= bound; i += x) {\n            for (int j = Math.max(x, y); j <= bound; j += y) {\n                int product = i * j;\n                if (product <= bound && (x * product / i) % y == 0 && (y * product / j) % x == 0) {\n                    result.add(product);\n                }\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:15.010684"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 374,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\n/** \n * Forward declaration of guess API.\n * @param  num   your guess\n * @return \t     -1 if num is higher than the picked number\n *\t\t\t      1 if num is lower than the picked number\n *               otherwise return 0\n * int guess(int num);\n */\n\nclass Solution {\npublic:\n    int guessNumber(int n) {\n        long long left = 1, right = n;\n        while (left <= right) {\n            long long mid = left + (right - left) / 2;\n            int res = guess(static_cast<int>(mid));\n            if (res == 0) return static_cast<int>(mid);\n            else if (res == -1) right = mid - 1;\n            else left = mid + 1;\n        }\n        return static_cast<int>(left);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Classic binary search halves the search space each iteration, guaranteeing logarithmic time. Uses 64-bit intermediates to avoid overflow when n is 2^31-1.",
+  "code": "/** \n * Forward declaration of guess API.\n * @param  num   your guess\n * @return \t     -1 if num is higher than the picked number\n *\t\t\t      1 if num is lower than the picked number\n *               otherwise return 0\n * int guess(int num);\n */\n\nclass Solution {\npublic:\n    int guessNumber(int n) {\n        long long left = 1, right = n;\n        while (left <= right) {\n            long long mid = left + (right - left) / 2;\n            int res = guess(static_cast<int>(mid));\n            if (res == 0) return static_cast<int>(mid);\n            else if (res == -1) right = mid - 1;\n            else left = mid + 1;\n        }\n        return static_cast<int>(left);\n    }\n};",
+  "timestamp": "2025-08-05T13:46:07.613227",
+  "code_extracted_previous": "/** \n * Forward declaration of guess API.\n * @param  num   your guess\n * @return \t     -1 if num is higher than the picked number\n *\t\t\t      1 if num is lower than the picked number\n *               otherwise return 0\n * int guess(int num);\n */\n\nclass Solution {\npublic:\n    int guessNumber(int n) {\n        long long left = 1, right = n;\n        while (left <= right) {\n            long long mid = left + (right - left) / 2;\n            int res = guess(static_cast<int>(mid));\n            if (res == 0) return static_cast<int>(mid);\n            else if (res == -1) right = mid - 1;\n            else left = mid + 1;\n        }\n        return static_cast<int>(left);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.062034"
+}

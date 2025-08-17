@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\ndouble Solution::new21Game(int n, int k, int maxPts) {\n    if (k > n) return 1.0;\n    if (k == n) return 1.0;\n    double dp[n + 1];\n    dp[0] = 1.0;\n    double sum = 1.0;\n    for (int i = 1; i <= n; i++) {\n        if (i < k) dp[i] = sum / maxPts;\n        else dp[i] = 1.0;\n        if (i >= k - 1) sum -= dp[i - k + 1];\n        if (i + 1 <= n) sum += dp[i + 1];\n    }\n    return dp[n];\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "double Solution::new21Game(int n, int k, int maxPts) {\n    if (k > n) return 1.0;\n    if (k == n) return 1.0;\n    double dp[n + 1];\n    dp[0] = 1.0;\n    double sum = 1.0;\n    for (int i = 1; i <= n; i++) {\n        if (i < k) dp[i] = sum / maxPts;\n        else dp[i] = 1.0;\n        if (i >= k - 1) sum -= dp[i - k + 1];\n        if (i + 1 <= n) sum += dp[i + 1];\n    }\n    return dp[n];\n}",
+  "timestamp": "2025-08-05T15:45:56.728529",
+  "code_extracted_previous": "double Solution::new21Game(int n, int k, int maxPts) {\n    if (k > n) return 1.0;\n    if (k == n) return 1.0;\n    double dp[n + 1];\n    dp[0] = 1.0;\n    double sum = 1.0;\n    for (int i = 1; i <= n; i++) {\n        if (i < k) dp[i] = sum / maxPts;\n        else dp[i] = 1.0;\n        if (i >= k - 1) sum -= dp[i - k + 1];\n        if (i + 1 <= n) sum += dp[i + 1];\n    }\n    return dp[n];\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:28.745969"
+}

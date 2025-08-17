@@ -1,0 +1,15 @@
+{
+  "id": 1131,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {\n        int n = arr1.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                res = max(res, abs(arr1[i] - arr1[j]) + abs(arr2[i] - arr2[j]) + abs(i - j));\n                res = max(res, abs(arr1[i] + arr1[j]) + abs(arr2[i] + arr2[j]) + abs(i + j));\n                res = max(res, abs(arr1[i] - arr1[j]) + abs(arr2[i] + arr2[j]) + abs(i - j));\n                res = max(res, abs(arr1[i] + arr1[j]) + abs(arr2[i] - arr2[j]) + abs(i + j));\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: MEDIUM\nexplanation: The solution uses a brute force approach to calculate the maximum value of the given expression by iterating over all pairs of indices in the input arrays and considering all possible combinations of signs for the terms in the expression.",
+  "code": "class Solution {\npublic:\n    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {\n        int n = arr1.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                res = max(res, abs(arr1[i] - arr1[j]) + abs(arr2[i] - arr2[j]) + abs(i - j));\n                res = max(res, abs(arr1[i] + arr1[j]) + abs(arr2[i] + arr2[j]) + abs(i + j));\n                res = max(res, abs(arr1[i] - arr1[j]) + abs(arr2[i] + arr2[j]) + abs(i - j));\n                res = max(res, abs(arr1[i] + arr1[j]) + abs(arr2[i] - arr2[j]) + abs(i + j));\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:58:22.480893",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {\n        int n = arr1.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                res = max(res, abs(arr1[i] - arr1[j]) + abs(arr2[i] - arr2[j]) + abs(i - j));\n                res = max(res, abs(arr1[i] + arr1[j]) + abs(arr2[i] + arr2[j]) + abs(i + j));\n                res = max(res, abs(arr1[i] - arr1[j]) + abs(arr2[i] + arr2[j]) + abs(i - j));\n                res = max(res, abs(arr1[i] + arr1[j]) + abs(arr2[i] - arr2[j]) + abs(i + j));\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.652235"
+}

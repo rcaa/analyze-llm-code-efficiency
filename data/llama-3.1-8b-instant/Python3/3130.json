@@ -1,0 +1,15 @@
+{
+  "id": 3130,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0] * (limit + 1) for _ in range(zero + 1)]\n        dp[0][0] = 1\n        for i in range(1, zero + 1):\n            for j in range(1, limit + 1):\n                dp[i][j] = (dp[i][j-1] + dp[i-1][j-1]) % MOD\n        ans = 0\n        for i in range(one + 1):\n            ans = (ans + dp[zero][i] * dp[one][i]) % MOD\n        return ans\n```\n\nefficiency: HIGH\ntime complexity: O(zero * limit)\nspace complexity: O(zero * limit)\nenergy implications: LOW",
+  "code": "class Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0] * (limit + 1) for _ in range(zero + 1)]\n        dp[0][0] = 1\n        for i in range(1, zero + 1):\n            for j in range(1, limit + 1):\n                dp[i][j] = (dp[i][j-1] + dp[i-1][j-1]) % MOD\n        ans = 0\n        for i in range(one + 1):\n            ans = (ans + dp[zero][i] * dp[one][i]) % MOD\n        return ans",
+  "timestamp": "2025-08-05T14:23:12.373194",
+  "code_extracted_previous": "class Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0] * (limit + 1) for _ in range(zero + 1)]\n        dp[0][0] = 1\n        for i in range(1, zero + 1):\n            for j in range(1, limit + 1):\n                dp[i][j] = (dp[i][j-1] + dp[i-1][j-1]) % MOD\n        ans = 0\n        for i in range(one + 1):\n            ans = (ans + dp[zero][i] * dp[one][i]) % MOD\n        return ans",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.086360"
+}

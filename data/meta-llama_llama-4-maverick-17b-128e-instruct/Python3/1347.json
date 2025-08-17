@@ -1,0 +1,15 @@
+{
+  "id": 1347,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minSteps(self, s: str, t: str) -> int:\n        count_s = [0] * 26\n        count_t = [0] * 26\n        for char in s:\n            count_s[ord(char) - ord('a')] += 1\n        for char in t:\n            count_t[ord(char) - ord('a')] += 1\n        steps = 0\n        for i in range(26):\n            steps += abs(count_s[i] - count_t[i])\n        return steps // 2\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution works by counting the frequency of each character in both strings, then calculating the absolute difference in counts for each character. The minimum number of steps is half the sum of these differences, as each step can correct two mismatched characters.",
+  "code": "def minSteps(self, s: str, t: str) -> int:\n        count_s = [0] * 26\n        count_t = [0] * 26\n        for char in s:\n            count_s[ord(char) - ord('a')] += 1\n        for char in t:\n            count_t[ord(char) - ord('a')] += 1\n        steps = 0\n        for i in range(26):\n            steps += abs(count_s[i] - count_t[i])\n        return steps // 2\n```",
+  "timestamp": "2025-08-05T14:59:51.673336",
+  "code_extracted_previous": "class Solution:\n    def minSteps(self, s: str, t: str) -> int:\n        count_s = [0] * 26\n        count_t = [0] * 26\n        for char in s:\n            count_s[ord(char) - ord('a')] += 1\n        for char in t:\n            count_t[ord(char) - ord('a')] += 1\n        steps = 0\n        for i in range(26):\n            steps += abs(count_s[i] - count_t[i])\n        return steps // 2",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.489497"
+}

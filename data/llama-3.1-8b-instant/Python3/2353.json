@@ -1,0 +1,15 @@
+{
+  "id": 2353,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nfrom typing import List\n\nclass FoodRatings:\n\n    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):\n        self.foods = {food: (cuisine, rating) for food, cuisine, rating in zip(foods, cuisines, ratings)}\n        self.cuisines = {}\n        for food, (cuisine, _) in self.foods.items():\n            if cuisine not in self.cuisines:\n                self.cuisines[cuisine] = []\n            self.cuisines[cuisine].append((food, ratings[self.foods.keys().index(food)]))\n\n    def changeRating(self, food: str, newRating: int) -> None:\n        cuisine, _ = self.foods[food]\n        self.foods[food] = (cuisine, newRating)\n        self.cuisines[cuisine].sort(key=lambda x: (-x[1], x[0]))\n\n    def highestRated(self, cuisine: str) -> str:\n        return self.cuisines[cuisine][0][0]\n```\n\nsolution: \nefficiency: HIGH\ntime complexity: O(n + m log m)\nspace complexity: O(n + m)\nenergy implications: MEDIUM\nexplanation: This solution uses a dictionary to store the foods and their corresponding cuisine and rating. It also uses a dictionary to store the cuisines and their corresponding foods sorted by rating and then by name. The changeRating method updates the rating of a food and sorts the foods for its cuisine. The highestRated method returns the highest rated food for a given cuisine. The time complexity is O(n + m log m) due to the sorting in the changeRating method, where n is the number of foods and m is the number of cuisines. The space complexity is O(n + m) due to the storage of the foods and cuisines.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-05T13:31:09.134472",
+  "code_extracted_previous": "from typing import List\n\nclass FoodRatings:\n\n    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):\n        self.foods = {food: (cuisine, rating) for food, cuisine, rating in zip(foods, cuisines, ratings)}\n        self.cuisines = {}\n        for food, (cuisine, _) in self.foods.items():\n            if cuisine not in self.cuisines:\n                self.cuisines[cuisine] = []\n            self.cuisines[cuisine].append((food, ratings[self.foods.keys().index(food)]))\n\n    def changeRating(self, food: str, newRating: int) -> None:\n        cuisine, _ = self.foods[food]\n        self.foods[food] = (cuisine, newRating)\n        self.cuisines[cuisine].sort(key=lambda x: (-x[1], x[0]))\n\n    def highestRated(self, cuisine: str) -> str:\n        return self.cuisines[cuisine][0][0]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:30.790416"
+}

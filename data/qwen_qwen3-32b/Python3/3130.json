@@ -1,0 +1,15 @@
+{
+  "id": 3130,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n\n        from functools import lru_cache\n\n        @lru_cache(None)\n        def dp(z, o, last, count):\n            if z == 0 and o == 0:\n                return 1\n            res = 0\n            if z > 0 and (last != 0 or count < limit):\n                res += dp(z - 1, o, 0, count + 1)\n            if o > 0 and (last != 1 or count < limit):\n                res += dp(z, o - 1, 1, count + 1)\n            return res % MOD\n\n        return dp(zero, one, -1, 0)\n```\nefficiency: MEDIUM\ntime complexity: O(zero * one * limit)\nspace complexity: O(zero * one * limit)\nenergy implications: MEDIUM\nexplanation: The solution uses dynamic programming with memoization to count the number of valid stable binary arrays. The function `dp(z, o, last, count)` recursively builds valid arrays by ensuring that no subarray of size greater than `limit` contains only one type of digit. The key strength is the use of memoization to avoid redundant computations, while the weakness is the exponential nature of the problem, which is mitigated by constraints.",
+  "code": "class Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n\n\n        @lru_cache(None)\n        def dp(z, o, last, count):\n            if z == 0 and o == 0:\n                return 1\n            res = 0\n            if z > 0 and (last != 0 or count < limit):\n                res += dp(z - 1, o, 0, count + 1)\n            if o > 0 and (last != 1 or count < limit):\n                res += dp(z, o - 1, 1, count + 1)\n            return res % MOD\n\n        return dp(zero, one, -1, 0)",
+  "timestamp": "2025-08-06T17:31:55.555908",
+  "code_extracted_previous": "class Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n\n        from functools import lru_cache\n\n        @lru_cache(None)\n        def dp(z, o, last, count):\n            if z == 0 and o == 0:\n                return 1\n            res = 0\n            if z > 0 and (last != 0 or count < limit):\n                res += dp(z - 1, o, 0, count + 1)\n            if o > 0 and (last != 1 or count < limit):\n                res += dp(z, o - 1, 1, count + 1)\n            return res % MOD\n\n        return dp(zero, one, -1, 0)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:05.999015"
+}

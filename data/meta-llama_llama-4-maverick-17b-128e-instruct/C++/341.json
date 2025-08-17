@@ -1,0 +1,15 @@
+{
+  "id": 341,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass NestedIterator {\nprivate:\n    stack<NestedInteger> st;\n\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        for (int i = nestedList.size() - 1; i >= 0; --i) {\n            st.push(nestedList[i]);\n        }\n    }\n\n    int next() {\n        int val = st.top().getInteger();\n        st.pop();\n        return val;\n    }\n\n    bool hasNext() {\n        while (!st.empty() && !st.top().isInteger()) {\n            vector<NestedInteger> &list = st.top().getList();\n            st.pop();\n            for (int i = list.size() - 1; i >= 0; --i) {\n                st.push(list[i]);\n            }\n        }\n        return !st.empty();\n    }\n};\n```\n\nefficiency: HIGH  \ntime complexity: O(N)  \nspace complexity: O(N)  \nenergy implications: LOW  \nexplanation: The solution uses a stack to store NestedInteger objects. It initializes the stack with the input nestedList in reverse order. The hasNext() function checks if there are more integers by flattening the nested list on the fly, and the next() function returns the next integer. The time complexity is O(N) because each NestedInteger is processed once, and the space complexity is O(N) due to the stack used to store NestedInteger objects.",
+  "code": "class NestedIterator {\nprivate:\n    stack<NestedInteger> st;\n\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        for (int i = nestedList.size() - 1; i >= 0; --i) {\n            st.push(nestedList[i]);\n        }\n    }\n\n    int next() {\n        int val = st.top().getInteger();\n        st.pop();\n        return val;\n    }\n\n    bool hasNext() {\n        while (!st.empty() && !st.top().isInteger()) {\n            vector<NestedInteger> &list = st.top().getList();\n            st.pop();\n            for (int i = list.size() - 1; i >= 0; --i) {\n                st.push(list[i]);\n            }\n        }\n        return !st.empty();\n    }\n};",
+  "timestamp": "2025-08-05T16:01:49.230753",
+  "code_extracted_previous": "class NestedIterator {\nprivate:\n    stack<NestedInteger> st;\n\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        for (int i = nestedList.size() - 1; i >= 0; --i) {\n            st.push(nestedList[i]);\n        }\n    }\n\n    int next() {\n        int val = st.top().getInteger();\n        st.pop();\n        return val;\n    }\n\n    bool hasNext() {\n        while (!st.empty() && !st.top().isInteger()) {\n            vector<NestedInteger> &list = st.top().getList();\n            st.pop();\n            for (int i = list.size() - 1; i >= 0; --i) {\n                st.push(list[i]);\n            }\n        }\n        return !st.empty();\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:45.540595"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        vowels = {'a': 0, 'e': 1, 'i': 2, 'o': 3, 'u': 4}\n        mask_to_index = {0: -1}\n        max_length = 0\n        mask = 0\n        for i, c in enumerate(s):\n            if c in vowels:\n                mask ^= (1 << vowels[c])\n            if mask in mask_to_index:\n                max_length = max(max_length, i - mask_to_index[mask])\n            else:\n                mask_to_index[mask] = i\n        return max_length\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a bitmask to track the parity of each vowel in the current substring, allowing for efficient lookup and update of the longest substring seen so far.",
+  "code": "def findTheLongestSubstring(self, s: str) -> int:\n        vowels = {'a': 0, 'e': 1, 'i': 2, 'o': 3, 'u': 4}\n        mask_to_index = {0: -1}\n        max_length = 0\n        mask = 0\n        for i, c in enumerate(s):\n            if c in vowels:\n                mask ^= (1 << vowels[c])\n            if mask in mask_to_index:\n                max_length = max(max_length, i - mask_to_index[mask])\n            else:\n                mask_to_index[mask] = i\n        return max_length\n```",
+  "timestamp": "2025-08-06T15:17:12.883112",
+  "code_extracted_previous": "class Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        vowels = {'a': 0, 'e': 1, 'i': 2, 'o': 3, 'u': 4}\n        mask_to_index = {0: -1}\n        max_length = 0\n        mask = 0\n        for i, c in enumerate(s):\n            if c in vowels:\n                mask ^= (1 << vowels[c])\n            if mask in mask_to_index:\n                max_length = max(max_length, i - mask_to_index[mask])\n            else:\n                mask_to_index[mask] = i\n        return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.770653"
+}

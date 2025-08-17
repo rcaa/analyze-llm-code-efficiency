@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int n = s.size();\n        int zeros = 0;\n        for (char c : s) if (c == '0') zeros++;\n        \n        long long val = 0;\n        int len = 0;\n        for (int i = 0; i < n; ++i) {\n            if (s[i] == '0') {\n                len++;\n                continue;\n            }\n            int pos = n - 1 - i;\n            if (pos >= 30) continue;\n            long long add = 1LL << pos;\n            if (val + add <= k) {\n                val += add;\n                len++;\n            }\n        }\n        return len;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count all zeros (they can always be included). Scan left-to-right, greedily adding ones only when the bit position keeps the total ≤ k. Skip ones beyond the 30th bit (2^30 > 1e9).",
+  "code": "class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int n = s.size();\n        int zeros = 0;\n        for (char c : s) if (c == '0') zeros++;\n        \n        long long val = 0;\n        int len = 0;\n        for (int i = 0; i < n; ++i) {\n            if (s[i] == '0') {\n                len++;\n                continue;\n            }\n            int pos = n - 1 - i;\n            if (pos >= 30) continue;\n            long long add = 1LL << pos;\n            if (val + add <= k) {\n                val += add;\n                len++;\n            }\n        }\n        return len;\n    }\n};",
+  "timestamp": "2025-08-06T00:59:03.451893",
+  "code_extracted_previous": "public:\n    int longestSubsequence(string s, int k) {\n        int n = s.size();\n        int zeros = 0;\n        for (char c : s) if (c == '0') zeros++;\n        \n        long long val = 0;\n        int len = 0;\n        for (int i = 0; i < n; ++i) {\n            if (s[i] == '0') {\n                len++;\n                continue;\n            }\n            int pos = n - 1 - i;\n            if (pos >= 30) continue;\n            long long add = 1LL << pos;\n            if (val + add <= k) {\n                val += add;\n                len++;\n            }\n        }\n        return len;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.639506"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> freq = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            freq.put(c, freq.getOrDefault(c, 0) + 1);\n        }\n        List<Map.Entry<Character, Integer>> list = new ArrayList<>(freq.entrySet());\n        Collections.sort(list, (a, b) -> b.getValue().compareTo(a.getValue()));\n        StringBuilder sb = new StringBuilder();\n        for (Map.Entry<Character, Integer> entry : list) {\n            for (int i = 0; i < entry.getValue(); i++) {\n                sb.append(entry.getKey());\n            }\n        }\n        return sb.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a HashMap to count the frequency of each character, then sorts the entries by frequency in descending order. Finally, it builds the result string by appending each character the corresponding number of times.",
+  "code": "class Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> freq = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            freq.put(c, freq.getOrDefault(c, 0) + 1);\n        }\n        List<Map.Entry<Character, Integer>> list = new ArrayList<>(freq.entrySet());\n        Collections.sort(list, (a, b) -> b.getValue().compareTo(a.getValue()));\n        StringBuilder sb = new StringBuilder();\n        for (Map.Entry<Character, Integer> entry : list) {\n            for (int i = 0; i < entry.getValue(); i++) {\n                sb.append(entry.getKey());\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-05T14:53:48.369110",
+  "code_extracted_previous": "class Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> freq = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            freq.put(c, freq.getOrDefault(c, 0) + 1);\n        }\n        List<Map.Entry<Character, Integer>> list = new ArrayList<>(freq.entrySet());\n        Collections.sort(list, (a, b) -> b.getValue().compareTo(a.getValue()));\n        StringBuilder sb = new StringBuilder();\n        for (Map.Entry<Character, Integer> entry : list) {\n            for (int i = 0; i < entry.getValue(); i++) {\n                sb.append(entry.getKey());\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.568150"
+}

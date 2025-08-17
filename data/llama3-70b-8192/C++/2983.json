@@ -1,0 +1,15 @@
+{
+  "id": 2983,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    vector<bool> canMakePalindromeQueries(string s, vector<vector<int>>& queries) {\n        vector<bool> res;\n        for (auto& q : queries) {\n            int a = q[0], b = q[1], c = q[2], d = q[3];\n            string left = s.substr(a, b - a + 1), right = s.substr(c, d - c + 1);\n            sort(left.begin(), left.end());\n            sort(right.begin(), right.end());\n            res.push_back(left == right);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(m * n log n)\nspace complexity: O(m * n)\nenergy implications: LOW\nexplanation: This solution iterates over each query, extracts the corresponding substrings, sorts them, and checks if they are equal. If they are, it means the original string can be made a palindrome by rearranging the characters within the substrings.",
+  "code": "class Solution {\npublic:\n    vector<bool> canMakePalindromeQueries(string s, vector<vector<int>>& queries) {\n        vector<bool> res;\n        for (auto& q : queries) {\n            int a = q[0], b = q[1], c = q[2], d = q[3];\n            string left = s.substr(a, b - a + 1), right = s.substr(c, d - c + 1);\n            sort(left.begin(), left.end());\n            sort(right.begin(), right.end());\n            res.push_back(left == right);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:38:39.752552",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<bool> canMakePalindromeQueries(string s, vector<vector<int>>& queries) {\n        vector<bool> res;\n        for (auto& q : queries) {\n            int a = q[0], b = q[1], c = q[2], d = q[3];\n            string left = s.substr(a, b - a + 1), right = s.substr(c, d - c + 1);\n            sort(left.begin(), left.end());\n            sort(right.begin(), right.end());\n            res.push_back(left == right);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.678538"
+}

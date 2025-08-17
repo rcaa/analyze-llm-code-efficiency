@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        if k == 0: return 1.0\n        dp = [0.0] * (n + 1)\n        dp[0] = 1.0\n        for i in range(1, n + 1):\n            dp[i] = (dp[i - 1] + (min(i, k) - (i - maxPts)) / maxPts) if i <= k else dp[i - 1]\n        return dp[n]\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We initialize a list dp of size n+1 to store the probabilities of reaching each point from 0 to n. We start by setting dp[0] to 1.0, as we are certain to reach 0 points. Then, for each point i from 1 to n, we calculate the probability of reaching i by adding the probability of reaching i-1 and the probability of reaching the minimum of i and k, minus the probability of reaching i-maxPts, all divided by maxPts. If i is greater than k, we simply copy the probability of reaching i-1. Finally, we return the probability of reaching n. This approach has a time complexity of O(n) and a space complexity of O(n), making it efficient for large inputs.",
+  "code": "class Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        if k == 0: return 1.0\n        dp = [0.0] * (n + 1)\n        dp[0] = 1.0\n        for i in range(1, n + 1):\n            dp[i] = (dp[i - 1] + (min(i, k) - (i - maxPts)) / maxPts) if i <= k else dp[i - 1]\n        return dp[n]",
+  "timestamp": "2025-08-05T15:46:01.592094",
+  "code_extracted_previous": "class Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        if k == 0: return 1.0\n        dp = [0.0] * (n + 1)\n        dp[0] = 1.0\n        for i in range(1, n + 1):\n            dp[i] = (dp[i - 1] + (min(i, k) - (i - maxPts)) / maxPts) if i <= k else dp[i - 1]\n        return dp[n]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.500538"
+}

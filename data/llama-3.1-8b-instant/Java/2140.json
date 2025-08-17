@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        for (int i = n - 1; i >= 0; i--) {\n            if (i + questions[i][1] < n) {\n                dp[i] = Math.max(questions[i][0] + dp[i + questions[i][1] + 1], dp[i + 1]);\n            } else {\n                dp[i] = questions[i][0];\n            }\n        }\n        return dp[0];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We create a dp array where dp[i] represents the maximum points we can earn if we are at question i. We iterate from the end of the questions array to the start, and for each question, we calculate the maximum points we can earn by either solving the question or skipping it. If we solve the question, we add the points of the question to the maximum points we can earn from the next questions that we can solve. If we skip the question, we just take the maximum points we can earn from the next question. The time complexity is O(n) because we are iterating over the questions array once, and the space complexity is also O(n) because we are creating a dp array of size n.",
+  "code": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        for (int i = n - 1; i >= 0; i--) {\n            if (i + questions[i][1] < n) {\n                dp[i] = Math.max(questions[i][0] + dp[i + questions[i][1] + 1], dp[i + 1]);\n            } else {\n                dp[i] = questions[i][0];\n            }\n        }\n        return dp[0];\n    }\n}",
+  "timestamp": "2025-08-05T13:25:23.093497",
+  "code_extracted_previous": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        for (int i = n - 1; i >= 0; i--) {\n            if (i + questions[i][1] < n) {\n                dp[i] = Math.max(questions[i][0] + dp[i + questions[i][1] + 1], dp[i + 1]);\n            } else {\n                dp[i] = questions[i][0];\n            }\n        }\n        return dp[0];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.170262"
+}

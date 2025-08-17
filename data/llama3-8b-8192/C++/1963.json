@@ -1,0 +1,15 @@
+{
+  "id": 1963,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int minSwaps(string s) {\n        int n = s.length();\n        int open = 0, close = 0;\n        for (char c : s) {\n            if (c == '[') open++;\n            else close++;\n        }\n        int res = abs(open - close);\n        for (int i = 0; i < n; i++) {\n            if (s[i] == '[') open--;\n            else close--;\n            if (open < 0) open++;\n            if (close < 0) close++;\n            res = min(res, abs(open - close));\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution first calculates the difference between the number of opening and closing brackets. Then, it iterates through the string, updating the difference and keeping track of the minimum difference found. The time complexity is O(n) as we iterate through the string once, and the space complexity is O(1) as we only use a constant amount of space.",
+  "code": "class Solution {\npublic:\n    int minSwaps(string s) {\n        int n = s.length();\n        int open = 0, close = 0;\n        for (char c : s) {\n            if (c == '[') open++;\n            else close++;\n        }\n        int res = abs(open - close);\n        for (int i = 0; i < n; i++) {\n            if (s[i] == '[') open--;\n            else close--;\n            if (open < 0) open++;\n            if (close < 0) close++;\n            res = min(res, abs(open - close));\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:44:39.592202",
+  "code_extracted_previous": "public:\n    int minSwaps(string s) {\n        int n = s.length();\n        int open = 0, close = 0;\n        for (char c : s) {\n            if (c == '[') open++;\n            else close++;\n        }\n        int res = abs(open - close);\n        for (int i = 0; i < n; i++) {\n            if (s[i] == '[') open--;\n            else close--;\n            if (open < 0) open++;\n            if (close < 0) close++;\n            res = min(res, abs(open - close));\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.770680"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1131,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maxAbsValExpr(self, arr1: List[int], arr2: List[int]) -> int:\n        res = 0\n        for p, q in [(1, 1), (1, -1), (-1, 1), (-1, -1)]:\n            min_val = p * arr1[0] + q * arr2[0] + 0\n            for i in range(len(arr1)):\n                curr = p * arr1[i] + q * arr2[i] + i\n                res = max(res, curr - min_val)\n                min_val = min(min_val, curr)\n        return res\n```\n\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the input arrays once, maintaining a running minimum value for four different expressions and updating the maximum result whenever a larger difference is found. This approach efficiently computes the maximum value without needing to directly compare all pairs of elements.",
+  "code": "def maxAbsValExpr(self, arr1: List[int], arr2: List[int]) -> int:\n        res = 0\n        for p, q in [(1, 1), (1, -1), (-1, 1), (-1, -1)]:\n            min_val = p * arr1[0] + q * arr2[0] + 0\n            for i in range(len(arr1)):\n                curr = p * arr1[i] + q * arr2[i] + i\n                res = max(res, curr - min_val)\n                min_val = min(min_val, curr)\n        return res\n```",
+  "timestamp": "2025-08-05T13:19:47.835346",
+  "code_extracted_previous": "class Solution:\n    def maxAbsValExpr(self, arr1: List[int], arr2: List[int]) -> int:\n        res = 0\n        for p, q in [(1, 1), (1, -1), (-1, 1), (-1, -1)]:\n            min_val = p * arr1[0] + q * arr2[0] + 0\n            for i in range(len(arr1)):\n                curr = p * arr1[i] + q * arr2[i] + i\n                res = max(res, curr - min_val)\n                min_val = min(min_val, curr)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.390345"
+}

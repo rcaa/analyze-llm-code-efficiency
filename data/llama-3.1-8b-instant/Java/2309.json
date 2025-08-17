@@ -1,0 +1,15 @@
+{
+  "id": 2309,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String greatestLetter(String s) {\n        Set<Character> upper = new HashSet<>();\n        Set<Character> lower = new HashSet<>();\n        for (char c : s.toCharArray()) {\n            if (Character.isUpperCase(c)) upper.add(c);\n            if (Character.isLowerCase(c)) lower.add(c);\n        }\n        for (char c = 'Z'; c >= 'A'; c--) {\n            if (upper.contains(c) && lower.contains((char) (c - 32))) {\n                return String.valueOf(c);\n            }\n        }\n        return \"\";\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses two sets to store the uppercase and lowercase letters in the string. It then iterates over the uppercase letters in reverse order, checking if the lowercase version of the letter exists in the set of lowercase letters. This approach has a high efficiency due to the use of sets for fast lookup and the efficient iteration over the uppercase letters.",
+  "code": "class Solution {\n    public String greatestLetter(String s) {\n        Set<Character> upper = new HashSet<>();\n        Set<Character> lower = new HashSet<>();\n        for (char c : s.toCharArray()) {\n            if (Character.isUpperCase(c)) upper.add(c);\n            if (Character.isLowerCase(c)) lower.add(c);\n        }\n        for (char c = 'Z'; c >= 'A'; c--) {\n            if (upper.contains(c) && lower.contains((char) (c - 32))) {\n                return String.valueOf(c);\n            }\n        }\n        return \"\";\n    }\n}",
+  "timestamp": "2025-08-05T14:45:59.333524",
+  "code_extracted_previous": "class Solution {\n    public String greatestLetter(String s) {\n        Set<Character> upper = new HashSet<>();\n        Set<Character> lower = new HashSet<>();\n        for (char c : s.toCharArray()) {\n            if (Character.isUpperCase(c)) upper.add(c);\n            if (Character.isLowerCase(c)) lower.add(c);\n        }\n        for (char c = 'Z'; c >= 'A'; c--) {\n            if (upper.contains(c) && lower.contains((char) (c - 32))) {\n                return String.valueOf(c);\n            }\n        }\n        return \"\";\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.232367"
+}

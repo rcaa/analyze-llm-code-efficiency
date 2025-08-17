@@ -1,0 +1,15 @@
+{
+  "id": 2472,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int maxPalindromes(string s, int k) {\n        int n = s.size();\n        vector<bool> isPal(n, false);\n        for (int i = 0; i < n; ++i) {\n            int l = i, r = i;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 >= k) isPal[r] = true;\n                --l; ++r;\n            }\n            l = i; r = i + 1;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 >= k) isPal[r] = true;\n                --l; ++r;\n            }\n        }\n        int count = 0, prev = -1;\n        for (int i = 0; i < n; ++i) {\n            if (isPal[i] && i - k + 1 > prev) {\n                ++count;\n                prev = i;\n            }\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a two-pointer technique to expand around the center of potential palindromes, marking the end of valid palindromes in the `isPal` vector. It then iterates through `isPal` to count non-overlapping valid palindromes.",
+  "code": "class Solution {\npublic:\n    int maxPalindromes(string s, int k) {\n        int n = s.size();\n        vector<bool> isPal(n, false);\n        for (int i = 0; i < n; ++i) {\n            int l = i, r = i;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 >= k) isPal[r] = true;\n                --l; ++r;\n            }\n            l = i; r = i + 1;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 >= k) isPal[r] = true;\n                --l; ++r;\n            }\n        }\n        int count = 0, prev = -1;\n        for (int i = 0; i < n; ++i) {\n            if (isPal[i] && i - k + 1 > prev) {\n                ++count;\n                prev = i;\n            }\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-06T02:27:58.260698",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxPalindromes(string s, int k) {\n        int n = s.size();\n        vector<bool> isPal(n, false);\n        for (int i = 0; i < n; ++i) {\n            int l = i, r = i;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 >= k) isPal[r] = true;\n                --l; ++r;\n            }\n            l = i; r = i + 1;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 >= k) isPal[r] = true;\n                --l; ++r;\n            }\n        }\n        int count = 0, prev = -1;\n        for (int i = 0; i < n; ++i) {\n            if (isPal[i] && i - k + 1 > prev) {\n                ++count;\n                prev = i;\n            }\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.267776"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1111,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    vector<int> maxDepthAfterSplit(string seq) {\n        vector<int> res;\n        int a = 0, b = 0;\n        for (char c : seq) {\n            if (c == '(') {\n                if (a <= b) {\n                    a++;\n                    res.push_back(0);\n                } else {\n                    b++;\n                    res.push_back(1);\n                }\n            } else {\n                if (a > b) {\n                    a--;\n                    res.push_back(0);\n                } else {\n                    b--;\n                    res.push_back(1);\n                }\n            }\n        }\n        return res;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a simple iterative approach to split the input string into two valid parentheses subsequences, maintaining a balance between the depths of the two subsequences to minimize the maximum depth. It iterates through the input string, assigning each character to either subsequence based on the current depths, ensuring that the maximum depth is minimized.",
+  "code": "class Solution {\npublic:\n    vector<int> maxDepthAfterSplit(string seq) {\n        vector<int> res;\n        int a = 0, b = 0;\n        for (char c : seq) {\n            if (c == '(') {\n                if (a <= b) {\n                    a++;\n                    res.push_back(0);\n                } else {\n                    b++;\n                    res.push_back(1);\n                }\n            } else {\n                if (a > b) {\n                    a--;\n                    res.push_back(0);\n                } else {\n                    b--;\n                    res.push_back(1);\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:49:23.618176",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> maxDepthAfterSplit(string seq) {\n        vector<int> res;\n        int a = 0, b = 0;\n        for (char c : seq) {\n            if (c == '(') {\n                if (a <= b) {\n                    a++;\n                    res.push_back(0);\n                } else {\n                    b++;\n                    res.push_back(1);\n                }\n            } else {\n                if (a > b) {\n                    a--;\n                    res.push_back(0);\n                } else {\n                    b--;\n                    res.push_back(1);\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.644630"
+}

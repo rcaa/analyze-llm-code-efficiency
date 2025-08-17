@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        int dp[k + 1][n + 1];\n        for (int i = 0; i <= k; i++) {\n            dp[i][0] = 0;\n            dp[i][1] = 1;\n        }\n        for (int j = 0; j <= n; j++) {\n            dp[1][j] = j;\n        }\n        for (int i = 2; i <= k; i++) {\n            for (int j = 2; j <= n; j++) {\n                dp[i][j] = INT_MAX;\n                for (int x = 1; x <= j; x++) {\n                    dp[i][j] = min(dp[i][j], 1 + max(dp[i - 1][x - 1], dp[i][j - x]));\n                }\n            }\n        }\n        return dp[k][n];\n    }\n};\n```\n\nsolution: `int superEggDrop(int k, int n) { int dp[k + 1][n + 1]; for (int i = 0; i <= k; i++) { dp[i][0] = 0; dp[i][1] = 1; } for (int j = 0; j <= n; j++) { dp[1][j] = j; } for (int i = 2; i <= k; i++) { for (int j = 2; j <= n; j++) { dp[i][j] = INT_MAX; for (int x = 1; x <= j; x++) { dp[i][j] = min(dp[i][j], 1 + max(dp[i - 1][x - 1], dp[i][j - x])); } } } return dp[k][n]; }`\nefficiency: HIGH\ntime complexity: O(k*n)\nspace complexity: O(k*n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to store and reuse the results of subproblems. It builds a 2D table `dp` where `dp[i][j]` represents the minimum number of moves required to find the critical floor `f` with `i` eggs and `j` floors. The algorithm iterates through the table, calculating the minimum moves for each subproblem based on the results of previous subproblems.\n\n\n\n",
+  "code": "`int superEggDrop(int k, int n) { int dp[k + 1][n + 1]; for (int i = 0; i <= k; i++) { dp[i][0] = 0; dp[i][1] = 1; } for (int j = 0; j <= n; j++) { dp[1][j] = j; } for (int i = 2; i <= k; i++) { for (int j = 2; j <= n; j++) { dp[i][j] = INT_MAX; for (int x = 1; x <= j; x++) { dp[i][j] = min(dp[i][j], 1 + max(dp[i - 1][x - 1], dp[i][j - x])); } } } return dp[k][n]; }`",
+  "timestamp": "2025-08-05T15:17:09.801937",
+  "code_extracted_previous": "class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        int dp[k + 1][n + 1];\n        for (int i = 0; i <= k; i++) {\n            dp[i][0] = 0;\n            dp[i][1] = 1;\n        }\n        for (int j = 0; j <= n; j++) {\n            dp[1][j] = j;\n        }\n        for (int i = 2; i <= k; i++) {\n            for (int j = 2; j <= n; j++) {\n                dp[i][j] = INT_MAX;\n                for (int x = 1; x <= j; x++) {\n                    dp[i][j] = min(dp[i][j], 1 + max(dp[i - 1][x - 1], dp[i][j - x]));\n                }\n            }\n        }\n        return dp[k][n];\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.373138"
+}

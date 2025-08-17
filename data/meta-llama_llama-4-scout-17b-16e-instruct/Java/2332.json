@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {\n        Arrays.sort(buses);\n        Arrays.sort(passengers);\n        int n = buses.length, m = passengers.length;\n        int i = m - 1;\n        for (int bus : buses) {\n            int cnt = 0;\n            while (i >= 0 && passengers[i] > bus) {\n                i--;\n            }\n            i++;\n            if (i + capacity >= m) return passengers[m - 1];\n            if (i + capacity - 1 < m && passengers[i + capacity] - 1 != passengers[i + capacity - 1]) \n                return passengers[i + capacity] - 1;\n        }\n        return passengers[0] - 1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution sorts both the buses and passengers arrays. It then iterates through each bus, finding the range of passengers that can potentially board it. If the bus can take all remaining passengers, it returns the last passenger's arrival time. If not, it checks if there's a gap in arrival times within the capacity limit and returns the latest possible arrival time before the gap. If no such gap exists, it continues to the next bus. The approach ensures that the latest possible arrival time is found efficiently.",
+  "code": "class Solution {\n    public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {\n        Arrays.sort(buses);\n        Arrays.sort(passengers);\n        int n = buses.length, m = passengers.length;\n        int i = m - 1;\n        for (int bus : buses) {\n            int cnt = 0;\n            while (i >= 0 && passengers[i] > bus) {\n                i--;\n            }\n            i++;\n            if (i + capacity >= m) return passengers[m - 1];\n            if (i + capacity - 1 < m && passengers[i + capacity] - 1 != passengers[i + capacity - 1]) \n                return passengers[i + capacity] - 1;\n        }\n        return passengers[0] - 1;\n    }\n}",
+  "timestamp": "2025-08-05T13:28:06.347394",
+  "code_extracted_previous": "class Solution {\n    public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {\n        Arrays.sort(buses);\n        Arrays.sort(passengers);\n        int n = buses.length, m = passengers.length;\n        int i = m - 1;\n        for (int bus : buses) {\n            int cnt = 0;\n            while (i >= 0 && passengers[i] > bus) {\n                i--;\n            }\n            i++;\n            if (i + capacity >= m) return passengers[m - 1];\n            if (i + capacity - 1 < m && passengers[i + capacity] - 1 != passengers[i + capacity - 1]) \n                return passengers[i + capacity] - 1;\n        }\n        return passengers[0] - 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.770159"
+}

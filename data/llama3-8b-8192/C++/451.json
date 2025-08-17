@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        vector<pair<int, char>> v;\n        for (auto p : freq) {\n            v.push_back({p.second, p.first});\n        }\n        sort(v.rbegin(), v.rend());\n        string res;\n        for (auto p : v) {\n            while (p.first--) {\n                res += p.second;\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(N log N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: This solution first counts the frequency of each character using an unordered map. Then, it sorts the characters based on their frequency in descending order. Finally, it constructs the result string by appending each character to the result string as many times as its frequency.",
+  "code": "class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        vector<pair<int, char>> v;\n        for (auto p : freq) {\n            v.push_back({p.second, p.first});\n        }\n        sort(v.rbegin(), v.rend());\n        string res;\n        for (auto p : v) {\n            while (p.first--) {\n                res += p.second;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:53:45.331657",
+  "code_extracted_previous": "public:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        vector<pair<int, char>> v;\n        for (auto p : freq) {\n            v.push_back({p.second, p.first});\n        }\n        sort(v.rbegin(), v.rend());\n        string res;\n        for (auto p : v) {\n            while (p.first--) {\n                res += p.second;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.367965"
+}

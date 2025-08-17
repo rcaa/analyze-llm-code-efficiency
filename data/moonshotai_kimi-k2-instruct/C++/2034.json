@@ -1,0 +1,15 @@
+{
+  "id": 2034,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class StockPrice {\n    unordered_map<int,int> ts2price;\n    multiset<int> prices;\n    int latestTs = 0;\npublic:\n    StockPrice() {}\n    \n    void update(int timestamp, int price) {\n        if (ts2price.count(timestamp)) {\n            prices.erase(prices.find(ts2price[timestamp]));\n        }\n        ts2price[timestamp] = price;\n        prices.insert(price);\n        if (timestamp >= latestTs) latestTs = timestamp;\n    }\n    \n    int current() {\n        return ts2price[latestTs];\n    }\n    \n    int maximum() {\n        return *prices.rbegin();\n    }\n    \n    int minimum() {\n        return *prices.begin();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log N) per update, O(1) per query\nspace complexity: O(N)\nenergy implications: MEDIUM\nexplanation: Uses a hash map for O(1) timestamp-to-price lookup and a multiset to maintain sorted prices for O(log N) updates and O(1) min/max queries. The multiset handles duplicates and allows efficient correction of prices.",
+  "code": "class StockPrice {\n    unordered_map<int,int> ts2price;\n    multiset<int> prices;\n    int latestTs = 0;\npublic:\n    StockPrice() {}\n    \n    void update(int timestamp, int price) {\n        if (ts2price.count(timestamp)) {\n            prices.erase(prices.find(ts2price[timestamp]));\n        }\n        ts2price[timestamp] = price;\n        prices.insert(price);\n        if (timestamp >= latestTs) latestTs = timestamp;\n    }\n    \n    int current() {\n        return ts2price[latestTs];\n    }\n    \n    int maximum() {\n        return *prices.rbegin();\n    }\n    \n    int minimum() {\n        return *prices.begin();\n    }\n};",
+  "timestamp": "2025-08-06T02:29:04.089178",
+  "code_extracted_previous": "unordered_map<int,int> ts2price;\n    multiset<int> prices;\n    int latestTs = 0;\npublic:\n    StockPrice() {}\n    \n    void update(int timestamp, int price) {\n        if (ts2price.count(timestamp)) {\n            prices.erase(prices.find(ts2price[timestamp]));\n        }\n        ts2price[timestamp] = price;\n        prices.insert(price);\n        if (timestamp >= latestTs) latestTs = timestamp;\n    }\n    \n    int current() {\n        return ts2price[latestTs];\n    }\n    \n    int maximum() {\n        return *prices.rbegin();\n    }\n    \n    int minimum() {\n        return *prices.begin();\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.401917"
+}

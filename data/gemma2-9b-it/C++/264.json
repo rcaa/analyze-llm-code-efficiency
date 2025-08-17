@@ -1,0 +1,15 @@
+{
+  "id": 264,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int nthUglyNumber(int n) {\n        vector<int> ugly(n);\n        ugly[0] = 1;\n        int i2 = 0, i3 = 0, i5 = 0;\n        for (int i = 1; i < n; i++) {\n            ugly[i] = min({ugly[i2] * 2, ugly[i3] * 3, ugly[i5] * 5});\n            if (ugly[i] == ugly[i2] * 2) i2++;\n            if (ugly[i] == ugly[i3] * 3) i3++;\n            if (ugly[i] == ugly[i5] * 5) i5++;\n        }\n        return ugly[n - 1];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a dynamic programming approach to generate ugly numbers iteratively. It maintains three indices (i2, i3, i5) to track the next multiples of 2, 3, and 5, respectively. The algorithm efficiently finds the minimum of these multiples to generate the next ugly number and updates the indices accordingly. This approach ensures that each ugly number is generated only once, resulting in linear time complexity. The space complexity is also linear due to the storage of ugly numbers in a vector.\n\n\n\n",
+  "code": "class Solution {\npublic:\n    int nthUglyNumber(int n) {\n        vector<int> ugly(n);\n        ugly[0] = 1;\n        int i2 = 0, i3 = 0, i5 = 0;\n        for (int i = 1; i < n; i++) {\n            ugly[i] = min({ugly[i2] * 2, ugly[i3] * 3, ugly[i5] * 5});\n            if (ugly[i] == ugly[i2] * 2) i2++;\n            if (ugly[i] == ugly[i3] * 3) i3++;\n            if (ugly[i] == ugly[i5] * 5) i5++;\n        }\n        return ugly[n - 1];\n    }\n};",
+  "timestamp": "2025-08-05T14:51:35.930916",
+  "code_extracted_previous": "class Solution {\npublic:\n    int nthUglyNumber(int n) {\n        vector<int> ugly(n);\n        ugly[0] = 1;\n        int i2 = 0, i3 = 0, i5 = 0;\n        for (int i = 1; i < n; i++) {\n            ugly[i] = min({ugly[i2] * 2, ugly[i3] * 3, ugly[i5] * 5});\n            if (ugly[i] == ugly[i2] * 2) i2++;\n            if (ugly[i] == ugly[i3] * 3) i3++;\n            if (ugly[i] == ugly[i5] * 5) i5++;\n        }\n        return ugly[n - 1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.640534"
+}

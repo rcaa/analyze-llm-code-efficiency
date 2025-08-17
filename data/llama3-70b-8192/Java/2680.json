@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public long maximumOr(int[] nums, int k) {\n        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);\n        for (int num : nums) {\n            pq.offer(num);\n        }\n        while (k-- > 0) {\n            int max = pq.poll();\n            pq.offer(max * 2);\n        }\n        long res = 0;\n        while (!pq.isEmpty()) {\n            res |= pq.poll();\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to efficiently select the smallest number to multiply by 2 in each operation, and then calculates the bitwise OR of the resulting array.",
+  "code": "class Solution {\n    public long maximumOr(int[] nums, int k) {\n        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);\n        for (int num : nums) {\n            pq.offer(num);\n        }\n        while (k-- > 0) {\n            int max = pq.poll();\n            pq.offer(max * 2);\n        }\n        long res = 0;\n        while (!pq.isEmpty()) {\n            res |= pq.poll();\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:33:45.296261",
+  "code_extracted_previous": "class Solution {\n    public long maximumOr(int[] nums, int k) {\n        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);\n        for (int num : nums) {\n            pq.offer(num);\n        }\n        while (k-- > 0) {\n            int max = pq.poll();\n            pq.offer(max * 2);\n        }\n        long res = 0;\n        while (!pq.isEmpty()) {\n            res |= pq.poll();\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.281326"
+}

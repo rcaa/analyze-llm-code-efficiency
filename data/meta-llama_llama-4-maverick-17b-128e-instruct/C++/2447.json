@@ -1,0 +1,15 @@
+{
+  "id": 2447,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.size(); ++i) {\n            int gcd = nums[i];\n            if (gcd == k) count++;\n            for (int j = i + 1; j < nums.size(); ++j) {\n                gcd = __gcd(gcd, nums[j]);\n                if (gcd == k) count++;\n                else if (gcd < k) break;\n            }\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2 log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the array, maintaining a running GCD for each subarray. It uses the property that if the GCD of a subarray is less than k, it cannot be equal to k for any larger subarray. The `__gcd` function is used to compute the GCD efficiently.",
+  "code": "class Solution {\npublic:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.size(); ++i) {\n            int gcd = nums[i];\n            if (gcd == k) count++;\n            for (int j = i + 1; j < nums.size(); ++j) {\n                gcd = __gcd(gcd, nums[j]);\n                if (gcd == k) count++;\n                else if (gcd < k) break;\n            }\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T13:31:36.593742",
+  "code_extracted_previous": "class Solution {\npublic:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.size(); ++i) {\n            int gcd = nums[i];\n            if (gcd == k) count++;\n            for (int j = i + 1; j < nums.size(); ++j) {\n                gcd = __gcd(gcd, nums[j]);\n                if (gcd == k) count++;\n                else if (gcd < k) break;\n            }\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.255106"
+}

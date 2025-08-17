@@ -1,0 +1,15 @@
+{
+  "id": 3272,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        def count(d, odd, even):\n            if d == 0:\n                return 1\n            res = 0\n            for i in range(10):\n                if i % k == 0:\n                    if i == 0 and n > 1:\n                        continue\n                    if i % 2 == 0:\n                        res += count(d - 1, odd, even + 1)\n                    else:\n                        res += count(d - 1, odd + 1, even)\n            return res\n        return count(n, 0, 0)\n```\nefficiency: HIGH\ntime complexity: O(10^n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a recursive approach to count the number of good integers. It iterates over all possible digits and recursively counts the number of good integers for each digit. The time complexity is O(10^n) because in the worst case, we need to explore all possible digits for each position. The space complexity is O(n) because of the recursive call stack.",
+  "code": "class Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        def count(d, odd, even):\n            if d == 0:\n                return 1\n            res = 0\n            for i in range(10):\n                if i % k == 0:\n                    if i == 0 and n > 1:\n                        continue\n                    if i % 2 == 0:\n                        res += count(d - 1, odd, even + 1)\n                    else:\n                        res += count(d - 1, odd + 1, even)\n            return res\n        return count(n, 0, 0)",
+  "timestamp": "2025-08-05T14:39:59.377119",
+  "code_extracted_previous": "class Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        def count(d, odd, even):\n            if d == 0:\n                return 1\n            res = 0\n            for i in range(10):\n                if i % k == 0:\n                    if i == 0 and n > 1:\n                        continue\n                    if i % 2 == 0:\n                        res += count(d - 1, odd, even + 1)\n                    else:\n                        res += count(d - 1, odd + 1, even)\n            return res\n        return count(n, 0, 0)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.659335"
+}

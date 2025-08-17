@@ -1,0 +1,15 @@
+{
+  "id": 264,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int nthUglyNumber(int n) {\n        int[] dp = new int[n];\n        dp[0] = 1;\n        int p2 = 0, p3 = 0, p5 = 0;\n        for (int i = 1; i < n; i++) {\n            dp[i] = Math.min(Math.min(dp[p2] * 2, dp[p3] * 3), dp[p5] * 5);\n            if (dp[i] == dp[p2] * 2) p2++;\n            if (dp[i] == dp[p3] * 3) p3++;\n            if (dp[i] == dp[p5] * 5) p5++;\n        }\n        return dp[n - 1];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently calculate the nth ugly number. It maintains an array dp to store the first n ugly numbers, and three pointers p2, p3, p5 to track the last ugly number that is a multiple of 2, 3, and 5, respectively. The time complexity is O(n) and the space complexity is also O(n) due to the dp array. The energy implications are low because the algorithm only involves basic arithmetic operations and array indexing.",
+  "code": "class Solution {\n    public int nthUglyNumber(int n) {\n        int[] dp = new int[n];\n        dp[0] = 1;\n        int p2 = 0, p3 = 0, p5 = 0;\n        for (int i = 1; i < n; i++) {\n            dp[i] = Math.min(Math.min(dp[p2] * 2, dp[p3] * 3), dp[p5] * 5);\n            if (dp[i] == dp[p2] * 2) p2++;\n            if (dp[i] == dp[p3] * 3) p3++;\n            if (dp[i] == dp[p5] * 5) p5++;\n        }\n        return dp[n - 1];\n    }\n}",
+  "timestamp": "2025-08-05T14:51:53.680071",
+  "code_extracted_previous": "class Solution {\n    public int nthUglyNumber(int n) {\n        int[] dp = new int[n];\n        dp[0] = 1;\n        int p2 = 0, p3 = 0, p5 = 0;\n        for (int i = 1; i < n; i++) {\n            dp[i] = Math.min(Math.min(dp[p2] * 2, dp[p3] * 3), dp[p5] * 5);\n            if (dp[i] == dp[p2] * 2) p2++;\n            if (dp[i] == dp[p3] * 3) p3++;\n            if (dp[i] == dp[p5] * 5) p5++;\n        }\n        return dp[n - 1];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.359360"
+}

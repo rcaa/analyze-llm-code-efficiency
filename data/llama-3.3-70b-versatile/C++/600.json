@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int findIntegers(int n) {\n        vector<int> fib(31, 0);\n        fib[1] = 2;\n        fib[2] = 3;\n        for (int i = 3; i <= 30; i++) {\n            fib[i] = fib[i - 1] + fib[i - 2];\n        }\n        int res = 0, i = 30;\n        while (i >= 0) {\n            if ((1 << i) & n) {\n                res += fib[i];\n                if ((1 << (i - 1)) & n) {\n                    return res;\n                }\n                i--;\n            } else {\n                i--;\n            }\n        }\n        return res + 1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the Fibonacci sequence, then iterates through the binary representation of n from left to right, adding the corresponding Fibonacci number to the result whenever a 1 is encountered, and stopping when two consecutive 1s are found.",
+  "code": "class Solution {\npublic:\n    int findIntegers(int n) {\n        vector<int> fib(31, 0);\n        fib[1] = 2;\n        fib[2] = 3;\n        for (int i = 3; i <= 30; i++) {\n            fib[i] = fib[i - 1] + fib[i - 2];\n        }\n        int res = 0, i = 30;\n        while (i >= 0) {\n            if ((1 << i) & n) {\n                res += fib[i];\n                if ((1 << (i - 1)) & n) {\n                    return res;\n                }\n                i--;\n            } else {\n                i--;\n            }\n        }\n        return res + 1;\n    }\n};",
+  "timestamp": "2025-08-06T15:11:31.774801",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findIntegers(int n) {\n        vector<int> fib(31, 0);\n        fib[1] = 2;\n        fib[2] = 3;\n        for (int i = 3; i <= 30; i++) {\n            fib[i] = fib[i - 1] + fib[i - 2];\n        }\n        int res = 0, i = 30;\n        while (i >= 0) {\n            if ((1 << i) & n) {\n                res += fib[i];\n                if ((1 << (i - 1)) & n) {\n                    return res;\n                }\n                i--;\n            } else {\n                i--;\n            }\n        }\n        return res + 1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.960402"
+}

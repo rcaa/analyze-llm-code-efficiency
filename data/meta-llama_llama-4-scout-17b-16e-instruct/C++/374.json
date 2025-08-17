@@ -1,0 +1,15 @@
+{
+  "id": 374,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int guessNumber(int n) {\n        int left = 1, right = n;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            int result = guess(mid);\n            if (result == 0) return mid;\n            else if (result == -1) right = mid - 1;\n            else left = mid + 1;\n        }\n        return -1; // This line will never be reached\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a binary search approach to efficiently find the picked number. It maintains a search range `[left, right]` and iteratively guesses the middle number. Based on the result of the guess, it adjusts the search range until the correct number is found. This approach minimizes the number of guesses required.",
+  "code": "class Solution {\npublic:\n    int guessNumber(int n) {\n        int left = 1, right = n;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            int result = guess(mid);\n            if (result == 0) return mid;\n            else if (result == -1) right = mid - 1;\n            else left = mid + 1;\n        }\n        return -1; // This line will never be reached\n    }\n};",
+  "timestamp": "2025-08-05T13:45:55.370781",
+  "code_extracted_previous": "class Solution {\npublic:\n    int guessNumber(int n) {\n        int left = 1, right = n;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            int result = guess(mid);\n            if (result == 0) return mid;\n            else if (result == -1) right = mid - 1;\n            else left = mid + 1;\n        }\n        return -1; // This line will never be reached\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.594010"
+}

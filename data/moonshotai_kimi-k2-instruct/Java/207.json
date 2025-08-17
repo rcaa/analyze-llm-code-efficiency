@@ -1,0 +1,15 @@
+{
+  "id": 207,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public boolean canFinish(int numCourses, int[][] prerequisites) {\n        List<List<Integer>> graph = new ArrayList<>();\n        for (int i = 0; i < numCourses; i++) graph.add(new ArrayList<>());\n        int[] indegree = new int[numCourses];\n        for (int[] p : prerequisites) {\n            graph.get(p[1]).add(p[0]);\n            indegree[p[0]]++;\n        }\n        Queue<Integer> q = new LinkedList<>();\n        for (int i = 0; i < numCourses; i++) if (indegree[i] == 0) q.offer(i);\n        int taken = 0;\n        while (!q.isEmpty()) {\n            int cur = q.poll();\n            taken++;\n            for (int nxt : graph.get(cur)) {\n                indegree[nxt]--;\n                if (indegree[nxt] == 0) q.offer(nxt);\n            }\n        }\n        return taken == numCourses;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(V + E)\nspace complexity: O(V + E)\nenergy implications: LOW\nexplanation: Kahn’s topological sort via BFS detects cycles in O(V+E) time. Counting nodes processed confirms if all courses can be taken.",
+  "code": "class Solution {\n    public boolean canFinish(int numCourses, int[][] prerequisites) {\n        List<List<Integer>> graph = new ArrayList<>();\n        for (int i = 0; i < numCourses; i++) graph.add(new ArrayList<>());\n        int[] indegree = new int[numCourses];\n        for (int[] p : prerequisites) {\n            graph.get(p[1]).add(p[0]);\n            indegree[p[0]]++;\n        }\n        Queue<Integer> q = new LinkedList<>();\n        for (int i = 0; i < numCourses; i++) if (indegree[i] == 0) q.offer(i);\n        int taken = 0;\n        while (!q.isEmpty()) {\n            int cur = q.poll();\n            taken++;\n            for (int nxt : graph.get(cur)) {\n                indegree[nxt]--;\n                if (indegree[nxt] == 0) q.offer(nxt);\n            }\n        }\n        return taken == numCourses;\n    }\n}",
+  "timestamp": "2025-08-05T13:57:55.799888",
+  "code_extracted_previous": "public boolean canFinish(int numCourses, int[][] prerequisites) {\n        List<List<Integer>> graph = new ArrayList<>();\n        for (int i = 0; i < numCourses; i++) graph.add(new ArrayList<>());\n        int[] indegree = new int[numCourses];\n        for (int[] p : prerequisites) {\n            graph.get(p[1]).add(p[0]);\n            indegree[p[0]]++;\n        }\n        Queue<Integer> q = new LinkedList<>();\n        for (int i = 0; i < numCourses; i++) if (indegree[i] == 0) q.offer(i);\n        int taken = 0;\n        while (!q.isEmpty()) {\n            int cur = q.poll();\n            taken++;\n            for (int nxt : graph.get(cur)) {\n                indegree[nxt]--;\n                if (indegree[nxt] == 0) q.offer(nxt);\n            }\n        }\n        return taken == numCourses;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.726864"
+}

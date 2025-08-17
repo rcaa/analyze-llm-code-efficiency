@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```java\nclass Solution {\n    public int minStable(int[] nums, int maxC) {\n        int n = nums.length;\n        int[] count = new int[n];\n        for (int i = 0; i < n; i++) {\n            if (nums[i] % 2 == 0) count[i] = 1;\n            if (i > 0) count[i] += count[i - 1];\n        }\n        int maxLen = 0;\n        for (int i = 0; i < n; i++) {\n            int lo = i, hi = n - 1;\n            while (lo <= hi) {\n                int mid = lo + (hi - lo) / 2;\n                if (check(nums, count, i, mid)) {\n                    lo = mid + 1;\n                } else {\n                    hi = mid - 1;\n                }\n            }\n            maxLen = Math.max(maxLen, hi - i + 1);\n        }\n        return Math.max(1, maxLen - maxC);\n    }\n\n    private boolean check(int[] nums, int[] count, int i, int j) {\n        int evenCount = count[j];\n        if (i > 0) evenCount -= count[i - 1];\n        return evenCount <= (j - i + 1) / 2;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a binary search approach to find the maximum length of a subarray that can be made unstable with at most maxC modifications. It maintains a count array to track the number of even elements up to each index, allowing it to efficiently check if a subarray can be made unstable. The check function determines if a subarray can be made unstable by verifying if the number of even elements is less than or equal to half the length of the subarray. The final result is the maximum length of a stable subarray minus maxC, ensuring the minimum possible stability factor.",
+  "code": "```java\nclass Solution {\n    public int minStable(int[] nums, int maxC) {\n        int n = nums.length;\n        int[] count = new int[n];\n        for (int i = 0; i < n; i++) {\n            if (nums[i] % 2 == 0) count[i] = 1;\n            if (i > 0) count[i] += count[i - 1];\n        }\n        int maxLen = 0;\n        for (int i = 0; i < n; i++) {\n            int lo = i, hi = n - 1;\n            while (lo <= hi) {\n                int mid = lo + (hi - lo) / 2;\n                if (check(nums, count, i, mid)) {\n                    lo = mid + 1;\n                } else {\n                    hi = mid - 1;\n                }\n            }\n            maxLen = Math.max(maxLen, hi - i + 1);\n        }\n        return Math.max(1, maxLen - maxC);\n    }\n\n    private boolean check(int[] nums, int[] count, int i, int j) {\n        int evenCount = count[j];\n        if (i > 0) evenCount -= count[i - 1];\n        return evenCount <= (j - i + 1) / 2;\n    }\n}",
+  "timestamp": "2025-08-05T12:23:00.540595",
+  "code_extracted_previous": "",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.871083"
+}

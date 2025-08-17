@@ -1,0 +1,15 @@
+{
+  "id": 2165,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    long long smallestNumber(long long num) {\n        if (num == 0) return 0;\n        bool neg = num < 0;\n        string s = to_string(abs(num));\n        sort(s.begin(), s.end(), greater<char>());\n        if (neg) {\n            long long res = 0;\n            for (char c : s) res = res * 10 + (c - '0');\n            return -res;\n        } else {\n            int firstNonZero = 0;\n            while (firstNonZero < s.size() && s[firstNonZero] == '0') ++firstNonZero;\n            if (firstNonZero < s.size()) swap(s[0], s[firstNonZero]);\n            sort(s.begin() + 1, s.end());\n            long long res = 0;\n            for (char c : s) res = res * 10 + (c - '0');\n            return res;\n        }\n    }\n};\nefficiency: HIGH\ntime complexity: O(D log D) where D is the number of digits\nspace complexity: O(D)\nenergy implications: LOW\nexplanation: Convert the absolute value to a string, sort digits in descending order for negative numbers (to make the magnitude largest, hence the value smallest), and in ascending order for positive numbers after moving the first non-zero digit to the front to avoid leading zeros.",
+  "code": "class Solution {\npublic:\n    long long smallestNumber(long long num) {\n        if (num == 0) return 0;\n        bool neg = num < 0;\n        string s = to_string(abs(num));\n        sort(s.begin(), s.end(), greater<char>());\n        if (neg) {\n            long long res = 0;\n            for (char c : s) res = res * 10 + (c - '0');\n            return -res;\n        } else {\n            int firstNonZero = 0;\n            while (firstNonZero < s.size() && s[firstNonZero] == '0') ++firstNonZero;\n            if (firstNonZero < s.size()) swap(s[0], s[firstNonZero]);\n            sort(s.begin() + 1, s.end());\n            long long res = 0;\n            for (char c : s) res = res * 10 + (c - '0');\n            return res;\n        }\n    }\n};",
+  "timestamp": "2025-08-06T02:29:08.988819",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long smallestNumber(long long num) {\n        if (num == 0) return 0;\n        bool neg = num < 0;\n        string s = to_string(abs(num));\n        sort(s.begin(), s.end(), greater<char>());\n        if (neg) {\n            long long res = 0;\n            for (char c : s) res = res * 10 + (c - '0');\n            return -res;\n        } else {\n            int firstNonZero = 0;\n            while (firstNonZero < s.size() && s[firstNonZero] == '0') ++firstNonZero;\n            if (firstNonZero < s.size()) swap(s[0], s[firstNonZero]);\n            sort(s.begin() + 1, s.end());\n            long long res = 0;\n            for (char c : s) res = res * 10 + (c - '0');\n            return res;\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.570528"
+}

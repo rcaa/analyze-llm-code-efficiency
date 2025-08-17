@@ -1,0 +1,15 @@
+{
+  "id": 2873,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def maximumTripletValue(self, nums: List[int]) -> int:\n        max_val = 0\n        n = len(nums)\n        for j in range(1, n - 1):\n            max_left = float('-inf')\n            max_right = float('-inf')\n            for i in range(j):\n                max_left = max(max_left, nums[i] - nums[j])\n            for k in range(j + 1, n):\n                max_right = max(max_right, nums[k])\n            max_val = max(max_val, max_left * max_right)\n        return max(max_val, 0)\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: MEDIUM\nexplanation: The solution iterates through the array once, maintaining maximum values to the left and right of the middle element for each triplet, optimizing the computation by avoiding redundant calculations.",
+  "code": "class Solution:\n    def maximumTripletValue(self, nums: List[int]) -> int:\n        max_val = 0\n        n = len(nums)\n        for j in range(1, n - 1):\n            max_left = float('-inf')\n            max_right = float('-inf')\n            for i in range(j):\n                max_left = max(max_left, nums[i] - nums[j])\n            for k in range(j + 1, n):\n                max_right = max(max_right, nums[k])\n            max_val = max(max_val, max_left * max_right)\n        return max(max_val, 0)",
+  "timestamp": "2025-08-05T12:54:01.302959",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def maximumTripletValue(self, nums: List[int]) -> int:\n        max_val = 0\n        n = len(nums)\n        for j in range(1, n - 1):\n            max_left = float('-inf')\n            max_right = float('-inf')\n            for i in range(j):\n                max_left = max(max_left, nums[i] - nums[j])\n            for k in range(j + 1, n):\n                max_right = max(max_right, nums[k])\n            max_val = max(max_val, max_left * max_right)\n        return max(max_val, 0)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.430621"
+}

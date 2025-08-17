@@ -1,0 +1,15 @@
+{
+  "id": 3272,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        def is_k_palindromic(num):\n            return str(num) == str(num)[::-1] and num % k == 0\n\n        def can_be_rearranged(num):\n            digits = sorted(str(num))\n            for i in range(10**(n-1), 10**n):\n                if is_k_palindromic(i) and sorted(str(i)) == digits:\n                    return True\n            return False\n\n        count = 0\n        for i in range(10**(n-1), 10**n):\n            if can_be_rearranged(i):\n                count += 1\n        return count\n```\nefficiency: LOW\ntime complexity: O(10^n * n)\nspace complexity: O(n)\nenergy implications: HIGH\nexplanation: The solution checks every possible n-digit integer to see if its digits can be rearranged to form a k-palindromic integer, resulting in high time complexity and energy implications.",
+  "code": "def countGoodIntegers(self, n: int, k: int) -> int:\n        def is_k_palindromic(num):\n            return str(num) == str(num)[::-1] and num % k == 0\n\n        def can_be_rearranged(num):\n            digits = sorted(str(num))\n            for i in range(10**(n-1), 10**n):\n                if is_k_palindromic(i) and sorted(str(i)) == digits:\n                    return True\n            return False\n\n        count = 0\n        for i in range(10**(n-1), 10**n):\n            if can_be_rearranged(i):\n                count += 1\n        return count\n```",
+  "timestamp": "2025-08-06T15:19:47.742325",
+  "code_extracted_previous": "class Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        def is_k_palindromic(num):\n            return str(num) == str(num)[::-1] and num % k == 0\n\n        def can_be_rearranged(num):\n            digits = sorted(str(num))\n            for i in range(10**(n-1), 10**n):\n                if is_k_palindromic(i) and sorted(str(i)) == digits:\n                    return True\n            return False\n\n        count = 0\n        for i in range(10**(n-1), 10**n):\n            if can_be_rearranged(i):\n                count += 1\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.475897"
+}

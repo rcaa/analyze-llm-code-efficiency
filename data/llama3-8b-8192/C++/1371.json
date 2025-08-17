@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int n = s.size();\n        int res = 0, cur = 0;\n        vector<int> pos(5, -1);\n        for (int i = 0; i < n; i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u') {\n                int idx = s[i] - 'a';\n                if (pos[idx] != -1) cur -= 1 << idx;\n                pos[idx] = i;\n                cur += 1 << idx;\n                res = max(res, i - pos[0]);\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach to keep track of the longest substring with an even number of vowels. It uses a bit vector to efficiently update the count of vowels and a variable to keep track of the current longest substring.",
+  "code": "class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int n = s.size();\n        int res = 0, cur = 0;\n        vector<int> pos(5, -1);\n        for (int i = 0; i < n; i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u') {\n                int idx = s[i] - 'a';\n                if (pos[idx] != -1) cur -= 1 << idx;\n                pos[idx] = i;\n                cur += 1 << idx;\n                res = max(res, i - pos[0]);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:04:10.139034",
+  "code_extracted_previous": "public:\n    int findTheLongestSubstring(string s) {\n        int n = s.size();\n        int res = 0, cur = 0;\n        vector<int> pos(5, -1);\n        for (int i = 0; i < n; i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u') {\n                int idx = s[i] - 'a';\n                if (pos[idx] != -1) cur -= 1 << idx;\n                pos[idx] = i;\n                cur += 1 << idx;\n                res = max(res, i - pos[0]);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.578706"
+}

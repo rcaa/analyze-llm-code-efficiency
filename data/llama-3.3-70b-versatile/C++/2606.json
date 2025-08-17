@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charVal;\n        for (int i = 0; i < chars.size(); i++) {\n            charVal[chars[i]] = vals[i];\n        }\n        int maxCost = 0;\n        for (int i = 0; i < s.size(); i++) {\n            int currCost = 0;\n            for (int j = i; j < s.size(); j++) {\n                char c = s[j];\n                int val = charVal.count(c) ? charVal[c] : c - 'a' + 1;\n                currCost += val;\n                maxCost = max(maxCost, currCost);\n            }\n        }\n        return maxCost;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a hashmap to store the custom values of characters and then iterates over all substrings of the string to calculate their costs, keeping track of the maximum cost found. The use of a hashmap allows for efficient lookup of character values. \n```",
+  "code": "class Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charVal;\n        for (int i = 0; i < chars.size(); i++) {\n            charVal[chars[i]] = vals[i];\n        }\n        int maxCost = 0;\n        for (int i = 0; i < s.size(); i++) {\n            int currCost = 0;\n            for (int j = i; j < s.size(); j++) {\n                char c = s[j];\n                int val = charVal.count(c) ? charVal[c] : c - 'a' + 1;\n                currCost += val;\n                maxCost = max(maxCost, currCost);\n            }\n        }\n        return maxCost;\n    }\n};",
+  "timestamp": "2025-08-06T15:10:28.747795",
+  "code_extracted_previous": "solution: \nclass Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charVal;\n        for (int i = 0; i < chars.size(); i++) {\n            charVal[chars[i]] = vals[i];\n        }\n        int maxCost = 0;\n        for (int i = 0; i < s.size(); i++) {\n            int currCost = 0;\n            for (int j = i; j < s.size(); j++) {\n                char c = s[j];\n                int val = charVal.count(c) ? charVal[c] : c - 'a' + 1;\n                currCost += val;\n                maxCost = max(maxCost, currCost);\n            }\n        }\n        return maxCost;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.436391"
+}

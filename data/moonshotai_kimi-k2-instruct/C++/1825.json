@@ -1,0 +1,15 @@
+{
+  "id": 1825,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass MKAverage {\n    int m, k;\n    deque<int> dq;\n    vector<int> lastM;\npublic:\n    MKAverage(int m, int k) : m(m), k(k) {}\n    \n    void addElement(int num) {\n        dq.push_back(num);\n        if (dq.size() > m) dq.pop_front();\n    }\n    \n    int calculateMKAverage() {\n        if (dq.size() < m) return -1;\n        lastM.assign(dq.begin(), dq.end());\n        nth_element(lastM.begin(), lastM.begin() + k, lastM.end());\n        nth_element(lastM.begin() + k, lastM.end() - k, lastM.end());\n        long long sum = 0;\n        for (int i = k; i < m - k; ++i) sum += lastM[i];\n        return static_cast<int>(sum / (m - 2 * k));\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(m) per calculateMKAverage, O(1) per addElement\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: Uses a deque to maintain the last m elements in O(1) per addElement. On calculateMKAverage, copies the last m elements into a vector, uses nth_element twice to partition out the smallest k and largest k elements in linear time, then sums the middle m-2k elements. Efficient for the given constraints.",
+  "code": "class MKAverage {\n    int m, k;\n    deque<int> dq;\n    vector<int> lastM;\npublic:\n    MKAverage(int m, int k) : m(m), k(k) {}\n    \n    void addElement(int num) {\n        dq.push_back(num);\n        if (dq.size() > m) dq.pop_front();\n    }\n    \n    int calculateMKAverage() {\n        if (dq.size() < m) return -1;\n        lastM.assign(dq.begin(), dq.end());\n        nth_element(lastM.begin(), lastM.begin() + k, lastM.end());\n        nth_element(lastM.begin() + k, lastM.end() - k, lastM.end());\n        long long sum = 0;\n        for (int i = k; i < m - k; ++i) sum += lastM[i];\n        return static_cast<int>(sum / (m - 2 * k));\n    }\n};",
+  "timestamp": "2025-08-05T14:04:23.281631",
+  "code_extracted_previous": "class MKAverage {\n    int m, k;\n    deque<int> dq;\n    vector<int> lastM;\npublic:\n    MKAverage(int m, int k) : m(m), k(k) {}\n    \n    void addElement(int num) {\n        dq.push_back(num);\n        if (dq.size() > m) dq.pop_front();\n    }\n    \n    int calculateMKAverage() {\n        if (dq.size() < m) return -1;\n        lastM.assign(dq.begin(), dq.end());\n        nth_element(lastM.begin(), lastM.begin() + k, lastM.end());\n        nth_element(lastM.begin() + k, lastM.end() - k, lastM.end());\n        long long sum = 0;\n        for (int i = k; i < m - k; ++i) sum += lastM[i];\n        return static_cast<int>(sum / (m - 2 * k));\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.338073"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2288,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def discountPrices(self, sentence: str, discount: int) -> str:\n        words = sentence.split()\n        for i, word in enumerate(words):\n            if word.startswith('$') and word[1:].isdigit():\n                price = int(word[1:]) * (1 - discount / 100)\n                words[i] = f\"${price:.2f}\"\n        return ' '.join(words)\n\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution splits the sentence into words, checks each word to see if it's a valid price, and if so, applies the discount. It uses Python's built-in string and float formatting capabilities to ensure the price is correctly formatted with two decimal places. The time complexity is O(n*m) where n is the number of words and m is the average length of a word, because it checks each character in each word once. The space complexity is O(n) because it stores the words in a list.\n```",
+  "code": "def discountPrices(self, sentence: str, discount: int) -> str:\n        words = sentence.split()\n        for i, word in enumerate(words):\n            if word.startswith('$') and word[1:].isdigit():\n                price = int(word[1:]) * (1 - discount / 100)\n                words[i] = f\"${price:.2f}\"\n        return ' '.join(words)",
+  "timestamp": "2025-08-06T00:58:05.030827",
+  "code_extracted_previous": "class Solution:\n    def discountPrices(self, sentence: str, discount: int) -> str:\n        words = sentence.split()\n        for i, word in enumerate(words):\n            if word.startswith('$') and word[1:].isdigit():\n                price = int(word[1:]) * (1 - discount / 100)\n                words[i] = f\"${price:.2f}\"\n        return ' '.join(words)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.833057"
+}

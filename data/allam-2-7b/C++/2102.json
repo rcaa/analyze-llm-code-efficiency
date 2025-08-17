@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```cpp\n#include <string>\n#include <unordered_map>\n\nclass SORTracker {\npublic:\n    SORTracker() {}\n\n    void add(std::string name, int score) {\n        auto it = std::lower_bound(m_locations.begin(), m_locations.end(), name, [&](const std::string& lhs, const std::string& rhs) {\n            return lhs < rhs;\n        });\n        m_locations.insert(it, {name, score});\n    }\n\n    string get() {\n        if (m_locations.empty()) {\n            return \"\";\n        }\n        auto it = std::lower_bound(m_locations.begin(), m_locations.end(), \"\");\n        return *(it - 1);\n    }\n\nprivate:\n    std::unordered_map<std::string, std::pair<std::string, int>> m_locations;\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nThe solution uses a `std::unordered_map` to store the locations and their scores. The `std::lower_bound` function is used to find the location with the highest score in the map, and then the previous element to the found element is returned as the current best location. If the map is empty, an empty string is returned. The `m_locations` map is updated after each call to `get()` to maintain the sorted order. ",
+  "code": "class SORTracker {\npublic:\n    SORTracker() {}\n\n    void add(std::string name, int score) {\n        auto it = std::lower_bound(m_locations.begin(), m_locations.end(), name, [&](const std::string& lhs, const std::string& rhs) {\n            return lhs < rhs;\n        });\n        m_locations.insert(it, {name, score});\n    }\n\n    string get() {\n        if (m_locations.empty()) {\n            return \"\";\n        }\n        auto it = std::lower_bound(m_locations.begin(), m_locations.end(), \"\");\n        return *(it - 1);\n    }\n\nprivate:\n    std::unordered_map<std::string, std::pair<std::string, int>> m_locations;\n};",
+  "timestamp": "2025-08-05T14:04:49.685112",
+  "code_extracted_previous": "#include <string>\n#include <unordered_map>\n\nclass SORTracker {\npublic:\n    SORTracker() {}\n\n    void add(std::string name, int score) {\n        auto it = std::lower_bound(m_locations.begin(), m_locations.end(), name, [&](const std::string& lhs, const std::string& rhs) {\n            return lhs < rhs;\n        });\n        m_locations.insert(it, {name, score});\n    }\n\n    string get() {\n        if (m_locations.empty()) {\n            return \"\";\n        }\n        auto it = std::lower_bound(m_locations.begin(), m_locations.end(), \"\");\n        return *(it - 1);\n    }\n\nprivate:\n    std::unordered_map<std::string, std::pair<std::string, int>> m_locations;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:12.284065"
+}

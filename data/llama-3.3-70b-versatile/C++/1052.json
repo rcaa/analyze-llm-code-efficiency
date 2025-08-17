@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int n = customers.size();\n        int total = 0;\n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            }\n        }\n        int res = total;\n        int window = 0;\n        for (int i = 0; i < minutes; i++) {\n            window += customers[i] * grumpy[i];\n        }\n        res = max(res, total + window);\n        for (int i = minutes; i < n; i++) {\n            window += customers[i] * grumpy[i] - customers[i - minutes] * grumpy[i - minutes];\n            res = max(res, total + window);\n        }\n        return res;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to calculate the maximum number of satisfied customers by iterating through the array and keeping track of the total satisfied customers and the customers satisfied within the current window.",
+  "code": "class Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int n = customers.size();\n        int total = 0;\n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            }\n        }\n        int res = total;\n        int window = 0;\n        for (int i = 0; i < minutes; i++) {\n            window += customers[i] * grumpy[i];\n        }\n        res = max(res, total + window);\n        for (int i = minutes; i < n; i++) {\n            window += customers[i] * grumpy[i] - customers[i - minutes] * grumpy[i - minutes];\n            res = max(res, total + window);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:58:07.018953",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int n = customers.size();\n        int total = 0;\n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            }\n        }\n        int res = total;\n        int window = 0;\n        for (int i = 0; i < minutes; i++) {\n            window += customers[i] * grumpy[i];\n        }\n        res = max(res, total + window);\n        for (int i = minutes; i < n; i++) {\n            window += customers[i] * grumpy[i] - customers[i - minutes] * grumpy[i - minutes];\n            res = max(res, total + window);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.625154"
+}

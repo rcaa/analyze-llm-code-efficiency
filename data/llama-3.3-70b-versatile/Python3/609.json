@@ -1,0 +1,15 @@
+{
+  "id": 609,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = {}\n        for path in paths:\n            directory, *files = path.split()\n            for file in files:\n                name, content = file.split('(')\n                content = content[:-1]\n                if content not in content_map:\n                    content_map[content] = []\n                content_map[content].append(f\"{directory}/{name}\")\n        return [paths for paths in content_map.values() if len(paths) > 1]\n```\nefficiency: HIGH\ntime complexity: O(NM)\nspace complexity: O(NM)\nenergy implications: LOW\nexplanation: The solution uses a dictionary to map file contents to their corresponding paths, then returns the paths with duplicate contents. This approach efficiently handles the problem by avoiding unnecessary comparisons between files.",
+  "code": "def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = {}\n        for path in paths:\n            directory, *files = path.split()\n            for file in files:\n                name, content = file.split('(')\n                content = content[:-1]\n                if content not in content_map:\n                    content_map[content] = []\n                content_map[content].append(f\"{directory}/{name}\")\n        return [paths for paths in content_map.values() if len(paths) > 1]\n```",
+  "timestamp": "2025-08-05T13:06:36.753746",
+  "code_extracted_previous": "class Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = {}\n        for path in paths:\n            directory, *files = path.split()\n            for file in files:\n                name, content = file.split('(')\n                content = content[:-1]\n                if content not in content_map:\n                    content_map[content] = []\n                content_map[content].append(f\"{directory}/{name}\")\n        return [paths for paths in content_map.values() if len(paths) > 1]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.733893"
+}

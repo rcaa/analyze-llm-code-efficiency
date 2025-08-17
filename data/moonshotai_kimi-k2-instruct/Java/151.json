@@ -1,0 +1,15 @@
+{
+  "id": 151,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public String reverseWords(String s) {\n        char[] a = s.toCharArray();\n        int n = a.length;\n        reverse(a, 0, n - 1);\n        int store = 0;\n        int i = 0;\n        while (i < n) {\n            while (i < n && a[i] == ' ') i++;\n            if (i == n) break;\n            int start = i;\n            while (i < n && a[i] != ' ') i++;\n            reverse(a, start, i - 1);\n            if (store != 0) a[store++] = ' ';\n            for (int j = start; j < i; j++) a[store++] = a[j];\n        }\n        return new String(a, 0, store);\n    }\n    private void reverse(char[] a, int l, int r) {\n        while (l < r) {\n            char tmp = a[l];\n            a[l++] = a[r];\n            a[r--] = tmp;\n        }\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Reverse the entire char array in-place, then reverse each word in-place while compacting spaces, achieving O(1) extra space and linear time.",
+  "code": "class Solution {\n    public String reverseWords(String s) {\n        char[] a = s.toCharArray();\n        int n = a.length;\n        reverse(a, 0, n - 1);\n        int store = 0;\n        int i = 0;\n        while (i < n) {\n            while (i < n && a[i] == ' ') i++;\n            if (i == n) break;\n            int start = i;\n            while (i < n && a[i] != ' ') i++;\n            reverse(a, start, i - 1);\n            if (store != 0) a[store++] = ' ';\n            for (int j = start; j < i; j++) a[store++] = a[j];\n        }\n        return new String(a, 0, store);\n    }\n    private void reverse(char[] a, int l, int r) {\n        while (l < r) {\n            char tmp = a[l];\n            a[l++] = a[r];\n            a[r--] = tmp;\n        }\n    }\n}",
+  "timestamp": "2025-08-06T01:34:42.620404",
+  "code_extracted_previous": "public String reverseWords(String s) {\n        char[] a = s.toCharArray();\n        int n = a.length;\n        reverse(a, 0, n - 1);\n        int store = 0;\n        int i = 0;\n        while (i < n) {\n            while (i < n && a[i] == ' ') i++;\n            if (i == n) break;\n            int start = i;\n            while (i < n && a[i] != ' ') i++;\n            reverse(a, start, i - 1);\n            if (store != 0) a[store++] = ' ';\n            for (int j = start; j < i; j++) a[store++] = a[j];\n        }\n        return new String(a, 0, store);\n    }\n    private void reverse(char[] a, int l, int r) {\n        while (l < r) {\n            char tmp = a[l];\n            a[l++] = a[r];\n            a[r--] = tmp;\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.570441"
+}

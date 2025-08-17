@@ -1,0 +1,15 @@
+{
+  "id": 207,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        graph = [[] for _ in range(numCourses)]\n        in_degree = [0] * numCourses\n        for a, b in prerequisites:\n            graph[b].append(a)\n            in_degree[a] += 1\n        queue = [i for i in range(numCourses) if in_degree[i] == 0]\n        visited = 0\n        while queue:\n            node = queue.pop(0)\n            visited += 1\n            for neighbor in graph[node]:\n                in_degree[neighbor] -= 1\n                if in_degree[neighbor] == 0:\n                    queue.append(neighbor)\n        return visited == numCourses\n```\n\nsolution: ```python\nclass Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        graph = [[] for _ in range(numCourses)]\n        in_degree = [0] * numCourses\n        for a, b in prerequisites:\n            graph[b].append(a)\n            in_degree[a] += 1\n        queue = [i for i in range(numCourses) if in_degree[i] == 0]\n        visited = 0\n        while queue:\n            node = queue.pop(0)\n            visited += 1\n            for neighbor in graph[node]:\n                in_degree[neighbor] -= 1\n                if in_degree[neighbor] == 0:\n                    queue.append(neighbor)\n        return visited == numCourses\n```\nefficiency: HIGH\ntime complexity: O(V + E)\nspace complexity: O(V + E)\nenergy implications: LOW\nexplanation: The solution uses Kahn's algorithm to detect cycles in a directed graph. It builds an adjacency list representation of the course prerequisites and calculates the in-degree of each course. Courses with an in-degree of 0 are added to a queue and processed. For each processed course, its neighbors' in-degrees are decremented, and if a neighbor's in-degree becomes 0, it's added to the queue. If all courses are visited, there are no cycles, and it's possible to finish all courses.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T13:57:22.569208",
+  "code_extracted_previous": "class Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        graph = [[] for _ in range(numCourses)]\n        in_degree = [0] * numCourses\n        for a, b in prerequisites:\n            graph[b].append(a)\n            in_degree[a] += 1\n        queue = [i for i in range(numCourses) if in_degree[i] == 0]\n        visited = 0\n        while queue:\n            node = queue.pop(0)\n            visited += 1\n            for neighbor in graph[node]:\n                in_degree[neighbor] -= 1\n                if in_degree[neighbor] == 0:\n                    queue.append(neighbor)\n        return visited == numCourses",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.110707"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int firstOccurrence[26];\n        int maxLength = -1;\n        for (int i = 0; i < 26; i++) {\n            firstOccurrence[i] = -1;\n        }\n        for (int i = 0; i < s.length(); i++) {\n            int charIndex = s[i] - 'a';\n            if (firstOccurrence[charIndex] == -1) {\n                firstOccurrence[charIndex] = i;\n            } else {\n                maxLength = max(maxLength, i - firstOccurrence[charIndex] - 1);\n            }\n        }\n        return maxLength;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the string once, maintaining a record of the first occurrence of each character. It updates the maximum length between equal characters whenever it encounters a character it has seen before. The use of a fixed-size array for tracking first occurrences results in constant space complexity.",
+  "code": "class Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int firstOccurrence[26];\n        int maxLength = -1;\n        for (int i = 0; i < 26; i++) {\n            firstOccurrence[i] = -1;\n        }\n        for (int i = 0; i < s.length(); i++) {\n            int charIndex = s[i] - 'a';\n            if (firstOccurrence[charIndex] == -1) {\n                firstOccurrence[charIndex] = i;\n            } else {\n                maxLength = max(maxLength, i - firstOccurrence[charIndex] - 1);\n            }\n        }\n        return maxLength;\n    }\n};",
+  "timestamp": "2025-08-05T14:43:28.572560",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int firstOccurrence[26];\n        int maxLength = -1;\n        for (int i = 0; i < 26; i++) {\n            firstOccurrence[i] = -1;\n        }\n        for (int i = 0; i < s.length(); i++) {\n            int charIndex = s[i] - 'a';\n            if (firstOccurrence[charIndex] == -1) {\n                firstOccurrence[charIndex] = i;\n            } else {\n                maxLength = max(maxLength, i - firstOccurrence[charIndex] - 1);\n            }\n        }\n        return maxLength;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.907740"
+}

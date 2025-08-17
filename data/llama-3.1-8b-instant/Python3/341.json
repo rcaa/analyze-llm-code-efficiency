@@ -1,0 +1,15 @@
+{
+  "id": 341,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class NestedIterator:\n    def __init__(self, nestedList: [NestedInteger]):\n        self.stack = []\n        self.flatten(nestedList)\n\n    def flatten(self, nestedList):\n        for item in nestedList:\n            if item.isInteger():\n                self.stack.append(item.getInteger())\n            else:\n                self.flatten(item.getList())\n\n    def next(self) -> int:\n        return self.stack.pop()\n\n    def hasNext(self) -> bool:\n        return len(self.stack) > 0\n```\n\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: This solution uses a stack to flatten the nested list. The `flatten` method is a recursive helper function that adds integers to the stack and nested lists to the call stack. The `next` method pops the top element from the stack, and the `hasNext` method checks if the stack is not empty. This solution has a high efficiency because it only needs to traverse the nested list once and uses a stack to keep track of the elements.",
+  "code": "class NestedIterator:\n    def __init__(self, nestedList: [NestedInteger]):\n        self.stack = []\n        self.flatten(nestedList)\n\n    def flatten(self, nestedList):\n        for item in nestedList:\n            if item.isInteger():\n                self.stack.append(item.getInteger())\n            else:\n                self.flatten(item.getList())\n\n    def next(self) -> int:\n        return self.stack.pop()\n\n    def hasNext(self) -> bool:\n        return len(self.stack) > 0",
+  "timestamp": "2025-08-06T01:57:52.403834",
+  "code_extracted_previous": "def __init__(self, nestedList: [NestedInteger]):\n        self.stack = []\n        self.flatten(nestedList)\n\n    def flatten(self, nestedList):\n        for item in nestedList:\n            if item.isInteger():\n                self.stack.append(item.getInteger())\n            else:\n                self.flatten(item.getList())\n\n    def next(self) -> int:\n        return self.stack.pop()\n\n    def hasNext(self) -> bool:\n        return len(self.stack) > 0",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:31.154365"
+}

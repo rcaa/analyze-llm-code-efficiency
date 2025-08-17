@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size(), res = 0;\n        for (int i = 0; i < n; ++i) {\n            int cnt = 1, j = i + 1;\n            while (j < n && s[j] != s[j - 1]) ++j, ++cnt;\n            res = max(res, cnt);\n            while (j < n && s[j] == s[j - 1]) ++j;\n            if (j < n) {\n                cnt = 1;\n                while (j < n && s[j] != s[j - 1]) ++j, ++cnt;\n                res = max(res, cnt);\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string, maintaining a count of the longest semi-repetitive substring ending at each position. It uses two passes to handle the case where a repetitive digit is followed by a non-repetitive digit.",
+  "code": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size(), res = 0;\n        for (int i = 0; i < n; ++i) {\n            int cnt = 1, j = i + 1;\n            while (j < n && s[j] != s[j - 1]) ++j, ++cnt;\n            res = max(res, cnt);\n            while (j < n && s[j] == s[j - 1]) ++j;\n            if (j < n) {\n                cnt = 1;\n                while (j < n && s[j] != s[j - 1]) ++j, ++cnt;\n                res = max(res, cnt);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:06:45.987152",
+  "code_extracted_previous": "public:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size(), res = 0;\n        for (int i = 0; i < n; ++i) {\n            int cnt = 1, j = i + 1;\n            while (j < n && s[j] != s[j - 1]) ++j, ++cnt;\n            res = max(res, cnt);\n            while (j < n && s[j] == s[j - 1]) ++j;\n            if (j < n) {\n                cnt = 1;\n                while (j < n && s[j] != s[j - 1]) ++j, ++cnt;\n                res = max(res, cnt);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.633751"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2240,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def waysToBuyPensPencils(self, total: int, cost1: int, cost2: int) -> int:\n        if cost1 > total or cost2 > total:\n            return 1\n        dp = [[0] * (total // cost1 + 1) for _ in range(total // cost2 + 1)]\n        for i in range(total // cost2 + 1):\n            dp[i][0] = 1\n        for i in range(total // cost2 + 1):\n            for j in range(total // cost1 + 1):\n                if i * cost2 + j * cost1 <= total:\n                    dp[i][j] = dp[i][j-1] + dp[i-1][j]\n                else:\n                    dp[i][j] = dp[i][j-1]\n        return dp[-1][-1]\n```\nefficiency: HIGH\ntime complexity: O(total // cost1 + total // cost2)\nspace complexity: O(total // cost1 + total // cost2)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We create a 2D array dp where dp[i][j] represents the number of ways to buy i pencils and j pens with total amount of money. If the total cost of pencils and pens exceeds the total amount of money, we only consider the pens. We fill up the dp array in a bottom-up manner and return the last element of the array.",
+  "code": "class Solution:\n    def waysToBuyPensPencils(self, total: int, cost1: int, cost2: int) -> int:\n        if cost1 > total or cost2 > total:\n            return 1\n        dp = [[0] * (total // cost1 + 1) for _ in range(total // cost2 + 1)]\n        for i in range(total // cost2 + 1):\n            dp[i][0] = 1\n        for i in range(total // cost2 + 1):\n            for j in range(total // cost1 + 1):\n                if i * cost2 + j * cost1 <= total:\n                    dp[i][j] = dp[i][j-1] + dp[i-1][j]\n                else:\n                    dp[i][j] = dp[i][j-1]\n        return dp[-1][-1]",
+  "timestamp": "2025-08-05T22:19:46.117556",
+  "code_extracted_previous": "class Solution:\n    def waysToBuyPensPencils(self, total: int, cost1: int, cost2: int) -> int:\n        if cost1 > total or cost2 > total:\n            return 1\n        dp = [[0] * (total // cost1 + 1) for _ in range(total // cost2 + 1)]\n        for i in range(total // cost2 + 1):\n            dp[i][0] = 1\n        for i in range(total // cost2 + 1):\n            for j in range(total // cost1 + 1):\n                if i * cost2 + j * cost1 <= total:\n                    dp[i][j] = dp[i][j-1] + dp[i-1][j]\n                else:\n                    dp[i][j] = dp[i][j-1]\n        return dp[-1][-1]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.754008"
+}

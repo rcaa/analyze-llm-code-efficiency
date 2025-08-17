@@ -1,0 +1,15 @@
+{
+  "id": 2165,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public long smallestNumber(long num) {\n        if (num == 0) {\n            return 0;\n        }\n        String str = String.valueOf(Math.abs(num));\n        char[] arr = str.toCharArray();\n        Arrays.sort(arr);\n        if (arr[0] == '0') {\n            for (int i = 1; i < arr.length; i++) {\n                if (arr[i] != '0') {\n                    char temp = arr[0];\n                    arr[0] = arr[i];\n                    arr[i] = temp;\n                    break;\n                }\n            }\n        }\n        return Long.parseLong(new String(arr));\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution first converts the absolute value of the input number to a string and then sorts the characters in the string. If the first character is '0', it swaps the first character with the first non-zero character. Finally, it converts the sorted string back to a long integer and returns it.",
+  "code": "class Solution {\n    public long smallestNumber(long num) {\n        if (num == 0) {\n            return 0;\n        }\n        String str = String.valueOf(Math.abs(num));\n        char[] arr = str.toCharArray();\n        Arrays.sort(arr);\n        if (arr[0] == '0') {\n            for (int i = 1; i < arr.length; i++) {\n                if (arr[i] != '0') {\n                    char temp = arr[0];\n                    arr[0] = arr[i];\n                    arr[i] = temp;\n                    break;\n                }\n            }\n        }\n        return Long.parseLong(new String(arr));\n    }\n}",
+  "timestamp": "2025-08-05T15:55:16.956322",
+  "code_extracted_previous": "public long smallestNumber(long num) {\n        if (num == 0) {\n            return 0;\n        }\n        String str = String.valueOf(Math.abs(num));\n        char[] arr = str.toCharArray();\n        Arrays.sort(arr);\n        if (arr[0] == '0') {\n            for (int i = 1; i < arr.length; i++) {\n                if (arr[i] != '0') {\n                    char temp = arr[0];\n                    arr[0] = arr[i];\n                    arr[i] = temp;\n                    break;\n                }\n            }\n        }\n        return Long.parseLong(new String(arr));\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.184699"
+}

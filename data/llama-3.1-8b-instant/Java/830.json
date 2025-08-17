@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public List<List<Integer>> largeGroupPositions(String s) {\n        List<List<Integer>> result = new ArrayList<>();\n        int start = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (i == s.length() - 1 || s.charAt(i) != s.charAt(i + 1)) {\n                if (i - start + 1 >= 3) {\n                    result.add(Arrays.asList(start, i));\n                }\n                start = i + 1;\n            }\n        }\n        return result;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution iterates through the string once, keeping track of the start of each group. It checks if the current group is large and adds its interval to the result list if it is. The time complexity is O(n) because it makes a single pass through the string, and the space complexity is O(n) because in the worst case, all characters in the string are part of a large group.",
+  "code": "class Solution {\n    public List<List<Integer>> largeGroupPositions(String s) {\n        List<List<Integer>> result = new ArrayList<>();\n        int start = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (i == s.length() - 1 || s.charAt(i) != s.charAt(i + 1)) {\n                if (i - start + 1 >= 3) {\n                    result.add(Arrays.asList(start, i));\n                }\n                start = i + 1;\n            }\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T23:38:53.313949",
+  "code_extracted_previous": "class Solution {\n    public List<List<Integer>> largeGroupPositions(String s) {\n        List<List<Integer>> result = new ArrayList<>();\n        int start = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (i == s.length() - 1 || s.charAt(i) != s.charAt(i + 1)) {\n                if (i - start + 1 >= 3) {\n                    result.add(Arrays.asList(start, i));\n                }\n                start = i + 1;\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:30.040213"
+}

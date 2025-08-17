@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        int count = 0;\n        for (string word : split(text, ' ')) {\n            bool valid = true;\n            for (char c : word) {\n                if (brokenLetters.find(c) != string::npos) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) {\n                count++;\n            }\n        }\n        return count;\n    }\n    vector<string> split(string str, char delimiter) {\n        vector<string> tokens;\n        stringstream ss(str);\n        string token;\n        while (getline(ss, token, delimiter)) {\n            tokens.push_back(token);\n        }\n        return tokens;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N*M)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution splits the input text into words, then iterates through each word and checks if it contains any broken letters. If a word contains a broken letter, it is skipped. Otherwise, the word count is incremented. The `split` function is used to efficiently split the text into words.\n\n\n\n",
+  "code": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        int count = 0;\n        for (string word : split(text, ' ')) {\n            bool valid = true;\n            for (char c : word) {\n                if (brokenLetters.find(c) != string::npos) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) {\n                count++;\n            }\n        }\n        return count;\n    }\n    vector<string> split(string str, char delimiter) {\n        vector<string> tokens;\n        stringstream ss(str);\n        string token;\n        while (getline(ss, token, delimiter)) {\n            tokens.push_back(token);\n        }\n        return tokens;\n    }\n};",
+  "timestamp": "2025-08-05T14:43:53.867241",
+  "code_extracted_previous": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        int count = 0;\n        for (string word : split(text, ' ')) {\n            bool valid = true;\n            for (char c : word) {\n                if (brokenLetters.find(c) != string::npos) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) {\n                count++;\n            }\n        }\n        return count;\n    }\n    vector<string> split(string str, char delimiter) {\n        vector<string> tokens;\n        stringstream ss(str);\n        string token;\n        while (getline(ss, token, delimiter)) {\n            tokens.push_back(token);\n        }\n        return tokens;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.343556"
+}

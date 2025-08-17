@@ -1,0 +1,15 @@
+{
+  "id": 884,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public String[] uncommonFromSentences(String s1, String s2) {\n        Map<String, Integer> freq = new HashMap<>();\n        for (String w : (s1 + \" \" + s2).split(\" \")) {\n            freq.put(w, freq.getOrDefault(w, 0) + 1);\n        }\n        List<String> res = new ArrayList<>();\n        for (Map.Entry<String, Integer> e : freq.entrySet()) {\n            if (e.getValue() == 1) res.add(e.getKey());\n        }\n        return res.toArray(new String[0]);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Concatenate the two sentences, split into words, count frequencies with a HashMap, then collect words that occur exactly once. Linear scan and constant-time map operations yield optimal performance.",
+  "code": "class Solution {\n    public String[] uncommonFromSentences(String s1, String s2) {\n        Map<String, Integer> freq = new HashMap<>();\n        for (String w : (s1 + \" \" + s2).split(\" \")) {\n            freq.put(w, freq.getOrDefault(w, 0) + 1);\n        }\n        List<String> res = new ArrayList<>();\n        for (Map.Entry<String, Integer> e : freq.entrySet()) {\n            if (e.getValue() == 1) res.add(e.getKey());\n        }\n        return res.toArray(new String[0]);\n    }\n}",
+  "timestamp": "2025-08-06T02:32:22.382475",
+  "code_extracted_previous": "public String[] uncommonFromSentences(String s1, String s2) {\n        Map<String, Integer> freq = new HashMap<>();\n        for (String w : (s1 + \" \" + s2).split(\" \")) {\n            freq.put(w, freq.getOrDefault(w, 0) + 1);\n        }\n        List<String> res = new ArrayList<>();\n        for (Map.Entry<String, Integer> e : freq.entrySet()) {\n            if (e.getValue() == 1) res.add(e.getKey());\n        }\n        return res.toArray(new String[0]);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.867929"
+}

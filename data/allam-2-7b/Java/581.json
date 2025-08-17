@@ -1,0 +1,15 @@
+{
+  "id": 581,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int findUnsortedSubarray(int[] nums) {\n        int n = nums.length;\n        int maxSoFar = Integer.MIN_VALUE;\n        int minSoFar = Integer.MAX_VALUE;\n\n        for (int num : nums) {\n            maxSoFar = Math.min(maxSoFar, num);\n            minSoFar = Math.max(minSoFar, num);\n        }\n\n        int result = 0;\n        for (int i = 0; i < n; i++) {\n            if (nums[i] > maxSoFar) {\n                result++;\n                maxSoFar = nums[i];\n            }\n            if (nums[i] < minSoFar) {\n                result++;\n                minSoFar = nums[i];\n            }\n        }\n        return result;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nWe iterate through the array once to find the maximum and minimum elements. Then, we iterate through the array again to count the number of elements that need to be incremented to make the subarray sorted. The solution has a time complexity of O(n) because we iterate through the array once. The space complexity is O(1) because we only use a constant amount of space for the maximum and minimum variables. The energy implications are low because the algorithm only performs a few simple operations and does not consume significant energy. ",
+  "code": "class Solution {\n    public int findUnsortedSubarray(int[] nums) {\n        int n = nums.length;\n        int maxSoFar = Integer.MIN_VALUE;\n        int minSoFar = Integer.MAX_VALUE;\n\n        for (int num : nums) {\n            maxSoFar = Math.min(maxSoFar, num);\n            minSoFar = Math.max(minSoFar, num);\n        }\n\n        int result = 0;\n        for (int i = 0; i < n; i++) {\n            if (nums[i] > maxSoFar) {\n                result++;\n                maxSoFar = nums[i];\n            }\n            if (nums[i] < minSoFar) {\n                result++;\n                minSoFar = nums[i];\n            }\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T13:01:49.479819",
+  "code_extracted_previous": "class Solution {\n    public int findUnsortedSubarray(int[] nums) {\n        int n = nums.length;\n        int maxSoFar = Integer.MIN_VALUE;\n        int minSoFar = Integer.MAX_VALUE;\n\n        for (int num : nums) {\n            maxSoFar = Math.min(maxSoFar, num);\n            minSoFar = Math.max(minSoFar, num);\n        }\n\n        int result = 0;\n        for (int i = 0; i < n; i++) {\n            if (nums[i] > maxSoFar) {\n                result++;\n                maxSoFar = nums[i];\n            }\n            if (nums[i] < minSoFar) {\n                result++;\n                minSoFar = nums[i];\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.796978"
+}

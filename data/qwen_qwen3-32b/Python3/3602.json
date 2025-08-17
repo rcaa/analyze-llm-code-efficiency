@@ -1,0 +1,15 @@
+{
+  "id": 3602,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def concatHex36(self, n: int) -> str:\n        def to_base(n: int, base: int) -> str:\n            digits = []\n            if n == 0:\n                return \"0\"\n            while n > 0:\n                remainder = n % base\n                if remainder < 10:\n                    digits.append(str(remainder))\n                else:\n                    digits.append(chr(ord('A') + remainder - 10))\n                n //= base\n            return ''.join(reversed(digits))\n        \n        hex_part = to_base(n ** 2, 16)\n        base36_part = to_base(n ** 3, 36)\n        return hex_part + base36_part\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: The solution converts the square of n to hexadecimal and the cube of n to base-36 using a helper function. The helper function efficiently computes the representation in the desired base by repeatedly dividing the number and mapping remainders to appropriate characters. The concatenation of the two results is returned. The time and space complexity are logarithmic with respect to the input size due to the division process in base conversion.",
+  "code": "class Solution:\n    def concatHex36(self, n: int) -> str:\n        def to_base(n: int, base: int) -> str:\n            digits = []\n            if n == 0:\n                return \"0\"\n            while n > 0:\n                remainder = n % base\n                if remainder < 10:\n                    digits.append(str(remainder))\n                else:\n                    digits.append(chr(ord('A') + remainder - 10))\n                n //= base\n            return ''.join(reversed(digits))\n        \n        hex_part = to_base(n ** 2, 16)\n        base36_part = to_base(n ** 3, 36)\n        return hex_part + base36_part",
+  "timestamp": "2025-08-06T17:33:43.940228",
+  "code_extracted_previous": "class Solution:\n    def concatHex36(self, n: int) -> str:\n        def to_base(n: int, base: int) -> str:\n            digits = []\n            if n == 0:\n                return \"0\"\n            while n > 0:\n                remainder = n % base\n                if remainder < 10:\n                    digits.append(str(remainder))\n                else:\n                    digits.append(chr(ord('A') + remainder - 10))\n                n //= base\n            return ''.join(reversed(digits))\n        \n        hex_part = to_base(n ** 2, 16)\n        base36_part = to_base(n ** 3, 36)\n        return hex_part + base36_part",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:06.207709"
+}

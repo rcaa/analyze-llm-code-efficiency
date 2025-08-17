@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = dp[i][m - 1] + dp[i - 1][m - 1] + 1;\n            }\n        }\n        return m;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(K * logN)\nspace complexity: O(K * logN)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the maximum number of floors that can be checked with a given number of eggs and moves. The solution iterates over the number of moves until it can cover n floors.",
+  "code": "class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = dp[i][m - 1] + dp[i - 1][m - 1] + 1;\n            }\n        }\n        return m;\n    }\n};",
+  "timestamp": "2025-08-05T15:17:06.822692",
+  "code_extracted_previous": "class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = dp[i][m - 1] + dp[i - 1][m - 1] + 1;\n            }\n        }\n        return m;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.883498"
+}

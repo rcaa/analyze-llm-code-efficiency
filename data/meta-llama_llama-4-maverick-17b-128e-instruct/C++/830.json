@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> result;\n        int start = 0;\n        for (int i = 1; i <= s.size(); ++i) {\n            if (i == s.size() || s[i] != s[start]) {\n                if (i - start >= 3) {\n                    result.push_back({start, i - 1});\n                }\n                start = i;\n            }\n        }\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Iterates through the string once, tracking the start of each group and adding large groups to the result. Efficiently handles the input constraints.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> result;\n        int start = 0;\n        for (int i = 1; i <= s.size(); ++i) {\n            if (i == s.size() || s[i] != s[start]) {\n                if (i - start >= 3) {\n                    result.push_back({start, i - 1});\n                }\n                start = i;\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T23:38:44.638957",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> result;\n        int start = 0;\n        for (int i = 1; i <= s.size(); ++i) {\n            if (i == s.size() || s[i] != s[start]) {\n                if (i - start >= 3) {\n                    result.push_back({start, i - 1});\n                }\n                start = i;\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.845843"
+}

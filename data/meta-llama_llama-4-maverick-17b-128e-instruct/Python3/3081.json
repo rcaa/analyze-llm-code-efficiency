@@ -1,0 +1,15 @@
+{
+  "id": 3081,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minimizeStringValue(self, s: str) -> str:\n        count = [0] * 26\n        questions = 0\n\n        for c in s:\n            if c == '?':\n                questions += 1\n            else:\n                count[ord(c) - ord('a')] += 1\n\n        replacements = []\n        for _ in range(questions):\n            min_char = count.index(min(count))\n            replacements.append(chr(min_char + ord('a')))\n            count[min_char] += 1\n\n        replacements = sorted(replacements)\n        result = []\n        j = 0\n\n        for c in s:\n            if c == '?':\n                result.append(replacements[j])\n                j += 1\n            else:\n                result.append(c)\n\n        return ''.join(result)\n\nefficiency: HIGH\ntime complexity: O(n + m log m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: The main approach is to count the frequency of each character in the string, then for each '?' in the string, find the character with the minimum frequency and replace '?' with it. The replacements are sorted to ensure the lexicographically smallest result. The key strengths are efficient use of frequency counting and sorting.\n```",
+  "code": "def minimizeStringValue(self, s: str) -> str:\n        count = [0] * 26\n        questions = 0\n\n        for c in s:\n            if c == '?':\n                questions += 1\n            else:\n                count[ord(c) - ord('a')] += 1\n\n        replacements = []\n        for _ in range(questions):\n            min_char = count.index(min(count))\n            replacements.append(chr(min_char + ord('a')))\n            count[min_char] += 1\n\n        replacements = sorted(replacements)\n        result = []\n        j = 0\n\n        for c in s:\n            if c == '?':\n                result.append(replacements[j])\n                j += 1\n            else:\n                result.append(c)\n\n        return ''.join(result)",
+  "timestamp": "2025-08-05T15:11:32.116313",
+  "code_extracted_previous": "class Solution:\n    def minimizeStringValue(self, s: str) -> str:\n        count = [0] * 26\n        questions = 0\n\n        for c in s:\n            if c == '?':\n                questions += 1\n            else:\n                count[ord(c) - ord('a')] += 1\n\n        replacements = []\n        for _ in range(questions):\n            min_char = count.index(min(count))\n            replacements.append(chr(min_char + ord('a')))\n            count[min_char] += 1\n\n        replacements = sorted(replacements)\n        result = []\n        j = 0\n\n        for c in s:\n            if c == '?':\n                result.append(replacements[j])\n                j += 1\n            else:\n                result.append(c)\n\n        return ''.join(result)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.085239"
+}

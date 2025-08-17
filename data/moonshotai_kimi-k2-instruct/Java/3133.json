@@ -1,0 +1,15 @@
+{
+  "id": 3133,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public long minEnd(int n, int x) {\n        long m = n - 1;\n        long mask = x;\n        long bit = 1;\n        while (m > 0) {\n            if ((mask & bit) == 0) {\n                mask |= (m & 1) * bit;\n                m >>= 1;\n            }\n            bit <<= 1;\n        }\n        return mask;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(n + x))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Treat the strictly increasing sequence as x plus a set of bit patterns that do not overlap with x’s set bits. The required sequence length n is achieved by interpreting n-1 as a binary number and embedding its bits into the zero positions of x, producing the smallest possible last element.",
+  "code": "class Solution {\n    public long minEnd(int n, int x) {\n        long m = n - 1;\n        long mask = x;\n        long bit = 1;\n        while (m > 0) {\n            if ((mask & bit) == 0) {\n                mask |= (m & 1) * bit;\n                m >>= 1;\n            }\n            bit <<= 1;\n        }\n        return mask;\n    }\n}",
+  "timestamp": "2025-08-05T13:54:32.647498",
+  "code_extracted_previous": "class Solution {\n    public long minEnd(int n, int x) {\n        long m = n - 1;\n        long mask = x;\n        long bit = 1;\n        while (m > 0) {\n            if ((mask & bit) == 0) {\n                mask |= (m & 1) * bit;\n                m >>= 1;\n            }\n            bit <<= 1;\n        }\n        return mask;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.314924"
+}

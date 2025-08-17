@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int maximumLengthSubstring(String s) {\n        int[] count = new int[26];\n        int maxLen = 0, left = 0;\n        for (int right = 0; right < s.length(); right++) {\n            count[s.charAt(right) - 'a']++;\n            while (count[s.charAt(right) - 'a'] > 2) {\n                count[s.charAt(left) - 'a']--;\n                left++;\n            }\n            maxLen = Math.max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n}\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Utilizes a sliding window approach with a frequency count array to track character occurrences, efficiently maintaining the condition of at most two occurrences per character within the window.\n```",
+  "code": "class Solution {\n    public int maximumLengthSubstring(String s) {\n        int[] count = new int[26];\n        int maxLen = 0, left = 0;\n        for (int right = 0; right < s.length(); right++) {\n            count[s.charAt(right) - 'a']++;\n            while (count[s.charAt(right) - 'a'] > 2) {\n                count[s.charAt(left) - 'a']--;\n                left++;\n            }\n            maxLen = Math.max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n}\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Utilizes a sliding window approach with a frequency count array to track character occurrences, efficiently maintaining the condition of at most two occurrences per character within the window.",
+  "timestamp": "2025-08-05T14:49:03.526511",
+  "code_extracted_previous": "class Solution {\n    public int maximumLengthSubstring(String s) {\n        int[] count = new int[26];\n        int maxLen = 0, left = 0;\n        for (int right = 0; right < s.length(); right++) {\n            count[s.charAt(right) - 'a']++;\n            while (count[s.charAt(right) - 'a'] > 2) {\n                count[s.charAt(left) - 'a']--;\n                left++;\n            }\n            maxLen = Math.max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.765776"
+}

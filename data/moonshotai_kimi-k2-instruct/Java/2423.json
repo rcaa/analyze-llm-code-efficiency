@@ -1,0 +1,15 @@
+{
+  "id": 2423,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public boolean equalFrequency(String word) {\n        int[] freq = new int[26];\n        for (char c : word.toCharArray()) freq[c - 'a']++;\n        \n        for (int i = 0; i < word.length(); i++) {\n            int idx = word.charAt(i) - 'a';\n            freq[idx]--;\n            \n            int target = -1;\n            boolean ok = true;\n            for (int f : freq) {\n                if (f == 0) continue;\n                if (target == -1) target = f;\n                else if (f != target) { ok = false; break; }\n            }\n            if (ok) return true;\n            \n            freq[idx]++;\n        }\n        return false;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(26 * N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate over each character, simulate its removal by decrementing its frequency, then check in O(26) time whether all remaining non-zero frequencies are identical. Restore the frequency and continue. The approach is optimal for the given constraints.",
+  "code": "class Solution {\n    public boolean equalFrequency(String word) {\n        int[] freq = new int[26];\n        for (char c : word.toCharArray()) freq[c - 'a']++;\n        \n        for (int i = 0; i < word.length(); i++) {\n            int idx = word.charAt(i) - 'a';\n            freq[idx]--;\n            \n            int target = -1;\n            boolean ok = true;\n            for (int f : freq) {\n                if (f == 0) continue;\n                if (target == -1) target = f;\n                else if (f != target) { ok = false; break; }\n            }\n            if (ok) return true;\n            \n            freq[idx]++;\n        }\n        return false;\n    }\n}",
+  "timestamp": "2025-08-06T02:31:15.615893",
+  "code_extracted_previous": "class Solution {\n    public boolean equalFrequency(String word) {\n        int[] freq = new int[26];\n        for (char c : word.toCharArray()) freq[c - 'a']++;\n        \n        for (int i = 0; i < word.length(); i++) {\n            int idx = word.charAt(i) - 'a';\n            freq[idx]--;\n            \n            int target = -1;\n            boolean ok = true;\n            for (int f : freq) {\n                if (f == 0) continue;\n                if (target == -1) target = f;\n                else if (f != target) { ok = false; break; }\n            }\n            if (ok) return true;\n            \n            freq[idx]++;\n        }\n        return false;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.050108"
+}

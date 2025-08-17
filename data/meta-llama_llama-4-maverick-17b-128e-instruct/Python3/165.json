@@ -1,0 +1,15 @@
+{
+  "id": 165,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def compareVersion(self, version1: str, version2: str) -> int:\n        v1 = list(map(int, version1.split('.')))\n        v2 = list(map(int, version2.split('.')))\n        max_len = max(len(v1), len(v2))\n        v1 += [0] * (max_len - len(v1))\n        v2 += [0] * (max_len - len(v2))\n        for i in range(max_len):\n            if v1[i] > v2[i]:\n                return 1\n            elif v1[i] < v2[i]:\n                return -1\n        return 0\n```\n\nefficiency: HIGH\ntime complexity: O(N + M)\nspace complexity: O(N + M)\nenergy implications: LOW\nexplanation: The solution splits the version strings into lists of integers, pads the shorter list with zeros, and then compares the versions element-wise. This approach efficiently handles version strings of varying lengths and correctly ignores leading zeros in the revision values.",
+  "code": "def compareVersion(self, version1: str, version2: str) -> int:\n        v1 = list(map(int, version1.split('.')))\n        v2 = list(map(int, version2.split('.')))\n        max_len = max(len(v1), len(v2))\n        v1 += [0] * (max_len - len(v1))\n        v2 += [0] * (max_len - len(v2))\n        for i in range(max_len):\n            if v1[i] > v2[i]:\n                return 1\n            elif v1[i] < v2[i]:\n                return -1\n        return 0\n```",
+  "timestamp": "2025-08-06T01:35:30.801669",
+  "code_extracted_previous": "class Solution:\n    def compareVersion(self, version1: str, version2: str) -> int:\n        v1 = list(map(int, version1.split('.')))\n        v2 = list(map(int, version2.split('.')))\n        max_len = max(len(v1), len(v2))\n        v1 += [0] * (max_len - len(v1))\n        v2 += [0] * (max_len - len(v2))\n        for i in range(max_len):\n            if v1[i] > v2[i]:\n                return 1\n            elif v1[i] < v2[i]:\n                return -1\n        return 0",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.596140"
+}

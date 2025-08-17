@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int[] charValues = new int[26];\n        for (int i = 0; i < chars.length(); i++) {\n            charValues[chars.charAt(i) - 'a'] = vals[i];\n        }\n        int maxCost = 0, currCost = 0;\n        for (char c : s.toCharArray()) {\n            currCost += charValues[c - 'a'] != 0 ? charValues[c - 'a'] : c - 'a' + 1;\n            maxCost = Math.max(maxCost, currCost);\n            if (currCost < 0) currCost = 0;\n        }\n        return maxCost;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a single pass through the string `s` and maintains a running total of the cost of the current substring. It uses an array `charValues` to store the custom values for characters in `chars`.",
+  "code": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int[] charValues = new int[26];\n        for (int i = 0; i < chars.length(); i++) {\n            charValues[chars.charAt(i) - 'a'] = vals[i];\n        }\n        int maxCost = 0, currCost = 0;\n        for (char c : s.toCharArray()) {\n            currCost += charValues[c - 'a'] != 0 ? charValues[c - 'a'] : c - 'a' + 1;\n            maxCost = Math.max(maxCost, currCost);\n            if (currCost < 0) currCost = 0;\n        }\n        return maxCost;\n    }\n}",
+  "timestamp": "2025-08-06T03:19:48.573600",
+  "code_extracted_previous": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int[] charValues = new int[26];\n        for (int i = 0; i < chars.length(); i++) {\n            charValues[chars.charAt(i) - 'a'] = vals[i];\n        }\n        int maxCost = 0, currCost = 0;\n        for (char c : s.toCharArray()) {\n            currCost += charValues[c - 'a'] != 0 ? charValues[c - 'a'] : c - 'a' + 1;\n            maxCost = Math.max(maxCost, currCost);\n            if (currCost < 0) currCost = 0;\n        }\n        return maxCost;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.265116"
+}

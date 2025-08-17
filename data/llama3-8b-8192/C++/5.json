@@ -1,0 +1,15 @@
+{
+  "id": 5,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    string longestPalindrome(string s) {\n        int n = s.length();\n        string res = \"\";\n        for (int i = 0; i < n; i++) {\n            string odd = expandAroundCenter(s, i, i);\n            string even = expandAroundCenter(s, i, i + 1);\n            res = max(res, odd, [](string a, string b) { return a.length() < b.length(); });\n            res = max(res, even, [](string a, string b) { return a.length() < b.length(); });\n        }\n        return res;\n    }\n    string expandAroundCenter(string s, int left, int right) {\n        while (left >= 0 && right < s.length() && s[left] == s[right]) {\n            left--;\n            right++;\n        }\n        return s.substr(left + 1, right - left - 1);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer approach to expand around the center of the palindrome. It iterates through the string and for each character, it expands around the center to find the longest palindrome. The expandAroundCenter function is used to expand around the center and the max function is used to find the longest palindrome.",
+  "code": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        int n = s.length();\n        string res = \"\";\n        for (int i = 0; i < n; i++) {\n            string odd = expandAroundCenter(s, i, i);\n            string even = expandAroundCenter(s, i, i + 1);\n            res = max(res, odd, [](string a, string b) { return a.length() < b.length(); });\n            res = max(res, even, [](string a, string b) { return a.length() < b.length(); });\n        }\n        return res;\n    }\n    string expandAroundCenter(string s, int left, int right) {\n        while (left >= 0 && right < s.length() && s[left] == s[right]) {\n            left--;\n            right++;\n        }\n        return s.substr(left + 1, right - left - 1);\n    }\n};",
+  "timestamp": "2025-08-06T01:33:38.878613",
+  "code_extracted_previous": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        int n = s.length();\n        string res = \"\";\n        for (int i = 0; i < n; i++) {\n            string odd = expandAroundCenter(s, i, i);\n            string even = expandAroundCenter(s, i, i + 1);\n            res = max(res, odd, [](string a, string b) { return a.length() < b.length(); });\n            res = max(res, even, [](string a, string b) { return a.length() < b.length(); });\n        }\n        return res;\n    }\n    string expandAroundCenter(string s, int left, int right) {\n        while (left >= 0 && right < s.length() && s[left] == s[right]) {\n            left--;\n            right++;\n        }\n        return s.substr(left + 1, right - left - 1);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.472590"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1160,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        unordered_map<char, int> charCount;\n        for (char c : chars) {\n            charCount[c]++;\n        }\n        int sum = 0;\n        for (string word : words) {\n            bool isGood = true;\n            unordered_map<char, int> wordCount;\n            for (char c : word) {\n                if (charCount[c] == 0 || wordCount[c]++ >= charCount[c]) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                sum += word.length();\n            }\n        }\n        return sum;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N*M)\nspace complexity: O(M)\nenergy implications: LOW\nexplanation: The solution iterates through each character in `chars` to build a frequency map. Then, for each word in `words`, it checks if all characters can be formed using the available characters in `chars`. If a word can be formed, its length is added to the sum.  The time complexity is O(N*M) due to the nested loops iterating through words and characters. The space complexity is O(M) due to the frequency map storing character counts.\n\n\n\n",
+  "code": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        unordered_map<char, int> charCount;\n        for (char c : chars) {\n            charCount[c]++;\n        }\n        int sum = 0;\n        for (string word : words) {\n            bool isGood = true;\n            unordered_map<char, int> wordCount;\n            for (char c : word) {\n                if (charCount[c] == 0 || wordCount[c]++ >= charCount[c]) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                sum += word.length();\n            }\n        }\n        return sum;\n    }\n};",
+  "timestamp": "2025-08-05T12:38:16.976859",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        unordered_map<char, int> charCount;\n        for (char c : chars) {\n            charCount[c]++;\n        }\n        int sum = 0;\n        for (string word : words) {\n            bool isGood = true;\n            unordered_map<char, int> wordCount;\n            for (char c : word) {\n                if (charCount[c] == 0 || wordCount[c]++ >= charCount[c]) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                sum += word.length();\n            }\n        }\n        return sum;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.144804"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass SORTracker {\nprivate:\n    int queryCount;\n    struct Location {\n        string name;\n        int score;\n    };\n    struct CompareLocations {\n        bool operator()(const Location& a, const Location& b) const {\n            if (a.score != b.score) return a.score > b.score;\n            return a.name < b.name;\n        }\n    };\n    std::multiset<Location, CompareLocations> topLocations;\n    std::multiset<Location, std::greater<Location>> bottomLocations;\n\npublic:\n    SORTracker() : queryCount(0) {}\n\n    void add(string name, int score) {\n        Location newLocation = {name, score};\n        topLocations.insert(newLocation);\n        if (topLocations.size() > queryCount + 1) {\n            auto last = *topLocations.rbegin();\n            topLocations.erase(last);\n            bottomLocations.insert(last);\n        }\n    }\n\n    string get() {\n        queryCount++;\n        if (!bottomLocations.empty() && CompareLocations()(*topLocations.rbegin(), *bottomLocations.begin())) {\n            auto temp = *bottomLocations.begin();\n            bottomLocations.erase(temp);\n            topLocations.insert(temp);\n            temp = *topLocations.rbegin();\n            topLocations.erase(temp);\n            bottomLocations.insert(temp);\n        }\n        return topLocations.rbegin()->name;\n    }\n};\n\nsolution: The above code implements the SORTracker class.\nefficiency: HIGH\ntime complexity: O(log n) for both add and get operations\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The SORTracker class uses two multisets to maintain a sorted list of locations. The `add` operation inserts a new location into the top multisets, and the `get` operation returns the ith best location by maintaining a balance between the top and bottom multisets. The CompareLocations struct is used to define the sorting order for the locations.",
+  "code": "The above code implements the SORTracker class.",
+  "timestamp": "2025-08-05T14:04:34.695818",
+  "code_extracted_previous": "The above code implements the SORTracker class.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:45.076329"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3333,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int possibleStringCount(string word, int k) {\n        int n = word.size();\n        vector<int> groups;\n        char prev = word[0];\n        int count = 1;\n        for (int i = 1; i < n; ++i) {\n            if (word[i] == prev) {\n                count++;\n            } else {\n                groups.push_back(count);\n                count = 1;\n                prev = word[i];\n            }\n        }\n        groups.push_back(count);\n        int m = groups.size();\n        vector<vector<int>> dp(m + 1, vector<int>(k + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= m; ++i) {\n            for (int j = 0; j <= k; ++j) {\n                dp[i][j] = (dp[i][j] + dp[i - 1][j]) % (int)(1e9 + 7);\n                if (j >= groups[i - 1] - 1 && j <= k - 1) {\n                    dp[i][j] = (dp[i][j] + (long long)dp[i - 1][j - groups[i - 1] + 1] * (groups[i - 1] - 1)) % (int)(1e9 + 7);\n                }\n            }\n        }\n        return dp[m][k];\n    }\n};\nefficiency: HIGH\ntime complexity: O(m*k)\nspace complexity: O(m*k)\nenergy implications: LOW\nexplanation: Dynamic programming is used to count the number of possible original strings. The solution processes the input string to identify consecutive character groups, then applies DP to calculate the number of valid strings of length k.",
+  "code": "```cpp\nclass Solution {\npublic:\n    int possibleStringCount(string word, int k) {\n        int n = word.size();\n        vector<int> groups;\n        char prev = word[0];\n        int count = 1;\n        for (int i = 1; i < n; ++i) {\n            if (word[i] == prev) {\n                count++;\n            } else {\n                groups.push_back(count);\n                count = 1;\n                prev = word[i];\n            }\n        }\n        groups.push_back(count);\n        int m = groups.size();\n        vector<vector<int>> dp(m + 1, vector<int>(k + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= m; ++i) {\n            for (int j = 0; j <= k; ++j) {\n                dp[i][j] = (dp[i][j] + dp[i - 1][j]) % (int)(1e9 + 7);\n                if (j >= groups[i - 1] - 1 && j <= k - 1) {\n                    dp[i][j] = (dp[i][j] + (long long)dp[i - 1][j - groups[i - 1] + 1] * (groups[i - 1] - 1)) % (int)(1e9 + 7);\n                }\n            }\n        }\n        return dp[m][k];\n    }\n};",
+  "timestamp": "2025-08-05T16:17:23.497135",
+  "code_extracted_previous": "",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.517799"
+}

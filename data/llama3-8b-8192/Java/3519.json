@@ -1,0 +1,15 @@
+{
+  "id": 3519,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int countNumbers(String l, String r, int b) {\n        int MOD = 1000000007;\n        int count = 0;\n        for (int i = Integer.parseInt(l); i <= Integer.parseInt(r); i++) {\n            String s = Integer.toString(i, b);\n            boolean nonDecreasing = true;\n            for (int j = 1; j < s.length(); j++) {\n                if (s.charAt(j - 1) > s.charAt(j)) {\n                    nonDecreasing = false;\n                    break;\n                }\n            }\n            if (nonDecreasing) {\n                count = (count + 1) % MOD;\n            }\n        }\n        return count;\n    }\n}```\nefficiency: HIGH\ntime complexity: O((r-l+1) * log(b))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the range [l, r] and checks each number to see if its digits are non-decreasing in base b. It uses a simple string comparison to check for non-decreasing digits, and a modulo operation to avoid overflow. The time complexity is O((r-l+1) * log(b)) because we are iterating over the range and converting each number to a string in base b. The space complexity is O(1) because we are only using a constant amount of space to store the count and the current number.",
+  "code": "class Solution {\n    public int countNumbers(String l, String r, int b) {\n        int MOD = 1000000007;\n        int count = 0;\n        for (int i = Integer.parseInt(l); i <= Integer.parseInt(r); i++) {\n            String s = Integer.toString(i, b);\n            boolean nonDecreasing = true;\n            for (int j = 1; j < s.length(); j++) {\n                if (s.charAt(j - 1) > s.charAt(j)) {\n                    nonDecreasing = false;\n                    break;\n                }\n            }\n            if (nonDecreasing) {\n                count = (count + 1) % MOD;\n            }\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T15:26:53.230366",
+  "code_extracted_previous": "public int countNumbers(String l, String r, int b) {\n        int MOD = 1000000007;\n        int count = 0;\n        for (int i = Integer.parseInt(l); i <= Integer.parseInt(r); i++) {\n            String s = Integer.toString(i, b);\n            boolean nonDecreasing = true;\n            for (int j = 1; j < s.length(); j++) {\n                if (s.charAt(j - 1) > s.charAt(j)) {\n                    nonDecreasing = false;\n                    break;\n                }\n            }\n            if (nonDecreasing) {\n                count = (count + 1) % MOD;\n            }\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.713775"
+}

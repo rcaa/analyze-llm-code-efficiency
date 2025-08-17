@@ -1,0 +1,15 @@
+{
+  "id": 2287,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int rearrangeCharacters(String s, String target) {\n        int[] sCount = new int[26];\n        int[] tCount = new int[26];\n        for (char c : s.toCharArray()) {\n            sCount[c - 'a']++;\n        }\n        for (char c : target.toCharArray()) {\n            tCount[c - 'a']++;\n        }\n        int result = 0;\n        for (int i = 0; i < 26; i++) {\n            result = Math.min(result, sCount[i] / tCount[i]);\n        }\n        return result;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(s.length() + target.length())\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution counts the frequency of each character in both strings. Then, it determines the minimum number of times the target string can be formed by dividing the frequency of each character in the source string by the frequency of the same character in the target string. This minimum value represents the maximum number of target strings that can be formed.\n",
+  "code": "class Solution {\n    public int rearrangeCharacters(String s, String target) {\n        int[] sCount = new int[26];\n        int[] tCount = new int[26];\n        for (char c : s.toCharArray()) {\n            sCount[c - 'a']++;\n        }\n        for (char c : target.toCharArray()) {\n            tCount[c - 'a']++;\n        }\n        int result = 0;\n        for (int i = 0; i < 26; i++) {\n            result = Math.min(result, sCount[i] / tCount[i]);\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T14:45:11.631691",
+  "code_extracted_previous": "class Solution {\n    public int rearrangeCharacters(String s, String target) {\n        int[] sCount = new int[26];\n        int[] tCount = new int[26];\n        for (char c : s.toCharArray()) {\n            sCount[c - 'a']++;\n        }\n        for (char c : target.toCharArray()) {\n            tCount[c - 'a']++;\n        }\n        int result = 0;\n        for (int i = 0; i < 26; i++) {\n            result = Math.min(result, sCount[i] / tCount[i]);\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.929199"
+}

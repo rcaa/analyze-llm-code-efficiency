@@ -1,0 +1,15 @@
+{
+  "id": 1171,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public ListNode removeZeroSumSublists(ListNode head) {\n        ListNode dummy = new ListNode(0);\n        dummy.next = head;\n        ListNode cur = dummy;\n        int sum = 0;\n        Map<Integer, ListNode> map = new HashMap<>();\n        while (cur.next != null) {\n            sum += cur.next.val;\n            if (sum == 0) {\n                dummy.next = cur.next.next;\n                cur = dummy;\n            } else if (map.containsKey(sum)) {\n                ListNode prev = map.get(sum);\n                prev.next = cur.next.next;\n                cur = prev;\n            } else {\n                map.put(sum, cur);\n                cur = cur.next;\n            }\n        }\n        return dummy.next;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hashmap to store the cumulative sum and its corresponding node. It iterates through the linked list, updating the cumulative sum and checking if it exists in the hashmap. If it does, it means we've found a zero-sum sublist, so we update the previous node's next pointer to skip the sublist. If not, we add the current cumulative sum and node to the hashmap.",
+  "code": "class Solution {\n    public ListNode removeZeroSumSublists(ListNode head) {\n        ListNode dummy = new ListNode(0);\n        dummy.next = head;\n        ListNode cur = dummy;\n        int sum = 0;\n        Map<Integer, ListNode> map = new HashMap<>();\n        while (cur.next != null) {\n            sum += cur.next.val;\n            if (sum == 0) {\n                dummy.next = cur.next.next;\n                cur = dummy;\n            } else if (map.containsKey(sum)) {\n                ListNode prev = map.get(sum);\n                prev.next = cur.next.next;\n                cur = prev;\n            } else {\n                map.put(sum, cur);\n                cur = cur.next;\n            }\n        }\n        return dummy.next;\n    }\n}",
+  "timestamp": "2025-08-05T14:58:43.805648",
+  "code_extracted_previous": "class Solution {\n    public ListNode removeZeroSumSublists(ListNode head) {\n        ListNode dummy = new ListNode(0);\n        dummy.next = head;\n        ListNode cur = dummy;\n        int sum = 0;\n        Map<Integer, ListNode> map = new HashMap<>();\n        while (cur.next != null) {\n            sum += cur.next.val;\n            if (sum == 0) {\n                dummy.next = cur.next.next;\n                cur = dummy;\n            } else if (map.containsKey(sum)) {\n                ListNode prev = map.get(sum);\n                prev.next = cur.next.next;\n                cur = prev;\n            } else {\n                map.put(sum, cur);\n                cur = cur.next;\n            }\n        }\n        return dummy.next;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.427419"
+}

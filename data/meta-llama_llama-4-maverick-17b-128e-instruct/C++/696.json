@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int prev = 0, curr = 1, count = 0;\n        for (int i = 1; i < s.size(); i++) {\n            if (s[i] == s[i - 1]) {\n                curr++;\n            } else {\n                count += min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        count += min(prev, curr);\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the binary string once, maintaining counts of consecutive 0s and 1s. It uses the minimum of the previous and current consecutive counts to determine the number of valid substrings ending at the current position, effectively solving the problem in linear time with constant space.",
+  "code": "class Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int prev = 0, curr = 1, count = 0;\n        for (int i = 1; i < s.size(); i++) {\n            if (s[i] == s[i - 1]) {\n                curr++;\n            } else {\n                count += min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        count += min(prev, curr);\n        return count;\n    }\n};",
+  "timestamp": "2025-08-06T01:29:05.858926",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int prev = 0, curr = 1, count = 0;\n        for (int i = 1; i < s.size(); i++) {\n            if (s[i] == s[i - 1]) {\n                curr++;\n            } else {\n                count += min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        count += min(prev, curr);\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.779175"
+}

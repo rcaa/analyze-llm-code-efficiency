@@ -1,0 +1,15 @@
+{
+  "id": 1358,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int n = s.size();\n        int left = 0, count = 0;\n        unordered_map<char, int> map;\n        for (int right = 0; right < n; right++) {\n            map[s[right]]++;\n            while (map.size() == 3) {\n                count += n - right;\n                map[s[left]]--;\n                if (map[s[left]] == 0) map.erase(s[left]);\n                left++;\n            }\n        }\n        return count;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach with a hash map to track the characters within the window. It maintains a count of substrings containing all three characters by expanding the window to the right and shrinking it from the left when all three characters are found. The time complexity is O(n) as it processes each character once, and the space complexity is O(1) as the hash map size is bounded by the number of unique characters (3 in this case).",
+  "code": "class Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int n = s.size();\n        int left = 0, count = 0;\n        unordered_map<char, int> map;\n        for (int right = 0; right < n; right++) {\n            map[s[right]]++;\n            while (map.size() == 3) {\n                count += n - right;\n                map[s[left]]--;\n                if (map[s[left]] == 0) map.erase(s[left]);\n                left++;\n            }\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T15:02:50.452834",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int n = s.size();\n        int left = 0, count = 0;\n        unordered_map<char, int> map;\n        for (int right = 0; right < n; right++) {\n            map[s[right]]++;\n            while (map.size() == 3) {\n                count += n - right;\n                map[s[left]]--;\n                if (map[s[left]] == 0) map.erase(s[left]);\n                left++;\n            }\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.372931"
+}

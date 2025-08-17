@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass MyQueue {\n    private java.util.Stack<Integer> stackNewestOnTop;\n    private java.util.Stack<Integer> stackOldestOnTop;\n\n    public MyQueue() {\n        stackNewestOnTop = new java.util.Stack<>();\n        stackOldestOnTop = new java.util.Stack<>();\n    }\n    \n    public void push(int x) {\n        stackNewestOnTop.push(x);\n    }\n    \n    public int pop() {\n        shiftStacks();\n        return stackOldestOnTop.pop();\n    }\n    \n    public int peek() {\n        shiftStacks();\n        return stackOldestOnTop.peek();\n    }\n    \n    public boolean empty() {\n        return stackNewestOnTop.isEmpty() && stackOldestOnTop.isEmpty();\n    }\n\n    private void shiftStacks() {\n        if (stackOldestOnTop.isEmpty()) {\n            while (!stackNewestOnTop.isEmpty()) {\n                stackOldestOnTop.push(stackNewestOnTop.pop());\n            }\n        }\n    }\n}\n```\nsolution: Implemented using two stacks to simulate a queue.\nefficiency: HIGH\ntime complexity: O(1) amortized\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses two stacks to achieve FIFO order, with one stack for new elements and another for the oldest elements, shifting elements when necessary to maintain the correct order.",
+  "code": "Implemented using two stacks to simulate a queue.",
+  "timestamp": "2025-08-06T15:13:56.634180",
+  "code_extracted_previous": "class MyQueue {\n    private java.util.Stack<Integer> stackNewestOnTop;\n    private java.util.Stack<Integer> stackOldestOnTop;\n\n    public MyQueue() {\n        stackNewestOnTop = new java.util.Stack<>();\n        stackOldestOnTop = new java.util.Stack<>();\n    }\n    \n    public void push(int x) {\n        stackNewestOnTop.push(x);\n    }\n    \n    public int pop() {\n        shiftStacks();\n        return stackOldestOnTop.pop();\n    }\n    \n    public int peek() {\n        shiftStacks();\n        return stackOldestOnTop.peek();\n    }\n    \n    public boolean empty() {\n        return stackNewestOnTop.isEmpty() && stackOldestOnTop.isEmpty();\n    }\n\n    private void shiftStacks() {\n        if (stackOldestOnTop.isEmpty()) {\n            while (!stackNewestOnTop.isEmpty()) {\n                stackOldestOnTop.push(stackNewestOnTop.pop());\n            }\n        }\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:33.872055"
+}

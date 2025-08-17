@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int longestSemiRepetitiveSubstring(String s) {\n        int n = s.length();\n        int maxLen = 1;\n        for (int l = 0; l < n; ++l) {\n            int pairs = 0;\n            for (int r = l + 1; r < n; ++r) {\n                if (s.charAt(r) == s.charAt(r - 1)) {\n                    pairs++;\n                    if (pairs > 1) break;\n                }\n                maxLen = Math.max(maxLen, r - l + 1);\n            }\n        }\n        return maxLen;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window-like nested loops check every substring while counting adjacent equal pairs; the inner loop breaks early when a second pair is found, keeping the quadratic bound tight for n≤50.",
+  "code": "class Solution {\n    public int longestSemiRepetitiveSubstring(String s) {\n        int n = s.length();\n        int maxLen = 1;\n        for (int l = 0; l < n; ++l) {\n            int pairs = 0;\n            for (int r = l + 1; r < n; ++r) {\n                if (s.charAt(r) == s.charAt(r - 1)) {\n                    pairs++;\n                    if (pairs > 1) break;\n                }\n                maxLen = Math.max(maxLen, r - l + 1);\n            }\n        }\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-06T01:06:49.872095",
+  "code_extracted_previous": "public int longestSemiRepetitiveSubstring(String s) {\n        int n = s.length();\n        int maxLen = 1;\n        for (int l = 0; l < n; ++l) {\n            int pairs = 0;\n            for (int r = l + 1; r < n; ++r) {\n                if (s.charAt(r) == s.charAt(r - 1)) {\n                    pairs++;\n                    if (pairs > 1) break;\n                }\n                maxLen = Math.max(maxLen, r - l + 1);\n            }\n        }\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.176853"
+}

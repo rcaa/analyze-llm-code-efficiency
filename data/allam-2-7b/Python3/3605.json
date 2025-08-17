@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef minStable(self, nums, maxC):\n    n = len(nums)\n    hcf_list = [1] * n\n    for i in range(1, n):\n        hcf_list[i] = max(hcf_list[i-1], nums[i])\n    for i in range(n-1, -1, -1):\n        hcf_list[i] = min(hcf_list[i+1], hcf_list[i])\n    min_hcf = min(hcf_list)\n    stable_count = 0\n    for i in range(n):\n        if nums[i] // min_hcf == int(nums[i] // min_hcf):\n            stable_count += 1\n            nums[i] = nums[i] // min_hcf\n    return stable_count * min_hcf\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n1. Calculate the HCF (Highest Common Factor) of all elements in the array using a list comprehension and a nested loop.\n2. Iterate through the array and check if each element is divisible by the minimum HCF found in step 1.\n3. If an element is divisible by the minimum HCF, increment the stable count and update the element with the minimum HCF.\n4. Return the stable count multiplied by the minimum HCF.\n\nThis solution has a time complexity of O(n) and a space complexity of O(1), making it efficient for solving the problem. ",
+  "code": "def minStable(self, nums, maxC):\n    n = len(nums)\n    hcf_list = [1] * n\n    for i in range(1, n):\n        hcf_list[i] = max(hcf_list[i-1], nums[i])\n    for i in range(n-1, -1, -1):\n        hcf_list[i] = min(hcf_list[i+1], hcf_list[i])\n    min_hcf = min(hcf_list)\n    stable_count = 0\n    for i in range(n):\n        if nums[i] // min_hcf == int(nums[i] // min_hcf):\n            stable_count += 1\n            nums[i] = nums[i] // min_hcf\n    return stable_count * min_hcf",
+  "timestamp": "2025-08-05T12:23:19.710019",
+  "code_extracted_previous": "def minStable(self, nums, maxC):\n    n = len(nums)\n    hcf_list = [1] * n\n    for i in range(1, n):\n        hcf_list[i] = max(hcf_list[i-1], nums[i])\n    for i in range(n-1, -1, -1):\n        hcf_list[i] = min(hcf_list[i+1], hcf_list[i])\n    min_hcf = min(hcf_list)\n    stable_count = 0\n    for i in range(n):\n        if nums[i] // min_hcf == int(nums[i] // min_hcf):\n            stable_count += 1\n            nums[i] = nums[i] // min_hcf\n    return stable_count * min_hcf",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.969677"
+}

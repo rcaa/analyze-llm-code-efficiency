@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int maxLen = 0;\n        for (int i = 0; i < n; ++i) {\n            int count = 0;\n            for (int j = i; j < n; ++j) {\n                if (j > i && s[j] == s[j - 1]) ++count;\n                if (count > 1) break;\n                maxLen = max(maxLen, j - i + 1);\n            }\n        }\n        return maxLen;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a nested loop to check all substrings of the input string, counting the number of adjacent same digit pairs. It keeps track of the maximum length of a semi-repetitive substring seen so far.\n```",
+  "code": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int maxLen = 0;\n        for (int i = 0; i < n; ++i) {\n            int count = 0;\n            for (int j = i; j < n; ++j) {\n                if (j > i && s[j] == s[j - 1]) ++count;\n                if (count > 1) break;\n                maxLen = max(maxLen, j - i + 1);\n            }\n        }\n        return maxLen;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a nested loop to check all substrings of the input string, counting the number of adjacent same digit pairs. It keeps track of the maximum length of a semi-repetitive substring seen so far.",
+  "timestamp": "2025-08-06T01:06:53.599513",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int maxLen = 0;\n        for (int i = 0; i < n; ++i) {\n            int count = 0;\n            for (int j = i; j < n; ++j) {\n                if (j > i && s[j] == s[j - 1]) ++count;\n                if (count > 1) break;\n                maxLen = max(maxLen, j - i + 1);\n            }\n        }\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.357004"
+}

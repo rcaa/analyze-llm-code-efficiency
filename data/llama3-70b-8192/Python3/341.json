@@ -1,0 +1,15 @@
+{
+  "id": 341,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass NestedIterator:\n    def __init__(self, nestedList: [NestedInteger]):\n        self.stack = nestedList[::-1]\n\n    def next(self) -> int:\n        return self.stack.pop().getInteger()\n\n    def hasNext(self) -> bool:\n        while self.stack:\n            if self.stack[-1].isInteger():\n                return True\n            temp = self.stack.pop().getList()[::-1]\n            self.stack.extend(temp)\n        return False\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a stack to store the nested list elements. It iterates through the list, pushing elements onto the stack. When hasNext is called, it checks if the top element is an integer. If it is, it returns True. If not, it pops the element, reverses its sublist, and pushes the elements back onto the stack. This process continues until an integer is found or the stack is empty.",
+  "code": "class NestedIterator:\n    def __init__(self, nestedList: [NestedInteger]):\n        self.stack = nestedList[::-1]\n\n    def next(self) -> int:\n        return self.stack.pop().getInteger()\n\n    def hasNext(self) -> bool:\n        while self.stack:\n            if self.stack[-1].isInteger():\n                return True\n            temp = self.stack.pop().getList()[::-1]\n            self.stack.extend(temp)\n        return False",
+  "timestamp": "2025-08-05T16:01:48.226420",
+  "code_extracted_previous": "class NestedIterator:\n    def __init__(self, nestedList: [NestedInteger]):\n        self.stack = nestedList[::-1]\n\n    def next(self) -> int:\n        return self.stack.pop().getInteger()\n\n    def hasNext(self) -> bool:\n        while self.stack:\n            if self.stack[-1].isInteger():\n                return True\n            temp = self.stack.pop().getList()[::-1]\n            self.stack.extend(temp)\n        return False",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:39.734064"
+}

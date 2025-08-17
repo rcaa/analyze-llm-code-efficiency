@@ -1,0 +1,15 @@
+{
+  "id": 352,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass SummaryRanges {\npublic:\n    SummaryRanges() {\n        \n    }\n    \n    void addNum(int value) {\n        int left = value, right = value;\n        auto it = intervals.lower_bound(value);\n        if (it != intervals.end() && it->first <= value + 1) {\n            right = max(right, it->second);\n            it = intervals.erase(it);\n        }\n        if (it != intervals.begin()) {\n            auto prev = prev(it);\n            if (prev->second + 1 >= left) {\n                left = prev->first;\n                right = max(right, prev->second);\n                intervals.erase(prev);\n            }\n        }\n        intervals[left] = right;\n    }\n    \n    vector<vector<int>> getIntervals() {\n        vector<vector<int>> result;\n        for (auto& interval : intervals) {\n            result.push_back({interval.first, interval.second});\n        }\n        return result;\n    }\n\nprivate:\n    map<int, int> intervals;\n};\n\n/**\n * Your SummaryRanges object will be instantiated and called as such:\n * SummaryRanges* obj = new SummaryRanges();\n * obj->addNum(value);\n * vector<vector<int>> param_2 = obj->getIntervals();\n */\nsolution: The above code.\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The main approach is to use a map to store disjoint intervals. When adding a number, it checks for adjacent or overlapping intervals and merges them. The getIntervals function simply iterates over the map and returns the intervals. The use of a map allows for efficient insertion and merging of intervals, resulting in a high efficiency solution.",
+  "code": "The above code.",
+  "timestamp": "2025-08-05T13:37:07.527636",
+  "code_extracted_previous": "The above code.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:45.569256"
+}

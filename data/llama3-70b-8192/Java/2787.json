@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int numberOfWays(int n, int x) {\n        int MOD = (int)1e9 + 7;\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j * j <= i; j++) {\n                if (Math.pow(j, x) <= i) {\n                    dp[i] = (dp[i] + dp[(int)(i - Math.pow(j, x))]) % MOD;\n                }\n            }\n        }\n        return dp[n];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^(3/2))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to store the number of ways to express each number up to n as the sum of the xth power of unique positive integers.",
+  "code": "class Solution {\n    public int numberOfWays(int n, int x) {\n        int MOD = (int)1e9 + 7;\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j * j <= i; j++) {\n                if (Math.pow(j, x) <= i) {\n                    dp[i] = (dp[i] + dp[(int)(i - Math.pow(j, x))]) % MOD;\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T14:28:03.104418",
+  "code_extracted_previous": "class Solution {\n    public int numberOfWays(int n, int x) {\n        int MOD = (int)1e9 + 7;\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j * j <= i; j++) {\n                if (Math.pow(j, x) <= i) {\n                    dp[i] = (dp[i] + dp[(int)(i - Math.pow(j, x))]) % MOD;\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.312804"
+}

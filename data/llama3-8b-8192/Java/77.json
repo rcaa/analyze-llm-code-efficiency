@@ -1,0 +1,15 @@
+{
+  "id": 77,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public List<List<Integer>> combine(int n, int k) {\n        List<List<Integer>> result = new ArrayList<>();\n        backtrack(result, new ArrayList<>(), 1, n, k);\n        return result;\n    }\n\n    private void backtrack(List<List<Integer>> result, List<Integer> tempList, int start, int n, int k) {\n        if (tempList.size() == k) {\n            result.add(new ArrayList<>(tempList));\n        } else {\n            for (int i = start; i <= n; i++) {\n                tempList.add(i);\n                backtrack(result, tempList, i + 1, n, k);\n                tempList.remove(tempList.size() - 1);\n            }\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n choose k)\nspace complexity: O(n choose k)\nenergy implications: LOW\nexplanation: This solution uses a backtracking algorithm to generate all possible combinations of k numbers chosen from the range [1, n]. The backtrack function recursively adds numbers to the temporary list until it reaches the desired length k, and then adds the list to the result. The algorithm has a high efficiency due to its use of backtracking, which avoids generating duplicate combinations.",
+  "code": "class Solution {\n    public List<List<Integer>> combine(int n, int k) {\n        List<List<Integer>> result = new ArrayList<>();\n        backtrack(result, new ArrayList<>(), 1, n, k);\n        return result;\n    }\n\n    private void backtrack(List<List<Integer>> result, List<Integer> tempList, int start, int n, int k) {\n        if (tempList.size() == k) {\n            result.add(new ArrayList<>(tempList));\n        } else {\n            for (int i = start; i <= n; i++) {\n                tempList.add(i);\n                backtrack(result, tempList, i + 1, n, k);\n                tempList.remove(tempList.size() - 1);\n            }\n        }\n    }\n}",
+  "timestamp": "2025-08-05T13:35:23.301237",
+  "code_extracted_previous": "class Solution {\n    public List<List<Integer>> combine(int n, int k) {\n        List<List<Integer>> result = new ArrayList<>();\n        backtrack(result, new ArrayList<>(), 1, n, k);\n        return result;\n    }\n\n    private void backtrack(List<List<Integer>> result, List<Integer> tempList, int start, int n, int k) {\n        if (tempList.size() == k) {\n            result.add(new ArrayList<>(tempList));\n        } else {\n            for (int i = start; i <= n; i++) {\n                tempList.add(i);\n                backtrack(result, tempList, i + 1, n, k);\n                tempList.remove(tempList.size() - 1);\n            }\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:43.018081"
+}

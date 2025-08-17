@@ -1,0 +1,15 @@
+{
+  "id": 1220,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int countVowelPermutation(int n) {\n        final int MOD = (int)1e9 + 7;\n        long[] a = new long[5];\n        long[] b = new long[5];\n        a[0] = a[1] = a[2] = a[3] = a[4] = 1;\n        for (int i = 2; i <= n; i++) {\n            b[0] = a[1];\n            b[1] = (a[0] + a[2]) % MOD;\n            b[2] = (a[0] + a[1] + a[3] + a[4]) % MOD;\n            b[3] = (a[2] + a[4]) % MOD;\n            b[4] = a[0];\n            long[] temp = a;\n            a = b;\n            b = temp;\n        }\n        long res = 0;\n        for (long x : a) res = (res + x) % MOD;\n        return (int)res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently count the number of possible strings. It maintains two arrays to store the counts of each vowel at the current and previous steps, and iteratively updates them based on the rules.",
+  "code": "class Solution {\n    public int countVowelPermutation(int n) {\n        final int MOD = (int)1e9 + 7;\n        long[] a = new long[5];\n        long[] b = new long[5];\n        a[0] = a[1] = a[2] = a[3] = a[4] = 1;\n        for (int i = 2; i <= n; i++) {\n            b[0] = a[1];\n            b[1] = (a[0] + a[2]) % MOD;\n            b[2] = (a[0] + a[1] + a[3] + a[4]) % MOD;\n            b[3] = (a[2] + a[4]) % MOD;\n            b[4] = a[0];\n            long[] temp = a;\n            a = b;\n            b = temp;\n        }\n        long res = 0;\n        for (long x : a) res = (res + x) % MOD;\n        return (int)res;\n    }\n}",
+  "timestamp": "2025-08-05T14:17:13.840052",
+  "code_extracted_previous": "class Solution {\n    public int countVowelPermutation(int n) {\n        final int MOD = (int)1e9 + 7;\n        long[] a = new long[5];\n        long[] b = new long[5];\n        a[0] = a[1] = a[2] = a[3] = a[4] = 1;\n        for (int i = 2; i <= n; i++) {\n            b[0] = a[1];\n            b[1] = (a[0] + a[2]) % MOD;\n            b[2] = (a[0] + a[1] + a[3] + a[4]) % MOD;\n            b[3] = (a[2] + a[4]) % MOD;\n            b[4] = a[0];\n            long[] temp = a;\n            a = b;\n            b = temp;\n        }\n        long res = 0;\n        for (long x : a) res = (res + x) % MOD;\n        return (int)res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.443956"
+}

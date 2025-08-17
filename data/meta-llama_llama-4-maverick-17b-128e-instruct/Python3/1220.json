@@ -1,0 +1,15 @@
+{
+  "id": 1220,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def countVowelPermutation(self, n: int) -> int:\n        MOD = 10**9 + 7\n        a, e, i, o, u = 1, 1, 1, 1, 1\n        for _ in range(n - 1):\n            a_new = (e + i + u) % MOD\n            e_new = (a + i) % MOD\n            i_new = (e + o) % MOD\n            o_new = i % MOD\n            u_new = (i + o) % MOD\n            a, e, i, o, u = a_new, e_new, i_new, o_new, u_new\n        return (a + e + i + o + u) % MOD\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to track the count of strings ending with each vowel. It iteratively updates these counts based on the given rules and returns the total count modulo 10^9 + 7.",
+  "code": "def countVowelPermutation(self, n: int) -> int:\n        MOD = 10**9 + 7\n        a, e, i, o, u = 1, 1, 1, 1, 1\n        for _ in range(n - 1):\n            a_new = (e + i + u) % MOD\n            e_new = (a + i) % MOD\n            i_new = (e + o) % MOD\n            o_new = i % MOD\n            u_new = (i + o) % MOD\n            a, e, i, o, u = a_new, e_new, i_new, o_new, u_new\n        return (a + e + i + o + u) % MOD\n```",
+  "timestamp": "2025-08-05T14:17:20.823726",
+  "code_extracted_previous": "class Solution:\n    def countVowelPermutation(self, n: int) -> int:\n        MOD = 10**9 + 7\n        a, e, i, o, u = 1, 1, 1, 1, 1\n        for _ in range(n - 1):\n            a_new = (e + i + u) % MOD\n            e_new = (a + i) % MOD\n            i_new = (e + o) % MOD\n            o_new = i % MOD\n            u_new = (i + o) % MOD\n            a, e, i, o, u = a_new, e_new, i_new, o_new, u_new\n        return (a + e + i + o + u) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.436510"
+}

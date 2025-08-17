@@ -1,0 +1,15 @@
+{
+  "id": 210,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = [[] for _ in range(numCourses)]\n        visited = [0 for _ in range(numCourses)]\n        res = []\n        for x, y in prerequisites:\n            graph[x].append(y)\n\n        def dfs(i):\n            if visited[i] == -1:\n                return False\n            if visited[i] == 1:\n                return True\n            visited[i] = -1\n            for j in graph[i]:\n                if not dfs(j):\n                    return False\n            visited[i] = 1\n            res.append(i)\n            return True\n\n        for i in range(numCourses):\n            if not dfs(i):\n                return []\n        return res\n```\nefficiency: HIGH\ntime complexity: O(N + M)\nspace complexity: O(N + M)\nenergy implications: LOW\nexplanation: Topological sorting using depth-first search to detect cycles and order courses based on prerequisites.",
+  "code": "def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = [[] for _ in range(numCourses)]\n        visited = [0 for _ in range(numCourses)]\n        res = []\n        for x, y in prerequisites:\n            graph[x].append(y)\n\n        def dfs(i):\n            if visited[i] == -1:\n                return False\n            if visited[i] == 1:\n                return True\n            visited[i] = -1\n            for j in graph[i]:\n                if not dfs(j):\n                    return False\n            visited[i] = 1\n            res.append(i)\n            return True\n\n        for i in range(numCourses):\n            if not dfs(i):\n                return []\n        return res\n```",
+  "timestamp": "2025-08-06T15:17:34.864474",
+  "code_extracted_previous": "class Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = [[] for _ in range(numCourses)]\n        visited = [0 for _ in range(numCourses)]\n        res = []\n        for x, y in prerequisites:\n            graph[x].append(y)\n\n        def dfs(i):\n            if visited[i] == -1:\n                return False\n            if visited[i] == 1:\n                return True\n            visited[i] = -1\n            for j in graph[i]:\n                if not dfs(j):\n                    return False\n            visited[i] = 1\n            res.append(i)\n            return True\n\n        for i in range(numCourses):\n            if not dfs(i):\n                return []\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.029623"
+}

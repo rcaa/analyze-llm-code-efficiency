@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        dp[0] = questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = Math.max(dp[i - 1], dp[i - 1] - questions[i - 1][0] + questions[i][0]);\n        }\n        return dp[n - 1];\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We maintain an array dp where dp[i] represents the maximum points that can be earned up to question i. We initialize dp[0] to the points of the first question. Then, for each question i, we calculate the maximum points that can be earned by either solving the current question or skipping it. If we solve the current question, we earn the points of the current question but will be unable to solve the next brainpower[i] questions. If we skip the current question, we earn the same points as the previous question. We update dp[i] with the maximum of these two options. Finally, we return dp[n - 1] which represents the maximum points that can be earned for the entire exam.",
+  "code": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        dp[0] = questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = Math.max(dp[i - 1], dp[i - 1] - questions[i - 1][0] + questions[i][0]);\n        }\n        return dp[n - 1];\n    }\n}",
+  "timestamp": "2025-08-05T13:25:05.527544",
+  "code_extracted_previous": "public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        dp[0] = questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = Math.max(dp[i - 1], dp[i - 1] - questions[i - 1][0] + questions[i][0]);\n        }\n        return dp[n - 1];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.171422"
+}

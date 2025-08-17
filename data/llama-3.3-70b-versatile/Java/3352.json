@@ -1,0 +1,15 @@
+{
+  "id": 3352,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int countKReducibleNumbers(String s, int k) {\n        int n = Integer.parseInt(s, 2);\n        int[][] dp = new int[k + 1][n + 1];\n        dp[0][1] = 1;\n        for (int i = 1; i <= k; i++) {\n            for (int j = 1; j <= n; j++) {\n                int count = Integer.bitCount(j);\n                if (count <= n) {\n                    dp[i][count] = (dp[i][count] + dp[i - 1][j]) % MOD;\n                }\n            }\n        }\n        int res = 0;\n        for (int i = 1; i <= k; i++) {\n            res = (res + dp[i][1]) % MOD;\n        }\n        return res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(k * n)\nspace complexity: O(k * n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of k-reducible numbers less than n. It iterates over each bit count from 1 to k and updates the dp array accordingly. The final result is the sum of the dp values for each bit count.",
+  "code": "class Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int countKReducibleNumbers(String s, int k) {\n        int n = Integer.parseInt(s, 2);\n        int[][] dp = new int[k + 1][n + 1];\n        dp[0][1] = 1;\n        for (int i = 1; i <= k; i++) {\n            for (int j = 1; j <= n; j++) {\n                int count = Integer.bitCount(j);\n                if (count <= n) {\n                    dp[i][count] = (dp[i][count] + dp[i - 1][j]) % MOD;\n                }\n            }\n        }\n        int res = 0;\n        for (int i = 1; i <= k; i++) {\n            res = (res + dp[i][1]) % MOD;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T15:15:19.590004",
+  "code_extracted_previous": "class Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int countKReducibleNumbers(String s, int k) {\n        int n = Integer.parseInt(s, 2);\n        int[][] dp = new int[k + 1][n + 1];\n        dp[0][1] = 1;\n        for (int i = 1; i <= k; i++) {\n            for (int j = 1; j <= n; j++) {\n                int count = Integer.bitCount(j);\n                if (count <= n) {\n                    dp[i][count] = (dp[i][count] + dp[i - 1][j]) % MOD;\n                }\n            }\n        }\n        int res = 0;\n        for (int i = 1; i <= k; i++) {\n            res = (res + dp[i][1]) % MOD;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.160557"
+}

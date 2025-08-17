@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        long long left = 0, right = 1e14;\n        while (left < right) {\n            long long mid = left + (right - left) / 2;\n            long long count = 0;\n            for (int rank : ranks) {\n                count += sqrt(mid / rank);\n            }\n            if (count < cars) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses binary search to find the minimum time required to repair all cars. The search range is from 0 to a large number (1e14). For each mid value, it calculates the total number of cars that can be repaired by all mechanics within that time. If the total count is less than the given number of cars, it updates the left boundary; otherwise, it updates the right boundary. The process continues until the left and right boundaries converge, which is the minimum time required.",
+  "code": "class Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        long long left = 0, right = 1e14;\n        while (left < right) {\n            long long mid = left + (right - left) / 2;\n            long long count = 0;\n            for (int rank : ranks) {\n                count += sqrt(mid / rank);\n            }\n            if (count < cars) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n};",
+  "timestamp": "2025-08-05T13:32:35.909195",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        long long left = 0, right = 1e14;\n        while (left < right) {\n            long long mid = left + (right - left) / 2;\n            long long count = 0;\n            for (int rank : ranks) {\n                count += sqrt(mid / rank);\n            }\n            if (count < cars) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.165820"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 672,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int flipLights(int n, int presses) {\n        n = min(n, 63); // Since 2^6 > 63, we only need to consider 6 bits\n        if (presses == 0) return 1;\n        return (1 << (min(n, presses) + 1)) - (presses & 1 ? 0 : 1);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution takes advantage of the properties of bitwise operations and the limited number of bulbs and presses. By reducing `n` to a maximum of 63 (as 2^6 > 63), we can efficiently compute the number of possible statuses. The formula used calculates the number of possible statuses based on the minimum of `n` and `presses`, and adjusts for the parity of `presses`.",
+  "code": "class Solution {\npublic:\n    int flipLights(int n, int presses) {\n        n = min(n, 63); // Since 2^6 > 63, we only need to consider 6 bits\n        if (presses == 0) return 1;\n        return (1 << (min(n, presses) + 1)) - (presses & 1 ? 0 : 1);\n    }\n};",
+  "timestamp": "2025-08-05T15:44:48.278156",
+  "code_extracted_previous": "class Solution {\npublic:\n    int flipLights(int n, int presses) {\n        n = min(n, 63); // Since 2^6 > 63, we only need to consider 6 bits\n        if (presses == 0) return 1;\n        return (1 << (min(n, presses) + 1)) - (presses & 1 ? 0 : 1);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.863608"
+}

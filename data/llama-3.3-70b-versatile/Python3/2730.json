@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def longestSemiRepetitiveSubstring(self, s: str) -> int:\n        def is_semi_repetitive(substring):\n            count = 0\n            for i in range(len(substring) - 1):\n                if substring[i] == substring[i + 1]:\n                    count += 1\n                if count > 1:\n                    return False\n            return True\n\n        max_length = 0\n        for i in range(len(s)):\n            for j in range(i + 1, len(s) + 1):\n                substring = s[i:j]\n                if is_semi_repetitive(substring):\n                    max_length = max(max_length, len(substring))\n        return max_length\n```\nefficiency: MEDIUM\ntime complexity: O(n^3)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution uses a helper function to check if a substring is semi-repetitive and then checks all possible substrings to find the longest one that is semi-repetitive.",
+  "code": "def longestSemiRepetitiveSubstring(self, s: str) -> int:\n        def is_semi_repetitive(substring):\n            count = 0\n            for i in range(len(substring) - 1):\n                if substring[i] == substring[i + 1]:\n                    count += 1\n                if count > 1:\n                    return False\n            return True\n\n        max_length = 0\n        for i in range(len(s)):\n            for j in range(i + 1, len(s) + 1):\n                substring = s[i:j]\n                if is_semi_repetitive(substring):\n                    max_length = max(max_length, len(substring))\n        return max_length\n```",
+  "timestamp": "2025-08-06T01:08:05.143706",
+  "code_extracted_previous": "class Solution:\n    def longestSemiRepetitiveSubstring(self, s: str) -> int:\n        def is_semi_repetitive(substring):\n            count = 0\n            for i in range(len(substring) - 1):\n                if substring[i] == substring[i + 1]:\n                    count += 1\n                if count > 1:\n                    return False\n            return True\n\n        max_length = 0\n        for i in range(len(s)):\n            for j in range(i + 1, len(s) + 1):\n                substring = s[i:j]\n                if is_semi_repetitive(substring):\n                    max_length = max(max_length, len(substring))\n        return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.356176"
+}

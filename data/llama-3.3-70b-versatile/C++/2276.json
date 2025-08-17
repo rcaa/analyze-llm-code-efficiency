@@ -1,0 +1,15 @@
+{
+  "id": 2276,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass CountIntervals {\npublic:\n    CountIntervals() {\n        \n    }\n    \n    void add(int left, int right) {\n        intervals.push_back({left, right});\n    }\n    \n    int count() {\n        sort(intervals.begin(), intervals.end());\n        int res = 0;\n        int start = intervals[0].first, end = intervals[0].second;\n        for (int i = 1; i < intervals.size(); i++) {\n            if (intervals[i].first > end) {\n                res += end - start + 1;\n                start = intervals[i].first;\n                end = intervals[i].second;\n            } else {\n                end = max(end, intervals[i].second);\n            }\n        }\n        res += end - start + 1;\n        return res;\n    }\nprivate:\n    vector<pair<int, int>> intervals;\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a vector to store intervals and sorts them when counting. It then iterates through the sorted intervals, merging overlapping intervals and counting the total number of integers in the merged intervals.",
+  "code": "class CountIntervals {\npublic:\n    CountIntervals() {\n        \n    }\n    \n    void add(int left, int right) {\n        intervals.push_back({left, right});\n    }\n    \n    int count() {\n        sort(intervals.begin(), intervals.end());\n        int res = 0;\n        int start = intervals[0].first, end = intervals[0].second;\n        for (int i = 1; i < intervals.size(); i++) {\n            if (intervals[i].first > end) {\n                res += end - start + 1;\n                start = intervals[i].first;\n                end = intervals[i].second;\n            } else {\n                end = max(end, intervals[i].second);\n            }\n        }\n        res += end - start + 1;\n        return res;\n    }\nprivate:\n    vector<pair<int, int>> intervals;\n};",
+  "timestamp": "2025-08-05T14:07:40.935206",
+  "code_extracted_previous": "class CountIntervals {\npublic:\n    CountIntervals() {\n        \n    }\n    \n    void add(int left, int right) {\n        intervals.push_back({left, right});\n    }\n    \n    int count() {\n        sort(intervals.begin(), intervals.end());\n        int res = 0;\n        int start = intervals[0].first, end = intervals[0].second;\n        for (int i = 1; i < intervals.size(); i++) {\n            if (intervals[i].first > end) {\n                res += end - start + 1;\n                start = intervals[i].first;\n                end = intervals[i].second;\n            } else {\n                end = max(end, intervals[i].second);\n            }\n        }\n        res += end - start + 1;\n        return res;\n    }\nprivate:\n    vector<pair<int, int>> intervals;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:32.142086"
+}

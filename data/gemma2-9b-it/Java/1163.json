@@ -1,0 +1,15 @@
+{
+  "id": 1163,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        for (int i = n - 1; i >= 0; i--) {\n            for (int j = i + 1; j < n; j++) {\n                String sub = s.substring(i, j + 1);\n                if (isLexicographicallyMax(sub, s.substring(i + 1))) {\n                    return sub;\n                }\n            }\n        }\n        return s;\n    }\n    private boolean isLexicographicallyMax(String a, String b) {\n        for (int i = 0; i < Math.min(a.length(), b.length()); i++) {\n            if (a.charAt(i) > b.charAt(i)) {\n                return true;\n            } else if (a.charAt(i) < b.charAt(i)) {\n                return false;\n            }\n        }\n        return a.length() > b.length();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through all possible substrings of the input string and compares them lexicographically. It utilizes a helper function `isLexicographicallyMax` to efficiently compare two strings. The nested loops result in a quadratic time complexity. \n\n\n",
+  "code": "class Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        for (int i = n - 1; i >= 0; i--) {\n            for (int j = i + 1; j < n; j++) {\n                String sub = s.substring(i, j + 1);\n                if (isLexicographicallyMax(sub, s.substring(i + 1))) {\n                    return sub;\n                }\n            }\n        }\n        return s;\n    }\n    private boolean isLexicographicallyMax(String a, String b) {\n        for (int i = 0; i < Math.min(a.length(), b.length()); i++) {\n            if (a.charAt(i) > b.charAt(i)) {\n                return true;\n            } else if (a.charAt(i) < b.charAt(i)) {\n                return false;\n            }\n        }\n        return a.length() > b.length();\n    }\n}",
+  "timestamp": "2025-08-06T01:15:11.293473",
+  "code_extracted_previous": "class Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        for (int i = n - 1; i >= 0; i--) {\n            for (int j = i + 1; j < n; j++) {\n                String sub = s.substring(i, j + 1);\n                if (isLexicographicallyMax(sub, s.substring(i + 1))) {\n                    return sub;\n                }\n            }\n        }\n        return s;\n    }\n    private boolean isLexicographicallyMax(String a, String b) {\n        for (int i = 0; i < Math.min(a.length(), b.length()); i++) {\n            if (a.charAt(i) > b.charAt(i)) {\n                return true;\n            } else if (a.charAt(i) < b.charAt(i)) {\n                return false;\n            }\n        }\n        return a.length() > b.length();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.513393"
+}

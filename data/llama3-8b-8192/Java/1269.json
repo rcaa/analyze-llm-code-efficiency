@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int numWays(int steps, int arrLen) {\n        int MOD = 1000000007;\n        int[][] dp = new int[steps + 1][arrLen];\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = Math.max(0, i - arrLen + 1); j <= Math.min(i, arrLen - 1); j++) {\n                dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j] + dp[i - 1][j + 1]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = 0; i < arrLen; i++) {\n            res = (res + dp[steps][i]) % MOD;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(steps * arrLen)\nspace complexity: O(steps * arrLen)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We maintain a 2D array dp where dp[i][j] represents the number of ways to stay at index j after i steps. We iterate over each step and each index, and update dp[i][j] based on the previous steps. Finally, we sum up the values in the last row of dp to get the total number of ways to stay at index 0.",
+  "code": "class Solution {\n    public int numWays(int steps, int arrLen) {\n        int MOD = 1000000007;\n        int[][] dp = new int[steps + 1][arrLen];\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = Math.max(0, i - arrLen + 1); j <= Math.min(i, arrLen - 1); j++) {\n                dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j] + dp[i - 1][j + 1]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = 0; i < arrLen; i++) {\n            res = (res + dp[steps][i]) % MOD;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:19:03.098929",
+  "code_extracted_previous": "class Solution {\n    public int numWays(int steps, int arrLen) {\n        int MOD = 1000000007;\n        int[][] dp = new int[steps + 1][arrLen];\n        dp[0][0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = Math.max(0, i - arrLen + 1); j <= Math.min(i, arrLen - 1); j++) {\n                dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j] + dp[i - 1][j + 1]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = 0; i < arrLen; i++) {\n            res = (res + dp[steps][i]) % MOD;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.899110"
+}

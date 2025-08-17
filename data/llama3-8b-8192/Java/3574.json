@@ -1,0 +1,15 @@
+{
+  "id": 3574,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public long maxGCDScore(int[] nums, int k) {\n        long maxScore = 0;\n        for (int i = 0; i < nums.length; i++) {\n            long gcd = nums[i];\n            for (int j = i; j < nums.length; j++) {\n                gcd = gcd(gcd, nums[j]);\n                maxScore = Math.max(maxScore, (long) j - i + 1 * gcd);\n            }\n        }\n        return maxScore;\n    }\n    private long gcd(long a, long b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a brute-force approach to find the maximum score by considering all possible subarrays and calculating their GCD. The GCD is calculated using the Euclidean algorithm, and the maximum score is updated accordingly. The time complexity is O(n^2) due to the nested loops, but the space complexity is O(1) as only a constant amount of space is used.",
+  "code": "class Solution {\n    public long maxGCDScore(int[] nums, int k) {\n        long maxScore = 0;\n        for (int i = 0; i < nums.length; i++) {\n            long gcd = nums[i];\n            for (int j = i; j < nums.length; j++) {\n                gcd = gcd(gcd, nums[j]);\n                maxScore = Math.max(maxScore, (long) j - i + 1 * gcd);\n            }\n        }\n        return maxScore;\n    }\n    private long gcd(long a, long b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "timestamp": "2025-08-05T12:11:49.471827",
+  "code_extracted_previous": "public long maxGCDScore(int[] nums, int k) {\n        long maxScore = 0;\n        for (int i = 0; i < nums.length; i++) {\n            long gcd = nums[i];\n            for (int j = i; j < nums.length; j++) {\n                gcd = gcd(gcd, nums[j]);\n                maxScore = Math.max(maxScore, (long) j - i + 1 * gcd);\n            }\n        }\n        return maxScore;\n    }\n    private long gcd(long a, long b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.728490"
+}

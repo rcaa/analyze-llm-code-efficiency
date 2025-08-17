@@ -1,0 +1,15 @@
+{
+  "id": 2071,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maxTaskAssign(self, tasks: List[int], workers: List[int], pills: int, strength: int) -> int:\n        tasks.sort()\n        workers.sort()\n        j = 0\n        count = 0\n        for i in range(len(tasks)):\n            if j < len(workers) and workers[j] >= tasks[i]:\n                count += 1\n                j += 1\n            elif pills > 0:\n                pills -= 1\n                if j < len(workers) and workers[j] + strength >= tasks[i]:\n                    count += 1\n                    j += 1\n        return count\n```\nsolution: \n```python\nclass Solution:\n    def maxTaskAssign(self, tasks: List[int], workers: List[int], pills: int, strength: int) -> int:\n        tasks.sort()\n        workers.sort()\n        j = 0\n        count = 0\n        for i in range(len(tasks)):\n            if j < len(workers) and workers[j] >= tasks[i]:\n                count += 1\n                j += 1\n            elif pills > 0:\n                pills -= 1\n                if j < len(workers) and workers[j] + strength >= tasks[i]:\n                    count += 1\n                    j += 1\n        return count\n```\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(1)\nenergy implications: LOW \nexplanation: The solution first sorts both the tasks and workers arrays. It then iterates through the tasks, attempting to assign each task to the next available worker who meets the strength requirement. If no suitable worker is available and pills remain, a pill is used to increase the strength of a worker, allowing for task assignment.  The sorting operations dominate the time complexity, resulting in O(n log n + m log m). The algorithm uses a constant amount of additional space, leading to O(1) space complexity.  The energy implications are low as the algorithm performs a limited number of comparisons and arithmetic operations.",
+  "code": "solution:",
+  "timestamp": "2025-08-05T12:00:55.971597",
+  "code_extracted_previous": "class Solution:\n    def maxTaskAssign(self, tasks: List[int], workers: List[int], pills: int, strength: int) -> int:\n        tasks.sort()\n        workers.sort()\n        j = 0\n        count = 0\n        for i in range(len(tasks)):\n            if j < len(workers) and workers[j] >= tasks[i]:\n                count += 1\n                j += 1\n            elif pills > 0:\n                pills -= 1\n                if j < len(workers) and workers[j] + strength >= tasks[i]:\n                    count += 1\n                    j += 1\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.114277"
+}

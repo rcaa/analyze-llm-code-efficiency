@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def findKthNumber(self, n: int, k: int) -> int:\n        def count_steps(prefix, n):\n            steps = 0\n            curr, next_ = prefix, prefix + 1\n            while curr <= n:\n                steps += min(n + 1, next_) - curr\n                curr *= 10\n                next_ *= 10\n            return steps\n        \n        k -= 1\n        curr = 1\n        while k > 0:\n            steps = count_steps(curr, n)\n            if steps <= k:\n                k -= steps\n                curr += 1\n            else:\n                curr *= 10\n                k -= 1\n        return curr\n```\nefficiency: HIGH\ntime complexity: O(log n * log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a digit-tree (lexicographical) traversal without generating the full sequence. The count_steps function calculates how many numbers fall under a given prefix in O(log n) time; the outer loop walks the tree in O(log n) steps, yielding an overall O(log² n) complexity.",
+  "code": "class Solution:\n    def findKthNumber(self, n: int, k: int) -> int:\n        def count_steps(prefix, n):\n            steps = 0\n            curr, next_ = prefix, prefix + 1\n            while curr <= n:\n                steps += min(n + 1, next_) - curr\n                curr *= 10\n                next_ *= 10\n            return steps\n        \n        k -= 1\n        curr = 1\n        while k > 0:\n            steps = count_steps(curr, n)\n            if steps <= k:\n                k -= steps\n                curr += 1\n            else:\n                curr *= 10\n                k -= 1\n        return curr",
+  "timestamp": "2025-08-06T01:11:40.696781",
+  "code_extracted_previous": "class Solution:\n    def findKthNumber(self, n: int, k: int) -> int:\n        def count_steps(prefix, n):\n            steps = 0\n            curr, next_ = prefix, prefix + 1\n            while curr <= n:\n                steps += min(n + 1, next_) - curr\n                curr *= 10\n                next_ *= 10\n            return steps\n        \n        k -= 1\n        curr = 1\n        while k > 0:\n            steps = count_steps(curr, n)\n            if steps <= k:\n                k -= steps\n                curr += 1\n            else:\n                curr *= 10\n                k -= 1\n        return curr",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.209315"
+}

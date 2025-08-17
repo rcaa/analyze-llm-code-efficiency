@@ -1,0 +1,15 @@
+{
+  "id": 1860,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    vector<int> memLeak(int memory1, int memory2) {\n        long long mem1 = memory1, mem2 = memory2;\n        int time = 1;\n        while (true) {\n            if (mem1 >= mem2 && mem1 >= time) {\n                mem1 -= time;\n            } else if (mem2 > mem1 && mem2 >= time) {\n                mem2 -= time;\n            } else if (mem1 >= time) {\n                mem1 -= time;\n            } else {\n                break;\n            }\n            time++;\n        }\n        return {time, (int)mem1, (int)mem2};\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(max(memory1, memory2)^0.5)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through time, allocating memory to the stick with more available memory until it crashes, then returns the crash time and remaining memory.",
+  "code": "class Solution {\npublic:\n    vector<int> memLeak(int memory1, int memory2) {\n        long long mem1 = memory1, mem2 = memory2;\n        int time = 1;\n        while (true) {\n            if (mem1 >= mem2 && mem1 >= time) {\n                mem1 -= time;\n            } else if (mem2 > mem1 && mem2 >= time) {\n                mem2 -= time;\n            } else if (mem1 >= time) {\n                mem1 -= time;\n            } else {\n                break;\n            }\n            time++;\n        }\n        return {time, (int)mem1, (int)mem2};\n    }\n};",
+  "timestamp": "2025-08-05T15:54:20.267516",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> memLeak(int memory1, int memory2) {\n        long long mem1 = memory1, mem2 = memory2;\n        int time = 1;\n        while (true) {\n            if (mem1 >= mem2 && mem1 >= time) {\n                mem1 -= time;\n            } else if (mem2 > mem1 && mem2 >= time) {\n                mem2 -= time;\n            } else if (mem1 >= time) {\n                mem1 -= time;\n            } else {\n                break;\n            }\n            time++;\n        }\n        return {time, (int)mem1, (int)mem2};\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.977139"
+}

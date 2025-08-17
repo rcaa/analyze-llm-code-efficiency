@@ -1,0 +1,15 @@
+{
+  "id": 374,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\n/** \n * Forward declaration of guess API.\n * @param  num   your guess\n * @return \t     -1 if num is higher than the picked number\n *\t\t\t      1 if num is lower than the picked number\n *               otherwise return 0\n * int guess(int num);\n */\n\npublic class Solution extends GuessGame {\n    public int guessNumber(int n) {\n        int left = 1;\n        int right = n;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            int res = guess(mid);\n            if (res == 0) {\n                return mid;\n            } else if (res < 0) {\n                right = mid - 1;\n            } else {\n                left = mid + 1;\n            }\n        }\n        return left;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search halves the search space each iteration, minimizing API calls and CPU cycles.",
+  "code": "/** \n * Forward declaration of guess API.\n * @param  num   your guess\n * @return \t     -1 if num is higher than the picked number\n *\t\t\t      1 if num is lower than the picked number\n *               otherwise return 0\n * int guess(int num);\n */\n\npublic class Solution extends GuessGame {\n    public int guessNumber(int n) {\n        int left = 1;\n        int right = n;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            int res = guess(mid);\n            if (res == 0) {\n                return mid;\n            } else if (res < 0) {\n                right = mid - 1;\n            } else {\n                left = mid + 1;\n            }\n        }\n        return left;\n    }\n}",
+  "timestamp": "2025-08-05T13:46:21.146596",
+  "code_extracted_previous": "/** \n * Forward declaration of guess API.\n * @param  num   your guess\n * @return \t     -1 if num is higher than the picked number\n *\t\t\t      1 if num is lower than the picked number\n *               otherwise return 0\n * int guess(int num);\n */\n\npublic class Solution extends GuessGame {\n    public int guessNumber(int n) {\n        int left = 1;\n        int right = n;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            int res = guess(mid);\n            if (res == 0) {\n                return mid;\n            } else if (res < 0) {\n                right = mid - 1;\n            } else {\n                left = mid + 1;\n            }\n        }\n        return left;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.457834"
+}

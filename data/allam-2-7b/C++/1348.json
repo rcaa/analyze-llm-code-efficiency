@@ -1,0 +1,15 @@
+{
+  "id": 1348,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```cpp\n#include <iostream>\n#include <vector>\n#include <string>\n\nclass TweetCounts {\npublic:\n    TweetCounts() {}\n\n    void recordTweet(std::string tweetName, int time) {\n        tweets[tweetName][time]++;\n    }\n\n    vector<int> getTweetCountsPerFrequency(std::string freq, std::string tweetName, int startTime, int endTime) {\n        vector<int> countsPerFrequency;\n        for (int i = startTime; i < endTime; i += freq) {\n            countsPerFrequency.push_back(tweets[tweetName][i];\n        }\n        return countsPerFrequency;\n    }\n\nprivate:\n    std::map<std::string, std::map<int, int> tweets;\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nThe solution uses a map to store tweet counts for each tweetName and time. It iterates through the given time range using a for loop with the given frequency (every minute, hour, or day) and updates the tweet count for each time step. The resulting counts are then stored in a vector and returned. The time complexity is O(n), where n is the number of time steps, and the space complexity is O(n), as we store tweet counts for each tweetName and time. The energy implications are low, as the solution only requires a few operations and does not consume significant energy. ",
+  "code": "class TweetCounts {\npublic:\n    TweetCounts() {}\n\n    void recordTweet(std::string tweetName, int time) {\n        tweets[tweetName][time]++;\n    }\n\n    vector<int> getTweetCountsPerFrequency(std::string freq, std::string tweetName, int startTime, int endTime) {\n        vector<int> countsPerFrequency;\n        for (int i = startTime; i < endTime; i += freq) {\n            countsPerFrequency.push_back(tweets[tweetName][i];\n        }\n        return countsPerFrequency;\n    }\n\nprivate:\n    std::map<std::string, std::map<int, int> tweets;\n};",
+  "timestamp": "2025-08-05T15:01:27.960691",
+  "code_extracted_previous": "#include <iostream>\n#include <vector>\n#include <string>\n\nclass TweetCounts {\npublic:\n    TweetCounts() {}\n\n    void recordTweet(std::string tweetName, int time) {\n        tweets[tweetName][time]++;\n    }\n\n    vector<int> getTweetCountsPerFrequency(std::string freq, std::string tweetName, int startTime, int endTime) {\n        vector<int> countsPerFrequency;\n        for (int i = startTime; i < endTime; i += freq) {\n            countsPerFrequency.push_back(tweets[tweetName][i];\n        }\n        return countsPerFrequency;\n    }\n\nprivate:\n    std::map<std::string, std::map<int, int> tweets;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:12.085997"
+}

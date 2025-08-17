@@ -1,0 +1,15 @@
+{
+  "id": 2034,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```java\nimport java.util.TreeMap;\n\nclass StockPrice {\n\n    private TreeMap<Integer, Integer> priceMap;\n    private int latestTimestamp;\n\n    public StockPrice() {\n        priceMap = new TreeMap<>();\n        latestTimestamp = -1;\n    }\n    \n    public void update(int timestamp, int price) {\n        priceMap.put(timestamp, price);\n        latestTimestamp = Math.max(latestTimestamp, timestamp);\n    }\n    \n    public int current() {\n        return priceMap.get(latestTimestamp);\n    }\n    \n    public int maximum() {\n        return priceMap.lastEntry().getValue();\n    }\n    \n    public int minimum() {\n        return priceMap.firstEntry().getValue();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: \n- update: O(log n)\n- current: O(1)\n- maximum: O(1)\n- minimum: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a TreeMap to store timestamps and their corresponding prices. This allows for efficient insertion, retrieval, and finding of the minimum and maximum prices. The TreeMap automatically orders its entries by key (timestamp), enabling efficient retrieval of the minimum and maximum prices using firstEntry() and lastEntry() respectively. The latest timestamp is tracked separately to allow for O(1) retrieval of the current price.",
+  "code": "class StockPrice {\n\n    private TreeMap<Integer, Integer> priceMap;\n    private int latestTimestamp;\n\n    public StockPrice() {\n        priceMap = new TreeMap<>();\n        latestTimestamp = -1;\n    }\n    \n    public void update(int timestamp, int price) {\n        priceMap.put(timestamp, price);\n        latestTimestamp = Math.max(latestTimestamp, timestamp);\n    }\n    \n    public int current() {\n        return priceMap.get(latestTimestamp);\n    }\n    \n    public int maximum() {\n        return priceMap.lastEntry().getValue();\n    }\n    \n    public int minimum() {\n        return priceMap.firstEntry().getValue();\n    }\n}",
+  "timestamp": "2025-08-05T15:08:16.588292",
+  "code_extracted_previous": "import java.util.TreeMap;\n\nclass StockPrice {\n\n    private TreeMap<Integer, Integer> priceMap;\n    private int latestTimestamp;\n\n    public StockPrice() {\n        priceMap = new TreeMap<>();\n        latestTimestamp = -1;\n    }\n    \n    public void update(int timestamp, int price) {\n        priceMap.put(timestamp, price);\n        latestTimestamp = Math.max(latestTimestamp, timestamp);\n    }\n    \n    public int current() {\n        return priceMap.get(latestTimestamp);\n    }\n    \n    public int maximum() {\n        return priceMap.lastEntry().getValue();\n    }\n    \n    public int minimum() {\n        return priceMap.firstEntry().getValue();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:50.605570"
+}

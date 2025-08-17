@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def longestSubsequence(self, s: str, k: int) -> int:\n        count_ones = s.count('1')\n        binary_k = bin(k)[2:]\n        n = len(binary_k)\n        if count_ones <= n:\n            return len(s) - count_ones + count_ones\n        for i in range(n):\n            if binary_k[i] == '1':\n                if s[:len(s)-n+i].count('1') < n-i:\n                    return len(s) - (n-i) + (n-i)\n        return len(s) - count_ones + n\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the binary representation of k and counts the number of ones in s. It checks if the number of ones in the prefix of s is less than the remaining bits in the binary representation of k. If so, it returns the length of the longest subsequence.",
+  "code": "def longestSubsequence(self, s: str, k: int) -> int:\n        count_ones = s.count('1')\n        binary_k = bin(k)[2:]\n        n = len(binary_k)\n        if count_ones <= n:\n            return len(s) - count_ones + count_ones\n        for i in range(n):\n            if binary_k[i] == '1':\n                if s[:len(s)-n+i].count('1') < n-i:\n                    return len(s) - (n-i) + (n-i)\n        return len(s) - count_ones + n\n```",
+  "timestamp": "2025-08-06T00:59:10.088911",
+  "code_extracted_previous": "class Solution:\n    def longestSubsequence(self, s: str, k: int) -> int:\n        count_ones = s.count('1')\n        binary_k = bin(k)[2:]\n        n = len(binary_k)\n        if count_ones <= n:\n            return len(s) - count_ones + count_ones\n        for i in range(n):\n            if binary_k[i] == '1':\n                if s[:len(s)-n+i].count('1') < n-i:\n                    return len(s) - (n-i) + (n-i)\n        return len(s) - count_ones + n",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.846284"
+}

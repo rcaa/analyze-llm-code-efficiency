@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass MyQueue {\n    private Stack<Integer> in;\n    private Stack<Integer> out;\n\n    public MyQueue() {\n        in = new Stack<>();\n        out = new Stack<>();\n    }\n    \n    public void push(int x) {\n        in.push(x);\n    }\n    \n    public int pop() {\n        if (out.isEmpty()) {\n            while (!in.isEmpty()) {\n                out.push(in.pop());\n            }\n        }\n        return out.pop();\n    }\n    \n    public int peek() {\n        if (out.isEmpty()) {\n            while (!in.isEmpty()) {\n                out.push(in.pop());\n            }\n        }\n        return out.peek();\n    }\n    \n    public boolean empty() {\n        return in.isEmpty() && out.isEmpty();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1) amortized\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Using two stacks to implement a queue, where one stack is used for enqueue (push) and the other for dequeue (pop and peek) operations.",
+  "code": "class MyQueue {\n    private Stack<Integer> in;\n    private Stack<Integer> out;\n\n    public MyQueue() {\n        in = new Stack<>();\n        out = new Stack<>();\n    }\n    \n    public void push(int x) {\n        in.push(x);\n    }\n    \n    public int pop() {\n        if (out.isEmpty()) {\n            while (!in.isEmpty()) {\n                out.push(in.pop());\n            }\n        }\n        return out.pop();\n    }\n    \n    public int peek() {\n        if (out.isEmpty()) {\n            while (!in.isEmpty()) {\n                out.push(in.pop());\n            }\n        }\n        return out.peek();\n    }\n    \n    public boolean empty() {\n        return in.isEmpty() && out.isEmpty();\n    }\n}",
+  "timestamp": "2025-08-05T16:01:03.964786",
+  "code_extracted_previous": "class MyQueue {\n    private Stack<Integer> in;\n    private Stack<Integer> out;\n\n    public MyQueue() {\n        in = new Stack<>();\n        out = new Stack<>();\n    }\n    \n    public void push(int x) {\n        in.push(x);\n    }\n    \n    public int pop() {\n        if (out.isEmpty()) {\n            while (!in.isEmpty()) {\n                out.push(in.pop());\n            }\n        }\n        return out.pop();\n    }\n    \n    public int peek() {\n        if (out.isEmpty()) {\n            while (!in.isEmpty()) {\n                out.push(in.pop());\n            }\n        }\n        return out.peek();\n    }\n    \n    public boolean empty() {\n        return in.isEmpty() && out.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:38.132145"
+}

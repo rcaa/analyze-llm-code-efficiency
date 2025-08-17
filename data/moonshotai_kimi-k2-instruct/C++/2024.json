@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        int n = answerKey.size();\n        auto longest = [&](char target) -> int {\n            int left = 0, maxLen = 0, count = 0;\n            for (int right = 0; right < n; ++right) {\n                if (answerKey[right] != target) ++count;\n                while (count > k) {\n                    if (answerKey[left] != target) --count;\n                    ++left;\n                }\n                maxLen = max(maxLen, right - left + 1);\n            }\n            return maxLen;\n        };\n        return max(longest('T'), longest('F'));\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window technique computes the longest run of either 'T' or 'F' after at most k flips. Two linear passes (one per character) give optimal O(n) time and constant space.",
+  "code": "class Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        int n = answerKey.size();\n        auto longest = [&](char target) -> int {\n            int left = 0, maxLen = 0, count = 0;\n            for (int right = 0; right < n; ++right) {\n                if (answerKey[right] != target) ++count;\n                while (count > k) {\n                    if (answerKey[left] != target) --count;\n                    ++left;\n                }\n                maxLen = max(maxLen, right - left + 1);\n            }\n            return maxLen;\n        };\n        return max(longest('T'), longest('F'));\n    }\n};",
+  "timestamp": "2025-08-06T00:56:46.263973",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        int n = answerKey.size();\n        auto longest = [&](char target) -> int {\n            int left = 0, maxLen = 0, count = 0;\n            for (int right = 0; right < n; ++right) {\n                if (answerKey[right] != target) ++count;\n                while (count > k) {\n                    if (answerKey[left] != target) --count;\n                    ++left;\n                }\n                maxLen = max(maxLen, right - left + 1);\n            }\n            return maxLen;\n        };\n        return max(longest('T'), longest('F'));\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.396367"
+}

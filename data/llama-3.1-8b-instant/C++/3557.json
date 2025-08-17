@@ -1,0 +1,15 @@
+{
+  "id": 3557,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int maxSubstrings(string word) {\n        int n = word.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 3; j < n; j++) {\n                if (word[i] == word[j] && isMatch(word, i + 1, j - 1)) {\n                    res++;\n                }\n            }\n        }\n        return res;\n    }\n    \n    bool isMatch(string word, int start, int end) {\n        while (start <= end) {\n            if (word[start] != word[end]) return false;\n            start++;\n            end--;\n        }\n        return true;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int maxSubstrings(string word) {\n        int n = word.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 3; j < n; j++) {\n                if (word[i] == word[j] && isMatch(word, i + 1, j - 1)) {\n                    res++;\n                }\n            }\n        }\n        return res;\n    }\n    \n    bool isMatch(string word, int start, int end) {\n        while (start <= end) {\n            if (word[start] != word[end]) return false;\n            start++;\n            end--;\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-05T15:13:55.848903",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxSubstrings(string word) {\n        int n = word.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 3; j < n; j++) {\n                if (word[i] == word[j] && isMatch(word, i + 1, j - 1)) {\n                    res++;\n                }\n            }\n        }\n        return res;\n    }\n    \n    bool isMatch(string word, int start, int end) {\n        while (start <= end) {\n            if (word[start] != word[end]) return false;\n            start++;\n            end--;\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.448295"
+}

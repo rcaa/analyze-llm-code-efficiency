@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        \n        vector<pair<char, int>> freqVec(freq.begin(), freq.end());\n        sort(freqVec.begin(), freqVec.end(), [](const auto& a, const auto& b) {\n            return a.second > b.second;\n        });\n        \n        string result;\n        for (const auto& pair : freqVec) {\n            result += string(pair.second, pair.first);\n        }\n        \n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses an unordered_map to count the frequency of each character, then converts it to a vector of pairs and sorts it in descending order of frequency. Finally, it constructs the result string by concatenating each character a number of times equal to its frequency.",
+  "code": "class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        \n        vector<pair<char, int>> freqVec(freq.begin(), freq.end());\n        sort(freqVec.begin(), freqVec.end(), [](const auto& a, const auto& b) {\n            return a.second > b.second;\n        });\n        \n        string result;\n        for (const auto& pair : freqVec) {\n            result += string(pair.second, pair.first);\n        }\n        \n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T14:53:59.643076",
+  "code_extracted_previous": "class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        \n        vector<pair<char, int>> freqVec(freq.begin(), freq.end());\n        sort(freqVec.begin(), freqVec.end(), [](const auto& a, const auto& b) {\n            return a.second > b.second;\n        });\n        \n        string result;\n        for (const auto& pair : freqVec) {\n            result += string(pair.second, pair.first);\n        }\n        \n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.652839"
+}

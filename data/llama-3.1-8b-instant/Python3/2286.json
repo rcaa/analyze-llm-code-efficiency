@@ -1,0 +1,15 @@
+{
+  "id": 2286,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```python\nfrom typing import List\n\nclass BookMyShow:\n\n    def __init__(self, n: int, m: int):\n        self.n = n\n        self.m = m\n        self.rows = [[0]*m for _ in range(n)]\n\n    def gather(self, k: int, maxRow: int) -> List[int]:\n        for r in range(min(maxRow+1, self.n)):\n            if sum(self.rows[r]) + k <= self.m:\n                return [r, sum(self.rows[r]) % self.m]\n        return []\n\n    def scatter(self, k: int, maxRow: int) -> bool:\n        for r in range(min(maxRow+1, self.n)):\n            for c in range(self.m):\n                if sum(self.rows[r]) < self.m and (sum(self.rows[r]) + k <= self.m):\n                    self.rows[r][c % self.m] = 1\n                    if c + k <= self.m:\n                        for i in range(1, k):\n                            self.rows[r][(c + i) % self.m] = 1\n                    return True\n        return False\n```\n\nsolution: \nefficiency: HIGH\ntime complexity: O(n*m + k)\nspace complexity: O(n*m)\nenergy implications: LOW",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-05T13:38:51.428751",
+  "code_extracted_previous": "from typing import List\n\nclass BookMyShow:\n\n    def __init__(self, n: int, m: int):\n        self.n = n\n        self.m = m\n        self.rows = [[0]*m for _ in range(n)]\n\n    def gather(self, k: int, maxRow: int) -> List[int]:\n        for r in range(min(maxRow+1, self.n)):\n            if sum(self.rows[r]) + k <= self.m:\n                return [r, sum(self.rows[r]) % self.m]\n        return []\n\n    def scatter(self, k: int, maxRow: int) -> bool:\n        for r in range(min(maxRow+1, self.n)):\n            for c in range(self.m):\n                if sum(self.rows[r]) < self.m and (sum(self.rows[r]) + k <= self.m):\n                    self.rows[r][c % self.m] = 1\n                    if c + k <= self.m:\n                        for i in range(1, k):\n                            self.rows[r][(c + i) % self.m] = 1\n                    return True\n        return False",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:30.646813"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1147,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int longestDecomposition(String text) {\n        int n = text.length();\n        for (int i = 1; i <= n / 2; i++) {\n            String prefix = text.substring(0, i);\n            String suffix = text.substring(n - i);\n            if (prefix.equals(suffix)) {\n                String remaining = text.substring(i, n - i);\n                if (remaining.isEmpty()) {\n                    return 2;\n                } else {\n                    Solution solution = new Solution();\n                    return 2 + solution.longestDecomposition(remaining);\n                }\n            }\n        }\n        return 1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The approach checks for matching prefixes and suffixes, then recursively decomposes the remaining string.",
+  "code": "class Solution {\n    public int longestDecomposition(String text) {\n        int n = text.length();\n        for (int i = 1; i <= n / 2; i++) {\n            String prefix = text.substring(0, i);\n            String suffix = text.substring(n - i);\n            if (prefix.equals(suffix)) {\n                String remaining = text.substring(i, n - i);\n                if (remaining.isEmpty()) {\n                    return 2;\n                } else {\n                    Solution solution = new Solution();\n                    return 2 + solution.longestDecomposition(remaining);\n                }\n            }\n        }\n        return 1;\n    }\n}",
+  "timestamp": "2025-08-06T01:13:57.871123",
+  "code_extracted_previous": "class Solution {\n    public int longestDecomposition(String text) {\n        int n = text.length();\n        for (int i = 1; i <= n / 2; i++) {\n            String prefix = text.substring(0, i);\n            String suffix = text.substring(n - i);\n            if (prefix.equals(suffix)) {\n                String remaining = text.substring(i, n - i);\n                if (remaining.isEmpty()) {\n                    return 2;\n                } else {\n                    Solution solution = new Solution();\n                    return 2 + solution.longestDecomposition(remaining);\n                }\n            }\n        }\n        return 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.272682"
+}

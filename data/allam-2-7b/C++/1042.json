@@ -1,0 +1,15 @@
+{
+  "id": 1042,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n        vector<int> answer(n+1, 1);\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < paths.size(); j++) {\n                int x = paths[j][0], y = paths[j][1];\n                if (answer[x] == 1) {\n                    answer[y] = 2;\n                } else if (answer[y] == 1) {\n                    answer[x] = 2;\n                } else if (answer[x] == 2) {\n                    answer[y] = 3;\n                } else {\n                    answer[y] = 4;\n                }\n            }\n        }\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use a nested loop to iterate through all possible pairs of gardens connected by a path. For each pair, we check if either garden has already been assigned a flower type. If so, we assign the opposite flower type to the unassigned garden. This ensures that for any two gardens connected by a path, they have different flower types. The solution is efficient because we only need to check each pair of gardens once. The time complexity is O(n^2) because there are n*(n-1)/2 pairs of gardens to check. The space complexity is O(n) because we only use a single array to store the flower types. The energy implications are low because the algorithm only performs a constant amount of operations for each pair of gardens. ",
+  "code": "class Solution {\npublic:\n    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n        vector<int> answer(n+1, 1);\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < paths.size(); j++) {\n                int x = paths[j][0], y = paths[j][1];\n                if (answer[x] == 1) {\n                    answer[y] = 2;\n                } else if (answer[y] == 1) {\n                    answer[x] = 2;\n                } else if (answer[x] == 2) {\n                    answer[y] = 3;\n                } else {\n                    answer[y] = 4;\n                }\n            }\n        }\n    }\n};",
+  "timestamp": "2025-08-05T14:02:11.832506",
+  "code_extracted_previous": "public:\n    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n        vector<int> answer(n+1, 1);\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < paths.size(); j++) {\n                int x = paths[j][0], y = paths[j][1];\n                if (answer[x] == 1) {\n                    answer[y] = 2;\n                } else if (answer[y] == 1) {\n                    answer[x] = 2;\n                } else if (answer[x] == 2) {\n                    answer[y] = 3;\n                } else {\n                    answer[y] = 4;\n                }\n            }\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:11.995572"
+}

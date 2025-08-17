@@ -1,0 +1,15 @@
+{
+  "id": 1963,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int minSwaps(String s) {\n        int openNeeded = 0;\n        int closeSeen = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '[') {\n                if (closeSeen > 0) {\n                    closeSeen--;\n                }\n            } else {\n                closeSeen++;\n                openNeeded = Math.max(openNeeded, (closeSeen + 1) / 2);\n            }\n        }\n        return openNeeded;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Track the number of unmatched closing brackets; each pair of unmatched closers requires one swap. The formula (closeSeen + 1) / 2 gives the minimal swaps needed to balance the prefix.",
+  "code": "class Solution {\n    public int minSwaps(String s) {\n        int openNeeded = 0;\n        int closeSeen = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '[') {\n                if (closeSeen > 0) {\n                    closeSeen--;\n                }\n            } else {\n                closeSeen++;\n                openNeeded = Math.max(openNeeded, (closeSeen + 1) / 2);\n            }\n        }\n        return openNeeded;\n    }\n}",
+  "timestamp": "2025-08-06T01:44:36.425341",
+  "code_extracted_previous": "public int minSwaps(String s) {\n        int openNeeded = 0;\n        int closeSeen = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '[') {\n                if (closeSeen > 0) {\n                    closeSeen--;\n                }\n            } else {\n                closeSeen++;\n                openNeeded = Math.max(openNeeded, (closeSeen + 1) / 2);\n            }\n        }\n        return openNeeded;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.692261"
+}

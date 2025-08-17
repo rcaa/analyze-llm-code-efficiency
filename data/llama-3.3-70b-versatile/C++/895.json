@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        freq[val]++;\n        maxFreq = max(maxFreq, freq[val]);\n        group[maxFreq].push_back(val);\n    }\n    \n    int pop() {\n        int val = group[maxFreq].back();\n        group[maxFreq].pop_back();\n        freq[val]--;\n        if (group[maxFreq].empty()) maxFreq--;\n        return val;\n    }\nprivate:\n    unordered_map<int, int> freq;\n    int maxFreq = 0;\n    unordered_map<int, vector<int>> group;\n};\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizing a frequency map and a group map to track the frequency of elements and their order, allowing for efficient push and pop operations.",
+  "code": "class FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        freq[val]++;\n        maxFreq = max(maxFreq, freq[val]);\n        group[maxFreq].push_back(val);\n    }\n    \n    int pop() {\n        int val = group[maxFreq].back();\n        group[maxFreq].pop_back();\n        freq[val]--;\n        if (group[maxFreq].empty()) maxFreq--;\n        return val;\n    }\nprivate:\n    unordered_map<int, int> freq;\n    int maxFreq = 0;\n    unordered_map<int, vector<int>> group;\n};",
+  "timestamp": "2025-08-06T15:11:53.882906",
+  "code_extracted_previous": "class FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        freq[val]++;\n        maxFreq = max(maxFreq, freq[val]);\n        group[maxFreq].push_back(val);\n    }\n    \n    int pop() {\n        int val = group[maxFreq].back();\n        group[maxFreq].pop_back();\n        freq[val]--;\n        if (group[maxFreq].empty()) maxFreq--;\n        return val;\n    }\nprivate:\n    unordered_map<int, int> freq;\n    int maxFreq = 0;\n    unordered_map<int, vector<int>> group;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:33.132446"
+}

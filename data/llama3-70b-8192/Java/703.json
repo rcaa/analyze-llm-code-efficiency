@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n```java\nimport java.util.*;\n\nclass KthLargest {\n    private PriorityQueue<Integer> queue;\n    private int k;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.queue = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    public int add(int val) {\n        queue.offer(val);\n        if (queue.size() > k) {\n            queue.poll();\n        }\n        return queue.peek();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to maintain the kth largest score. The priority queue automatically keeps track of the k largest scores, and the add operation takes O(log k) time.",
+  "code": "class KthLargest {\n    private PriorityQueue<Integer> queue;\n    private int k;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.queue = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    public int add(int val) {\n        queue.offer(val);\n        if (queue.size() > k) {\n            queue.poll();\n        }\n        return queue.peek();\n    }\n}",
+  "timestamp": "2025-08-06T01:11:32.904630",
+  "code_extracted_previous": "import java.util.*;\n\nclass KthLargest {\n    private PriorityQueue<Integer> queue;\n    private int k;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.queue = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    public int add(int val) {\n        queue.offer(val);\n        if (queue.size() > k) {\n            queue.poll();\n        }\n        return queue.peek();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:38.682405"
+}

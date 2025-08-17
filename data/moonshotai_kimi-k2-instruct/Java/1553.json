@@ -1,0 +1,15 @@
+{
+  "id": 1553,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\n    public int minDays(int n) {\n        return dfs(n, new HashMap<>());\n    }\n    \n    private int dfs(int n, Map<Integer, Integer> memo) {\n        if (n <= 1) return n;\n        if (memo.containsKey(n)) return memo.get(n);\n        int res = 1 + Math.min(\n            n % 2 + dfs(n / 2, memo),\n            n % 3 + dfs(n / 3, memo)\n        );\n        memo.put(n, res);\n        return res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Uses memoized DFS with pruning: instead of simulating every possible path, it greedily chooses between the optimal divide-by-2 or divide-by-3 moves, adding the remainder as single-day steps. This reduces the state space to logarithmic depth, making it feasible for n up to 2 billion.",
+  "code": "class Solution {\n    public int minDays(int n) {\n        return dfs(n, new HashMap<>());\n    }\n    \n    private int dfs(int n, Map<Integer, Integer> memo) {\n        if (n <= 1) return n;\n        if (memo.containsKey(n)) return memo.get(n);\n        int res = 1 + Math.min(\n            n % 2 + dfs(n / 2, memo),\n            n % 3 + dfs(n / 3, memo)\n        );\n        memo.put(n, res);\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T02:30:45.503506",
+  "code_extracted_previous": "class Solution {\n    public int minDays(int n) {\n        return dfs(n, new HashMap<>());\n    }\n    \n    private int dfs(int n, Map<Integer, Integer> memo) {\n        if (n <= 1) return n;\n        if (memo.containsKey(n)) return memo.get(n);\n        int res = 1 + Math.min(\n            n % 2 + dfs(n / 2, memo),\n            n % 3 + dfs(n / 3, memo)\n        );\n        memo.put(n, res);\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.584016"
+}

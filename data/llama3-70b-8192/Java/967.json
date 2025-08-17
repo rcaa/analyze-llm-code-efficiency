@@ -1,0 +1,15 @@
+{
+  "id": 967,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int[] numsSameConsecDiff(int n, int k) {\n        List<Integer> res = new ArrayList<>();\n        if (n == 1) {\n            for (int i = 0; i <= 9; i++) {\n                res.add(i);\n            }\n            return res.stream().mapToInt(i -> i).toArray();\n        }\n        for (int i = 1; i <= 9; i++) {\n            dfs(res, i, i, n - 1, k);\n        }\n        return res.stream().mapToInt(i -> i).toArray();\n    }\n\n    private void dfs(List<Integer> res, int cur, int prev, int n, int k) {\n        if (n == 0) {\n            res.add(cur);\n            return;\n        }\n        for (int i = 0; i <= 9; i++) {\n            if (Math.abs(i - prev) == k) {\n                dfs(res, cur * 10 + i, i, n - 1, k);\n            }\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(9^n)\nspace complexity: O(9^n)\nenergy implications: LOW\nexplanation: This solution uses depth-first search to generate all possible numbers of length n with the given constraint. It starts with a digit from 1 to 9 and recursively appends digits that satisfy the constraint.",
+  "code": "class Solution {\n    public int[] numsSameConsecDiff(int n, int k) {\n        List<Integer> res = new ArrayList<>();\n        if (n == 1) {\n            for (int i = 0; i <= 9; i++) {\n                res.add(i);\n            }\n            return res.stream().mapToInt(i -> i).toArray();\n        }\n        for (int i = 1; i <= 9; i++) {\n            dfs(res, i, i, n - 1, k);\n        }\n        return res.stream().mapToInt(i -> i).toArray();\n    }\n\n    private void dfs(List<Integer> res, int cur, int prev, int n, int k) {\n        if (n == 0) {\n            res.add(cur);\n            return;\n        }\n        for (int i = 0; i <= 9; i++) {\n            if (Math.abs(i - prev) == k) {\n                dfs(res, cur * 10 + i, i, n - 1, k);\n            }\n        }\n    }\n}",
+  "timestamp": "2025-08-05T13:35:59.451822",
+  "code_extracted_previous": "class Solution {\n    public int[] numsSameConsecDiff(int n, int k) {\n        List<Integer> res = new ArrayList<>();\n        if (n == 1) {\n            for (int i = 0; i <= 9; i++) {\n                res.add(i);\n            }\n            return res.stream().mapToInt(i -> i).toArray();\n        }\n        for (int i = 1; i <= 9; i++) {\n            dfs(res, i, i, n - 1, k);\n        }\n        return res.stream().mapToInt(i -> i).toArray();\n    }\n\n    private void dfs(List<Integer> res, int cur, int prev, int n, int k) {\n        if (n == 0) {\n            res.add(cur);\n            return;\n        }\n        for (int i = 0; i <= 9; i++) {\n            if (Math.abs(i - prev) == k) {\n                dfs(res, cur * 10 + i, i, n - 1, k);\n            }\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.784663"
+}

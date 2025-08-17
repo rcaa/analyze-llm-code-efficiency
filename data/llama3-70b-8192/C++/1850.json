@@ -1,0 +1,15 @@
+{
+  "id": 1850,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int getMinSwaps(string num, int k) {\n        int n = num.size();\n        vector<int> idx(n);\n        for (int i = 0; i < n; i++) idx[i] = i;\n        sort(idx.begin(), idx.end(), [&](int a, int b) {\n            return num[a] < num[b];\n        });\n        int res = 0;\n        for (int i = 0; i < n - 1; i++) {\n            if (num[i] >= num[idx[i]]) continue;\n            int j = i + 1;\n            while (j < n && num[j] <= num[idx[i]]) j++;\n            j--;\n            swap(num[i], num[j]);\n            swap(idx[i], idx[j]);\n            res++;\n            k--;\n            if (k == 0) break;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a sorting-based approach to find the smallest wonderful integer and then iteratively swaps adjacent digits to reach the kth smallest wonderful integer.",
+  "code": "class Solution {\npublic:\n    int getMinSwaps(string num, int k) {\n        int n = num.size();\n        vector<int> idx(n);\n        for (int i = 0; i < n; i++) idx[i] = i;\n        sort(idx.begin(), idx.end(), [&](int a, int b) {\n            return num[a] < num[b];\n        });\n        int res = 0;\n        for (int i = 0; i < n - 1; i++) {\n            if (num[i] >= num[idx[i]]) continue;\n            int j = i + 1;\n            while (j < n && num[j] <= num[idx[i]]) j++;\n            j--;\n            swap(num[i], num[j]);\n            swap(idx[i], idx[j]);\n            res++;\n            k--;\n            if (k == 0) break;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:43:26.709575",
+  "code_extracted_previous": "class Solution {\npublic:\n    int getMinSwaps(string num, int k) {\n        int n = num.size();\n        vector<int> idx(n);\n        for (int i = 0; i < n; i++) idx[i] = i;\n        sort(idx.begin(), idx.end(), [&](int a, int b) {\n            return num[a] < num[b];\n        });\n        int res = 0;\n        for (int i = 0; i < n - 1; i++) {\n            if (num[i] >= num[idx[i]]) continue;\n            int j = i + 1;\n            while (j < n && num[j] <= num[idx[i]]) j++;\n            j--;\n            swap(num[i], num[j]);\n            swap(idx[i], idx[j]);\n            res++;\n            k--;\n            if (k == 0) break;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.306649"
+}

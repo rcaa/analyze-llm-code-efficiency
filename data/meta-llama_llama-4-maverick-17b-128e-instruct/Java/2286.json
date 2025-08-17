@@ -1,0 +1,15 @@
+{
+  "id": 2286,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass BookMyShow {\n    int n, m;\n    int[] minEmptySeats; // min empty seats in each row\n    int[] totalEmptySeats; // total empty seats in each row\n    int[] seats; // seats in each row\n\n    public BookMyShow(int n, int m) {\n        this.n = n;\n        this.m = m;\n        minEmptySeats = new int[n];\n        totalEmptySeats = new int[n];\n        seats = new int[n];\n        for (int i = 0; i < n; i++) {\n            minEmptySeats[i] = m;\n            totalEmptySeats[i] = m;\n            seats[i] = 0;\n        }\n    }\n\n    public int[] gather(int k, int maxRow) {\n        for (int i = 0; i <= maxRow; i++) {\n            if (totalEmptySeats[i] >= k) {\n                int start = seats[i];\n                int end = start + k - 1;\n                if (end < m && minEmptySeats[i] >= k) {\n                    seats[i] += k;\n                    totalEmptySeats[i] -= k;\n                    if (totalEmptySeats[i] == 0) minEmptySeats[i] = m;\n                    else minEmptySeats[i] = m - seats[i];\n                    return new int[] {i, start};\n                }\n            }\n        }\n        return new int[] {};\n    }\n\n    public boolean scatter(int k, int maxRow) {\n        int total = 0;\n        for (int i = 0; i <= maxRow; i++) {\n            total += totalEmptySeats[i];\n            if (total >= k) {\n                for (int j = 0; j <= i; j++) {\n                    int allocated = Math.min(k, totalEmptySeats[j]);\n                    seats[j] += allocated;\n                    totalEmptySeats[j] -= allocated;\n                    k -= allocated;\n                    minEmptySeats[j] = m - seats[j];\n                }\n                return true;\n            }\n        }\n        return false;\n    }\n}\n\n/**\n * Your BookMyShow object will be instantiated and called as such:\n * BookMyShow obj = new BookMyShow(n, m);\n * int[] param_1 = obj.gather(k,maxRow);\n * boolean param_2 = obj.scatter(k,maxRow);\n */\nsolution: \n```java\n// above code here\n```\nefficiency: HIGH\ntime complexity: O(n) for both gather and scatter\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses arrays to track the state of each row, allowing for efficient queries and updates. The `gather` method iterates over rows to find the first available block of seats, while `scatter` accumulates total empty seats across rows to determine if a group can be accommodated. Both methods operate within the given constraints, ensuring a high efficiency.",
+  "code": "// above code here",
+  "timestamp": "2025-08-05T13:38:27.375728",
+  "code_extracted_previous": "// above code here",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:46.516085"
+}

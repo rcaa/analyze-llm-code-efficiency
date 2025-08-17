@@ -1,0 +1,15 @@
+{
+  "id": 3081,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```java\nclass Solution {\n    public String minimizeStringValue(String s) {\n        int[] count = new int[26];\n        int total = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '?') total++;\n            else count[c - 'a']++;\n        }\n        StringBuilder sb = new StringBuilder();\n        int idx = 0;\n        for (char c : s.toCharArray()) {\n            if (c != '?') {\n                sb.append(c);\n            } else {\n                while (count[idx] != 0) idx++;\n                sb.append((char) ('a' + idx));\n                count[idx]++;\n                total--;\n                if (total == 0) idx = 26;\n            }\n        }\n        return sb.toString();\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over the input string, maintaining a count of each lowercase letter. It replaces '?' with the lexicographically smallest available character, ensuring the minimum value. The use of a count array and a single pass through the string results in high efficiency.",
+  "code": "```java\nclass Solution {\n    public String minimizeStringValue(String s) {\n        int[] count = new int[26];\n        int total = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '?') total++;\n            else count[c - 'a']++;\n        }\n        StringBuilder sb = new StringBuilder();\n        int idx = 0;\n        for (char c : s.toCharArray()) {\n            if (c != '?') {\n                sb.append(c);\n            } else {\n                while (count[idx] != 0) idx++;\n                sb.append((char) ('a' + idx));\n                count[idx]++;\n                total--;\n                if (total == 0) idx = 26;\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-05T15:11:31.058278",
+  "code_extracted_previous": "",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.757316"
+}

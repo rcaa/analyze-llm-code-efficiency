@@ -1,0 +1,15 @@
+{
+  "id": 2193,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int minMovesToMakePalindrome(String s) {\n        char[] a = s.toCharArray();\n        int n = a.length, res = 0;\n        for (int l = 0, r = n - 1; l < r; ) {\n            if (a[l] == a[r]) { l++; r--; continue; }\n            int k = r;\n            while (k > l && a[k] != a[l]) k--;\n            if (k == l) {\n                swap(a, k, k + 1);\n                res++;\n                continue;\n            }\n            while (k < r) { swap(a, k, k + 1); res++; k++; }\n            l++; r--;\n        }\n        return res;\n    }\n    private void swap(char[] a, int i, int j) {\n        char t = a[i]; a[i] = a[j]; a[j] = t;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n²)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Greedy two-pointer sweep: fix the outermost pair by moving the matching character to its mirror position with adjacent swaps, counting each swap. When no partner exists on the right, the lone character must be the middle; swap it once to the center and continue. Guarantees minimal moves by always fixing the outermost pair first.",
+  "code": "class Solution {\n    public int minMovesToMakePalindrome(String s) {\n        char[] a = s.toCharArray();\n        int n = a.length, res = 0;\n        for (int l = 0, r = n - 1; l < r; ) {\n            if (a[l] == a[r]) { l++; r--; continue; }\n            int k = r;\n            while (k > l && a[k] != a[l]) k--;\n            if (k == l) {\n                swap(a, k, k + 1);\n                res++;\n                continue;\n            }\n            while (k < r) { swap(a, k, k + 1); res++; k++; }\n            l++; r--;\n        }\n        return res;\n    }\n    private void swap(char[] a, int i, int j) {\n        char t = a[i]; a[i] = a[j]; a[j] = t;\n    }\n}",
+  "timestamp": "2025-08-06T01:15:27.665266",
+  "code_extracted_previous": "class Solution {\n    public int minMovesToMakePalindrome(String s) {\n        char[] a = s.toCharArray();\n        int n = a.length, res = 0;\n        for (int l = 0, r = n - 1; l < r; ) {\n            if (a[l] == a[r]) { l++; r--; continue; }\n            int k = r;\n            while (k > l && a[k] != a[l]) k--;\n            if (k == l) {\n                swap(a, k, k + 1);\n                res++;\n                continue;\n            }\n            while (k < r) { swap(a, k, k + 1); res++; k++; }\n            l++; r--;\n        }\n        return res;\n    }\n    private void swap(char[] a, int i, int j) {\n        char t = a[i]; a[i] = a[j]; a[j] = t;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.879440"
+}

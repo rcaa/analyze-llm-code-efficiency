@@ -1,0 +1,15 @@
+{
+  "id": 3302,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int[] validSequence(String word1, String word2) {\n        int m = word1.length(), n = word2.length();\n        int[] res = new int[n];\n        int i = m - 1, j = n - 1, diffCount = 0;\n        while (j >= 0) {\n            if (i < j) return new int[0];\n            if (word1.charAt(i) != word2.charAt(j)) {\n                if (diffCount == 1) return new int[0];\n                diffCount++;\n            }\n            res[j--] = i--;\n        }\n        if (diffCount == 1 || n == m) return res;\n        else return new int[0];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution iterates through both strings from the end, maintaining a count of differences between the characters. It constructs the result array in reverse order, ensuring the lexicographically smallest sequence is obtained by using the largest valid index for each character in word2.",
+  "code": "class Solution {\n    public int[] validSequence(String word1, String word2) {\n        int m = word1.length(), n = word2.length();\n        int[] res = new int[n];\n        int i = m - 1, j = n - 1, diffCount = 0;\n        while (j >= 0) {\n            if (i < j) return new int[0];\n            if (word1.charAt(i) != word2.charAt(j)) {\n                if (diffCount == 1) return new int[0];\n                diffCount++;\n            }\n            res[j--] = i--;\n        }\n        if (diffCount == 1 || n == m) return res;\n        else return new int[0];\n    }\n}",
+  "timestamp": "2025-08-06T01:50:15.591031",
+  "code_extracted_previous": "class Solution {\n    public int[] validSequence(String word1, String word2) {\n        int m = word1.length(), n = word2.length();\n        int[] res = new int[n];\n        int i = m - 1, j = n - 1, diffCount = 0;\n        while (j >= 0) {\n            if (i < j) return new int[0];\n            if (word1.charAt(i) != word2.charAt(j)) {\n                if (diffCount == 1) return new int[0];\n                diffCount++;\n            }\n            res[j--] = i--;\n        }\n        if (diffCount == 1 || n == m) return res;\n        else return new int[0];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.793011"
+}

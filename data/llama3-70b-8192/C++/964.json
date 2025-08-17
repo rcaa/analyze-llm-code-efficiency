@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        if (target == x) return 0;\n        if (target < x) return 2;\n        int res = 0, t = target;\n        for (int d = 2; d <= t / d; ++d) {\n            if (t % d == 0) {\n                int c = 0;\n                for (long long y = x; y <= t; y *= d) {\n                    c++;\n                    if (y == t) {\n                        res = c + (c - 1);\n                        break;\n                    }\n                }\n                if (res) break;\n            }\n        }\n        if (!res) res = (int)log2(t) + (t + x - 1) / x + 1;\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(sqrt(target) * log(target))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a combination of division and multiplication to find the least number of operators. It first checks if the target is a power of x, and if so, returns the corresponding number of operations. If not, it calculates the minimum number of operations using logarithms.",
+  "code": "class Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        if (target == x) return 0;\n        if (target < x) return 2;\n        int res = 0, t = target;\n        for (int d = 2; d <= t / d; ++d) {\n            if (t % d == 0) {\n                int c = 0;\n                for (long long y = x; y <= t; y *= d) {\n                    c++;\n                    if (y == t) {\n                        res = c + (c - 1);\n                        break;\n                    }\n                }\n                if (res) break;\n            }\n        }\n        if (!res) res = (int)log2(t) + (t + x - 1) / x + 1;\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:18:56.385141",
+  "code_extracted_previous": "class Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        if (target == x) return 0;\n        if (target < x) return 2;\n        int res = 0, t = target;\n        for (int d = 2; d <= t / d; ++d) {\n            if (t % d == 0) {\n                int c = 0;\n                for (long long y = x; y <= t; y *= d) {\n                    c++;\n                    if (y == t) {\n                        res = c + (c - 1);\n                        break;\n                    }\n                }\n                if (res) break;\n            }\n        }\n        if (!res) res = (int)log2(t) + (t + x - 1) / x + 1;\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.179406"
+}

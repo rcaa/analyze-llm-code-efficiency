@@ -1,0 +1,15 @@
+{
+  "id": 5,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    string longestPalindrome(string s) {\n        string res;\n        for (int i = 0; i < s.size(); i++) {\n            string tmp1 = helper(s, i, i);\n            string tmp2 = helper(s, i, i + 1);\n            res = res.size() > tmp1.size() ? res : tmp1;\n            res = res.size() > tmp2.size() ? res : tmp2;\n        }\n        return res;\n    }\n    \n    string helper(string s, int l, int r) {\n        while (l >= 0 && r < s.size() && s[l] == s[r]) {\n            l--;\n            r++;\n        }\n        return s.substr(l + 1, r - l - 1);\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Expand around the center approach is used to find the longest palindromic substring, considering both odd and even length palindromes.",
+  "code": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        string res;\n        for (int i = 0; i < s.size(); i++) {\n            string tmp1 = helper(s, i, i);\n            string tmp2 = helper(s, i, i + 1);\n            res = res.size() > tmp1.size() ? res : tmp1;\n            res = res.size() > tmp2.size() ? res : tmp2;\n        }\n        return res;\n    }\n    \n    string helper(string s, int l, int r) {\n        while (l >= 0 && r < s.size() && s[l] == s[r]) {\n            l--;\n            r++;\n        }\n        return s.substr(l + 1, r - l - 1);\n    }\n};",
+  "timestamp": "2025-08-06T01:34:36.942033",
+  "code_extracted_previous": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        string res;\n        for (int i = 0; i < s.size(); i++) {\n            string tmp1 = helper(s, i, i);\n            string tmp2 = helper(s, i, i + 1);\n            res = res.size() > tmp1.size() ? res : tmp1;\n            res = res.size() > tmp2.size() ? res : tmp2;\n        }\n        return res;\n    }\n    \n    string helper(string s, int l, int r) {\n        while (l >= 0 && r < s.size() && s[l] == s[r]) {\n            l--;\n            r++;\n        }\n        return s.substr(l + 1, r - l - 1);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.914504"
+}

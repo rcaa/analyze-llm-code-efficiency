@@ -1,0 +1,15 @@
+{
+  "id": 2287,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int rearrangeCharacters(String s, String target) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j < s.length(); j++) {\n                if (s.charAt(i) == target.charAt(0)) {\n                    int j_target = 0;\n                    while (j_target < target.length() && s.charAt(j) == target.charAt(j_target)) {\n                        j_target++;\n                    }\n                    count += j - i;\n                }\n            }\n        }\n        return count;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n1. Iterate through the characters of s and compare each character with the first character of target.\n2. If a match is found, iterate through the remaining characters of target until a non-match is found or the end of target is reached.\n3. For each match found, add the difference between the current indices (j - i) to the count.\n4. Return the final count.\n\nThis solution has a time complexity of O(n) because we iterate through the strings once. The space complexity is O(1) because we only use a single integer variable for counting. The energy implications are low because the algorithm does not involve any complex operations or data structures. ",
+  "code": "class Solution {\n    public int rearrangeCharacters(String s, String target) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j < s.length(); j++) {\n                if (s.charAt(i) == target.charAt(0)) {\n                    int j_target = 0;\n                    while (j_target < target.length() && s.charAt(j) == target.charAt(j_target)) {\n                        j_target++;\n                    }\n                    count += j - i;\n                }\n            }\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T14:45:24.096316",
+  "code_extracted_previous": "class Solution {\n    public int rearrangeCharacters(String s, String target) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j < s.length(); j++) {\n                if (s.charAt(i) == target.charAt(0)) {\n                    int j_target = 0;\n                    while (j_target < target.length() && s.charAt(j) == target.charAt(j_target)) {\n                        j_target++;\n                    }\n                    count += j - i;\n                }\n            }\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.975200"
+}

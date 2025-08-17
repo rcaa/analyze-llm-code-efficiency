@@ -1,0 +1,15 @@
+{
+  "id": 1278,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int palindromePartition(string s, int k) {\n        int n = s.length();\n        vector<vector<char>> dp(n, vector<char>(n));\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                if (i == j) {\n                    dp[i][j] = s[i] - 'a' + 1;\n                } else if (s[i] == s[j]) {\n                    dp[i][j] = 1;\n                } else {\n                    dp[i][j] = 2;\n                }\n            }\n        }\n\n        int result = 0;\n        for (int i = 0; i < n; i++) {\n            result = max(result, dp[i][i + k - 1]);\n        }\n\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\nWe use a 2D dynamic programming table to store the minimum number of characters to be changed to form a palindrome substring starting from index i and ending at index i + k - 1. We iterate through the string once to fill the dp table and then iterate through the string again to find the maximum value in the dp table at index i. The final result is the maximum value in the dp table at index i. ",
+  "code": "class Solution {\npublic:\n    int palindromePartition(string s, int k) {\n        int n = s.length();\n        vector<vector<char>> dp(n, vector<char>(n));\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                if (i == j) {\n                    dp[i][j] = s[i] - 'a' + 1;\n                } else if (s[i] == s[j]) {\n                    dp[i][j] = 1;\n                } else {\n                    dp[i][j] = 2;\n                }\n            }\n        }\n\n        int result = 0;\n        for (int i = 0; i < n; i++) {\n            result = max(result, dp[i][i + k - 1]);\n        }\n\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T16:10:44.145957",
+  "code_extracted_previous": "public:\n    int palindromePartition(string s, int k) {\n        int n = s.length();\n        vector<vector<char>> dp(n, vector<char>(n));\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                if (i == j) {\n                    dp[i][j] = s[i] - 'a' + 1;\n                } else if (s[i] == s[j]) {\n                    dp[i][j] = 1;\n                } else {\n                    dp[i][j] = 2;\n                }\n            }\n        }\n\n        int result = 0;\n        for (int i = 0; i < n; i++) {\n            result = max(result, dp[i][i + k - 1]);\n        }\n\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.054824"
+}

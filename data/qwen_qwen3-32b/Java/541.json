@@ -1,0 +1,15 @@
+{
+  "id": 541,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public String reverseStr(String s, int k) {\n        char[] chars = s.toCharArray();\n        for (int i = 0; i < chars.length; i += 2 * k) {\n            int left = i;\n            int right = Math.min(i + k - 1, chars.length - 1);\n            while (left < right) {\n                char temp = chars[left];\n                chars[right] = chars[left];\n                chars[left] = temp;\n                left++;\n                right--;\n            }\n        }\n        return new String(chars);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution processes the string in chunks of 2k characters. For each chunk, it reverses the first k characters. This is done in-place on a character array for efficiency, and the reversal is handled with a two-pointer approach. The algorithm ensures that all edge cases (e.g., fewer than k characters remaining) are naturally handled by using `Math.min()` to clamp the right index.",
+  "code": "class Solution {\n    public String reverseStr(String s, int k) {\n        char[] chars = s.toCharArray();\n        for (int i = 0; i < chars.length; i += 2 * k) {\n            int left = i;\n            int right = Math.min(i + k - 1, chars.length - 1);\n            while (left < right) {\n                char temp = chars[left];\n                chars[right] = chars[left];\n                chars[left] = temp;\n                left++;\n                right--;\n            }\n        }\n        return new String(chars);\n    }\n}",
+  "timestamp": "2025-08-06T01:27:25.699015",
+  "code_extracted_previous": "class Solution {\n    public String reverseStr(String s, int k) {\n        char[] chars = s.toCharArray();\n        for (int i = 0; i < chars.length; i += 2 * k) {\n            int left = i;\n            int right = Math.min(i + k - 1, chars.length - 1);\n            while (left < right) {\n                char temp = chars[left];\n                chars[right] = chars[left];\n                chars[left] = temp;\n                left++;\n                right--;\n            }\n        }\n        return new String(chars);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:03.350086"
+}

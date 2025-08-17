@@ -1,0 +1,15 @@
+{
+  "id": 207,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        graph = [[] for _ in range(numCourses)]\n        visited = [0 for _ in range(numCourses)]\n        for x, y in prerequisites:\n            graph[x].append(y)\n\n        def dfs(i):\n            if visited[i] == -1:\n                return False\n            if visited[i] == 1:\n                return True\n            visited[i] = -1\n            for j in graph[i]:\n                if not dfs(j):\n                    return False\n            visited[i] = 1\n            return True\n\n        for i in range(numCourses):\n            if not dfs(i):\n                return False\n        return True\n```\nefficiency: HIGH\ntime complexity: O(N + P)\nspace complexity: O(N + P)\nenergy implications: LOW\nexplanation: This solution uses a depth-first search (DFS) approach to detect cycles in the graph, where N is the number of courses and P is the number of prerequisites.",
+  "code": "class Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        graph = [[] for _ in range(numCourses)]\n        visited = [0 for _ in range(numCourses)]\n        for x, y in prerequisites:\n            graph[x].append(y)\n\n        def dfs(i):\n            if visited[i] == -1:\n                return False\n            if visited[i] == 1:\n                return True\n            visited[i] = -1\n            for j in graph[i]:\n                if not dfs(j):\n                    return False\n            visited[i] = 1\n            return True\n\n        for i in range(numCourses):\n            if not dfs(i):\n                return False\n        return True",
+  "timestamp": "2025-08-05T13:57:13.763808",
+  "code_extracted_previous": "class Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        graph = [[] for _ in range(numCourses)]\n        visited = [0 for _ in range(numCourses)]\n        for x, y in prerequisites:\n            graph[x].append(y)\n\n        def dfs(i):\n            if visited[i] == -1:\n                return False\n            if visited[i] == 1:\n                return True\n            visited[i] = -1\n            for j in graph[i]:\n                if not dfs(j):\n                    return False\n            visited[i] = 1\n            return True\n\n        for i in range(numCourses):\n            if not dfs(i):\n                return False\n        return True",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.110387"
+}

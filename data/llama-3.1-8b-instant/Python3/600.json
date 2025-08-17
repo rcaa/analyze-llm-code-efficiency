@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution:\n    def findIntegers(self, n: int) -> int:\n        dp = [0] * 31\n        dp[0] = dp[1] = 1\n        for i in range(2, 31):\n            dp[i] = dp[i-1] + dp[i-2]\n        ans, last = 0, 0\n        for i in range(30, -1, -1):\n            if (n >> i) & 1:\n                ans += dp[i]\n                if last:\n                    return ans\n                last = 1\n            else:\n                last = 0\n        return ans + 1\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to precompute the number of integers without consecutive ones up to 30 bits. Then it iterates over the bits of the input number from most significant to least significant, adding the number of integers without consecutive ones for each bit to the total count. If a consecutive one is found, it returns the current count.",
+  "code": "class Solution:\n    def findIntegers(self, n: int) -> int:\n        dp = [0] * 31\n        dp[0] = dp[1] = 1\n        for i in range(2, 31):\n            dp[i] = dp[i-1] + dp[i-2]\n        ans, last = 0, 0\n        for i in range(30, -1, -1):\n            if (n >> i) & 1:\n                ans += dp[i]\n                if last:\n                    return ans\n                last = 1\n            else:\n                last = 0\n        return ans + 1",
+  "timestamp": "2025-08-05T14:15:41.425156",
+  "code_extracted_previous": "def findIntegers(self, n: int) -> int:\n        dp = [0] * 31\n        dp[0] = dp[1] = 1\n        for i in range(2, 31):\n            dp[i] = dp[i-1] + dp[i-2]\n        ans, last = 0, 0\n        for i in range(30, -1, -1):\n            if (n >> i) & 1:\n                ans += dp[i]\n                if last:\n                    return ans\n                last = 1\n            else:\n                last = 0\n        return ans + 1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.392629"
+}

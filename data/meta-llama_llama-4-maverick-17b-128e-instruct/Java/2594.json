@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public long repairCars(int[] ranks, int cars) {\n        long left = 0, right = (long) 1e14;\n        while (left < right) {\n            long mid = left + (right - left) / 2;\n            long count = 0;\n            for (int rank : ranks) {\n                count += (long) Math.sqrt(mid / rank);\n            }\n            if (count >= cars) {\n                right = mid;\n            } else {\n                left = mid + 1;\n            }\n        }\n        return left;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the minimum time. For each mid time, we calculate the total number of cars that can be repaired by all mechanics. If the total count is greater than or equal to the given number of cars, we update the right boundary to mid; otherwise, we update the left boundary to mid + 1.",
+  "code": "class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        long left = 0, right = (long) 1e14;\n        while (left < right) {\n            long mid = left + (right - left) / 2;\n            long count = 0;\n            for (int rank : ranks) {\n                count += (long) Math.sqrt(mid / rank);\n            }\n            if (count >= cars) {\n                right = mid;\n            } else {\n                left = mid + 1;\n            }\n        }\n        return left;\n    }\n}",
+  "timestamp": "2025-08-05T13:32:31.553170",
+  "code_extracted_previous": "class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        long left = 0, right = (long) 1e14;\n        while (left < right) {\n            long mid = left + (right - left) / 2;\n            long count = 0;\n            for (int rank : ranks) {\n                count += (long) Math.sqrt(mid / rank);\n            }\n            if (count >= cars) {\n                right = mid;\n            } else {\n                left = mid + 1;\n            }\n        }\n        return left;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.652809"
+}

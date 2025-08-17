@@ -1,0 +1,15 @@
+{
+  "id": 967,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    vector<int> numsSameConsecDiff(int n, int k) {\n        vector<int> result;\n        for (int i = 1; i <= 9; i++) {\n            dfs(i, n - 1, k, result);\n        }\n        return result;\n    }\n    \n    void dfs(int num, int n, int k, vector<int>& result) {\n        if (n == 0) {\n            result.push_back(num);\n            return;\n        }\n        int lastDigit = num % 10;\n        if (lastDigit - k >= 0) {\n            dfs(num * 10 + lastDigit - k, n - 1, k, result);\n        }\n        if (lastDigit + k <= 9 && k != 0) {\n            dfs(num * 10 + lastDigit + k, n - 1, k, result);\n        }\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(9 * 2^n)\nspace complexity: O(9 * 2^n)\nenergy implications: LOW\nexplanation: The solution uses depth-first search to generate all possible numbers of length n where the difference between every two consecutive digits is k. It starts with each digit from 1 to 9 and recursively appends the next possible digits. The time and space complexity are exponential due to the recursive nature of the solution.",
+  "code": "class Solution {\npublic:\n    vector<int> numsSameConsecDiff(int n, int k) {\n        vector<int> result;\n        for (int i = 1; i <= 9; i++) {\n            dfs(i, n - 1, k, result);\n        }\n        return result;\n    }\n    \n    void dfs(int num, int n, int k, vector<int>& result) {\n        if (n == 0) {\n            result.push_back(num);\n            return;\n        }\n        int lastDigit = num % 10;\n        if (lastDigit - k >= 0) {\n            dfs(num * 10 + lastDigit - k, n - 1, k, result);\n        }\n        if (lastDigit + k <= 9 && k != 0) {\n            dfs(num * 10 + lastDigit + k, n - 1, k, result);\n        }\n    }\n};",
+  "timestamp": "2025-08-06T15:12:07.306427",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> numsSameConsecDiff(int n, int k) {\n        vector<int> result;\n        for (int i = 1; i <= 9; i++) {\n            dfs(i, n - 1, k, result);\n        }\n        return result;\n    }\n    \n    void dfs(int num, int n, int k, vector<int>& result) {\n        if (n == 0) {\n            result.push_back(num);\n            return;\n        }\n        int lastDigit = num % 10;\n        if (lastDigit - k >= 0) {\n            dfs(num * 10 + lastDigit - k, n - 1, k, result);\n        }\n        if (lastDigit + k <= 9 && k != 0) {\n            dfs(num * 10 + lastDigit + k, n - 1, k, result);\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.164126"
+}

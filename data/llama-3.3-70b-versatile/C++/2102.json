@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass SORTracker {\npublic:\n    set<pair<int, string>> locations;\n    int query_count = 0;\n\n    SORTracker() {\n        \n    }\n    \n    void add(string name, int score) {\n        locations.insert({-score, name});\n    }\n    \n    string get() {\n        query_count++;\n        auto it = locations.begin();\n        for (int i = 0; i < query_count - 1; i++) {\n            it++;\n        }\n        return it->second;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(log n) for add, O(n) for get in the worst case\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a set to store locations, allowing for efficient insertion and retrieval. The get method iterates through the set to find the ith best location, resulting in a time complexity of O(n) in the worst case. However, the use of a set ensures that the locations are always sorted, making the add operation efficient with a time complexity of O(log n). The energy implications are low due to the efficient use of memory and minimal computational overhead.",
+  "code": "class SORTracker {\npublic:\n    set<pair<int, string>> locations;\n    int query_count = 0;\n\n    SORTracker() {\n        \n    }\n    \n    void add(string name, int score) {\n        locations.insert({-score, name});\n    }\n    \n    string get() {\n        query_count++;\n        auto it = locations.begin();\n        for (int i = 0; i < query_count - 1; i++) {\n            it++;\n        }\n        return it->second;\n    }\n};",
+  "timestamp": "2025-08-06T11:41:09.381134",
+  "code_extracted_previous": "class SORTracker {\npublic:\n    set<pair<int, string>> locations;\n    int query_count = 0;\n\n    SORTracker() {\n        \n    }\n    \n    void add(string name, int score) {\n        locations.insert({-score, name});\n    }\n    \n    string get() {\n        query_count++;\n        auto it = locations.begin();\n        for (int i = 0; i < query_count - 1; i++) {\n            it++;\n        }\n        return it->second;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:32.012446"
+}

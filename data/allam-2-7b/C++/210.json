@@ -1,0 +1,15 @@
+{
+  "id": 210,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {\n        vector<int> result;\n        vector<int> adjList(numCourses, -1);\n        for (auto prerequisite : prerequisites) {\n            adjList[prerequisite[1]] = prerequisite[0];\n        }\n        dfs(0, adjList);\n        return result;\n    }\n\n    void dfs(int course, vector<int>& adjList) {\n        result.push_back(course);\n        for (int neighbor : adjList[course]) {\n            dfs(neighbor, adjList);\n        }\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(E), where E is the number of edges in the graph\nspace complexity: O(V), where V is the number of vertices (courses)\nenergy implications: LOW\n\nExplanation:\n\nThe problem is solved using a Depth-First Search (DFS) algorithm. We create an adjacency list to store the connections between courses. Then, we iterate over the courses and mark them as visited in the DFS function. In the DFS function, we mark the current course as visited, then iterate over its neighbors and call DFS recursively for each neighbor. This ensures that we visit each course only once and find all the courses that can be taken after the current course.\n\nThe time complexity is O(E), where E is the number of edges in the graph. The space complexity is O(V), where V is the number of vertices (courses). The energy implications are low because the algorithm only requires a small amount of energy to solve the problem. ",
+  "code": "class Solution {\npublic:\n    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {\n        vector<int> result;\n        vector<int> adjList(numCourses, -1);\n        for (auto prerequisite : prerequisites) {\n            adjList[prerequisite[1]] = prerequisite[0];\n        }\n        dfs(0, adjList);\n        return result;\n    }\n\n    void dfs(int course, vector<int>& adjList) {\n        result.push_back(course);\n        for (int neighbor : adjList[course]) {\n            dfs(neighbor, adjList);\n        }\n    }\n};",
+  "timestamp": "2025-08-05T13:58:28.125914",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {\n        vector<int> result;\n        vector<int> adjList(numCourses, -1);\n        for (auto prerequisite : prerequisites) {\n            adjList[prerequisite[1]] = prerequisite[0];\n        }\n        dfs(0, adjList);\n        return result;\n    }\n\n    void dfs(int course, vector<int>& adjList) {\n        result.push_back(course);\n        for (int neighbor : adjList[course]) {\n            dfs(neighbor, adjList);\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.281534"
+}

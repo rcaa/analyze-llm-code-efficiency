@@ -1,0 +1,15 @@
+{
+  "id": 1387,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<int> powers(hi - lo + 1);\n        for (int i = lo; i <= hi; i++) {\n            int power = 0;\n            int x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                power++;\n            }\n            powers[i - lo] = power;\n        }\n        sort(powers.begin(), powers.end());\n        for (int i = 0; i < powers.size(); i++) {\n            if (k == 1) return lo + i;\n            if (powers[i] == powers[i + k - 1]) {\n                k--;\n            } else {\n                return lo + i + k - 1;\n            }\n        }\n        return -1;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution first calculates the power of each number in the given range and stores it in a vector. Then it sorts the vector in ascending order. Finally, it iterates through the sorted vector to find the kth number. The time complexity is O(n log n) due to the sorting operation, and the space complexity is O(n) for storing the powers of numbers.",
+  "code": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<int> powers(hi - lo + 1);\n        for (int i = lo; i <= hi; i++) {\n            int power = 0;\n            int x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                power++;\n            }\n            powers[i - lo] = power;\n        }\n        sort(powers.begin(), powers.end());\n        for (int i = 0; i < powers.size(); i++) {\n            if (k == 1) return lo + i;\n            if (powers[i] == powers[i + k - 1]) {\n                k--;\n            } else {\n                return lo + i + k - 1;\n            }\n        }\n        return -1;\n    }\n};",
+  "timestamp": "2025-08-05T14:25:54.227539",
+  "code_extracted_previous": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<int> powers(hi - lo + 1);\n        for (int i = lo; i <= hi; i++) {\n            int power = 0;\n            int x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                power++;\n            }\n            powers[i - lo] = power;\n        }\n        sort(powers.begin(), powers.end());\n        for (int i = 0; i < powers.size(); i++) {\n            if (k == 1) return lo + i;\n            if (powers[i] == powers[i + k - 1]) {\n                k--;\n            } else {\n                return lo + i + k - 1;\n            }\n        }\n        return -1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.384010"
+}

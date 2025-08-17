@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        swaps = 0\n        for i in range(0, len(row), 2):\n            if row[i] % 2 != row[i + 1] % 2:\n                j = [x for x in row if x % 2 == row[i + 1] % 2][0]\n                row[i + 1], row[row.index(j)] = j, row[i + 1]\n                row = sorted(row)\n                swaps += 1\n        return swaps\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the array once, swapping each couple that is not sitting side by side. It uses a list comprehension to find the partner of the person who is not sitting with their partner, and then swaps them. The array is then sorted to maintain the correct order. This approach has a high efficiency due to its linear time complexity and constant space complexity.",
+  "code": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        swaps = 0\n        for i in range(0, len(row), 2):\n            if row[i] % 2 != row[i + 1] % 2:\n                j = [x for x in row if x % 2 == row[i + 1] % 2][0]\n                row[i + 1], row[row.index(j)] = j, row[i + 1]\n                row = sorted(row)\n                swaps += 1\n        return swaps",
+  "timestamp": "2025-08-05T14:30:45.349475",
+  "code_extracted_previous": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        swaps = 0\n        for i in range(0, len(row), 2):\n            if row[i] % 2 != row[i + 1] % 2:\n                j = [x for x in row if x % 2 == row[i + 1] % 2][0]\n                row[i + 1], row[row.index(j)] = j, row[i + 1]\n                row = sorted(row)\n                swaps += 1\n        return swaps",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.424096"
+}

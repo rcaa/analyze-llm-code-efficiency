@@ -1,0 +1,15 @@
+{
+  "id": 2165,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public long smallestNumber(long num) {\n        if (num == 0) return 0;\n\n        String str = Math.abs(num) + \"\";\n        char[] chars = str.toCharArray();\n        Arrays.sort(chars);\n\n        if (num > 0) {\n            for (int i = 0; i < chars.length; i++) {\n                if (chars[i] != '0') {\n                    char temp = chars[0];\n                    chars[0] = chars[i];\n                    chars[i] = temp;\n                    break;\n                }\n            }\n        }\n\n        long result = Long.parseLong(new String(chars));\n        return num < 0 ? -result : result;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The approach involves converting the absolute value of the input number to a string, sorting its digits, and then rearranging them to form the smallest possible number. If the original number is positive, it ensures that the smallest non-zero digit is placed at the beginning to avoid leading zeros. If the original number is negative, it simply negates the result.",
+  "code": "class Solution {\n    public long smallestNumber(long num) {\n        if (num == 0) return 0;\n\n        String str = Math.abs(num) + \"\";\n        char[] chars = str.toCharArray();\n        Arrays.sort(chars);\n\n        if (num > 0) {\n            for (int i = 0; i < chars.length; i++) {\n                if (chars[i] != '0') {\n                    char temp = chars[0];\n                    chars[0] = chars[i];\n                    chars[i] = temp;\n                    break;\n                }\n            }\n        }\n\n        long result = Long.parseLong(new String(chars));\n        return num < 0 ? -result : result;\n    }\n}",
+  "timestamp": "2025-08-05T15:56:15.231340",
+  "code_extracted_previous": "class Solution {\n    public long smallestNumber(long num) {\n        if (num == 0) return 0;\n\n        String str = Math.abs(num) + \"\";\n        char[] chars = str.toCharArray();\n        Arrays.sort(chars);\n\n        if (num > 0) {\n            for (int i = 0; i < chars.length; i++) {\n                if (chars[i] != '0') {\n                    char temp = chars[0];\n                    chars[0] = chars[i];\n                    chars[i] = temp;\n                    break;\n                }\n            }\n        }\n\n        long result = Long.parseLong(new String(chars));\n        return num < 0 ? -result : result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.674315"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1011,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def shipWithinDays(self, weights: List[int], days: int) -> int:\n        left, right = max(weights), sum(weights)\n        while left < right:\n            mid = (left + right) // 2\n            if sum((mid - w + mid // 2) for w in weights) > days * mid:\n                right = mid\n            else:\n                left = mid + 1\n        return left\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use a binary search approach to find the minimum ship capacity. We initialize the left and right pointers to the maximum weight and the sum of all weights, respectively. In each iteration, we calculate the mid value and check if the total weight of packages that can be shipped in a day with the mid capacity is greater than the given number of days. If it is, we update the right pointer to mid; otherwise, we update the left pointer to mid + 1. The process continues until left >= right, at which point we return the left value as the minimum ship capacity.",
+  "code": "class Solution:\n    def shipWithinDays(self, weights: List[int], days: int) -> int:\n        left, right = max(weights), sum(weights)\n        while left < right:\n            mid = (left + right) // 2\n            if sum((mid - w + mid // 2) for w in weights) > days * mid:\n                right = mid\n            else:\n                left = mid + 1\n        return left",
+  "timestamp": "2025-08-05T13:17:32.523299",
+  "code_extracted_previous": "class Solution:\n    def shipWithinDays(self, weights: List[int], days: int) -> int:\n        left, right = max(weights), sum(weights)\n        while left < right:\n            mid = (left + right) // 2\n            if sum((mid - w + mid // 2) for w in weights) > days * mid:\n                right = mid\n            else:\n                left = mid + 1\n        return left",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.153325"
+}

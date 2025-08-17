@@ -1,0 +1,15 @@
+{
+  "id": 1155,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        final int MOD = 1_000_000_007;\n        if (target < n || target > n * k) return 0;\n        int[] dp = new int[target + 1];\n        dp[0] = 1;\n        for (int dice = 1; dice <= n; dice++) {\n            int[] next = new int[target + 1];\n            for (int sum = dice; sum <= Math.min(target, dice * k); sum++) {\n                long ways = 0;\n                for (int face = 1; face <= k && face <= sum; face++) {\n                    ways += dp[sum - face];\n                    if (ways >= MOD) ways -= MOD;\n                }\n                next[sum] = (int) ways;\n            }\n            dp = next;\n        }\n        return dp[target];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n * target * k)\nspace complexity: O(target)\nenergy implications: LOW\nexplanation: Uses dynamic programming with a rolling 1-D array to count ways to reach each sum with exactly i dice. The inner loop iterates over possible face values, summing valid previous states. The rolling array reduces memory usage from O(n * target) to O(target).",
+  "code": "class Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        final int MOD = 1_000_000_007;\n        if (target < n || target > n * k) return 0;\n        int[] dp = new int[target + 1];\n        dp[0] = 1;\n        for (int dice = 1; dice <= n; dice++) {\n            int[] next = new int[target + 1];\n            for (int sum = dice; sum <= Math.min(target, dice * k); sum++) {\n                long ways = 0;\n                for (int face = 1; face <= k && face <= sum; face++) {\n                    ways += dp[sum - face];\n                    if (ways >= MOD) ways -= MOD;\n                }\n                next[sum] = (int) ways;\n            }\n            dp = next;\n        }\n        return dp[target];\n    }\n}",
+  "timestamp": "2025-08-05T14:25:15.578302",
+  "code_extracted_previous": "public int numRollsToTarget(int n, int k, int target) {\n        final int MOD = 1_000_000_007;\n        if (target < n || target > n * k) return 0;\n        int[] dp = new int[target + 1];\n        dp[0] = 1;\n        for (int dice = 1; dice <= n; dice++) {\n            int[] next = new int[target + 1];\n            for (int sum = dice; sum <= Math.min(target, dice * k); sum++) {\n                long ways = 0;\n                for (int face = 1; face <= k && face <= sum; face++) {\n                    ways += dp[sum - face];\n                    if (ways >= MOD) ways -= MOD;\n                }\n                next[sum] = (int) ways;\n            }\n            dp = next;\n        }\n        return dp[target];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.467753"
+}

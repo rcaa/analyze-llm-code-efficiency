@@ -1,0 +1,15 @@
+{
+  "id": 2446,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool haveConflict(vector<string>& event1, vector<string>& event2) {\n        auto toMin = [](const string& s) {\n            return (s[0]-'0')*600 + (s[1]-'0')*60 + (s[3]-'0')*10 + (s[4]-'0');\n        };\n        int s1 = toMin(event1[0]), e1 = toMin(event1[1]);\n        int s2 = toMin(event2[0]), e2 = toMin(event2[1]);\n        return max(s1, s2) <= min(e1, e2);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Convert each HH:MM string to minutes since midnight in O(1) time. Two intervals [s1,e1] and [s2,e2] overlap iff max(s1,s2) ≤ min(e1,e2).",
+  "code": "class Solution {\npublic:\n    bool haveConflict(vector<string>& event1, vector<string>& event2) {\n        auto toMin = [](const string& s) {\n            return (s[0]-'0')*600 + (s[1]-'0')*60 + (s[3]-'0')*10 + (s[4]-'0');\n        };\n        int s1 = toMin(event1[0]), e1 = toMin(event1[1]);\n        int s2 = toMin(event2[0]), e2 = toMin(event2[1]);\n        return max(s1, s2) <= min(e1, e2);\n    }\n};",
+  "timestamp": "2025-08-05T12:50:29.881676",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool haveConflict(vector<string>& event1, vector<string>& event2) {\n        auto toMin = [](const string& s) {\n            return (s[0]-'0')*600 + (s[1]-'0')*60 + (s[3]-'0')*10 + (s[4]-'0');\n        };\n        int s1 = toMin(event1[0]), e1 = toMin(event1[1]);\n        int s2 = toMin(event2[0]), e2 = toMin(event2[1]);\n        return max(s1, s2) <= min(e1, e2);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.717949"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1400,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool canConstruct(string s, int k) {\n        int charCount[26] = {0};\n        for (char c : s) {\n            charCount[c - 'a']++;\n        }\n        int oddCount = 0;\n        for (int count : charCount) {\n            if (count % 2 == 1) {\n                oddCount++;\n            }\n        }\n        return k <= s.size() && (k % 2 == 0 || oddCount <= k);\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution works by first counting the occurrences of each character in the string. It then checks if the number of characters that appear an odd number of times is less than or equal to k. If k is even, we can pair up all characters, and if k is odd, we can use one character to form a palindrome and pair up the rest. The time complexity is O(n) because we need to iterate over the string once, and the space complexity is O(1) because we only use a constant amount of space to store the character counts.",
+  "code": "class Solution {\npublic:\n    bool canConstruct(string s, int k) {\n        int charCount[26] = {0};\n        for (char c : s) {\n            charCount[c - 'a']++;\n        }\n        int oddCount = 0;\n        for (int count : charCount) {\n            if (count % 2 == 1) {\n                oddCount++;\n            }\n        }\n        return k <= s.size() && (k % 2 == 0 || oddCount <= k);\n    }\n};",
+  "timestamp": "2025-08-05T15:06:29.831529",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canConstruct(string s, int k) {\n        int charCount[26] = {0};\n        for (char c : s) {\n            charCount[c - 'a']++;\n        }\n        int oddCount = 0;\n        for (int count : charCount) {\n            if (count % 2 == 1) {\n                oddCount++;\n            }\n        }\n        return k <= s.size() && (k % 2 == 0 || oddCount <= k);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.392091"
+}

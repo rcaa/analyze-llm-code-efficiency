@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```python\nimport heapq\nfrom typing import List\n\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = []\n        for num in nums:\n            self.add(num)\n\n    def add(self, val: int) -> int:\n        if len(self.min_heap) < self.k:\n            heapq.heappush(self.min_heap, val)\n        elif val > self.min_heap[0]:\n            heapq.heappop(self.min_heap)\n            heapq.heappush(self.min_heap, val)\n        return self.min_heap[0]\n\n\n# Your KthLargest object will be instantiated and called as such:\n# obj = KthLargest(k, nums)\n# param_1 = obj.add(val)\n```\n\nefficiency: HIGH  \ntime complexity: O(n log k)  \nspace complexity: O(k)  \nenergy implications: LOW  \nexplanation: The KthLargest class uses a min-heap to efficiently track the kth largest element. The `add` method maintains the heap size at k, ensuring the smallest element (the kth largest) is always at the top. This approach allows for efficient insertion and retrieval of the kth largest element.",
+  "code": "class KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = []\n        for num in nums:\n            self.add(num)\n\n    def add(self, val: int) -> int:\n        if len(self.min_heap) < self.k:\n            heapq.heappush(self.min_heap, val)\n        elif val > self.min_heap[0]:\n            heapq.heappop(self.min_heap)\n            heapq.heappush(self.min_heap, val)\n        return self.min_heap[0]\n\n\n# Your KthLargest object will be instantiated and called as such:\n# obj = KthLargest(k, nums)\n# param_1 = obj.add(val)",
+  "timestamp": "2025-08-06T01:11:05.003685",
+  "code_extracted_previous": "import heapq\nfrom typing import List\n\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = []\n        for num in nums:\n            self.add(num)\n\n    def add(self, val: int) -> int:\n        if len(self.min_heap) < self.k:\n            heapq.heappush(self.min_heap, val)\n        elif val > self.min_heap[0]:\n            heapq.heappop(self.min_heap)\n            heapq.heappush(self.min_heap, val)\n        return self.min_heap[0]\n\n\n# Your KthLargest object will be instantiated and called as such:\n# obj = KthLargest(k, nums)\n# param_1 = obj.add(val)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.428084"
+}

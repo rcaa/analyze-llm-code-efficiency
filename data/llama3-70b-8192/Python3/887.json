@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def superEggDrop(self, k: int, n: int) -> int:\n        dp = [[0]*(n+1) for _ in range(k+1)]\n        for i in range(1, k+1):\n            for j in range(1, n+1):\n                dp[i][j] = j\n                for x in range(1, j+1):\n                    res = 1 + max(dp[i-1][x-1], dp[i][j-x])\n                    dp[i][j] = min(dp[i][j], res)\n        return dp[k][n]\n```\nefficiency: HIGH\ntime complexity: O(k*n^2)\nspace complexity: O(k*n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to build a table of minimum moves required for each number of eggs and floors. It iterates over the table, considering each possible drop and taking the minimum moves required.",
+  "code": "class Solution:\n    def superEggDrop(self, k: int, n: int) -> int:\n        dp = [[0]*(n+1) for _ in range(k+1)]\n        for i in range(1, k+1):\n            for j in range(1, n+1):\n                dp[i][j] = j\n                for x in range(1, j+1):\n                    res = 1 + max(dp[i-1][x-1], dp[i][j-x])\n                    dp[i][j] = min(dp[i][j], res)\n        return dp[k][n]",
+  "timestamp": "2025-08-05T15:17:06.024506",
+  "code_extracted_previous": "class Solution:\n    def superEggDrop(self, k: int, n: int) -> int:\n        dp = [[0]*(n+1) for _ in range(k+1)]\n        for i in range(1, k+1):\n            for j in range(1, n+1):\n                dp[i][j] = j\n                for x in range(1, j+1):\n                    res = 1 + max(dp[i-1][x-1], dp[i][j-x])\n                    dp[i][j] = min(dp[i][j], res)\n        return dp[k][n]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:40.190519"
+}

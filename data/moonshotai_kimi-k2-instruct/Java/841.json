@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        int n = rooms.size();\n        boolean[] seen = new boolean[n];\n        java.util.Deque<Integer> stack = new java.util.ArrayDeque<>();\n        stack.push(0);\n        seen[0] = true;\n        int count = 1;\n\n        while (!stack.isEmpty()) {\n            int room = stack.pop();\n            for (int key : rooms.get(room)) {\n                if (!seen[key]) {\n                    seen[key] = true;\n                    count++;\n                    stack.push(key);\n                }\n            }\n        }\n        return count == n;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(N + K) where N is the number of rooms and K is the total number of keys\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses iterative DFS with an explicit stack to avoid recursion overhead. Marks each room once, ensuring every room and key is processed exactly once.",
+  "code": "class Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        int n = rooms.size();\n        boolean[] seen = new boolean[n];\n        java.util.Deque<Integer> stack = new java.util.ArrayDeque<>();\n        stack.push(0);\n        seen[0] = true;\n        int count = 1;\n\n        while (!stack.isEmpty()) {\n            int room = stack.pop();\n            for (int key : rooms.get(room)) {\n                if (!seen[key]) {\n                    seen[key] = true;\n                    count++;\n                    stack.push(key);\n                }\n            }\n        }\n        return count == n;\n    }\n}",
+  "timestamp": "2025-08-05T14:00:44.244936",
+  "code_extracted_previous": "public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        int n = rooms.size();\n        boolean[] seen = new boolean[n];\n        java.util.Deque<Integer> stack = new java.util.ArrayDeque<>();\n        stack.push(0);\n        seen[0] = true;\n        int count = 1;\n\n        while (!stack.isEmpty()) {\n            int room = stack.pop();\n            for (int key : rooms.get(room)) {\n                if (!seen[key]) {\n                    seen[key] = true;\n                    count++;\n                    stack.push(key);\n                }\n            }\n        }\n        return count == n;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.843257"
+}

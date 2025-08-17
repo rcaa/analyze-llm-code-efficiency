@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        last_occurrence = {c: i for i, c in enumerate(s)}\n        stack = []\n        for i, c in enumerate(s):\n            if c in stack:\n                continue\n            while stack and stack[-1] > c and last_occurrence[stack[-1]] > i:\n                stack.pop()\n            stack.append(c)\n        return ''.join(stack)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a stack to keep track of the smallest subsequence, iterating through the string and popping characters from the stack if a smaller character is found that appears later in the string.",
+  "code": "class Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        last_occurrence = {c: i for i, c in enumerate(s)}\n        stack = []\n        for i, c in enumerate(s):\n            if c in stack:\n                continue\n            while stack and stack[-1] > c and last_occurrence[stack[-1]] > i:\n                stack.pop()\n            stack.append(c)\n        return ''.join(stack)",
+  "timestamp": "2025-08-06T00:47:57.920686",
+  "code_extracted_previous": "class Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        last_occurrence = {c: i for i, c in enumerate(s)}\n        stack = []\n        for i, c in enumerate(s):\n            if c in stack:\n                continue\n            while stack and stack[-1] > c and last_occurrence[stack[-1]] > i:\n                stack.pop()\n            stack.append(c)\n        return ''.join(stack)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:38.837177"
+}

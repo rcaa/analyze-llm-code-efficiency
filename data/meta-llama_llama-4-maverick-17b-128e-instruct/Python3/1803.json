@@ -1,0 +1,15 @@
+{
+  "id": 1803,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def countPairs(self, nums: List[int], low: int, high: int) -> int:\n        def count_pairs_with_xor_less_than_or_equal_to(x):\n            count = [0] * (1 << 15)\n            ans = 0\n            for num in nums:\n                ans += count[num ^ x]\n                count[num] += 1\n            return ans\n\n        return count_pairs_with_xor_less_than_or_equal_to(high) - count_pairs_with_xor_less_than_or_equal_to(low - 1)\n\nefficiency: HIGH\ntime complexity: O(n*b)\nspace complexity: O(2^b)\nenergy implications: LOW\nexplanation: Utilizes a Trie-like approach with a count array to efficiently count pairs with XOR within a given range, leveraging the property that count_pairs_with_xor_less_than_or_equal_to(x) gives the number of pairs with XOR <= x. The final result is obtained by subtracting the count for low-1 from the count for high.\n```",
+  "code": "def countPairs(self, nums: List[int], low: int, high: int) -> int:\n        def count_pairs_with_xor_less_than_or_equal_to(x):\n            count = [0] * (1 << 15)\n            ans = 0\n            for num in nums:\n                ans += count[num ^ x]\n                count[num] += 1\n            return ans\n\n        return count_pairs_with_xor_less_than_or_equal_to(high) - count_pairs_with_xor_less_than_or_equal_to(low - 1)",
+  "timestamp": "2025-08-05T11:56:49.980410",
+  "code_extracted_previous": "class Solution:\n    def countPairs(self, nums: List[int], low: int, high: int) -> int:\n        def count_pairs_with_xor_less_than_or_equal_to(x):\n            count = [0] * (1 << 15)\n            ans = 0\n            for num in nums:\n                ans += count[num ^ x]\n                count[num] += 1\n            return ans\n\n        return count_pairs_with_xor_less_than_or_equal_to(high) - count_pairs_with_xor_less_than_or_equal_to(low - 1)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.630546"
+}

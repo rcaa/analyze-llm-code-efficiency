@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def hardestWorker(self, n: int, logs: List[List[int]]) -> int:\n        max_time = 0\n        prev_time = 0\n        result_id = logs[0][0]\n        for i, (employee_id, leave_time) in enumerate(logs):\n            time_spent = leave_time - prev_time\n            if time_spent > max_time:\n                max_time = time_spent\n                result_id = employee_id\n            elif time_spent == max_time:\n                result_id = min(result_id, employee_id)\n            prev_time = leave_time\n        return result_id\n```\nefficiency: HIGH\ntime complexity: O(m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The solution iterates through the logs once, calculating the time each employee spends on their task by subtracting the previous leave time from the current one. It keeps track of the maximum time and the smallest id in case of ties. The key strengths are its linear time complexity and minimal space usage, while the only potential weakness is the assumption that logs are ordered correctly as per the problem constraints.>",
+  "code": "class Solution:\n    def hardestWorker(self, n: int, logs: List[List[int]]) -> int:\n        max_time = 0\n        prev_time = 0\n        result_id = logs[0][0]\n        for i, (employee_id, leave_time) in enumerate(logs):\n            time_spent = leave_time - prev_time\n            if time_spent > max_time:\n                max_time = time_spent\n                result_id = employee_id\n            elif time_spent == max_time:\n                result_id = min(result_id, employee_id)\n            prev_time = leave_time\n        return result_id",
+  "timestamp": "2025-08-05T12:48:27.747389",
+  "code_extracted_previous": "class Solution:\n    def hardestWorker(self, n: int, logs: List[List[int]]) -> int:\n        max_time = 0\n        prev_time = 0\n        result_id = logs[0][0]\n        for i, (employee_id, leave_time) in enumerate(logs):\n            time_spent = leave_time - prev_time\n            if time_spent > max_time:\n                max_time = time_spent\n                result_id = employee_id\n            elif time_spent == max_time:\n                result_id = min(result_id, employee_id)\n            prev_time = leave_time\n        return result_id",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:05.395291"
+}

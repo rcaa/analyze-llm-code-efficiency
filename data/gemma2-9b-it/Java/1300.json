@@ -1,0 +1,15 @@
+{
+  "id": 1300,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findBestValue(int[] arr, int target) {\n        Arrays.sort(arr);\n        int n = arr.length;\n        long sum = 0;\n        for (int num : arr) {\n            sum += num;\n        }\n        int left = 1, right = 100000;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            long newSum = sum - (long) arr[n - 1] * (n - 1) + (long) mid * (n - 1);\n            if (Math.abs(newSum - target) < Math.abs(sum - target)) {\n                sum = newSum;\n            }\n            if (newSum < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return left - 1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N log N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses binary search to efficiently find the optimal value. It first sorts the array and calculates the initial sum. Then, it iteratively adjusts the candidate value using binary search, comparing the absolute difference between the modified sum and the target. The binary search ensures logarithmic time complexity.\n",
+  "code": "class Solution {\n    public int findBestValue(int[] arr, int target) {\n        Arrays.sort(arr);\n        int n = arr.length;\n        long sum = 0;\n        for (int num : arr) {\n            sum += num;\n        }\n        int left = 1, right = 100000;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            long newSum = sum - (long) arr[n - 1] * (n - 1) + (long) mid * (n - 1);\n            if (Math.abs(newSum - target) < Math.abs(sum - target)) {\n                sum = newSum;\n            }\n            if (newSum < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return left - 1;\n    }\n}",
+  "timestamp": "2025-08-05T13:20:53.768111",
+  "code_extracted_previous": "class Solution {\n    public int findBestValue(int[] arr, int target) {\n        Arrays.sort(arr);\n        int n = arr.length;\n        long sum = 0;\n        for (int num : arr) {\n            sum += num;\n        }\n        int left = 1, right = 100000;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            long newSum = sum - (long) arr[n - 1] * (n - 1) + (long) mid * (n - 1);\n            if (Math.abs(newSum - target) < Math.abs(sum - target)) {\n                sum = newSum;\n            }\n            if (newSum < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return left - 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.564071"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int set_bits = __builtin_popcount(num2);\n        int result = 0;\n        int i = 31;\n        while (set_bits > 0 && i >= 0) {\n            if ((num1 & (1 << i)) == 0) {\n                result |= (1 << i);\n                set_bits--;\n            }\n            i--;\n        }\n        i = 31;\n        while (set_bits > 0 && i >= 0) {\n            if ((num1 & (1 << i)) != 0) {\n                result |= (1 << i);\n                set_bits--;\n            }\n            i--;\n        }\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The approach involves counting the set bits in num2 and then constructing a number x that has the same number of set bits. It prioritizes matching bits with num1 to minimize XOR.",
+  "code": "class Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int set_bits = __builtin_popcount(num2);\n        int result = 0;\n        int i = 31;\n        while (set_bits > 0 && i >= 0) {\n            if ((num1 & (1 << i)) == 0) {\n                result |= (1 << i);\n                set_bits--;\n            }\n            i--;\n        }\n        i = 31;\n        while (set_bits > 0 && i >= 0) {\n            if ((num1 & (1 << i)) != 0) {\n                result |= (1 << i);\n                set_bits--;\n            }\n            i--;\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T14:31:22.918208",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int set_bits = __builtin_popcount(num2);\n        int result = 0;\n        int i = 31;\n        while (set_bits > 0 && i >= 0) {\n            if ((num1 & (1 << i)) == 0) {\n                result |= (1 << i);\n                set_bits--;\n            }\n            i--;\n        }\n        i = 31;\n        while (set_bits > 0 && i >= 0) {\n            if ((num1 & (1 << i)) != 0) {\n                result |= (1 << i);\n                set_bits--;\n            }\n            i--;\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.103530"
+}

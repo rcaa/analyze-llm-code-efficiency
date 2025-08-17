@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def bestClosingTime(self, customers: str) -> int:\n        n = len(customers)\n        prefix_N = [0]*(n+1)\n        suffix_Y = [0]*(n+1)\n        for i in range(1, n+1):\n            prefix_N[i] = prefix_N[i-1] + (1 if customers[i-1]=='N' else 0)\n        for i in range(n-1, -1, -1):\n            suffix_Y[i] = suffix_Y[i+1] + (1 if customers[i]=='Y' else 0)\n        min_penalty = float('inf')\n        best_j = 0\n        for j in range(n+1):\n            penalty = prefix_N[j] + suffix_Y[j]\n            if penalty < min_penalty:\n                min_penalty = penalty\n                best_j = j\n        return best_j\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses prefix sums for 'N's and suffix sums for 'Y's to compute each candidate penalty in O(1) after O(n) preprocessing, then scans once to find the earliest minimal penalty.",
+  "code": "class Solution:\n    def bestClosingTime(self, customers: str) -> int:\n        n = len(customers)\n        prefix_N = [0]*(n+1)\n        suffix_Y = [0]*(n+1)\n        for i in range(1, n+1):\n            prefix_N[i] = prefix_N[i-1] + (1 if customers[i-1]=='N' else 0)\n        for i in range(n-1, -1, -1):\n            suffix_Y[i] = suffix_Y[i+1] + (1 if customers[i]=='Y' else 0)\n        min_penalty = float('inf')\n        best_j = 0\n        for j in range(n+1):\n            penalty = prefix_N[j] + suffix_Y[j]\n            if penalty < min_penalty:\n                min_penalty = penalty\n                best_j = j\n        return best_j",
+  "timestamp": "2025-08-06T01:02:07.250881",
+  "code_extracted_previous": "def bestClosingTime(self, customers: str) -> int:\n        n = len(customers)\n        prefix_N = [0]*(n+1)\n        suffix_Y = [0]*(n+1)\n        for i in range(1, n+1):\n            prefix_N[i] = prefix_N[i-1] + (1 if customers[i-1]=='N' else 0)\n        for i in range(n-1, -1, -1):\n            suffix_Y[i] = suffix_Y[i+1] + (1 if customers[i]=='Y' else 0)\n        min_penalty = float('inf')\n        best_j = 0\n        for j in range(n+1):\n            penalty = prefix_N[j] + suffix_Y[j]\n            if penalty < min_penalty:\n                min_penalty = penalty\n                best_j = j\n        return best_j",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.720414"
+}

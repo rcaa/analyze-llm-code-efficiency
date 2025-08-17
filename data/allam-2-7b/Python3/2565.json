@@ -1,0 +1,15 @@
+{
+  "id": 2565,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution:\ndef minimumScore(self, s: str, t: str) -> int:\n    n = len(s)\n    m = len(t)\n    dp = [0] * (m + 1)\n    for i in range(1, n + 1):\n        for j in range(1, m + 1):\n            if s[i - 1] == t[j - 1]:\n                dp[j] = min(dp[j], dp[j - 1] + 1)\n            else:\n                dp[j] = max(dp[j], dp[j - 1])\n    return dp[m]\n\nefficiency: HIGH\ntime complexity: O(m * n)\nspace complexity: O(m)\nenergy implications: LOW ",
+  "code": "def minimumScore(self, s: str, t: str) -> int:\n    n = len(s)\n    m = len(t)\n    dp = [0] * (m + 1)\n    for i in range(1, n + 1):\n        for j in range(1, m + 1):\n            if s[i - 1] == t[j - 1]:\n                dp[j] = min(dp[j], dp[j - 1] + 1)\n            else:\n                dp[j] = max(dp[j], dp[j - 1])\n    return dp[m]",
+  "timestamp": "2025-08-06T01:17:56.551525",
+  "code_extracted_previous": "def minimumScore(self, s: str, t: str) -> int:\n    n = len(s)\n    m = len(t)\n    dp = [0] * (m + 1)\n    for i in range(1, n + 1):\n        for j in range(1, m + 1):\n            if s[i - 1] == t[j - 1]:\n                dp[j] = min(dp[j], dp[j - 1] + 1)\n            else:\n                dp[j] = max(dp[j], dp[j - 1])\n    return dp[m]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.716252"
+}

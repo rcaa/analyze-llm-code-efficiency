@@ -1,0 +1,15 @@
+{
+  "id": 2092,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public List<Integer> findAllPeople(int n, int[][] meetings, int firstPerson) {\n        List<Integer> result = new ArrayList<>();\n        UnionFind uf = new UnionFind(n);\n        uf.union(0, firstPerson);\n        Arrays.sort(meetings, (a, b) -> a[2] - b[2]);\n        for (int[] meeting : meetings) {\n            int x = meeting[0], y = meeting[1], time = meeting[2];\n            if (uf.find(x) == uf.find(y)) continue;\n            uf.union(x, y);\n            if (uf.find(x) == 0) result.add(x);\n            if (uf.find(y) == 0) result.add(y);\n        }\n        return result;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(m log m + n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: We use a Union-Find data structure to keep track of the people who have the secret. We first union the first person with person 0, then sort the meetings by time. We iterate over the meetings, and for each meeting, we union the two people and add them to the result if they have the secret. The time complexity is O(m log m + n) due to the sorting and the union operations, where m is the number of meetings. The space complexity is O(n) for the Union-Find data structure.",
+  "code": "class Solution {\n    public List<Integer> findAllPeople(int n, int[][] meetings, int firstPerson) {\n        List<Integer> result = new ArrayList<>();\n        UnionFind uf = new UnionFind(n);\n        uf.union(0, firstPerson);\n        Arrays.sort(meetings, (a, b) -> a[2] - b[2]);\n        for (int[] meeting : meetings) {\n            int x = meeting[0], y = meeting[1], time = meeting[2];\n            if (uf.find(x) == uf.find(y)) continue;\n            uf.union(x, y);\n            if (uf.find(x) == 0) result.add(x);\n            if (uf.find(y) == 0) result.add(y);\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T13:55:39.807226",
+  "code_extracted_previous": "public List<Integer> findAllPeople(int n, int[][] meetings, int firstPerson) {\n        List<Integer> result = new ArrayList<>();\n        UnionFind uf = new UnionFind(n);\n        uf.union(0, firstPerson);\n        Arrays.sort(meetings, (a, b) -> a[2] - b[2]);\n        for (int[] meeting : meetings) {\n            int x = meeting[0], y = meeting[1], time = meeting[2];\n            if (uf.find(x) == uf.find(y)) continue;\n            uf.union(x, y);\n            if (uf.find(x) == 0) result.add(x);\n            if (uf.find(y) == 0) result.add(y);\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.148586"
+}

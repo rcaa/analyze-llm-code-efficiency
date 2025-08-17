@@ -1,0 +1,15 @@
+{
+  "id": 2318,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def distinctSequences(self, n: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0]*6\n        dp[0] = 1\n        for _ in range(n):\n            ndp = [0]*6\n            for i in range(6):\n                for j in range(6):\n                    if math.gcd(i+1, j+1) == 1 and (i == 0 or j != i-1):\n                        ndp[j] += dp[i]\n                        ndp[j] %= MOD\n            dp = ndp\n        return sum(dp) % MOD\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently calculate the number of distinct sequences. It maintains a dp array of size 6, where dp[i] represents the number of sequences ending with the number i+1. In each iteration, it calculates the next dp array based on the current one, considering the constraints of the problem.",
+  "code": "class Solution:\n    def distinctSequences(self, n: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0]*6\n        dp[0] = 1\n        for _ in range(n):\n            ndp = [0]*6\n            for i in range(6):\n                for j in range(6):\n                    if math.gcd(i+1, j+1) == 1 and (i == 0 or j != i-1):\n                        ndp[j] += dp[i]\n                        ndp[j] %= MOD\n            dp = ndp\n        return sum(dp) % MOD",
+  "timestamp": "2025-08-05T14:21:48.226420",
+  "code_extracted_previous": "class Solution:\n    def distinctSequences(self, n: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0]*6\n        dp[0] = 1\n        for _ in range(n):\n            ndp = [0]*6\n            for i in range(6):\n                for j in range(6):\n                    if math.gcd(i+1, j+1) == 1 and (i == 0 or j != i-1):\n                        ndp[j] += dp[i]\n                        ndp[j] %= MOD\n            dp = ndp\n        return sum(dp) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.244130"
+}

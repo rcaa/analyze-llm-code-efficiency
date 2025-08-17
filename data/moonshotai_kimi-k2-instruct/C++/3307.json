@@ -1,0 +1,15 @@
+{
+  "id": 3307,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long len = 1;\n        vector<long long> lengths = {1};\n        for (int op : operations) {\n            if (op == 0) {\n                len *= 2;\n            } else {\n                len = 2 * len + len;\n            }\n            lengths.push_back(len);\n        }\n        int shift = 0;\n        for (int i = operations.size() - 1; i >= 0; --i) {\n            long long half = lengths[i];\n            if (k > half) {\n                if (operations[i] == 1) {\n                    shift += (k - half - 1) % 26;\n                }\n                k -= half;\n            }\n        }\n        return 'a' + (shift % 26);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Work backwards from the final string length. For each operation, determine whether k falls in the first or second half. If it's in the second half and the operation is type 1, accumulate the shift for the corresponding character. The shift is computed modulo 26 to handle wrap-around from 'z' to 'a'.",
+  "code": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long len = 1;\n        vector<long long> lengths = {1};\n        for (int op : operations) {\n            if (op == 0) {\n                len *= 2;\n            } else {\n                len = 2 * len + len;\n            }\n            lengths.push_back(len);\n        }\n        int shift = 0;\n        for (int i = operations.size() - 1; i >= 0; --i) {\n            long long half = lengths[i];\n            if (k > half) {\n                if (operations[i] == 1) {\n                    shift += (k - half - 1) % 26;\n                }\n                k -= half;\n            }\n        }\n        return 'a' + (shift % 26);\n    }\n};",
+  "timestamp": "2025-08-06T02:29:52.939830",
+  "code_extracted_previous": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long len = 1;\n        vector<long long> lengths = {1};\n        for (int op : operations) {\n            if (op == 0) {\n                len *= 2;\n            } else {\n                len = 2 * len + len;\n            }\n            lengths.push_back(len);\n        }\n        int shift = 0;\n        for (int i = operations.size() - 1; i >= 0; --i) {\n            long long half = lengths[i];\n            if (k > half) {\n                if (operations[i] == 1) {\n                    shift += (k - half - 1) % 26;\n                }\n                k -= half;\n            }\n        }\n        return 'a' + (shift % 26);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.959459"
+}

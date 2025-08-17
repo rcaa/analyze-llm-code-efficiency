@@ -1,0 +1,15 @@
+{
+  "id": 1845,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class SeatManager {\n    private final PriorityQueue<Integer> minHeap;\n\n    public SeatManager(int n) {\n        minHeap = new PriorityQueue<>(n);\n        for (int i = 1; i <= n; i++) {\n            minHeap.offer(i);\n        }\n    }\n    \n    public int reserve() {\n        return minHeap.poll();\n    }\n    \n    public void unreserve(int seatNumber) {\n        minHeap.offer(seatNumber);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n) for both reserve and unreserve\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a min-heap to always return the smallest available seat in O(log n) time. Initialization pre-loads all seats into the heap. Unreserve simply re-inserts the seat into the heap.",
+  "code": "class SeatManager {\n    private final PriorityQueue<Integer> minHeap;\n\n    public SeatManager(int n) {\n        minHeap = new PriorityQueue<>(n);\n        for (int i = 1; i <= n; i++) {\n            minHeap.offer(i);\n        }\n    }\n    \n    public int reserve() {\n        return minHeap.poll();\n    }\n    \n    public void unreserve(int seatNumber) {\n        minHeap.offer(seatNumber);\n    }\n}",
+  "timestamp": "2025-08-05T14:13:23.669242",
+  "code_extracted_previous": "private final PriorityQueue<Integer> minHeap;\n\n    public SeatManager(int n) {\n        minHeap = new PriorityQueue<>(n);\n        for (int i = 1; i <= n; i++) {\n            minHeap.offer(i);\n        }\n    }\n    \n    public int reserve() {\n        return minHeap.poll();\n    }\n    \n    public void unreserve(int seatNumber) {\n        minHeap.offer(seatNumber);\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:54.658082"
+}

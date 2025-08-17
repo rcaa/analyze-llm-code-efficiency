@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def reorderedPowerOf2(self, n: int) -> bool:\n        def count_digits(num):\n            count = [0] * 10\n            while num:\n                count[num % 10] += 1\n                num //= 10\n            return tuple(count)\n\n        n_count = count_digits(n)\n        for i in range(31):\n            if count_digits(1 << i) == n_count:\n                return True\n        return False\n```\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a helper function to count the digits of a number and then checks if the count of digits of the input number matches the count of digits of any power of two.",
+  "code": "def reorderedPowerOf2(self, n: int) -> bool:\n        def count_digits(num):\n            count = [0] * 10\n            while num:\n                count[num % 10] += 1\n                num //= 10\n            return tuple(count)\n\n        n_count = count_digits(n)\n        for i in range(31):\n            if count_digits(1 << i) == n_count:\n                return True\n        return False\n```",
+  "timestamp": "2025-08-06T15:21:03.451874",
+  "code_extracted_previous": "class Solution:\n    def reorderedPowerOf2(self, n: int) -> bool:\n        def count_digits(num):\n            count = [0] * 10\n            while num:\n                count[num % 10] += 1\n                num //= 10\n            return tuple(count)\n\n        n_count = count_digits(n)\n        for i in range(31):\n            if count_digits(1 << i) == n_count:\n                return True\n        return False",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.867913"
+}

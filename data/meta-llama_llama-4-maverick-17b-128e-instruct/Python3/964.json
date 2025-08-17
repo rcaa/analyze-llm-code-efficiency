@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def leastOpsExpressTarget(self, x: int, target: int) -> int:\n        cost = list(range(40))\n        cost[0] = 2\n\n        def dp(target):\n            if target == 0: return 0\n            if target == 1: return cost[0]\n            if target in memo: return memo[target]\n\n            k = target.bit_length()\n            val = x ** k\n            if val == target:\n                return memo.setdefault(target, k - 1)\n\n            left = val - target\n            right = target - val // x\n            res = min(k + dp(left), k - 1 + dp(right))\n            memo[target] = res\n            return res\n\n        memo = {}\n        return dp(target)\n\nsolution: \nefficiency: HIGH\ntime complexity: O(log(target) * log(target))\nspace complexity: O(log(target))\nenergy implications: LOW\nexplanation: The main approach is using dynamic programming with memoization to store the results of subproblems. The key strength is that it avoids redundant computation by storing the results of expensive function calls and reusing them when the same inputs occur again.\n```",
+  "code": "def leastOpsExpressTarget(self, x: int, target: int) -> int:\n        cost = list(range(40))\n        cost[0] = 2\n\n        def dp(target):\n            if target == 0: return 0\n            if target == 1: return cost[0]\n            if target in memo: return memo[target]\n\n            k = target.bit_length()\n            val = x ** k\n            if val == target:\n                return memo.setdefault(target, k - 1)\n\n            left = val - target\n            right = target - val // x\n            res = min(k + dp(left), k - 1 + dp(right))\n            memo[target] = res\n            return res\n\n        memo = {}\n        return dp(target)\n\nsolution:",
+  "timestamp": "2025-08-05T15:19:01.806107",
+  "code_extracted_previous": "class Solution:\n    def leastOpsExpressTarget(self, x: int, target: int) -> int:\n        cost = list(range(40))\n        cost[0] = 2\n\n        def dp(target):\n            if target == 0: return 0\n            if target == 1: return cost[0]\n            if target in memo: return memo[target]\n\n            k = target.bit_length()\n            val = x ** k\n            if val == target:\n                return memo.setdefault(target, k - 1)\n\n            left = val - target\n            right = target - val // x\n            res = min(k + dp(left), k - 1 + dp(right))\n            memo[target] = res\n            return res\n\n        memo = {}\n        return dp(target)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.530189"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2424,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```java\nimport java.util.*;\n\nclass LUPrefix {\n\n    private TreeSet<Integer> uploadedVideos;\n    private int longestPrefix;\n\n    public LUPrefix(int n) {\n        uploadedVideos = new TreeSet<>();\n        longestPrefix = 0;\n    }\n    \n    public void upload(int video) {\n        uploadedVideos.add(video);\n        while (uploadedVideos.contains(longestPrefix + 1)) {\n            longestPrefix++;\n        }\n    }\n    \n    public int longest() {\n        return longestPrefix;\n    }\n}\n\n/**\n * Your LUPrefix object will be instantiated and called as such:\n * LUPrefix obj = new LUPrefix(n);\n * obj.upload(video);\n * int param_2 = obj.longest();\n */\n```\nefficiency: HIGH\ntime complexity: \n- `LUPrefix(int n)`: O(1)\n- `upload(int video)`: O(log n) on average, O(n) in the worst case when all videos are uploaded in reverse order\n- `longest()`: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a TreeSet to efficiently store and look up uploaded videos. The `upload` method adds a video to the set and updates the `longestPrefix` if necessary. The `longest` method simply returns the current `longestPrefix`. This approach allows for efficient insertion and lookup operations.",
+  "code": "class LUPrefix {\n\n    private TreeSet<Integer> uploadedVideos;\n    private int longestPrefix;\n\n    public LUPrefix(int n) {\n        uploadedVideos = new TreeSet<>();\n        longestPrefix = 0;\n    }\n    \n    public void upload(int video) {\n        uploadedVideos.add(video);\n        while (uploadedVideos.contains(longestPrefix + 1)) {\n            longestPrefix++;\n        }\n    }\n    \n    public int longest() {\n        return longestPrefix;\n    }\n}\n\n/**\n * Your LUPrefix object will be instantiated and called as such:\n * LUPrefix obj = new LUPrefix(n);\n * obj.upload(video);\n * int param_2 = obj.longest();\n */",
+  "timestamp": "2025-08-05T15:09:15.079095",
+  "code_extracted_previous": "import java.util.*;\n\nclass LUPrefix {\n\n    private TreeSet<Integer> uploadedVideos;\n    private int longestPrefix;\n\n    public LUPrefix(int n) {\n        uploadedVideos = new TreeSet<>();\n        longestPrefix = 0;\n    }\n    \n    public void upload(int video) {\n        uploadedVideos.add(video);\n        while (uploadedVideos.contains(longestPrefix + 1)) {\n            longestPrefix++;\n        }\n    }\n    \n    public int longest() {\n        return longestPrefix;\n    }\n}\n\n/**\n * Your LUPrefix object will be instantiated and called as such:\n * LUPrefix obj = new LUPrefix(n);\n * obj.upload(video);\n * int param_2 = obj.longest();\n */",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:50.807635"
+}

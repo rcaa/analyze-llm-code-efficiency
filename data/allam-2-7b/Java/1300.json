@@ -1,0 +1,15 @@
+{
+  "id": 1300,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int findBestValue(int[] arr, int target) {\n        int bestValue = Integer.MIN_VALUE;\n        int sumDiff = Integer.MAX_VALUE;\n        for (int num : arr) {\n            int newSum = arr.stream().mapToInt(x -> x - num).sum();\n            int diff = Math.abs(newSum - target);\n            if (diff < sumDiff) {\n                bestValue = num;\n                sumDiff = diff;\n            }\n        }\n        return bestValue;\n    }\n}\n```\n\nefficiency: MEDIUM\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nWe iterate through the array and calculate the new sum after subtracting the current number from each element. Then, we calculate the absolute difference between the new sum and the target sum. If this difference is smaller than the previous best difference, we update the best value and the corresponding difference. Finally, we return the best value found. ",
+  "code": "class Solution {\n    public int findBestValue(int[] arr, int target) {\n        int bestValue = Integer.MIN_VALUE;\n        int sumDiff = Integer.MAX_VALUE;\n        for (int num : arr) {\n            int newSum = arr.stream().mapToInt(x -> x - num).sum();\n            int diff = Math.abs(newSum - target);\n            if (diff < sumDiff) {\n                bestValue = num;\n                sumDiff = diff;\n            }\n        }\n        return bestValue;\n    }\n}",
+  "timestamp": "2025-08-05T13:20:59.673526",
+  "code_extracted_previous": "class Solution {\n    public int findBestValue(int[] arr, int target) {\n        int bestValue = Integer.MIN_VALUE;\n        int sumDiff = Integer.MAX_VALUE;\n        for (int num : arr) {\n            int newSum = arr.stream().mapToInt(x -> x - num).sum();\n            int diff = Math.abs(newSum - target);\n            if (diff < sumDiff) {\n                bestValue = num;\n                sumDiff = diff;\n            }\n        }\n        return bestValue;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.503190"
+}

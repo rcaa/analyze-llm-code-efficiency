@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public boolean reorderedPowerOf2(int n) {\n        int[] target = digitCount(n);\n        for (int p = 1; p <= 1_000_000_000; p <<= 1) {\n            if (Arrays.equals(target, digitCount(p))) return true;\n        }\n        return false;\n    }\n    private int[] digitCount(int num) {\n        int[] cnt = new int[10];\n        while (num > 0) {\n            cnt[num % 10]++;\n            num /= 10;\n        }\n        return cnt;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count digit frequencies for n and compare against the digit frequencies of every power of two up to 1e9. Uses a fixed-size array for counts, so the comparison is O(1) and the loop runs only ~30 times.",
+  "code": "class Solution {\n    public boolean reorderedPowerOf2(int n) {\n        int[] target = digitCount(n);\n        for (int p = 1; p <= 1_000_000_000; p <<= 1) {\n            if (Arrays.equals(target, digitCount(p))) return true;\n        }\n        return false;\n    }\n    private int[] digitCount(int num) {\n        int[] cnt = new int[10];\n        while (num > 0) {\n            cnt[num % 10]++;\n            num /= 10;\n        }\n        return cnt;\n    }\n}",
+  "timestamp": "2025-08-06T02:32:21.558695",
+  "code_extracted_previous": "public boolean reorderedPowerOf2(int n) {\n        int[] target = digitCount(n);\n        for (int p = 1; p <= 1_000_000_000; p <<= 1) {\n            if (Arrays.equals(target, digitCount(p))) return true;\n        }\n        return false;\n    }\n    private int[] digitCount(int num) {\n        int[] cnt = new int[10];\n        while (num > 0) {\n            cnt[num % 10]++;\n            num /= 10;\n        }\n        return cnt;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.864936"
+}

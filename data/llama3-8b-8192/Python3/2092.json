@@ -1,0 +1,15 @@
+{
+  "id": 2092,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y, time in meetings:\n            graph[x].append((y, time))\n            graph[y].append((x, time))\n        visited = set()\n        visited.add(0)\n        visited.add(firstPerson)\n        for x, y, time in sorted(meetings):\n            for y2, time2 in graph[x]:\n                if time2 <= time:\n                    visited.add(y2)\n        return sorted(list(visited))\n```\nefficiency: HIGH\ntime complexity: O(m log m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: We use a graph to represent the meetings, where each person is a node and each meeting is an edge. We then perform a depth-first search (DFS) to find all the people who have the secret. We use a set to keep track of the visited people and add the people who have the secret to the set. We sort the meetings by time to ensure that we process the meetings in the correct order.",
+  "code": "class Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y, time in meetings:\n            graph[x].append((y, time))\n            graph[y].append((x, time))\n        visited = set()\n        visited.add(0)\n        visited.add(firstPerson)\n        for x, y, time in sorted(meetings):\n            for y2, time2 in graph[x]:\n                if time2 <= time:\n                    visited.add(y2)\n        return sorted(list(visited))",
+  "timestamp": "2025-08-05T13:55:40.816436",
+  "code_extracted_previous": "class Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y, time in meetings:\n            graph[x].append((y, time))\n            graph[y].append((x, time))\n        visited = set()\n        visited.add(0)\n        visited.add(firstPerson)\n        for x, y, time in sorted(meetings):\n            for y2, time2 in graph[x]:\n                if time2 <= time:\n                    visited.add(y2)\n        return sorted(list(visited))",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.670560"
+}

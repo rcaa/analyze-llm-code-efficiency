@@ -1,0 +1,15 @@
+{
+  "id": 753,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```c++\n#include <unordered_set>\n\nclass Solution {\npublic:\n    string crackSafe(int n, int k) {\n        unordered_set<string> passwords;\n        for (int i = 0; i <= k - 1; i++) {\n            for (int j = 0; j < n; j++) {\n                string password = \"\";\n                for (int digit = i; digit <= k - 1; digit++) {\n                    password += to_string(digit);\n                }\n                passwords.insert(password);\n            }\n        }\n        return *passwords.begin();\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * k)\nspace complexity: O(k)\nenergy implications: LOW\n\nExplanation:\n\nWe use nested loops to generate all possible passwords of length n using digits from 0 to k - 1. We store the generated passwords in an unordered_set to avoid duplicates and iterate through the set to find the shortest password that unlocks the safe. The time complexity is O(n * k) because we generate all possible passwords and insert them into the set. The space complexity is O(k) because we store k passwords in the set. The energy implications are low because the algorithm only requires a constant amount of energy to run. ",
+  "code": "class Solution {\npublic:\n    string crackSafe(int n, int k) {\n        unordered_set<string> passwords;\n        for (int i = 0; i <= k - 1; i++) {\n            for (int j = 0; j < n; j++) {\n                string password = \"\";\n                for (int digit = i; digit <= k - 1; digit++) {\n                    password += to_string(digit);\n                }\n                passwords.insert(password);\n            }\n        }\n        return *passwords.begin();\n    }\n};",
+  "timestamp": "2025-08-05T13:55:24.756505",
+  "code_extracted_previous": "#include <unordered_set>\n\nclass Solution {\npublic:\n    string crackSafe(int n, int k) {\n        unordered_set<string> passwords;\n        for (int i = 0; i <= k - 1; i++) {\n            for (int j = 0; j < n; j++) {\n                string password = \"\";\n                for (int digit = i; digit <= k - 1; digit++) {\n                    password += to_string(digit);\n                }\n                passwords.insert(password);\n            }\n        }\n        return *passwords.begin();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.175888"
+}

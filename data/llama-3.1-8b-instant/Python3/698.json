@@ -1,0 +1,15 @@
+{
+  "id": 698,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Solution:\n    def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:\n        total_sum = sum(nums)\n        if total_sum % k != 0:\n            return False\n        target = total_sum // k\n        nums.sort(reverse=True)\n        def backtrack(index, subsets):\n            if index == len(nums):\n                return all(s == target for s in subsets)\n            for i in range(k):\n                if subsets[i] + nums[index] <= target:\n                    subsets[i] += nums[index]\n                    if backtrack(index + 1, subsets):\n                        return True\n                    subsets[i] -= nums[index]\n            return False\n        return backtrack(0, [0] * k)\n```\n\nefficiency: HIGH\ntime complexity: O(k * 2^n)\nspace complexity: O(n + k)\nenergy implications: LOW",
+  "code": "class Solution:\n    def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:\n        total_sum = sum(nums)\n        if total_sum % k != 0:\n            return False\n        target = total_sum // k\n        nums.sort(reverse=True)\n        def backtrack(index, subsets):\n            if index == len(nums):\n                return all(s == target for s in subsets)\n            for i in range(k):\n                if subsets[i] + nums[index] <= target:\n                    subsets[i] += nums[index]\n                    if backtrack(index + 1, subsets):\n                        return True\n                    subsets[i] -= nums[index]\n            return False\n        return backtrack(0, [0] * k)",
+  "timestamp": "2025-08-05T13:16:38.636833",
+  "code_extracted_previous": "class Solution:\n    def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:\n        total_sum = sum(nums)\n        if total_sum % k != 0:\n            return False\n        target = total_sum // k\n        nums.sort(reverse=True)\n        def backtrack(index, subsets):\n            if index == len(nums):\n                return all(s == target for s in subsets)\n            for i in range(k):\n                if subsets[i] + nums[index] <= target:\n                    subsets[i] += nums[index]\n                    if backtrack(index + 1, subsets):\n                        return True\n                    subsets[i] -= nums[index]\n            return False\n        return backtrack(0, [0] * k)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.446219"
+}

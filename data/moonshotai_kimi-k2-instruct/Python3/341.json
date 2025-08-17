@@ -1,0 +1,15 @@
+{
+  "id": 341,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\n    def __init__(self, nestedList: [NestedInteger]):\n        self.stack = []\n        # Push nestedList in reverse order so we pop left-to-right\n        for i in range(len(nestedList) - 1, -1, -1):\n            self.stack.append(nestedList[i])\n\n    def next(self) -> int:\n        # hasNext guarantees top is integer\n        return self.stack.pop().getInteger()\n\n    def hasNext(self) -> bool:\n        while self.stack:\n            top = self.stack[-1]\n            if top.isInteger():\n                return True\n            # top is a list: pop it and push its elements in reverse order\n            self.stack.pop()\n            lst = top.getList()\n            for i in range(len(lst) - 1, -1, -1):\n                self.stack.append(lst[i])\n        return False\n```\nefficiency: HIGH\ntime complexity: O(1) amortized for next() and hasNext()\nspace complexity: O(D) where D is the maximum nesting depth\nenergy implications: LOW\nexplanation: Uses an explicit stack to flatten on demand; each element is pushed and popped once, giving amortized O(1) per operation. Stack size is bounded by the deepest nesting level, minimizing memory footprint.",
+  "code": "def __init__(self, nestedList: [NestedInteger]):\n        self.stack = []\n        # Push nestedList in reverse order so we pop left-to-right\n        for i in range(len(nestedList) - 1, -1, -1):\n            self.stack.append(nestedList[i])\n\n    def next(self) -> int:\n        # hasNext guarantees top is integer\n        return self.stack.pop().getInteger()\n\n    def hasNext(self) -> bool:\n        while self.stack:\n            top = self.stack[-1]\n            if top.isInteger():\n                return True\n            # top is a list: pop it and push its elements in reverse order\n            self.stack.pop()\n            lst = top.getList()\n            for i in range(len(lst) - 1, -1, -1):\n                self.stack.append(lst[i])\n        return False",
+  "timestamp": "2025-08-06T02:33:51.261856",
+  "code_extracted_previous": "def __init__(self, nestedList: [NestedInteger]):\n        self.stack = []\n        # Push nestedList in reverse order so we pop left-to-right\n        for i in range(len(nestedList) - 1, -1, -1):\n            self.stack.append(nestedList[i])\n\n    def next(self) -> int:\n        # hasNext guarantees top is integer\n        return self.stack.pop().getInteger()\n\n    def hasNext(self) -> bool:\n        while self.stack:\n            top = self.stack[-1]\n            if top.isInteger():\n                return True\n            # top is a list: pop it and push its elements in reverse order\n            self.stack.pop()\n            lst = top.getList()\n            for i in range(len(lst) - 1, -1, -1):\n                self.stack.append(lst[i])\n        return False",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:57.070066"
+}

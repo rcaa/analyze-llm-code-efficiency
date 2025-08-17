@@ -1,0 +1,15 @@
+{
+  "id": 2712,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    long long minimumCost(string s) {\n        long long res = 0;\n        int n = s.size();\n        for (int i = 1; i < n; ++i) {\n            if (s[i] != s[i-1]) {\n                res += min(i, n - i);\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Observe that any mismatch between adjacent characters must be fixed by flipping either the prefix ending at that position or the suffix starting at that position. The optimal choice is always the cheaper of the two, so we accumulate min(i, n-i) for every transition.",
+  "code": "class Solution {\npublic:\n    long long minimumCost(string s) {\n        long long res = 0;\n        int n = s.size();\n        for (int i = 1; i < n; ++i) {\n            if (s[i] != s[i-1]) {\n                res += min(i, n - i);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:05:39.264891",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long minimumCost(string s) {\n        long long res = 0;\n        int n = s.size();\n        for (int i = 1; i < n; ++i) {\n            if (s[i] != s[i-1]) {\n                res += min(i, n - i);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.806118"
+}

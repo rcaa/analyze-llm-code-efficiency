@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        vector<int> prefixSum(n + 1, 0);\n        \n        for (int i = 0; i < n; i++) {\n            prefixSum[i + 1] = prefixSum[i] + (customers[i] == 'Y' ? -1 : 1);\n        }\n        \n        int minPenalty = INT_MAX;\n        int bestTime = 0;\n        \n        for (int i = 0; i <= n; i++) {\n            int penalty = prefixSum[i] + (i < n ? prefixSum[n] - prefixSum[i] : 0);\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestTime = i;\n            }\n        }\n        \n        return bestTime;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a prefix sum array to efficiently calculate the penalty for each possible closing time. It iterates through the customers string once to build the prefix sum array and then iterates through it again to find the minimum penalty and the corresponding best closing time. This approach minimizes the number of operations and memory usage.",
+  "code": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        vector<int> prefixSum(n + 1, 0);\n        \n        for (int i = 0; i < n; i++) {\n            prefixSum[i + 1] = prefixSum[i] + (customers[i] == 'Y' ? -1 : 1);\n        }\n        \n        int minPenalty = INT_MAX;\n        int bestTime = 0;\n        \n        for (int i = 0; i <= n; i++) {\n            int penalty = prefixSum[i] + (i < n ? prefixSum[n] - prefixSum[i] : 0);\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestTime = i;\n            }\n        }\n        \n        return bestTime;\n    }\n};",
+  "timestamp": "2025-08-06T01:02:08.245295",
+  "code_extracted_previous": "public:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        vector<int> prefixSum(n + 1, 0);\n        \n        for (int i = 0; i < n; i++) {\n            prefixSum[i + 1] = prefixSum[i] + (customers[i] == 'Y' ? -1 : 1);\n        }\n        \n        int minPenalty = INT_MAX;\n        int bestTime = 0;\n        \n        for (int i = 0; i <= n; i++) {\n            int penalty = prefixSum[i] + (i < n ? prefixSum[n] - prefixSum[i] : 0);\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestTime = i;\n            }\n        }\n        \n        return bestTime;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.129140"
+}

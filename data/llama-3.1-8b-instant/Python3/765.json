@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        couples = {}\n        for i in range(0, 2 * n, 2):\n            couples[row[i]] = row[i + 1]\n        swaps = 0\n        for i in range(0, 2 * n, 2):\n            if row[i] != couples[row[i]] and row[i] != couples[row[i]] - 1:\n                row[i + 1], row[couples[row[i]] - 1] = row[couples[row[i]] - 1], row[i + 1]\n                swaps += 1\n                couples[row[i]] = row[i + 1]\n        return swaps\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a dictionary to store the couples and then iterates over the row to find the couples that are not sitting side by side. It swaps the people and updates the dictionary accordingly. The time complexity is O(n) because we are iterating over the row once, and the space complexity is also O(n) because we are storing the couples in a dictionary. The energy implications are low because we are not using any complex operations or data structures.",
+  "code": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        couples = {}\n        for i in range(0, 2 * n, 2):\n            couples[row[i]] = row[i + 1]\n        swaps = 0\n        for i in range(0, 2 * n, 2):\n            if row[i] != couples[row[i]] and row[i] != couples[row[i]] - 1:\n                row[i + 1], row[couples[row[i]] - 1] = row[couples[row[i]] - 1], row[i + 1]\n                swaps += 1\n                couples[row[i]] = row[i + 1]\n        return swaps",
+  "timestamp": "2025-08-05T14:31:02.892445",
+  "code_extracted_previous": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        couples = {}\n        for i in range(0, 2 * n, 2):\n            couples[row[i]] = row[i + 1]\n        swaps = 0\n        for i in range(0, 2 * n, 2):\n            if row[i] != couples[row[i]] and row[i] != couples[row[i]] - 1:\n                row[i + 1], row[couples[row[i]] - 1] = row[couples[row[i]] - 1], row[i + 1]\n                swaps += 1\n                couples[row[i]] = row[i + 1]\n        return swaps",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.479216"
+}

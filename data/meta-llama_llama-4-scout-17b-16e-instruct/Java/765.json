@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int minSwapsCouples(int[] row) {\n        int n = row.length;\n        int[] pos = new int[n];\n        for (int i = 0; i < n; i++) {\n            pos[row[i]] = i;\n        }\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            int j = row[i] ^ 1;\n            if (row[i + 1] != j) {\n                swaps++;\n                int idx = pos[j];\n                pos[row[i + 1]] = idx;\n                pos[j] = i + 1;\n                row[i + 1] = j;\n            }\n        }\n        return swaps;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses an array `pos` to store the positions of each person, then iterates through the `row` array to find couples that are not sitting together. When a couple is not sitting together, it swaps the person with their partner and updates the `pos` array. This approach minimizes the number of swaps required.",
+  "code": "class Solution {\n    public int minSwapsCouples(int[] row) {\n        int n = row.length;\n        int[] pos = new int[n];\n        for (int i = 0; i < n; i++) {\n            pos[row[i]] = i;\n        }\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            int j = row[i] ^ 1;\n            if (row[i + 1] != j) {\n                swaps++;\n                int idx = pos[j];\n                pos[row[i + 1]] = idx;\n                pos[j] = i + 1;\n                row[i + 1] = j;\n            }\n        }\n        return swaps;\n    }\n}",
+  "timestamp": "2025-08-05T14:30:56.483892",
+  "code_extracted_previous": "class Solution {\n    public int minSwapsCouples(int[] row) {\n        int n = row.length;\n        int[] pos = new int[n];\n        for (int i = 0; i < n; i++) {\n            pos[row[i]] = i;\n        }\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            int j = row[i] ^ 1;\n            if (row[i + 1] != j) {\n                swaps++;\n                int idx = pos[j];\n                pos[row[i + 1]] = idx;\n                pos[j] = i + 1;\n                row[i + 1] = j;\n            }\n        }\n        return swaps;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.550357"
+}

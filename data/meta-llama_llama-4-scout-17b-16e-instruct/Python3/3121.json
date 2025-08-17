@@ -1,0 +1,15 @@
+{
+  "id": 3121,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution:\n    def numberOfSpecialChars(self, word: str) -> int:\n        last_lower = {chr(i + 97): -1 for i in range(26)}\n        first_upper = {chr(i + 65): -1 for i in range(26)}\n        \n        for i, c in enumerate(word):\n            if c.islower():\n                last_lower[c] = i\n            else:\n                if first_upper[c] == -1:\n                    first_upper[c] = i\n        \n        res = 0\n        for i in range(26):\n            lc = chr(i + 97)\n            uc = chr(i + 65)\n            if last_lower[lc] != -1 and first_upper[uc] != -1 and last_lower[lc] < first_upper[uc]:\n                res += 1\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string once to track the last occurrence of each lowercase letter and the first occurrence of each uppercase letter. Then, it checks each letter to see if it meets the conditions for being special. This approach minimizes memory usage and has a linear time complexity.",
+  "code": "class Solution:\n    def numberOfSpecialChars(self, word: str) -> int:\n        last_lower = {chr(i + 97): -1 for i in range(26)}\n        first_upper = {chr(i + 65): -1 for i in range(26)}\n        \n        for i, c in enumerate(word):\n            if c.islower():\n                last_lower[c] = i\n            else:\n                if first_upper[c] == -1:\n                    first_upper[c] = i\n        \n        res = 0\n        for i in range(26):\n            lc = chr(i + 97)\n            uc = chr(i + 65)\n            if last_lower[lc] != -1 and first_upper[uc] != -1 and last_lower[lc] < first_upper[uc]:\n                res += 1\n        return res",
+  "timestamp": "2025-08-05T15:12:24.162489",
+  "code_extracted_previous": "def numberOfSpecialChars(self, word: str) -> int:\n        last_lower = {chr(i + 97): -1 for i in range(26)}\n        first_upper = {chr(i + 65): -1 for i in range(26)}\n        \n        for i, c in enumerate(word):\n            if c.islower():\n                last_lower[c] = i\n            else:\n                if first_upper[c] == -1:\n                    first_upper[c] = i\n        \n        res = 0\n        for i in range(26):\n            lc = chr(i + 97)\n            uc = chr(i + 65)\n            if last_lower[lc] != -1 and first_upper[uc] != -1 and last_lower[lc] < first_upper[uc]:\n                res += 1\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.531931"
+}

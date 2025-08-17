@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int findTheLongestSubstring(String s) {\n        int[] seen = new int[32];\n        Arrays.fill(seen, -1);\n        seen[0] = 0;\n        int maxLen = 0, prefix = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (c == 'a') prefix ^= 1 << 0;\n            else if (c == 'e') prefix ^= 1 << 1;\n            else if (c == 'i') prefix ^= 1 << 2;\n            else if (c == 'o') prefix ^= 1 << 3;\n            else if (c == 'u') prefix ^= 1 << 4;\n            if (seen[prefix] != -1) maxLen = Math.max(maxLen, i + 1 - seen[prefix]);\n            else seen[prefix] = i + 1;\n        }\n        return maxLen;\n    }\n}\n``` \nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Utilizes bit manipulation to track the parity of vowel counts, storing prefix parities in an array for efficient lookups, enabling a single pass through the string.",
+  "code": "class Solution {\n    public int findTheLongestSubstring(String s) {\n        int[] seen = new int[32];\n        Arrays.fill(seen, -1);\n        seen[0] = 0;\n        int maxLen = 0, prefix = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (c == 'a') prefix ^= 1 << 0;\n            else if (c == 'e') prefix ^= 1 << 1;\n            else if (c == 'i') prefix ^= 1 << 2;\n            else if (c == 'o') prefix ^= 1 << 3;\n            else if (c == 'u') prefix ^= 1 << 4;\n            if (seen[prefix] != -1) maxLen = Math.max(maxLen, i + 1 - seen[prefix]);\n            else seen[prefix] = i + 1;\n        }\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-05T15:04:18.603832",
+  "code_extracted_previous": "class Solution {\n    public int findTheLongestSubstring(String s) {\n        int[] seen = new int[32];\n        Arrays.fill(seen, -1);\n        seen[0] = 0;\n        int maxLen = 0, prefix = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (c == 'a') prefix ^= 1 << 0;\n            else if (c == 'e') prefix ^= 1 << 1;\n            else if (c == 'i') prefix ^= 1 << 2;\n            else if (c == 'o') prefix ^= 1 << 3;\n            else if (c == 'u') prefix ^= 1 << 4;\n            if (seen[prefix] != -1) maxLen = Math.max(maxLen, i + 1 - seen[prefix]);\n            else seen[prefix] = i + 1;\n        }\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.231269"
+}

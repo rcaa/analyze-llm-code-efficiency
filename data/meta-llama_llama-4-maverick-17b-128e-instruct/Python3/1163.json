@@ -1,0 +1,15 @@
+{
+  "id": 1163,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```python\nclass Solution:\n    def lastSubstring(self, s: str) -> str:\n        n = len(s)\n        i, j, k = 0, 1, 0\n        while j + k < n:\n            if s[i + k] == s[j + k]:\n                k += 1\n            elif s[i + k] < s[j + k]:\n                i = max(i + k + 1, j)\n                j = j + 1 if i != j else j + k + 1\n                k = 0\n            else:\n                j = j + k + 1\n                k = 0\n        return s[i:]\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nexplanation: The solution uses a two-pointer technique to track the starting indices of the potential maximum substrings. It compares characters at corresponding positions and adjusts the pointers accordingly, ensuring a linear time complexity.",
+  "code": "def lastSubstring(self, s: str) -> str:\n        n = len(s)\n        i, j, k = 0, 1, 0\n        while j + k < n:\n            if s[i + k] == s[j + k]:\n                k += 1\n            elif s[i + k] < s[j + k]:\n                i = max(i + k + 1, j)\n                j = j + 1 if i != j else j + k + 1\n                k = 0\n            else:\n                j = j + k + 1\n                k = 0\n        return s[i:]\n```",
+  "timestamp": "2025-08-06T01:15:07.392574",
+  "code_extracted_previous": "class Solution:\n    def lastSubstring(self, s: str) -> str:\n        n = len(s)\n        i, j, k = 0, 1, 0\n        while j + k < n:\n            if s[i + k] == s[j + k]:\n                k += 1\n            elif s[i + k] < s[j + k]:\n                i = max(i + k + 1, j)\n                j = j + 1 if i != j else j + k + 1\n                k = 0\n            else:\n                j = j + k + 1\n                k = 0\n        return s[i:]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.423902"
+}

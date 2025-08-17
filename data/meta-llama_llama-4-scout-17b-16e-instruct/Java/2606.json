@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int[] charValues = new int[26];\n        for (int i = 0; i < chars.length(); i++) {\n            charValues[chars.charAt(i) - 'a'] = vals[i];\n        }\n        \n        int maxCost = 0;\n        int currentCost = 0;\n        for (char c : s.toCharArray()) {\n            int value = charValues[c - 'a'] == 0 ? c - 'a' + 1 : charValues[c - 'a'];\n            currentCost = Math.max(value, currentCost + value);\n            maxCost = Math.max(maxCost, currentCost);\n        }\n        return maxCost;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution initializes an array to store the values of characters. It then iterates through the string s, calculating the value of each character based on the given chars and vals. The maximum cost is updated using Kadane's algorithm.",
+  "code": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int[] charValues = new int[26];\n        for (int i = 0; i < chars.length(); i++) {\n            charValues[chars.charAt(i) - 'a'] = vals[i];\n        }\n        \n        int maxCost = 0;\n        int currentCost = 0;\n        for (char c : s.toCharArray()) {\n            int value = charValues[c - 'a'] == 0 ? c - 'a' + 1 : charValues[c - 'a'];\n            currentCost = Math.max(value, currentCost + value);\n            maxCost = Math.max(maxCost, currentCost);\n        }\n        return maxCost;\n    }\n}",
+  "timestamp": "2025-08-05T13:33:17.681480",
+  "code_extracted_previous": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int[] charValues = new int[26];\n        for (int i = 0; i < chars.length(); i++) {\n            charValues[chars.charAt(i) - 'a'] = vals[i];\n        }\n        \n        int maxCost = 0;\n        int currentCost = 0;\n        for (char c : s.toCharArray()) {\n            int value = charValues[c - 'a'] == 0 ? c - 'a' + 1 : charValues[c - 'a'];\n            currentCost = Math.max(value, currentCost + value);\n            maxCost = Math.max(maxCost, currentCost);\n        }\n        return maxCost;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.891165"
+}

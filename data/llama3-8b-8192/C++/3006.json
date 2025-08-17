@@ -1,0 +1,15 @@
+{
+  "id": 3006,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i <= s.size() - a.size(); i++) {\n            if (s.substr(i, a.size()) == a) {\n                for (int j = 0; j <= s.size() - b.size(); j++) {\n                    if (s.substr(j, b.size()) == b && abs(i - j) <= k) {\n                        res.push_back(i);\n                        break;\n                    }\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(s.size() * (a.size() + b.size()))\nspace complexity: O(s.size() * (a.size() + b.size()))\nenergy implications: LOW\nexplanation: This solution uses two nested loops to iterate over the string and check for the conditions. The outer loop checks for the presence of string a, and the inner loop checks for the presence of string b and the distance between the indices. The result is stored in a vector and sorted at the end.",
+  "code": "class Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i <= s.size() - a.size(); i++) {\n            if (s.substr(i, a.size()) == a) {\n                for (int j = 0; j <= s.size() - b.size(); j++) {\n                    if (s.substr(j, b.size()) == b && abs(i - j) <= k) {\n                        res.push_back(i);\n                        break;\n                    }\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:49:21.137846",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i <= s.size() - a.size(); i++) {\n            if (s.substr(i, a.size()) == a) {\n                for (int j = 0; j <= s.size() - b.size(); j++) {\n                    if (s.substr(j, b.size()) == b && abs(i - j) <= k) {\n                        res.push_back(i);\n                        break;\n                    }\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.165354"
+}

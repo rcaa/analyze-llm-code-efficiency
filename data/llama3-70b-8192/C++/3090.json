@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        unordered_map<char, int> count;\n        int l = 0;\n        for (int r = 0; r < n; r++) {\n            count[s[r]]++;\n            while (count.size() > 2 || (count.size() == 2 && count.begin()->second > 2)) {\n                count[s[l]]--;\n                if (count[s[l]] == 0) count.erase(s[l]);\n                l++;\n            }\n            res = max(res, r - l + 1);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach with a hashmap to count character occurrences, ensuring at most two occurrences of each character in the substring.",
+  "code": "class Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        unordered_map<char, int> count;\n        int l = 0;\n        for (int r = 0; r < n; r++) {\n            count[s[r]]++;\n            while (count.size() > 2 || (count.size() == 2 && count.begin()->second > 2)) {\n                count[s[l]]--;\n                if (count[s[l]] == 0) count.erase(s[l]);\n                l++;\n            }\n            res = max(res, r - l + 1);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:48:59.582631",
+  "code_extracted_previous": "public:\n    int maximumLengthSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        unordered_map<char, int> count;\n        int l = 0;\n        for (int r = 0; r < n; r++) {\n            count[s[r]]++;\n            while (count.size() > 2 || (count.size() == 2 && count.begin()->second > 2)) {\n                count[s[l]]--;\n                if (count[s[l]] == 0) count.erase(s[l]);\n                l++;\n            }\n            res = max(res, r - l + 1);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.715758"
+}

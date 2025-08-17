@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[0] = 1;\n        for (int i = 1; i * i <= n; i++) {\n            int p = pow(i, x);\n            for (int j = n; j >= p; j--) {\n                dp[j] = (dp[j] + dp[j - p]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^(3/2))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to store the number of ways to express each number up to n as the sum of xth powers of unique positive integers.",
+  "code": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[0] = 1;\n        for (int i = 1; i * i <= n; i++) {\n            int p = pow(i, x);\n            for (int j = n; j >= p; j--) {\n                dp[j] = (dp[j] + dp[j - p]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-05T14:28:01.890348",
+  "code_extracted_previous": "public:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[0] = 1;\n        for (int i = 1; i * i <= n; i++) {\n            int p = pow(i, x);\n            for (int j = n; j >= p; j--) {\n                dp[j] = (dp[j] + dp[j - p]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.650345"
+}

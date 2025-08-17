@@ -1,0 +1,15 @@
+{
+  "id": 541,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public String reverseStr(String s, int k) {\n        char[] arr = s.toCharArray();\n        int n = arr.length;\n        for (int i = 0; i < n; i += 2 * k) {\n            int left = i;\n            int right = Math.min(i + k - 1, n - 1);\n            while (left < right) {\n                char tmp = arr[left];\n                arr[left] = arr[right];\n                arr[right] = tmp;\n                left++;\n                right--;\n            }\n        }\n        return new String(arr);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Convert string to mutable char array, then process in 2k-sized blocks. Reverse the first k characters of each block in-place with two-pointer swap. Handles edge cases (remaining < k or k ≤ remaining < 2k) by clamping the right pointer. Single pass, minimal extra memory.",
+  "code": "class Solution {\n    public String reverseStr(String s, int k) {\n        char[] arr = s.toCharArray();\n        int n = arr.length;\n        for (int i = 0; i < n; i += 2 * k) {\n            int left = i;\n            int right = Math.min(i + k - 1, n - 1);\n            while (left < right) {\n                char tmp = arr[left];\n                arr[left] = arr[right];\n                arr[right] = tmp;\n                left++;\n                right--;\n            }\n        }\n        return new String(arr);\n    }\n}",
+  "timestamp": "2025-08-06T01:27:14.256242",
+  "code_extracted_previous": "class Solution {\n    public String reverseStr(String s, int k) {\n        char[] arr = s.toCharArray();\n        int n = arr.length;\n        for (int i = 0; i < n; i += 2 * k) {\n            int left = i;\n            int right = Math.min(i + k - 1, n - 1);\n            while (left < right) {\n                char tmp = arr[left];\n                arr[left] = arr[right];\n                arr[right] = tmp;\n                left++;\n                right--;\n            }\n        }\n        return new String(arr);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.643763"
+}

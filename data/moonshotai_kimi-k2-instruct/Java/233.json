@@ -1,0 +1,15 @@
+{
+  "id": 233,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int countDigitOne(int n) {\n        int count = 0;\n        for (long k = 1; k <= n; k *= 10) {\n            long r = n / k;\n            long m = r % 10;\n            long l = r / 10;\n            count += (int) (l * k);\n            if (m > 1) {\n                count += k;\n            } else if (m == 1) {\n                count += n % k + 1;\n            }\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Counts 1s at each digit position independently using digit analysis: for each power of 10, compute how many times 1 appears in that place across all numbers ≤ n. Runs in logarithmic time with constant space.",
+  "code": "class Solution {\n    public int countDigitOne(int n) {\n        int count = 0;\n        for (long k = 1; k <= n; k *= 10) {\n            long r = n / k;\n            long m = r % 10;\n            long l = r / 10;\n            count += (int) (l * k);\n            if (m > 1) {\n                count += k;\n            } else if (m == 1) {\n                count += n % k + 1;\n            }\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T02:31:10.299350",
+  "code_extracted_previous": "public int countDigitOne(int n) {\n        int count = 0;\n        for (long k = 1; k <= n; k *= 10) {\n            long r = n / k;\n            long m = r % 10;\n            long l = r / 10;\n            count += (int) (l * k);\n            if (m > 1) {\n                count += k;\n            } else if (m == 1) {\n                count += n % k + 1;\n            }\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.006806"
+}

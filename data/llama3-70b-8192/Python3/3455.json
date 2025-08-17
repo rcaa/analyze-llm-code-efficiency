@@ -1,0 +1,15 @@
+{
+  "id": 3455,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        p = list(p)\n        star1, star2 = p.index('*'), p.index('*', p.index('*') + 1)\n        prefix, suffix = p[:star1], p[star2 + 1:]\n        prefix_len, suffix_len = len(prefix), len(suffix)\n        min_len = float('inf')\n        for i in range(len(s) - prefix_len + 1):\n            if s[i:i + prefix_len] == prefix:\n                for j in range(i + prefix_len, len(s) - suffix_len + 1):\n                    if s[j - suffix_len:j] == suffix:\n                        min_len = min(min_len, j - i)\n        return min_len if min_len != float('inf') else -1\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses two pointers to find the shortest matching substring in s that matches p. It first finds the prefix and suffix of p, then iterates through s to find the shortest matching substring.",
+  "code": "class Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        p = list(p)\n        star1, star2 = p.index('*'), p.index('*', p.index('*') + 1)\n        prefix, suffix = p[:star1], p[star2 + 1:]\n        prefix_len, suffix_len = len(prefix), len(suffix)\n        min_len = float('inf')\n        for i in range(len(s) - prefix_len + 1):\n            if s[i:i + prefix_len] == prefix:\n                for j in range(i + prefix_len, len(s) - suffix_len + 1):\n                    if s[j - suffix_len:j] == suffix:\n                        min_len = min(min_len, j - i)\n        return min_len if min_len != float('inf') else -1",
+  "timestamp": "2025-08-06T01:23:36.005654",
+  "code_extracted_previous": "class Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        p = list(p)\n        star1, star2 = p.index('*'), p.index('*', p.index('*') + 1)\n        prefix, suffix = p[:star1], p[star2 + 1:]\n        prefix_len, suffix_len = len(prefix), len(suffix)\n        min_len = float('inf')\n        for i in range(len(s) - prefix_len + 1):\n            if s[i:i + prefix_len] == prefix:\n                for j in range(i + prefix_len, len(s) - suffix_len + 1):\n                    if s[j - suffix_len:j] == suffix:\n                        min_len = min(min_len, j - i)\n        return min_len if min_len != float('inf') else -1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.745183"
+}

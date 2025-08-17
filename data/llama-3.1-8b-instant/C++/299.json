@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        int secretCount[10] = {0}, guessCount[10] = {0};\n        \n        for (int i = 0; i < secret.length(); i++) {\n            if (secret[i] == guess[i]) {\n                bulls++;\n                secretCount[secret[i] - '0']--;\n                guessCount[guess[i] - '0']--;\n            } else {\n                secretCount[secret[i] - '0']++;\n                guessCount[guess[i] - '0']++;\n            }\n        }\n        \n        for (int i = 0; i < 10; i++) {\n            cows += min(secretCount[i], guessCount[i]);\n        }\n        \n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        int secretCount[10] = {0}, guessCount[10] = {0};\n        \n        for (int i = 0; i < secret.length(); i++) {\n            if (secret[i] == guess[i]) {\n                bulls++;\n                secretCount[secret[i] - '0']--;\n                guessCount[guess[i] - '0']--;\n            } else {\n                secretCount[secret[i] - '0']++;\n                guessCount[guess[i] - '0']++;\n            }\n        }\n        \n        for (int i = 0; i < 10; i++) {\n            cows += min(secretCount[i], guessCount[i]);\n        }\n        \n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};",
+  "timestamp": "2025-08-05T14:52:43.471854",
+  "code_extracted_previous": "class Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        int secretCount[10] = {0}, guessCount[10] = {0};\n        \n        for (int i = 0; i < secret.length(); i++) {\n            if (secret[i] == guess[i]) {\n                bulls++;\n                secretCount[secret[i] - '0']--;\n                guessCount[guess[i] - '0']--;\n            } else {\n                secretCount[secret[i] - '0']++;\n                guessCount[guess[i] - '0']++;\n            }\n        }\n        \n        for (int i = 0; i < 10; i++) {\n            cows += min(secretCount[i], guessCount[i]);\n        }\n        \n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.295102"
+}

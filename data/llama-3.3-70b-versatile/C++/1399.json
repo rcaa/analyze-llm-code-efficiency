@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int countLargestGroup(int n) {\n        vector<int> sumCount(37, 0);\n        int maxSize = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            sumCount[sum]++;\n            maxSize = max(maxSize, sumCount[sum]);\n        }\n        int count = 0;\n        for (int i = 0; i < 37; i++) {\n            if (sumCount[i] == maxSize) {\n                count++;\n            }\n        }\n        return count;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a vector to store the count of numbers with the same sum of digits, then iterates through the numbers from 1 to n to calculate the sum of digits for each number and update the count in the vector, finally counts the number of groups with the maximum size.",
+  "code": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        vector<int> sumCount(37, 0);\n        int maxSize = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            sumCount[sum]++;\n            maxSize = max(maxSize, sumCount[sum]);\n        }\n        int count = 0;\n        for (int i = 0; i < 37; i++) {\n            if (sumCount[i] == maxSize) {\n                count++;\n            }\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-06T08:43:28.069846",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        vector<int> sumCount(37, 0);\n        int maxSize = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            sumCount[sum]++;\n            maxSize = max(maxSize, sumCount[sum]);\n        }\n        int count = 0;\n        for (int i = 0; i < 37; i++) {\n            if (sumCount[i] == maxSize) {\n                count++;\n            }\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.771425"
+}

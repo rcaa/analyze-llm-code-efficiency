@@ -1,0 +1,15 @@
+{
+  "id": 2165,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public long smallestNumber(long num) {\n        if (num == 0) return 0;\n        boolean isNegative = num < 0;\n        num = Math.abs(num);\n        long[] digits = new long[(int) Math.floor(Math.log10(num)) + 1];\n        int index = 0;\n        while (num > 0) {\n            digits[index++] = num % 10;\n            num /= 10;\n        }\n        Arrays.sort(digits);\n        if (isNegative) digits[0] = -1 * digits[0];\n        for (int i = 0; i < digits.length; i++) {\n            num = num * 10 + digits[i];\n        }\n        return num;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public long smallestNumber(long num) {\n        if (num == 0) return 0;\n        boolean isNegative = num < 0;\n        num = Math.abs(num);\n        long[] digits = new long[(int) Math.floor(Math.log10(num)) + 1];\n        int index = 0;\n        while (num > 0) {\n            digits[index++] = num % 10;\n            num /= 10;\n        }\n        Arrays.sort(digits);\n        if (isNegative) digits[0] = -1 * digits[0];\n        for (int i = 0; i < digits.length; i++) {\n            num = num * 10 + digits[i];\n        }\n        return num;\n    }\n}",
+  "timestamp": "2025-08-05T15:56:21.144465",
+  "code_extracted_previous": "class Solution {\n    public long smallestNumber(long num) {\n        if (num == 0) return 0;\n        boolean isNegative = num < 0;\n        num = Math.abs(num);\n        long[] digits = new long[(int) Math.floor(Math.log10(num)) + 1];\n        int index = 0;\n        while (num > 0) {\n            digits[index++] = num % 10;\n            num /= 10;\n        }\n        Arrays.sort(digits);\n        if (isNegative) digits[0] = -1 * digits[0];\n        for (int i = 0; i < digits.length; i++) {\n            num = num * 10 + digits[i];\n        }\n        return num;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.179333"
+}

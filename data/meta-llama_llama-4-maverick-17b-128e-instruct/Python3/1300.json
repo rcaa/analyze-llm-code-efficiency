@@ -1,0 +1,15 @@
+{
+  "id": 1300,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findBestValue(self, arr: List[int], target: int) -> int:\n        left, right = 0, max(arr)\n        while left < right:\n            mid = (left + right) // 2\n            total = sum(min(mid, num) for num in arr)\n            if total < target:\n                left = mid + 1\n            else:\n                right = mid\n        total1 = sum(min(left, num) for num in arr)\n        total2 = sum(min(left - 1, num) for num in arr)\n        return left if abs(total1 - target) < abs(total2 - target) else left - 1\n\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to efficiently find the optimal value, minimizing the absolute difference between the sum of the array and the target. The search range is between 0 and the maximum value in the array.\n```",
+  "code": "def findBestValue(self, arr: List[int], target: int) -> int:\n        left, right = 0, max(arr)\n        while left < right:\n            mid = (left + right) // 2\n            total = sum(min(mid, num) for num in arr)\n            if total < target:\n                left = mid + 1\n            else:\n                right = mid\n        total1 = sum(min(left, num) for num in arr)\n        total2 = sum(min(left - 1, num) for num in arr)\n        return left if abs(total1 - target) < abs(total2 - target) else left - 1",
+  "timestamp": "2025-08-05T13:20:52.089046",
+  "code_extracted_previous": "class Solution:\n    def findBestValue(self, arr: List[int], target: int) -> int:\n        left, right = 0, max(arr)\n        while left < right:\n            mid = (left + right) // 2\n            total = sum(min(mid, num) for num in arr)\n            if total < target:\n                left = mid + 1\n            else:\n                right = mid\n        total1 = sum(min(left, num) for num in arr)\n        total2 = sum(min(left - 1, num) for num in arr)\n        return left if abs(total1 - target) < abs(total2 - target) else left - 1",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.475952"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3504,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int longestPalindrome(string s, string t) {\n        string combined = s + t;\n        int n = combined.size();\n        vector<vector<bool>> dp(n, vector<bool>(n, false));\n        int maxLen = 1;\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i][i] = true;\n            for (int j = i + 1; j < n; ++j) {\n                if (combined[i] == combined[j]) {\n                    if (j - i == 1 || dp[i + 1][j - 1]) {\n                        dp[i][j] = true;\n                        if (i < s.size() && j >= s.size()) {\n                            maxLen = max(maxLen, j - i + 1);\n                        }\n                    }\n                }\n            }\n        }\n        return maxLen;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n^2)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently find the longest palindromic substring that can be formed by concatenating substrings from s and t. It iterates over the combined string and checks for palindromes, keeping track of the maximum length found. The use of a 2D dp array allows for efficient storage and lookup of palindromic substrings.",
+  "code": "class Solution {\npublic:\n    int longestPalindrome(string s, string t) {\n        string combined = s + t;\n        int n = combined.size();\n        vector<vector<bool>> dp(n, vector<bool>(n, false));\n        int maxLen = 1;\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i][i] = true;\n            for (int j = i + 1; j < n; ++j) {\n                if (combined[i] == combined[j]) {\n                    if (j - i == 1 || dp[i + 1][j - 1]) {\n                        dp[i][j] = true;\n                        if (i < s.size() && j >= s.size()) {\n                            maxLen = max(maxLen, j - i + 1);\n                        }\n                    }\n                }\n            }\n        }\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-06T01:25:03.089081",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestPalindrome(string s, string t) {\n        string combined = s + t;\n        int n = combined.size();\n        vector<vector<bool>> dp(n, vector<bool>(n, false));\n        int maxLen = 1;\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i][i] = true;\n            for (int j = i + 1; j < n; ++j) {\n                if (combined[i] == combined[j]) {\n                    if (j - i == 1 || dp[i + 1][j - 1]) {\n                        dp[i][j] = true;\n                        if (i < s.size() && j >= s.size()) {\n                            maxLen = max(maxLen, j - i + 1);\n                        }\n                    }\n                }\n            }\n        }\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.729778"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```python\nimport heapq\n\nclass SORTracker:\n\n    def __init__(self):\n        self.max_heap = []\n        self.min_heap = []\n        self.query_count = 0\n\n    def add(self, name: str, score: int) -> None:\n        heapq.heappush(self.max_heap, (-score, name))\n\n    def get(self) -> str:\n        self.query_count += 1\n        while self.max_heap and (len(self.min_heap) == self.query_count - 1 or self.max_heap[0][1] >= self.min_heap[0][1]):\n            heapq.heappush(self.min_heap, (-heapq.heappop(self.max_heap)[0], heapq.heappop(self.max_heap)[1]))\n        best = heapq.heappop(self.min_heap)\n        heapq.heappush(self.min_heap, best)\n        return best[1]\n```\n\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The provided solution utilizes two heaps to efficiently track and retrieve the best locations. The max-heap stores locations in descending order of score and lexicographical order of name, while the min-heap stores the best locations that have been queried so far. When `get()` is called, it ensures that the best location is always at the top of the min-heap, allowing for efficient retrieval. This approach enables efficient addition and querying of locations with a time complexity of O(log n).",
+  "code": "class SORTracker:\n\n    def __init__(self):\n        self.max_heap = []\n        self.min_heap = []\n        self.query_count = 0\n\n    def add(self, name: str, score: int) -> None:\n        heapq.heappush(self.max_heap, (-score, name))\n\n    def get(self) -> str:\n        self.query_count += 1\n        while self.max_heap and (len(self.min_heap) == self.query_count - 1 or self.max_heap[0][1] >= self.min_heap[0][1]):\n            heapq.heappush(self.min_heap, (-heapq.heappop(self.max_heap)[0], heapq.heappop(self.max_heap)[1]))\n        best = heapq.heappop(self.min_heap)\n        heapq.heappush(self.min_heap, best)\n        return best[1]",
+  "timestamp": "2025-08-05T14:04:48.931495",
+  "code_extracted_previous": "import heapq\n\nclass SORTracker:\n\n    def __init__(self):\n        self.max_heap = []\n        self.min_heap = []\n        self.query_count = 0\n\n    def add(self, name: str, score: int) -> None:\n        heapq.heappush(self.max_heap, (-score, name))\n\n    def get(self) -> str:\n        self.query_count += 1\n        while self.max_heap and (len(self.min_heap) == self.query_count - 1 or self.max_heap[0][1] >= self.min_heap[0][1]):\n            heapq.heappush(self.min_heap, (-heapq.heappop(self.max_heap)[0], heapq.heappop(self.max_heap)[1]))\n        best = heapq.heappop(self.min_heap)\n        heapq.heappush(self.min_heap, best)\n        return best[1]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:52.044820"
+}

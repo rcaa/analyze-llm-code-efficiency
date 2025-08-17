@@ -1,0 +1,15 @@
+{
+  "id": 754,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int reachNumber(int target) {\n        target = Math.abs(target);\n        int k = 0;\n        long sum = 0;\n        while (sum < target) {\n            k++;\n            sum += k;\n        }\n        if ((sum - target) % 2 == 0) {\n            return k;\n        } else if ((sum + k + 1 - target) % 2 == 0) {\n            return k + 1;\n        } else {\n            return k + 2;\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(sqrt(|target|))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The key insight is that the sum of the first k moves is S = k(k+1)/2. We need S ≥ |target| and S-|target| even so we can flip the sign of some move to cancel the excess. The loop finds the smallest k with S ≥ |target|. If S-|target| is even we are done; otherwise we need one or two more moves to make the difference even.",
+  "code": "class Solution {\n    public int reachNumber(int target) {\n        target = Math.abs(target);\n        int k = 0;\n        long sum = 0;\n        while (sum < target) {\n            k++;\n            sum += k;\n        }\n        if ((sum - target) % 2 == 0) {\n            return k;\n        } else if ((sum + k + 1 - target) % 2 == 0) {\n            return k + 1;\n        } else {\n            return k + 2;\n        }\n    }\n}",
+  "timestamp": "2025-08-06T02:32:17.353464",
+  "code_extracted_previous": "class Solution {\n    public int reachNumber(int target) {\n        target = Math.abs(target);\n        int k = 0;\n        long sum = 0;\n        while (sum < target) {\n            k++;\n            sum += k;\n        }\n        if ((sum - target) % 2 == 0) {\n            return k;\n        } else if ((sum + k + 1 - target) % 2 == 0) {\n            return k + 1;\n        } else {\n            return k + 2;\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.810413"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int findIntegers(int n) {\n        int res = 0, prev = 0, prevPrev = 0;\n        for (int i = 30; i >= 0; --i) {\n            int bit = (n >> i) & 1;\n            if (bit == 1) {\n                res += prevPrev;\n                if (prev == 1) prev = 0;\n                else prev = 1;\n            } else {\n                prev = 0;\n            }\n            prevPrev = prev;\n        }\n        return res + (prev == 0);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a binary representation of the number to count the number of integers in the range [0, n] whose binary representations do not contain consecutive ones. It iterates through the binary representation from right to left, and for each bit, it checks if it is 1 or 0. If it is 1, it adds the number of integers that have ended with 0 in the previous iteration to the result, and updates the previous state. If it is 0, it resets the previous state. Finally, it adds 1 to the result if the last bit is 0. This solution has a high efficiency due to its constant space complexity and logarithmic time complexity.",
+  "code": "class Solution {\npublic:\n    int findIntegers(int n) {\n        int res = 0, prev = 0, prevPrev = 0;\n        for (int i = 30; i >= 0; --i) {\n            int bit = (n >> i) & 1;\n            if (bit == 1) {\n                res += prevPrev;\n                if (prev == 1) prev = 0;\n                else prev = 1;\n            } else {\n                prev = 0;\n            }\n            prevPrev = prev;\n        }\n        return res + (prev == 0);\n    }\n};",
+  "timestamp": "2025-08-05T14:14:35.834612",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findIntegers(int n) {\n        int res = 0, prev = 0, prevPrev = 0;\n        for (int i = 30; i >= 0; --i) {\n            int bit = (n >> i) & 1;\n            if (bit == 1) {\n                res += prevPrev;\n                if (prev == 1) prev = 0;\n                else prev = 1;\n            } else {\n                prev = 0;\n            }\n            prevPrev = prev;\n        }\n        return res + (prev == 0);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.555910"
+}

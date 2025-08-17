@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String smallestSubsequence(String s) {\n        int[] last = new int[26];\n        for (int i = 0; i < s.length(); i++) {\n            last[s.charAt(i) - 'a'] = i;\n        }\n        StringBuilder res = new StringBuilder();\n        boolean[] used = new boolean[26];\n        for (int i = 0; i < s.length(); i++) {\n            if (used[s.charAt(i) - 'a']) continue;\n            while (res.length() > 0 && s.charAt(i) < res.charAt(res.length() - 1) && last[res.charAt(res.length() - 1) - 'a'] > i) {\n                used[res.charAt(res.length() - 1) - 'a'] = false;\n                res.deleteCharAt(res.length() - 1);\n            }\n            res.append(s.charAt(i));\n            used[s.charAt(i) - 'a'] = true;\n        }\n        return res.toString();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public String smallestSubsequence(String s) {\n        int[] last = new int[26];\n        for (int i = 0; i < s.length(); i++) {\n            last[s.charAt(i) - 'a'] = i;\n        }\n        StringBuilder res = new StringBuilder();\n        boolean[] used = new boolean[26];\n        for (int i = 0; i < s.length(); i++) {\n            if (used[s.charAt(i) - 'a']) continue;\n            while (res.length() > 0 && s.charAt(i) < res.charAt(res.length() - 1) && last[res.charAt(res.length() - 1) - 'a'] > i) {\n                used[res.charAt(res.length() - 1) - 'a'] = false;\n                res.deleteCharAt(res.length() - 1);\n            }\n            res.append(s.charAt(i));\n            used[s.charAt(i) - 'a'] = true;\n        }\n        return res.toString();\n    }\n}",
+  "timestamp": "2025-08-06T00:48:06.705582",
+  "code_extracted_previous": "class Solution {\n    public String smallestSubsequence(String s) {\n        int[] last = new int[26];\n        for (int i = 0; i < s.length(); i++) {\n            last[s.charAt(i) - 'a'] = i;\n        }\n        StringBuilder res = new StringBuilder();\n        boolean[] used = new boolean[26];\n        for (int i = 0; i < s.length(); i++) {\n            if (used[s.charAt(i) - 'a']) continue;\n            while (res.length() > 0 && s.charAt(i) < res.charAt(res.length() - 1) && last[res.charAt(res.length() - 1) - 'a'] > i) {\n                used[res.charAt(res.length() - 1) - 'a'] = false;\n                res.deleteCharAt(res.length() - 1);\n            }\n            res.append(s.charAt(i));\n            used[s.charAt(i) - 'a'] = true;\n        }\n        return res.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.869429"
+}

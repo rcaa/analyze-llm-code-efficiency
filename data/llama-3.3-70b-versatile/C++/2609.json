@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int n = s.size(), res = 0;\n        for (int i = 0; i < n; i++) {\n            int cnt0 = 0, cnt1 = 0;\n            for (int j = i; j < n; j++) {\n                if (s[j] == '0') cnt0++;\n                else if (s[j] == '1' && cnt0 > 0) cnt1++;\n                if (cnt0 == cnt1) res = max(res, cnt0 + cnt1);\n                if (cnt1 > cnt0) break;\n            }\n        }\n        return res;\n    }\n};\n\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a nested loop to generate all possible substrings and checks each one for balance by counting the number of zeroes and ones, updating the result whenever a longer balanced substring is found.",
+  "code": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int n = s.size(), res = 0;\n        for (int i = 0; i < n; i++) {\n            int cnt0 = 0, cnt1 = 0;\n            for (int j = i; j < n; j++) {\n                if (s[j] == '0') cnt0++;\n                else if (s[j] == '1' && cnt0 > 0) cnt1++;\n                if (cnt0 == cnt1) res = max(res, cnt0 + cnt1);\n                if (cnt1 > cnt0) break;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T23:44:12.771617",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int n = s.size(), res = 0;\n        for (int i = 0; i < n; i++) {\n            int cnt0 = 0, cnt1 = 0;\n            for (int j = i; j < n; j++) {\n                if (s[j] == '0') cnt0++;\n                else if (s[j] == '1' && cnt0 > 0) cnt1++;\n                if (cnt0 == cnt1) res = max(res, cnt0 + cnt1);\n                if (cnt1 > cnt0) break;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.439389"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2645,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int addMinimum(string word) {\n        int res = 0, expect = 0; // 0->'a', 1->'b', 2->'c'\n        for (char c : word) {\n            int cur = c - 'a';\n            res += (cur - expect + 3) % 3;\n            expect = (cur + 1) % 3;\n        }\n        res += (3 - expect) % 3;\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Track the next expected character in the repeating \"abc\" pattern. For each character, compute the gap between current and expected, wrapping around with modulo 3. Add the missing characters count and update expectation. After the loop, add any missing tail characters to complete the last \"abc\".",
+  "code": "class Solution {\npublic:\n    int addMinimum(string word) {\n        int res = 0, expect = 0; // 0->'a', 1->'b', 2->'c'\n        for (char c : word) {\n            int cur = c - 'a';\n            res += (cur - expect + 3) % 3;\n            expect = (cur + 1) % 3;\n        }\n        res += (3 - expect) % 3;\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:04:14.699423",
+  "code_extracted_previous": "class Solution {\npublic:\n    int addMinimum(string word) {\n        int res = 0, expect = 0; // 0->'a', 1->'b', 2->'c'\n        for (char c : word) {\n            int cur = c - 'a';\n            res += (cur - expect + 3) % 3;\n            expect = (cur + 1) % 3;\n        }\n        res += (3 - expect) % 3;\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.798046"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: ```python\nimport bisect\n\nclass MyCalendarThree:\n\n    def __init__(self):\n        self.starts = []\n        self.ends = []\n        self.k = 0\n\n    def book(self, startTime: int, endTime: int) -> int:\n        bisect.insort(self.starts, startTime)\n        bisect.insort(self.ends, endTime)\n        i = j = cur = 0\n        max_k = 0\n        while i < len(self.starts) and j < len(self.ends):\n            if self.starts[i] < self.ends[j]:\n                cur += 1\n                max_k = max(max_k, cur)\n                i += 1\n            else:\n                cur -= 1\n                j += 1\n        self.k = max(self.k, max_k)\n        return self.k\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses two sorted lists to store start and end times; each insertion is O(log n) and a linear scan computes the maximum overlap in O(n). Maintains the global maximum k across calls.",
+  "code": "class MyCalendarThree:\n\n    def __init__(self):\n        self.starts = []\n        self.ends = []\n        self.k = 0\n\n    def book(self, startTime: int, endTime: int) -> int:\n        bisect.insort(self.starts, startTime)\n        bisect.insort(self.ends, endTime)\n        i = j = cur = 0\n        max_k = 0\n        while i < len(self.starts) and j < len(self.ends):\n            if self.starts[i] < self.ends[j]:\n                cur += 1\n                max_k = max(max_k, cur)\n                i += 1\n            else:\n                cur -= 1\n                j += 1\n        self.k = max(self.k, max_k)\n        return self.k",
+  "timestamp": "2025-08-05T13:38:13.998333",
+  "code_extracted_previous": "import bisect\n\nclass MyCalendarThree:\n\n    def __init__(self):\n        self.starts = []\n        self.ends = []\n        self.k = 0\n\n    def book(self, startTime: int, endTime: int) -> int:\n        bisect.insort(self.starts, startTime)\n        bisect.insort(self.ends, endTime)\n        i = j = cur = 0\n        max_k = 0\n        while i < len(self.starts) and j < len(self.ends):\n            if self.starts[i] < self.ends[j]:\n                cur += 1\n                max_k = max(max_k, cur)\n                i += 1\n            else:\n                cur -= 1\n                j += 1\n        self.k = max(self.k, max_k)\n        return self.k",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:57.451318"
+}

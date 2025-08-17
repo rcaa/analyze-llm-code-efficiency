@@ -1,0 +1,15 @@
+{
+  "id": 3352,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def countKReducibleNumbers(self, s: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = int(s, 2)\n        memo = {}\n        \n        def count_set_bits(x):\n            return bin(x).count('1')\n        \n        def is_k_reducible(x, k):\n            if x == 1:\n                return True\n            if k == 0:\n                return False\n            if (x, k) in memo:\n                return memo[(x, k)]\n            memo[(x, k)] = is_k_reducible(count_set_bits(x), k-1)\n            return memo[(x, k)]\n        \n        count = 0\n        for i in range(1, n):\n            if is_k_reducible(i, k):\n                count += 1\n        return count % MOD\n```\nefficiency: HIGH\ntime complexity: O(n * k)\nspace complexity: O(n * k)\nenergy implications: LOW\nexplanation: The solution uses memoization to efficiently store and reuse the results of subproblems, reducing the time complexity and improving performance. It iterates over all numbers less than n, checks if each number is k-reducible, and counts the k-reducible numbers. The result is then returned modulo 10^9 + 7 to prevent overflow.",
+  "code": "def countKReducibleNumbers(self, s: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = int(s, 2)\n        memo = {}\n        \n        def count_set_bits(x):\n            return bin(x).count('1')\n        \n        def is_k_reducible(x, k):\n            if x == 1:\n                return True\n            if k == 0:\n                return False\n            if (x, k) in memo:\n                return memo[(x, k)]\n            memo[(x, k)] = is_k_reducible(count_set_bits(x), k-1)\n            return memo[(x, k)]\n        \n        count = 0\n        for i in range(1, n):\n            if is_k_reducible(i, k):\n                count += 1\n        return count % MOD\n```",
+  "timestamp": "2025-08-06T15:20:00.499201",
+  "code_extracted_previous": "class Solution:\n    def countKReducibleNumbers(self, s: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = int(s, 2)\n        memo = {}\n        \n        def count_set_bits(x):\n            return bin(x).count('1')\n        \n        def is_k_reducible(x, k):\n            if x == 1:\n                return True\n            if k == 0:\n                return False\n            if (x, k) in memo:\n                return memo[(x, k)]\n            memo[(x, k)] = is_k_reducible(count_set_bits(x), k-1)\n            return memo[(x, k)]\n        \n        count = 0\n        for i in range(1, n):\n            if is_k_reducible(i, k):\n                count += 1\n        return count % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.510345"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 352,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass SummaryRanges {\n\n    private TreeSet<Integer> set;\n\n    public SummaryRanges() {\n        set = new TreeSet<>();\n    }\n    \n    public void addNum(int value) {\n        set.add(value);\n    }\n    \n    public int[][] getIntervals() {\n        int size = set.size();\n        int[][] intervals = new int[size][2];\n        int index = 0;\n        Integer prev = null;\n        for (Integer num : set) {\n            if (prev == null || num != prev + 1) {\n                intervals[index][0] = num;\n                intervals[index][1] = num;\n                index++;\n            } else {\n                intervals[index - 1][1] = num;\n            }\n            prev = num;\n        }\n        return Arrays.copyOfRange(intervals, 0, index);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n log n) due to TreeSet operations\nspace complexity: O(n) for storing the set of numbers\nenergy implications: LOW",
+  "code": "class SummaryRanges {\n\n    private TreeSet<Integer> set;\n\n    public SummaryRanges() {\n        set = new TreeSet<>();\n    }\n    \n    public void addNum(int value) {\n        set.add(value);\n    }\n    \n    public int[][] getIntervals() {\n        int size = set.size();\n        int[][] intervals = new int[size][2];\n        int index = 0;\n        Integer prev = null;\n        for (Integer num : set) {\n            if (prev == null || num != prev + 1) {\n                intervals[index][0] = num;\n                intervals[index][1] = num;\n                index++;\n            } else {\n                intervals[index - 1][1] = num;\n            }\n            prev = num;\n        }\n        return Arrays.copyOfRange(intervals, 0, index);\n    }\n}",
+  "timestamp": "2025-08-05T13:37:34.495810",
+  "code_extracted_previous": "class SummaryRanges {\n\n    private TreeSet<Integer> set;\n\n    public SummaryRanges() {\n        set = new TreeSet<>();\n    }\n    \n    public void addNum(int value) {\n        set.add(value);\n    }\n    \n    public int[][] getIntervals() {\n        int size = set.size();\n        int[][] intervals = new int[size][2];\n        int index = 0;\n        Integer prev = null;\n        for (Integer num : set) {\n            if (prev == null || num != prev + 1) {\n                intervals[index][0] = num;\n                intervals[index][1] = num;\n                index++;\n            } else {\n                intervals[index - 1][1] = num;\n            }\n            prev = num;\n        }\n        return Arrays.copyOfRange(intervals, 0, index);\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:29.717312"
+}

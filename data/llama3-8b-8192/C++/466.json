@@ -1,0 +1,15 @@
+{
+  "id": 466,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int len1 = s1.length(), len2 = s2.length();\n        int count1 = 0, count2 = 0, match = 0;\n        for (int i = 0; i < n1 * len1; i++) {\n            for (int j = 0; j < len2 && i < n1 * len1; j++) {\n                if (s1[i % len1] == s2[j]) {\n                    i++;\n                    match++;\n                    if (match == len2) {\n                        count2++;\n                        match = 0;\n                    }\n                }\n            }\n        }\n        return count2 / n2;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n1 * len1 * len2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses two pointers to iterate through the strings. It counts the number of matches between the two strings and updates the count of repetitions accordingly. The time complexity is high because it needs to iterate through the strings multiple times. The space complexity is low because it only uses a constant amount of space.",
+  "code": "class Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int len1 = s1.length(), len2 = s2.length();\n        int count1 = 0, count2 = 0, match = 0;\n        for (int i = 0; i < n1 * len1; i++) {\n            for (int j = 0; j < len2 && i < n1 * len1; j++) {\n                if (s1[i % len1] == s2[j]) {\n                    i++;\n                    match++;\n                    if (match == len2) {\n                        count2++;\n                        match = 0;\n                    }\n                }\n            }\n        }\n        return count2 / n2;\n    }\n};",
+  "timestamp": "2025-08-06T01:58:56.173232",
+  "code_extracted_previous": "public:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int len1 = s1.length(), len2 = s2.length();\n        int count1 = 0, count2 = 0, match = 0;\n        for (int i = 0; i < n1 * len1; i++) {\n            for (int j = 0; j < len2 && i < n1 * len1; j++) {\n                if (s1[i % len1] == s2[j]) {\n                    i++;\n                    match++;\n                    if (match == len2) {\n                        count2++;\n                        match = 0;\n                    }\n                }\n            }\n        }\n        return count2 / n2;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.382090"
+}

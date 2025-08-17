@@ -1,0 +1,15 @@
+{
+  "id": 692,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public List<String> topKFrequent(String[] words, int k) {\n        Map<String, Integer> freq = new HashMap<>();\n        for (String word : words) {\n            freq.put(word, freq.getOrDefault(word, 0) + 1);\n        }\n        List<String> candidates = new ArrayList<>(freq.keySet());\n        Collections.sort(candidates, (w1, w2) -> freq.get(w2) - freq.get(w1) == 0 ? w1.compareTo(w2) : freq.get(w2) - freq.get(w1));\n        return candidates.subList(0, k);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a HashMap to count the frequency of each word, then sorts the words based on frequency and lexicographical order using a custom comparator. The top k frequent words are then returned as a sublist.",
+  "code": "class Solution {\n    public List<String> topKFrequent(String[] words, int k) {\n        Map<String, Integer> freq = new HashMap<>();\n        for (String word : words) {\n            freq.put(word, freq.getOrDefault(word, 0) + 1);\n        }\n        List<String> candidates = new ArrayList<>(freq.keySet());\n        Collections.sort(candidates, (w1, w2) -> freq.get(w2) - freq.get(w1) == 0 ? w1.compareTo(w2) : freq.get(w2) - freq.get(w1));\n        return candidates.subList(0, k);\n    }\n}",
+  "timestamp": "2025-08-05T13:15:36.905564",
+  "code_extracted_previous": "class Solution {\n    public List<String> topKFrequent(String[] words, int k) {\n        Map<String, Integer> freq = new HashMap<>();\n        for (String word : words) {\n            freq.put(word, freq.getOrDefault(word, 0) + 1);\n        }\n        List<String> candidates = new ArrayList<>(freq.keySet());\n        Collections.sort(candidates, (w1, w2) -> freq.get(w2) - freq.get(w1) == 0 ? w1.compareTo(w2) : freq.get(w2) - freq.get(w1));\n        return candidates.subList(0, k);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.669271"
+}

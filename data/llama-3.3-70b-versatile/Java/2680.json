@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public long maximumOr(int[] nums, int k) {\n        long ans = 0;\n        for (int num : nums) {\n            ans |= num;\n        }\n        long max = ans;\n        for (int i = 0; i < nums.length; i++) {\n            long temp = ans;\n            int cnt = 0;\n            int num = nums[i];\n            while (cnt <= k && (temp ^ (temp | num)) != 0) {\n                temp |= num;\n                num <<= 1;\n                cnt++;\n            }\n            max = Math.max(max, temp);\n        }\n        return max;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n * k)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over each number in the array, calculates the maximum possible bitwise OR by applying the operation at most k times, and keeps track of the maximum result. It uses bitwise operations to efficiently calculate the result.",
+  "code": "class Solution {\n    public long maximumOr(int[] nums, int k) {\n        long ans = 0;\n        for (int num : nums) {\n            ans |= num;\n        }\n        long max = ans;\n        for (int i = 0; i < nums.length; i++) {\n            long temp = ans;\n            int cnt = 0;\n            int num = nums[i];\n            while (cnt <= k && (temp ^ (temp | num)) != 0) {\n                temp |= num;\n                num <<= 1;\n                cnt++;\n            }\n            max = Math.max(max, temp);\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-06T15:14:16.717756",
+  "code_extracted_previous": "class Solution {\n    public long maximumOr(int[] nums, int k) {\n        long ans = 0;\n        for (int num : nums) {\n            ans |= num;\n        }\n        long max = ans;\n        for (int i = 0; i < nums.length; i++) {\n            long temp = ans;\n            int cnt = 0;\n            int num = nums[i];\n            while (cnt <= k && (temp ^ (temp | num)) != 0) {\n                temp |= num;\n                num <<= 1;\n                cnt++;\n            }\n            max = Math.max(max, temp);\n        }\n        return max;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.004938"
+}

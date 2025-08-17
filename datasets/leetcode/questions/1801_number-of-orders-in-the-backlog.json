@@ -1,0 +1,125 @@
+{
+  "id": 1801,
+  "slug": "number-of-orders-in-the-backlog",
+  "url": "https://leetcode.com/problems/number-of-orders-in-the-backlog/",
+  "titulo": "Number of Orders in the Backlog",
+  "enunciado": "You are given a 2D integer array \norders\n, where each \norders[i] = [price\ni\n, amount\ni\n, orderType\ni\n]\n denotes that \namount\ni\n \norders have been placed of type \norderType\ni\n at the price \nprice\ni\n. The \norderType\ni\n is:\n\n\n\n\n0\n if it is a batch of \nbuy\n orders, or\n\n\n1\n if it is a batch of \nsell\n orders.\n\n\n\n\nNote that \norders[i]\n represents a batch of \namount\ni\n independent orders with the same price and order type. All orders represented by \norders[i]\n will be placed before all orders represented by \norders[i+1]\n for all valid \ni\n.\n\n\nThere is a \nbacklog\n that consists of orders that have not been executed. The backlog is initially empty. When an order is placed, the following happens:\n\n\n\n\nIf the order is a \nbuy\n order, you look at the \nsell\n order with the \nsmallest\n price in the backlog. If that \nsell\n order's price is \nsmaller than or equal to\n the current \nbuy\n order's price, they will match and be executed, and that \nsell\n order will be removed from the backlog. Else, the \nbuy\n order is added to the backlog.\n\n\nVice versa, if the order is a \nsell\n order, you look at the \nbuy\n order with the \nlargest\n price in the backlog. If that \nbuy\n order's price is \nlarger than or equal to\n the current \nsell\n order's price, they will match and be executed, and that \nbuy\n order will be removed from the backlog. Else, the \nsell\n order is added to the backlog.\n\n\n\n\nReturn \nthe total \namount\n of orders in the backlog after placing all the orders from the input\n. Since this number can be large, return it \nmodulo\n \n10\n9\n + 7\n.\n\n\n \n\n\nExample 1:\n\n\n\n\n\r\n\nInput:\n orders = [[10,5,0],[15,2,1],[25,1,1],[30,4,0]]\r\n\nOutput:\n 6\r\n\nExplanation:\n Here is what happens with the orders:\r\n- 5 orders of type buy with price 10 are placed. There are no sell orders, so the 5 orders are added to the backlog.\r\n- 2 orders of type sell with price 15 are placed. There are no buy orders with prices larger than or equal to 15, so the 2 orders are added to the backlog.\r\n- 1 order of type sell with price 25 is placed. There are no buy orders with prices larger than or equal to 25 in the backlog, so this order is added to the backlog.\r\n- 4 orders of type buy with price 30 are placed. The first 2 orders are matched with the 2 sell orders of the least price, which is 15 and these 2 sell orders are removed from the backlog. The 3\nrd\n order is matched with the sell order of the least price, which is 25 and this sell order is removed from the backlog. Then, there are no more sell orders in the backlog, so the 4\nth\n order is added to the backlog.\r\nFinally, the backlog has 5 buy orders with price 10, and 1 buy order with price 30. So the total number of orders in the backlog is 6.\r\n\n\n\nExample 2:\n\n\n\n\n\r\n\nInput:\n orders = [[7,1000000000,1],[15,3,0],[5,999999995,0],[5,1,1]]\r\n\nOutput:\n 999999984\r\n\nExplanation:\n Here is what happens with the orders:\r\n- 10\n9\n orders of type sell with price 7 are placed. There are no buy orders, so the 10\n9\n orders are added to the backlog.\r\n- 3 orders of type buy with price 15 are placed. They are matched with the 3 sell orders with the least price which is 7, and those 3 sell orders are removed from the backlog.\r\n- 999999995 orders of type buy with price 5 are placed. The least price of a sell order is 7, so the 999999995 orders are added to the backlog.\r\n- 1 order of type sell with price 5 is placed. It is matched with the buy order of the highest price, which is 5, and that buy order is removed from the backlog.\r\nFinally, the backlog has (1000000000-3) sell orders with price 7, and (999999995-1) buy orders with price 5. So the total number of orders = 1999999991, which is equal to 999999984 % (10\n9\n + 7).\r\n\n\n\n \n\n\nConstraints:\n\n\n\n\n1 <= orders.length <= 10\n5\n\n\norders[i].length == 3\n\n\n1 <= price\ni\n, amount\ni\n <= 10\n9\n\n\norderType\ni\n is either \n0\n or \n1\n.",
+  "temas": [
+    "Array",
+    "Heap (Priority Queue)",
+    "Simulation"
+  ],
+  "company_tags": [],
+  "dificuldade": "Média",
+  "tema_principal": "Array",
+  "has_image": true,
+  "likes": 319,
+  "dislikes": 241,
+  "stats": {
+    "totalAccepted": "28.6K",
+    "totalSubmission": "54.8K",
+    "totalAcceptedRaw": 28600,
+    "totalSubmissionRaw": 54772,
+    "acRate": "52.2%"
+  },
+  "code_snippets": [
+    {
+      "lang": "C++",
+      "langSlug": "cpp",
+      "code": "class Solution {\npublic:\n    int getNumberOfBacklogOrders(vector<vector<int>>& orders) {\n        \n    }\n};"
+    },
+    {
+      "lang": "Java",
+      "langSlug": "java",
+      "code": "class Solution {\n    public int getNumberOfBacklogOrders(int[][] orders) {\n        \n    }\n}"
+    },
+    {
+      "lang": "Python",
+      "langSlug": "python",
+      "code": "class Solution(object):\n    def getNumberOfBacklogOrders(self, orders):\n        \"\"\"\n        :type orders: List[List[int]]\n        :rtype: int\n        \"\"\"\n        "
+    },
+    {
+      "lang": "Python3",
+      "langSlug": "python3",
+      "code": "class Solution:\n    def getNumberOfBacklogOrders(self, orders: List[List[int]]) -> int:\n        "
+    },
+    {
+      "lang": "C",
+      "langSlug": "c",
+      "code": "\n\nint getNumberOfBacklogOrders(int** orders, int ordersSize, int* ordersColSize){\n\n}"
+    },
+    {
+      "lang": "C#",
+      "langSlug": "csharp",
+      "code": "public class Solution {\n    public int GetNumberOfBacklogOrders(int[][] orders) {\n        \n    }\n}"
+    },
+    {
+      "lang": "JavaScript",
+      "langSlug": "javascript",
+      "code": "/**\n * @param {number[][]} orders\n * @return {number}\n */\nvar getNumberOfBacklogOrders = function(orders) {\n    \n};"
+    },
+    {
+      "lang": "TypeScript",
+      "langSlug": "typescript",
+      "code": "function getNumberOfBacklogOrders(orders: number[][]): number {\n\n};"
+    },
+    {
+      "lang": "PHP",
+      "langSlug": "php",
+      "code": "class Solution {\n\n    /**\n     * @param Integer[][] $orders\n     * @return Integer\n     */\n    function getNumberOfBacklogOrders($orders) {\n        \n    }\n}"
+    },
+    {
+      "lang": "Swift",
+      "langSlug": "swift",
+      "code": "class Solution {\n    func getNumberOfBacklogOrders(_ orders: [[Int]]) -> Int {\n        \n    }\n}"
+    },
+    {
+      "lang": "Kotlin",
+      "langSlug": "kotlin",
+      "code": "class Solution {\n    fun getNumberOfBacklogOrders(orders: Array<IntArray>): Int {\n        \n    }\n}"
+    },
+    {
+      "lang": "Go",
+      "langSlug": "golang",
+      "code": "func getNumberOfBacklogOrders(orders [][]int) int {\n    \n}"
+    },
+    {
+      "lang": "Ruby",
+      "langSlug": "ruby",
+      "code": "# @param {Integer[][]} orders\n# @return {Integer}\ndef get_number_of_backlog_orders(orders)\n    \nend"
+    },
+    {
+      "lang": "Scala",
+      "langSlug": "scala",
+      "code": "object Solution {\n    def getNumberOfBacklogOrders(orders: Array[Array[Int]]): Int = {\n        \n    }\n}"
+    },
+    {
+      "lang": "Rust",
+      "langSlug": "rust",
+      "code": "impl Solution {\n    pub fn get_number_of_backlog_orders(orders: Vec<Vec<i32>>) -> i32 {\n        \n    }\n}"
+    },
+    {
+      "lang": "Racket",
+      "langSlug": "racket",
+      "code": "(define/contract (get-number-of-backlog-orders orders)\n  (-> (listof (listof exact-integer?)) exact-integer?)\n\n  )"
+    }
+  ],
+  "starter_code": {
+    "cpp": "class Solution {\npublic:\n    int getNumberOfBacklogOrders(vector<vector<int>>& orders) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int getNumberOfBacklogOrders(int[][] orders) {\n        \n    }\n}",
+    "python3": "class Solution:\n    def getNumberOfBacklogOrders(self, orders: List[List[int]]) -> int:\n        "
+  },
+  "hints": [
+    "Store the backlog buy and sell orders in two heaps, the buy orders in a max heap by price and the sell orders in a min heap by price.",
+    "Store the orders in batches and update the fields according to new incoming orders. Each batch should only take 1 \"slot\" in the heap."
+  ],
+  "example_testcases": "[[10,5,0],[15,2,1],[25,1,1],[30,4,0]]\n[[7,1000000000,1],[15,3,0],[5,999999995,0],[5,1,1]]",
+  "sample_testcase": "[[10,5,0],[15,2,1],[25,1,1],[30,4,0]]",
+  "discuss_top": {},
+  "top_solutions": {
+    "python3": null,
+    "cpp": null,
+    "java": null
+  },
+  "top_solution_post": null
+}

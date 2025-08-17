@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass RecentCounter {\n    private Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Utilizes a queue to store timestamps, removing outdated requests in constant time, ensuring efficient counting of recent requests within the specified time frame.",
+  "code": "class RecentCounter {\n    private Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}",
+  "timestamp": "2025-08-06T15:16:27.342891",
+  "code_extracted_previous": "class RecentCounter {\n    private Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.527166"
+}

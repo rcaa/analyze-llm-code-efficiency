@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int res = 0, prev = 0;\n        for (int i = 1; i <= s.length(); i++) {\n            if (s[i - 1] == s[i]) {\n                prev++;\n            } else {\n                res += min(prev, i - 1);\n                prev = 1;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a single pass through the string, keeping track of the length of the current sequence of consecutive identical characters. When the sequence changes, it adds the minimum of the previous sequence length and the current sequence length to the result, and resets the previous sequence length to 1. This approach has a high efficiency due to its single pass and constant space complexity.",
+  "code": "class Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int res = 0, prev = 0;\n        for (int i = 1; i <= s.length(); i++) {\n            if (s[i - 1] == s[i]) {\n                prev++;\n            } else {\n                res += min(prev, i - 1);\n                prev = 1;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:29:08.292652",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int res = 0, prev = 0;\n        for (int i = 1; i <= s.length(); i++) {\n            if (s[i - 1] == s[i]) {\n                prev++;\n            } else {\n                res += min(prev, i - 1);\n                prev = 1;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.615649"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3317,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int numberOfWays(int n, int x, int y) {\n        long res = 1;\n        res = (res * pow(2, n - 1, 1000000007)) % 1000000007;\n        res = (res * pow(y, n, 1000000007)) % 1000000007;\n        return (int) res;\n    }\n    public int pow(int a, int b, int mod) {\n        int res = 1;\n        a = a % mod;\n        while (b > 0) {\n            if ((b & 1) == 1) {\n                res = (res * a) % mod;\n            }\n            a = (a * a) % mod;\n            b = b >> 1;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(y))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to calculate the total number of ways the event can take place. It first calculates the number of ways to assign stages to performers using binary exponentiation, and then multiplies this with the number of ways to award scores to bands. The result is returned modulo 10^9 + 7 to avoid overflow.",
+  "code": "class Solution {\n    public int numberOfWays(int n, int x, int y) {\n        long res = 1;\n        res = (res * pow(2, n - 1, 1000000007)) % 1000000007;\n        res = (res * pow(y, n, 1000000007)) % 1000000007;\n        return (int) res;\n    }\n    public int pow(int a, int b, int mod) {\n        int res = 1;\n        a = a % mod;\n        while (b > 0) {\n            if ((b & 1) == 1) {\n                res = (res * a) % mod;\n            }\n            a = (a * a) % mod;\n            b = b >> 1;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T15:24:01.501483",
+  "code_extracted_previous": "public int numberOfWays(int n, int x, int y) {\n        long res = 1;\n        res = (res * pow(2, n - 1, 1000000007)) % 1000000007;\n        res = (res * pow(y, n, 1000000007)) % 1000000007;\n        return (int) res;\n    }\n    public int pow(int a, int b, int mod) {\n        int res = 1;\n        a = a % mod;\n        while (b > 0) {\n            if ((b & 1) == 1) {\n                res = (res * a) % mod;\n            }\n            a = (a * a) % mod;\n            b = b >> 1;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.655773"
+}

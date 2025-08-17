@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findIntegers(self, n: int) -> int:\n        MAX_BITS = 32\n        f = [0] * MAX_BITS\n        f[0] = 1\n        f[1] = 2\n        for i in range(2, MAX_BITS):\n            f[i] = f[i - 1] + f[i - 2]\n        \n        ans, last_seen = 0, 0\n        for i in range(MAX_BITS - 1, -1, -1):\n            if (n >> i) & 1:\n                ans += f[i]\n                if last_seen:\n                    return ans\n                last_seen = 1\n            else:\n                last_seen = 0\n        return ans + 1\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Utilizes dynamic programming to pre-calculate Fibonacci sequence values representing counts of numbers without consecutive ones for each bit position, then iterates through the bits of the input number to calculate the final count.",
+  "code": "def findIntegers(self, n: int) -> int:\n        MAX_BITS = 32\n        f = [0] * MAX_BITS\n        f[0] = 1\n        f[1] = 2\n        for i in range(2, MAX_BITS):\n            f[i] = f[i - 1] + f[i - 2]\n        \n        ans, last_seen = 0, 0\n        for i in range(MAX_BITS - 1, -1, -1):\n            if (n >> i) & 1:\n                ans += f[i]\n                if last_seen:\n                    return ans\n                last_seen = 1\n            else:\n                last_seen = 0\n        return ans + 1\n```",
+  "timestamp": "2025-08-05T14:14:43.823810",
+  "code_extracted_previous": "class Solution:\n    def findIntegers(self, n: int) -> int:\n        MAX_BITS = 32\n        f = [0] * MAX_BITS\n        f[0] = 1\n        f[1] = 2\n        for i in range(2, MAX_BITS):\n            f[i] = f[i - 1] + f[i - 2]\n        \n        ans, last_seen = 0, 0\n        for i in range(MAX_BITS - 1, -1, -1):\n            if (n >> i) & 1:\n                ans += f[i]\n                if last_seen:\n                    return ans\n                last_seen = 1\n            else:\n                last_seen = 0\n        return ans + 1",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.373077"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = index, right = index;\n        while (left > 0 || right < n - 1) {\n            int sum = 0;\n            int i = left;\n            while (i >= 0 && sum + 2 + (i + 1) <= maxSum) {\n                sum += 2 + (i + 1);\n                --i;\n            }\n            int j = right;\n            while (j < n - 1 && sum + 2 + (n - 1 - j) <= maxSum) {\n                sum += 2 + (n - 1 - j);\n                ++j;\n            }\n            if (sum > maxSum) break;\n            left = i;\n            right = j;\n        }\n        return left + 1;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = index, right = index;\n        while (left > 0 || right < n - 1) {\n            int sum = 0;\n            int i = left;\n            while (i >= 0 && sum + 2 + (i + 1) <= maxSum) {\n                sum += 2 + (i + 1);\n                --i;\n            }\n            int j = right;\n            while (j < n - 1 && sum + 2 + (n - 1 - j) <= maxSum) {\n                sum += 2 + (n - 1 - j);\n                ++j;\n            }\n            if (sum > maxSum) break;\n            left = i;\n            right = j;\n        }\n        return left + 1;\n    }\n}",
+  "timestamp": "2025-08-05T15:54:12.492433",
+  "code_extracted_previous": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = index, right = index;\n        while (left > 0 || right < n - 1) {\n            int sum = 0;\n            int i = left;\n            while (i >= 0 && sum + 2 + (i + 1) <= maxSum) {\n                sum += 2 + (i + 1);\n                --i;\n            }\n            int j = right;\n            while (j < n - 1 && sum + 2 + (n - 1 - j) <= maxSum) {\n                sum += 2 + (n - 1 - j);\n                ++j;\n            }\n            if (sum > maxSum) break;\n            left = i;\n            right = j;\n        }\n        return left + 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.058085"
+}

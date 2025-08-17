@@ -1,0 +1,15 @@
+{
+  "id": 535,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Codec:\n    def __init__(self):\n        self.url_map = {}\n        self.counter = 0\n\n    def encode(self, longUrl: str) -> str:\n        \"\"\"Encodes a URL to a shortened URL.\"\"\"\n        if longUrl not in self.url_map:\n            self.url_map[longUrl] = f\"http://tinyurl.com/{self.counter}\"\n            self.url_map[f\"http://tinyurl.com/{self.counter}\"] = longUrl\n            self.counter += 1\n        return self.url_map[longUrl]\n\n    def decode(self, shortUrl: str) -> str:\n        \"\"\"Decodes a shortened URL to its original URL.\"\"\"\n        return self.url_map[shortUrl]\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a hashmap to store the mapping between long URLs and short URLs, allowing for constant-time encoding and decoding.",
+  "code": "class Codec:\n    def __init__(self):\n        self.url_map = {}\n        self.counter = 0\n\n    def encode(self, longUrl: str) -> str:\n        \"\"\"Encodes a URL to a shortened URL.\"\"\"\n        if longUrl not in self.url_map:\n            self.url_map[longUrl] = f\"http://tinyurl.com/{self.counter}\"\n            self.url_map[f\"http://tinyurl.com/{self.counter}\"] = longUrl\n            self.counter += 1\n        return self.url_map[longUrl]\n\n    def decode(self, shortUrl: str) -> str:\n        \"\"\"Decodes a shortened URL to its original URL.\"\"\"\n        return self.url_map[shortUrl]",
+  "timestamp": "2025-08-05T14:55:02.267933",
+  "code_extracted_previous": "class Codec:\n    def __init__(self):\n        self.url_map = {}\n        self.counter = 0\n\n    def encode(self, longUrl: str) -> str:\n        \"\"\"Encodes a URL to a shortened URL.\"\"\"\n        if longUrl not in self.url_map:\n            self.url_map[longUrl] = f\"http://tinyurl.com/{self.counter}\"\n            self.url_map[f\"http://tinyurl.com/{self.counter}\"] = longUrl\n            self.counter += 1\n        return self.url_map[longUrl]\n\n    def decode(self, shortUrl: str) -> str:\n        \"\"\"Decodes a shortened URL to its original URL.\"\"\"\n        return self.url_map[shortUrl]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:39.930580"
+}

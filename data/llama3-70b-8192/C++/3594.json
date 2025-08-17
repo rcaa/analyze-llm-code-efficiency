@@ -1,0 +1,15 @@
+{
+  "id": 3594,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    double minTime(int n, int k, int m, vector<int>& time, vector<double>& mul) {\n        sort(time.begin(), time.end());\n        priority_queue<double> pq;\n        double res = 0, curr_stage = 0;\n        for (int i = n - 1; i >= 0; i--) {\n            pq.push(time[i] * mul[(int)curr_stage % m]);\n            if (pq.size() > k) {\n                res += pq.top();\n                pq.pop();\n                curr_stage += floor(res) % m;\n            }\n        }\n        while (!pq.empty()) {\n            res += pq.top();\n            pq.pop();\n            curr_stage += floor(res) % m;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to efficiently select the individuals with the highest rowing strengths for each trip, and updates the stage accordingly.",
+  "code": "class Solution {\npublic:\n    double minTime(int n, int k, int m, vector<int>& time, vector<double>& mul) {\n        sort(time.begin(), time.end());\n        priority_queue<double> pq;\n        double res = 0, curr_stage = 0;\n        for (int i = n - 1; i >= 0; i--) {\n            pq.push(time[i] * mul[(int)curr_stage % m]);\n            if (pq.size() > k) {\n                res += pq.top();\n                pq.pop();\n                curr_stage += floor(res) % m;\n            }\n        }\n        while (!pq.empty()) {\n            res += pq.top();\n            pq.pop();\n            curr_stage += floor(res) % m;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T12:20:20.413584",
+  "code_extracted_previous": "class Solution {\npublic:\n    double minTime(int n, int k, int m, vector<int>& time, vector<double>& mul) {\n        sort(time.begin(), time.end());\n        priority_queue<double> pq;\n        double res = 0, curr_stage = 0;\n        for (int i = n - 1; i >= 0; i--) {\n            pq.push(time[i] * mul[(int)curr_stage % m]);\n            if (pq.size() > k) {\n                res += pq.top();\n                pq.pop();\n                curr_stage += floor(res) % m;\n            }\n        }\n        while (!pq.empty()) {\n            res += pq.top();\n            pq.pop();\n            curr_stage += floor(res) % m;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.845323"
+}

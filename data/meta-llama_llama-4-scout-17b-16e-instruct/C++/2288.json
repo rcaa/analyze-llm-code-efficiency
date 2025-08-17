@@ -1,0 +1,15 @@
+{
+  "id": 2288,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string discountPrices(string sentence, int discount) {\n        istringstream iss(sentence);\n        string word, result;\n        while (iss >> word) {\n            if (word[0] == '$') {\n                int price = stoi(word.substr(1));\n                double discountedPrice = price * (1 - (double)discount / 100);\n                stringstream ss;\n                ss.precision(2);\n                ss.fixed;\n                ss << \"$\" << fixed << setprecision(2) << discountedPrice;\n                result += ss.str() + \" \";\n            } else {\n                result += word + \" \";\n            }\n        }\n        result.pop_back();\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through each word in the sentence, checks if it's a price, applies the discount if necessary, and constructs the modified sentence. It uses stringstream for efficient string manipulation and formatting.",
+  "code": "class Solution {\npublic:\n    string discountPrices(string sentence, int discount) {\n        istringstream iss(sentence);\n        string word, result;\n        while (iss >> word) {\n            if (word[0] == '$') {\n                int price = stoi(word.substr(1));\n                double discountedPrice = price * (1 - (double)discount / 100);\n                stringstream ss;\n                ss.precision(2);\n                ss.fixed;\n                ss << \"$\" << fixed << setprecision(2) << discountedPrice;\n                result += ss.str() + \" \";\n            } else {\n                result += word + \" \";\n            }\n        }\n        result.pop_back();\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T00:57:26.050547",
+  "code_extracted_previous": "class Solution {\npublic:\n    string discountPrices(string sentence, int discount) {\n        istringstream iss(sentence);\n        string word, result;\n        while (iss >> word) {\n            if (word[0] == '$') {\n                int price = stoi(word.substr(1));\n                double discountedPrice = price * (1 - (double)discount / 100);\n                stringstream ss;\n                ss.precision(2);\n                ss.fixed;\n                ss << \"$\" << fixed << setprecision(2) << discountedPrice;\n                result += ss.str() + \" \";\n            } else {\n                result += word + \" \";\n            }\n        }\n        result.pop_back();\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.031248"
+}

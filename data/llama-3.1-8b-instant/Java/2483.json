@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int[] penalty = new int[n + 1];\n        for (int i = 0; i <= n; i++) {\n            int y = 0, n_ = 0;\n            for (int j = 0; j < i; j++) {\n                if (customers.charAt(j) == 'Y') y++;\n                else n_++;\n            }\n            for (int j = i; j < n; j++) {\n                if (customers.charAt(j) == 'Y') y++;\n                else n_++;\n            }\n            penalty[i] = y + n_;\n        }\n        return Arrays.stream(penalty).min().getAsInt();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int[] penalty = new int[n + 1];\n        for (int i = 0; i <= n; i++) {\n            int y = 0, n_ = 0;\n            for (int j = 0; j < i; j++) {\n                if (customers.charAt(j) == 'Y') y++;\n                else n_++;\n            }\n            for (int j = i; j < n; j++) {\n                if (customers.charAt(j) == 'Y') y++;\n                else n_++;\n            }\n            penalty[i] = y + n_;\n        }\n        return Arrays.stream(penalty).min().getAsInt();\n    }\n}",
+  "timestamp": "2025-08-06T01:02:13.059139",
+  "code_extracted_previous": "class Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int[] penalty = new int[n + 1];\n        for (int i = 0; i <= n; i++) {\n            int y = 0, n_ = 0;\n            for (int j = 0; j < i; j++) {\n                if (customers.charAt(j) == 'Y') y++;\n                else n_++;\n            }\n            for (int j = i; j < n; j++) {\n                if (customers.charAt(j) == 'Y') y++;\n                else n_++;\n            }\n            penalty[i] = y + n_;\n        }\n        return Arrays.stream(penalty).min().getAsInt();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.314148"
+}

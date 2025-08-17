@@ -1,0 +1,15 @@
+{
+  "id": 842,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def splitIntoFibonacci(self, num: str) -> List[int]:\n        def backtrack(start, path):\n            if start == len(num):\n                if len(path) >= 3:\n                    return path\n                return []\n            for end in range(start + 1, len(num) + 1):\n                curr = num[start:end]\n                if len(curr) > 1 and curr[0] == '0':\n                    return []\n                if int(curr) > 2**31 - 1:\n                    return []\n                if len(path) < 2 or path[-1] + path[-2] == int(curr):\n                    result = backtrack(end, path + [int(curr)])\n                    if result:\n                        return result\n            return []\n\n        return backtrack(0, [])\n\nefficiency: HIGH\ntime complexity: O(N^2)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses backtracking to explore all possible splits of the input string, validating each split against the Fibonacci-like sequence conditions. It efficiently prunes branches that violate these conditions, such as sequences with extra leading zeroes or numbers outside the 32-bit signed integer range.\n```",
+  "code": "def splitIntoFibonacci(self, num: str) -> List[int]:\n        def backtrack(start, path):\n            if start == len(num):\n                if len(path) >= 3:\n                    return path\n                return []\n            for end in range(start + 1, len(num) + 1):\n                curr = num[start:end]\n                if len(curr) > 1 and curr[0] == '0':\n                    return []\n                if int(curr) > 2**31 - 1:\n                    return []\n                if len(path) < 2 or path[-1] + path[-2] == int(curr):\n                    result = backtrack(end, path + [int(curr)])\n                    if result:\n                        return result\n            return []\n\n        return backtrack(0, [])",
+  "timestamp": "2025-08-05T23:56:13.450689",
+  "code_extracted_previous": "class Solution:\n    def splitIntoFibonacci(self, num: str) -> List[int]:\n        def backtrack(start, path):\n            if start == len(num):\n                if len(path) >= 3:\n                    return path\n                return []\n            for end in range(start + 1, len(num) + 1):\n                curr = num[start:end]\n                if len(curr) > 1 and curr[0] == '0':\n                    return []\n                if int(curr) > 2**31 - 1:\n                    return []\n                if len(path) < 2 or path[-1] + path[-2] == int(curr):\n                    result = backtrack(end, path + [int(curr)])\n                    if result:\n                        return result\n            return []\n\n        return backtrack(0, [])",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.475110"
+}

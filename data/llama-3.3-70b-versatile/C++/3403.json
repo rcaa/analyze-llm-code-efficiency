@@ -1,0 +1,15 @@
+{
+  "id": 3403,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    string largestWord(string word, int numFriends) {\n        string res = \"\";\n        for (int i = 1; i < word.length(); i++) {\n            string first = word.substr(0, i);\n            string second = word.substr(i);\n            if (second.length() >= numFriends - 1) {\n                if (first > res) {\n                    res = first;\n                }\n            }\n        }\n        if (res.empty()) {\n            res = word.substr(0, 1);\n        }\n        return res;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over all possible splits of the input string and keeps track of the lexicographically largest string that can be formed by taking the first part of the split. It returns this string as the result. The time complexity is linear because it only needs to iterate over the string once. The space complexity is also linear because it needs to store the result string. The energy implications are low because it only uses a constant amount of extra memory to store the result.",
+  "code": "class Solution {\npublic:\n    string largestWord(string word, int numFriends) {\n        string res = \"\";\n        for (int i = 1; i < word.length(); i++) {\n            string first = word.substr(0, i);\n            string second = word.substr(i);\n            if (second.length() >= numFriends - 1) {\n                if (first > res) {\n                    res = first;\n                }\n            }\n        }\n        if (res.empty()) {\n            res = word.substr(0, 1);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T15:11:05.403472",
+  "code_extracted_previous": "class Solution {\npublic:\n    string largestWord(string word, int numFriends) {\n        string res = \"\";\n        for (int i = 1; i < word.length(); i++) {\n            string first = word.substr(0, i);\n            string second = word.substr(i);\n            if (second.length() >= numFriends - 1) {\n                if (first > res) {\n                    res = first;\n                }\n            }\n        }\n        if (res.empty()) {\n            res = word.substr(0, 1);\n        }\n        return res;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "assinatura divergente: esperada 'answerString(word, numFriends)'",
+  "reavaliado_em": "2025-08-17T12:23:32.679430"
+}

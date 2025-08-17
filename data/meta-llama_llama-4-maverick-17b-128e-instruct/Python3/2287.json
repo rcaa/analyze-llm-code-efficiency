@@ -1,0 +1,15 @@
+{
+  "id": 2287,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def rearrangeCharacters(self, s: str, target: str) -> int:\n        s_count = {}\n        target_count = {}\n        \n        for char in s:\n            s_count[char] = s_count.get(char, 0) + 1\n        \n        for char in target:\n            target_count[char] = target_count.get(char, 0) + 1\n        \n        max_copies = float('inf')\n        for char, count in target_count.items():\n            if char in s_count:\n                max_copies = min(max_copies, s_count[char] // count)\n            else:\n                return 0\n        \n        return max_copies\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: The solution works by counting the frequency of characters in both the source string `s` and the target string. It then iterates over the characters in the target string, checking if they exist in `s` and calculating the maximum number of copies that can be formed based on the available characters in `s`. The minimum of these counts across all characters in the target string gives the maximum number of copies that can be formed.",
+  "code": "def rearrangeCharacters(self, s: str, target: str) -> int:\n        s_count = {}\n        target_count = {}\n        \n        for char in s:\n            s_count[char] = s_count.get(char, 0) + 1\n        \n        for char in target:\n            target_count[char] = target_count.get(char, 0) + 1\n        \n        max_copies = float('inf')\n        for char, count in target_count.items():\n            if char in s_count:\n                max_copies = min(max_copies, s_count[char] // count)\n            else:\n                return 0\n        \n        return max_copies\n```",
+  "timestamp": "2025-08-05T14:45:10.022237",
+  "code_extracted_previous": "class Solution:\n    def rearrangeCharacters(self, s: str, target: str) -> int:\n        s_count = {}\n        target_count = {}\n        \n        for char in s:\n            s_count[char] = s_count.get(char, 0) + 1\n        \n        for char in target:\n            target_count[char] = target_count.get(char, 0) + 1\n        \n        max_copies = float('inf')\n        for char, count in target_count.items():\n            if char in s_count:\n                max_copies = min(max_copies, s_count[char] // count)\n            else:\n                return 0\n        \n        return max_copies",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.830527"
+}

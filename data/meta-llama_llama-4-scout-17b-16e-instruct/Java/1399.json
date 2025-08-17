@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37]; // max sum of digits for 4-digit number is 9+9+9+9 = 36\n        int maxCount = 0, res = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0, num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            count[sum]++;\n            if (count[sum] > maxCount) {\n                maxCount = count[sum];\n                res = 1;\n            } else if (count[sum] == maxCount) {\n                res++;\n            }\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution works by maintaining a count of numbers with the same digit sum. It iterates through all numbers from 1 to n, calculates the sum of digits for each number, and updates the count. It keeps track of the maximum count and the number of groups with that count. The time complexity is O(n log n) due to the while loop inside the for loop, where the while loop runs for at most log n times. The space complexity is O(1) as the space used does not grow with the input size n.",
+  "code": "class Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37]; // max sum of digits for 4-digit number is 9+9+9+9 = 36\n        int maxCount = 0, res = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0, num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            count[sum]++;\n            if (count[sum] > maxCount) {\n                maxCount = count[sum];\n                res = 1;\n            } else if (count[sum] == maxCount) {\n                res++;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:43:10.442965",
+  "code_extracted_previous": "class Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37]; // max sum of digits for 4-digit number is 9+9+9+9 = 36\n        int maxCount = 0, res = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0, num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            count[sum]++;\n            if (count[sum] > maxCount) {\n                maxCount = count[sum];\n                res = 1;\n            } else if (count[sum] == maxCount) {\n                res++;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.399121"
+}

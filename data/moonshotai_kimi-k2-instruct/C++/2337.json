@@ -1,0 +1,15 @@
+{
+  "id": 2337,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool canChange(string start, string target) {\n        int n = start.size();\n        int i = 0, j = 0;\n        while (i < n || j < n) {\n            while (i < n && start[i] == '_') ++i;\n            while (j < n && target[j] == '_') ++j;\n            if (i == n && j == n) return true;\n            if (i == n || j == n) return false;\n            if (start[i] != target[j]) return false;\n            if (start[i] == 'L' && i < j) return false;\n            if (start[i] == 'R' && i > j) return false;\n            ++i; ++j;\n        }\n        return true;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Two-pointer sweep: skip underscores, then verify that every non-underscore character matches and that each 'L' in start is not to the right of its target position and each 'R' is not to the left. Linear pass, constant memory.",
+  "code": "class Solution {\npublic:\n    bool canChange(string start, string target) {\n        int n = start.size();\n        int i = 0, j = 0;\n        while (i < n || j < n) {\n            while (i < n && start[i] == '_') ++i;\n            while (j < n && target[j] == '_') ++j;\n            if (i == n && j == n) return true;\n            if (i == n || j == n) return false;\n            if (start[i] != target[j]) return false;\n            if (start[i] == 'L' && i < j) return false;\n            if (start[i] == 'R' && i > j) return false;\n            ++i; ++j;\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-06T01:45:25.332199",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canChange(string start, string target) {\n        int n = start.size();\n        int i = 0, j = 0;\n        while (i < n || j < n) {\n            while (i < n && start[i] == '_') ++i;\n            while (j < n && target[j] == '_') ++j;\n            if (i == n && j == n) return true;\n            if (i == n || j == n) return false;\n            if (start[i] != target[j]) return false;\n            if (start[i] == 'L' && i < j) return false;\n            if (start[i] == 'R' && i > j) return false;\n            ++i; ++j;\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.667201"
+}

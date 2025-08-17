@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int numberOfWays(int n, int x) {\n        int mod = 1000000007;\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= i; j++) {\n                if (j * (int) Math.pow(x, x - 1) <= i) {\n                    dp[i] = (dp[i] + dp[i - (int) (j * Math.pow(x, x - 1))]) % mod;\n                }\n            }\n        }\n        return dp[n];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * sqrt(n))\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int numberOfWays(int n, int x) {\n        int mod = 1000000007;\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= i; j++) {\n                if (j * (int) Math.pow(x, x - 1) <= i) {\n                    dp[i] = (dp[i] + dp[i - (int) (j * Math.pow(x, x - 1))]) % mod;\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T14:28:19.469442",
+  "code_extracted_previous": "class Solution {\n    public int numberOfWays(int n, int x) {\n        int mod = 1000000007;\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= i; j++) {\n                if (j * (int) Math.pow(x, x - 1) <= i) {\n                    dp[i] = (dp[i] + dp[i - (int) (j * Math.pow(x, x - 1))]) % mod;\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.396646"
+}

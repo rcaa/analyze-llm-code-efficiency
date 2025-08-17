@@ -1,0 +1,15 @@
+{
+  "id": 386,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def lexicalOrder(self, n: int) -> List[int]:\n        res = []\n        curr = 1\n        for _ in range(1, n + 1):\n            res.append(curr)\n            if curr * 10 <= n:\n                curr *= 10\n            elif curr % 10 != 9 and curr + 1 <= n:\n                curr += 1\n            else:\n                while curr // 10 % 10 == 9:\n                    curr //= 10\n                curr //= 10\n                curr += 1\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a single loop to generate the lexicographical order, leveraging the properties of decimal numbers to efficiently increment the current number.",
+  "code": "class Solution:\n    def lexicalOrder(self, n: int) -> List[int]:\n        res = []\n        curr = 1\n        for _ in range(1, n + 1):\n            res.append(curr)\n            if curr * 10 <= n:\n                curr *= 10\n            elif curr % 10 != 9 and curr + 1 <= n:\n                curr += 1\n            else:\n                while curr // 10 % 10 == 9:\n                    curr //= 10\n                curr //= 10\n                curr += 1\n        return res",
+  "timestamp": "2025-08-05T13:59:32.022495",
+  "code_extracted_previous": "class Solution:\n    def lexicalOrder(self, n: int) -> List[int]:\n        res = []\n        curr = 1\n        for _ in range(1, n + 1):\n            res.append(curr)\n            if curr * 10 <= n:\n                curr *= 10\n            elif curr % 10 != 9 and curr + 1 <= n:\n                curr += 1\n            else:\n                while curr // 10 % 10 == 9:\n                    curr //= 10\n                curr //= 10\n                curr += 1\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.825729"
+}

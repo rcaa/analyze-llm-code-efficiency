@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        total = sum(c for c, g in zip(customers, grumpy) if g == 0)\n        max_extra = 0\n        window_sum = 0\n        for i in range(n):\n            window_sum += customers[i] if grumpy[i] == 1 else 0\n            if i >= minutes:\n                window_sum -= customers[i - minutes] if grumpy[i - minutes] == 1 else 0\n            max_extra = max(max_extra, window_sum)\n        return total + max_extra\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to find the maximum number of extra customers that can be satisfied by applying the secret technique. It iterates through the customers array, maintaining a window of size minutes, and updates the maximum extra customers that can be satisfied.",
+  "code": "class Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        total = sum(c for c, g in zip(customers, grumpy) if g == 0)\n        max_extra = 0\n        window_sum = 0\n        for i in range(n):\n            window_sum += customers[i] if grumpy[i] == 1 else 0\n            if i >= minutes:\n                window_sum -= customers[i - minutes] if grumpy[i - minutes] == 1 else 0\n            max_extra = max(max_extra, window_sum)\n        return total + max_extra",
+  "timestamp": "2025-08-05T13:18:53.015756",
+  "code_extracted_previous": "class Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        total = sum(c for c, g in zip(customers, grumpy) if g == 0)\n        max_extra = 0\n        window_sum = 0\n        for i in range(n):\n            window_sum += customers[i] if grumpy[i] == 1 else 0\n            if i >= minutes:\n                window_sum -= customers[i - minutes] if grumpy[i - minutes] == 1 else 0\n            max_extra = max(max_extra, window_sum)\n        return total + max_extra",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:38.828071"
+}

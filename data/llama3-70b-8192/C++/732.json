@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        events_[startTime]++;\n        events_[endTime]--;\n        int ongoing = 0, k = 0, max_k = 0;\n        for (auto& event : events_) {\n            ongoing += event.second;\n            max_k = max(max_k, k = max(k, ongoing));\n        }\n        events_.clear();\n        return max_k;\n    }\n\nprivate:\n    map<int, int> events_;\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a map to store the events and their frequencies. It then iterates over the map to find the maximum k-booking. The time complexity is O(n log n) due to the map operations, and the space complexity is O(n) for storing the events.",
+  "code": "class MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        events_[startTime]++;\n        events_[endTime]--;\n        int ongoing = 0, k = 0, max_k = 0;\n        for (auto& event : events_) {\n            ongoing += event.second;\n            max_k = max(max_k, k = max(k, ongoing));\n        }\n        events_.clear();\n        return max_k;\n    }\n\nprivate:\n    map<int, int> events_;\n};",
+  "timestamp": "2025-08-05T13:37:43.992834",
+  "code_extracted_previous": "class MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        events_[startTime]++;\n        events_[endTime]--;\n        int ongoing = 0, k = 0, max_k = 0;\n        for (auto& event : events_) {\n            ongoing += event.second;\n            max_k = max(max_k, k = max(k, ongoing));\n        }\n        events_.clear();\n        return max_k;\n    }\n\nprivate:\n    map<int, int> events_;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:37.065664"
+}

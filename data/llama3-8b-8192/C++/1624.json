@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        unordered_map<char, int> mp;\n        int res = -1;\n        for (int i = 0; i < s.size(); i++) {\n            if (mp.find(s[i]) != mp.end()) {\n                res = max(res, i - mp[s[i]] - 1);\n            } else {\n                mp[s[i]] = i;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hashmap to store the first occurrence of each character. Then, it iterates through the string, and for each character, it checks if it's already in the hashmap. If it is, it calculates the length of the substring between the current character and its first occurrence, and updates the result if necessary. If it's not, it adds the character to the hashmap. This approach has a high efficiency due to the use of a hashmap, which allows for constant-time lookups and insertions.",
+  "code": "class Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        unordered_map<char, int> mp;\n        int res = -1;\n        for (int i = 0; i < s.size(); i++) {\n            if (mp.find(s[i]) != mp.end()) {\n                res = max(res, i - mp[s[i]] - 1);\n            } else {\n                mp[s[i]] = i;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:43:20.245428",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        unordered_map<char, int> mp;\n        int res = -1;\n        for (int i = 0; i < s.size(); i++) {\n            if (mp.find(s[i]) != mp.end()) {\n                res = max(res, i - mp[s[i]] - 1);\n            } else {\n                mp[s[i]] = i;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.668414"
+}

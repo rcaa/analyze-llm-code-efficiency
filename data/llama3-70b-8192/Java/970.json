@@ -1,0 +1,15 @@
+{
+  "id": 970,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        Set<Integer> set = new HashSet<>();\n        for (int i = 0; Math.pow(x, i) <= bound; i++) {\n            for (int j = 0; Math.pow(x, i) + Math.pow(y, j) <= bound; j++) {\n                set.add((int) (Math.pow(x, i) + Math.pow(y, j)));\n            }\n        }\n        List<Integer> list = new ArrayList<>(set);\n        Collections.sort(list);\n        return list;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(bound)^2)\nspace complexity: O(log(bound)^2)\nenergy implications: LOW\nexplanation: This solution uses a set to store unique powerful integers and two nested loops to generate all possible combinations of x^i and y^j. The time and space complexity are both O(log(bound)^2) due to the nested loops.",
+  "code": "class Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        Set<Integer> set = new HashSet<>();\n        for (int i = 0; Math.pow(x, i) <= bound; i++) {\n            for (int j = 0; Math.pow(x, i) + Math.pow(y, j) <= bound; j++) {\n                set.add((int) (Math.pow(x, i) + Math.pow(y, j)));\n            }\n        }\n        List<Integer> list = new ArrayList<>(set);\n        Collections.sort(list);\n        return list;\n    }\n}",
+  "timestamp": "2025-08-06T02:27:46.407478",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        Set<Integer> set = new HashSet<>();\n        for (int i = 0; Math.pow(x, i) <= bound; i++) {\n            for (int j = 0; Math.pow(x, i) + Math.pow(y, j) <= bound; j++) {\n                set.add((int) (Math.pow(x, i) + Math.pow(y, j)));\n            }\n        }\n        List<Integer> list = new ArrayList<>(set);\n        Collections.sort(list);\n        return list;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.787661"
+}

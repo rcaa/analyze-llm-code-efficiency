@@ -1,0 +1,15 @@
+{
+  "id": 1291,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def sequentialDigits(self, low: int, high: int) -> List[int]:\n        res = []\n        for digits in range(len(str(low)), len(str(high)) + 1):\n            for start in range(1, 11 - digits):\n                num = int(''.join(str(start + i) for i in range(digits)))\n                if low <= num <= high:\n                    res.append(num)\n        return sorted(res)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over possible digit lengths and starting digits to generate sequential numbers, filtering those within the given range and finally sorting the result.",
+  "code": "class Solution:\n    def sequentialDigits(self, low: int, high: int) -> List[int]:\n        res = []\n        for digits in range(len(str(low)), len(str(high)) + 1):\n            for start in range(1, 11 - digits):\n                num = int(''.join(str(start + i) for i in range(digits)))\n                if low <= num <= high:\n                    res.append(num)\n        return sorted(res)",
+  "timestamp": "2025-08-05T14:30:23.938525",
+  "code_extracted_previous": "class Solution:\n    def sequentialDigits(self, low: int, high: int) -> List[int]:\n        res = []\n        for digits in range(len(str(low)), len(str(high)) + 1):\n            for start in range(1, 11 - digits):\n                num = int(''.join(str(start + i) for i in range(digits)))\n                if low <= num <= high:\n                    res.append(num)\n        return sorted(res)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:38.905005"
+}

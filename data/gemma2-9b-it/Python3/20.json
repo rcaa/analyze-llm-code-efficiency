@@ -1,14 +1,15 @@
 {
-  "id": "2441",
-  "titulo": "Largest Positive Integer That Exists With Its Negative",
-  "url": "https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/",
-  "llm_response": {
-    "resposta_bruta": "solution: \n```python\ndef largest_k(nums):\n  seen = set()\n  max_k = -1\n  for num in nums:\n    if -num in seen:\n      max_k = max(max_k, abs(num))\n    seen.add(num)\n  return max_k\n\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a set to efficiently track seen numbers. It iterates through the array, checking if the negative of the current number has been seen before. If so, it updates the maximum k.  The time complexity is linear due to the single pass through the array. The space complexity is also linear due to the set storing seen numbers.  \n\n\n\n",
-    "resposta_formatada": "solution: \n```python\ndef largest_k(nums):\n  seen = set()\n  max_k = -1\n  for num in nums:\n    if -num in seen:\n      max_k = max(max_k, abs(num))\n    seen.add(num)\n  return max_k\n\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a set to efficiently track seen numbers. It iterates through the array, checking if the negative of the current number has been seen before. If so, it updates the maximum k.  The time complexity is linear due to the single pass through the array. The space complexity is also linear due to the set storing seen numbers.",
-    "valid": true,
-    "tempo_resposta": 2.7062740325927734,
-    "tentativas": 1,
-    "erro": null,
-    "timestamp": "2025-06-22T19:38:39.152835"
-  }
+  "id": 20,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def isValid(self, s: str) -> bool:\n        stack = []\n        bracket_pairs = {')': '(', '}': '{', ']': '['}\n        for char in s:\n            if char in bracket_pairs.values():\n                stack.append(char)\n            elif char in bracket_pairs.keys():\n                if stack and stack[-1] == bracket_pairs[char]:\n                    stack.pop()\n                else:\n                    return False\n            else:\n                return False\n        return len(stack) == 0\n```\n\nsolution: \n```python\nclass Solution:\n    def isValid(self, s: str) -> bool:\n        stack = []\n        bracket_pairs = {')': '(', '}': '{', ']': '['}\n        for char in s:\n            if char in bracket_pairs.values():\n                stack.append(char)\n            elif char in bracket_pairs.keys():\n                if stack and stack[-1] == bracket_pairs[char]:\n                    stack.pop()\n                else:\n                    return False\n            else:\n                return False\n        return len(stack) == 0\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a stack to keep track of opening brackets. It iterates through the string, pushing opening brackets onto the stack and popping them when a matching closing bracket is encountered. If a closing bracket doesn't have a matching opening bracket or the brackets are not in the correct order, the function returns False.  The algorithm's efficiency stems from the linear time complexity and the fact that the space complexity is also linear, making it suitable for handling strings of reasonable length.",
+  "code": "solution:",
+  "timestamp": "2025-08-05T22:46:48.518025",
+  "code_extracted_previous": "class Solution:\n    def isValid(self, s: str) -> bool:\n        stack = []\n        bracket_pairs = {')': '(', '}': '{', ']': '['}\n        for char in s:\n            if char in bracket_pairs.values():\n                stack.append(char)\n            elif char in bracket_pairs.keys():\n                if stack and stack[-1] == bracket_pairs[char]:\n                    stack.pop()\n                else:\n                    return False\n            else:\n                return False\n        return len(stack) == 0",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.087324"
 }

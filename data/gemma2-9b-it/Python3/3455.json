@@ -1,0 +1,15 @@
+{
+  "id": 3455,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        n = len(s)\n        m = len(p)\n        if m == 0:\n            return 0\n        p = p.replace(\"*\", \".*\")\n        match = re.compile(p)\n        shortest = float('inf')\n        for i in range(n):\n            for j in range(i, n):\n                substring = s[i:j + 1]\n                if match.match(substring):\n                    shortest = min(shortest, len(substring))\n        return shortest if shortest != float('inf') else -1\n```\nsolution: ```python\nclass Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        n = len(s)\n        m = len(p)\n        if m == 0:\n            return 0\n        p = p.replace(\"*\", \".*\")\n        match = re.compile(p)\n        shortest = float('inf')\n        for i in range(n):\n            for j in range(i, n):\n                substring = s[i:j + 1]\n                if match.match(substring):\n                    shortest = min(shortest, len(substring))\n        return shortest if shortest != float('inf') else -1\n```\nefficiency: HIGH\ntime complexity: O(N^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a brute-force approach to find all possible substrings of `s` and checks if they match the pattern `p`. It utilizes regular expressions for pattern matching. The time complexity is O(N^2) due to the nested loops iterating through all possible substring combinations. The space complexity is O(1) as the algorithm uses a constant amount of extra space.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-06T01:22:25.864067",
+  "code_extracted_previous": "class Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        n = len(s)\n        m = len(p)\n        if m == 0:\n            return 0\n        p = p.replace(\"*\", \".*\")\n        match = re.compile(p)\n        shortest = float('inf')\n        for i in range(n):\n            for j in range(i, n):\n                substring = s[i:j + 1]\n                if match.match(substring):\n                    shortest = min(shortest, len(substring))\n        return shortest if shortest != float('inf') else -1",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.735899"
+}

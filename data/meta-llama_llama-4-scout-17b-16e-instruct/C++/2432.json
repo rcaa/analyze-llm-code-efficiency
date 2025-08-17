@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = 0;\n        int hardestWorkerId = 0;\n        int prevEndTime = 0;\n        \n        for (const auto& log : logs) {\n            int duration = log[1] - prevEndTime;\n            prevEndTime = log[1];\n            \n            if (duration > maxTime) {\n                maxTime = duration;\n                hardestWorkerId = log[0];\n            } else if (duration == maxTime) {\n                hardestWorkerId = min(hardestWorkerId, log[0]);\n            }\n        }\n        \n        return hardestWorkerId;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the logs once, calculating the duration of each task and updating the maximum duration and the corresponding worker ID as needed. If a tie is found, it updates the worker ID to the smaller one. This approach ensures a linear time complexity and constant space usage.",
+  "code": "class Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = 0;\n        int hardestWorkerId = 0;\n        int prevEndTime = 0;\n        \n        for (const auto& log : logs) {\n            int duration = log[1] - prevEndTime;\n            prevEndTime = log[1];\n            \n            if (duration > maxTime) {\n                maxTime = duration;\n                hardestWorkerId = log[0];\n            } else if (duration == maxTime) {\n                hardestWorkerId = min(hardestWorkerId, log[0]);\n            }\n        }\n        \n        return hardestWorkerId;\n    }\n};",
+  "timestamp": "2025-08-05T12:47:54.893364",
+  "code_extracted_previous": "class Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = 0;\n        int hardestWorkerId = 0;\n        int prevEndTime = 0;\n        \n        for (const auto& log : logs) {\n            int duration = log[1] - prevEndTime;\n            prevEndTime = log[1];\n            \n            if (duration > maxTime) {\n                maxTime = duration;\n                hardestWorkerId = log[0];\n            } else if (duration == maxTime) {\n                hardestWorkerId = min(hardestWorkerId, log[0]);\n            }\n        }\n        \n        return hardestWorkerId;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.106530"
+}

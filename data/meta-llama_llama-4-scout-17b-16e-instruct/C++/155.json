@@ -1,0 +1,15 @@
+{
+  "id": 155,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass MinStack {\npublic:\n    MinStack() {\n        \n    }\n    \n    void push(int val) {\n        stack.push_back(val);\n        if(minStack.empty() || val <= minStack.back()) {\n            minStack.push_back(val);\n        }\n    }\n    \n    void pop() {\n        if(!stack.empty()) {\n            if(stack.back() == minStack.back()) {\n                minStack.pop_back();\n            }\n            stack.pop_back();\n        }\n    }\n    \n    int top() {\n        return stack.back();\n    }\n    \n    int getMin() {\n        return minStack.back();\n    }\nprivate:\n    vector<int> stack;\n    vector<int> minStack;\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes two stacks, one for storing all elements and another for tracking the minimum elements. The `push` operation adds elements to both stacks if the new element is less than or equal to the current minimum. The `pop` operation removes elements from both stacks if the top element of the main stack is equal to the top of the min stack. The `top` and `getMin` operations simply return the top elements of their respective stacks, ensuring O(1) time complexity.",
+  "code": "class MinStack {\npublic:\n    MinStack() {\n        \n    }\n    \n    void push(int val) {\n        stack.push_back(val);\n        if(minStack.empty() || val <= minStack.back()) {\n            minStack.push_back(val);\n        }\n    }\n    \n    void pop() {\n        if(!stack.empty()) {\n            if(stack.back() == minStack.back()) {\n                minStack.pop_back();\n            }\n            stack.pop_back();\n        }\n    }\n    \n    int top() {\n        return stack.back();\n    }\n    \n    int getMin() {\n        return minStack.back();\n    }\nprivate:\n    vector<int> stack;\n    vector<int> minStack;\n};",
+  "timestamp": "2025-08-05T16:01:34.157283",
+  "code_extracted_previous": "class MinStack {\npublic:\n    MinStack() {\n        \n    }\n    \n    void push(int val) {\n        stack.push_back(val);\n        if(minStack.empty() || val <= minStack.back()) {\n            minStack.push_back(val);\n        }\n    }\n    \n    void pop() {\n        if(!stack.empty()) {\n            if(stack.back() == minStack.back()) {\n                minStack.pop_back();\n            }\n            stack.pop_back();\n        }\n    }\n    \n    int top() {\n        return stack.back();\n    }\n    \n    int getMin() {\n        return minStack.back();\n    }\nprivate:\n    vector<int> stack;\n    vector<int> minStack;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.805599"
+}

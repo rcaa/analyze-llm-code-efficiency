@@ -1,0 +1,15 @@
+{
+  "id": 692,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (const auto& word : words) {\n            count[word]++;\n        }\n        \n        auto cmp = [](const pair<string, int>& a, const pair<string, int>& b) {\n            if (a.second == b.second) {\n                return a.first < b.first;\n            }\n            return a.second > b.second;\n        };\n        \n        priority_queue<pair<string, int>, vector<pair<string, int>>, decltype(cmp)> pq(cmp);\n        for (const auto& p : count) {\n            pq.push(p);\n        }\n        \n        vector<string> result;\n        for (int i = 0; i < k; ++i) {\n            result.push_back(pq.top().first);\n            pq.pop();\n        }\n        return result;\n    }\n};\nsolution: The provided C++ code in the class Solution.\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The main approach is to count the frequency of each word, then use a priority queue to sort the words based on frequency and lexicographical order. The key strengths are its simplicity and effectiveness. However, it doesn't meet the follow-up requirement of O(n log(k)) time complexity. To achieve that, a more complex data structure like a min-heap of size k can be used, which is not implemented here. \n```",
+  "code": "The provided C++ code in the class Solution.",
+  "timestamp": "2025-08-05T13:15:38.938892",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (const auto& word : words) {\n            count[word]++;\n        }\n        \n        auto cmp = [](const pair<string, int>& a, const pair<string, int>& b) {\n            if (a.second == b.second) {\n                return a.first < b.first;\n            }\n            return a.second > b.second;\n        };\n        \n        priority_queue<pair<string, int>, vector<pair<string, int>>, decltype(cmp)> pq(cmp);\n        for (const auto& p : count) {\n            pq.push(p);\n        }\n        \n        vector<string> result;\n        for (int i = 0; i < k; ++i) {\n            result.push_back(pq.top().first);\n            pq.pop();\n        }\n        return result;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "assinatura divergente: esperada 'topKFrequent(words, k)'",
+  "reavaliado_em": "2025-08-17T12:23:45.773889"
+}

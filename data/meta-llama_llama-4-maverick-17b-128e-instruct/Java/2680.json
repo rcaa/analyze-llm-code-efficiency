@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public long maximumOr(int[] nums, int k) {\n        long res = 0, mask = 0;\n        for (int num : nums) {\n            mask |= num;\n        }\n        for (int i = 0; i < nums.length; i++) {\n            res = Math.max(res, (long) (nums[i] << k) | (mask & ~nums[i]));\n        }\n        return res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the array once to find the bitwise OR of all numbers and then iterates through the array again to find the maximum possible value by shifting each number to the left by k places and combining it with the bitwise OR of the remaining numbers.\n```",
+  "code": "class Solution {\n    public long maximumOr(int[] nums, int k) {\n        long res = 0, mask = 0;\n        for (int num : nums) {\n            mask |= num;\n        }\n        for (int i = 0; i < nums.length; i++) {\n            res = Math.max(res, (long) (nums[i] << k) | (mask & ~nums[i]));\n        }\n        return res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the array once to find the bitwise OR of all numbers and then iterates through the array again to find the maximum possible value by shifting each number to the left by k places and combining it with the bitwise OR of the remaining numbers.",
+  "timestamp": "2025-08-05T13:34:01.929722",
+  "code_extracted_previous": "class Solution {\n    public long maximumOr(int[] nums, int k) {\n        long res = 0, mask = 0;\n        for (int num : nums) {\n            mask |= num;\n        }\n        for (int i = 0; i < nums.length; i++) {\n            res = Math.max(res, (long) (nums[i] << k) | (mask & ~nums[i]));\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.672353"
+}

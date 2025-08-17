@@ -1,0 +1,15 @@
+{
+  "id": 2135,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int wordCount(String[] startWords, String[] targetWords) {\n        Set<String> set = new HashSet<>();\n        for (String word : startWords) {\n            set.add(word);\n        }\n        int count = 0;\n        for (String word : targetWords) {\n            boolean found = false;\n            for (int i = 0; i < word.length(); i++) {\n                String prefix = word.substring(0, i + 1);\n                if (set.contains(prefix)) {\n                    found = true;\n                    break;\n                }\n            }\n            if (found) {\n                count++;\n            }\n        }\n        return count;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n*m*log(m))\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int wordCount(String[] startWords, String[] targetWords) {\n        Set<String> set = new HashSet<>();\n        for (String word : startWords) {\n            set.add(word);\n        }\n        int count = 0;\n        for (String word : targetWords) {\n            boolean found = false;\n            for (int i = 0; i < word.length(); i++) {\n                String prefix = word.substring(0, i + 1);\n                if (set.contains(prefix)) {\n                    found = true;\n                    break;\n                }\n            }\n            if (found) {\n                count++;\n            }\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T13:23:02.777017",
+  "code_extracted_previous": "class Solution {\n    public int wordCount(String[] startWords, String[] targetWords) {\n        Set<String> set = new HashSet<>();\n        for (String word : startWords) {\n            set.add(word);\n        }\n        int count = 0;\n        for (String word : targetWords) {\n            boolean found = false;\n            for (int i = 0; i < word.length(); i++) {\n                String prefix = word.substring(0, i + 1);\n                if (set.contains(prefix)) {\n                    found = true;\n                    break;\n                }\n            }\n            if (found) {\n                count++;\n            }\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.163221"
+}

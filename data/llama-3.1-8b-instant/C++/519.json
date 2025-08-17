@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int m, n;\n    vector<vector<bool>> matrix;\n    int count;\n    Solution(int m, int n) {\n        this->m = m;\n        this->n = n;\n        matrix.resize(m, vector<bool>(n, true));\n        count = m * n;\n    }\n    \n    vector<int> flip() {\n        if (count == 0) return {};\n        int i = rand() % count;\n        int j = 0;\n        while (i >= n) {\n            i -= n;\n            j++;\n        }\n        matrix[j][i] = false;\n        count--;\n        return {j, i};\n    }\n    \n    void reset() {\n        count = m * n;\n        for (auto& row : matrix) {\n            for (auto& cell : row) {\n                cell = true;\n            }\n        }\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(m*n)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int m, n;\n    vector<vector<bool>> matrix;\n    int count;\n    Solution(int m, int n) {\n        this->m = m;\n        this->n = n;\n        matrix.resize(m, vector<bool>(n, true));\n        count = m * n;\n    }\n    \n    vector<int> flip() {\n        if (count == 0) return {};\n        int i = rand() % count;\n        int j = 0;\n        while (i >= n) {\n            i -= n;\n            j++;\n        }\n        matrix[j][i] = false;\n        count--;\n        return {j, i};\n    }\n    \n    void reset() {\n        count = m * n;\n        for (auto& row : matrix) {\n            for (auto& cell : row) {\n                cell = true;\n            }\n        }\n    }\n};",
+  "timestamp": "2025-08-05T14:54:53.150337",
+  "code_extracted_previous": "class Solution {\npublic:\n    int m, n;\n    vector<vector<bool>> matrix;\n    int count;\n    Solution(int m, int n) {\n        this->m = m;\n        this->n = n;\n        matrix.resize(m, vector<bool>(n, true));\n        count = m * n;\n    }\n    \n    vector<int> flip() {\n        if (count == 0) return {};\n        int i = rand() % count;\n        int j = 0;\n        while (i >= n) {\n            i -= n;\n            j++;\n        }\n        matrix[j][i] = false;\n        count--;\n        return {j, i};\n    }\n    \n    void reset() {\n        count = m * n;\n        for (auto& row : matrix) {\n            for (auto& cell : row) {\n                cell = true;\n            }\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.587161"
+}

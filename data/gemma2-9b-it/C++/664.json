@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<int> dp(n + 1, 1);\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 0; j < i; ++j) {\n                if (s[i - 1] == s[j]) {\n                    dp[i] = min(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return dp[n];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to store the minimum number of turns required to print substrings of `s`. It iterates through the string, comparing each character to previous characters and updating the minimum turns required for each substring. \n\n\n",
+  "code": "class Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<int> dp(n + 1, 1);\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 0; j < i; ++j) {\n                if (s[i - 1] == s[j]) {\n                    dp[i] = min(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-05T16:08:31.821074",
+  "code_extracted_previous": "class Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<int> dp(n + 1, 1);\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 0; j < i; ++j) {\n                if (s[i - 1] == s[j]) {\n                    dp[i] = min(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.233590"
+}

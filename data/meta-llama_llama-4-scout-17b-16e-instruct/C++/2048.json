@@ -1,0 +1,15 @@
+{
+  "id": 2048,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int nextBeautifulNumber(int n) {\n        function<bool(int)> isBeautiful = [&](int x) {\n            vector<int> count(10);\n            while (x) {\n                count[x % 10]++;\n                x /= 10;\n            }\n            for (int i = 0; i < 10; ++i) {\n                if (count[i] != i) return false;\n            }\n            return true;\n        };\n\n        ++n;\n        while (!isBeautiful(n)) ++n;\n        return n;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a helper function `isBeautiful` to check if a number is numerically balanced. It iterates through numbers greater than `n` until it finds a beautiful number, making the time complexity dependent on the distribution of beautiful numbers. The space complexity is constant as it uses a fixed-size array to count digits.",
+  "code": "class Solution {\npublic:\n    int nextBeautifulNumber(int n) {\n        function<bool(int)> isBeautiful = [&](int x) {\n            vector<int> count(10);\n            while (x) {\n                count[x % 10]++;\n                x /= 10;\n            }\n            for (int i = 0; i < 10; ++i) {\n                if (count[i] != i) return false;\n            }\n            return true;\n        };\n\n        ++n;\n        while (!isBeautiful(n)) ++n;\n        return n;\n    }\n};",
+  "timestamp": "2025-08-05T15:08:35.615476",
+  "code_extracted_previous": "class Solution {\npublic:\n    int nextBeautifulNumber(int n) {\n        function<bool(int)> isBeautiful = [&](int x) {\n            vector<int> count(10);\n            while (x) {\n                count[x % 10]++;\n                x /= 10;\n            }\n            for (int i = 0; i < 10; ++i) {\n                if (count[i] != i) return false;\n            }\n            return true;\n        };\n\n        ++n;\n        while (!isBeautiful(n)) ++n;\n        return n;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.928337"
+}

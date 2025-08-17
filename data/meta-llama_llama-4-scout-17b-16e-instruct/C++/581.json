@@ -1,0 +1,15 @@
+{
+  "id": 581,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        vector<int> sorted_nums = nums;\n        sort(sorted_nums.begin(), sorted_nums.end());\n        int start = nums.size(), end = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] != sorted_nums[i]) {\n                start = min(start, i);\n                end = max(end, i);\n            }\n        }\n        if (end - start >= 0) {\n            return end - start + 1;\n        }\n        return 0;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The provided solution first creates a sorted copy of the input array. It then iterates through the array to find the first and last indices where the original array differs from the sorted array, marking the start and end of the subarray that needs sorting. If no such subarray is found, it returns 0. The sorting step dominates the time complexity, which is O(n log n). The space complexity is O(n) due to the additional sorted array.",
+  "code": "class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        vector<int> sorted_nums = nums;\n        sort(sorted_nums.begin(), sorted_nums.end());\n        int start = nums.size(), end = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] != sorted_nums[i]) {\n                start = min(start, i);\n                end = max(end, i);\n            }\n        }\n        if (end - start >= 0) {\n            return end - start + 1;\n        }\n        return 0;\n    }\n};",
+  "timestamp": "2025-08-05T13:01:46.089113",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        vector<int> sorted_nums = nums;\n        sort(sorted_nums.begin(), sorted_nums.end());\n        int start = nums.size(), end = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] != sorted_nums[i]) {\n                start = min(start, i);\n                end = max(end, i);\n            }\n        }\n        if (end - start >= 0) {\n            return end - start + 1;\n        }\n        return 0;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.753066"
+}

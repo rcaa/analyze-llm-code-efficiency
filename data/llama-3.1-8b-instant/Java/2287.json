@@ -1,0 +1,15 @@
+{
+  "id": 2287,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int rearrangeCharacters(String s, String target) {\n        int[] sCount = new int[26];\n        int[] targetCount = new int[26];\n        \n        for (char c : s.toCharArray()) {\n            sCount[c - 'a']++;\n        }\n        \n        for (char c : target.toCharArray()) {\n            targetCount[c - 'a']++;\n        }\n        \n        int maxCopies = Integer.MAX_VALUE;\n        for (int i = 0; i < 26; i++) {\n            if (targetCount[i] > 0) {\n                maxCopies = Math.min(maxCopies, sCount[i] / targetCount[i]);\n            }\n        }\n        \n        return maxCopies;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int rearrangeCharacters(String s, String target) {\n        int[] sCount = new int[26];\n        int[] targetCount = new int[26];\n        \n        for (char c : s.toCharArray()) {\n            sCount[c - 'a']++;\n        }\n        \n        for (char c : target.toCharArray()) {\n            targetCount[c - 'a']++;\n        }\n        \n        int maxCopies = Integer.MAX_VALUE;\n        for (int i = 0; i < 26; i++) {\n            if (targetCount[i] > 0) {\n                maxCopies = Math.min(maxCopies, sCount[i] / targetCount[i]);\n            }\n        }\n        \n        return maxCopies;\n    }\n}",
+  "timestamp": "2025-08-05T14:45:34.583865",
+  "code_extracted_previous": "class Solution {\n    public int rearrangeCharacters(String s, String target) {\n        int[] sCount = new int[26];\n        int[] targetCount = new int[26];\n        \n        for (char c : s.toCharArray()) {\n            sCount[c - 'a']++;\n        }\n        \n        for (char c : target.toCharArray()) {\n            targetCount[c - 'a']++;\n        }\n        \n        int maxCopies = Integer.MAX_VALUE;\n        for (int i = 0; i < 26; i++) {\n            if (targetCount[i] > 0) {\n                maxCopies = Math.min(maxCopies, sCount[i] / targetCount[i]);\n            }\n        }\n        \n        return maxCopies;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.220308"
+}

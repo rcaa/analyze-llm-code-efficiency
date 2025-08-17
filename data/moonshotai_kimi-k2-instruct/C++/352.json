@@ -1,0 +1,15 @@
+{
+  "id": 352,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass SummaryRanges {\n    set<int> nums;\npublic:\n    SummaryRanges() {}\n    \n    void addNum(int value) {\n        nums.insert(value);\n    }\n    \n    vector<vector<int>> getIntervals() {\n        vector<vector<int>> res;\n        if (nums.empty()) return res;\n        int start = *nums.begin(), end = start;\n        for (auto it = next(nums.begin()); it != nums.end(); ++it) {\n            if (*it == end + 1) {\n                end = *it;\n            } else {\n                res.push_back({start, end});\n                start = end = *it;\n            }\n        }\n        res.push_back({start, end});\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: addNum O(log N), getIntervals O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses a sorted set to store unique numbers; addNum is a logarithmic-time insertion, getIntervals performs a single linear scan to build intervals. Simple, cache-friendly, and optimal for the given constraints.",
+  "code": "class SummaryRanges {\n    set<int> nums;\npublic:\n    SummaryRanges() {}\n    \n    void addNum(int value) {\n        nums.insert(value);\n    }\n    \n    vector<vector<int>> getIntervals() {\n        vector<vector<int>> res;\n        if (nums.empty()) return res;\n        int start = *nums.begin(), end = start;\n        for (auto it = next(nums.begin()); it != nums.end(); ++it) {\n            if (*it == end + 1) {\n                end = *it;\n            } else {\n                res.push_back({start, end});\n                start = end = *it;\n            }\n        }\n        res.push_back({start, end});\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:37:36.926628",
+  "code_extracted_previous": "class SummaryRanges {\n    set<int> nums;\npublic:\n    SummaryRanges() {}\n    \n    void addNum(int value) {\n        nums.insert(value);\n    }\n    \n    vector<vector<int>> getIntervals() {\n        vector<vector<int>> res;\n        if (nums.empty()) return res;\n        int start = *nums.begin(), end = start;\n        for (auto it = next(nums.begin()); it != nums.end(); ++it) {\n            if (*it == end + 1) {\n                end = *it;\n            } else {\n                res.push_back({start, end});\n                start = end = *it;\n            }\n        }\n        res.push_back({start, end});\n        return res;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:54.027416"
+}

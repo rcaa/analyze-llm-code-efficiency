@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        final int MOD = 1_000_000_007;\n        long[] dp = new long[n + 1];\n        dp[1] = 1;\n        for (int day = 2; day <= n; day++) {\n            long share = 0;\n            for (int prev = day - forget + 1; prev <= day - delay; prev++) {\n                if (prev > 0) {\n                    share = (share + dp[prev]) % MOD;\n                }\n            }\n            dp[day] = share;\n        }\n        long res = 0;\n        for (int i = n - forget + 1; i <= n; i++) {\n            if (i > 0) {\n                res = (res + dp[i]) % MOD;\n            }\n        }\n        return (int) res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n * (forget - delay))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a 1-D DP array where dp[i] is the number of new people who learn the secret on day i. For each day, sum the active sharers from the sliding window [day-forget+1, day-delay]. The final answer is the sum of the last (forget-1) days, as those people still remember.",
+  "code": "class Solution {\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        final int MOD = 1_000_000_007;\n        long[] dp = new long[n + 1];\n        dp[1] = 1;\n        for (int day = 2; day <= n; day++) {\n            long share = 0;\n            for (int prev = day - forget + 1; prev <= day - delay; prev++) {\n                if (prev > 0) {\n                    share = (share + dp[prev]) % MOD;\n                }\n            }\n            dp[day] = share;\n        }\n        long res = 0;\n        for (int i = n - forget + 1; i <= n; i++) {\n            if (i > 0) {\n                res = (res + dp[i]) % MOD;\n            }\n        }\n        return (int) res;\n    }\n}",
+  "timestamp": "2025-08-06T02:31:09.466360",
+  "code_extracted_previous": "public int peopleAwareOfSecret(int n, int delay, int forget) {\n        final int MOD = 1_000_000_007;\n        long[] dp = new long[n + 1];\n        dp[1] = 1;\n        for (int day = 2; day <= n; day++) {\n            long share = 0;\n            for (int prev = day - forget + 1; prev <= day - delay; prev++) {\n                if (prev > 0) {\n                    share = (share + dp[prev]) % MOD;\n                }\n            }\n            dp[day] = share;\n        }\n        long res = 0;\n        for (int i = n - forget + 1; i <= n; i++) {\n            if (i > 0) {\n                res = (res + dp[i]) % MOD;\n            }\n        }\n        return (int) res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.002758"
+}

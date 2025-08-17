@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int findIntegers(int n) {\n        int dp[32] = {0};\n        dp[0] = 1;\n        dp[1] = 2;\n        for (int i = 2; i <= 31; ++i) {\n            dp[i] = dp[i - 1] + dp[i - 2];\n        }\n        int count = 0;\n        for (int i = 0; i <= n; ++i) {\n            int temp = i;\n            bool flag = false;\n            while (temp > 0) {\n                if ((temp & 1) && ((temp >> 1) & 1)) {\n                    flag = true;\n                    break;\n                }\n                temp >>= 1;\n            }\n            if (!flag) {\n                count++;\n            }\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution utilizes dynamic programming to pre-calculate the number of integers with a specific number of bits that satisfy the condition. It then iterates through each integer up to n, checking its binary representation for consecutive ones. If no consecutive ones are found, the count is incremented. \n\n\n",
+  "code": "class Solution {\npublic:\n    int findIntegers(int n) {\n        int dp[32] = {0};\n        dp[0] = 1;\n        dp[1] = 2;\n        for (int i = 2; i <= 31; ++i) {\n            dp[i] = dp[i - 1] + dp[i - 2];\n        }\n        int count = 0;\n        for (int i = 0; i <= n; ++i) {\n            int temp = i;\n            bool flag = false;\n            while (temp > 0) {\n                if ((temp & 1) && ((temp >> 1) & 1)) {\n                    flag = true;\n                    break;\n                }\n                temp >>= 1;\n            }\n            if (!flag) {\n                count++;\n            }\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T14:14:44.731962",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findIntegers(int n) {\n        int dp[32] = {0};\n        dp[0] = 1;\n        dp[1] = 2;\n        for (int i = 2; i <= 31; ++i) {\n            dp[i] = dp[i - 1] + dp[i - 2];\n        }\n        int count = 0;\n        for (int i = 0; i <= n; ++i) {\n            int temp = i;\n            bool flag = false;\n            while (temp > 0) {\n                if ((temp & 1) && ((temp >> 1) & 1)) {\n                    flag = true;\n                    break;\n                }\n                temp >>= 1;\n            }\n            if (!flag) {\n                count++;\n            }\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.200729"
+}

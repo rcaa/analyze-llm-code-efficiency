@@ -1,0 +1,15 @@
+{
+  "id": 2446,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool haveConflict(vector<string>& event1, vector<string>& event2) {\n        int start1 = toMinutes(event1[0]), end1 = toMinutes(event1[1]);\n        int start2 = toMinutes(event2[0]), end2 = toMinutes(event2[1]);\n        return !(end1 < start2 || end2 < start1);\n    }\n    \n    int toMinutes(const string& time) {\n        int hours = stoi(time.substr(0, 2));\n        int minutes = stoi(time.substr(3, 2));\n        return hours * 60 + minutes;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution converts event times to minutes and checks for overlap by verifying that one event does not end before the other starts.",
+  "code": "class Solution {\npublic:\n    bool haveConflict(vector<string>& event1, vector<string>& event2) {\n        int start1 = toMinutes(event1[0]), end1 = toMinutes(event1[1]);\n        int start2 = toMinutes(event2[0]), end2 = toMinutes(event2[1]);\n        return !(end1 < start2 || end2 < start1);\n    }\n    \n    int toMinutes(const string& time) {\n        int hours = stoi(time.substr(0, 2));\n        int minutes = stoi(time.substr(3, 2));\n        return hours * 60 + minutes;\n    }\n};",
+  "timestamp": "2025-08-05T12:50:13.802979",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool haveConflict(vector<string>& event1, vector<string>& event2) {\n        int start1 = toMinutes(event1[0]), end1 = toMinutes(event1[1]);\n        int start2 = toMinutes(event2[0]), end2 = toMinutes(event2[1]);\n        return !(end1 < start2 || end2 < start1);\n    }\n    \n    int toMinutes(const string& time) {\n        int hours = stoi(time.substr(0, 2));\n        int minutes = stoi(time.substr(3, 2));\n        return hours * 60 + minutes;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.250529"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1009,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int bitwiseComplement(int n) {\n        if (n == 0) return 1;\n        int mask = n;\n        mask |= mask >> 1;\n        mask |= mask >> 2;\n        mask |= mask >> 4;\n        mask |= mask >> 8;\n        mask |= mask >> 16;\n        return ~n & mask;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses bitwise operations to efficiently calculate the complement of the given integer. It first creates a mask by setting all bits to the right of the leftmost set bit in `n` to 1, then uses this mask to clear the bits to the left of the leftmost set bit in `~n`, effectively giving the complement of `n` within the bits that `n` occupies.",
+  "code": "class Solution {\npublic:\n    int bitwiseComplement(int n) {\n        if (n == 0) return 1;\n        int mask = n;\n        mask |= mask >> 1;\n        mask |= mask >> 2;\n        mask |= mask >> 4;\n        mask |= mask >> 8;\n        mask |= mask >> 16;\n        return ~n & mask;\n    }\n};",
+  "timestamp": "2025-08-05T13:50:20.178888",
+  "code_extracted_previous": "class Solution {\npublic:\n    int bitwiseComplement(int n) {\n        if (n == 0) return 1;\n        int mask = n;\n        mask |= mask >> 1;\n        mask |= mask >> 2;\n        mask |= mask >> 4;\n        mask |= mask >> 8;\n        mask |= mask >> 16;\n        return ~n & mask;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.546534"
+}

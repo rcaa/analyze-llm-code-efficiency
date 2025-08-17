@@ -1,0 +1,15 @@
+{
+  "id": 1010,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int numPairsDivisibleBy60(int[] time) {\n        int[] remainders = new int[60];\n        int count = 0;\n        for (int t : time) {\n            int remainder = t % 60;\n            count += remainders[(60 - remainder) % 60];\n            remainders[remainder]++;\n        }\n        return count;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a hash map to store the count of each remainder modulo 60. For each song, it calculates the remainder and adds the count of the remainder that would make the total duration divisible by 60. This approach has a high efficiency due to its constant space complexity and linear time complexity.",
+  "code": "class Solution {\n    public int numPairsDivisibleBy60(int[] time) {\n        int[] remainders = new int[60];\n        int count = 0;\n        for (int t : time) {\n            int remainder = t % 60;\n            count += remainders[(60 - remainder) % 60];\n            remainders[remainder]++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T13:17:12.439207",
+  "code_extracted_previous": "class Solution {\n    public int numPairsDivisibleBy60(int[] time) {\n        int[] remainders = new int[60];\n        int count = 0;\n        for (int t : time) {\n            int remainder = t % 60;\n            count += remainders[(60 - remainder) % 60];\n            remainders[remainder]++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.834240"
+}

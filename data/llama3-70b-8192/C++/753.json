@@ -1,0 +1,15 @@
+{
+  "id": 753,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string crackSafe(int n, int k) {\n        string seen = \"\", ans = \"\";\n        for (int i = 0; i < k * n; i++) {\n            string curr = \"\";\n            for (int j = 1; j <= n; j++) {\n                curr = (char)('0' + i % k) + curr;\n                i /= k;\n            }\n            for (char c = '0'; c < '0' + k; c++) {\n                string t = curr + c;\n                if (seen.find(t) == string::npos) {\n                    seen += t;\n                    ans += c;\n                    break;\n                }\n            }\n        }\n        for (int i = 0; i < n - 1; i++) ans += '0';\n        return ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(k^n)\nspace complexity: O(k^n)\nenergy implications: LOW\nexplanation: The solution uses a De Bruijn sequence to generate a string that will unlock the safe. It iteratively appends digits to the string, ensuring that each substring of length n is unique.",
+  "code": "class Solution {\npublic:\n    string crackSafe(int n, int k) {\n        string seen = \"\", ans = \"\";\n        for (int i = 0; i < k * n; i++) {\n            string curr = \"\";\n            for (int j = 1; j <= n; j++) {\n                curr = (char)('0' + i % k) + curr;\n                i /= k;\n            }\n            for (char c = '0'; c < '0' + k; c++) {\n                string t = curr + c;\n                if (seen.find(t) == string::npos) {\n                    seen += t;\n                    ans += c;\n                    break;\n                }\n            }\n        }\n        for (int i = 0; i < n - 1; i++) ans += '0';\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T13:55:12.731551",
+  "code_extracted_previous": "public:\n    string crackSafe(int n, int k) {\n        string seen = \"\", ans = \"\";\n        for (int i = 0; i < k * n; i++) {\n            string curr = \"\";\n            for (int j = 1; j <= n; j++) {\n                curr = (char)('0' + i % k) + curr;\n                i /= k;\n            }\n            for (char c = '0'; c < '0' + k; c++) {\n                string t = curr + c;\n                if (seen.find(t) == string::npos) {\n                    seen += t;\n                    ans += c;\n                    break;\n                }\n            }\n        }\n        for (int i = 0; i < n - 1; i++) ans += '0';\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.069699"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2375,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```\nclass Solution {\npublic:\n    string smallestNumber(string pattern) {\n        int n = pattern.length();\n        vector<int> num(n + 1, 0);\n\n        for (int i = 0; i < n; i++) {\n            if (pattern[i] == 'I') {\n                for (int j = i + 1; j <= n; j++) {\n                    num[j] = num[i] + 1;\n                }\n            } else {\n                for (int j = i + 1; j <= n; j++) {\n                    num[j] = num[i] - 1;\n                }\n            }\n        }\n\n        string result = \"\";\n        for (int i = 1; i <= n; i++) {\n            result += num[i];\n        }\n\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\n1. Initialize a vector of integers num[] to store the values for each index of the string pattern.\n2. Iterate through the pattern string and update num[] based on the current character (I or D).\n3. Iterate through num[] and build the resulting string result by concatenating the values from 1 to n.\n4. Return the result string.\n\nThis solution has a time complexity of O(n) because we only iterate through the pattern string once. The space complexity is O(n) because we need to store the values in the num[] vector. The energy implications are low because the algorithm only performs a few arithmetic operations and does not require any complex calculations or data structures. ",
+  "code": "class Solution {\npublic:\n    string smallestNumber(string pattern) {\n        int n = pattern.length();\n        vector<int> num(n + 1, 0);\n\n        for (int i = 0; i < n; i++) {\n            if (pattern[i] == 'I') {\n                for (int j = i + 1; j <= n; j++) {\n                    num[j] = num[i] + 1;\n                }\n            } else {\n                for (int j = i + 1; j <= n; j++) {\n                    num[j] = num[i] - 1;\n                }\n            }\n        }\n\n        string result = \"\";\n        for (int i = 1; i <= n; i++) {\n            result += num[i];\n        }\n\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T01:00:48.885070",
+  "code_extracted_previous": "class Solution {\npublic:\n    string smallestNumber(string pattern) {\n        int n = pattern.length();\n        vector<int> num(n + 1, 0);\n\n        for (int i = 0; i < n; i++) {\n            if (pattern[i] == 'I') {\n                for (int j = i + 1; j <= n; j++) {\n                    num[j] = num[i] + 1;\n                }\n            } else {\n                for (int j = i + 1; j <= n; j++) {\n                    num[j] = num[i] - 1;\n                }\n            }\n        }\n\n        string result = \"\";\n        for (int i = 1; i <= n; i++) {\n            result += num[i];\n        }\n\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.416638"
+}

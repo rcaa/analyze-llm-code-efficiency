@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\n    private static final int MOD = 1_000_000_007;\n\n    public int numberOfWays(int n, int x) {\n        int maxBase = 1;\n        while (Math.pow(maxBase, x) <= n) maxBase++;\n        maxBase--;\n\n        int[] bases = new int[maxBase];\n        for (int i = 1; i <= maxBase; i++) {\n            bases[i - 1] = (int) Math.pow(i, x);\n        }\n\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n\n        for (int base : bases) {\n            for (int j = n; j >= base; j--) {\n                dp[j] = (dp[j] + dp[j - base]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}\nefficiency: HIGH\ntime complexity: O(n * sqrt[x]{n})\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming 0/1 knapsack approach. Precompute all possible bases i^x up to n, then count subsets summing to n using a single DP array updated in reverse to avoid reuse. Optimal for the given constraints.",
+  "code": "class Solution {\n    private static final int MOD = 1_000_000_007;\n\n    public int numberOfWays(int n, int x) {\n        int maxBase = 1;\n        while (Math.pow(maxBase, x) <= n) maxBase++;\n        maxBase--;\n\n        int[] bases = new int[maxBase];\n        for (int i = 1; i <= maxBase; i++) {\n            bases[i - 1] = (int) Math.pow(i, x);\n        }\n\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n\n        for (int base : bases) {\n            for (int j = n; j >= base; j--) {\n                dp[j] = (dp[j] + dp[j - base]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T14:28:25.246424",
+  "code_extracted_previous": "class Solution {\n    private static final int MOD = 1_000_000_007;\n\n    public int numberOfWays(int n, int x) {\n        int maxBase = 1;\n        while (Math.pow(maxBase, x) <= n) maxBase++;\n        maxBase--;\n\n        int[] bases = new int[maxBase];\n        for (int i = 1; i <= maxBase; i++) {\n            bases[i - 1] = (int) Math.pow(i, x);\n        }\n\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n\n        for (int base : bases) {\n            for (int j = n; j >= base; j--) {\n                dp[j] = (dp[j] + dp[j - base]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.193611"
+}

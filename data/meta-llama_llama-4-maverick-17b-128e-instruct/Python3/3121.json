@@ -1,0 +1,15 @@
+{
+  "id": 3121,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def numberOfSpecialChars(self, word: str) -> int:\n        last_lowercase = {}\n        first_uppercase = {}\n        for i, char in enumerate(word):\n            if char.islower() and char not in last_lowercase:\n                last_lowercase[char] = i\n            if char.isupper() and char.lower() not in first_uppercase:\n                first_uppercase[char.lower()] = i\n        count = 0\n        for char in last_lowercase:\n            if char in first_uppercase and last_lowercase[char] < first_uppercase[char]:\n                count += 1\n        return count\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the word once, storing the last occurrence of each lowercase letter and the first occurrence of each uppercase letter. It then checks for each letter if its last lowercase occurrence is before its first uppercase occurrence, counting those that satisfy this condition.",
+  "code": "def numberOfSpecialChars(self, word: str) -> int:\n        last_lowercase = {}\n        first_uppercase = {}\n        for i, char in enumerate(word):\n            if char.islower() and char not in last_lowercase:\n                last_lowercase[char] = i\n            if char.isupper() and char.lower() not in first_uppercase:\n                first_uppercase[char.lower()] = i\n        count = 0\n        for char in last_lowercase:\n            if char in first_uppercase and last_lowercase[char] < first_uppercase[char]:\n                count += 1\n        return count\n```",
+  "timestamp": "2025-08-05T15:12:16.916788",
+  "code_extracted_previous": "class Solution:\n    def numberOfSpecialChars(self, word: str) -> int:\n        last_lowercase = {}\n        first_uppercase = {}\n        for i, char in enumerate(word):\n            if char.islower() and char not in last_lowercase:\n                last_lowercase[char] = i\n            if char.isupper() and char.lower() not in first_uppercase:\n                first_uppercase[char.lower()] = i\n        count = 0\n        for char in last_lowercase:\n            if char in first_uppercase and last_lowercase[char] < first_uppercase[char]:\n                count += 1\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.100308"
+}

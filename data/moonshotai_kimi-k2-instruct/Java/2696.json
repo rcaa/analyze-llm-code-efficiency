@@ -1,0 +1,15 @@
+{
+  "id": 2696,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int minLength(String s) {\n        StringBuilder sb = new StringBuilder(s);\n        boolean changed;\n        do {\n            changed = false;\n            for (int i = 0; i < sb.length() - 1; i++) {\n                char c1 = sb.charAt(i);\n                char c2 = sb.charAt(i + 1);\n                if ((c1 == 'A' && c2 == 'B') || (c1 == 'C' && c2 == 'D')) {\n                    sb.delete(i, i + 2);\n                    changed = true;\n                    break;\n                }\n            }\n        } while (changed);\n        return sb.length();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a StringBuilder to repeatedly scan left-to-right, removing the first \"AB\" or \"CD\" encountered and restarting the scan after each deletion. This greedy approach guarantees the minimal length because any removable pair is eliminated as soon as it appears, preventing later overlaps.",
+  "code": "class Solution {\n    public int minLength(String s) {\n        StringBuilder sb = new StringBuilder(s);\n        boolean changed;\n        do {\n            changed = false;\n            for (int i = 0; i < sb.length() - 1; i++) {\n                char c1 = sb.charAt(i);\n                char c2 = sb.charAt(i + 1);\n                if ((c1 == 'A' && c2 == 'B') || (c1 == 'C' && c2 == 'D')) {\n                    sb.delete(i, i + 2);\n                    changed = true;\n                    break;\n                }\n            }\n        } while (changed);\n        return sb.length();\n    }\n}",
+  "timestamp": "2025-08-05T23:44:23.213515",
+  "code_extracted_previous": "class Solution {\n    public int minLength(String s) {\n        StringBuilder sb = new StringBuilder(s);\n        boolean changed;\n        do {\n            changed = false;\n            for (int i = 0; i < sb.length() - 1; i++) {\n                char c1 = sb.charAt(i);\n                char c2 = sb.charAt(i + 1);\n                if ((c1 == 'A' && c2 == 'B') || (c1 == 'C' && c2 == 'D')) {\n                    sb.delete(i, i + 2);\n                    changed = true;\n                    break;\n                }\n            }\n        } while (changed);\n        return sb.length();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.158246"
+}

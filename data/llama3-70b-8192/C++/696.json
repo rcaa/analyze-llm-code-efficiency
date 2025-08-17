@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int prev = 0, curr = 1, res = 0;\n        for (int i = 1; i < s.size(); ++i) {\n            if (s[i] == s[i - 1]) {\n                curr++;\n            } else {\n                res += min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return res + min(prev, curr);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the string, counting consecutive groups of 0's and 1's, and updates the result with the minimum count of the previous and current groups whenever a group changes.",
+  "code": "class Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int prev = 0, curr = 1, res = 0;\n        for (int i = 1; i < s.size(); ++i) {\n            if (s[i] == s[i - 1]) {\n                curr++;\n            } else {\n                res += min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return res + min(prev, curr);\n    }\n};",
+  "timestamp": "2025-08-06T01:29:29.306951",
+  "code_extracted_previous": "public:\n    int countBinarySubstrings(string s) {\n        int prev = 0, curr = 1, res = 0;\n        for (int i = 1; i < s.size(); ++i) {\n            if (s[i] == s[i - 1]) {\n                curr++;\n            } else {\n                res += min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return res + min(prev, curr);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.036899"
+}

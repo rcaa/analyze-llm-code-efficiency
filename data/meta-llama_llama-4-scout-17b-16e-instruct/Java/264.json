@@ -1,0 +1,15 @@
+{
+  "id": 264,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int nthUglyNumber(int n) {\n        int[] ugly = new int[n];\n        ugly[0] = 1;\n        int i = 0, j = 0, k = 0;\n        for (int index = 1; index < n; index++) {\n            ugly[index] = Math.min(Math.min(ugly[i] * 2, ugly[j] * 3), ugly[k] * 5);\n            if (ugly[index] == ugly[i] * 2) i++;\n            if (ugly[index] == ugly[j] * 3) j++;\n            if (ugly[index] == ugly[k] * 5) k++;\n        }\n        return ugly[n - 1];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to generate the sequence of ugly numbers iteratively, maintaining pointers for each prime factor to ensure efficient computation of the next ugly number.",
+  "code": "class Solution {\n    public int nthUglyNumber(int n) {\n        int[] ugly = new int[n];\n        ugly[0] = 1;\n        int i = 0, j = 0, k = 0;\n        for (int index = 1; index < n; index++) {\n            ugly[index] = Math.min(Math.min(ugly[i] * 2, ugly[j] * 3), ugly[k] * 5);\n            if (ugly[index] == ugly[i] * 2) i++;\n            if (ugly[index] == ugly[j] * 3) j++;\n            if (ugly[index] == ugly[k] * 5) k++;\n        }\n        return ugly[n - 1];\n    }\n}",
+  "timestamp": "2025-08-05T14:51:45.931667",
+  "code_extracted_previous": "class Solution {\n    public int nthUglyNumber(int n) {\n        int[] ugly = new int[n];\n        ugly[0] = 1;\n        int i = 0, j = 0, k = 0;\n        for (int index = 1; index < n; index++) {\n            ugly[index] = Math.min(Math.min(ugly[i] * 2, ugly[j] * 3), ugly[k] * 5);\n            if (ugly[index] == ugly[i] * 2) i++;\n            if (ugly[index] == ugly[j] * 3) j++;\n            if (ugly[index] == ugly[k] * 5) k++;\n        }\n        return ugly[n - 1];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.896719"
+}

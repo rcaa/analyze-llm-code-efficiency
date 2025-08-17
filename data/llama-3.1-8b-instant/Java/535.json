@@ -1,0 +1,15 @@
+{
+  "id": 535,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\npublic class Codec {\n\n    private Map<String, String> map = new HashMap<>();\n\n    // Encodes a URL to a shortened URL.\n    public String encode(String longUrl) {\n        if (!map.containsKey(longUrl)) {\n            map.put(longUrl, \"http://tinyurl.com/\" + (map.size() + 1));\n        }\n        return map.get(longUrl);\n    }\n\n    // Decodes a shortened URL to its original URL.\n    public String decode(String shortUrl) {\n        return shortUrl.replace(\"http://tinyurl.com/\", \"\");\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hash map to store the mapping between the original URL and the shortened URL. The encode method checks if the original URL is already in the map, and if not, it adds a new entry to the map. The decode method simply removes the prefix from the shortened URL to get the original URL. This solution has a high efficiency because it uses a hash map for fast lookups, and it has a constant time complexity for both encode and decode operations.",
+  "code": "public class Codec {\n\n    private Map<String, String> map = new HashMap<>();\n\n    // Encodes a URL to a shortened URL.\n    public String encode(String longUrl) {\n        if (!map.containsKey(longUrl)) {\n            map.put(longUrl, \"http://tinyurl.com/\" + (map.size() + 1));\n        }\n        return map.get(longUrl);\n    }\n\n    // Decodes a shortened URL to its original URL.\n    public String decode(String shortUrl) {\n        return shortUrl.replace(\"http://tinyurl.com/\", \"\");\n    }\n}",
+  "timestamp": "2025-08-05T14:55:41.210698",
+  "code_extracted_previous": "public class Codec {\n\n    private Map<String, String> map = new HashMap<>();\n\n    // Encodes a URL to a shortened URL.\n    public String encode(String longUrl) {\n        if (!map.containsKey(longUrl)) {\n            map.put(longUrl, \"http://tinyurl.com/\" + (map.size() + 1));\n        }\n        return map.get(longUrl);\n    }\n\n    // Decodes a shortened URL to its original URL.\n    public String decode(String shortUrl) {\n        return shortUrl.replace(\"http://tinyurl.com/\", \"\");\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:29.917047"
+}

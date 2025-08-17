@@ -1,0 +1,15 @@
+{
+  "id": 692,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string,int> freq;\n        for(const string& w: words) ++freq[w];\n        \n        auto cmp = [](const pair<string,int>& a, const pair<string,int>& b) {\n            return a.second == b.second ? a.first < b.first : a.second > b.second;\n        };\n        priority_queue<pair<string,int>, vector<pair<string,int>>, decltype(cmp)> pq(cmp);\n        \n        for(const auto& [w,c]: freq) {\n            pq.emplace(w,c);\n            if(pq.size() > k) pq.pop();\n        }\n        \n        vector<string> res;\n        while(!pq.empty()) {\n            res.push_back(pq.top().first);\n            pq.pop();\n        }\n        reverse(res.begin(), res.end());\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Count frequencies in O(n), then use a min-heap of size k to keep the k most frequent words ordered by ascending frequency and lexicographical order. Extracting and reversing yields the desired descending order.",
+  "code": "class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string,int> freq;\n        for(const string& w: words) ++freq[w];\n        \n        auto cmp = [](const pair<string,int>& a, const pair<string,int>& b) {\n            return a.second == b.second ? a.first < b.first : a.second > b.second;\n        };\n        priority_queue<pair<string,int>, vector<pair<string,int>>, decltype(cmp)> pq(cmp);\n        \n        for(const auto& [w,c]: freq) {\n            pq.emplace(w,c);\n            if(pq.size() > k) pq.pop();\n        }\n        \n        vector<string> res;\n        while(!pq.empty()) {\n            res.push_back(pq.top().first);\n            pq.pop();\n        }\n        reverse(res.begin(), res.end());\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:16:01.463548",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string,int> freq;\n        for(const string& w: words) ++freq[w];\n        \n        auto cmp = [](const pair<string,int>& a, const pair<string,int>& b) {\n            return a.second == b.second ? a.first < b.first : a.second > b.second;\n        };\n        priority_queue<pair<string,int>, vector<pair<string,int>>, decltype(cmp)> pq(cmp);\n        \n        for(const auto& [w,c]: freq) {\n            pq.emplace(w,c);\n            if(pq.size() > k) pq.pop();\n        }\n        \n        vector<string> res;\n        while(!pq.empty()) {\n            res.push_back(pq.top().first);\n            pq.pop();\n        }\n        reverse(res.begin(), res.end());\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.237303"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3081,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minimizeStringValue(self, s: str) -> str:\n        chars = 'abcdefghijklmnopqrstuvwxyz'\n        n = len(s)\n        res = list(s)\n        for i in range(n):\n            if s[i] == '?':\n                for c in chars:\n                    res[i] = c\n                    if all(s[j] == res[j] or s[j] == '?' for j in range(i)):\n                        break\n                else:\n                    continue\n                break\n        return ''.join(res)\n```\n\nefficiency: HIGH\ntime complexity: O(n * 26)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution:\n    def minimizeStringValue(self, s: str) -> str:\n        chars = 'abcdefghijklmnopqrstuvwxyz'\n        n = len(s)\n        res = list(s)\n        for i in range(n):\n            if s[i] == '?':\n                for c in chars:\n                    res[i] = c\n                    if all(s[j] == res[j] or s[j] == '?' for j in range(i)):\n                        break\n                else:\n                    continue\n                break\n        return ''.join(res)",
+  "timestamp": "2025-08-05T15:12:07.271650",
+  "code_extracted_previous": "class Solution:\n    def minimizeStringValue(self, s: str) -> str:\n        chars = 'abcdefghijklmnopqrstuvwxyz'\n        n = len(s)\n        res = list(s)\n        for i in range(n):\n            if s[i] == '?':\n                for c in chars:\n                    res[i] = c\n                    if all(s[j] == res[j] or s[j] == '?' for j in range(i)):\n                        break\n                else:\n                    continue\n                break\n        return ''.join(res)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.062750"
+}

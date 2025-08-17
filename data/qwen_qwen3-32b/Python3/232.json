@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution:\n```python\nclass MyQueue:\n\n    def __init__(self):\n        self.stack1 = []\n        self.stack2 = []\n\n    def push(self, x: int) -> None:\n        self.stack1.append(x)\n\n    def pop(self) -> int:\n        if not self.stack2:\n            while self.stack1:\n                self.stack2.append(self.stack1.pop())\n        return self.stack2.pop()\n\n    def peek(self) -> int:\n        if not self.stack2:\n            while self.stack1:\n                self.stack2.append(self.stack1.pop())\n        return self.stack2[-1]\n\n    def empty(self) -> bool:\n        return not self.stack1 and not self.stack2\n```\nefficiency: HIGH\ntime complexity: O(1) amortized\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses two stacks to simulate a queue. Push operations are O(1), and pop/peek operations are O(1) amortized because each element is moved at most once between stacks. The main strength is achieving efficient amortized time complexity for all operations. The weakness is the additional space required for the second stack.",
+  "code": "class MyQueue:\n\n    def __init__(self):\n        self.stack1 = []\n        self.stack2 = []\n\n    def push(self, x: int) -> None:\n        self.stack1.append(x)\n\n    def pop(self) -> int:\n        if not self.stack2:\n            while self.stack1:\n                self.stack2.append(self.stack1.pop())\n        return self.stack2.pop()\n\n    def peek(self) -> int:\n        if not self.stack2:\n            while self.stack1:\n                self.stack2.append(self.stack1.pop())\n        return self.stack2[-1]\n\n    def empty(self) -> bool:\n        return not self.stack1 and not self.stack2",
+  "timestamp": "2025-08-06T17:23:18.291781",
+  "code_extracted_previous": "class MyQueue:\n\n    def __init__(self):\n        self.stack1 = []\n        self.stack2 = []\n\n    def push(self, x: int) -> None:\n        self.stack1.append(x)\n\n    def pop(self) -> int:\n        if not self.stack2:\n            while self.stack1:\n                self.stack2.append(self.stack1.pop())\n        return self.stack2.pop()\n\n    def peek(self) -> int:\n        if not self.stack2:\n            while self.stack1:\n                self.stack2.append(self.stack1.pop())\n        return self.stack2[-1]\n\n    def empty(self) -> bool:\n        return not self.stack1 and not self.stack2",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:05.072953"
+}

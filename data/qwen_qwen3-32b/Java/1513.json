@@ -1,0 +1,15 @@
+{
+  "id": 1513,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public int numSub(String s) {\n        int mod = 1000000007;\n        int count = 0;\n        int consecutiveOnes = 0;\n\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '1') {\n                consecutiveOnes++;\n                count = (count + consecutiveOnes) % mod;\n            } else {\n                consecutiveOnes = 0;\n            }\n        }\n\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The solution iterates through the string once, tracking consecutive '1's and adding them to the count. For a group of k consecutive '1's, there are k + (k-1) + ... + 1 = k*(k+1)/2 substrings. This approach avoids recalculating and is efficient for large inputs.>",
+  "code": "class Solution {\n    public int numSub(String s) {\n        int mod = 1000000007;\n        int count = 0;\n        int consecutiveOnes = 0;\n\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '1') {\n                consecutiveOnes++;\n                count = (count + consecutiveOnes) % mod;\n            } else {\n                consecutiveOnes = 0;\n            }\n        }\n\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T17:03:50.919443",
+  "code_extracted_previous": "class Solution {\n    public int numSub(String s) {\n        int mod = 1000000007;\n        int count = 0;\n        int consecutiveOnes = 0;\n\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '1') {\n                consecutiveOnes++;\n                count = (count + consecutiveOnes) % mod;\n            } else {\n                consecutiveOnes = 0;\n            }\n        }\n\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:01.750282"
+}

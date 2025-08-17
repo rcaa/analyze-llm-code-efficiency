@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        if (k == 0) return 1.0;\n        vector<double> dp(n + 1, 0.0);\n        dp[0] = 1.0;\n        double sum = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = sum / maxPts;\n            if (i < k) sum += dp[i];\n            if (i - maxPts >= 0) sum -= dp[i - maxPts];\n        }\n        return accumulate(dp.begin() + k, dp.end(), 0.0);\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to calculate the probability of Alice having n or fewer points. It maintains a running sum of probabilities and updates it at each step, ensuring efficient computation and minimizing energy consumption.",
+  "code": "class Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        if (k == 0) return 1.0;\n        vector<double> dp(n + 1, 0.0);\n        dp[0] = 1.0;\n        double sum = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = sum / maxPts;\n            if (i < k) sum += dp[i];\n            if (i - maxPts >= 0) sum -= dp[i - maxPts];\n        }\n        return accumulate(dp.begin() + k, dp.end(), 0.0);\n    }\n};",
+  "timestamp": "2025-08-06T15:11:47.028550",
+  "code_extracted_previous": "class Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        if (k == 0) return 1.0;\n        vector<double> dp(n + 1, 0.0);\n        dp[0] = 1.0;\n        double sum = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = sum / maxPts;\n            if (i < k) sum += dp[i];\n            if (i - maxPts >= 0) sum -= dp[i - maxPts];\n        }\n        return accumulate(dp.begin() + k, dp.end(), 0.0);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.086671"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1010,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def numPairsDivisibleBy60(self, time: List[int]) -> int:\n        count = {}\n        res = 0\n        for t in time:\n            rem = t % 60\n            res += count.get((60 - rem) % 60, 0)\n            count[rem] = count.get(rem, 0) + 1\n        return res\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hash map to store the frequency of each remainder when the time is divided by 60. For each time, it calculates the remainder and adds the frequency of the remainder that would make the total duration divisible by 60 to the result. This approach has a high efficiency due to the constant time complexity of hash map lookups and updates.",
+  "code": "class Solution:\n    def numPairsDivisibleBy60(self, time: List[int]) -> int:\n        count = {}\n        res = 0\n        for t in time:\n            rem = t % 60\n            res += count.get((60 - rem) % 60, 0)\n            count[rem] = count.get(rem, 0) + 1\n        return res",
+  "timestamp": "2025-08-05T13:17:14.221578",
+  "code_extracted_previous": "class Solution:\n    def numPairsDivisibleBy60(self, time: List[int]) -> int:\n        count = {}\n        res = 0\n        for t in time:\n            rem = t % 60\n            res += count.get((60 - rem) % 60, 0)\n            count[rem] = count.get(rem, 0) + 1\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.144530"
+}

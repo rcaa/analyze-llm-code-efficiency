@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxValue(int n, int index, int maxSum) {\n        int l = 1, r = maxSum, res = 1;\n        while (l <= r) {\n            int mid = l + (r - l) / 2;\n            long long sum = (long long)mid * (mid + 1) / 2;\n            if (index < mid) sum -= (long long)(mid - index);\n            if (n - index - 1 < mid) sum -= (long long)((mid - (n - index - 1)) * (mid - (n - index - 1) + 1)) / 2;\n            if (sum <= maxSum) {\n                res = mid;\n                l = mid + 1;\n            } else {\n                r = mid - 1;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(maxSum))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the maximum possible value of nums[index]. The sum of the array is calculated based on the current mid value, and the search range is adjusted accordingly.",
+  "code": "class Solution {\npublic:\n    int maxValue(int n, int index, int maxSum) {\n        int l = 1, r = maxSum, res = 1;\n        while (l <= r) {\n            int mid = l + (r - l) / 2;\n            long long sum = (long long)mid * (mid + 1) / 2;\n            if (index < mid) sum -= (long long)(mid - index);\n            if (n - index - 1 < mid) sum -= (long long)((mid - (n - index - 1)) * (mid - (n - index - 1) + 1)) / 2;\n            if (sum <= maxSum) {\n                res = mid;\n                l = mid + 1;\n            } else {\n                r = mid - 1;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:52:48.372768",
+  "code_extracted_previous": "public:\n    int maxValue(int n, int index, int maxSum) {\n        int l = 1, r = maxSum, res = 1;\n        while (l <= r) {\n            int mid = l + (r - l) / 2;\n            long long sum = (long long)mid * (mid + 1) / 2;\n            if (index < mid) sum -= (long long)(mid - index);\n            if (n - index - 1 < mid) sum -= (long long)((mid - (n - index - 1)) * (mid - (n - index - 1) + 1)) / 2;\n            if (sum <= maxSum) {\n                res = mid;\n                l = mid + 1;\n            } else {\n                r = mid - 1;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.295042"
+}

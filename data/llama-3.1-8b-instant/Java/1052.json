@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int n = customers.length;\n        int total = 0;\n        int maxSatisfied = 0;\n        int windowSum = 0;\n        \n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            }\n            if (i >= minutes) {\n                windowSum -= customers[i - minutes];\n            }\n            if (i >= minutes - 1) {\n                windowSum += customers[i];\n                maxSatisfied = Math.max(maxSatisfied, windowSum);\n            }\n        }\n        \n        return total + maxSatisfied;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int n = customers.length;\n        int total = 0;\n        int maxSatisfied = 0;\n        int windowSum = 0;\n        \n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            }\n            if (i >= minutes) {\n                windowSum -= customers[i - minutes];\n            }\n            if (i >= minutes - 1) {\n                windowSum += customers[i];\n                maxSatisfied = Math.max(maxSatisfied, windowSum);\n            }\n        }\n        \n        return total + maxSatisfied;\n    }\n}",
+  "timestamp": "2025-08-05T13:19:25.497328",
+  "code_extracted_previous": "class Solution {\n    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int n = customers.length;\n        int total = 0;\n        int maxSatisfied = 0;\n        int windowSum = 0;\n        \n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            }\n            if (i >= minutes) {\n                windowSum -= customers[i - minutes];\n            }\n            if (i >= minutes - 1) {\n                windowSum += customers[i];\n                maxSatisfied = Math.max(maxSatisfied, windowSum);\n            }\n        }\n        \n        return total + maxSatisfied;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.854824"
+}

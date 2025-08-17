@@ -1,0 +1,15 @@
+{
+  "id": 3303,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int minStartingIndex(String s, String pattern) {\n        int m = pattern.length();\n        int diffCount = 0;\n        for (int i = 0; i < m; i++) {\n            if (s.charAt(i) != pattern.charAt(i)) {\n                diffCount++;\n            }\n        }\n        if (diffCount <= 1) {\n            return 0;\n        }\n        for (int i = m; i < s.length(); i++) {\n            if (s.charAt(i) != pattern.charAt(i % m)) {\n                diffCount++;\n            }\n            if (s.charAt(i - m) != pattern.charAt((i - m) % m)) {\n                diffCount--;\n            }\n            if (diffCount <= 1) {\n                return i - m + 1;\n            }\n        }\n        return -1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to efficiently compare substrings of `s` with `pattern`. It maintains a count of differing characters (`diffCount`) and updates it as the window slides over `s`. If `diffCount` is less than or equal to 1, it returns the starting index of the current window. If no such index is found after checking all substrings, it returns -1.",
+  "code": "class Solution {\n    public int minStartingIndex(String s, String pattern) {\n        int m = pattern.length();\n        int diffCount = 0;\n        for (int i = 0; i < m; i++) {\n            if (s.charAt(i) != pattern.charAt(i)) {\n                diffCount++;\n            }\n        }\n        if (diffCount <= 1) {\n            return 0;\n        }\n        for (int i = m; i < s.length(); i++) {\n            if (s.charAt(i) != pattern.charAt(i % m)) {\n                diffCount++;\n            }\n            if (s.charAt(i - m) != pattern.charAt((i - m) % m)) {\n                diffCount--;\n            }\n            if (diffCount <= 1) {\n                return i - m + 1;\n            }\n        }\n        return -1;\n    }\n}",
+  "timestamp": "2025-08-05T16:15:22.792748",
+  "code_extracted_previous": "class Solution {\n    public int minStartingIndex(String s, String pattern) {\n        int m = pattern.length();\n        int diffCount = 0;\n        for (int i = 0; i < m; i++) {\n            if (s.charAt(i) != pattern.charAt(i)) {\n                diffCount++;\n            }\n        }\n        if (diffCount <= 1) {\n            return 0;\n        }\n        for (int i = m; i < s.length(); i++) {\n            if (s.charAt(i) != pattern.charAt(i % m)) {\n                diffCount++;\n            }\n            if (s.charAt(i - m) != pattern.charAt((i - m) % m)) {\n                diffCount--;\n            }\n            if (diffCount <= 1) {\n                return i - m + 1;\n            }\n        }\n        return -1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.156124"
+}

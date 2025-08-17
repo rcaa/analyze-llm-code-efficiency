@@ -1,0 +1,15 @@
+{
+  "id": 443,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int compress(char[] chars) {\n        int n = chars.length;\n        int write = 0;\n        int read = 0;\n        while (read < n) {\n            char cur = chars[read];\n            int count = 0;\n            while (read < n && chars[read] == cur) {\n                read++;\n                count++;\n            }\n            chars[write++] = cur;\n            if (count > 1) {\n                for (char c : String.valueOf(count).toCharArray()) {\n                    chars[write++] = c;\n                }\n            }\n        }\n        return write;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass with two pointers; read scans groups, write overwrites in-place. Count converted to string and written digit-by-digit. Constant extra space, linear time.",
+  "code": "class Solution {\n    public int compress(char[] chars) {\n        int n = chars.length;\n        int write = 0;\n        int read = 0;\n        while (read < n) {\n            char cur = chars[read];\n            int count = 0;\n            while (read < n && chars[read] == cur) {\n                read++;\n                count++;\n            }\n            chars[write++] = cur;\n            if (count > 1) {\n                for (char c : String.valueOf(count).toCharArray()) {\n                    chars[write++] = c;\n                }\n            }\n        }\n        return write;\n    }\n}",
+  "timestamp": "2025-08-06T01:36:16.534287",
+  "code_extracted_previous": "public int compress(char[] chars) {\n        int n = chars.length;\n        int write = 0;\n        int read = 0;\n        while (read < n) {\n            char cur = chars[read];\n            int count = 0;\n            while (read < n && chars[read] == cur) {\n                read++;\n                count++;\n            }\n            chars[write++] = cur;\n            if (count > 1) {\n                for (char c : String.valueOf(count).toCharArray()) {\n                    chars[write++] = c;\n                }\n            }\n        }\n        return write;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.547789"
+}

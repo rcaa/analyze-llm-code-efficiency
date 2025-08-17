@@ -1,0 +1,15 @@
+{
+  "id": 1010,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        int n = time.size();\n        vector<int> count(60);\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int remainder = time[i] % 60;\n            res += count[(60 - remainder) % 60];\n            count[remainder]++;\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a hash map (vector in C++) to store the count of each remainder modulo 60. For each song, it calculates the remainder and adds the count of the complementary remainder (60 - remainder) to the result. This approach has a high efficiency due to the constant time complexity of hash map operations.",
+  "code": "class Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        int n = time.size();\n        vector<int> count(60);\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int remainder = time[i] % 60;\n            res += count[(60 - remainder) % 60];\n            count[remainder]++;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:17:11.149766",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        int n = time.size();\n        vector<int> count(60);\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int remainder = time[i] % 60;\n            res += count[(60 - remainder) % 60];\n            count[remainder]++;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.212337"
+}

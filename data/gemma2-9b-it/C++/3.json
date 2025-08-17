@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        int n = s.length();\n        int longest = 0;\n        int start = 0;\n        unordered_map<char, int> charIndex;\n        for (int end = 0; end < n; end++) {\n            if (charIndex.count(s[end]) && charIndex[s[end]] >= start) {\n                start = charIndex[s[end]] + 1;\n            }\n            charIndex[s[end]] = end;\n            longest = max(longest, end - start + 1);\n        }\n        return longest;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a sliding window approach with a hashmap to track character positions. The hashmap allows for efficient checking of duplicate characters within the current window, updating the start position when a duplicate is encountered.  \n\n\n\n",
+  "code": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        int n = s.length();\n        int longest = 0;\n        int start = 0;\n        unordered_map<char, int> charIndex;\n        for (int end = 0; end < n; end++) {\n            if (charIndex.count(s[end]) && charIndex[s[end]] >= start) {\n                start = charIndex[s[end]] + 1;\n            }\n            charIndex[s[end]] = end;\n            longest = max(longest, end - start + 1);\n        }\n        return longest;\n    }\n};",
+  "timestamp": "2025-08-05T14:49:26.863347",
+  "code_extracted_previous": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        int n = s.length();\n        int longest = 0;\n        int start = 0;\n        unordered_map<char, int> charIndex;\n        for (int end = 0; end < n; end++) {\n            if (charIndex.count(s[end]) && charIndex[s[end]] >= start) {\n                start = charIndex[s[end]] + 1;\n            }\n            charIndex[s[end]] = end;\n            longest = max(longest, end - start + 1);\n        }\n        return longest;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.716886"
+}

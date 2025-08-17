@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts) return 1.0;\n        double[] dp = new double[n + 1];\n        dp[0] = 1.0;\n        double sum = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = sum / maxPts;\n            if (i < k) {\n                sum += dp[i];\n            }\n            if (i - maxPts >= 0) {\n                sum -= dp[i - maxPts];\n            }\n        }\n        return sum;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the probability of Alice having n or fewer points, by maintaining a running sum of probabilities for each point total and updating it based on the probability of reaching each point total from previous ones.",
+  "code": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts) return 1.0;\n        double[] dp = new double[n + 1];\n        dp[0] = 1.0;\n        double sum = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = sum / maxPts;\n            if (i < k) {\n                sum += dp[i];\n            }\n            if (i - maxPts >= 0) {\n                sum -= dp[i - maxPts];\n            }\n        }\n        return sum;\n    }\n}",
+  "timestamp": "2025-08-06T15:16:13.591175",
+  "code_extracted_previous": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts) return 1.0;\n        double[] dp = new double[n + 1];\n        dp[0] = 1.0;\n        double sum = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = sum / maxPts;\n            if (i < k) {\n                sum += dp[i];\n            }\n            if (i - maxPts >= 0) {\n                sum -= dp[i - maxPts];\n            }\n        }\n        return sum;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.466098"
+}

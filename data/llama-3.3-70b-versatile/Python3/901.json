@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```python\nclass StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        span = 1\n        while self.stack and self.stack[-1][0] <= price:\n            span += self.stack.pop()[1]\n        self.stack.append((price, span))\n        return span\n\n\n# Your StockSpanner object will be instantiated and called as such:\n# obj = StockSpanner()\n# param_1 = obj.next(price)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The StockSpanner class uses a stack to keep track of the stock prices and their corresponding spans. The next method calculates the span for the current price by popping elements from the stack until it finds a price greater than the current price, adding their spans to the current span. The current price and its span are then pushed onto the stack. This approach ensures efficient calculation of the span for each price.",
+  "code": "class StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        span = 1\n        while self.stack and self.stack[-1][0] <= price:\n            span += self.stack.pop()[1]\n        self.stack.append((price, span))\n        return span\n\n\n# Your StockSpanner object will be instantiated and called as such:\n# obj = StockSpanner()\n# param_1 = obj.next(price)",
+  "timestamp": "2025-08-06T15:21:08.681427",
+  "code_extracted_previous": "class StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        span = 1\n        while self.stack and self.stack[-1][0] <= price:\n            span += self.stack.pop()[1]\n        self.stack.append((price, span))\n        return span\n\n\n# Your StockSpanner object will be instantiated and called as such:\n# obj = StockSpanner()\n# param_1 = obj.next(price)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.887598"
+}

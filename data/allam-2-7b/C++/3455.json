@@ -1,0 +1,15 @@
+{
+  "id": 3455,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```c++\nclass Solution {\npublic:\n    int shortestMatchingSubstring(string s, string p) {\n        int n = s.length();\n        int m = p.length();\n\n        vector<int> dp(m + 1, 0);\n\n        for (int i = 0; i <= m; i++) {\n            for (int j = 0; j < n; j++) {\n                if (p[i - 1] == '*') {\n                    dp[i] = max(dp[i], dp[i - 1] + 1);\n                } else {\n                    dp[i] = max(dp[i], dp[i - 1]);\n                }\n            }\n        }\n\n        return dp[m];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(m * n)\nspace complexity: O(m)\nenergy implications: LOW\n\nExplanation:\n\nWe use dynamic programming to solve this problem. We create a 2D array (dp) of size (m+1)xn, where m is the length of pattern string p and n is the length of string s. We iterate through the pattern string p and string s, updating the dp array accordingly.\n\nFor each character in p, if it is a '*', we update the dp[i] value by taking the maximum of dp[i] and dp[i-1] + 1. This is because a '*' character matches any sequence of characters, so we need to consider the longest match from the previous character in s.\n\nFor each character in s, we update the dp[i] value by taking the maximum of dp[i] and dp[i-1]. This is because a non-'*' character in s matches the previous character in p.\n\nFinally, we return the value at dp[m], which represents the length of the shortest substring in s that matches the pattern p. ",
+  "code": "class Solution {\npublic:\n    int shortestMatchingSubstring(string s, string p) {\n        int n = s.length();\n        int m = p.length();\n\n        vector<int> dp(m + 1, 0);\n\n        for (int i = 0; i <= m; i++) {\n            for (int j = 0; j < n; j++) {\n                if (p[i - 1] == '*') {\n                    dp[i] = max(dp[i], dp[i - 1] + 1);\n                } else {\n                    dp[i] = max(dp[i], dp[i - 1]);\n                }\n            }\n        }\n\n        return dp[m];\n    }\n};",
+  "timestamp": "2025-08-06T01:22:26.711486",
+  "code_extracted_previous": "class Solution {\npublic:\n    int shortestMatchingSubstring(string s, string p) {\n        int n = s.length();\n        int m = p.length();\n\n        vector<int> dp(m + 1, 0);\n\n        for (int i = 0; i <= m; i++) {\n            for (int j = 0; j < n; j++) {\n                if (p[i - 1] == '*') {\n                    dp[i] = max(dp[i], dp[i - 1] + 1);\n                } else {\n                    dp[i] = max(dp[i], dp[i - 1]);\n                }\n            }\n        }\n\n        return dp[m];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.760264"
+}

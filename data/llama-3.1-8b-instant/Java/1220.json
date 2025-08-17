@@ -1,0 +1,15 @@
+{
+  "id": 1220,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countVowelPermutation(int n) {\n        int MOD = (int) 1e9 + 7;\n        int[] dp = new int[5];\n        dp[0] = 1;\n        int[][] next = {{1, 0, 0, 0, 0}, {1, 0, 1, 0, 0}, {0, 1, 0, 1, 0}, {0, 1, 0, 0, 1}, {0, 0, 1, 0, 0}};\n        for (int i = 1; i < n; i++) {\n            int[] temp = new int[5];\n            for (int j = 0; j < 5; j++) {\n                for (int k = 0; k < 5; k++) {\n                    temp[j] = (temp[j] + dp[k] * next[k][j]) % MOD;\n                }\n            }\n            dp = temp;\n        }\n        int res = 0;\n        for (int i = 0; i < 5; i++) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * 5^2)\nspace complexity: O(n + 5)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int countVowelPermutation(int n) {\n        int MOD = (int) 1e9 + 7;\n        int[] dp = new int[5];\n        dp[0] = 1;\n        int[][] next = {{1, 0, 0, 0, 0}, {1, 0, 1, 0, 0}, {0, 1, 0, 1, 0}, {0, 1, 0, 0, 1}, {0, 0, 1, 0, 0}};\n        for (int i = 1; i < n; i++) {\n            int[] temp = new int[5];\n            for (int j = 0; j < 5; j++) {\n                for (int k = 0; k < 5; k++) {\n                    temp[j] = (temp[j] + dp[k] * next[k][j]) % MOD;\n                }\n            }\n            dp = temp;\n        }\n        int res = 0;\n        for (int i = 0; i < 5; i++) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:17:35.625968",
+  "code_extracted_previous": "class Solution {\n    public int countVowelPermutation(int n) {\n        int MOD = (int) 1e9 + 7;\n        int[] dp = new int[5];\n        dp[0] = 1;\n        int[][] next = {{1, 0, 0, 0, 0}, {1, 0, 1, 0, 0}, {0, 1, 0, 1, 0}, {0, 1, 0, 0, 1}, {0, 0, 1, 0, 0}};\n        for (int i = 1; i < n; i++) {\n            int[] temp = new int[5];\n            for (int j = 0; j < 5; j++) {\n                for (int k = 0; k < 5; k++) {\n                    temp[j] = (temp[j] + dp[k] * next[k][j]) % MOD;\n                }\n            }\n            dp = temp;\n        }\n        int res = 0;\n        for (int i = 0; i < 5; i++) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.915788"
+}

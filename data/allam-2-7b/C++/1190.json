@@ -1,0 +1,15 @@
+{
+  "id": 1190,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```c++\nstring reverseParentheses(string s) {\n    stack<char> sStack;\n    string result = \"\";\n    for (char c : s) {\n        if (c == '(' || c == '[' || c == '{') {\n            sStack.push(c);\n        } else if (sStack.empty() || sStack.top() != c) {\n            result += c;\n            sStack.pop();\n        }\n    }\n    while (!sStack.empty()) {\n        result += sStack.top();\n        sStack.pop();\n    }\n    return result;\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use a stack to keep track of opening brackets and check if a closing bracket matches the last opened bracket. We iterate through the string character by character, pushing opening brackets into the stack and popping them when we encounter a closing bracket. Finally, we return the reversed string. ",
+  "code": "string reverseParentheses(string s) {\n    stack<char> sStack;\n    string result = \"\";\n    for (char c : s) {\n        if (c == '(' || c == '[' || c == '{') {\n            sStack.push(c);\n        } else if (sStack.empty() || sStack.top() != c) {\n            result += c;\n            sStack.pop();\n        }\n    }\n    while (!sStack.empty()) {\n        result += sStack.top();\n        sStack.pop();\n    }\n    return result;\n}",
+  "timestamp": "2025-08-06T00:50:05.181697",
+  "code_extracted_previous": "string reverseParentheses(string s) {\n    stack<char> sStack;\n    string result = \"\";\n    for (char c : s) {\n        if (c == '(' || c == '[' || c == '{') {\n            sStack.push(c);\n        } else if (sStack.empty() || sStack.top() != c) {\n            result += c;\n            sStack.pop();\n        }\n    }\n    while (!sStack.empty()) {\n        result += sStack.top();\n        sStack.pop();\n    }\n    return result;\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:12.037246"
+}

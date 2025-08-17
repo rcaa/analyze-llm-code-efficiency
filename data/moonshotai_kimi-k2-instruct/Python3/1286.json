@@ -1,0 +1,15 @@
+{
+  "id": 1286,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass CombinationIterator:\n\n    def __init__(self, characters: str, combinationLength: int):\n        from itertools import combinations\n        self.pool = list(combinations(characters, combinationLength))\n        self.idx = 0\n\n    def next(self) -> str:\n        res = ''.join(self.pool[self.idx])\n        self.idx += 1\n        return res\n\n    def hasNext(self) -> bool:\n        return self.idx < len(self.pool)\n\n\n# Your CombinationIterator object will be instantiated and called as such:\n# obj = CombinationIterator(characters, combinationLength)\n# param_1 = obj.next()\n# param_2 = obj.hasNext()\n```\nefficiency: HIGH\ntime complexity: O(C(n,k)) for init, O(1) for next and hasNext\nspace complexity: O(C(n,k))\nenergy implications: LOW\nexplanation: Pre-generate all lexicographically ordered combinations once during initialization using itertools.combinations, then serve them in O(1) time per call. This is optimal given the constraints (≤15 characters and ≤10⁴ calls).",
+  "code": "class CombinationIterator:\n\n    def __init__(self, characters: str, combinationLength: int):\n        self.pool = list(combinations(characters, combinationLength))\n        self.idx = 0\n\n    def next(self) -> str:\n        res = ''.join(self.pool[self.idx])\n        self.idx += 1\n        return res\n\n    def hasNext(self) -> bool:\n        return self.idx < len(self.pool)\n\n\n# Your CombinationIterator object will be instantiated and called as such:\n# obj = CombinationIterator(characters, combinationLength)\n# param_1 = obj.next()\n# param_2 = obj.hasNext()",
+  "timestamp": "2025-08-06T00:50:31.288318",
+  "code_extracted_previous": "class CombinationIterator:\n\n    def __init__(self, characters: str, combinationLength: int):\n        from itertools import combinations\n        self.pool = list(combinations(characters, combinationLength))\n        self.idx = 0\n\n    def next(self) -> str:\n        res = ''.join(self.pool[self.idx])\n        self.idx += 1\n        return res\n\n    def hasNext(self) -> bool:\n        return self.idx < len(self.pool)\n\n\n# Your CombinationIterator object will be instantiated and called as such:\n# obj = CombinationIterator(characters, combinationLength)\n# param_1 = obj.next()\n# param_2 = obj.hasNext()",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:56.087832"
+}

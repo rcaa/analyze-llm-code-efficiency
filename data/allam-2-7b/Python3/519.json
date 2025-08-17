@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 3/6 seções presentes",
+  "resposta": "solution:\n\n```python\nimport random\n\nclass Solution:\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.free_cells = [0] * (m * n)\n\n    def flip(self):\n        while True:\n            i, j = random.randint(0, self.m - 1), random.randint(0, self.n - 1)\n            if self.free_cells[i * self.n + j] == 0:\n                self.free_cells[i * self.n + j] = 0\n                return [i, j]\n\n    def reset(self):\n        for i in range(self.m):\n            for j in range(self.n):\n                self.free_cells[i * self.n + j] = 0\n\nefficiency:\n    HIGH\n    O(1)\n    O(1)\n    O(1)\n\nExplanation:\n\n1. Initialize a 2D list called `free_cells` to store the indices of the free cells in the matrix.\n2. Implement a function `flip()` that randomly picks an index (`i`, `j`) and checks if the chosen index is a free cell.\n3. If the chosen index is a free cell, mark it as taken in the `free_cells` list and return the index tuple (i, j).\n4. Implement a function `reset()` to reset all the indices in the `free_cells` list to 0.\n\nThe time complexity of the algorithm is O(1) for each function call since the algorithm performs a constant number of operations. The space complexity is O(1) as well, as the algorithm uses a 2D list with a constant size. The algorithm does not make any recursive calls or iterative loops, so the algorithm's efficiency is HIGH. ",
+  "code": "```python\n\nclass Solution:\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.free_cells = [0] * (m * n)\n\n    def flip(self):\n        while True:\n            i, j = random.randint(0, self.m - 1), random.randint(0, self.n - 1)\n            if self.free_cells[i * self.n + j] == 0:\n                self.free_cells[i * self.n + j] = 0\n                return [i, j]\n\n    def reset(self):\n        for i in range(self.m):\n            for j in range(self.n):\n                self.free_cells[i * self.n + j] = 0",
+  "timestamp": "2025-08-05T14:54:49.920735",
+  "code_extracted_previous": "```python\nimport random\n\nclass Solution:\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.free_cells = [0] * (m * n)\n\n    def flip(self):\n        while True:\n            i, j = random.randint(0, self.m - 1), random.randint(0, self.n - 1)\n            if self.free_cells[i * self.n + j] == 0:\n                self.free_cells[i * self.n + j] = 0\n                return [i, j]\n\n    def reset(self):\n        for i in range(self.m):\n            for j in range(self.n):\n                self.free_cells[i * self.n + j] = 0",
+  "starter_ok": false,
+  "starter_check_reason": "assinatura divergente: esperada '__init__(self, m, n)'",
+  "reavaliado_em": "2025-08-17T12:23:16.064905"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1825,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```python\nimport heapq\nimport bisect\n\nclass MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.m = m\n        self.k = k\n        self.stream = []\n        self.min_heap = []\n        self.max_heap = []\n        self.sorted_stream = []\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n        self.sorted_stream.append(num)\n        self.sorted_stream.sort()\n        heapq.heappush(self.min_heap, num)\n        heapq.heappush(self.max_heap, -num)\n\n        if len(self.min_heap) > self.m:\n            smallest = heapq.heappop(self.min_heap)\n            bisect.insort(self.sorted_stream, smallest)\n            self.sorted_stream.pop()\n            self.max_heap.append(-smallest)\n            heapq.heapify(self.max_heap)\n\n        if len(self.max_heap) > self.m:\n            largest = -heapq.heappop(self.max_heap)\n            bisect.insort(self.sorted_stream, largest)\n            self.sorted_stream.pop()\n            self.min_heap.append(largest)\n            heapq.heapify(self.min_heap)\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        return sum(self.sorted_stream[self.k:self.m-self.k]) // (self.m - 2 * self.k)\n```\n\nsolution: \nefficiency: HIGH\ntime complexity: O(m log m) for addElement and O(m) for calculateMKAverage\nspace complexity: O(m)\nenergy implications: LOW",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-05T14:04:20.378798",
+  "code_extracted_previous": "import heapq\nimport bisect\n\nclass MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.m = m\n        self.k = k\n        self.stream = []\n        self.min_heap = []\n        self.max_heap = []\n        self.sorted_stream = []\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n        self.sorted_stream.append(num)\n        self.sorted_stream.sort()\n        heapq.heappush(self.min_heap, num)\n        heapq.heappush(self.max_heap, -num)\n\n        if len(self.min_heap) > self.m:\n            smallest = heapq.heappop(self.min_heap)\n            bisect.insort(self.sorted_stream, smallest)\n            self.sorted_stream.pop()\n            self.max_heap.append(-smallest)\n            heapq.heapify(self.max_heap)\n\n        if len(self.max_heap) > self.m:\n            largest = -heapq.heappop(self.max_heap)\n            bisect.insort(self.sorted_stream, largest)\n            self.sorted_stream.pop()\n            self.min_heap.append(largest)\n            heapq.heapify(self.min_heap)\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        return sum(self.sorted_stream[self.k:self.m-self.k]) // (self.m - 2 * self.k)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:30.472792"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 692,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (const auto& word : words) {\n            count[word]++;\n        }\n        vector<string> result;\n        for (const auto& pair : count) {\n            result.push_back(pair.first);\n        }\n        sort(result.begin(), result.end(), [&count](const string& a, const string& b) {\n            if (count[a] == count[b]) {\n                return a < b;\n            }\n            return count[a] > count[b];\n        });\n        return vector<string>(result.begin(), result.begin() + k);\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes an unordered_map to count word frequencies, then sorts the words based on frequency and lexicographical order, and finally returns the top k words. \n```",
+  "code": "class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (const auto& word : words) {\n            count[word]++;\n        }\n        vector<string> result;\n        for (const auto& pair : count) {\n            result.push_back(pair.first);\n        }\n        sort(result.begin(), result.end(), [&count](const string& a, const string& b) {\n            if (count[a] == count[b]) {\n                return a < b;\n            }\n            return count[a] > count[b];\n        });\n        return vector<string>(result.begin(), result.begin() + k);\n    }\n};",
+  "timestamp": "2025-08-05T13:16:06.400891",
+  "code_extracted_previous": "solution: \nclass Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (const auto& word : words) {\n            count[word]++;\n        }\n        vector<string> result;\n        for (const auto& pair : count) {\n            result.push_back(pair.first);\n        }\n        sort(result.begin(), result.end(), [&count](const string& a, const string& b) {\n            if (count[a] == count[b]) {\n                return a < b;\n            }\n            return count[a] > count[b];\n        });\n        return vector<string>(result.begin(), result.begin() + k);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.011857"
+}

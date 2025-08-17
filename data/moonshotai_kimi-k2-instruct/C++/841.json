@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        queue<int> q;\n        q.push(0);\n        visited[0] = true;\n        int count = 1;\n        while (!q.empty()) {\n            int room = q.front(); q.pop();\n            for (int key : rooms[room]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    q.push(key);\n                    ++count;\n                }\n            }\n        }\n        return count == n;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N + K) where N is the number of rooms and K is the total number of keys\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Breadth-first search from room 0 collects all reachable rooms; if the count equals N, every room was unlocked.",
+  "code": "class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        queue<int> q;\n        q.push(0);\n        visited[0] = true;\n        int count = 1;\n        while (!q.empty()) {\n            int room = q.front(); q.pop();\n            for (int key : rooms[room]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    q.push(key);\n                    ++count;\n                }\n            }\n        }\n        return count == n;\n    }\n};",
+  "timestamp": "2025-08-05T14:00:41.119701",
+  "code_extracted_previous": "public:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        queue<int> q;\n        q.push(0);\n        visited[0] = true;\n        int count = 1;\n        while (!q.empty()) {\n            int room = q.front(); q.pop();\n            for (int key : rooms[room]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    q.push(key);\n                    ++count;\n                }\n            }\n        }\n        return count == n;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.310515"
+}

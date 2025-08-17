@@ -1,0 +1,15 @@
+{
+  "id": 3007,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        long long num = 0, total = 0;\n        while (true) {\n            long long price = 0, temp = num;\n            while (temp) {\n                if (temp & (1 << (x - 1))) price++;\n                temp >>= x;\n            }\n            if (total + price > k) break;\n            total += price;\n            num++;\n        }\n        return num - 1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through numbers from 1 to num, calculating the price of each number and accumulating the total price. It stops when the total price exceeds k and returns the greatest cheap number.",
+  "code": "class Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        long long num = 0, total = 0;\n        while (true) {\n            long long price = 0, temp = num;\n            while (temp) {\n                if (temp & (1 << (x - 1))) price++;\n                temp >>= x;\n            }\n            if (total + price > k) break;\n            total += price;\n            num++;\n        }\n        return num - 1;\n    }\n};",
+  "timestamp": "2025-08-05T13:46:30.594283",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        long long num = 0, total = 0;\n        while (true) {\n            long long price = 0, temp = num;\n            while (temp) {\n                if (temp & (1 << (x - 1))) price++;\n                temp >>= x;\n            }\n            if (total + price > k) break;\n            total += price;\n            num++;\n        }\n        return num - 1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.695144"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2134,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        ones = nums.count(1)\n        if ones == 0:\n            return 0\n        \n        # Calculate the initial window's number of zeros\n        window_zeros = 0\n        for i in range(ones):\n            window_zeros += 1 - nums[i]\n        \n        min_swaps = window_zeros\n        \n        # Slide the window and update the number of zeros\n        for i in range(ones, n + ones - 1):\n            window_zeros += 1 - nums[i % n]\n            window_zeros -= 1 - nums[(i - ones) % n]\n            min_swaps = min(min_swaps, window_zeros)\n        \n        return min_swaps\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to efficiently find the minimum number of swaps required to group all 1's together in a circular array. It maintains a window of size equal to the total number of 1's and slides it through the array, updating the number of zeros within the window. The minimum number of swaps is then calculated as the minimum number of zeros within any window.",
+  "code": "class Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        ones = nums.count(1)\n        if ones == 0:\n            return 0\n        \n        # Calculate the initial window's number of zeros\n        window_zeros = 0\n        for i in range(ones):\n            window_zeros += 1 - nums[i]\n        \n        min_swaps = window_zeros\n        \n        # Slide the window and update the number of zeros\n        for i in range(ones, n + ones - 1):\n            window_zeros += 1 - nums[i % n]\n            window_zeros -= 1 - nums[(i - ones) % n]\n            min_swaps = min(min_swaps, window_zeros)\n        \n        return min_swaps",
+  "timestamp": "2025-08-05T13:21:33.895591",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        ones = nums.count(1)\n        if ones == 0:\n            return 0\n        \n        # Calculate the initial window's number of zeros\n        window_zeros = 0\n        for i in range(ones):\n            window_zeros += 1 - nums[i]\n        \n        min_swaps = window_zeros\n        \n        # Slide the window and update the number of zeros\n        for i in range(ones, n + ones - 1):\n            window_zeros += 1 - nums[i % n]\n            window_zeros -= 1 - nums[(i - ones) % n]\n            min_swaps = min(min_swaps, window_zeros)\n        \n        return min_swaps",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.053940"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1492,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int kthFactor(int n, int k) {\n        int cnt = 0;\n        for (int i = 1; i * i <= n; ++i) {\n            if (n % i == 0) {\n                ++cnt;\n                if (cnt == k) return i;\n            }\n        }\n        int upperStart = static_cast<int>(std::sqrt(n));\n        if (upperStart * upperStart == n) --upperStart;\n        for (int i = upperStart; i >= 1; --i) {\n            if (n % i == 0) {\n                ++cnt;\n                if (cnt == k) return n / i;\n            }\n        }\n        return -1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(sqrt(n))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate only up to sqrt(n) to collect factors in ascending order by first counting lower factors then upper factors, achieving sub-linear time.",
+  "code": "class Solution {\npublic:\n    int kthFactor(int n, int k) {\n        int cnt = 0;\n        for (int i = 1; i * i <= n; ++i) {\n            if (n % i == 0) {\n                ++cnt;\n                if (cnt == k) return i;\n            }\n        }\n        int upperStart = static_cast<int>(std::sqrt(n));\n        if (upperStart * upperStart == n) --upperStart;\n        for (int i = upperStart; i >= 1; --i) {\n            if (n % i == 0) {\n                ++cnt;\n                if (cnt == k) return n / i;\n            }\n        }\n        return -1;\n    }\n};",
+  "timestamp": "2025-08-06T00:44:28.765581",
+  "code_extracted_previous": "public:\n    int kthFactor(int n, int k) {\n        int cnt = 0;\n        for (int i = 1; i * i <= n; ++i) {\n            if (n % i == 0) {\n                ++cnt;\n                if (cnt == k) return i;\n            }\n        }\n        int upperStart = static_cast<int>(std::sqrt(n));\n        if (upperStart * upperStart == n) --upperStart;\n        for (int i = upperStart; i >= 1; --i) {\n            if (n % i == 0) {\n                ++cnt;\n                if (cnt == k) return n / i;\n            }\n        }\n        return -1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.253702"
+}

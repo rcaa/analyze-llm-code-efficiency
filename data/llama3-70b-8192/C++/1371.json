@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int n = s.size(), res = 0;\n        vector<int> cnt(65, 0);\n        unordered_map<int, int> mp;\n        mp[0] = -1;\n        int mask = 0;\n        for (int i = 0; i < n; i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u') {\n                cnt[s[i] - 'a']++;\n                if (cnt[s[i] - 'a'] % 2) mask ^= 1 << (s[i] - 'a');\n                else mask ^= 1 << (s[i] - 'a');\n            }\n            if (mp.find(mask) != mp.end()) res = max(res, i - mp[mask]);\n            else mp[mask] = i;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a bitmask to track the parity of each vowel's count, and a hashmap to store the first occurrence of each bitmask.",
+  "code": "class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int n = s.size(), res = 0;\n        vector<int> cnt(65, 0);\n        unordered_map<int, int> mp;\n        mp[0] = -1;\n        int mask = 0;\n        for (int i = 0; i < n; i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u') {\n                cnt[s[i] - 'a']++;\n                if (cnt[s[i] - 'a'] % 2) mask ^= 1 << (s[i] - 'a');\n                else mask ^= 1 << (s[i] - 'a');\n            }\n            if (mp.find(mask) != mp.end()) res = max(res, i - mp[mask]);\n            else mp[mask] = i;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:04:12.951522",
+  "code_extracted_previous": "public:\n    int findTheLongestSubstring(string s) {\n        int n = s.size(), res = 0;\n        vector<int> cnt(65, 0);\n        unordered_map<int, int> mp;\n        mp[0] = -1;\n        int mask = 0;\n        for (int i = 0; i < n; i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u') {\n                cnt[s[i] - 'a']++;\n                if (cnt[s[i] - 'a'] % 2) mask ^= 1 << (s[i] - 'a');\n                else mask ^= 1 << (s[i] - 'a');\n            }\n            if (mp.find(mask) != mp.end()) res = max(res, i - mp[mask]);\n            else mp[mask] = i;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.176905"
+}

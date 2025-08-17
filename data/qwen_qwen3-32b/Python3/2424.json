@@ -1,0 +1,15 @@
+{
+  "id": 2424,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass LUPrefix:\n\n    def __init__(self, n: int):\n        self.uploaded = [False] * (n + 1)\n        self.longest_prefix = 0\n        self.next_video = 1\n\n    def upload(self, video: int) -> None:\n        self.uploaded[video] = True\n        if video == self.next_video:\n            self.longest_prefix += 1\n            while self.next_video <= len(self.uploaded) - 1 and self.uploaded[self.next_video]:\n                self.longest_prefix += 1\n                self.next_video += 1\n\n    def longest(self) -> int:\n        return self.longest_prefix\n```\nefficiency: HIGH\ntime complexity: O(1) for upload and longest on average\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses an array to track uploaded videos and maintains the longest uploaded prefix in real-time. When a video is uploaded, it checks if it completes the prefix and updates accordingly. This ensures that the longest prefix is always available in constant time. The main strength is the efficient constant-time access for the longest prefix, while the weakness is the initial memory allocation for the array.",
+  "code": "class LUPrefix:\n\n    def __init__(self, n: int):\n        self.uploaded = [False] * (n + 1)\n        self.longest_prefix = 0\n        self.next_video = 1\n\n    def upload(self, video: int) -> None:\n        self.uploaded[video] = True\n        if video == self.next_video:\n            self.longest_prefix += 1\n            while self.next_video <= len(self.uploaded) - 1 and self.uploaded[self.next_video]:\n                self.longest_prefix += 1\n                self.next_video += 1\n\n    def longest(self) -> int:\n        return self.longest_prefix",
+  "timestamp": "2025-08-06T17:25:12.662294",
+  "code_extracted_previous": "class LUPrefix:\n\n    def __init__(self, n: int):\n        self.uploaded = [False] * (n + 1)\n        self.longest_prefix = 0\n        self.next_video = 1\n\n    def upload(self, video: int) -> None:\n        self.uploaded[video] = True\n        if video == self.next_video:\n            self.longest_prefix += 1\n            while self.next_video <= len(self.uploaded) - 1 and self.uploaded[self.next_video]:\n                self.longest_prefix += 1\n                self.next_video += 1\n\n    def longest(self) -> int:\n        return self.longest_prefix",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:05.380477"
+}

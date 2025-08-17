@@ -1,0 +1,15 @@
+{
+  "id": 1540,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean canConvertString(String s, String t, int k) {\n        if (s.length() != t.length()) return false;\n        int[] count = new int[26];\n        for (int i = 0; i < s.length(); i++) {\n            int diff = Math.abs(t.charAt(i) - s.charAt(i));\n            if (diff == 0) continue;\n            if (diff > 26 - diff) {\n                if (k < diff - 1) return false;\n                k -= diff - 1;\n            }\n            count[diff - 1]++;\n        }\n        for (int i = 0; i < 26; i++) {\n            if (count[i] > k / (i + 1)) return false;\n        }\n        return true;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public boolean canConvertString(String s, String t, int k) {\n        if (s.length() != t.length()) return false;\n        int[] count = new int[26];\n        for (int i = 0; i < s.length(); i++) {\n            int diff = Math.abs(t.charAt(i) - s.charAt(i));\n            if (diff == 0) continue;\n            if (diff > 26 - diff) {\n                if (k < diff - 1) return false;\n                k -= diff - 1;\n            }\n            count[diff - 1]++;\n        }\n        for (int i = 0; i < 26; i++) {\n            if (count[i] > k / (i + 1)) return false;\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-05T15:07:59.791059",
+  "code_extracted_previous": "class Solution {\n    public boolean canConvertString(String s, String t, int k) {\n        if (s.length() != t.length()) return false;\n        int[] count = new int[26];\n        for (int i = 0; i < s.length(); i++) {\n            int diff = Math.abs(t.charAt(i) - s.charAt(i));\n            if (diff == 0) continue;\n            if (diff > 26 - diff) {\n                if (k < diff - 1) return false;\n                k -= diff - 1;\n            }\n            count[diff - 1]++;\n        }\n        for (int i = 0; i < 26; i++) {\n            if (count[i] > k / (i + 1)) return false;\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.007387"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        total_satisfied = sum([customers[i] for i in range(n) if grumpy[i] == 0])\n        max_additional_satisfied = 0\n        current_additional_satisfied = 0\n        for i in range(n):\n            if grumpy[i] == 1:\n                current_additional_satisfied += customers[i]\n            if i >= minutes and grumpy[i - minutes] == 1:\n                current_additional_satisfied -= customers[i - minutes]\n            max_additional_satisfied = max(max_additional_satisfied, current_additional_satisfied)\n        return total_satisfied + max_additional_satisfied\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to calculate the maximum number of additional customers that can be satisfied by applying the secret technique. It maintains a running sum of the additional satisfied customers within the current window and updates the maximum additional satisfied customers as it slides the window. The total satisfied customers are then calculated by adding the maximum additional satisfied customers to the initially satisfied customers.",
+  "code": "def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        total_satisfied = sum([customers[i] for i in range(n) if grumpy[i] == 0])\n        max_additional_satisfied = 0\n        current_additional_satisfied = 0\n        for i in range(n):\n            if grumpy[i] == 1:\n                current_additional_satisfied += customers[i]\n            if i >= minutes and grumpy[i - minutes] == 1:\n                current_additional_satisfied -= customers[i - minutes]\n            max_additional_satisfied = max(max_additional_satisfied, current_additional_satisfied)\n        return total_satisfied + max_additional_satisfied\n```",
+  "timestamp": "2025-08-06T15:16:57.120183",
+  "code_extracted_previous": "class Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        total_satisfied = sum([customers[i] for i in range(n) if grumpy[i] == 0])\n        max_additional_satisfied = 0\n        current_additional_satisfied = 0\n        for i in range(n):\n            if grumpy[i] == 1:\n                current_additional_satisfied += customers[i]\n            if i >= minutes and grumpy[i - minutes] == 1:\n                current_additional_satisfied -= customers[i - minutes]\n            max_additional_satisfied = max(max_additional_satisfied, current_additional_satisfied)\n        return total_satisfied + max_additional_satisfied",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.576344"
+}

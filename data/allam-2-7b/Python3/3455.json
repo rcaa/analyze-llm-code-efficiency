@@ -1,0 +1,15 @@
+{
+  "id": 3455,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution:\ndef shortestMatchingSubstring(s: str, p: str) -> int:\n    m = len(p)\n    dp = [0] * (len(s) + 1)\n    for i in range(1, len(s) + 1):\n        for j in range(m):\n            if s[i - 1] == p[j]:\n                dp[i] = min(dp[i], dp[i - 1] + 1)\n                if j == m - 1:\n                    dp[i] = min(dp[i], dp[i - m + 1])\n    return dp[len(s)]\n\nefficiency: HIGH\ntime complexity: O(m * (n - m + 1))\nspace complexity: O(n)\nenergy implications: LOW ",
+  "code": "def shortestMatchingSubstring(s: str, p: str) -> int:\n    m = len(p)\n    dp = [0] * (len(s) + 1)\n    for i in range(1, len(s) + 1):\n        for j in range(m):\n            if s[i - 1] == p[j]:\n                dp[i] = min(dp[i], dp[i - 1] + 1)\n                if j == m - 1:\n                    dp[i] = min(dp[i], dp[i - m + 1])\n    return dp[len(s)]",
+  "timestamp": "2025-08-06T01:22:28.202736",
+  "code_extracted_previous": "def shortestMatchingSubstring(s: str, p: str) -> int:\n    m = len(p)\n    dp = [0] * (len(s) + 1)\n    for i in range(1, len(s) + 1):\n        for j in range(m):\n            if s[i - 1] == p[j]:\n                dp[i] = min(dp[i], dp[i - 1] + 1)\n                if j == m - 1:\n                    dp[i] = min(dp[i], dp[i - m + 1])\n    return dp[len(s)]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.912834"
+}

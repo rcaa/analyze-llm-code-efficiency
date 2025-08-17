@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int total = 0, maxIncrease = 0, window = 0;\n        for (int i = 0; i < customers.length; i++) {\n            if (grumpy[i] == 0) total += customers[i];\n            window += grumpy[i] == 1 ? customers[i] : 0;\n            if (i >= minutes) window -= grumpy[i - minutes] == 1 ? customers[i - minutes] : 0;\n            maxIncrease = Math.max(maxIncrease, window);\n        }\n        return total + maxIncrease;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to find the maximum number of customers that can be satisfied by keeping the bookstore owner not grumpy for minutes consecutive minutes.",
+  "code": "class Solution {\n    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int total = 0, maxIncrease = 0, window = 0;\n        for (int i = 0; i < customers.length; i++) {\n            if (grumpy[i] == 0) total += customers[i];\n            window += grumpy[i] == 1 ? customers[i] : 0;\n            if (i >= minutes) window -= grumpy[i - minutes] == 1 ? customers[i - minutes] : 0;\n            maxIncrease = Math.max(maxIncrease, window);\n        }\n        return total + maxIncrease;\n    }\n}",
+  "timestamp": "2025-08-05T13:18:52.037637",
+  "code_extracted_previous": "class Solution {\n    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int total = 0, maxIncrease = 0, window = 0;\n        for (int i = 0; i < customers.length; i++) {\n            if (grumpy[i] == 0) total += customers[i];\n            window += grumpy[i] == 1 ? customers[i] : 0;\n            if (i >= minutes) window -= grumpy[i - minutes] == 1 ? customers[i - minutes] : 0;\n            maxIncrease = Math.max(maxIncrease, window);\n        }\n        return total + maxIncrease;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.368156"
+}

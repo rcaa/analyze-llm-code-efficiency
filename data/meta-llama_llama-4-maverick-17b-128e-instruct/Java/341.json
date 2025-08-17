@@ -1,0 +1,15 @@
+{
+  "id": 341,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```java\npublic class NestedIterator implements Iterator<Integer> {\n    private List<Integer> flatList;\n    private int index;\n\n    public NestedIterator(List<NestedInteger> nestedList) {\n        flatList = new ArrayList<>();\n        index = 0;\n        flatten(nestedList);\n    }\n\n    private void flatten(List<NestedInteger> nestedList) {\n        for (NestedInteger ni : nestedList) {\n            if (ni.isInteger()) {\n                flatList.add(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n\n    @Override\n    public Integer next() {\n        return flatList.get(index++);\n    }\n\n    @Override\n    public boolean hasNext() {\n        return index < flatList.size();\n    }\n}\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a recursive approach to flatten the nested list into a single list, then iterates over this list. It has a linear time complexity because it visits each element once. The space complexity is also linear due to the storage of the flattened list. Energy implications are low due to the straightforward and efficient algorithm used.",
+  "code": "```java\npublic class NestedIterator implements Iterator<Integer> {\n    private List<Integer> flatList;\n    private int index;\n\n    public NestedIterator(List<NestedInteger> nestedList) {\n        flatList = new ArrayList<>();\n        index = 0;\n        flatten(nestedList);\n    }\n\n    private void flatten(List<NestedInteger> nestedList) {\n        for (NestedInteger ni : nestedList) {\n            if (ni.isInteger()) {\n                flatList.add(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n\n    @Override\n    public Integer next() {\n        return flatList.get(index++);\n    }\n\n    @Override\n    public boolean hasNext() {\n        return index < flatList.size();\n    }\n}",
+  "timestamp": "2025-08-05T16:01:50.980113",
+  "code_extracted_previous": "",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:46.824932"
+}

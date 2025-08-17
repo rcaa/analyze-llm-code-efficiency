@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```java\nimport java.util.PriorityQueue;\n\nclass KthLargest {\n\n    private PriorityQueue<Integer> minHeap;\n    private int k;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.minHeap = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n\n    public int add(int val) {\n        if (minHeap.size() < k) {\n            minHeap.offer(val);\n        } else if (val > minHeap.peek()) {\n            minHeap.poll();\n            minHeap.offer(val);\n        }\n        return minHeap.peek();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: The provided solution utilizes a min-heap to efficiently track the kth largest element in a stream of numbers. The min-heap stores the k largest elements seen so far. When a new number is added, it is compared to the smallest element in the heap (the root). If the heap has less than k elements, the new number is added. If the new number is greater than the root, it replaces the root. This ensures the heap always contains the k largest elements. The kth largest element is the root of the heap, which can be retrieved in O(1) time. The add operation takes O(log k) time because it may involve inserting or removing an element from the heap. The space complexity is O(k) because in the worst case, the heap stores k elements. This approach is energy-efficient because it only stores the necessary information (k largest elements) and performs a constant amount of work for each added element.",
+  "code": "class KthLargest {\n\n    private PriorityQueue<Integer> minHeap;\n    private int k;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.minHeap = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n\n    public int add(int val) {\n        if (minHeap.size() < k) {\n            minHeap.offer(val);\n        } else if (val > minHeap.peek()) {\n            minHeap.poll();\n            minHeap.offer(val);\n        }\n        return minHeap.peek();\n    }\n}",
+  "timestamp": "2025-08-06T01:11:14.056256",
+  "code_extracted_previous": "import java.util.PriorityQueue;\n\nclass KthLargest {\n\n    private PriorityQueue<Integer> minHeap;\n    private int k;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.minHeap = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n\n    public int add(int val) {\n        if (minHeap.size() < k) {\n            minHeap.offer(val);\n        } else if (val > minHeap.peek()) {\n            minHeap.poll();\n            minHeap.offer(val);\n        }\n        return minHeap.peek();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:51.517039"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 523,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public boolean checkSubarraySum(int[] nums, int k) {\n        Map<Integer, Integer> remainderMap = new HashMap<>();\n        remainderMap.put(0, -1);\n        int cumulativeSum = 0;\n        for (int i = 0; i < nums.length; i++) {\n            cumulativeSum = (cumulativeSum + nums[i]) % k;\n            if (remainderMap.containsKey(cumulativeSum)) {\n                if (i - remainderMap.get(cumulativeSum) >= 2) {\n                    return true;\n                }\n            } else {\n                remainderMap.put(cumulativeSum, i);\n            }\n        }\n        return false;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, k))\nenergy implications: LOW\nexplanation: Utilizes a hashmap to track the cumulative sum modulo k, enabling efficient detection of subarrays with sums that are multiples of k.\n```",
+  "code": "class Solution {\n    public boolean checkSubarraySum(int[] nums, int k) {\n        Map<Integer, Integer> remainderMap = new HashMap<>();\n        remainderMap.put(0, -1);\n        int cumulativeSum = 0;\n        for (int i = 0; i < nums.length; i++) {\n            cumulativeSum = (cumulativeSum + nums[i]) % k;\n            if (remainderMap.containsKey(cumulativeSum)) {\n                if (i - remainderMap.get(cumulativeSum) >= 2) {\n                    return true;\n                }\n            } else {\n                remainderMap.put(cumulativeSum, i);\n            }\n        }\n        return false;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, k))\nenergy implications: LOW\nexplanation: Utilizes a hashmap to track the cumulative sum modulo k, enabling efficient detection of subarrays with sums that are multiples of k.",
+  "timestamp": "2025-08-05T12:57:11.197526",
+  "code_extracted_previous": "class Solution {\n    public boolean checkSubarraySum(int[] nums, int k) {\n        Map<Integer, Integer> remainderMap = new HashMap<>();\n        remainderMap.put(0, -1);\n        int cumulativeSum = 0;\n        for (int i = 0; i < nums.length; i++) {\n            cumulativeSum = (cumulativeSum + nums[i]) % k;\n            if (remainderMap.containsKey(cumulativeSum)) {\n                if (i - remainderMap.get(cumulativeSum) >= 2) {\n                    return true;\n                }\n            } else {\n                remainderMap.put(cumulativeSum, i);\n            }\n        }\n        return false;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.972258"
+}

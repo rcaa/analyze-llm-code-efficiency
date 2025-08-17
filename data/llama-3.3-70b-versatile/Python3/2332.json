@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        i = 0\n        for bus in buses:\n            count = 0\n            while i < len(passengers) and passengers[i] <= bus:\n                count += 1\n                i += 1\n                if count == capacity:\n                    break\n            if count < capacity:\n                return bus\n        return passengers[i-1] - 1\n```\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sort buses and passengers, then iterate over buses to find the latest time to catch a bus by checking if there's available capacity on each bus.",
+  "code": "def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        i = 0\n        for bus in buses:\n            count = 0\n            while i < len(passengers) and passengers[i] <= bus:\n                count += 1\n                i += 1\n                if count == capacity:\n                    break\n            if count < capacity:\n                return bus\n        return passengers[i-1] - 1\n```",
+  "timestamp": "2025-08-06T15:18:31.415228",
+  "code_extracted_previous": "class Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        i = 0\n        for bus in buses:\n            count = 0\n            while i < len(passengers) and passengers[i] <= bus:\n                count += 1\n                i += 1\n                if count == capacity:\n                    break\n            if count < capacity:\n                return bus\n        return passengers[i-1] - 1",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.186078"
+}

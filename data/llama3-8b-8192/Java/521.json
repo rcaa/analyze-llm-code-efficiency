@@ -1,0 +1,15 @@
+{
+  "id": 521,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int findLUSlength(String a, String b) {\n        if (a.equals(b)) {\n            return -1;\n        }\n        int maxLen = 0;\n        for (String s : new String[]{a, b}) {\n            for (int i = 0; i < s.length(); i++) {\n                for (int j = i + 1; j <= s.length(); j++) {\n                    if (!s.substring(i, j).equals(s)) {\n                        if (!s.substring(i, j).equals(s.substring(0, i)) && !s.substring(i, j).equals(s.substring(j, s.length()))) {\n                            maxLen = Math.max(maxLen, j - i);\n                        }\n                    }\n                }\n            }\n        }\n        return maxLen;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates over each string to find all possible subsequences, then checks if the subsequence is uncommon by comparing it with the rest of the string. It keeps track of the longest uncommon subsequence found.",
+  "code": "class Solution {\n    public int findLUSlength(String a, String b) {\n        if (a.equals(b)) {\n            return -1;\n        }\n        int maxLen = 0;\n        for (String s : new String[]{a, b}) {\n            for (int i = 0; i < s.length(); i++) {\n                for (int j = i + 1; j <= s.length(); j++) {\n                    if (!s.substring(i, j).equals(s)) {\n                        if (!s.substring(i, j).equals(s.substring(0, i)) && !s.substring(i, j).equals(s.substring(j, s.length()))) {\n                            maxLen = Math.max(maxLen, j - i);\n                        }\n                    }\n                }\n            }\n        }\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-05T16:30:17.860459",
+  "code_extracted_previous": "public int findLUSlength(String a, String b) {\n        if (a.equals(b)) {\n            return -1;\n        }\n        int maxLen = 0;\n        for (String s : new String[]{a, b}) {\n            for (int i = 0; i < s.length(); i++) {\n                for (int j = i + 1; j <= s.length(); j++) {\n                    if (!s.substring(i, j).equals(s)) {\n                        if (!s.substring(i, j).equals(s.substring(0, i)) && !s.substring(i, j).equals(s.substring(j, s.length()))) {\n                            maxLen = Math.max(maxLen, j - i);\n                        }\n                    }\n                }\n            }\n        }\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.856955"
+}

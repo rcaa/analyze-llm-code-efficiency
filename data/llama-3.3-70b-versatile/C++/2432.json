@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int longestTime = 0;\n        int hardestWorkerId = -1;\n        int prevTime = 0;\n        \n        for (auto& log : logs) {\n            int id = log[0];\n            int leaveTime = log[1];\n            int time = leaveTime - prevTime;\n            prevTime = leaveTime;\n            \n            if (time > longestTime) {\n                longestTime = time;\n                hardestWorkerId = id;\n            } else if (time == longestTime) {\n                hardestWorkerId = min(hardestWorkerId, id);\n            }\n        }\n        \n        return hardestWorkerId;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the logs array once, keeping track of the longest time and the corresponding worker id, updating them as necessary. It uses a constant amount of space and has a linear time complexity, making it efficient.",
+  "code": "class Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int longestTime = 0;\n        int hardestWorkerId = -1;\n        int prevTime = 0;\n        \n        for (auto& log : logs) {\n            int id = log[0];\n            int leaveTime = log[1];\n            int time = leaveTime - prevTime;\n            prevTime = leaveTime;\n            \n            if (time > longestTime) {\n                longestTime = time;\n                hardestWorkerId = id;\n            } else if (time == longestTime) {\n                hardestWorkerId = min(hardestWorkerId, id);\n            }\n        }\n        \n        return hardestWorkerId;\n    }\n};",
+  "timestamp": "2025-08-05T12:48:46.530258",
+  "code_extracted_previous": "class Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int longestTime = 0;\n        int hardestWorkerId = -1;\n        int prevTime = 0;\n        \n        for (auto& log : logs) {\n            int id = log[0];\n            int leaveTime = log[1];\n            int time = leaveTime - prevTime;\n            prevTime = leaveTime;\n            \n            if (time > longestTime) {\n                longestTime = time;\n                hardestWorkerId = id;\n            } else if (time == longestTime) {\n                hardestWorkerId = min(hardestWorkerId, id);\n            }\n        }\n        \n        return hardestWorkerId;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.350334"
+}

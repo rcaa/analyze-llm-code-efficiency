@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```python\nclass MyCalendarThree:\n\n    def __init__(self):\n        self.diff = {}\n\n    def book(self, startTime: int, endTime: int) -> int:\n        self.diff[startTime] = self.diff.get(startTime, 0) + 1\n        self.diff[endTime] = self.diff.get(endTime, 0) - 1\n        count = 0\n        max_count = 0\n        for time in sorted(self.diff):\n            count += self.diff[time]\n            max_count = max(max_count, count)\n        return max_count\n\n\n# Your MyCalendarThree object will be instantiated and called as such:\n# obj = MyCalendarThree()\n# param_1 = obj.book(startTime,endTime)\n```\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a dictionary to track the difference in the number of events at each time point. It iterates over the sorted time points, maintaining a running count of active events and updating the maximum count as needed.",
+  "code": "class MyCalendarThree:\n\n    def __init__(self):\n        self.diff = {}\n\n    def book(self, startTime: int, endTime: int) -> int:\n        self.diff[startTime] = self.diff.get(startTime, 0) + 1\n        self.diff[endTime] = self.diff.get(endTime, 0) - 1\n        count = 0\n        max_count = 0\n        for time in sorted(self.diff):\n            count += self.diff[time]\n            max_count = max(max_count, count)\n        return max_count\n\n\n# Your MyCalendarThree object will be instantiated and called as such:\n# obj = MyCalendarThree()\n# param_1 = obj.book(startTime,endTime)",
+  "timestamp": "2025-08-05T13:37:50.328058",
+  "code_extracted_previous": "class MyCalendarThree:\n\n    def __init__(self):\n        self.diff = {}\n\n    def book(self, startTime: int, endTime: int) -> int:\n        self.diff[startTime] = self.diff.get(startTime, 0) + 1\n        self.diff[endTime] = self.diff.get(endTime, 0) - 1\n        count = 0\n        max_count = 0\n        for time in sorted(self.diff):\n            count += self.diff[time]\n            max_count = max(max_count, count)\n        return max_count\n\n\n# Your MyCalendarThree object will be instantiated and called as such:\n# obj = MyCalendarThree()\n# param_1 = obj.book(startTime,endTime)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.444722"
+}

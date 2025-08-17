@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    private static final int MOD = 1000000007;\n    public int numberOfWays(int n, int x) {\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int p = 1; p <= n; p++) {\n            int pow = (int) Math.pow(p, x);\n            if (pow > n) break;\n            for (int i = pow; i <= n; i++) {\n                dp[i] = (dp[i] + dp[i - pow]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming approach to store the number of ways to express each number up to n as the sum of the xth power of unique positive integers, utilizing a bottom-up strategy to efficiently calculate the result modulo 10^9 + 7.",
+  "code": "class Solution {\n    private static final int MOD = 1000000007;\n    public int numberOfWays(int n, int x) {\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int p = 1; p <= n; p++) {\n            int pow = (int) Math.pow(p, x);\n            if (pow > n) break;\n            for (int i = pow; i <= n; i++) {\n                dp[i] = (dp[i] + dp[i - pow]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-06T15:14:23.213023",
+  "code_extracted_previous": "class Solution {\n    private static final int MOD = 1000000007;\n    public int numberOfWays(int n, int x) {\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int p = 1; p <= n; p++) {\n            int pow = (int) Math.pow(p, x);\n            if (pow > n) break;\n            for (int i = pow; i <= n; i++) {\n                dp[i] = (dp[i] + dp[i - pow]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.034580"
+}

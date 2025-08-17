@@ -1,0 +1,15 @@
+{
+  "id": 925,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    bool isLongPressedName(string name, string typed) {\n        int i = 0, j = 0;\n        int n = name.size(), m = typed.size();\n        while (i < n && j < m) {\n            if (name[i] != typed[j]) return false;\n            char c = name[i];\n            int cntName = 0;\n            while (i < n && name[i] == c) {\n                ++i;\n                ++cntName;\n            }\n            int cntTyped = 0;\n            while (j < m && typed[j] == c) {\n                ++j;\n                ++cntTyped;\n            }\n            if (cntTyped < cntName) return false;\n        }\n        return i == n && j == m;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Two-pointer sweep counts consecutive character runs in both strings; ensures typed has at least as many of each character in the same order, with possible extra repeats.",
+  "code": "class Solution {\npublic:\n    bool isLongPressedName(string name, string typed) {\n        int i = 0, j = 0;\n        int n = name.size(), m = typed.size();\n        while (i < n && j < m) {\n            if (name[i] != typed[j]) return false;\n            char c = name[i];\n            int cntName = 0;\n            while (i < n && name[i] == c) {\n                ++i;\n                ++cntName;\n            }\n            int cntTyped = 0;\n            while (j < m && typed[j] == c) {\n                ++j;\n                ++cntTyped;\n            }\n            if (cntTyped < cntName) return false;\n        }\n        return i == n && j == m;\n    }\n};",
+  "timestamp": "2025-08-06T01:30:44.988048",
+  "code_extracted_previous": "public:\n    bool isLongPressedName(string name, string typed) {\n        int i = 0, j = 0;\n        int n = name.size(), m = typed.size();\n        while (i < n && j < m) {\n            if (name[i] != typed[j]) return false;\n            char c = name[i];\n            int cntName = 0;\n            while (i < n && name[i] == c) {\n                ++i;\n                ++cntName;\n            }\n            int cntTyped = 0;\n            while (j < m && typed[j] == c) {\n                ++j;\n                ++cntTyped;\n            }\n            if (cntTyped < cntName) return false;\n        }\n        return i == n && j == m;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.362834"
+}

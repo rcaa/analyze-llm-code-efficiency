@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def checkInclusion(self, s1: str, s2: str) -> bool:\n        if len(s1) > len(s2):\n            return False\n        \n        from collections import Counter\n        \n        target = Counter(s1)\n        window = Counter(s2[:len(s1)])\n        \n        if window == target:\n            return True\n        \n        for i in range(len(s1), len(s2)):\n            left_char = s2[i - len(s1)]\n            right_char = s2[i]\n            \n            window[right_char] += 1\n            window[left_char] -= 1\n            \n            if window[left_char] == 0:\n                del window[left_char]\n            \n            if window == target:\n                return True\n        \n        return False\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses sliding window with fixed-size Counter comparison. Only 26 possible lowercase letters keep space O(1). Single pass through s2 with O(1) updates per step.",
+  "code": "class Solution:\n    def checkInclusion(self, s1: str, s2: str) -> bool:\n        if len(s1) > len(s2):\n            return False\n        \n        \n        target = Counter(s1)\n        window = Counter(s2[:len(s1)])\n        \n        if window == target:\n            return True\n        \n        for i in range(len(s1), len(s2)):\n            left_char = s2[i - len(s1)]\n            right_char = s2[i]\n            \n            window[right_char] += 1\n            window[left_char] -= 1\n            \n            if window[left_char] == 0:\n                del window[left_char]\n            \n            if window == target:\n                return True\n        \n        return False",
+  "timestamp": "2025-08-06T02:34:24.334267",
+  "code_extracted_previous": "class Solution:\n    def checkInclusion(self, s1: str, s2: str) -> bool:\n        if len(s1) > len(s2):\n            return False\n        \n        from collections import Counter\n        \n        target = Counter(s1)\n        window = Counter(s2[:len(s1)])\n        \n        if window == target:\n            return True\n        \n        for i in range(len(s1), len(s2)):\n            left_char = s2[i - len(s1)]\n            right_char = s2[i]\n            \n            window[right_char] += 1\n            window[left_char] -= 1\n            \n            if window[left_char] == 0:\n                del window[left_char]\n            \n            if window == target:\n                return True\n        \n        return False",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.324523"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1540,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public boolean canConvertString(String s, String t, int k) {\n        if (s.length() != t.length()) return false;\n        int[] cnt = new int[26];\n        for (int i = 0; i < s.length(); ++i) {\n            int diff = (t.charAt(i) - s.charAt(i) + 26) % 26;\n            if (diff != 0) cnt[diff]++;\n        }\n        for (int d = 1; d < 26; ++d) {\n            if (cnt[d] == 0) continue;\n            int maxMove = d + 26 * (cnt[d] - 1);\n            if (maxMove > k) return false;\n        }\n        return true;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count how many characters need each shift distance d (1..25). For distance d, the latest move is d + 26*(count-1); if any exceeds k, return false.",
+  "code": "class Solution {\n    public boolean canConvertString(String s, String t, int k) {\n        if (s.length() != t.length()) return false;\n        int[] cnt = new int[26];\n        for (int i = 0; i < s.length(); ++i) {\n            int diff = (t.charAt(i) - s.charAt(i) + 26) % 26;\n            if (diff != 0) cnt[diff]++;\n        }\n        for (int d = 1; d < 26; ++d) {\n            if (cnt[d] == 0) continue;\n            int maxMove = d + 26 * (cnt[d] - 1);\n            if (maxMove > k) return false;\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-06T02:30:43.822147",
+  "code_extracted_previous": "class Solution {\n    public boolean canConvertString(String s, String t, int k) {\n        if (s.length() != t.length()) return false;\n        int[] cnt = new int[26];\n        for (int i = 0; i < s.length(); ++i) {\n            int diff = (t.charAt(i) - s.charAt(i) + 26) % 26;\n            if (diff != 0) cnt[diff]++;\n        }\n        for (int d = 1; d < 26; ++d) {\n            if (cnt[d] == 0) continue;\n            int maxMove = d + 26 * (cnt[d] - 1);\n            if (maxMove > k) return false;\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.576487"
+}

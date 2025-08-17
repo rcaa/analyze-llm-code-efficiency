@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def findNthDigit(self, n: int) -> int:\n        digit_count = 1\n        start_num = 1\n        count = 9\n        while n > count * digit_count:\n            n -= count * digit_count\n            digit_count += 1\n            start_num *= 10\n            count *= 10\n        target_num = start_num + (n - 1) // digit_count\n        target_digit_index = (n - 1) % digit_count\n        return int(str(target_num)[target_digit_index])\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution utilizes a logarithmic approach to efficiently determine the target digit. It iteratively calculates the number of digits in each group (starting from 1-digit numbers) and adjusts the search range accordingly. Once the appropriate group is identified, it calculates the target number and digit index within that number.\n\n\n\n",
+  "code": "class Solution:\n    def findNthDigit(self, n: int) -> int:\n        digit_count = 1\n        start_num = 1\n        count = 9\n        while n > count * digit_count:\n            n -= count * digit_count\n            digit_count += 1\n            start_num *= 10\n            count *= 10\n        target_num = start_num + (n - 1) // digit_count\n        target_digit_index = (n - 1) % digit_count\n        return int(str(target_num)[target_digit_index])",
+  "timestamp": "2025-08-06T01:57:20.732863",
+  "code_extracted_previous": "class Solution:\n    def findNthDigit(self, n: int) -> int:\n        digit_count = 1\n        start_num = 1\n        count = 9\n        while n > count * digit_count:\n            n -= count * digit_count\n            digit_count += 1\n            start_num *= 10\n            count *= 10\n        target_num = start_num + (n - 1) // digit_count\n        target_digit_index = (n - 1) % digit_count\n        return int(str(target_num)[target_digit_index])",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:26.826577"
+}

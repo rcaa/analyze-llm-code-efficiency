@@ -1,0 +1,15 @@
+{
+  "id": 3320,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int countWinningSequences(String s) {\n        int MOD = 1000000007;\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            if (s.charAt(i - 1) == 'F') {\n                dp[i] = (dp[i - 1] + dp[i - 2]) % MOD;\n            } else if (s.charAt(i - 1) == 'W') {\n                dp[i] = (dp[i - 1] + dp[i - 3]) % MOD;\n            } else {\n                dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to count the number of winning sequences for Bob. The dp array stores the number of winning sequences for Alice up to each round. For each round, we update the dp array based on the previous rounds and the current move of Alice. The time complexity is O(n) and the space complexity is O(1), making it efficient.",
+  "code": "class Solution {\n    public int countWinningSequences(String s) {\n        int MOD = 1000000007;\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            if (s.charAt(i - 1) == 'F') {\n                dp[i] = (dp[i - 1] + dp[i - 2]) % MOD;\n            } else if (s.charAt(i - 1) == 'W') {\n                dp[i] = (dp[i - 1] + dp[i - 3]) % MOD;\n            } else {\n                dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T22:00:32.331376",
+  "code_extracted_previous": "public int countWinningSequences(String s) {\n        int MOD = 1000000007;\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            if (s.charAt(i - 1) == 'F') {\n                dp[i] = (dp[i - 1] + dp[i - 2]) % MOD;\n            } else if (s.charAt(i - 1) == 'W') {\n                dp[i] = (dp[i - 1] + dp[i - 3]) % MOD;\n            } else {\n                dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.659289"
+}

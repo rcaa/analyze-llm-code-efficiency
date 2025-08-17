@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass RecentCounter {\nprivate:\n    std::deque<int> requests;\npublic:\n    RecentCounter() {\n        \n    }\n    \n    int ping(int t) {\n        requests.push_back(t);\n        int lower_bound = t - 3000;\n        while (requests.front() < lower_bound) {\n            requests.pop_front();\n        }\n        return requests.size();\n    }\n};\n\n/**\n * Your RecentCounter object will be instantiated and called as such:\n * RecentCounter* obj = new RecentCounter();\n * int param_1 = obj->ping(t);\n */\n```\nefficiency: HIGH\ntime complexity: O(1) average for each ping (amortized due to deque operations)\nspace complexity: O(N) where N is the number of requests within the 3000 ms window\nenergy implications: LOW\nexplanation: The solution uses a deque to store timestamps of recent requests. For each ping, the new timestamp is added to the end of the deque. Then, any timestamps at the front that fall outside the [t - 3000, t] range are removed. The number of timestamps remaining in the deque represents the number of recent requests. This approach ensures efficient removal of outdated requests and constant-time access to the count.",
+  "code": "class RecentCounter {\nprivate:\n    std::deque<int> requests;\npublic:\n    RecentCounter() {\n        \n    }\n    \n    int ping(int t) {\n        requests.push_back(t);\n        int lower_bound = t - 3000;\n        while (requests.front() < lower_bound) {\n            requests.pop_front();\n        }\n        return requests.size();\n    }\n};\n\n/**\n * Your RecentCounter object will be instantiated and called as such:\n * RecentCounter* obj = new RecentCounter();\n * int param_1 = obj->ping(t);\n */",
+  "timestamp": "2025-08-05T14:08:50.807736",
+  "code_extracted_previous": "class RecentCounter {\nprivate:\n    std::deque<int> requests;\npublic:\n    RecentCounter() {\n        \n    }\n    \n    int ping(int t) {\n        requests.push_back(t);\n        int lower_bound = t - 3000;\n        while (requests.front() < lower_bound) {\n            requests.pop_front();\n        }\n        return requests.size();\n    }\n};\n\n/**\n * Your RecentCounter object will be instantiated and called as such:\n * RecentCounter* obj = new RecentCounter();\n * int param_1 = obj->ping(t);\n */",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:01.322340"
+}

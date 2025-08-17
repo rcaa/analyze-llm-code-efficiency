@@ -1,0 +1,15 @@
+{
+  "id": 1160,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int countCharacters(String[] words, String chars) {\n        int[] charCount = new int[26];\n        for (char c : chars.toCharArray()) {\n            charCount[c - 'a']++;\n        }\n        int sum = 0;\n        for (String word : words) {\n            int[] wordCount = new int[26];\n            boolean isGood = true;\n            for (char c : word.toCharArray()) {\n                wordCount[c - 'a']++;\n                if (wordCount[c - 'a'] > charCount[c - 'a']) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                sum += word.length();\n            }\n        }\n        return sum;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a frequency array to count the characters in the given string. Then, for each word in the array, it checks if the word can be formed using the characters in the given string. If it can, it adds the length of the word to the sum. The time complexity is O(n*m) where n is the number of words and m is the average length of a word. The space complexity is O(1) as it uses a constant amount of space.",
+  "code": "class Solution {\n    public int countCharacters(String[] words, String chars) {\n        int[] charCount = new int[26];\n        for (char c : chars.toCharArray()) {\n            charCount[c - 'a']++;\n        }\n        int sum = 0;\n        for (String word : words) {\n            int[] wordCount = new int[26];\n            boolean isGood = true;\n            for (char c : word.toCharArray()) {\n                wordCount[c - 'a']++;\n                if (wordCount[c - 'a'] > charCount[c - 'a']) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                sum += word.length();\n            }\n        }\n        return sum;\n    }\n}",
+  "timestamp": "2025-08-05T12:38:09.910518",
+  "code_extracted_previous": "public int countCharacters(String[] words, String chars) {\n        int[] charCount = new int[26];\n        for (char c : chars.toCharArray()) {\n            charCount[c - 'a']++;\n        }\n        int sum = 0;\n        for (String word : words) {\n            int[] wordCount = new int[26];\n            boolean isGood = true;\n            for (char c : word.toCharArray()) {\n                wordCount[c - 'a']++;\n                if (wordCount[c - 'a'] > charCount[c - 'a']) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                sum += word.length();\n            }\n        }\n        return sum;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.867703"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(goal + 1, vector<int>(n + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            for (int j = 1; j <= n; j++) {\n                if (j > i) break;\n                if (j <= k + 1) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - 1] * (n - j + 1)) % MOD;\n                } else {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - 1] * (n - j + 1) + dp[i - 1][j] * (j - k - 1)) % MOD;\n                }\n            }\n        }\n        int ans = 0;\n        for (int j = 1; j <= n; j++) {\n            ans = (ans + dp[goal][j]) % MOD;\n        }\n        return ans;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n * goal)\nspace complexity: O(n * goal)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of possible playlists. It maintains a 2D array dp where dp[i][j] represents the number of playlists of length i with j unique songs. The final answer is the sum of dp[goal][j] for all j from 1 to n.",
+  "code": "class Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(goal + 1, vector<int>(n + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            for (int j = 1; j <= n; j++) {\n                if (j > i) break;\n                if (j <= k + 1) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - 1] * (n - j + 1)) % MOD;\n                } else {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - 1] * (n - j + 1) + dp[i - 1][j] * (j - k - 1)) % MOD;\n                }\n            }\n        }\n        int ans = 0;\n        for (int j = 1; j <= n; j++) {\n            ans = (ans + dp[goal][j]) % MOD;\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-06T15:11:55.699714",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(goal + 1, vector<int>(n + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            for (int j = 1; j <= n; j++) {\n                if (j > i) break;\n                if (j <= k + 1) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - 1] * (n - j + 1)) % MOD;\n                } else {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - 1] * (n - j + 1) + dp[i - 1][j] * (j - k - 1)) % MOD;\n                }\n            }\n        }\n        int ans = 0;\n        for (int j = 1; j <= n; j++) {\n            ans = (ans + dp[goal][j]) % MOD;\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.145992"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        int n = s.size();\n        int ans = 0;\n        unordered_map<char, int> last;\n        int left = 0;\n        for (int right = 0; right < n; right++) {\n            if (last.find(s[right]) != last.end() && last[s[right]] >= left) {\n                left = last[s[right]] + 1;\n            }\n            last[s[right]] = right;\n            ans = max(ans, right - left + 1);\n        }\n        return ans;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, m))\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        int n = s.size();\n        int ans = 0;\n        unordered_map<char, int> last;\n        int left = 0;\n        for (int right = 0; right < n; right++) {\n            if (last.find(s[right]) != last.end() && last[s[right]] >= left) {\n                left = last[s[right]] + 1;\n            }\n            last[s[right]] = right;\n            ans = max(ans, right - left + 1);\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T14:49:36.801258",
+  "code_extracted_previous": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        int n = s.size();\n        int ans = 0;\n        unordered_map<char, int> last;\n        int left = 0;\n        for (int right = 0; right < n; right++) {\n            if (last.find(s[right]) != last.end() && last[s[right]] >= left) {\n                left = last[s[right]] + 1;\n            }\n            last[s[right]] = right;\n            ans = max(ans, right - left + 1);\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.303825"
+}

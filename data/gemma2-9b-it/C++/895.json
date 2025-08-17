@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        freq[val]++;\n        stack.push({freq[val], val});\n    }\n    \n    int pop() {\n        auto top = stack.top();\n        stack.pop();\n        freq[top.second]--;\n        return top.second;\n    }\nprivate:\n    std::map<int, int> freq;\n    std::stack<std::pair<int, int>> stack;\n};\n```\nsolution: ```c++\nclass FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        freq[val]++;\n        stack.push({freq[val], val});\n    }\n    \n    int pop() {\n        auto top = stack.top();\n        stack.pop();\n        freq[top.second]--;\n        return top.second;\n    }\nprivate:\n    std::map<int, int> freq;\n    std::stack<std::pair<int, int>> stack;\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Utilizes a frequency map to track element occurrences and a stack to store elements with their frequencies. Pushing an element increments its frequency and pushes it onto the stack. Popping retrieves the element with the highest frequency from the stack, decrements its frequency, and returns it. This approach ensures efficient retrieval of the most frequent element in O(1) time. The space complexity is O(N) due to the frequency map and stack storing up to N unique elements.\n\n\n\n",
+  "code": "class FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        freq[val]++;\n        stack.push({freq[val], val});\n    }\n    \n    int pop() {\n        auto top = stack.top();\n        stack.pop();\n        freq[top.second]--;\n        return top.second;\n    }\nprivate:\n    std::map<int, int> freq;\n    std::stack<std::pair<int, int>> stack;\n};",
+  "timestamp": "2025-08-05T14:37:56.459312",
+  "code_extracted_previous": "class FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        freq[val]++;\n        stack.push({freq[val], val});\n    }\n    \n    int pop() {\n        auto top = stack.top();\n        stack.pop();\n        freq[top.second]--;\n        return top.second;\n    }\nprivate:\n    std::map<int, int> freq;\n    std::stack<std::pair<int, int>> stack;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.378134"
+}

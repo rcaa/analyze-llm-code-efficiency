@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        long long cur = 1;\n        k--;\n        while (k > 0) {\n            long long step = 0, first = cur, last = cur + 1;\n            while (first <= n) {\n                step += min(n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k < step) {\n                k--;\n                cur *= 10;\n            } else {\n                k -= step;\n                cur++;\n            }\n        }\n        return cur;\n    }\n};\nefficiency: HIGH\ntime complexity: O(log(n) + log(k))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a while loop to traverse the lexicographical order, calculating the step size for each digit and updating the current number and k accordingly, ensuring efficient use of computational resources.",
+  "code": "class Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        long long cur = 1;\n        k--;\n        while (k > 0) {\n            long long step = 0, first = cur, last = cur + 1;\n            while (first <= n) {\n                step += min(n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k < step) {\n                k--;\n                cur *= 10;\n            } else {\n                k -= step;\n                cur++;\n            }\n        }\n        return cur;\n    }\n};",
+  "timestamp": "2025-08-06T01:12:56.000140",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        long long cur = 1;\n        k--;\n        while (k > 0) {\n            long long step = 0, first = cur, last = cur + 1;\n            while (first <= n) {\n                step += min(n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k < step) {\n                k--;\n                cur *= 10;\n            } else {\n                k -= step;\n                cur++;\n            }\n        }\n        return cur;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.852064"
+}

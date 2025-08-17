@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        dp[0] = questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = dp[i - 1];\n            for (int j = 0; j < i; j++) {\n                if (i - j > questions[j][1]) {\n                    dp[i] = Math.max(dp[i], dp[j] + questions[i][0]);\n                }\n            }\n        }\n        return dp[n - 1];\n    }\n}\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to track the maximum points that can be earned up to each question, considering whether to solve or skip each question based on the points and brainpower constraints. The key strength is its ability to efficiently explore all possible combinations of solving and skipping questions, while the main weakness is its quadratic time complexity due to the nested loop structure.",
+  "code": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        dp[0] = questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = dp[i - 1];\n            for (int j = 0; j < i; j++) {\n                if (i - j > questions[j][1]) {\n                    dp[i] = Math.max(dp[i], dp[j] + questions[i][0]);\n                }\n            }\n        }\n        return dp[n - 1];\n    }\n}",
+  "timestamp": "2025-08-06T15:13:37.329396",
+  "code_extracted_previous": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        dp[0] = questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = dp[i - 1];\n            for (int j = 0; j < i; j++) {\n                if (i - j > questions[j][1]) {\n                    dp[i] = Math.max(dp[i], dp[j] + questions[i][0]);\n                }\n            }\n        }\n        return dp[n - 1];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.756787"
+}

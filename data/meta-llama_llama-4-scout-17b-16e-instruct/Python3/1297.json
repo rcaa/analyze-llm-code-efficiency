@@ -1,0 +1,15 @@
+{
+  "id": 1297,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        max_count = 0\n        freq = {}\n        for i in range(len(s) - minSize + 1):\n            substr = s[i:i + minSize]\n            if len(set(substr)) <= maxLetters:\n                freq[substr] = freq.get(substr, 0) + 1\n                max_count = max(max_count, freq[substr])\n        return max_count\n```\nefficiency: HIGH\ntime complexity: O(n * minSize)\nspace complexity: O(n * minSize)\nenergy implications: LOW\nexplanation: The solution iterates through the string to generate substrings of size minSize, checks if the substring has unique characters less than or equal to maxLetters, and updates the frequency count. It keeps track of the maximum frequency count seen so far.",
+  "code": "class Solution:\n    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        max_count = 0\n        freq = {}\n        for i in range(len(s) - minSize + 1):\n            substr = s[i:i + minSize]\n            if len(set(substr)) <= maxLetters:\n                freq[substr] = freq.get(substr, 0) + 1\n                max_count = max(max_count, freq[substr])\n        return max_count",
+  "timestamp": "2025-08-05T14:59:32.937738",
+  "code_extracted_previous": "class Solution:\n    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        max_count = 0\n        freq = {}\n        for i in range(len(s) - minSize + 1):\n            substr = s[i:i + minSize]\n            if len(set(substr)) <= maxLetters:\n                freq[substr] = freq.get(substr, 0) + 1\n                max_count = max(max_count, freq[substr])\n        return max_count",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:51.787796"
+}

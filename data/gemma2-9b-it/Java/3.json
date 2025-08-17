@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int lengthOfLongestSubstring(String s) {\n        Set<Character> seen = new HashSet<>();\n        int maxLength = 0;\n        int start = 0;\n        for (int end = 0; end < s.length(); end++) {\n            while (seen.contains(s.charAt(end))) {\n                seen.remove(s.charAt(start));\n                start++;\n            }\n            seen.add(s.charAt(end));\n            maxLength = Math.max(maxLength, end - start + 1);\n        }\n        return maxLength;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, charset size))\nexplanation: Uses a sliding window approach with a HashSet to track seen characters. The window expands until a duplicate is encountered, then the window slides forward.  The maximum length is tracked and returned.  The space complexity is limited by the HashSet, which can store at most the size of the input string's unique characters. \n\n\n",
+  "code": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        Set<Character> seen = new HashSet<>();\n        int maxLength = 0;\n        int start = 0;\n        for (int end = 0; end < s.length(); end++) {\n            while (seen.contains(s.charAt(end))) {\n                seen.remove(s.charAt(start));\n                start++;\n            }\n            seen.add(s.charAt(end));\n            maxLength = Math.max(maxLength, end - start + 1);\n        }\n        return maxLength;\n    }\n}",
+  "timestamp": "2025-08-05T14:49:27.620650",
+  "code_extracted_previous": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        Set<Character> seen = new HashSet<>();\n        int maxLength = 0;\n        int start = 0;\n        for (int end = 0; end < s.length(); end++) {\n            while (seen.contains(s.charAt(end))) {\n                seen.remove(s.charAt(start));\n                start++;\n            }\n            seen.add(s.charAt(end));\n            maxLength = Math.max(maxLength, end - start + 1);\n        }\n        return maxLength;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.165082"
+}

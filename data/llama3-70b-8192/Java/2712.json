@@ -1,0 +1,15 @@
+{
+  "id": 2712,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public long minimumCost(String s) {\n        int n = s.length();\n        int[] prefix = new int[n + 1];\n        int[] suffix = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefix[i + 1] = prefix[i] + (s.charAt(i) == '0' ? 1 : 0);\n            suffix[n - i - 1] = suffix[n - i] + (s.charAt(n - i - 1) == '0' ? 1 : 0);\n        }\n        long res = Long.MAX_VALUE;\n        for (int i = 0; i <= n; i++) {\n            res = Math.min(res, prefix[i] + suffix[i]);\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses prefix and suffix arrays to count the number of '0's in the prefix and suffix of the string, respectively. It then iterates through the string to find the minimum cost by summing the prefix and suffix counts at each position.",
+  "code": "class Solution {\n    public long minimumCost(String s) {\n        int n = s.length();\n        int[] prefix = new int[n + 1];\n        int[] suffix = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefix[i + 1] = prefix[i] + (s.charAt(i) == '0' ? 1 : 0);\n            suffix[n - i - 1] = suffix[n - i] + (s.charAt(n - i - 1) == '0' ? 1 : 0);\n        }\n        long res = Long.MAX_VALUE;\n        for (int i = 0; i <= n; i++) {\n            res = Math.min(res, prefix[i] + suffix[i]);\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T01:05:37.392671",
+  "code_extracted_previous": "class Solution {\n    public long minimumCost(String s) {\n        int n = s.length();\n        int[] prefix = new int[n + 1];\n        int[] suffix = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefix[i + 1] = prefix[i] + (s.charAt(i) == '0' ? 1 : 0);\n            suffix[n - i - 1] = suffix[n - i] + (s.charAt(n - i - 1) == '0' ? 1 : 0);\n        }\n        long res = Long.MAX_VALUE;\n        for (int i = 0; i <= n; i++) {\n            res = Math.min(res, prefix[i] + suffix[i]);\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.287862"
+}

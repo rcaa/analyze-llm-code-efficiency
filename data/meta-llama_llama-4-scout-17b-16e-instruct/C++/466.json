@@ -1,0 +1,15 @@
+{
+  "id": 466,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int s1Len = s1.size(), s2Len = s2.size();\n        if (s1Len * n1 < s2Len * n2) return 0;\n\n        vector<int> s2Count(s2Len, 0);\n        for (int i = 0; i < s2Len; ++i) {\n            for (int j = 0; j < s1Len; ++j) {\n                if (s1[j] == s2[i]) {\n                    s2Count[i] = j + 1;\n                    break;\n                }\n            }\n        }\n\n        int res = 0, cur = 0;\n        for (int i = 0; i < s2Len; ++i) {\n            if (s2Count[i] == 0) continue;\n            cur += s2Count[i];\n            if (cur > s1Len * n1) break;\n            ++res;\n        }\n        return res / s2Len * n1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution iterates through `s2` and for each character, finds the first occurrence in `s1`. It keeps track of the current position in `s1` and counts how many times `s2` can be repeated. The result is then calculated based on the count and the lengths of `s1` and `s2`.",
+  "code": "class Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int s1Len = s1.size(), s2Len = s2.size();\n        if (s1Len * n1 < s2Len * n2) return 0;\n\n        vector<int> s2Count(s2Len, 0);\n        for (int i = 0; i < s2Len; ++i) {\n            for (int j = 0; j < s1Len; ++j) {\n                if (s1[j] == s2[i]) {\n                    s2Count[i] = j + 1;\n                    break;\n                }\n            }\n        }\n\n        int res = 0, cur = 0;\n        for (int i = 0; i < s2Len; ++i) {\n            if (s2Count[i] == 0) continue;\n            cur += s2Count[i];\n            if (cur > s1Len * n1) break;\n            ++res;\n        }\n        return res / s2Len * n1;\n    }\n};",
+  "timestamp": "2025-08-05T16:06:35.292755",
+  "code_extracted_previous": "class Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int s1Len = s1.size(), s2Len = s2.size();\n        if (s1Len * n1 < s2Len * n2) return 0;\n\n        vector<int> s2Count(s2Len, 0);\n        for (int i = 0; i < s2Len; ++i) {\n            for (int j = 0; j < s1Len; ++j) {\n                if (s1[j] == s2[i]) {\n                    s2Count[i] = j + 1;\n                    break;\n                }\n            }\n        }\n\n        int res = 0, cur = 0;\n        for (int i = 0; i < s2Len; ++i) {\n            if (s2Count[i] == 0) continue;\n            cur += s2Count[i];\n            if (cur > s1Len * n1) break;\n            ++res;\n        }\n        return res / s2Len * n1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.666975"
+}

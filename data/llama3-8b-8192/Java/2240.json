@@ -1,0 +1,15 @@
+{
+  "id": 2240,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long ways = 0;\n        for (int pens = 0; pens * cost1 <= total; pens++) {\n            int pencils = total - pens * cost1;\n            ways += waysToBuyPencils(pencils, cost2);\n        }\n        return ways;\n    }\n    public int waysToBuyPencils(int total, int cost) {\n        if (total < 0) return 0;\n        if (total == 0) return 1;\n        int ways = 0;\n        for (int pencils = 0; pencils * cost <= total; pencils++) {\n            ways += waysToBuyPencils(total - pencils * cost, cost);\n        }\n        return ways;\n    }\n}``\nefficiency: HIGH\ntime complexity: O(total / cost1 + total / cost2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently calculate the number of ways to buy pens and pencils. The main function iterates over the number of pens that can be bought with the given total, and for each number of pens, it recursively calculates the number of ways to buy pencils. The recursive function uses a similar approach to calculate the number of ways to buy pencils. The time complexity is high because the solution has to iterate over all possible combinations of pens and pencils, but the space complexity is low because only a constant amount of space is used.",
+  "code": "```class Solution {\n    public long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long ways = 0;\n        for (int pens = 0; pens * cost1 <= total; pens++) {\n            int pencils = total - pens * cost1;\n            ways += waysToBuyPencils(pencils, cost2);\n        }\n        return ways;\n    }\n    public int waysToBuyPencils(int total, int cost) {\n        if (total < 0) return 0;\n        if (total == 0) return 1;\n        int ways = 0;\n        for (int pencils = 0; pencils * cost <= total; pencils++) {\n            ways += waysToBuyPencils(total - pencils * cost, cost);\n        }\n        return ways;\n    }\n}``",
+  "timestamp": "2025-08-05T21:39:02.681307",
+  "code_extracted_previous": "```class Solution {\n    public long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long ways = 0;\n        for (int pens = 0; pens * cost1 <= total; pens++) {\n            int pencils = total - pens * cost1;\n            ways += waysToBuyPencils(pencils, cost2);\n        }\n        return ways;\n    }\n    public int waysToBuyPencils(int total, int cost) {\n        if (total < 0) return 0;\n        if (total == 0) return 1;\n        int ways = 0;\n        for (int pencils = 0; pencils * cost <= total; pencils++) {\n            ways += waysToBuyPencils(total - pencils * cost, cost);\n        }\n        return ways;\n    }\n}``",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.206470"
+}

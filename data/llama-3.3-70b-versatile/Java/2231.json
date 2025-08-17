@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int largestInteger(int num) {\n        char[] digits = String.valueOf(num).toCharArray();\n        for (int i = 0; i < digits.length; i++) {\n            for (int j = i + 1; j < digits.length; j++) {\n                if ((digits[i] - '0') % 2 == (digits[j] - '0') % 2 && digits[i] < digits[j]) {\n                    char temp = digits[i];\n                    digits[i] = digits[j];\n                    digits[j] = temp;\n                }\n            }\n        }\n        return Integer.parseInt(new String(digits));\n    }\n}\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a simple bubble sort-like approach to swap digits of the same parity, ensuring the largest possible value of num after any number of swaps. It iterates through the digits, comparing each pair and swapping them if they have the same parity and the current digit is smaller than the compared digit. This approach guarantees the largest possible value of num.",
+  "code": "class Solution {\n    public int largestInteger(int num) {\n        char[] digits = String.valueOf(num).toCharArray();\n        for (int i = 0; i < digits.length; i++) {\n            for (int j = i + 1; j < digits.length; j++) {\n                if ((digits[i] - '0') % 2 == (digits[j] - '0') % 2 && digits[i] < digits[j]) {\n                    char temp = digits[i];\n                    digits[i] = digits[j];\n                    digits[j] = temp;\n                }\n            }\n        }\n        return Integer.parseInt(new String(digits));\n    }\n}",
+  "timestamp": "2025-08-06T15:13:43.397475",
+  "code_extracted_previous": "class Solution {\n    public int largestInteger(int num) {\n        char[] digits = String.valueOf(num).toCharArray();\n        for (int i = 0; i < digits.length; i++) {\n            for (int j = i + 1; j < digits.length; j++) {\n                if ((digits[i] - '0') % 2 == (digits[j] - '0') % 2 && digits[i] < digits[j]) {\n                    char temp = digits[i];\n                    digits[i] = digits[j];\n                    digits[j] = temp;\n                }\n            }\n        }\n        return Integer.parseInt(new String(digits));\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.810303"
+}

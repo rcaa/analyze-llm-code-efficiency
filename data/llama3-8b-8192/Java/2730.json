@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int longestSemiRepetitiveSubstring(String s) {\n        int maxLen = 0, curLen = 0, prev = -1;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1) && i > 0) {\n                curLen = i - prev;\n                maxLen = Math.max(maxLen, curLen);\n                prev = i;\n                curLen = 1;\n            } else {\n                curLen++;\n            }\n        }\n        return Math.max(maxLen, curLen);\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a single pass through the string, keeping track of the current length of the semi-repetitive substring and the maximum length seen so far. When a repeated digit is found, it updates the maximum length and resets the current length. The solution has a high efficiency due to its linear time complexity and constant space complexity.",
+  "code": "class Solution {\n    public int longestSemiRepetitiveSubstring(String s) {\n        int maxLen = 0, curLen = 0, prev = -1;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1) && i > 0) {\n                curLen = i - prev;\n                maxLen = Math.max(maxLen, curLen);\n                prev = i;\n                curLen = 1;\n            } else {\n                curLen++;\n            }\n        }\n        return Math.max(maxLen, curLen);\n    }\n}",
+  "timestamp": "2025-08-06T01:06:58.014176",
+  "code_extracted_previous": "public int longestSemiRepetitiveSubstring(String s) {\n        int maxLen = 0, curLen = 0, prev = -1;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1) && i > 0) {\n                curLen = i - prev;\n                maxLen = Math.max(maxLen, curLen);\n                prev = i;\n                curLen = 1;\n            } else {\n                curLen++;\n            }\n        }\n        return Math.max(maxLen, curLen);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.519570"
+}

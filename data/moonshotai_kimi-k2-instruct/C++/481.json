@@ -1,0 +1,15 @@
+{
+  "id": 481,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int magicalString(int n) {\n        if (n == 0) return 0;\n        if (n <= 3) return 1;\n        string s(n, '0');\n        s[0] = '1';\n        s[1] = '2';\n        s[2] = '2';\n        int idx = 2;\n        int pos = 3;\n        int count = 1;\n        while (pos < n) {\n            int len = s[idx] - '0';\n            char c = (s[pos - 1] == '1') ? '2' : '1';\n            for (int i = 0; i < len && pos < n; ++i) {\n                s[pos] = c;\n                if (c == '1') ++count;\n                ++pos;\n            }\n            ++idx;\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Generate the magical string up to n characters by using the string itself to dictate the next group sizes. Track the count of '1's while building the string.",
+  "code": "class Solution {\npublic:\n    int magicalString(int n) {\n        if (n == 0) return 0;\n        if (n <= 3) return 1;\n        string s(n, '0');\n        s[0] = '1';\n        s[1] = '2';\n        s[2] = '2';\n        int idx = 2;\n        int pos = 3;\n        int count = 1;\n        while (pos < n) {\n            int len = s[idx] - '0';\n            char c = (s[pos - 1] == '1') ? '2' : '1';\n            for (int i = 0; i < len && pos < n; ++i) {\n                s[pos] = c;\n                if (c == '1') ++count;\n                ++pos;\n            }\n            ++idx;\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-06T01:37:07.217040",
+  "code_extracted_previous": "public:\n    int magicalString(int n) {\n        if (n == 0) return 0;\n        if (n <= 3) return 1;\n        string s(n, '0');\n        s[0] = '1';\n        s[1] = '2';\n        s[2] = '2';\n        int idx = 2;\n        int pos = 3;\n        int count = 1;\n        while (pos < n) {\n            int len = s[idx] - '0';\n            char c = (s[pos - 1] == '1') ? '2' : '1';\n            for (int i = 0; i < len && pos < n; ++i) {\n                s[pos] = c;\n                if (c == '1') ++count;\n                ++pos;\n            }\n            ++idx;\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.143029"
+}

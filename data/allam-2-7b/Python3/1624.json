@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef maxLengthBetweenEqualCharacters(s: str) -> int:\n    count_dict = {}\n    max_length = -1\n    for char in s:\n        if char in count_dict:\n            count_dict[char] += 1\n        else:\n            count_dict[char] = 1\n        if count_dict[char] % 2 == 0:\n            max_length = max(max_length, count_dict[char])\n            del count_dict[char]\n    return max_length\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\nWe iterate through the string once using a dictionary to count the occurrences of each character. If the count is even, we update the maximum length. Finally, we delete the character from the dictionary to avoid counting it again. This solution has a time complexity of O(n) and space complexity of O(n), where n is the length of the string. ",
+  "code": "def maxLengthBetweenEqualCharacters(s: str) -> int:\n    count_dict = {}\n    max_length = -1\n    for char in s:\n        if char in count_dict:\n            count_dict[char] += 1\n        else:\n            count_dict[char] = 1\n        if count_dict[char] % 2 == 0:\n            max_length = max(max_length, count_dict[char])\n            del count_dict[char]\n    return max_length",
+  "timestamp": "2025-08-05T14:43:41.748413",
+  "code_extracted_previous": "def maxLengthBetweenEqualCharacters(s: str) -> int:\n    count_dict = {}\n    max_length = -1\n    for char in s:\n        if char in count_dict:\n            count_dict[char] += 1\n        else:\n            count_dict[char] = 1\n        if count_dict[char] % 2 == 0:\n            max_length = max(max_length, count_dict[char])\n            del count_dict[char]\n    return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.255193"
+}

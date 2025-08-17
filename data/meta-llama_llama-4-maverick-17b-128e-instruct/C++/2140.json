@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1, 0);\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int next_i = min(i + brainpower + 1, n);\n            dp[i] = max(dp[i + 1], points + dp[next_i]);\n        }\n        return dp[0];\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the maximum points that can be earned from the current question to the end. The dp array is filled in reverse order, considering whether to solve or skip each question. The maximum points are then returned from the first question. \n```",
+  "code": "class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1, 0);\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int next_i = min(i + brainpower + 1, n);\n            dp[i] = max(dp[i + 1], points + dp[next_i]);\n        }\n        return dp[0];\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the maximum points that can be earned from the current question to the end. The dp array is filled in reverse order, considering whether to solve or skip each question. The maximum points are then returned from the first question.",
+  "timestamp": "2025-08-05T13:25:10.463638",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1, 0);\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int next_i = min(i + brainpower + 1, n);\n            dp[i] = max(dp[i + 1], points + dp[next_i]);\n        }\n        return dp[0];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.096777"
+}

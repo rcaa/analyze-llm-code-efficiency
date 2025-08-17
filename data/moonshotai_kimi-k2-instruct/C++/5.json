@@ -1,0 +1,15 @@
+{
+  "id": 5,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    string longestPalindrome(string s) {\n        if (s.empty()) return \"\";\n        int n = s.size(), start = 0, maxLen = 1;\n        for (int i = 0; i < n; ++i) {\n            int l = i, r = i;\n            while (r + 1 < n && s[r] == s[r + 1]) ++r;\n            i = r;\n            while (l - 1 >= 0 && r + 1 < n && s[l - 1] == s[r + 1]) {\n                --l;\n                ++r;\n            }\n            if (r - l + 1 > maxLen) {\n                maxLen = r - l + 1;\n                start = l;\n            }\n        }\n        return s.substr(start, maxLen);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Expand around centers (odd/even) while skipping duplicate chars; single pass with O(1) extra space, optimal for n≤1000.",
+  "code": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        if (s.empty()) return \"\";\n        int n = s.size(), start = 0, maxLen = 1;\n        for (int i = 0; i < n; ++i) {\n            int l = i, r = i;\n            while (r + 1 < n && s[r] == s[r + 1]) ++r;\n            i = r;\n            while (l - 1 >= 0 && r + 1 < n && s[l - 1] == s[r + 1]) {\n                --l;\n                ++r;\n            }\n            if (r - l + 1 > maxLen) {\n                maxLen = r - l + 1;\n                start = l;\n            }\n        }\n        return s.substr(start, maxLen);\n    }\n};",
+  "timestamp": "2025-08-06T01:33:34.398721",
+  "code_extracted_previous": "public:\n    string longestPalindrome(string s) {\n        if (s.empty()) return \"\";\n        int n = s.size(), start = 0, maxLen = 1;\n        for (int i = 0; i < n; ++i) {\n            int l = i, r = i;\n            while (r + 1 < n && s[r] == s[r + 1]) ++r;\n            i = r;\n            while (l - 1 >= 0 && r + 1 < n && s[l - 1] == s[r + 1]) {\n                --l;\n                ++r;\n            }\n            if (r - l + 1 > maxLen) {\n                maxLen = r - l + 1;\n                start = l;\n            }\n        }\n        return s.substr(start, maxLen);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.155102"
+}

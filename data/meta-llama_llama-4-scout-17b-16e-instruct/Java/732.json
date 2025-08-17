@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass MyCalendarThree {\n\n    private Map<Integer, Integer> map;\n\n    public MyCalendarThree() {\n        map = new TreeMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        map.put(startTime, map.getOrDefault(startTime, 0) + 1);\n        map.put(endTime, map.getOrDefault(endTime, 0) - 1);\n        \n        int max = 0, curr = 0;\n        for (int val : map.values()) {\n            curr += val;\n            max = Math.max(max, curr);\n        }\n        return max;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a TreeMap to efficiently track the changes in event counts at each time point. By maintaining a running sum of event counts, it can determine the maximum k-booking at each step. The use of a TreeMap allows for efficient iteration over the time points in sorted order.",
+  "code": "class MyCalendarThree {\n\n    private Map<Integer, Integer> map;\n\n    public MyCalendarThree() {\n        map = new TreeMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        map.put(startTime, map.getOrDefault(startTime, 0) + 1);\n        map.put(endTime, map.getOrDefault(endTime, 0) - 1);\n        \n        int max = 0, curr = 0;\n        for (int val : map.values()) {\n            curr += val;\n            max = Math.max(max, curr);\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-05T13:38:03.100145",
+  "code_extracted_previous": "class MyCalendarThree {\n\n    private Map<Integer, Integer> map;\n\n    public MyCalendarThree() {\n        map = new TreeMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        map.put(startTime, map.getOrDefault(startTime, 0) + 1);\n        map.put(endTime, map.getOrDefault(endTime, 0) - 1);\n        \n        int max = 0, curr = 0;\n        for (int val : map.values()) {\n            curr += val;\n            max = Math.max(max, curr);\n        }\n        return max;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:51.536381"
+}

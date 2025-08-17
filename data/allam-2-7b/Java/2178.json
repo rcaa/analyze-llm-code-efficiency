@@ -1,0 +1,15 @@
+{
+  "id": 2178,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> result = new ArrayList<>();\n        int n = (int) Math.ceil(Math.sqrt(finalSum));\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j <= n; j++) {\n                if (finalSum % 2 == 0 && i * j * 2 <= finalSum) {\n                    result.add(i * j * 2);\n                }\n            }\n        }\n        return result;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use nested loops to iterate through all possible pairs of integers (i, j) that satisfy the given conditions:\n1. The final sum is divisible by 2 (even sum)\n2. The product of i and j is less than or equal to the final sum\n\nBy checking these conditions, we can find all pairs of integers that can be multiplied to form the final sum. We store the results in a list and return it. The time complexity is O(n^2) because of the nested loops, where n is the ceiling of the square root of the final sum. The space complexity is O(n), as we only use a list to store the results. The energy implications are low, as the algorithm only performs simple arithmetic operations and does not require any complex calculations or data structures. ",
+  "code": "class Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> result = new ArrayList<>();\n        int n = (int) Math.ceil(Math.sqrt(finalSum));\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j <= n; j++) {\n                if (finalSum % 2 == 0 && i * j * 2 <= finalSum) {\n                    result.add(i * j * 2);\n                }\n            }\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T15:56:58.773791",
+  "code_extracted_previous": "public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> result = new ArrayList<>();\n        int n = (int) Math.ceil(Math.sqrt(finalSum));\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j <= n; j++) {\n                if (finalSum % 2 == 0 && i * j * 2 <= finalSum) {\n                    result.add(i * j * 2);\n                }\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.926248"
+}

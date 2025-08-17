@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom collections import defaultdict\n\nclass FreqStack:\n\n    def __init__(self):\n        self.freq = defaultdict(int)\n        self.stack = defaultdict(list)\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        self.freq[val] += 1\n        freq = self.freq[val]\n        self.stack[freq].append(val)\n        self.max_freq = max(self.max_freq, freq)\n\n    def pop(self) -> int:\n        val = self.stack[self.max_freq].pop()\n        if not self.stack[self.max_freq]:\n            self.max_freq -= 1\n        self.freq[val] -= 1\n        return val\n\n\n# Your FreqStack object will be instantiated and called as such:\n# obj = FreqStack()\n# obj.push(val)\n# param_2 = obj.pop()\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The provided solution utilizes a combination of a frequency dictionary (`self.freq`) to track the frequency of elements, a stack dictionary (`self.stack`) to store elements grouped by their frequency, and a `self.max_freq` variable to keep track of the maximum frequency. This approach allows for efficient push and pop operations, with a time complexity of O(1), making it suitable for handling a large number of operations within the given constraints.",
+  "code": "class FreqStack:\n\n    def __init__(self):\n        self.freq = defaultdict(int)\n        self.stack = defaultdict(list)\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        self.freq[val] += 1\n        freq = self.freq[val]\n        self.stack[freq].append(val)\n        self.max_freq = max(self.max_freq, freq)\n\n    def pop(self) -> int:\n        val = self.stack[self.max_freq].pop()\n        if not self.stack[self.max_freq]:\n            self.max_freq -= 1\n        self.freq[val] -= 1\n        return val\n\n\n# Your FreqStack object will be instantiated and called as such:\n# obj = FreqStack()\n# obj.push(val)\n# param_2 = obj.pop()",
+  "timestamp": "2025-08-05T14:38:03.149314",
+  "code_extracted_previous": "from collections import defaultdict\n\nclass FreqStack:\n\n    def __init__(self):\n        self.freq = defaultdict(int)\n        self.stack = defaultdict(list)\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        self.freq[val] += 1\n        freq = self.freq[val]\n        self.stack[freq].append(val)\n        self.max_freq = max(self.max_freq, freq)\n\n    def pop(self) -> int:\n        val = self.stack[self.max_freq].pop()\n        if not self.stack[self.max_freq]:\n            self.max_freq -= 1\n        self.freq[val] -= 1\n        return val\n\n\n# Your FreqStack object will be instantiated and called as such:\n# obj = FreqStack()\n# obj.push(val)\n# param_2 = obj.pop()",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.014495"
+}

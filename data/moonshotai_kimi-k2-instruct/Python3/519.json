@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: ```python\nimport random\n\nclass Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.total = m * n\n        self.remap = {}\n        self.rng = random.Random()\n\n    def flip(self) -> List[int]:\n        k = self.rng.randrange(self.total)\n        idx = self.remap.get(k, k)\n        self.total -= 1\n        self.remap[k] = self.remap.get(self.total, self.total)\n        r, c = divmod(idx, self.n)\n        return [r, c]\n\n    def reset(self) -> None:\n        self.total = self.m * self.n\n        self.remap.clear()\n```\nefficiency: HIGH\ntime complexity: O(1) for flip and reset\nspace complexity: O(min(m*n, calls)) where calls ≤ 1000\nenergy implications: LOW\nexplanation: Uses Fisher-Yates inside a virtual array: map the shrinking range [0, total-1] to remaining 0-cells via a hash table, achieving uniform randomness with one RNG call per flip and O(1) time/space per operation.",
+  "code": "class Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.total = m * n\n        self.remap = {}\n        self.rng = random.Random()\n\n    def flip(self) -> List[int]:\n        k = self.rng.randrange(self.total)\n        idx = self.remap.get(k, k)\n        self.total -= 1\n        self.remap[k] = self.remap.get(self.total, self.total)\n        r, c = divmod(idx, self.n)\n        return [r, c]\n\n    def reset(self) -> None:\n        self.total = self.m * self.n\n        self.remap.clear()",
+  "timestamp": "2025-08-06T02:34:22.403107",
+  "code_extracted_previous": "import random\n\nclass Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.total = m * n\n        self.remap = {}\n        self.rng = random.Random()\n\n    def flip(self) -> List[int]:\n        k = self.rng.randrange(self.total)\n        idx = self.remap.get(k, k)\n        self.total -= 1\n        self.remap[k] = self.remap.get(self.total, self.total)\n        r, c = divmod(idx, self.n)\n        return [r, c]\n\n    def reset(self) -> None:\n        self.total = self.m * self.n\n        self.remap.clear()",
+  "starter_ok": false,
+  "starter_check_reason": "assinatura divergente: esperada '__init__(self, m, n)'",
+  "reavaliado_em": "2025-08-17T12:23:57.291092"
+}

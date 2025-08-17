@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n - k + 1 >= maxPts) return 1.0;\n        double dp[] = new double[n + 1];\n        dp[0] = 1.0;\n        double s = 1.0, ans = 0.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = s / maxPts;\n            if (i <= k) s += dp[i];\n            if (i - maxPts - 1 >= 0) s -= dp[i - maxPts - 1];\n            if (i >= k) ans += dp[i];\n        }\n        return ans;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to calculate the probability of Alice having n or fewer points. It iterates through each possible point from 1 to n, calculating the probability of reaching that point and updating the total probability.",
+  "code": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n - k + 1 >= maxPts) return 1.0;\n        double dp[] = new double[n + 1];\n        dp[0] = 1.0;\n        double s = 1.0, ans = 0.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = s / maxPts;\n            if (i <= k) s += dp[i];\n            if (i - maxPts - 1 >= 0) s -= dp[i - maxPts - 1];\n            if (i >= k) ans += dp[i];\n        }\n        return ans;\n    }\n}",
+  "timestamp": "2025-08-05T15:45:24.353690",
+  "code_extracted_previous": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n - k + 1 >= maxPts) return 1.0;\n        double dp[] = new double[n + 1];\n        dp[0] = 1.0;\n        double s = 1.0, ans = 0.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = s / maxPts;\n            if (i <= k) s += dp[i];\n            if (i - maxPts - 1 >= 0) s -= dp[i - maxPts - 1];\n            if (i >= k) ans += dp[i];\n        }\n        return ans;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.723143"
+}

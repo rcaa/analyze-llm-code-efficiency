@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        char_index = {}\n        max_length = 0\n        window_start = 0\n        for window_end in range(len(s)):\n            right_char = s[window_end]\n            if right_char in char_index:\n                window_start = max(window_start, char_index[right_char] + 1)\n            char_index[right_char] = window_end\n            max_length = max(max_length, window_end - window_start + 1)\n        return max_length\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, m))\nenergy implications: LOW\nexplanation: Uses a sliding window approach with a dictionary to keep track of character indices, efficiently finding the longest substring without duplicates.",
+  "code": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        char_index = {}\n        max_length = 0\n        window_start = 0\n        for window_end in range(len(s)):\n            right_char = s[window_end]\n            if right_char in char_index:\n                window_start = max(window_start, char_index[right_char] + 1)\n            char_index[right_char] = window_end\n            max_length = max(max_length, window_end - window_start + 1)\n        return max_length",
+  "timestamp": "2025-08-05T14:49:21.471426",
+  "code_extracted_previous": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        char_index = {}\n        max_length = 0\n        window_start = 0\n        for window_end in range(len(s)):\n            right_char = s[window_end]\n            if right_char in char_index:\n                window_start = max(window_start, char_index[right_char] + 1)\n            char_index[right_char] = window_end\n            max_length = max(max_length, window_end - window_start + 1)\n        return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.459562"
+}

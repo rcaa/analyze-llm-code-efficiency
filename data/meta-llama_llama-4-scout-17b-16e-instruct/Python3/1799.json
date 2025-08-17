@@ -1,0 +1,15 @@
+{
+  "id": 1799,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```python\nfrom typing import List\nimport math\n\nclass Solution:\n    def maxScore(self, nums: List[int]) -> int:\n        nums.sort(reverse=True)\n        score = 0\n        for i in range(0, len(nums), 2):\n            score += ((i // 2) + 1) * math.gcd(nums[i], nums[i+1])\n        return score\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sorting the array in descending order ensures that the largest numbers are paired first, maximizing the score. The use of math.gcd for calculating the greatest common divisor is efficient. The algorithm iterates through the array once, resulting in a linear time complexity relative to the input size.",
+  "code": "class Solution:\n    def maxScore(self, nums: List[int]) -> int:\n        nums.sort(reverse=True)\n        score = 0\n        for i in range(0, len(nums), 2):\n            score += ((i // 2) + 1) * math.gcd(nums[i], nums[i+1])\n        return score",
+  "timestamp": "2025-08-05T11:54:19.061650",
+  "code_extracted_previous": "from typing import List\nimport math\n\nclass Solution:\n    def maxScore(self, nums: List[int]) -> int:\n        nums.sort(reverse=True)\n        score = 0\n        for i in range(0, len(nums), 2):\n            score += ((i // 2) + 1) * math.gcd(nums[i], nums[i+1])\n        return score",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:51.931381"
+}

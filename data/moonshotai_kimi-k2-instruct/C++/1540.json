@@ -1,0 +1,15 @@
+{
+  "id": 1540,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        int cnt[26] = {0};\n        for (int i = 0; i < s.size(); ++i) {\n            int diff = (t[i] - s[i] + 26) % 26;\n            if (diff) cnt[diff]++;\n        }\n        for (int d = 1; d < 26; ++d) {\n            if (cnt[d] == 0) continue;\n            int max_step = d + 26 * (cnt[d] - 1);\n            if (max_step > k) return false;\n        }\n        return true;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count how many characters need each shift distance d (1..25). The latest move for distance d is d + 26*(count-1); if any exceeds k conversion fails.",
+  "code": "class Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        int cnt[26] = {0};\n        for (int i = 0; i < s.size(); ++i) {\n            int diff = (t[i] - s[i] + 26) % 26;\n            if (diff) cnt[diff]++;\n        }\n        for (int d = 1; d < 26; ++d) {\n            if (cnt[d] == 0) continue;\n            int max_step = d + 26 * (cnt[d] - 1);\n            if (max_step > k) return false;\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-06T02:28:56.939598",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        int cnt[26] = {0};\n        for (int i = 0; i < s.size(); ++i) {\n            int diff = (t[i] - s[i] + 26) % 26;\n            if (diff) cnt[diff]++;\n        }\n        for (int d = 1; d < 26; ++d) {\n            if (cnt[d] == 0) continue;\n            int max_step = d + 26 * (cnt[d] - 1);\n            if (max_step > k) return false;\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.264294"
+}

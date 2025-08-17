@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    int findNthDigit(int n) {\n        int length = 1;\n        long count = 9;\n        long start = 1;\n\n        while (n > length * count) {\n            n -= length * count;\n            count *= 10;\n            start *= 10;\n            length++;\n        }\n\n        int number = start + (n - 1) / length;\n        int digitIndex = (n - 1) % length;\n        return (number / (int)(pow(10, length - digitIndex - 1))) % 10;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The algorithm determines the range of digits the nth digit belongs to, calculates the exact number containing the digit, and then extracts the specific digit. It avoids iterating through all numbers up to n, making it efficient.>",
+  "code": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        int length = 1;\n        long count = 9;\n        long start = 1;\n\n        while (n > length * count) {\n            n -= length * count;\n            count *= 10;\n            start *= 10;\n            length++;\n        }\n\n        int number = start + (n - 1) / length;\n        int digitIndex = (n - 1) % length;\n        return (number / (int)(pow(10, length - digitIndex - 1))) % 10;\n    }\n};",
+  "timestamp": "2025-08-06T03:04:20.681510",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        int length = 1;\n        long count = 9;\n        long start = 1;\n\n        while (n > length * count) {\n            n -= length * count;\n            count *= 10;\n            start *= 10;\n            length++;\n        }\n\n        int number = start + (n - 1) / length;\n        int digitIndex = (n - 1) % length;\n        return (number / (int)(pow(10, length - digitIndex - 1))) % 10;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:00.679381"
+}

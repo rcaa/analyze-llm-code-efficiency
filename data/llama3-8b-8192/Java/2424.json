@@ -1,0 +1,15 @@
+{
+  "id": 2424,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass LUPrefix {\n    int n;\n    int lastUploaded;\n    boolean[] uploaded;\n\n    public LUPrefix(int n) {\n        this.n = n;\n        this.lastUploaded = 0;\n        this.uploaded = new boolean[n + 1];\n    }\n    \n    public void upload(int video) {\n        uploaded[video] = true;\n        lastUploaded = Math.max(lastUploaded, video);\n    }\n    \n    public int longest() {\n        for (int i = 1; i <= lastUploaded; i++) {\n            if (!uploaded[i]) {\n                return i - 1;\n            }\n        }\n        return lastUploaded;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: We use a boolean array to keep track of which videos have been uploaded. The `upload` method updates the `lastUploaded` variable and sets the corresponding boolean value to true. The `longest` method iterates from 1 to `lastUploaded` and returns the last index where the boolean value is false, which represents the length of the longest uploaded prefix.",
+  "code": "class LUPrefix {\n    int n;\n    int lastUploaded;\n    boolean[] uploaded;\n\n    public LUPrefix(int n) {\n        this.n = n;\n        this.lastUploaded = 0;\n        this.uploaded = new boolean[n + 1];\n    }\n    \n    public void upload(int video) {\n        uploaded[video] = true;\n        lastUploaded = Math.max(lastUploaded, video);\n    }\n    \n    public int longest() {\n        for (int i = 1; i <= lastUploaded; i++) {\n            if (!uploaded[i]) {\n                return i - 1;\n            }\n        }\n        return lastUploaded;\n    }\n}",
+  "timestamp": "2025-08-05T15:08:58.384732",
+  "code_extracted_previous": "class LUPrefix {\n    int n;\n    int lastUploaded;\n    boolean[] uploaded;\n\n    public LUPrefix(int n) {\n        this.n = n;\n        this.lastUploaded = 0;\n        this.uploaded = new boolean[n + 1];\n    }\n    \n    public void upload(int video) {\n        uploaded[video] = true;\n        lastUploaded = Math.max(lastUploaded, video);\n    }\n    \n    public int longest() {\n        for (int i = 1; i <= lastUploaded; i++) {\n            if (!uploaded[i]) {\n                return i - 1;\n            }\n        }\n        return lastUploaded;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:42.404990"
+}

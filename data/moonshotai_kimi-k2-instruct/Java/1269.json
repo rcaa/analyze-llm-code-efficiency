@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int numWays(int steps, int arrLen) {\n        final int MOD = 1_000_000_007;\n        int maxPos = Math.min(steps, arrLen - 1);\n        int[] dp = new int[maxPos + 1];\n        dp[0] = 1;\n        for (int s = 1; s <= steps; s++) {\n            int[] next = new int[maxPos + 1];\n            for (int p = 0; p <= maxPos; p++) {\n                next[p] = dp[p];\n                if (p > 0) next[p] = (next[p] + dp[p - 1]) % MOD;\n                if (p < maxPos) next[p] = (next[p] + dp[p + 1]) % MOD;\n            }\n            dp = next;\n        }\n        return dp[0];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(steps * min(steps, arrLen))\nspace complexity: O(min(steps, arrLen))\nenergy implications: LOW\nexplanation: Uses dynamic programming with a rolling array to track ways to reach each position after each step. The key insight is that the pointer cannot move more than steps positions away from index 0, so the effective array length is capped at steps+1, reducing both time and space usage.",
+  "code": "class Solution {\n    public int numWays(int steps, int arrLen) {\n        final int MOD = 1_000_000_007;\n        int maxPos = Math.min(steps, arrLen - 1);\n        int[] dp = new int[maxPos + 1];\n        dp[0] = 1;\n        for (int s = 1; s <= steps; s++) {\n            int[] next = new int[maxPos + 1];\n            for (int p = 0; p <= maxPos; p++) {\n                next[p] = dp[p];\n                if (p > 0) next[p] = (next[p] + dp[p - 1]) % MOD;\n                if (p < maxPos) next[p] = (next[p] + dp[p + 1]) % MOD;\n            }\n            dp = next;\n        }\n        return dp[0];\n    }\n}",
+  "timestamp": "2025-08-06T02:30:30.887481",
+  "code_extracted_previous": "public int numWays(int steps, int arrLen) {\n        final int MOD = 1_000_000_007;\n        int maxPos = Math.min(steps, arrLen - 1);\n        int[] dp = new int[maxPos + 1];\n        dp[0] = 1;\n        for (int s = 1; s <= steps; s++) {\n            int[] next = new int[maxPos + 1];\n            for (int p = 0; p <= maxPos; p++) {\n                next[p] = dp[p];\n                if (p > 0) next[p] = (next[p] + dp[p - 1]) % MOD;\n                if (p < maxPos) next[p] = (next[p] + dp[p + 1]) % MOD;\n            }\n            dp = next;\n        }\n        return dp[0];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.496211"
+}

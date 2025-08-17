@@ -1,0 +1,15 @@
+{
+  "id": 1348,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass TweetCounts {\npublic:\n    TweetCounts() {\n        \n    }\n    \n    void recordTweet(string tweetName, int time) {\n        tweetCounts[tweetName].push_back(time);\n    }\n    \n    vector<int> getTweetCountsPerFrequency(string freq, string tweetName, int startTime, int endTime) {\n        int chunkSize = (freq == \"minute\") ? 60 : (freq == \"hour\") ? 3600 : 86400;\n        int chunks = (endTime - startTime) / chunkSize + 1;\n        vector<int> res(chunks, 0);\n        for (int time : tweetCounts[tweetName]) {\n            if (startTime <= time && time <= endTime) {\n                res[(time - startTime) / chunkSize]++;\n            }\n        }\n        return res;\n    }\nprivate:\n    unordered_map<string, vector<int>> tweetCounts;\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses an unordered map to store tweet names and their corresponding times. The getTweetCountsPerFrequency function calculates the chunk size based on the frequency and then iterates over the tweet times to count the tweets in each chunk.",
+  "code": "class TweetCounts {\npublic:\n    TweetCounts() {\n        \n    }\n    \n    void recordTweet(string tweetName, int time) {\n        tweetCounts[tweetName].push_back(time);\n    }\n    \n    vector<int> getTweetCountsPerFrequency(string freq, string tweetName, int startTime, int endTime) {\n        int chunkSize = (freq == \"minute\") ? 60 : (freq == \"hour\") ? 3600 : 86400;\n        int chunks = (endTime - startTime) / chunkSize + 1;\n        vector<int> res(chunks, 0);\n        for (int time : tweetCounts[tweetName]) {\n            if (startTime <= time && time <= endTime) {\n                res[(time - startTime) / chunkSize]++;\n            }\n        }\n        return res;\n    }\nprivate:\n    unordered_map<string, vector<int>> tweetCounts;\n};",
+  "timestamp": "2025-08-05T15:00:56.814568",
+  "code_extracted_previous": "class TweetCounts {\npublic:\n    TweetCounts() {\n        \n    }\n    \n    void recordTweet(string tweetName, int time) {\n        tweetCounts[tweetName].push_back(time);\n    }\n    \n    vector<int> getTweetCountsPerFrequency(string freq, string tweetName, int startTime, int endTime) {\n        int chunkSize = (freq == \"minute\") ? 60 : (freq == \"hour\") ? 3600 : 86400;\n        int chunks = (endTime - startTime) / chunkSize + 1;\n        vector<int> res(chunks, 0);\n        for (int time : tweetCounts[tweetName]) {\n            if (startTime <= time && time <= endTime) {\n                res[(time - startTime) / chunkSize]++;\n            }\n        }\n        return res;\n    }\nprivate:\n    unordered_map<string, vector<int>> tweetCounts;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:36.152109"
+}

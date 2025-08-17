@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minimizeXor(self, num1: int, num2: int) -> int:\n        k = num2.bit_count()\n        n = num1.bit_length()\n        x = 0\n        for i in range(n - 1, -1, -1):\n            if k == 0:\n                break\n            if num1 & (1 << i):\n                x |= 1 << i\n                k -= 1\n        for i in range(0, n):\n            if k == 0:\n                break\n            if not (x & (1 << i)):\n                x |= 1 << i\n                k -= 1\n        return x\n```\nefficiency: HIGH\ntime complexity: O(log num1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count the set bits in num2 (k). Build x by first copying the highest set bits of num1 (to minimize XOR), then fill remaining bits from the lowest positions. This greedy placement guarantees minimal XOR while keeping exactly k set bits.",
+  "code": "class Solution:\n    def minimizeXor(self, num1: int, num2: int) -> int:\n        k = num2.bit_count()\n        n = num1.bit_length()\n        x = 0\n        for i in range(n - 1, -1, -1):\n            if k == 0:\n                break\n            if num1 & (1 << i):\n                x |= 1 << i\n                k -= 1\n        for i in range(0, n):\n            if k == 0:\n                break\n            if not (x & (1 << i)):\n                x |= 1 << i\n                k -= 1\n        return x",
+  "timestamp": "2025-08-05T14:31:42.218345",
+  "code_extracted_previous": "class Solution:\n    def minimizeXor(self, num1: int, num2: int) -> int:\n        k = num2.bit_count()\n        n = num1.bit_length()\n        x = 0\n        for i in range(n - 1, -1, -1):\n            if k == 0:\n                break\n            if num1 & (1 << i):\n                x |= 1 << i\n                k -= 1\n        for i in range(0, n):\n            if k == 0:\n                break\n            if not (x & (1 << i)):\n                x |= 1 << i\n                k -= 1\n        return x",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.685441"
+}

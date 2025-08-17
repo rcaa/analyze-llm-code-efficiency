@@ -1,0 +1,15 @@
+{
+  "id": 2287,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int rearrangeCharacters(string s, string target) {\n        unordered_map<char, int> sCount;\n        for (char c : s) {\n            sCount[c]++;\n        }\n        \n        int res = INT_MAX;\n        for (char c : target) {\n            res = min(res, sCount[c] / count(c, target));\n        }\n        return res;\n    }\n    \n    int count(char c, string target) {\n        int cnt = 0;\n        for (char ch : target) {\n            if (ch == c) cnt++;\n        }\n        return cnt;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through string s to count the frequency of each character and stores it in an unordered_map. Then, for each character in the target string, it calculates how many times the target string can be formed using the available characters in s by dividing the count of the character in s by the count of the character in the target string. The minimum of these values is the maximum number of copies of the target string that can be formed.",
+  "code": "class Solution {\npublic:\n    int rearrangeCharacters(string s, string target) {\n        unordered_map<char, int> sCount;\n        for (char c : s) {\n            sCount[c]++;\n        }\n        \n        int res = INT_MAX;\n        for (char c : target) {\n            res = min(res, sCount[c] / count(c, target));\n        }\n        return res;\n    }\n    \n    int count(char c, string target) {\n        int cnt = 0;\n        for (char ch : target) {\n            if (ch == c) cnt++;\n        }\n        return cnt;\n    }\n};",
+  "timestamp": "2025-08-05T14:45:16.557277",
+  "code_extracted_previous": "class Solution {\npublic:\n    int rearrangeCharacters(string s, string target) {\n        unordered_map<char, int> sCount;\n        for (char c : s) {\n            sCount[c]++;\n        }\n        \n        int res = INT_MAX;\n        for (char c : target) {\n            res = min(res, sCount[c] / count(c, target));\n        }\n        return res;\n    }\n    \n    int count(char c, string target) {\n        int cnt = 0;\n        for (char ch : target) {\n            if (ch == c) cnt++;\n        }\n        return cnt;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.027715"
+}

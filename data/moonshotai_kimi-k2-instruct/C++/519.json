@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    int m, n, total;\n    unordered_map<int,int> map;\npublic:\n    Solution(int m, int n) : m(m), n(n), total(m * n) {}\n    \n    vector<int> flip() {\n        int idx = rand() % total;\n        int val = map.count(idx) ? map[idx] : idx;\n        int last = --total;\n        map[idx] = map.count(last) ? map[last] : last;\n        return {val / n, val % n};\n    }\n    \n    void reset() {\n        total = m * n;\n        map.clear();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1) amortized per flip/reset\nspace complexity: O(k) where k is the number of flipped cells\nenergy implications: LOW\nexplanation: Uses Fisher-Yates inside a hash map to map virtual indices to actual indices, ensuring uniform randomness with one rand() call per flip and O(1) expected time.",
+  "code": "class Solution {\n    int m, n, total;\n    unordered_map<int,int> map;\npublic:\n    Solution(int m, int n) : m(m), n(n), total(m * n) {}\n    \n    vector<int> flip() {\n        int idx = rand() % total;\n        int val = map.count(idx) ? map[idx] : idx;\n        int last = --total;\n        map[idx] = map.count(last) ? map[last] : last;\n        return {val / n, val % n};\n    }\n    \n    void reset() {\n        total = m * n;\n        map.clear();\n    }\n};",
+  "timestamp": "2025-08-06T02:30:09.207561",
+  "code_extracted_previous": "int m, n, total;\n    unordered_map<int,int> map;\npublic:\n    Solution(int m, int n) : m(m), n(n), total(m * n) {}\n    \n    vector<int> flip() {\n        int idx = rand() % total;\n        int val = map.count(idx) ? map[idx] : idx;\n        int last = --total;\n        map[idx] = map.count(last) ? map[last] : last;\n        return {val / n, val % n};\n    }\n    \n    void reset() {\n        total = m * n;\n        map.clear();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.159164"
+}

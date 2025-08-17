@@ -1,0 +1,15 @@
+{
+  "id": 20,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        unordered_map<char, char> mapping = {{')', '('}, {'}', '{'}, {']', '['}};\n        \n        for (char c : s) {\n            if (mapping.find(c) != mapping.end()) {\n                if (st.empty() || st.top() != mapping[c]) {\n                    return false;\n                }\n                st.pop();\n            } else {\n                st.push(c);\n            }\n        }\n        \n        return st.empty();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a stack to track opening brackets and a mapping to pair closing brackets with their corresponding opening brackets, allowing for efficient validation of bracket sequences.",
+  "code": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        unordered_map<char, char> mapping = {{')', '('}, {'}', '{'}, {']', '['}};\n        \n        for (char c : s) {\n            if (mapping.find(c) != mapping.end()) {\n                if (st.empty() || st.top() != mapping[c]) {\n                    return false;\n                }\n                st.pop();\n            } else {\n                st.push(c);\n            }\n        }\n        \n        return st.empty();\n    }\n};",
+  "timestamp": "2025-08-05T16:19:41.670446",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        unordered_map<char, char> mapping = {{')', '('}, {'}', '{'}, {']', '['}};\n        \n        for (char c : s) {\n            if (mapping.find(c) != mapping.end()) {\n                if (st.empty() || st.top() != mapping[c]) {\n                    return false;\n                }\n                st.pop();\n            } else {\n                st.push(c);\n            }\n        }\n        \n        return st.empty();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.908392"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1860,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\nclass Solution {\n    public int[] memLeak(int memory1, int memory2) {\n        int crashTime = 1;\n        int memory1Crash = 0;\n        int memory2Crash = 0;\n        while (true) {\n            if (memory1 >= crashTime && memory2 >= crashTime) {\n                memory1 -= crashTime;\n                memory2 -= crashTime;\n                crashTime++;\n            } else if (memory1 >= crashTime) {\n                memory1 -= crashTime;\n                memory1Crash = crashTime - 1;\n                break;\n            } else {\n                memory2 -= crashTime;\n                memory2Crash = crashTime - 1;\n                break;\n            }\n        }\n        return new int[]{crashTime - 1, memory1Crash, memory2Crash};\n    }\n}\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the memory allocation process until the program crashes. It keeps track of the available memory on both sticks and the time when the program crashes. The time complexity is O(1) because the number of iterations is bounded by the maximum memory size. The space complexity is O(1) because only a constant amount of space is used to store the variables.",
+  "code": "class Solution {\n    public int[] memLeak(int memory1, int memory2) {\n        int crashTime = 1;\n        int memory1Crash = 0;\n        int memory2Crash = 0;\n        while (true) {\n            if (memory1 >= crashTime && memory2 >= crashTime) {\n                memory1 -= crashTime;\n                memory2 -= crashTime;\n                crashTime++;\n            } else if (memory1 >= crashTime) {\n                memory1 -= crashTime;\n                memory1Crash = crashTime - 1;\n                break;\n            } else {\n                memory2 -= crashTime;\n                memory2Crash = crashTime - 1;\n                break;\n            }\n        }\n        return new int[]{crashTime - 1, memory1Crash, memory2Crash};\n    }\n}",
+  "timestamp": "2025-08-05T15:54:15.773574",
+  "code_extracted_previous": "class Solution {\n    public int[] memLeak(int memory1, int memory2) {\n        int crashTime = 1;\n        int memory1Crash = 0;\n        int memory2Crash = 0;\n        while (true) {\n            if (memory1 >= crashTime && memory2 >= crashTime) {\n                memory1 -= crashTime;\n                memory2 -= crashTime;\n                crashTime++;\n            } else if (memory1 >= crashTime) {\n                memory1 -= crashTime;\n                memory1Crash = crashTime - 1;\n                break;\n            } else {\n                memory2 -= crashTime;\n                memory2Crash = crashTime - 1;\n                break;\n            }\n        }\n        return new int[]{crashTime - 1, memory1Crash, memory2Crash};\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.084297"
+}

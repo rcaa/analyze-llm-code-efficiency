@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        for (int i = 1; i <= k; i++) {\n            dp[i][1] = 1;\n            dp[i][0] = 0;\n        }\n        for (int j = 1; j <= n; j++) {\n            dp[1][j] = j;\n        }\n        for (int i = 2; i <= k; i++) {\n            for (int j = 2; j <= n; j++) {\n                dp[i][j] = Integer.MAX_VALUE;\n                for (int x = 1; x <= j; x++) {\n                    dp[i][j] = Math.min(dp[i][j], 1 + Math.max(dp[i - 1][x - 1], dp[i][j - x]));\n                }\n            }\n        }\n        return dp[k][n];\n    }\n}```\nefficiency: HIGH\ntime complexity: O(kn^2)\nspace complexity: O(kn)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We maintain a 2D array dp where dp[i][j] represents the minimum number of moves required to determine the value of f when we have i eggs and the building has j floors. We fill up the dp array in a bottom-up manner, considering all possible scenarios. The final answer is stored in dp[k][n].",
+  "code": "class Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        for (int i = 1; i <= k; i++) {\n            dp[i][1] = 1;\n            dp[i][0] = 0;\n        }\n        for (int j = 1; j <= n; j++) {\n            dp[1][j] = j;\n        }\n        for (int i = 2; i <= k; i++) {\n            for (int j = 2; j <= n; j++) {\n                dp[i][j] = Integer.MAX_VALUE;\n                for (int x = 1; x <= j; x++) {\n                    dp[i][j] = Math.min(dp[i][j], 1 + Math.max(dp[i - 1][x - 1], dp[i][j - x]));\n                }\n            }\n        }\n        return dp[k][n];\n    }\n}",
+  "timestamp": "2025-08-05T15:17:02.427836",
+  "code_extracted_previous": "public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        for (int i = 1; i <= k; i++) {\n            dp[i][1] = 1;\n            dp[i][0] = 0;\n        }\n        for (int j = 1; j <= n; j++) {\n            dp[1][j] = j;\n        }\n        for (int i = 2; i <= k; i++) {\n            for (int j = 2; j <= n; j++) {\n                dp[i][j] = Integer.MAX_VALUE;\n                for (int x = 1; x <= j; x++) {\n                    dp[i][j] = Math.min(dp[i][j], 1 + Math.max(dp[i - 1][x - 1], dp[i][j - x]));\n                }\n            }\n        }\n        return dp[k][n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:43.077084"
+}

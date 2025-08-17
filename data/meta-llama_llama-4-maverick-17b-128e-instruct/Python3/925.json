@@ -1,0 +1,15 @@
+{
+  "id": 925,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def isLongPressedName(self, name: str, typed: str) -> bool:\n        i = 0\n        for j in range(len(typed)):\n            if i < len(name) and name[i] == typed[j]:\n                i += 1\n            elif j == 0 or typed[j] != typed[j - 1]:\n                return False\n        return i == len(name)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the `typed` string once, maintaining a pointer `i` to the current character in `name`. It checks if the current character in `typed` matches the character at `i` in `name`, and if so, increments `i`. If not, it checks if the current character is the same as the previous one in `typed`. If neither condition is met, it returns `False`. If it finishes iterating through `typed` and `i` is equal to the length of `name`, it returns `True`, indicating that `typed` is a valid long-pressed version of `name`.",
+  "code": "def isLongPressedName(self, name: str, typed: str) -> bool:\n        i = 0\n        for j in range(len(typed)):\n            if i < len(name) and name[i] == typed[j]:\n                i += 1\n            elif j == 0 or typed[j] != typed[j - 1]:\n                return False\n        return i == len(name)\n```",
+  "timestamp": "2025-08-06T01:30:48.506552",
+  "code_extracted_previous": "class Solution:\n    def isLongPressedName(self, name: str, typed: str) -> bool:\n        i = 0\n        for j in range(len(typed)):\n            if i < len(name) and name[i] == typed[j]:\n                i += 1\n            elif j == 0 or typed[j] != typed[j - 1]:\n                return False\n        return i == len(name)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.523005"
+}

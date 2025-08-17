@@ -1,0 +1,15 @@
+{
+  "id": 1163,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        int i = 0, j = 1, k = 0;\n        while (j + k < n) {\n            if (s.charAt(i + k) == s.charAt(j + k)) {\n                k++;\n                continue;\n            }\n            if (s.charAt(i + k) < s.charAt(j + k)) {\n                i = Math.max(i + k + 1, j);\n            } else {\n                j = Math.max(j + k + 1, i + 1);\n            }\n            j = Math.max(j, i + 1);\n            k = 0;\n        }\n        return s.substring(i);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses two-pointer technique to compare candidate suffixes without generating substrings, skipping unnecessary comparisons via character matching and index jumps.",
+  "code": "class Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        int i = 0, j = 1, k = 0;\n        while (j + k < n) {\n            if (s.charAt(i + k) == s.charAt(j + k)) {\n                k++;\n                continue;\n            }\n            if (s.charAt(i + k) < s.charAt(j + k)) {\n                i = Math.max(i + k + 1, j);\n            } else {\n                j = Math.max(j + k + 1, i + 1);\n            }\n            j = Math.max(j, i + 1);\n            k = 0;\n        }\n        return s.substring(i);\n    }\n}",
+  "timestamp": "2025-08-06T01:15:04.553820",
+  "code_extracted_previous": "public String lastSubstring(String s) {\n        int n = s.length();\n        int i = 0, j = 1, k = 0;\n        while (j + k < n) {\n            if (s.charAt(i + k) == s.charAt(j + k)) {\n                k++;\n                continue;\n            }\n            if (s.charAt(i + k) < s.charAt(j + k)) {\n                i = Math.max(i + k + 1, j);\n            } else {\n                j = Math.max(j + k + 1, i + 1);\n            }\n            j = Math.max(j, i + 1);\n            k = 0;\n        }\n        return s.substring(i);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.472811"
+}

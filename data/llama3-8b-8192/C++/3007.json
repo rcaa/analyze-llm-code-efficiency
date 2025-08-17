@@ -1,0 +1,15 @@
+{
+  "id": 3007,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        long long res = 0;\n        while (k > 0) {\n            long long cur = (1LL << (x * (res + 1) - 1)) - 1;\n            if (cur <= k) {\n                res++;\n                k -= cur;\n            } else {\n                break;\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(log k)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use a binary search-like approach to find the maximum number. We keep adding the price of the current number to the result until the accumulated price exceeds k. The key insight is that the price of the current number is a power of 2, which allows us to calculate it efficiently using bitwise operations.",
+  "code": "class Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        long long res = 0;\n        while (k > 0) {\n            long long cur = (1LL << (x * (res + 1) - 1)) - 1;\n            if (cur <= k) {\n                res++;\n                k -= cur;\n            } else {\n                break;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:46:28.506372",
+  "code_extracted_previous": "public:\n    long long findMaximumNumber(long long k, int x) {\n        long long res = 0;\n        while (k > 0) {\n            long long cur = (1LL << (x * (res + 1) - 1)) - 1;\n            if (cur <= k) {\n                res++;\n                k -= cur;\n            } else {\n                break;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.167873"
+}

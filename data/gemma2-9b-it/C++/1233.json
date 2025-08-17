@@ -1,0 +1,15 @@
+{
+  "id": 1233,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    vector<string> removeSubfolders(vector<string>& folder) {\n        set<string> seen;\n        vector<string> result;\n        for (string& path : folder) {\n            string parent = path.substr(0, path.find_last_of('/'));\n            if (seen.count(parent) == 0) {\n                seen.insert(path);\n                result.push_back(path);\n            }\n        }\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N log N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a set to keep track of seen parent folders. It iterates through the input list, and for each folder, it checks if its parent folder is already in the set. If not, it adds both the parent and the current folder to the set and the result list. This ensures that only unique, non-subfolder paths are included in the output.\n",
+  "code": "class Solution {\npublic:\n    vector<string> removeSubfolders(vector<string>& folder) {\n        set<string> seen;\n        vector<string> result;\n        for (string& path : folder) {\n            string parent = path.substr(0, path.find_last_of('/'));\n            if (seen.count(parent) == 0) {\n                seen.insert(path);\n                result.push_back(path);\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T13:20:21.828039",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<string> removeSubfolders(vector<string>& folder) {\n        set<string> seen;\n        vector<string> result;\n        for (string& path : folder) {\n            string parent = path.substr(0, path.find_last_of('/'));\n            if (seen.count(parent) == 0) {\n                seen.insert(path);\n                result.push_back(path);\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.164763"
+}

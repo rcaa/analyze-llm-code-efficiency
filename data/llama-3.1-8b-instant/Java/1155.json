@@ -1,0 +1,15 @@
+{
+  "id": 1155,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        int MOD = 1000000007;\n        int[][] dp = new int[n + 1][target + 1];\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= target; j++) {\n                for (int x = 1; x <= Math.min(j, k); x++) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - x]) % MOD;\n                }\n            }\n        }\n        return dp[n][target];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * target * k)\nspace complexity: O(n * target)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        int MOD = 1000000007;\n        int[][] dp = new int[n + 1][target + 1];\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= target; j++) {\n                for (int x = 1; x <= Math.min(j, k); x++) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - x]) % MOD;\n                }\n            }\n        }\n        return dp[n][target];\n    }\n}",
+  "timestamp": "2025-08-05T14:25:07.294950",
+  "code_extracted_previous": "class Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        int MOD = 1000000007;\n        int[][] dp = new int[n + 1][target + 1];\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= target; j++) {\n                for (int x = 1; x <= Math.min(j, k); x++) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - x]) % MOD;\n                }\n            }\n        }\n        return dp[n][target];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.897955"
+}

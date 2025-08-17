@@ -1,0 +1,15 @@
+{
+  "id": 1553,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int minDays(int n) {\n        return dfs(n, new HashMap<>());\n    }\n    \n    private int dfs(int n, Map<Integer, Integer> memo) {\n        if (n <= 1) return 1;\n        if (memo.containsKey(n)) return memo.get(n);\n        \n        int res = 1 + dfs(n - 1, memo);\n        if (n % 2 == 0) res = Math.min(res, 1 + dfs(n / 2, memo));\n        if (n % 3 == 0) res = Math.min(res, 1 + dfs(n - 2 * (n / 3), memo));\n        \n        memo.put(n, res);\n        return res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Utilizes depth-first search with memoization to efficiently explore possible eating sequences and minimize the number of days required to eat all oranges.",
+  "code": "class Solution {\n    public int minDays(int n) {\n        return dfs(n, new HashMap<>());\n    }\n    \n    private int dfs(int n, Map<Integer, Integer> memo) {\n        if (n <= 1) return 1;\n        if (memo.containsKey(n)) return memo.get(n);\n        \n        int res = 1 + dfs(n - 1, memo);\n        if (n % 2 == 0) res = Math.min(res, 1 + dfs(n / 2, memo));\n        if (n % 3 == 0) res = Math.min(res, 1 + dfs(n - 2 * (n / 3), memo));\n        \n        memo.put(n, res);\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T15:13:13.716244",
+  "code_extracted_previous": "class Solution {\n    public int minDays(int n) {\n        return dfs(n, new HashMap<>());\n    }\n    \n    private int dfs(int n, Map<Integer, Integer> memo) {\n        if (n <= 1) return 1;\n        if (memo.containsKey(n)) return memo.get(n);\n        \n        int res = 1 + dfs(n - 1, memo);\n        if (n % 2 == 0) res = Math.min(res, 1 + dfs(n / 2, memo));\n        if (n % 3 == 0) res = Math.min(res, 1 + dfs(n - 2 * (n / 3), memo));\n        \n        memo.put(n, res);\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.533692"
+}

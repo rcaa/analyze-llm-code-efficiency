@@ -1,0 +1,15 @@
+{
+  "id": 3129,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0] * (limit + 1) for _ in range(limit + 1)]\n        dp[0][0] = 1\n        for i in range(1, limit + 1):\n            dp[i][0] = dp[i - 1][0] * (i - 1) % MOD\n            dp[i][i] = dp[i - 1][i - 1] * (i - 1) % MOD\n            for j in range(1, i):\n                dp[i][j] = (dp[i - 1][j - 1] * (i - j) % MOD + dp[i - 1][j] * (j) % MOD) % MOD\n        return (dp[limit][zero] * dp[limit][one]) % MOD\n```\n\nefficiency: HIGH\n\ntime complexity: O(limit^2)\n\nspace complexity: O(limit^2)\n\nenergy implications: LOW\n\nexplanation: This problem can be solved using dynamic programming. We create a 2D array dp where dp[i][j] represents the number of ways to create a stable binary array of length i with j 0's. We fill up the dp array in a bottom-up manner, and finally return the product of dp[limit][zero] and dp[limit][one] modulo 10^9 + 7.",
+  "code": "class Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0] * (limit + 1) for _ in range(limit + 1)]\n        dp[0][0] = 1\n        for i in range(1, limit + 1):\n            dp[i][0] = dp[i - 1][0] * (i - 1) % MOD\n            dp[i][i] = dp[i - 1][i - 1] * (i - 1) % MOD\n            for j in range(1, i):\n                dp[i][j] = (dp[i - 1][j - 1] * (i - j) % MOD + dp[i - 1][j] * (j) % MOD) % MOD\n        return (dp[limit][zero] * dp[limit][one]) % MOD",
+  "timestamp": "2025-08-05T14:29:26.332654",
+  "code_extracted_previous": "class Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0] * (limit + 1) for _ in range(limit + 1)]\n        dp[0][0] = 1\n        for i in range(1, limit + 1):\n            dp[i][0] = dp[i - 1][0] * (i - 1) % MOD\n            dp[i][i] = dp[i - 1][i - 1] * (i - 1) % MOD\n            for j in range(1, i):\n                dp[i][j] = (dp[i - 1][j - 1] * (i - j) % MOD + dp[i - 1][j] * (j) % MOD) % MOD\n        return (dp[limit][zero] * dp[limit][one]) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.071270"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        i = 0\n        for bus in buses:\n            count = capacity\n            while count > 0 and i < len(passengers) and passengers[i] <= bus:\n                count -= 1\n                i += 1\n        latest = buses[-1] if count > 0 else passengers[i - 1]\n        while i > 0 and passengers[i - 1] == latest:\n            i -= 1\n            latest -= 1\n        return latest\n```\nefficiency: HIGH\ntime complexity: O(N log N + M log M)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The main approach involves sorting the buses and passengers arrays, then iterating through the buses to simulate the boarding process. The key strength lies in efficiently utilizing the sorted arrays to track the latest possible arrival time.",
+  "code": "def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        i = 0\n        for bus in buses:\n            count = capacity\n            while count > 0 and i < len(passengers) and passengers[i] <= bus:\n                count -= 1\n                i += 1\n        latest = buses[-1] if count > 0 else passengers[i - 1]\n        while i > 0 and passengers[i - 1] == latest:\n            i -= 1\n            latest -= 1\n        return latest\n```",
+  "timestamp": "2025-08-05T13:28:00.400711",
+  "code_extracted_previous": "class Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        i = 0\n        for bus in buses:\n            count = capacity\n            while count > 0 and i < len(passengers) and passengers[i] <= bus:\n                count -= 1\n                i += 1\n        latest = buses[-1] if count > 0 else passengers[i - 1]\n        while i > 0 and passengers[i - 1] == latest:\n            i -= 1\n            latest -= 1\n        return latest",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.863938"
+}

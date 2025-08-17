@@ -1,0 +1,15 @@
+{
+  "id": 2287,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int rearrangeCharacters(string s, string target) {\n        vector<int> cnt(26, 0), tgt(26, 0);\n        for (char c : s) cnt[c - 'a']++;\n        for (char c : target) tgt[c - 'a']++;\n        int res = INT_MAX;\n        for (int i = 0; i < 26; i++) {\n            if (tgt[i] > 0) res = min(res, cnt[i] / tgt[i]);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count the frequency of each character in both strings, then find the minimum number of copies that can be formed by dividing the count of each character in s by the count in target.",
+  "code": "class Solution {\npublic:\n    int rearrangeCharacters(string s, string target) {\n        vector<int> cnt(26, 0), tgt(26, 0);\n        for (char c : s) cnt[c - 'a']++;\n        for (char c : target) tgt[c - 'a']++;\n        int res = INT_MAX;\n        for (int i = 0; i < 26; i++) {\n            if (tgt[i] > 0) res = min(res, cnt[i] / tgt[i]);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:44:55.335596",
+  "code_extracted_previous": "public:\n    int rearrangeCharacters(string s, string target) {\n        vector<int> cnt(26, 0), tgt(26, 0);\n        for (char c : s) cnt[c - 'a']++;\n        for (char c : target) tgt[c - 'a']++;\n        int res = INT_MAX;\n        for (int i = 0; i < 26; i++) {\n            if (tgt[i] > 0) res = min(res, cnt[i] / tgt[i]);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.475844"
+}

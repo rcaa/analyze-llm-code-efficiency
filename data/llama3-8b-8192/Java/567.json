@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        if (s1.length() > s2.length()) return false;\n        int[] s1Count = new int[26];\n        int[] s2Count = new int[26];\n        for (int i = 0; i < s1.length(); i++) {\n            s1Count[s1.charAt(i) - 'a']++;\n            s2Count[s2.charAt(i) - 'a']++;\n        }\n        for (int i = s1.length(); i < s2.length(); i++) {\n            if (Arrays.equals(s1Count, s2Count)) return true;\n            s2Count[s2.charAt(i) - 'a']++;\n            s2Count[s2.charAt(i - s1.length()) - 'a']--;\n        }\n        return Arrays.equals(s1Count, s2Count);\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses two arrays to count the frequency of characters in s1 and s2. It then slides a window of size s1.length() over s2, updating the counts and checking if the counts match. This approach has a high efficiency due to the use of arrays and the constant time complexity of the sliding window operation.",
+  "code": "class Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        if (s1.length() > s2.length()) return false;\n        int[] s1Count = new int[26];\n        int[] s2Count = new int[26];\n        for (int i = 0; i < s1.length(); i++) {\n            s1Count[s1.charAt(i) - 'a']++;\n            s2Count[s2.charAt(i) - 'a']++;\n        }\n        for (int i = s1.length(); i < s2.length(); i++) {\n            if (Arrays.equals(s1Count, s2Count)) return true;\n            s2Count[s2.charAt(i) - 'a']++;\n            s2Count[s2.charAt(i - s1.length()) - 'a']--;\n        }\n        return Arrays.equals(s1Count, s2Count);\n    }\n}",
+  "timestamp": "2025-08-05T14:55:44.237489",
+  "code_extracted_previous": "public boolean checkInclusion(String s1, String s2) {\n        if (s1.length() > s2.length()) return false;\n        int[] s1Count = new int[26];\n        int[] s2Count = new int[26];\n        for (int i = 0; i < s1.length(); i++) {\n            s1Count[s1.charAt(i) - 'a']++;\n            s2Count[s2.charAt(i) - 'a']++;\n        }\n        for (int i = s1.length(); i < s2.length(); i++) {\n            if (Arrays.equals(s1Count, s2Count)) return true;\n            s2Count[s2.charAt(i) - 'a']++;\n            s2Count[s2.charAt(i - s1.length()) - 'a']--;\n        }\n        return Arrays.equals(s1Count, s2Count);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.885152"
+}

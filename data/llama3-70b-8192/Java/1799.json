@@ -1,0 +1,15 @@
+{
+  "id": 1799,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int maxScore(int[] nums) {\n        Arrays.sort(nums);\n        int res = 0;\n        for (int i = nums.length - 1; i >= nums.length / 2; i--) {\n            res += i * gcd(nums[i], nums[nums.length - i - 1]);\n        }\n        return res;\n    }\n\n    private int gcd(int x, int y) {\n        if (y == 0) return x;\n        return gcd(y, x % y);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sort the array in descending order, then pair the largest numbers with the smallest numbers to maximize the score.",
+  "code": "class Solution {\n    public int maxScore(int[] nums) {\n        Arrays.sort(nums);\n        int res = 0;\n        for (int i = nums.length - 1; i >= nums.length / 2; i--) {\n            res += i * gcd(nums[i], nums[nums.length - i - 1]);\n        }\n        return res;\n    }\n\n    private int gcd(int x, int y) {\n        if (y == 0) return x;\n        return gcd(y, x % y);\n    }\n}",
+  "timestamp": "2025-08-05T11:54:05.494939",
+  "code_extracted_previous": "class Solution {\n    public int maxScore(int[] nums) {\n        Arrays.sort(nums);\n        int res = 0;\n        for (int i = nums.length - 1; i >= nums.length / 2; i--) {\n            res += i * gcd(nums[i], nums[nums.length - i - 1]);\n        }\n        return res;\n    }\n\n    private int gcd(int x, int y) {\n        if (y == 0) return x;\n        return gcd(y, x % y);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.636999"
+}

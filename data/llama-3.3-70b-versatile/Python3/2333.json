@@ -1,0 +1,15 @@
+{
+  "id": 2333,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        differences = [abs(a - b) for a, b in zip(nums1, nums2)]\n        differences.sort(reverse=True)\n        \n        for i in range(len(differences)):\n            if k1 + k2 == 0:\n                break\n            if differences[i] <= 1:\n                break\n            decrease = min(k1 + k2, differences[i] - 1)\n            k1_used = min(decrease, k1)\n            k2_used = decrease - k1_used\n            k1 -= k1_used\n            k2 -= k2_used\n            differences[i] -= decrease\n        \n        return sum([diff ** 2 for diff in differences])\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution sorts the absolute differences between corresponding elements in the input arrays in descending order and then iteratively decreases the largest differences using the available modifications, resulting in the minimum sum of squared differences.",
+  "code": "def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        differences = [abs(a - b) for a, b in zip(nums1, nums2)]\n        differences.sort(reverse=True)\n        \n        for i in range(len(differences)):\n            if k1 + k2 == 0:\n                break\n            if differences[i] <= 1:\n                break\n            decrease = min(k1 + k2, differences[i] - 1)\n            k1_used = min(decrease, k1)\n            k2_used = decrease - k1_used\n            k1 -= k1_used\n            k2 -= k2_used\n            differences[i] -= decrease\n        \n        return sum([diff ** 2 for diff in differences])\n```",
+  "timestamp": "2025-08-06T15:18:32.492665",
+  "code_extracted_previous": "class Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        differences = [abs(a - b) for a, b in zip(nums1, nums2)]\n        differences.sort(reverse=True)\n        \n        for i in range(len(differences)):\n            if k1 + k2 == 0:\n                break\n            if differences[i] <= 1:\n                break\n            decrease = min(k1 + k2, differences[i] - 1)\n            k1_used = min(decrease, k1)\n            k2_used = decrease - k1_used\n            k1 -= k1_used\n            k2 -= k2_used\n            differences[i] -= decrease\n        \n        return sum([diff ** 2 for diff in differences])",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.190346"
+}

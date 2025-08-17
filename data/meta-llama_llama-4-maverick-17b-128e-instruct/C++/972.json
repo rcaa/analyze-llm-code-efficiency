@@ -1,0 +1,15 @@
+{
+  "id": 972,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool isRationalEqual(string s, string t) {\n        return normalize(s) == normalize(t);\n    }\n\n    double normalize(string s) {\n        size_t pos = s.find('(');\n        if (pos != string::npos) {\n            string base = s.substr(0, pos);\n            string rep = s.substr(pos + 1, s.size() - pos - 2);\n            return stod(base + repeat(rep, 20));\n        } else {\n            return stod(s);\n        }\n    }\n\n    string repeat(string s, int n) {\n        string res;\n        for (int i = 0; i < n; ++i) {\n            res += s;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N + M)\nspace complexity: O(N + M)\nenergy implications: LOW\nexplanation: The solution normalizes the input strings by expanding the repeating part and then comparing the resulting numbers. It uses the `stod` function to convert the normalized strings to doubles, allowing for accurate comparison. The `normalize` function handles the parsing of the input strings, and the `repeat` function generates the repeated part.",
+  "code": "class Solution {\npublic:\n    bool isRationalEqual(string s, string t) {\n        return normalize(s) == normalize(t);\n    }\n\n    double normalize(string s) {\n        size_t pos = s.find('(');\n        if (pos != string::npos) {\n            string base = s.substr(0, pos);\n            string rep = s.substr(pos + 1, s.size() - pos - 2);\n            return stod(base + repeat(rep, 20));\n        } else {\n            return stod(s);\n        }\n    }\n\n    string repeat(string s, int n) {\n        string res;\n        for (int i = 0; i < n; ++i) {\n            res += s;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:19:37.326381",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool isRationalEqual(string s, string t) {\n        return normalize(s) == normalize(t);\n    }\n\n    double normalize(string s) {\n        size_t pos = s.find('(');\n        if (pos != string::npos) {\n            string base = s.substr(0, pos);\n            string rep = s.substr(pos + 1, s.size() - pos - 2);\n            return stod(base + repeat(rep, 20));\n        } else {\n            return stod(s);\n        }\n    }\n\n    string repeat(string s, int n) {\n        string res;\n        for (int i = 0; i < n; ++i) {\n            res += s;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.953977"
+}

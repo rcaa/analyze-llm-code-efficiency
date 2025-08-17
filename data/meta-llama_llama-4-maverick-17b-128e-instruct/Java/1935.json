@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        boolean[] broken = new boolean[26];\n        for (char c : brokenLetters.toCharArray()) {\n            broken[c - 'a'] = true;\n        }\n        int count = 0;\n        for (String word : text.split(\" \")) {\n            boolean valid = true;\n            for (char c : word.toCharArray()) {\n                if (broken[c - 'a']) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) {\n                count++;\n            }\n        }\n        return count;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the broken letters and the words in the text once, using a boolean array to mark broken letters and checking each word against this array, resulting in a linear time complexity. The space used is constant as it is limited by the size of the alphabet. \n```",
+  "code": "class Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        boolean[] broken = new boolean[26];\n        for (char c : brokenLetters.toCharArray()) {\n            broken[c - 'a'] = true;\n        }\n        int count = 0;\n        for (String word : text.split(\" \")) {\n            boolean valid = true;\n            for (char c : word.toCharArray()) {\n                if (broken[c - 'a']) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) {\n                count++;\n            }\n        }\n        return count;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the broken letters and the words in the text once, using a boolean array to mark broken letters and checking each word against this array, resulting in a linear time complexity. The space used is constant as it is limited by the size of the alphabet.",
+  "timestamp": "2025-08-05T14:43:51.340950",
+  "code_extracted_previous": "class Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        boolean[] broken = new boolean[26];\n        for (char c : brokenLetters.toCharArray()) {\n            broken[c - 'a'] = true;\n        }\n        int count = 0;\n        for (String word : text.split(\" \")) {\n            boolean valid = true;\n            for (char c : word.toCharArray()) {\n                if (broken[c - 'a']) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) {\n                count++;\n            }\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.376020"
+}

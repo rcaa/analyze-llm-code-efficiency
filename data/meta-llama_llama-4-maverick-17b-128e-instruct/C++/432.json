@@ -1,0 +1,15 @@
+{
+  "id": 432,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass AllOne {\npublic:\n    AllOne() {\n        maxCount = 0;\n        minCount = 0;\n    }\n    \n    void inc(string key) {\n        if (keyCount.find(key) == keyCount.end()) {\n            keyCount[key] = 1;\n            countKeys[1].insert(key);\n            if (minCount == 0 || minCount > 1) {\n                minCount = 1;\n            }\n        } else {\n            int count = keyCount[key];\n            countKeys[count].erase(key);\n            if (countKeys[count].empty() && count == minCount) {\n                minCount++;\n            }\n            keyCount[key]++;\n            countKeys[count + 1].insert(key);\n            if (count + 1 > maxCount) {\n                maxCount = count + 1;\n            }\n        }\n    }\n    \n    void dec(string key) {\n        int count = keyCount[key];\n        countKeys[count].erase(key);\n        if (count == maxCount && countKeys[count].empty()) {\n            maxCount--;\n        }\n        keyCount[key]--;\n        if (keyCount[key] == 0) {\n            keyCount.erase(key);\n        } else {\n            countKeys[count - 1].insert(key);\n            if (count == minCount) {\n                minCount--;\n            }\n        }\n        if (countKeys[minCount].empty()) {\n            minCount++;\n        }\n    }\n    \n    string getMaxKey() {\n        if (maxCount == 0) {\n            return \"\";\n        }\n        return *countKeys[maxCount].begin();\n    }\n    \n    string getMinKey() {\n        if (minCount == 0) {\n            return \"\";\n        }\n        return *countKeys[minCount].begin();\n    }\n\nprivate:\n    unordered_map<string, int> keyCount;\n    unordered_map<int, unordered_set<string>> countKeys;\n    int maxCount;\n    int minCount;\n};\n/**\n * Your AllOne object will be instantiated and called as such:\n * AllOne* obj = new AllOne();\n * obj->inc(key);\n * obj->dec(key);\n * string param_3 = obj->getMaxKey();\n * string param_4 = obj->getMinKey();\n */\nsolution: The provided C++ code implements the AllOne class.\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution utilizes two unordered maps to store the count of each key and the keys for each count. It maintains the maximum and minimum counts, allowing for efficient retrieval of the keys with the maximum and minimum counts. The inc and dec operations update the counts and the corresponding data structures, ensuring that the maximum and minimum counts are always up-to-date.",
+  "code": "The provided C++ code implements the AllOne class.",
+  "timestamp": "2025-08-05T14:33:30.142022",
+  "code_extracted_previous": "The provided C++ code implements the AllOne class.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:45.634613"
+}

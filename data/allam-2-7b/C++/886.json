@@ -1,0 +1,15 @@
+{
+  "id": 886,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    bool possibleBipartition(int n, vector<vector<int>>& dislikes) {\n        vector<int> graph(n, 0);\n        for (auto dislike : dislikes) {\n            graph[dislike[0]] = graph[dislike[1]] = 1;\n        }\n        return bipartiteGraph(graph, n);\n    }\n\n    bool bipartiteGraph(vector<int>& graph, int n) {\n        vector<int> oddVertices(n);\n        for (int i = 0; i < n; i++) {\n            if (graph[i] == 0) {\n                oddVertices[i] = 1;\n            }\n        }\n        for (int i = 0; i < n; i++) {\n            if (oddVertices[i]) {\n                return false;\n            }\n        }\n        return true;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\n1. Create a graph to represent the dislikes between people.\n2. Iterate through the graph to mark odd vertices (those who have an odd degree).\n3. If any odd vertex is found, return false, as it means there is no bipartite graph.\n4. If all vertices are even, return true, indicating that a bipartite graph exists.\n\nThis solution has a time complexity of O(n) and space complexity of O(n), where n is the number of people. The energy implications are low as it only requires a small amount of energy to solve the problem. ",
+  "code": "class Solution {\npublic:\n    bool possibleBipartition(int n, vector<vector<int>>& dislikes) {\n        vector<int> graph(n, 0);\n        for (auto dislike : dislikes) {\n            graph[dislike[0]] = graph[dislike[1]] = 1;\n        }\n        return bipartiteGraph(graph, n);\n    }\n\n    bool bipartiteGraph(vector<int>& graph, int n) {\n        vector<int> oddVertices(n);\n        for (int i = 0; i < n; i++) {\n            if (graph[i] == 0) {\n                oddVertices[i] = 1;\n            }\n        }\n        for (int i = 0; i < n; i++) {\n            if (oddVertices[i]) {\n                return false;\n            }\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-05T14:01:10.272051",
+  "code_extracted_previous": "public:\n    bool possibleBipartition(int n, vector<vector<int>>& dislikes) {\n        vector<int> graph(n, 0);\n        for (auto dislike : dislikes) {\n            graph[dislike[0]] = graph[dislike[1]] = 1;\n        }\n        return bipartiteGraph(graph, n);\n    }\n\n    bool bipartiteGraph(vector<int>& graph, int n) {\n        vector<int> oddVertices(n);\n        for (int i = 0; i < n; i++) {\n            if (graph[i] == 0) {\n                oddVertices[i] = 1;\n            }\n        }\n        for (int i = 0; i < n; i++) {\n            if (oddVertices[i]) {\n                return false;\n            }\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.287631"
+}

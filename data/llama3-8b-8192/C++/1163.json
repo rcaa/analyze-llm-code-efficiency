@@ -1,0 +1,15 @@
+{
+  "id": 1163,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    string lastSubstring(string s) {\n        int maxIndex = 0, maxEnd = 0;\n        for (int i = 1; i < s.size(); i++) {\n            int j = maxEnd;\n            while (j >= 0 && s[i] > s[j]) j--;\n            if (i > j) {\n                maxIndex = i;\n                maxEnd = i;\n            } else {\n                maxEnd = i;\n            }\n        }\n        return s.substr(maxIndex, s.size() - maxIndex);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer approach to find the last substring in lexicographical order. It maintains the maximum ending index and the maximum substring ending index. It iterates through the string, updating these indices as it finds larger substrings. Finally, it returns the substring starting from the maximum starting index to the end of the string.",
+  "code": "class Solution {\npublic:\n    string lastSubstring(string s) {\n        int maxIndex = 0, maxEnd = 0;\n        for (int i = 1; i < s.size(); i++) {\n            int j = maxEnd;\n            while (j >= 0 && s[i] > s[j]) j--;\n            if (i > j) {\n                maxIndex = i;\n                maxEnd = i;\n            } else {\n                maxEnd = i;\n            }\n        }\n        return s.substr(maxIndex, s.size() - maxIndex);\n    }\n};",
+  "timestamp": "2025-08-06T01:15:08.207024",
+  "code_extracted_previous": "class Solution {\npublic:\n    string lastSubstring(string s) {\n        int maxIndex = 0, maxEnd = 0;\n        for (int i = 1; i < s.size(); i++) {\n            int j = maxEnd;\n            while (j >= 0 && s[i] > s[j]) j--;\n            if (i > j) {\n                maxIndex = i;\n                maxEnd = i;\n            } else {\n                maxEnd = i;\n            }\n        }\n        return s.substr(maxIndex, s.size() - maxIndex);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.420147"
+}

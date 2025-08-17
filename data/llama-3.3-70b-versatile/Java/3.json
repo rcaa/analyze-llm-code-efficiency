@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int left = 0, maxLength = 0;\n        int[] charIndex = new int[128];\n        for (int right = 0; right < s.length(); right++) {\n            if (charIndex[s.charAt(right)] > left) {\n                left = charIndex[s.charAt(right)];\n            }\n            charIndex[s.charAt(right)] = right + 1;\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        return maxLength;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a sliding window approach with a character index array to track the last seen index of each character, allowing for efficient calculation of the longest substring without duplicates.",
+  "code": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int left = 0, maxLength = 0;\n        int[] charIndex = new int[128];\n        for (int right = 0; right < s.length(); right++) {\n            if (charIndex[s.charAt(right)] > left) {\n                left = charIndex[s.charAt(right)];\n            }\n            charIndex[s.charAt(right)] = right + 1;\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        return maxLength;\n    }\n}",
+  "timestamp": "2025-08-06T15:14:28.356310",
+  "code_extracted_previous": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int left = 0, maxLength = 0;\n        int[] charIndex = new int[128];\n        for (int right = 0; right < s.length(); right++) {\n            if (charIndex[s.charAt(right)] > left) {\n                left = charIndex[s.charAt(right)];\n            }\n            charIndex[s.charAt(right)] = right + 1;\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        return maxLength;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.076086"
+}

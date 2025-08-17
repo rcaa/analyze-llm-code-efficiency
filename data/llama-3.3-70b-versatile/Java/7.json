@@ -1,0 +1,15 @@
+{
+  "id": 7,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int reverse(int x) {\n        int sign = x < 0 ? -1 : 1;\n        x *= sign;\n        int res = 0;\n        while (x > 0) {\n            int digit = x % 10;\n            x /= 10;\n            if (res > (Integer.MAX_VALUE - digit) / 10) {\n                return 0;\n            }\n            res = res * 10 + digit;\n        }\n        return res * sign;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log|x|)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through each digit of the input number, appending it to the result while checking for potential overflow, thus efficiently reversing the integer within the 32-bit signed integer range.",
+  "code": "class Solution {\n    public int reverse(int x) {\n        int sign = x < 0 ? -1 : 1;\n        x *= sign;\n        int res = 0;\n        while (x > 0) {\n            int digit = x % 10;\n            x /= 10;\n            if (res > (Integer.MAX_VALUE - digit) / 10) {\n                return 0;\n            }\n            res = res * 10 + digit;\n        }\n        return res * sign;\n    }\n}",
+  "timestamp": "2025-08-06T15:16:01.805340",
+  "code_extracted_previous": "class Solution {\n    public int reverse(int x) {\n        int sign = x < 0 ? -1 : 1;\n        x *= sign;\n        int res = 0;\n        while (x > 0) {\n            int digit = x % 10;\n            x /= 10;\n            if (res > (Integer.MAX_VALUE - digit) / 10) {\n                return 0;\n            }\n            res = res * 10 + digit;\n        }\n        return res * sign;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.413185"
+}

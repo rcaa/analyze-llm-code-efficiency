@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        count[val]++;\n        freq[ count[val] ].push(val);\n        max_freq = max(max_freq, count[val]);\n    }\n    \n    int pop() {\n        int val = freq[max_freq].back();\n        freq[max_freq].pop_back();\n        count[val]--;\n        if (freq[max_freq].empty()) max_freq--;\n        return val;\n    }\nprivate:\n    unordered_map<int, int> count;\n    unordered_map<int, stack<int>> freq;\n    int max_freq = 0;\n};\n\n/**\n * Your FreqStack object will be instantiated and called as such:\n * FreqStack* obj = new FreqStack();\n * obj->push(val);\n * int param_2 = obj->pop();\n */\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The provided solution utilizes an unordered_map to track the frequency of elements and another unordered_map to store the elements in a stack based on their frequency. This allows for efficient push and pop operations with a time complexity of O(1). The space complexity is O(N) where N is the number of elements pushed onto the stack.",
+  "code": "class FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        count[val]++;\n        freq[ count[val] ].push(val);\n        max_freq = max(max_freq, count[val]);\n    }\n    \n    int pop() {\n        int val = freq[max_freq].back();\n        freq[max_freq].pop_back();\n        count[val]--;\n        if (freq[max_freq].empty()) max_freq--;\n        return val;\n    }\nprivate:\n    unordered_map<int, int> count;\n    unordered_map<int, stack<int>> freq;\n    int max_freq = 0;\n};\n\n/**\n * Your FreqStack object will be instantiated and called as such:\n * FreqStack* obj = new FreqStack();\n * obj->push(val);\n * int param_2 = obj->pop();\n */",
+  "timestamp": "2025-08-05T14:38:00.031233",
+  "code_extracted_previous": "class FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        count[val]++;\n        freq[ count[val] ].push(val);\n        max_freq = max(max_freq, count[val]);\n    }\n    \n    int pop() {\n        int val = freq[max_freq].back();\n        freq[max_freq].pop_back();\n        count[val]--;\n        if (freq[max_freq].empty()) max_freq--;\n        return val;\n    }\nprivate:\n    unordered_map<int, int> count;\n    unordered_map<int, stack<int>> freq;\n    int max_freq = 0;\n};\n\n/**\n * Your FreqStack object will be instantiated and called as such:\n * FreqStack* obj = new FreqStack();\n * obj->push(val);\n * int param_2 = obj->pop();\n */",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:50.030384"
+}

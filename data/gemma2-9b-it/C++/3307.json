@@ -1,0 +1,15 @@
+{
+  "id": 3307,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        string word = \"a\";\n        for (int operation : operations) {\n            if (operation == 0) {\n                word += word;\n            } else {\n                string newWord = \"\";\n                for (char c : word) {\n                    newWord += char((c - 'a' + 1) % 26 + 'a');\n                }\n                word += newWord;\n            }\n        }\n        return word[k - 1];\n    }\n};\n```\n\nsolution: \n```c++\nclass Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        string word = \"a\";\n        for (int operation : operations) {\n            if (operation == 0) {\n                word += word;\n            } else {\n                string newWord = \"\";\n                for (char c : word) {\n                    newWord += char((c - 'a' + 1) % 26 + 'a');\n                }\n                word += newWord;\n            }\n        }\n        return word[k - 1];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N*M) where N is the number of operations and M is the length of the resulting string.\nspace complexity: O(N*M) to store the intermediate strings.\nenergy implications: LOW \nexplanation: The solution iterates through the operations, performing the corresponding string manipulation. It builds the final string character by character and returns the k-th character. The time complexity is dominated by the string concatenation operations, which scale linearly with the length of the resulting string. The space complexity is also linear due to the storage of intermediate strings. \n\n\n\n",
+  "code": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        string word = \"a\";\n        for (int operation : operations) {\n            if (operation == 0) {\n                word += word;\n            } else {\n                string newWord = \"\";\n                for (char c : word) {\n                    newWord += char((c - 'a' + 1) % 26 + 'a');\n                }\n                word += newWord;\n            }\n        }\n        return word[k - 1];\n    }\n};",
+  "timestamp": "2025-08-05T20:46:30.931188",
+  "code_extracted_previous": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        string word = \"a\";\n        for (int operation : operations) {\n            if (operation == 0) {\n                word += word;\n            } else {\n                string newWord = \"\";\n                for (char c : word) {\n                    newWord += char((c - 'a' + 1) % 26 + 'a');\n                }\n                word += newWord;\n            }\n        }\n        return word[k - 1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.797634"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\nclass Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int num = 0;\n            for (int j = i; j < n; j++) {\n                num = num * 2 + (s.charAt(j) - '0');\n                if (num > k) break;\n                res = Math.max(res, j - i + 1);\n            }\n        }\n        return res;\n    }\n}\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer technique to generate all possible subsequences of the given binary string. It iterates over the string and for each position, it generates all possible subsequences starting from that position. It keeps track of the maximum length of the subsequences that make up a binary number less than or equal to k.",
+  "code": "class Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int num = 0;\n            for (int j = i; j < n; j++) {\n                num = num * 2 + (s.charAt(j) - '0');\n                if (num > k) break;\n                res = Math.max(res, j - i + 1);\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T00:59:13.172980",
+  "code_extracted_previous": "class Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int num = 0;\n            for (int j = i; j < n; j++) {\n                num = num * 2 + (s.charAt(j) - '0');\n                if (num > k) break;\n                res = Math.max(res, j - i + 1);\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.337735"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3337,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int lengthAfterTransformations(string s, int t, vector<int>& nums) {\n        vector<int> cycleLengths(26, 0);\n        for (int i = 0; i < 26; ++i) {\n            int nextChar = i;\n            for (int j = 0; j < 26; ++j) {\n                nextChar = (nextChar + nums[i]) % 26;\n            }\n            cycleLengths[i] = (nextChar - i + 26) % 26;\n            if (cycleLengths[i] == 0) cycleLengths[i] = 26;\n        }\n\n        int length = 0;\n        for (char c : s) {\n            length = (length + cycleLengths[c - 'a']) % (1e9 + 7);\n        }\n\n        return (int)((long long)length * t % (1e9 + 7));\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution calculates the cycle length for each character and then uses this to efficiently compute the final length after t transformations.",
+  "code": "class Solution {\npublic:\n    int lengthAfterTransformations(string s, int t, vector<int>& nums) {\n        vector<int> cycleLengths(26, 0);\n        for (int i = 0; i < 26; ++i) {\n            int nextChar = i;\n            for (int j = 0; j < 26; ++j) {\n                nextChar = (nextChar + nums[i]) % 26;\n            }\n            cycleLengths[i] = (nextChar - i + 26) % 26;\n            if (cycleLengths[i] == 0) cycleLengths[i] = 26;\n        }\n\n        int length = 0;\n        for (char c : s) {\n            length = (length + cycleLengths[c - 'a']) % (1e9 + 7);\n        }\n\n        return (int)((long long)length * t % (1e9 + 7));\n    }\n};",
+  "timestamp": "2025-08-05T14:41:14.532962",
+  "code_extracted_previous": "class Solution {\npublic:\n    int lengthAfterTransformations(string s, int t, vector<int>& nums) {\n        vector<int> cycleLengths(26, 0);\n        for (int i = 0; i < 26; ++i) {\n            int nextChar = i;\n            for (int j = 0; j < 26; ++j) {\n                nextChar = (nextChar + nums[i]) % 26;\n            }\n            cycleLengths[i] = (nextChar - i + 26) % 26;\n            if (cycleLengths[i] == 0) cycleLengths[i] = 26;\n        }\n\n        int length = 0;\n        for (char c : s) {\n            length = (length + cycleLengths[c - 'a']) % (1e9 + 7);\n        }\n\n        return (int)((long long)length * t % (1e9 + 7));\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.499277"
+}

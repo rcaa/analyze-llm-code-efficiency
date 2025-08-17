@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        return dfs(x, target, 0);\n    }\n    private int dfs(int x, int target, int k) {\n        if (x == target) return 0;\n        if (target == 0) return 0;\n        if (target == 1) return k == 0 ? 2 : k;\n        long p = 1;\n        int cnt = 0;\n        while (p * x < target) {\n            p *= x;\n            cnt++;\n        }\n        if (p == target) return cnt;\n        int res = Integer.MAX_VALUE;\n        if (p * x - target < target) {\n            res = Math.min(res, dfs(x, (int)(p * x - target), k + cnt + 1) + cnt + 1);\n        }\n        res = Math.min(res, dfs(x, (int)(target - p), k) + cnt);\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log_x(target))\nspace complexity: O(log_x(target))\nenergy implications: LOW\nexplanation: Greedy divide-and-conquer recursion that at each step chooses between using the largest power of x below target or the smallest power above, then recurses on the remainder. Memoization is omitted for brevity but can be added trivially.",
+  "code": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        return dfs(x, target, 0);\n    }\n    private int dfs(int x, int target, int k) {\n        if (x == target) return 0;\n        if (target == 0) return 0;\n        if (target == 1) return k == 0 ? 2 : k;\n        long p = 1;\n        int cnt = 0;\n        while (p * x < target) {\n            p *= x;\n            cnt++;\n        }\n        if (p == target) return cnt;\n        int res = Integer.MAX_VALUE;\n        if (p * x - target < target) {\n            res = Math.min(res, dfs(x, (int)(p * x - target), k + cnt + 1) + cnt + 1);\n        }\n        res = Math.min(res, dfs(x, (int)(target - p), k) + cnt);\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T02:32:27.762852",
+  "code_extracted_previous": "public int leastOpsExpressTarget(int x, int target) {\n        return dfs(x, target, 0);\n    }\n    private int dfs(int x, int target, int k) {\n        if (x == target) return 0;\n        if (target == 0) return 0;\n        if (target == 1) return k == 0 ? 2 : k;\n        long p = 1;\n        int cnt = 0;\n        while (p * x < target) {\n            p *= x;\n            cnt++;\n        }\n        if (p == target) return cnt;\n        int res = Integer.MAX_VALUE;\n        if (p * x - target < target) {\n            res = Math.min(res, dfs(x, (int)(p * x - target), k + cnt + 1) + cnt + 1);\n        }\n        res = Math.min(res, dfs(x, (int)(target - p), k) + cnt);\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.930652"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1143,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int longestCommonSubsequence(String text1, String text2) {\n        int[][] dp = new int[text1.length() + 1][text2.length() + 1];\n        \n        for (int i = 1; i <= text1.length(); i++) {\n            for (int j = 1; j <= text2.length(); j++) {\n                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {\n                    dp[i][j] = dp[i - 1][j - 1] + 1;\n                } else {\n                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n        return dp[text1.length()][text2.length()];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n*m)\nenergy implications: LOW\n\nExplanation:\nWe use a dynamic programming approach to solve the problem. We create a 2D array (dp) with dimensions (n+1)x(m+1), where n and m are the lengths of the strings text1 and text2, respectively. We iterate through the strings and update the dp array based on whether characters at the current positions match or not. The final result is stored in dp[text1.length()][text2.length()]. ",
+  "code": "class Solution {\n    public int longestCommonSubsequence(String text1, String text2) {\n        int[][] dp = new int[text1.length() + 1][text2.length() + 1];\n        \n        for (int i = 1; i <= text1.length(); i++) {\n            for (int j = 1; j <= text2.length(); j++) {\n                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {\n                    dp[i][j] = dp[i - 1][j - 1] + 1;\n                } else {\n                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n        return dp[text1.length()][text2.length()];\n    }\n}",
+  "timestamp": "2025-08-06T00:49:41.781048",
+  "code_extracted_previous": "class Solution {\n    public int longestCommonSubsequence(String text1, String text2) {\n        int[][] dp = new int[text1.length() + 1][text2.length() + 1];\n        \n        for (int i = 1; i <= text1.length(); i++) {\n            for (int j = 1; j <= text2.length(); j++) {\n                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {\n                    dp[i][j] = dp[i - 1][j - 1] + 1;\n                } else {\n                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n        return dp[text1.length()][text2.length()];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.440759"
+}

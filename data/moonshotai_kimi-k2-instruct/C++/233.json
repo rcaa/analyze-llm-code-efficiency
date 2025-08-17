@@ -1,0 +1,15 @@
+{
+  "id": 233,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int countDigitOne(int n) {\n        long long count = 0;\n        long long factor = 1;\n        while (factor <= n) {\n            long long lower = n % factor;\n            long long curr = (n / factor) % 10;\n            long long higher = n / (factor * 10);\n            if (curr == 0) {\n                count += higher * factor;\n            } else if (curr == 1) {\n                count += higher * factor + lower + 1;\n            } else {\n                count += (higher + 1) * factor;\n            }\n            factor *= 10;\n        }\n        return static_cast<int>(count);\n    }\n};\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate over each digit position, compute how many times digit 1 appears at that position by splitting the number into higher, current, and lower parts. Uses constant space and logarithmic time relative to the number of digits.",
+  "code": "class Solution {\npublic:\n    int countDigitOne(int n) {\n        long long count = 0;\n        long long factor = 1;\n        while (factor <= n) {\n            long long lower = n % factor;\n            long long curr = (n / factor) % 10;\n            long long higher = n / (factor * 10);\n            if (curr == 0) {\n                count += higher * factor;\n            } else if (curr == 1) {\n                count += higher * factor + lower + 1;\n            } else {\n                count += (higher + 1) * factor;\n            }\n            factor *= 10;\n        }\n        return static_cast<int>(count);\n    }\n};",
+  "timestamp": "2025-08-06T02:29:21.237830",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countDigitOne(int n) {\n        long long count = 0;\n        long long factor = 1;\n        while (factor <= n) {\n            long long lower = n % factor;\n            long long curr = (n / factor) % 10;\n            long long higher = n / (factor * 10);\n            if (curr == 0) {\n                count += higher * factor;\n            } else if (curr == 1) {\n                count += higher * factor + lower + 1;\n            } else {\n                count += (higher + 1) * factor;\n            }\n            factor *= 10;\n        }\n        return static_cast<int>(count);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.656123"
+}

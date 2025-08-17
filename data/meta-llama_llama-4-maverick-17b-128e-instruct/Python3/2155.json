@@ -1,0 +1,15 @@
+{
+  "id": 2155,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nfrom typing import List\n\nclass Solution:\n    def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        total_ones = sum(nums)\n        max_score = total_ones\n        current_score = total_ones\n        result = [0]\n        \n        zeros = 0\n        for i, num in enumerate(nums):\n            if num == 0:\n                zeros += 1\n            current_score = zeros + total_ones - (i + 1 - zeros)\n            if current_score > max_score:\n                max_score = current_score\n                result = [i + 1]\n            elif current_score == max_score:\n                result.append(i + 1)\n        \n        return result\n```\n\nefficiency: HIGH  \ntime complexity: O(N)  \nspace complexity: O(1)  \nenergy implications: LOW  \nexplanation: The solution iterates through the input list once, maintaining a running count of zeros and calculating the score at each index. It keeps track of the maximum score and the indices that achieve this score, updating them as necessary. This approach is efficient due to its linear time complexity.",
+  "code": "def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        total_ones = sum(nums)\n        max_score = total_ones\n        current_score = total_ones\n        result = [0]\n        \n        zeros = 0\n        for i, num in enumerate(nums):\n            if num == 0:\n                zeros += 1\n            current_score = zeros + total_ones - (i + 1 - zeros)\n            if current_score > max_score:\n                max_score = current_score\n                result = [i + 1]\n            elif current_score == max_score:\n                result.append(i + 1)\n        \n        return result\n```",
+  "timestamp": "2025-08-05T13:25:44.294297",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        total_ones = sum(nums)\n        max_score = total_ones\n        current_score = total_ones\n        result = [0]\n        \n        zeros = 0\n        for i, num in enumerate(nums):\n            if num == 0:\n                zeros += 1\n            current_score = zeros + total_ones - (i + 1 - zeros)\n            if current_score > max_score:\n                max_score = current_score\n                result = [i + 1]\n            elif current_score == max_score:\n                result.append(i + 1)\n        \n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.777438"
+}

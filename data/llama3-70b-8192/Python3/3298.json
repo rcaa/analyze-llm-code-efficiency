@@ -1,0 +1,15 @@
+{
+  "id": 3298,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def validSubstringCount(self, word1: str, word2: str) -> int:\n        count = 0\n        for i in range(len(word1)):\n            freq1 = {}\n            freq2 = {}\n            for j in range(i, len(word1)):\n                freq1[word1[j]] = freq1.get(word1[j], 0) + 1\n                for k in range(len(word2)):\n                    freq2[word2[k]] = freq2.get(word2[k], 0) + 1\n                if all(freq1.get(c, 0) >= freq2.get(c, 0) for c in freq2):\n                    count += 1\n        return count\n```\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to generate all possible substrings of word1 and checks if each substring can be rearranged to have word2 as a prefix by comparing their frequency counts.",
+  "code": "class Solution:\n    def validSubstringCount(self, word1: str, word2: str) -> int:\n        count = 0\n        for i in range(len(word1)):\n            freq1 = {}\n            freq2 = {}\n            for j in range(i, len(word1)):\n                freq1[word1[j]] = freq1.get(word1[j], 0) + 1\n                for k in range(len(word2)):\n                    freq2[word2[k]] = freq2.get(word2[k], 0) + 1\n                if all(freq1.get(c, 0) >= freq2.get(c, 0) for c in freq2):\n                    count += 1\n        return count",
+  "timestamp": "2025-08-05T14:40:28.077008",
+  "code_extracted_previous": "class Solution:\n    def validSubstringCount(self, word1: str, word2: str) -> int:\n        count = 0\n        for i in range(len(word1)):\n            freq1 = {}\n            freq2 = {}\n            for j in range(i, len(word1)):\n                freq1[word1[j]] = freq1.get(word1[j], 0) + 1\n                for k in range(len(word2)):\n                    freq2[word2[k]] = freq2.get(word2[k], 0) + 1\n                if all(freq1.get(c, 0) >= freq2.get(c, 0) for c in freq2):\n                    count += 1\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.667927"
+}

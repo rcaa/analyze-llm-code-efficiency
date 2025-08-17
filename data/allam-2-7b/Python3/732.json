@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```python\nclass MyCalendarThree:\n    def __init__(self):\n        self.prev_events = {}\n\n    def book(self, startTime: int, endTime: int) -> int:\n        if startTime in self.prev_events:\n            return self.prev_events[startTime]\n        self.prev_events[startTime] = len(self.prev_events)\n        for event in self.prev_events.values():\n            if startTime >= event:\n                return len(self.prev_events) - 1\n        return len(self.prev_events)\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nThe solution uses a dictionary to store the previous events and their durations. When a new event is added, it updates the dictionary with the current event's duration. When checking if a new event overlaps with the current event, it iterates through the dictionary's values and checks if the start time of the new event is greater than or equal to the start time of the current event. If there is an overlap, return the index of the previous event in the dictionary minus one. Otherwise, return the index of the previous event in the dictionary. This approach ensures that the algorithm efficiently handles overlapping events and maintains a constant time complexity (O(n)) and space complexity (O(n)). ",
+  "code": "class MyCalendarThree:\n    def __init__(self):\n        self.prev_events = {}\n\n    def book(self, startTime: int, endTime: int) -> int:\n        if startTime in self.prev_events:\n            return self.prev_events[startTime]\n        self.prev_events[startTime] = len(self.prev_events)\n        for event in self.prev_events.values():\n            if startTime >= event:\n                return len(self.prev_events) - 1\n        return len(self.prev_events)",
+  "timestamp": "2025-08-05T13:38:06.617128",
+  "code_extracted_previous": "class MyCalendarThree:\n    def __init__(self):\n        self.prev_events = {}\n\n    def book(self, startTime: int, endTime: int) -> int:\n        if startTime in self.prev_events:\n            return self.prev_events[startTime]\n        self.prev_events[startTime] = len(self.prev_events)\n        for event in self.prev_events.values():\n            if startTime >= event:\n                return len(self.prev_events) - 1\n        return len(self.prev_events)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:16.182401"
+}

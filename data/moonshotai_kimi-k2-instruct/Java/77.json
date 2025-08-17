@@ -1,0 +1,15 @@
+{
+  "id": 77,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public List<List<Integer>> combine(int n, int k) {\n        List<List<Integer>> res = new ArrayList<>();\n        backtrack(res, new ArrayList<>(), 1, n, k);\n        return res;\n    }\n    \n    private void backtrack(List<List<Integer>> res, List<Integer> cur, int start, int n, int k) {\n        if (k == 0) {\n            res.add(new ArrayList<>(cur));\n            return;\n        }\n        for (int i = start; i <= n - k + 1; i++) {\n            cur.add(i);\n            backtrack(res, cur, i + 1, n, k - 1);\n            cur.remove(cur.size() - 1);\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(C(n,k) * k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Uses backtracking with pruning to generate combinations in lexicographic order. The loop bound n-k+1 avoids unnecessary recursive calls, ensuring only valid combinations are built.",
+  "code": "class Solution {\n    public List<List<Integer>> combine(int n, int k) {\n        List<List<Integer>> res = new ArrayList<>();\n        backtrack(res, new ArrayList<>(), 1, n, k);\n        return res;\n    }\n    \n    private void backtrack(List<List<Integer>> res, List<Integer> cur, int start, int n, int k) {\n        if (k == 0) {\n            res.add(new ArrayList<>(cur));\n            return;\n        }\n        for (int i = start; i <= n - k + 1; i++) {\n            cur.add(i);\n            backtrack(res, cur, i + 1, n, k - 1);\n            cur.remove(cur.size() - 1);\n        }\n    }\n}",
+  "timestamp": "2025-08-05T13:35:52.261838",
+  "code_extracted_previous": "class Solution {\n    public List<List<Integer>> combine(int n, int k) {\n        List<List<Integer>> res = new ArrayList<>();\n        backtrack(res, new ArrayList<>(), 1, n, k);\n        return res;\n    }\n    \n    private void backtrack(List<List<Integer>> res, List<Integer> cur, int start, int n, int k) {\n        if (k == 0) {\n            res.add(new ArrayList<>(cur));\n            return;\n        }\n        for (int i = start; i <= n - k + 1; i++) {\n            cur.add(i);\n            backtrack(res, cur, i + 1, n, k - 1);\n            cur.remove(cur.size() - 1);\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.822022"
+}

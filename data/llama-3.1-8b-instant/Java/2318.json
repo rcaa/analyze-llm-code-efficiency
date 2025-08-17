@@ -1,0 +1,15 @@
+{
+  "id": 2318,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int distinctSequences(int n) {\n        int MOD = 1000000007;\n        int[] dp = new int[n + 1];\n        int[] count = new int[6];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 0;\n            for (int j = 1; j <= 6; j++) {\n                if (i - 3 >= 0 && count[j] > 0) {\n                    dp[i] = (dp[i] + dp[i - 3]) % MOD;\n                }\n                if (i - 1 >= 0 && j != 1 && j != 2 && j != 3 && j != 4 && j != 5 && j != 6) {\n                    dp[i] = (dp[i] + dp[i - 1]) % MOD;\n                }\n                count[j] = (count[j] + 1) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * 6)\nspace complexity: O(6)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int distinctSequences(int n) {\n        int MOD = 1000000007;\n        int[] dp = new int[n + 1];\n        int[] count = new int[6];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 0;\n            for (int j = 1; j <= 6; j++) {\n                if (i - 3 >= 0 && count[j] > 0) {\n                    dp[i] = (dp[i] + dp[i - 3]) % MOD;\n                }\n                if (i - 1 >= 0 && j != 1 && j != 2 && j != 3 && j != 4 && j != 5 && j != 6) {\n                    dp[i] = (dp[i] + dp[i - 1]) % MOD;\n                }\n                count[j] = (count[j] + 1) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T14:22:15.854276",
+  "code_extracted_previous": "class Solution {\n    public int distinctSequences(int n) {\n        int MOD = 1000000007;\n        int[] dp = new int[n + 1];\n        int[] count = new int[6];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 0;\n            for (int j = 1; j <= 6; j++) {\n                if (i - 3 >= 0 && count[j] > 0) {\n                    dp[i] = (dp[i] + dp[i - 3]) % MOD;\n                }\n                if (i - 1 >= 0 && j != 1 && j != 2 && j != 3 && j != 4 && j != 5 && j != 6) {\n                    dp[i] = (dp[i] + dp[i - 1]) % MOD;\n                }\n                count[j] = (count[j] + 1) % MOD;\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.241495"
+}

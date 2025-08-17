@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            points, brainpower = questions[i]\n            next_i = min(i + brainpower + 1, n)\n            dp[i] = max(dp[i + 1], points + dp[next_i])\n        return dp[0]\n```\n\nefficiency: HIGH  \ntime complexity: O(n)  \nspace complexity: O(n)  \nenergy implications: LOW  \nexplanation: Dynamic programming is used to track the maximum points that can be earned from the current question to the end. The dp array is filled in reverse order, where for each question, we decide whether to solve it or skip it, and update dp[i] accordingly.",
+  "code": "def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            points, brainpower = questions[i]\n            next_i = min(i + brainpower + 1, n)\n            dp[i] = max(dp[i + 1], points + dp[next_i])\n        return dp[0]\n```",
+  "timestamp": "2025-08-05T13:25:12.859263",
+  "code_extracted_previous": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            points, brainpower = questions[i]\n            next_i = min(i + brainpower + 1, n)\n            dp[i] = max(dp[i + 1], points + dp[next_i])\n        return dp[0]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.774606"
+}

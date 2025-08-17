@@ -1,0 +1,15 @@
+{
+  "id": 535,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Codec:\n\n    def encode(self, longUrl: str) -> str:\n        import hashlib\n        hash_object = hashlib.md5(longUrl.encode())\n        return \"http://tinyurl.com/\" + hash_object.hexdigest()\n\n    def decode(self, shortUrl: str) -> str:\n        import hashlib\n        hash_object = hashlib.md5(shortUrl.split(\"http://tinyurl.com/\")[-1])\n        return hash_object.hexdigest()\n```\n\nefficiency: HIGH\ntime complexity: O(n) where n is the length of the URL\nspace complexity: O(n) where n is the length of the URL\nenergy implications: LOW",
+  "code": "class Codec:\n\n    def encode(self, longUrl: str) -> str:\n        hash_object = hashlib.md5(longUrl.encode())\n        return \"http://tinyurl.com/\" + hash_object.hexdigest()\n\n    def decode(self, shortUrl: str) -> str:\n        hash_object = hashlib.md5(shortUrl.split(\"http://tinyurl.com/\")[-1])\n        return hash_object.hexdigest()",
+  "timestamp": "2025-08-05T14:55:42.230770",
+  "code_extracted_previous": "class Codec:\n\n    def encode(self, longUrl: str) -> str:\n        import hashlib\n        hash_object = hashlib.md5(longUrl.encode())\n        return \"http://tinyurl.com/\" + hash_object.hexdigest()\n\n    def decode(self, shortUrl: str) -> str:\n        import hashlib\n        hash_object = hashlib.md5(shortUrl.split(\"http://tinyurl.com/\")[-1])\n        return hash_object.hexdigest()",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:31.373951"
+}

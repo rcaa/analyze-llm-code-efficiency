@@ -1,0 +1,15 @@
+{
+  "id": 3298,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass Solution {\npublic:\n    long long validSubstringCount(string word1, string word2) {\n        int m = word1.size(), n = word2.size();\n        long long res = 0;\n        for (int i = 0; i < m; i++) {\n            for (int j = i + n; j <= m; j++) {\n                string s = word1.substr(i, j - i);\n                int cnt1[26] = {0}, cnt2[26] = {0};\n                for (char c : s) cnt1[c - 'a']++;\n                for (char c : word2) cnt2[c - 'a']++;\n                bool ok = true;\n                for (int k = 0; k < 26; k++) {\n                    if (cnt1[k] < cnt2[k]) {\n                        ok = false;\n                        break;\n                    }\n                }\n                if (ok) res++;\n            }\n        }\n        return res;\n    }\n};\nefficiency: MEDIUM\ntime complexity: O(m^2 * n)\nspace complexity: O(1)\nenergy implications: MEDIUM\nexplanation: The solution uses a brute-force approach to generate all substrings of word1 and checks if each substring can be rearranged to have word2 as a prefix by comparing the frequency of characters in the substring and word2.",
+  "code": "class Solution {\npublic:\n    long long validSubstringCount(string word1, string word2) {\n        int m = word1.size(), n = word2.size();\n        long long res = 0;\n        for (int i = 0; i < m; i++) {\n            for (int j = i + n; j <= m; j++) {\n                string s = word1.substr(i, j - i);\n                int cnt1[26] = {0}, cnt2[26] = {0};\n                for (char c : s) cnt1[c - 'a']++;\n                for (char c : word2) cnt2[c - 'a']++;\n                bool ok = true;\n                for (int k = 0; k < 26; k++) {\n                    if (cnt1[k] < cnt2[k]) {\n                        ok = false;\n                        break;\n                    }\n                }\n                if (ok) res++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T15:10:59.653550",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long validSubstringCount(string word1, string word2) {\n        int m = word1.size(), n = word2.size();\n        long long res = 0;\n        for (int i = 0; i < m; i++) {\n            for (int j = i + n; j <= m; j++) {\n                string s = word1.substr(i, j - i);\n                int cnt1[26] = {0}, cnt2[26] = {0};\n                for (char c : s) cnt1[c - 'a']++;\n                for (char c : word2) cnt2[c - 'a']++;\n                bool ok = true;\n                for (int k = 0; k < 26; k++) {\n                    if (cnt1[k] < cnt2[k]) {\n                        ok = false;\n                        break;\n                    }\n                }\n                if (ok) res++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.635376"
+}

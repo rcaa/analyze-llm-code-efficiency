@@ -1,0 +1,15 @@
+{
+  "id": 2193,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int minMovesToMakePalindrome(string s) {\n        int n = s.size();\n        int res = 0;\n        string t = s;\n        reverse(t.begin(), t.end());\n        for (int i = 0; i < n; i++) {\n            if (s[i] != t[i]) {\n                res++;\n                for (int j = i; j >= 0 && s[j] != t[i]; j--) {\n                    swap(s[j], s[j + 1]);\n                    res++;\n                }\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use a two-pointer approach to find the first pair of characters that are different between the original string and its reverse. We then swap characters in the original string to make it a palindrome, and count the number of moves.",
+  "code": "class Solution {\npublic:\n    int minMovesToMakePalindrome(string s) {\n        int n = s.size();\n        int res = 0;\n        string t = s;\n        reverse(t.begin(), t.end());\n        for (int i = 0; i < n; i++) {\n            if (s[i] != t[i]) {\n                res++;\n                for (int j = i; j >= 0 && s[j] != t[i]; j--) {\n                    swap(s[j], s[j + 1]);\n                    res++;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:15:31.545863",
+  "code_extracted_previous": "public:\n    int minMovesToMakePalindrome(string s) {\n        int n = s.size();\n        int res = 0;\n        string t = s;\n        reverse(t.begin(), t.end());\n        for (int i = 0; i < n; i++) {\n            if (s[i] != t[i]) {\n                res++;\n                for (int j = i; j >= 0 && s[j] != t[i]; j--) {\n                    swap(s[j], s[j + 1]);\n                    res++;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.875757"
+}

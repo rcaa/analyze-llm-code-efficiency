@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        i = 0\n        while i < len(s):\n            zeros = 0\n            ones = 0\n            while i < len(s) and s[i] == '0':\n                zeros += 1\n                i += 1\n            while i < len(s) and s[i] == '1':\n                ones += 1\n                i += 1\n            max_len = max(max_len, 2 * min(zeros, ones))\n        return max_len\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, maintaining a count of consecutive zeros and ones, and updates the maximum length of the balanced substring accordingly. This approach takes advantage of the fact that a balanced substring must have an equal number of zeros and ones, and that all zeros must come before all ones.",
+  "code": "class Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        i = 0\n        while i < len(s):\n            zeros = 0\n            ones = 0\n            while i < len(s) and s[i] == '0':\n                zeros += 1\n                i += 1\n            while i < len(s) and s[i] == '1':\n                ones += 1\n                i += 1\n            max_len = max(max_len, 2 * min(zeros, ones))\n        return max_len",
+  "timestamp": "2025-08-05T16:41:48.540024",
+  "code_extracted_previous": "class Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        i = 0\n        while i < len(s):\n            zeros = 0\n            ones = 0\n            while i < len(s) and s[i] == '0':\n                zeros += 1\n                i += 1\n            while i < len(s) and s[i] == '1':\n                ones += 1\n                i += 1\n            max_len = max(max_len, 2 * min(zeros, ones))\n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.363113"
+}

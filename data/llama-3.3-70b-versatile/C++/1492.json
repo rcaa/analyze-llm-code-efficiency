@@ -1,0 +1,15 @@
+{
+  "id": 1492,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int kthFactor(int n, int k) {\n        vector<int> factors;\n        for (int i = 1; i * i <= n; i++) {\n            if (n % i == 0) {\n                factors.push_back(i);\n                if (i * i != n) {\n                    factors.push_back(n / i);\n                }\n            }\n        }\n        sort(factors.begin(), factors.end());\n        if (k > factors.size()) {\n            return -1;\n        }\n        return factors[k - 1];\n    }\n};\n\nefficiency: MEDIUM\ntime complexity: O(sqrt(n) log n)\nspace complexity: O(sqrt(n))\nenergy implications: LOW\nexplanation: The algorithm iterates through all numbers up to the square root of n to find its factors, stores them in a vector, sorts the vector, and returns the kth factor if it exists.",
+  "code": "class Solution {\npublic:\n    int kthFactor(int n, int k) {\n        vector<int> factors;\n        for (int i = 1; i * i <= n; i++) {\n            if (n % i == 0) {\n                factors.push_back(i);\n                if (i * i != n) {\n                    factors.push_back(n / i);\n                }\n            }\n        }\n        sort(factors.begin(), factors.end());\n        if (k > factors.size()) {\n            return -1;\n        }\n        return factors[k - 1];\n    }\n};",
+  "timestamp": "2025-08-06T00:43:33.172181",
+  "code_extracted_previous": "class Solution {\npublic:\n    int kthFactor(int n, int k) {\n        vector<int> factors;\n        for (int i = 1; i * i <= n; i++) {\n            if (n % i == 0) {\n                factors.push_back(i);\n                if (i * i != n) {\n                    factors.push_back(n / i);\n                }\n            }\n        }\n        sort(factors.begin(), factors.end());\n        if (k > factors.size()) {\n            return -1;\n        }\n        return factors[k - 1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.810199"
+}

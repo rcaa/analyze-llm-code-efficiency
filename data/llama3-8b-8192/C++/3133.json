@@ -1,0 +1,15 @@
+{
+  "id": 3133,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    long long minEnd(int n, int x) {\n        long long res = x;\n        for (int i = 30; i >= 0; --i) {\n            if (((1LL << i) & x) > 0) {\n                res -= (1LL << i);\n                while ((res & ((1LL << i) - 1)) < (1LL << (i - 1))) {\n                    res += (1LL << i);\n                }\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The problem can be solved by iterating through the bits of the given number x from right to left. For each bit that is set, we subtract the corresponding power of 2 from x and then add it back until the result is greater than or equal to the previous result. This ensures that the result is the minimum possible value of the last element in the array.",
+  "code": "class Solution {\npublic:\n    long long minEnd(int n, int x) {\n        long long res = x;\n        for (int i = 30; i >= 0; --i) {\n            if (((1LL << i) & x) > 0) {\n                res -= (1LL << i);\n                while ((res & ((1LL << i) - 1)) < (1LL << (i - 1))) {\n                    res += (1LL << i);\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:54:13.540675",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long minEnd(int n, int x) {\n        long long res = x;\n        for (int i = 30; i >= 0; --i) {\n            if (((1LL << i) & x) > 0) {\n                res -= (1LL << i);\n                while ((res & ((1LL << i) - 1)) < (1LL << (i - 1))) {\n                    res += (1LL << i);\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.199182"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def longestSemiRepetitiveSubstring(self, s: str) -> int:\n        max_length = 0\n        left = 0\n        pair_found = False\n        for right in range(len(s) - 1):\n            if s[right] == s[right + 1]:\n                if pair_found:\n                    left = right + 1\n                    pair_found = False\n                else:\n                    pair_found = True\n            max_length = max(max_length, right - left + 2)\n        return max_length\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with two pointers, left and right. When a pair of adjacent same digits is found, if another pair has already been found, the left pointer is moved to the right of the current pair. The maximum length of the semi-repetitive substring is updated at each step. This approach ensures a linear time complexity and minimal space usage.",
+  "code": "class Solution:\n    def longestSemiRepetitiveSubstring(self, s: str) -> int:\n        max_length = 0\n        left = 0\n        pair_found = False\n        for right in range(len(s) - 1):\n            if s[right] == s[right + 1]:\n                if pair_found:\n                    left = right + 1\n                    pair_found = False\n                else:\n                    pair_found = True\n            max_length = max(max_length, right - left + 2)\n        return max_length",
+  "timestamp": "2025-08-06T01:06:53.096642",
+  "code_extracted_previous": "class Solution:\n    def longestSemiRepetitiveSubstring(self, s: str) -> int:\n        max_length = 0\n        left = 0\n        pair_found = False\n        for right in range(len(s) - 1):\n            if s[right] == s[right + 1]:\n                if pair_found:\n                    left = right + 1\n                    pair_found = False\n                else:\n                    pair_found = True\n            max_length = max(max_length, right - left + 2)\n        return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.394934"
+}

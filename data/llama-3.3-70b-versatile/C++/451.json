@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        vector<pair<char, int>> vec;\n        for (auto& it : freq) {\n            vec.push_back({it.first, it.second});\n        }\n        sort(vec.begin(), vec.end(), [](pair<char, int> a, pair<char, int> b) {\n            return a.second > b.second;\n        });\n        string res;\n        for (auto& it : vec) {\n            res.append(it.second, it.first);\n        }\n        return res;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses an unordered_map to count the frequency of each character, then sorts the characters based on their frequency in descending order, and finally constructs the result string by appending each character the corresponding number of times.",
+  "code": "class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        vector<pair<char, int>> vec;\n        for (auto& it : freq) {\n            vec.push_back({it.first, it.second});\n        }\n        sort(vec.begin(), vec.end(), [](pair<char, int> a, pair<char, int> b) {\n            return a.second > b.second;\n        });\n        string res;\n        for (auto& it : vec) {\n            res.append(it.second, it.first);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:54:24.845734",
+  "code_extracted_previous": "class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        vector<pair<char, int>> vec;\n        for (auto& it : freq) {\n            vec.push_back({it.first, it.second});\n        }\n        sort(vec.begin(), vec.end(), [](pair<char, int> a, pair<char, int> b) {\n            return a.second > b.second;\n        });\n        string res;\n        for (auto& it : vec) {\n            res.append(it.second, it.first);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.865281"
+}

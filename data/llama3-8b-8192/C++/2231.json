@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int largestInteger(int num) {\n        string str = to_string(num);\n        vector<char> odd, even;\n        for (char c : str) {\n            if (c - '0' % 2) {\n                odd.push_back(c);\n            } else {\n                even.push_back(c);\n            }\n        }\n        sort(odd.begin(), odd.end());\n        sort(even.begin(), even.end());\n        string res;\n        for (char c : str) {\n            if (c - '0' % 2) {\n                res += odd.back();\n                odd.pop_back();\n            } else {\n                res += even.back();\n                even.pop_back();\n            }\n        }\n        return stoi(res);\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution first converts the integer to a string and separates the digits into two vectors, one for odd digits and one for even digits. Then it sorts these two vectors. Finally, it constructs the result string by appending the sorted digits in the same order as they appear in the original string.",
+  "code": "class Solution {\npublic:\n    int largestInteger(int num) {\n        string str = to_string(num);\n        vector<char> odd, even;\n        for (char c : str) {\n            if (c - '0' % 2) {\n                odd.push_back(c);\n            } else {\n                even.push_back(c);\n            }\n        }\n        sort(odd.begin(), odd.end());\n        sort(even.begin(), even.end());\n        string res;\n        for (char c : str) {\n            if (c - '0' % 2) {\n                res += odd.back();\n                odd.pop_back();\n            } else {\n                res += even.back();\n                even.pop_back();\n            }\n        }\n        return stoi(res);\n    }\n};",
+  "timestamp": "2025-08-05T15:59:52.619395",
+  "code_extracted_previous": "public:\n    int largestInteger(int num) {\n        string str = to_string(num);\n        vector<char> odd, even;\n        for (char c : str) {\n            if (c - '0' % 2) {\n                odd.push_back(c);\n            } else {\n                even.push_back(c);\n            }\n        }\n        sort(odd.begin(), odd.end());\n        sort(even.begin(), even.end());\n        string res;\n        for (char c : str) {\n            if (c - '0' % 2) {\n                res += odd.back();\n                odd.pop_back();\n            } else {\n                res += even.back();\n                even.pop_back();\n            }\n        }\n        return stoi(res);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.883670"
+}

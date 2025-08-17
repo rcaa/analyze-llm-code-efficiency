@@ -1,0 +1,15 @@
+{
+  "id": 3333,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int possibleStringCount(String word, int k) {\n        int MOD = 1000000007;\n        int n = word.length();\n        int[] count = new int[26];\n        for (int i = 0; i < n; i++) {\n            count[word.charAt(i) - 'a']++;\n        }\n        long res = 1;\n        for (int i = 0; i < 26; i++) {\n            res = res * (count[i] + 1) % MOD;\n        }\n        for (int i = 0; i < 26; i++) {\n            res = res * (count[i]) % MOD;\n        }\n        return (int) (res % MOD);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a frequency array to count the occurrences of each character in the word. Then it calculates the number of possible strings by multiplying the number of ways to choose each character (count[i] + 1) and the number of ways to choose each character (count[i]). The result is taken modulo 10^9 + 7 to avoid overflow.",
+  "code": "class Solution {\n    public int possibleStringCount(String word, int k) {\n        int MOD = 1000000007;\n        int n = word.length();\n        int[] count = new int[26];\n        for (int i = 0; i < n; i++) {\n            count[word.charAt(i) - 'a']++;\n        }\n        long res = 1;\n        for (int i = 0; i < 26; i++) {\n            res = res * (count[i] + 1) % MOD;\n        }\n        for (int i = 0; i < 26; i++) {\n            res = res * (count[i]) % MOD;\n        }\n        return (int) (res % MOD);\n    }\n}",
+  "timestamp": "2025-08-05T22:22:04.804951",
+  "code_extracted_previous": "public int possibleStringCount(String word, int k) {\n        int MOD = 1000000007;\n        int n = word.length();\n        int[] count = new int[26];\n        for (int i = 0; i < n; i++) {\n            count[word.charAt(i) - 'a']++;\n        }\n        long res = 1;\n        for (int i = 0; i < 26; i++) {\n            res = res * (count[i] + 1) % MOD;\n        }\n        for (int i = 0; i < 26; i++) {\n            res = res * (count[i]) % MOD;\n        }\n        return (int) (res % MOD);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.663843"
+}

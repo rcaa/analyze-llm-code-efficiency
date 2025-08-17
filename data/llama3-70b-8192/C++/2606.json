@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charVals;\n        for (int i = 0; i < chars.size(); i++) {\n            charVals[chars[i]] = vals[i];\n        }\n        int maxCost = 0, currCost = 0;\n        for (char c : s) {\n            currCost += charVals.count(c) ? charVals[c] : c - 'a' + 1;\n            maxCost = max(maxCost, currCost);\n            if (currCost < 0) currCost = 0;\n        }\n        return maxCost;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: This solution uses a hashmap to store the custom values of characters in `chars`. It then iterates over the string `s`, calculating the cost of each substring by adding the value of the current character to the current cost. If the current cost becomes negative, it is reset to 0. The maximum cost is updated accordingly.",
+  "code": "class Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charVals;\n        for (int i = 0; i < chars.size(); i++) {\n            charVals[chars[i]] = vals[i];\n        }\n        int maxCost = 0, currCost = 0;\n        for (char c : s) {\n            currCost += charVals.count(c) ? charVals[c] : c - 'a' + 1;\n            maxCost = max(maxCost, currCost);\n            if (currCost < 0) currCost = 0;\n        }\n        return maxCost;\n    }\n};",
+  "timestamp": "2025-08-06T03:19:31.885453",
+  "code_extracted_previous": "public:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charVals;\n        for (int i = 0; i < chars.size(); i++) {\n            charVals[chars[i]] = vals[i];\n        }\n        int maxCost = 0, currCost = 0;\n        for (char c : s) {\n            currCost += charVals.count(c) ? charVals[c] : c - 'a' + 1;\n            maxCost = max(maxCost, currCost);\n            if (currCost < 0) currCost = 0;\n        }\n        return maxCost;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.607113"
+}

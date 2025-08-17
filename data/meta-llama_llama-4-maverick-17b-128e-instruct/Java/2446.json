@@ -1,0 +1,15 @@
+{
+  "id": 2446,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public boolean haveConflict(String[] event1, String[] event2) {\n        int start1 = toMinutes(event1[0]);\n        int end1 = toMinutes(event1[1]);\n        int start2 = toMinutes(event2[0]);\n        int end2 = toMinutes(event2[1]);\n        return !(end1 < start2 || end2 < start1);\n    }\n\n    private int toMinutes(String time) {\n        String[] parts = time.split(\":\");\n        return Integer.parseInt(parts[0]) * 60 + Integer.parseInt(parts[1]);\n    }\n}\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution converts event times to minutes, then checks for non-overlap by verifying if one event ends before the other starts. If neither event ends before the other starts, there is a conflict. The toMinutes function is used to convert time from \"HH:MM\" format to total minutes. \n```",
+  "code": "class Solution {\n    public boolean haveConflict(String[] event1, String[] event2) {\n        int start1 = toMinutes(event1[0]);\n        int end1 = toMinutes(event1[1]);\n        int start2 = toMinutes(event2[0]);\n        int end2 = toMinutes(event2[1]);\n        return !(end1 < start2 || end2 < start1);\n    }\n\n    private int toMinutes(String time) {\n        String[] parts = time.split(\":\");\n        return Integer.parseInt(parts[0]) * 60 + Integer.parseInt(parts[1]);\n    }\n}\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution converts event times to minutes, then checks for non-overlap by verifying if one event ends before the other starts. If neither event ends before the other starts, there is a conflict. The toMinutes function is used to convert time from \"HH:MM\" format to total minutes.",
+  "timestamp": "2025-08-05T12:50:14.562405",
+  "code_extracted_previous": "class Solution {\n    public boolean haveConflict(String[] event1, String[] event2) {\n        int start1 = toMinutes(event1[0]);\n        int end1 = toMinutes(event1[1]);\n        int start2 = toMinutes(event2[0]);\n        int end2 = toMinutes(event2[1]);\n        return !(end1 < start2 || end2 < start1);\n    }\n\n    private int toMinutes(String time) {\n        String[] parts = time.split(\":\");\n        return Integer.parseInt(parts[0]) * 60 + Integer.parseInt(parts[1]);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.605036"
+}

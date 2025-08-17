@@ -1,0 +1,15 @@
+{
+  "id": 1297,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        int maxCount = 0;\n        unordered_map<string, int> count;\n        for (int i = 0; i <= s.size() - minSize; ++i) {\n            string substr = s.substr(i, maxSize);\n            unordered_set<char> uniqueChars;\n            for (char c : substr.substr(0, minSize)) {\n                uniqueChars.insert(c);\n            }\n            if (uniqueChars.size() <= maxLetters) {\n                string sub = substr.substr(0, minSize);\n                count[sub]++;\n                maxCount = max(maxCount, count[sub]);\n            }\n        }\n        return maxCount;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * m)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution iterates through the string to generate substrings of varying lengths within the specified range, counting occurrences of substrings with a limited number of unique characters. It uses an unordered_map to store and update substring counts efficiently.",
+  "code": "class Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        int maxCount = 0;\n        unordered_map<string, int> count;\n        for (int i = 0; i <= s.size() - minSize; ++i) {\n            string substr = s.substr(i, maxSize);\n            unordered_set<char> uniqueChars;\n            for (char c : substr.substr(0, minSize)) {\n                uniqueChars.insert(c);\n            }\n            if (uniqueChars.size() <= maxLetters) {\n                string sub = substr.substr(0, minSize);\n                count[sub]++;\n                maxCount = max(maxCount, count[sub]);\n            }\n        }\n        return maxCount;\n    }\n};",
+  "timestamp": "2025-08-05T14:59:29.004633",
+  "code_extracted_previous": "public:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        int maxCount = 0;\n        unordered_map<string, int> count;\n        for (int i = 0; i <= s.size() - minSize; ++i) {\n            string substr = s.substr(i, maxSize);\n            unordered_set<char> uniqueChars;\n            for (char c : substr.substr(0, minSize)) {\n                uniqueChars.insert(c);\n            }\n            if (uniqueChars.size() <= maxLetters) {\n                string sub = substr.substr(0, minSize);\n                count[sub]++;\n                maxCount = max(maxCount, count[sub]);\n            }\n        }\n        return maxCount;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.707653"
+}

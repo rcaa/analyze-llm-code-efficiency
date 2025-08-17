@@ -1,0 +1,15 @@
+{
+  "id": 2288,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public String discountPrices(String sentence, int discount) {\n        String[] words = sentence.split(\" \");\n        for (int i = 0; i < words.length; i++) {\n            if (words[i].startsWith(\"$\") && words[i].length() > 1 && words[i].charAt(1) >= '0' && words[i].charAt(1) <= '9') {\n                double price = Double.parseDouble(words[i].substring(1));\n                double discountedPrice = price * (1 - discount / 100.0);\n                words[i] = String.format(\"$%.2f\", discountedPrice);\n            }\n        }\n        return String.join(\" \", words);\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the words in the sentence, checks if each word is a price, applies the discount, and updates the word. The time complexity is O(n) where n is the number of words in the sentence. The space complexity is O(1) as it only uses a constant amount of space. The energy implications are LOW as it only performs a few operations for each word.",
+  "code": "class Solution {\n    public String discountPrices(String sentence, int discount) {\n        String[] words = sentence.split(\" \");\n        for (int i = 0; i < words.length; i++) {\n            if (words[i].startsWith(\"$\") && words[i].length() > 1 && words[i].charAt(1) >= '0' && words[i].charAt(1) <= '9') {\n                double price = Double.parseDouble(words[i].substring(1));\n                double discountedPrice = price * (1 - discount / 100.0);\n                words[i] = String.format(\"$%.2f\", discountedPrice);\n            }\n        }\n        return String.join(\" \", words);\n    }\n}",
+  "timestamp": "2025-08-06T00:58:09.272202",
+  "code_extracted_previous": "public String discountPrices(String sentence, int discount) {\n        String[] words = sentence.split(\" \");\n        for (int i = 0; i < words.length; i++) {\n            if (words[i].startsWith(\"$\") && words[i].length() > 1 && words[i].charAt(1) >= '0' && words[i].charAt(1) <= '9') {\n                double price = Double.parseDouble(words[i].substring(1));\n                double discountedPrice = price * (1 - discount / 100.0);\n                words[i] = String.format(\"$%.2f\", discountedPrice);\n            }\n        }\n        return String.join(\" \", words);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.312938"
+}

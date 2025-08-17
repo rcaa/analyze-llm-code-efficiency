@@ -1,0 +1,15 @@
+{
+  "id": 1297,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        max_freq = 0\n        freq_map = {}\n        for size in range(minSize, maxSize + 1):\n            for i in range(len(s) - size + 1):\n                substring = s[i:i + size]\n                unique_chars = len(set(substring))\n                if unique_chars <= maxLetters:\n                    freq_map[substring] = freq_map.get(substring, 0) + 1\n                    max_freq = max(max_freq, freq_map[substring])\n        return max_freq\n```\nefficiency: MEDIUM\ntime complexity: O(n*m)\nspace complexity: O(n*m)\nenergy implications: MEDIUM\nexplanation: The solution uses a sliding window approach to generate all substrings of the given string and checks each substring for the number of unique characters, updating the frequency map and maximum frequency accordingly.",
+  "code": "def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        max_freq = 0\n        freq_map = {}\n        for size in range(minSize, maxSize + 1):\n            for i in range(len(s) - size + 1):\n                substring = s[i:i + size]\n                unique_chars = len(set(substring))\n                if unique_chars <= maxLetters:\n                    freq_map[substring] = freq_map.get(substring, 0) + 1\n                    max_freq = max(max_freq, freq_map[substring])\n        return max_freq\n```",
+  "timestamp": "2025-08-06T15:17:07.792502",
+  "code_extracted_previous": "class Solution:\n    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        max_freq = 0\n        freq_map = {}\n        for size in range(minSize, maxSize + 1):\n            for i in range(len(s) - size + 1):\n                substring = s[i:i + size]\n                unique_chars = len(set(substring))\n                if unique_chars <= maxLetters:\n                    freq_map[substring] = freq_map.get(substring, 0) + 1\n                    max_freq = max(max_freq, freq_map[substring])\n        return max_freq",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.703980"
+}

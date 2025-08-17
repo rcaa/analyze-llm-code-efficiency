@@ -1,0 +1,15 @@
+{
+  "id": 165,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int compareVersion(String version1, String version2) {\n        String[] v1 = version1.split(\"\\\\.\");\n        String[] v2 = version2.split(\"\\\\.\");\n        int len = Math.max(v1.length, v2.length);\n        for (int i = 0; i < len; i++) {\n            int num1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;\n            int num2 = i < v2.length ? Integer.parseInt(v2[i]) : 0;\n            if (num1 < num2) return -1;\n            if (num1 > num2) return 1;\n        }\n        return 0;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution splits the version strings into arrays of integers, then iterates through the arrays, comparing the corresponding integers. If a version string has fewer revisions, it treats the missing revision values as 0. This approach has a high efficiency due to its simplicity and the use of built-in string splitting and integer parsing functions.",
+  "code": "class Solution {\n    public int compareVersion(String version1, String version2) {\n        String[] v1 = version1.split(\"\\\\.\");\n        String[] v2 = version2.split(\"\\\\.\");\n        int len = Math.max(v1.length, v2.length);\n        for (int i = 0; i < len; i++) {\n            int num1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;\n            int num2 = i < v2.length ? Integer.parseInt(v2[i]) : 0;\n            if (num1 < num2) return -1;\n            if (num1 > num2) return 1;\n        }\n        return 0;\n    }\n}",
+  "timestamp": "2025-08-06T01:36:14.084319",
+  "code_extracted_previous": "class Solution {\n    public int compareVersion(String version1, String version2) {\n        String[] v1 = version1.split(\"\\\\.\");\n        String[] v2 = version2.split(\"\\\\.\");\n        int len = Math.max(v1.length, v2.length);\n        for (int i = 0; i < len; i++) {\n            int num1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;\n            int num2 = i < v2.length ? Integer.parseInt(v2[i]) : 0;\n            if (num1 < num2) return -1;\n            if (num1 > num2) return 1;\n        }\n        return 0;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.031302"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3298,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def validSubstringCount(self, word1: str, word2: str) -> int:\n        def can_be_prefix(s):\n            w2_count = {}\n            for c in word2:\n                w2_count[c] = w2_count.get(c, 0) + 1\n\n            for c in s:\n                if c in w2_count and w2_count[c] > 0:\n                    w2_count[c] -= 1\n                if all(count == 0 for count in w2_count.values()):\n                    return True\n            return False\n\n        count = 0\n        for i in range(len(word1)):\n            for j in range(i + 1, len(word1) + 1):\n                if can_be_prefix(word1[i:j]):\n                    count += 1\n        return count\n```\nefficiency: MEDIUM\ntime complexity: O(n^2 * m)\nspace complexity: O(m)\nenergy implications: MEDIUM\nexplanation: This solution checks every substring of word1 to see if it can be rearranged to have word2 as a prefix by maintaining a count of characters in word2 and decrementing the count as it encounters matching characters in the substring.",
+  "code": "def validSubstringCount(self, word1: str, word2: str) -> int:\n        def can_be_prefix(s):\n            w2_count = {}\n            for c in word2:\n                w2_count[c] = w2_count.get(c, 0) + 1\n\n            for c in s:\n                if c in w2_count and w2_count[c] > 0:\n                    w2_count[c] -= 1\n                if all(count == 0 for count in w2_count.values()):\n                    return True\n            return False\n\n        count = 0\n        for i in range(len(word1)):\n            for j in range(i + 1, len(word1) + 1):\n                if can_be_prefix(word1[i:j]):\n                    count += 1\n        return count\n```",
+  "timestamp": "2025-08-06T15:19:50.740408",
+  "code_extracted_previous": "class Solution:\n    def validSubstringCount(self, word1: str, word2: str) -> int:\n        def can_be_prefix(s):\n            w2_count = {}\n            for c in word2:\n                w2_count[c] = w2_count.get(c, 0) + 1\n\n            for c in s:\n                if c in w2_count and w2_count[c] > 0:\n                    w2_count[c] -= 1\n                if all(count == 0 for count in w2_count.values()):\n                    return True\n            return False\n\n        count = 0\n        for i in range(len(word1)):\n            for j in range(i + 1, len(word1) + 1):\n                if can_be_prefix(word1[i:j]):\n                    count += 1\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.481440"
+}

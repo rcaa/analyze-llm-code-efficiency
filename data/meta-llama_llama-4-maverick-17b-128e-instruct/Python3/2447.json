@@ -1,0 +1,15 @@
+{
+  "id": 2447,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "```python\nfrom typing import List\nimport math\n\nclass Solution:\n    def subarrayGCD(self, nums: List[int], k: int) -> int:\n        count = 0\n        n = len(nums)\n        for i in range(n):\n            gcd = nums[i]\n            if gcd == k:\n                count += 1\n            for j in range(i + 1, n):\n                gcd = math.gcd(gcd, nums[j])\n                if gcd == k:\n                    count += 1\n                elif gcd < k:\n                    break\n        return count\n\nefficiency: HIGH\ntime complexity: O(n^2 log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the array, maintaining a running GCD for subarrays. It counts subarrays where the GCD equals k, stopping when the GCD becomes less than k, as further elements won't change this. This approach efficiently handles the given constraints.\n```",
+  "code": "def subarrayGCD(self, nums: List[int], k: int) -> int:\n        count = 0\n        n = len(nums)\n        for i in range(n):\n            gcd = nums[i]\n            if gcd == k:\n                count += 1\n            for j in range(i + 1, n):\n                gcd = math.gcd(gcd, nums[j])\n                if gcd == k:\n                    count += 1\n                elif gcd < k:\n                    break\n        return count",
+  "timestamp": "2025-08-05T13:31:39.046472",
+  "code_extracted_previous": "from typing import List\nimport math\n\nclass Solution:\n    def subarrayGCD(self, nums: List[int], k: int) -> int:\n        count = 0\n        n = len(nums)\n        for i in range(n):\n            gcd = nums[i]\n            if gcd == k:\n                count += 1\n            for j in range(i + 1, n):\n                gcd = math.gcd(gcd, nums[j])\n                if gcd == k:\n                    count += 1\n                elif gcd < k:\n                    break\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.916392"
+}

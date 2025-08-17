@@ -1,0 +1,15 @@
+{
+  "id": 2565,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int n = s.size();\n        int m = t.size();\n        int dp[n + 1][m + 1];\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j <= m; j++) {\n                if (j == 0) {\n                    dp[i][j] = i;\n                } else if (i == 0) {\n                    dp[i][j] = j;\n                } else if (s[i - 1] == t[j - 1]) {\n                    dp[i][j] = dp[i - 1][j - 1];\n                } else {\n                    dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n        return dp[n][m];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n*m)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the minimum score. It builds a 2D table `dp` where `dp[i][j]` represents the minimum score to make the substring `t[0...j-1]` a subsequence of `s[0...i-1]`. The table is filled iteratively, considering the characters of `s` and `t` and using the previously calculated scores. The final result is stored in `dp[n][m]`.\n",
+  "code": "class Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int n = s.size();\n        int m = t.size();\n        int dp[n + 1][m + 1];\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j <= m; j++) {\n                if (j == 0) {\n                    dp[i][j] = i;\n                } else if (i == 0) {\n                    dp[i][j] = j;\n                } else if (s[i - 1] == t[j - 1]) {\n                    dp[i][j] = dp[i - 1][j - 1];\n                } else {\n                    dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n        return dp[n][m];\n    }\n};",
+  "timestamp": "2025-08-06T01:17:52.170887",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int n = s.size();\n        int m = t.size();\n        int dp[n + 1][m + 1];\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j <= m; j++) {\n                if (j == 0) {\n                    dp[i][j] = i;\n                } else if (i == 0) {\n                    dp[i][j] = j;\n                } else if (s[i - 1] == t[j - 1]) {\n                    dp[i][j] = dp[i - 1][j - 1];\n                } else {\n                    dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n        return dp[n][m];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.616775"
+}

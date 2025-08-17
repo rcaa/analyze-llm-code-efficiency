@@ -1,0 +1,15 @@
+{
+  "id": 1297,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```\nclass Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        int count[26] = {0}; // 26 characters from 'a' to 'z'\n        int freq[26] = {0}; // frequency of each character\n\n        for (char c : s) {\n            count[c - 'a']++;\n            freq[c - 'a']++;\n        }\n\n        int max_freq = 0;\n        for (int i = 0; i < 26; i++) {\n            if (freq[i] <= maxLetters && count[i] >= minSize && count[i] <= maxSize) {\n                max_freq = max(max_freq, freq[i]);\n            }\n        }\n\n        return max_freq;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(26)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n1. Initialize arrays `count` and `freq` to store character counts and frequencies respectively.\n2. Iterate through the string and update `count` and `freq` accordingly.\n3. Iterate through the 26 characters (from 'a' to 'z') and check if the frequency and count satisfy the given conditions.\n4. Update `max_freq` if a substring satisfies the conditions.\n5. Return the maximum frequency found. ",
+  "code": "class Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        int count[26] = {0}; // 26 characters from 'a' to 'z'\n        int freq[26] = {0}; // frequency of each character\n\n        for (char c : s) {\n            count[c - 'a']++;\n            freq[c - 'a']++;\n        }\n\n        int max_freq = 0;\n        for (int i = 0; i < 26; i++) {\n            if (freq[i] <= maxLetters && count[i] >= minSize && count[i] <= maxSize) {\n                max_freq = max(max_freq, freq[i]);\n            }\n        }\n\n        return max_freq;\n    }\n};",
+  "timestamp": "2025-08-05T14:59:33.691692",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        int count[26] = {0}; // 26 characters from 'a' to 'z'\n        int freq[26] = {0}; // frequency of each character\n\n        for (char c : s) {\n            count[c - 'a']++;\n            freq[c - 'a']++;\n        }\n\n        int max_freq = 0;\n        for (int i = 0; i < 26; i++) {\n            if (freq[i] <= maxLetters && count[i] >= minSize && count[i] <= maxSize) {\n                max_freq = max(max_freq, freq[i]);\n            }\n        }\n\n        return max_freq;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.066895"
+}

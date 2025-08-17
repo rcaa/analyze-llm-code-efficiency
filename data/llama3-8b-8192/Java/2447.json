@@ -1,0 +1,15 @@
+{
+  "id": 2447,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int subarrayGCD(int[] nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.length; i++) {\n            for (int j = i; j < nums.length; j++) {\n                int gcd = nums[j];\n                for (int m = j; m >= i; m--) {\n                    gcd = gcd(gcd, nums[m]);\n                }\n                if (gcd == k) {\n                    count++;\n                }\n            }\n        }\n        return count;\n    }\n    public int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a brute-force approach to find all subarrays and calculate their GCD. The innermost loop calculates the GCD of the subarray elements, and the middle loop generates all subarrays. The outer loop iterates over the starting indices of the subarrays. The GCD function is used to calculate the GCD of two numbers.",
+  "code": "class Solution {\n    public int subarrayGCD(int[] nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.length; i++) {\n            for (int j = i; j < nums.length; j++) {\n                int gcd = nums[j];\n                for (int m = j; m >= i; m--) {\n                    gcd = gcd(gcd, nums[m]);\n                }\n                if (gcd == k) {\n                    count++;\n                }\n            }\n        }\n        return count;\n    }\n    public int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "timestamp": "2025-08-05T13:31:31.321573",
+  "code_extracted_previous": "public int subarrayGCD(int[] nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.length; i++) {\n            for (int j = i; j < nums.length; j++) {\n                int gcd = nums[j];\n                for (int m = j; m >= i; m--) {\n                    gcd = gcd(gcd, nums[m]);\n                }\n                if (gcd == k) {\n                    count++;\n                }\n            }\n        }\n        return count;\n    }\n    public int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.435129"
+}

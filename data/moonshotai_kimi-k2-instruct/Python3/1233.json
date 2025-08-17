@@ -1,0 +1,15 @@
+{
+  "id": 1233,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \nclass Solution:\n    def removeSubfolders(self, folder: List[str]) -> List[str]:\n        folder.sort()\n        res = []\n        for f in folder:\n            keep = True\n            for i in range(2, len(f)):\n                if f[i] == '/' and f[:i] in res:\n                    keep = False\n                    break\n            if keep:\n                res.append(f)\n        return res\nefficiency: HIGH\ntime complexity: O(n log n + n * L)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Sort paths lexicographically so any parent appears before its children. Iterate once, adding a path only if none of its ancestor prefixes (ending with '/') are already in the result. This avoids building a trie and keeps memory low.",
+  "code": "class Solution:\n    def removeSubfolders(self, folder: List[str]) -> List[str]:\n        folder.sort()\n        res = []\n        for f in folder:\n            keep = True\n            for i in range(2, len(f)):\n                if f[i] == '/' and f[:i] in res:\n                    keep = False\n                    break\n            if keep:\n                res.append(f)\n        return res",
+  "timestamp": "2025-08-05T13:20:40.201831",
+  "code_extracted_previous": "class Solution:\n    def removeSubfolders(self, folder: List[str]) -> List[str]:\n        folder.sort()\n        res = []\n        for f in folder:\n            keep = True\n            for i in range(2, len(f)):\n                if f[i] == '/' and f[:i] in res:\n                    keep = False\n                    break\n            if keep:\n                res.append(f)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.071184"
+}

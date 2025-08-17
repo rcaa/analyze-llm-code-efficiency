@@ -1,0 +1,15 @@
+{
+  "id": 2375,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def smallestNumber(self, pattern: str) -> str:\n        nums = list('123456789')\n        res = []\n        stack = []\n        \n        for p in pattern:\n            if p == 'I':\n                res.append(nums.pop(0))\n                while stack:\n                    res.append(stack.pop())\n            else:\n                stack.append(nums.pop(0))\n        \n        res.append(nums.pop(0))\n        while stack:\n            res.append(stack.pop())\n        \n        return ''.join(res)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The approach constructs the lexicographically smallest string by maintaining a stack for decreasing sequences and directly appending increasing numbers. It efficiently reuses digits and minimizes backtracking.",
+  "code": "class Solution:\n    def smallestNumber(self, pattern: str) -> str:\n        nums = list('123456789')\n        res = []\n        stack = []\n        \n        for p in pattern:\n            if p == 'I':\n                res.append(nums.pop(0))\n                while stack:\n                    res.append(stack.pop())\n            else:\n                stack.append(nums.pop(0))\n        \n        res.append(nums.pop(0))\n        while stack:\n            res.append(stack.pop())\n        \n        return ''.join(res)",
+  "timestamp": "2025-08-06T01:00:41.440006",
+  "code_extracted_previous": "class Solution:\n    def smallestNumber(self, pattern: str) -> str:\n        nums = list('123456789')\n        res = []\n        stack = []\n        \n        for p in pattern:\n            if p == 'I':\n                res.append(nums.pop(0))\n                while stack:\n                    res.append(stack.pop())\n            else:\n                stack.append(nums.pop(0))\n        \n        res.append(nums.pop(0))\n        while stack:\n            res.append(stack.pop())\n        \n        return ''.join(res)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.173866"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1387,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> powers(hi - lo + 1);\n        for (int i = lo; i <= hi; ++i) {\n            powers[i - lo] = {i, calculatePower(i)};\n        }\n        sort(powers.begin(), powers.end(), [](const auto& a, const auto& b) {\n            if (a.second == b.second) {\n                return a.first < b.first;\n            }\n            return a.second < b.second;\n        });\n        return powers[k - 1].first;\n    }\n    int calculatePower(int x) {\n        int power = 0;\n        while (x != 1) {\n            if (x % 2 == 0) {\n                x /= 2;\n            } else {\n                x = 3 * x + 1;\n            }\n            ++power;\n        }\n        return power;\n    }\n};\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(N log N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution calculates the power of each number in the range and stores them in a vector of pairs. It then sorts this vector based on power and then by the number itself in case of ties. Finally, it returns the k-th element from the sorted vector. This approach utilizes sorting for efficient ranking and retrieval of the k-th element.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-05T14:25:31.789621",
+  "code_extracted_previous": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> powers(hi - lo + 1);\n        for (int i = lo; i <= hi; ++i) {\n            powers[i - lo] = {i, calculatePower(i)};\n        }\n        sort(powers.begin(), powers.end(), [](const auto& a, const auto& b) {\n            if (a.second == b.second) {\n                return a.first < b.first;\n            }\n            return a.second < b.second;\n        });\n        return powers[k - 1].first;\n    }\n    int calculatePower(int x) {\n        int power = 0;\n        while (x != 1) {\n            if (x % 2 == 0) {\n                x /= 2;\n            } else {\n                x = 3 * x + 1;\n            }\n            ++power;\n        }\n        return power;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:23.220251"
+}

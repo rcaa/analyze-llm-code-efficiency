@@ -1,0 +1,15 @@
+{
+  "id": 2193,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int minMovesToMakePalindrome(string s) {\n        int n = s.size();\n        int res = 0;\n        int left = 0, right = n - 1;\n        while (left < right) {\n            int l = left, r = right;\n            while (l < r && s[l] != s[r]) --r;\n            if (l == r) {\n                swap(s[l], s[l + 1]);\n                ++res;\n                continue;\n            }\n            while (r < right) {\n                swap(s[r], s[r + 1]);\n                ++res;\n                ++r;\n            }\n            ++left;\n            --right;\n        }\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Greedy two-pointer sweep: fix outermost pair by moving the matching character to its mirror position with adjacent swaps, counting each swap. If no match exists on the right half, swap once to bring the lone middle character into place. This minimizes total swaps by always fixing the outermost pair first.",
+  "code": "class Solution {\npublic:\n    int minMovesToMakePalindrome(string s) {\n        int n = s.size();\n        int res = 0;\n        int left = 0, right = n - 1;\n        while (left < right) {\n            int l = left, r = right;\n            while (l < r && s[l] != s[r]) --r;\n            if (l == r) {\n                swap(s[l], s[l + 1]);\n                ++res;\n                continue;\n            }\n            while (r < right) {\n                swap(s[r], s[r + 1]);\n                ++res;\n                ++r;\n            }\n            ++left;\n            --right;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:15:26.539264",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minMovesToMakePalindrome(string s) {\n        int n = s.size();\n        int res = 0;\n        int left = 0, right = n - 1;\n        while (left < right) {\n            int l = left, r = right;\n            while (l < r && s[l] != s[r]) --r;\n            if (l == r) {\n                swap(s[l], s[l + 1]);\n                ++res;\n                continue;\n            }\n            while (r < right) {\n                swap(s[r], s[r + 1]);\n                ++res;\n                ++r;\n            }\n            ++left;\n            --right;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.584176"
+}

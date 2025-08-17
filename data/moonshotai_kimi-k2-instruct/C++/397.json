@@ -1,0 +1,15 @@
+{
+  "id": 397,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int integerReplacement(int n) {\n        int steps = 0;\n        while (n != 1) {\n            if ((n & 1) == 0) {\n                n >>= 1;\n            } else if (n == 3 || __builtin_popcount(n + 1) > __builtin_popcount(n - 1)) {\n                --n;\n            } else {\n                ++n;\n            }\n            ++steps;\n        }\n        return steps;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses bit-level checks to decide the optimal odd step: subtract 1 when n ≡ 3 (mod 4) or when n = 3, otherwise add 1. This minimizes path length without recursion or memoization, achieving logarithmic runtime and constant memory.",
+  "code": "class Solution {\npublic:\n    int integerReplacement(int n) {\n        int steps = 0;\n        while (n != 1) {\n            if ((n & 1) == 0) {\n                n >>= 1;\n            } else if (n == 3 || __builtin_popcount(n + 1) > __builtin_popcount(n - 1)) {\n                --n;\n            } else {\n                ++n;\n            }\n            ++steps;\n        }\n        return steps;\n    }\n};",
+  "timestamp": "2025-08-05T14:24:33.515143",
+  "code_extracted_previous": "public:\n    int integerReplacement(int n) {\n        int steps = 0;\n        while (n != 1) {\n            if ((n & 1) == 0) {\n                n >>= 1;\n            } else if (n == 3 || __builtin_popcount(n + 1) > __builtin_popcount(n - 1)) {\n                --n;\n            } else {\n                ++n;\n            }\n            ++steps;\n        }\n        return steps;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.072204"
+}

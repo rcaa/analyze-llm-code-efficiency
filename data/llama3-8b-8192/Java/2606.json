@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int maxCost = 0;\n        int currentCost = 0;\n        int[] charIndex = new int[26];\n        for (int i = 0; i < chars.length(); i++) {\n            charIndex[chars.charAt(i) - 'a'] = i;\n        }\n        for (int i = 0; i < s.length(); i++) {\n            int val = s.charAt(i) - 'a' < 0 ? s.charAt(i) - 'a' + 1 : vals[charIndex[s.charAt(i) - 'a']];\n            currentCost = Math.max(0, currentCost + val);\n            maxCost = Math.max(maxCost, currentCost);\n        }\n        return maxCost;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a single pass through the string to calculate the maximum cost. It uses a hash map to store the index of each character in the chars string, and then iterates through the input string, updating the current cost and maximum cost accordingly. The time complexity is O(n), where n is the length of the input string, and the space complexity is O(1) as it only uses a constant amount of space.",
+  "code": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int maxCost = 0;\n        int currentCost = 0;\n        int[] charIndex = new int[26];\n        for (int i = 0; i < chars.length(); i++) {\n            charIndex[chars.charAt(i) - 'a'] = i;\n        }\n        for (int i = 0; i < s.length(); i++) {\n            int val = s.charAt(i) - 'a' < 0 ? s.charAt(i) - 'a' + 1 : vals[charIndex[s.charAt(i) - 'a']];\n            currentCost = Math.max(0, currentCost + val);\n            maxCost = Math.max(maxCost, currentCost);\n        }\n        return maxCost;\n    }\n}",
+  "timestamp": "2025-08-05T13:33:05.408239",
+  "code_extracted_previous": "public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int maxCost = 0;\n        int currentCost = 0;\n        int[] charIndex = new int[26];\n        for (int i = 0; i < chars.length(); i++) {\n            charIndex[chars.charAt(i) - 'a'] = i;\n        }\n        for (int i = 0; i < s.length(); i++) {\n            int val = s.charAt(i) - 'a' < 0 ? s.charAt(i) - 'a' + 1 : vals[charIndex[s.charAt(i) - 'a']];\n            currentCost = Math.max(0, currentCost + val);\n            maxCost = Math.max(maxCost, currentCost);\n        }\n        return maxCost;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.487795"
+}

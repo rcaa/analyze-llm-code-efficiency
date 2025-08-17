@@ -1,0 +1,15 @@
+{
+  "id": 2309,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public String greatestLetter(String s) {\n        boolean[] lower = new boolean[26];\n        boolean[] upper = new boolean[26];\n        for (char c : s.toCharArray()) {\n            if (Character.isLowerCase(c)) {\n                lower[c - 'a'] = true;\n            } else {\n                upper[c - 'A'] = true;\n            }\n        }\n        for (int i = 25; i >= 0; i--) {\n            if (lower[i] && upper[i]) {\n                return String.valueOf((char) (i + 'A'));\n            }\n        }\n        return \"\";\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses two boolean arrays to track the presence of lowercase and uppercase letters. It then iterates from the end of the alphabet to find the greatest letter that appears in both cases.",
+  "code": "class Solution {\n    public String greatestLetter(String s) {\n        boolean[] lower = new boolean[26];\n        boolean[] upper = new boolean[26];\n        for (char c : s.toCharArray()) {\n            if (Character.isLowerCase(c)) {\n                lower[c - 'a'] = true;\n            } else {\n                upper[c - 'A'] = true;\n            }\n        }\n        for (int i = 25; i >= 0; i--) {\n            if (lower[i] && upper[i]) {\n                return String.valueOf((char) (i + 'A'));\n            }\n        }\n        return \"\";\n    }\n}",
+  "timestamp": "2025-08-05T14:45:40.931659",
+  "code_extracted_previous": "class Solution {\n    public String greatestLetter(String s) {\n        boolean[] lower = new boolean[26];\n        boolean[] upper = new boolean[26];\n        for (char c : s.toCharArray()) {\n            if (Character.isLowerCase(c)) {\n                lower[c - 'a'] = true;\n            } else {\n                upper[c - 'A'] = true;\n            }\n        }\n        for (int i = 25; i >= 0; i--) {\n            if (lower[i] && upper[i]) {\n                return String.valueOf((char) (i + 'A'));\n            }\n        }\n        return \"\";\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.118541"
+}

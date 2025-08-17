@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int countZeroes = 0;\n        for (char c : s) {\n            if (c == '0') countZeroes++;\n        }\n        long long binaryNum = 0;\n        int countOnes = 0;\n        for (int i = s.size() - 1; i >= 0; --i) {\n            if (s[i] == '1') {\n                binaryNum += (1LL << countOnes);\n                if (binaryNum > k) break;\n                countOnes++;\n            }\n        }\n        return countOnes + countZeroes;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the binary string twice, first counting the number of zeroes, and then constructing the binary number from right to left by counting the number of ones until it exceeds the given number k. It returns the sum of the count of ones and zeroes as the length of the longest subsequence.",
+  "code": "class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int countZeroes = 0;\n        for (char c : s) {\n            if (c == '0') countZeroes++;\n        }\n        long long binaryNum = 0;\n        int countOnes = 0;\n        for (int i = s.size() - 1; i >= 0; --i) {\n            if (s[i] == '1') {\n                binaryNum += (1LL << countOnes);\n                if (binaryNum > k) break;\n                countOnes++;\n            }\n        }\n        return countOnes + countZeroes;\n    }\n};",
+  "timestamp": "2025-08-06T00:59:08.696134",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int countZeroes = 0;\n        for (char c : s) {\n            if (c == '0') countZeroes++;\n        }\n        long long binaryNum = 0;\n        int countOnes = 0;\n        for (int i = s.size() - 1; i >= 0; --i) {\n            if (s[i] == '1') {\n                binaryNum += (1LL << countOnes);\n                if (binaryNum > k) break;\n                countOnes++;\n            }\n        }\n        return countOnes + countZeroes;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.177543"
+}

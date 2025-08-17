@@ -1,0 +1,15 @@
+{
+  "id": 1015,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int smallestRepunitDivByK(int k) {\n        if (k % 2 == 0 || k % 5 == 0) return -1;\n        int res = 1;\n        while (true) {\n            int n = res;\n            while (n % 10 > 0) {\n                n = n % 10 + n / 10;\n            }\n            if (n % k == 0) return res.length();\n            res++;\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log10(k))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer approach to efficiently find the smallest positive integer n that is divisible by k and only contains the digit 1. It first checks if k is divisible by 2 or 5, and if so, returns -1. Then, it iterates through the possible values of n, updating the value of n by removing the last digit and adding the remaining digits back to the front. It checks if n is divisible by k, and if so, returns the length of n.",
+  "code": "class Solution {\n    public int smallestRepunitDivByK(int k) {\n        if (k % 2 == 0 || k % 5 == 0) return -1;\n        int res = 1;\n        while (true) {\n            int n = res;\n            while (n % 10 > 0) {\n                n = n % 10 + n / 10;\n            }\n            if (n % k == 0) return res.length();\n            res++;\n        }\n    }\n}",
+  "timestamp": "2025-08-05T14:57:38.956748",
+  "code_extracted_previous": "class Solution {\n    public int smallestRepunitDivByK(int k) {\n        if (k % 2 == 0 || k % 5 == 0) return -1;\n        int res = 1;\n        while (true) {\n            int n = res;\n            while (n % 10 > 0) {\n                n = n % 10 + n / 10;\n            }\n            if (n % k == 0) return res.length();\n            res++;\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.800406"
+}

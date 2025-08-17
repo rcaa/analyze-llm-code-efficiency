@@ -1,0 +1,15 @@
+{
+  "id": 673,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def findNumberOfLIS(self, nums: List[int]) -> int:\n        n = len(nums)\n        if n == 0:\n            return 0\n\n        lengths = [1] * n\n        counts = [1] * n\n\n        for i in range(n):\n            for j in range(i):\n                if nums[j] < nums[i]:\n                    if lengths[j] + 1 > lengths[i]:\n                        lengths[i] = lengths[j] + 1\n                        counts[i] = counts[j]\n                    elif lengths[j] + 1 == lengths[i]:\n                        counts[i] += counts[j]\n\n        max_length = max(lengths)\n        return sum(c for l, c in zip(lengths, counts) if l == max_length)\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution uses dynamic programming to track the length of the longest increasing subsequence ending at each index and the count of such subsequences. It iterates through the array, updating the length and count arrays based on previous values. Finally, it sums the counts for subsequences of maximum length. The approach is efficient for the given constraints.",
+  "code": "class Solution:\n    def findNumberOfLIS(self, nums: List[int]) -> int:\n        n = len(nums)\n        if n == 0:\n            return 0\n\n        lengths = [1] * n\n        counts = [1] * n\n\n        for i in range(n):\n            for j in range(i):\n                if nums[j] < nums[i]:\n                    if lengths[j] + 1 > lengths[i]:\n                        lengths[i] = lengths[j] + 1\n                        counts[i] = counts[j]\n                    elif lengths[j] + 1 == lengths[i]:\n                        counts[i] += counts[j]\n\n        max_length = max(lengths)\n        return sum(c for l, c in zip(lengths, counts) if l == max_length)",
+  "timestamp": "2025-08-06T15:39:52.476103",
+  "code_extracted_previous": "class Solution:\n    def findNumberOfLIS(self, nums: List[int]) -> int:\n        n = len(nums)\n        if n == 0:\n            return 0\n\n        lengths = [1] * n\n        counts = [1] * n\n\n        for i in range(n):\n            for j in range(i):\n                if nums[j] < nums[i]:\n                    if lengths[j] + 1 > lengths[i]:\n                        lengths[i] = lengths[j] + 1\n                        counts[i] = counts[j]\n                    elif lengths[j] + 1 == lengths[i]:\n                        counts[i] += counts[j]\n\n        max_length = max(lengths)\n        return sum(c for l, c in zip(lengths, counts) if l == max_length)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:06.506875"
+}

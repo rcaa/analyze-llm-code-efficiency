@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```java\nimport java.util.Queue;\nimport java.util.LinkedList;\n\nclass MyStack {\n\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: \n- push: O(n)\n- pop: O(1)\n- top: O(1)\n- empty: O(1)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution uses two queues to implement a stack. The push operation is implemented by moving all elements from one queue to another and then adding the new element to the end of the second queue, then swapping the two queues. The pop, top, and empty operations are simply the standard queue operations. The time complexity of push is O(n) because in the worst case, we have to move all elements from one queue to another. The space complexity is O(n) because in the worst case, we have to store all elements in the queues.",
+  "code": "class MyStack {\n\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "timestamp": "2025-08-05T16:00:35.901593",
+  "code_extracted_previous": "import java.util.Queue;\nimport java.util.LinkedList;\n\nclass MyStack {\n\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:50.702071"
+}

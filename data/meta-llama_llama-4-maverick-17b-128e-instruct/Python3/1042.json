@@ -1,0 +1,15 @@
+{
+  "id": 1042,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nfrom typing import List\n\nclass Solution:\n    def gardenNoAdj(self, n: int, paths: List[List[int]]) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y in paths:\n            graph[x - 1].append(y - 1)\n            graph[y - 1].append(x - 1)\n        \n        colors = [0] * n\n        for i in range(n):\n            used_colors = set(colors[j] for j in graph[i])\n            for color in range(1, 5):\n                if color not in used_colors:\n                    colors[i] = color\n                    break\n        \n        return colors\n\nsolution: The provided code within the class Solution.\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: The solution constructs a graph from the given paths and then iterates through each garden. For each garden, it determines the available flower color by checking the colors of its neighboring gardens and selects the first available color. This greedy approach is efficient due to the constraint that each garden has at most 3 paths, ensuring a valid coloring exists.\n```",
+  "code": "def gardenNoAdj(self, n: int, paths: List[List[int]]) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y in paths:\n            graph[x - 1].append(y - 1)\n            graph[y - 1].append(x - 1)\n        \n        colors = [0] * n\n        for i in range(n):\n            used_colors = set(colors[j] for j in graph[i])\n            for color in range(1, 5):\n                if color not in used_colors:\n                    colors[i] = color\n                    break\n        \n        return colors\n\nsolution: The provided code within the class Solution.",
+  "timestamp": "2025-08-05T14:02:03.131808",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def gardenNoAdj(self, n: int, paths: List[List[int]]) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y in paths:\n            graph[x - 1].append(y - 1)\n            graph[y - 1].append(x - 1)\n        \n        colors = [0] * n\n        for i in range(n):\n            used_colors = set(colors[j] for j in graph[i])\n            for color in range(1, 5):\n                if color not in used_colors:\n                    colors[i] = color\n                    break\n        \n        return colors",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:47.234978"
+}

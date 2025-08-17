@@ -1,0 +1,15 @@
+{
+  "id": 2034,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution:\n```cpp\nclass StockPrice {\npublic:\n    StockPrice() {\n        timestampToPrice = {};\n        maxPrice = INT_MIN;\n        minPrice = INT_MAX;\n        latestTimestamp = -1;\n    }\n    \n    void update(int timestamp, int price) {\n        timestampToPrice[timestamp] = price;\n        maxPrice = max(maxPrice, price);\n        minPrice = min(minPrice, price);\n        latestTimestamp = max(latestTimestamp, timestamp);\n    }\n    \n    int current() {\n        return timestampToPrice[latestTimestamp];\n    }\n    \n    int maximum() {\n        return maxPrice;\n    }\n    \n    int minimum() {\n        return minPrice;\n    }\nprivate:\n    unordered_map<int, int> timestampToPrice;\n    int maxPrice;\n    int minPrice;\n    int latestTimestamp;\n};\n```\nefficiency: HIGH\ntime complexity: O(1) for update, current, maximum, and minimum\nspace complexity: O(n) where n is the number of unique timestamps\nenergy implications: LOW",
+  "code": "class StockPrice {\npublic:\n    StockPrice() {\n        timestampToPrice = {};\n        maxPrice = INT_MIN;\n        minPrice = INT_MAX;\n        latestTimestamp = -1;\n    }\n    \n    void update(int timestamp, int price) {\n        timestampToPrice[timestamp] = price;\n        maxPrice = max(maxPrice, price);\n        minPrice = min(minPrice, price);\n        latestTimestamp = max(latestTimestamp, timestamp);\n    }\n    \n    int current() {\n        return timestampToPrice[latestTimestamp];\n    }\n    \n    int maximum() {\n        return maxPrice;\n    }\n    \n    int minimum() {\n        return minPrice;\n    }\nprivate:\n    unordered_map<int, int> timestampToPrice;\n    int maxPrice;\n    int minPrice;\n    int latestTimestamp;\n};",
+  "timestamp": "2025-08-05T15:08:01.816922",
+  "code_extracted_previous": "class StockPrice {\npublic:\n    StockPrice() {\n        timestampToPrice = {};\n        maxPrice = INT_MIN;\n        minPrice = INT_MAX;\n        latestTimestamp = -1;\n    }\n    \n    void update(int timestamp, int price) {\n        timestampToPrice[timestamp] = price;\n        maxPrice = max(maxPrice, price);\n        minPrice = min(minPrice, price);\n        latestTimestamp = max(latestTimestamp, timestamp);\n    }\n    \n    int current() {\n        return timestampToPrice[latestTimestamp];\n    }\n    \n    int maximum() {\n        return maxPrice;\n    }\n    \n    int minimum() {\n        return minPrice;\n    }\nprivate:\n    unordered_map<int, int> timestampToPrice;\n    int maxPrice;\n    int minPrice;\n    int latestTimestamp;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:40.799408"
+}

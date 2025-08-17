@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int[] firstOccurrence = new int[26];\n        int maxLength = -1;\n        for (int i = 0; i < s.length(); i++) {\n            int charIndex = s.charAt(i) - 'a';\n            if (firstOccurrence[charIndex] == 0 && charIndex != 0) {\n                firstOccurrence[charIndex] = i + 1;\n            } else if (firstOccurrence[charIndex] != 0) {\n                maxLength = Math.max(maxLength, i - firstOccurrence[charIndex]);\n            } else {\n                firstOccurrence[charIndex] = i + 1;\n            }\n        }\n        return maxLength;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the string once, maintaining a record of the first occurrence of each character. It updates the maximum length between equal characters as it encounters repeated characters, resulting in a linear time complexity. The space used is constant as it is limited by the number of lowercase English letters.",
+  "code": "class Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int[] firstOccurrence = new int[26];\n        int maxLength = -1;\n        for (int i = 0; i < s.length(); i++) {\n            int charIndex = s.charAt(i) - 'a';\n            if (firstOccurrence[charIndex] == 0 && charIndex != 0) {\n                firstOccurrence[charIndex] = i + 1;\n            } else if (firstOccurrence[charIndex] != 0) {\n                maxLength = Math.max(maxLength, i - firstOccurrence[charIndex]);\n            } else {\n                firstOccurrence[charIndex] = i + 1;\n            }\n        }\n        return maxLength;\n    }\n}",
+  "timestamp": "2025-08-05T14:43:31.472368",
+  "code_extracted_previous": "class Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int[] firstOccurrence = new int[26];\n        int maxLength = -1;\n        for (int i = 0; i < s.length(); i++) {\n            int charIndex = s.charAt(i) - 'a';\n            if (firstOccurrence[charIndex] == 0 && charIndex != 0) {\n                firstOccurrence[charIndex] = i + 1;\n            } else if (firstOccurrence[charIndex] != 0) {\n                maxLength = Math.max(maxLength, i - firstOccurrence[charIndex]);\n            } else {\n                firstOccurrence[charIndex] = i + 1;\n            }\n        }\n        return maxLength;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.296139"
+}

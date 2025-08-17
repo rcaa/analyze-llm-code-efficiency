@@ -1,0 +1,15 @@
+{
+  "id": 972,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def isRationalEqual(self, s: str, t: str) -> bool:\n        def parse(num: str) -> float:\n            if '(' not in num:\n                return float(num) if '.' in num else float(num + '.0')\n            dot = num.index('.')\n            op = num.index('(')\n            cl = num.index(')')\n            int_part = num[:dot] or '0'\n            nonrep = num[dot+1:op]\n            rep = num[op+1:cl]\n            total = int(int_part)\n            frac_len = len(nonrep) + len(rep)\n            frac = (int(nonrep + rep) - int(nonrep or '0')) / (10 ** len(nonrep) * (10 ** len(rep) - 1))\n            return total + frac\n        return abs(parse(s) - parse(t)) < 1e-10\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Convert each string to its exact floating-point value by parsing integer, non-repeating, and repeating parts. The repeating part is handled via the formula (a+b)/(10^m*(10^n-1)). Compare the two values within a small epsilon to account for floating-point precision.",
+  "code": "class Solution:\n    def isRationalEqual(self, s: str, t: str) -> bool:\n        def parse(num: str) -> float:\n            if '(' not in num:\n                return float(num) if '.' in num else float(num + '.0')\n            dot = num.index('.')\n            op = num.index('(')\n            cl = num.index(')')\n            int_part = num[:dot] or '0'\n            nonrep = num[dot+1:op]\n            rep = num[op+1:cl]\n            total = int(int_part)\n            frac_len = len(nonrep) + len(rep)\n            frac = (int(nonrep + rep) - int(nonrep or '0')) / (10 ** len(nonrep) * (10 ** len(rep) - 1))\n            return total + frac\n        return abs(parse(s) - parse(t)) < 1e-10",
+  "timestamp": "2025-08-06T02:34:39.593641",
+  "code_extracted_previous": "def isRationalEqual(self, s: str, t: str) -> bool:\n        def parse(num: str) -> float:\n            if '(' not in num:\n                return float(num) if '.' in num else float(num + '.0')\n            dot = num.index('.')\n            op = num.index('(')\n            cl = num.index(')')\n            int_part = num[:dot] or '0'\n            nonrep = num[dot+1:op]\n            rep = num[op+1:cl]\n            total = int(int_part)\n            frac_len = len(nonrep) + len(rep)\n            frac = (int(nonrep + rep) - int(nonrep or '0')) / (10 ** len(nonrep) * (10 ** len(rep) - 1))\n            return total + frac\n        return abs(parse(s) - parse(t)) < 1e-10",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.776957"
+}

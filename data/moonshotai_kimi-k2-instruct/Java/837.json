@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts - 1) return 1.0;\n        double[] dp = new double[n + 1];\n        dp[0] = 1.0;\n        double window = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = window / maxPts;\n            if (i < k) window += dp[i];\n            if (i - maxPts >= 0 && i - maxPts < k) window -= dp[i - maxPts];\n        }\n        double res = 0.0;\n        for (int i = k; i <= n; i++) res += dp[i];\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses dynamic programming with a sliding-window sum to compute probabilities in linear time. The window tracks the sum of probabilities for the last maxPts states, avoiding recomputation.",
+  "code": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts - 1) return 1.0;\n        double[] dp = new double[n + 1];\n        dp[0] = 1.0;\n        double window = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = window / maxPts;\n            if (i < k) window += dp[i];\n            if (i - maxPts >= 0 && i - maxPts < k) window -= dp[i - maxPts];\n        }\n        double res = 0.0;\n        for (int i = k; i <= n; i++) res += dp[i];\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T02:32:19.621724",
+  "code_extracted_previous": "public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts - 1) return 1.0;\n        double[] dp = new double[n + 1];\n        dp[0] = 1.0;\n        double window = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = window / maxPts;\n            if (i < k) window += dp[i];\n            if (i - maxPts >= 0 && i - maxPts < k) window -= dp[i - maxPts];\n        }\n        double res = 0.0;\n        for (int i = k; i <= n; i++) res += dp[i];\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.839147"
+}

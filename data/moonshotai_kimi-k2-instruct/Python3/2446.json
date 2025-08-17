@@ -1,0 +1,15 @@
+{
+  "id": 2446,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def haveConflict(self, event1: List[str], event2: List[str]) -> bool:\n        def to_minutes(t: str) -> int:\n            return int(t[:2]) * 60 + int(t[3:])\n        s1, e1 = to_minutes(event1[0]), to_minutes(event1[1])\n        s2, e2 = to_minutes(event2[0]), to_minutes(event2[1])\n        return not (e1 < s2 or e2 < s1)\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Convert each time string to minutes since midnight for simple integer comparison. Two intervals overlap unless one ends strictly before the other starts; negate this condition to detect any overlap.",
+  "code": "class Solution:\n    def haveConflict(self, event1: List[str], event2: List[str]) -> bool:\n        def to_minutes(t: str) -> int:\n            return int(t[:2]) * 60 + int(t[3:])\n        s1, e1 = to_minutes(event1[0]), to_minutes(event1[1])\n        s2, e2 = to_minutes(event2[0]), to_minutes(event2[1])\n        return not (e1 < s2 or e2 < s1)",
+  "timestamp": "2025-08-05T12:50:37.000849",
+  "code_extracted_previous": "class Solution:\n    def haveConflict(self, event1: List[str], event2: List[str]) -> bool:\n        def to_minutes(t: str) -> int:\n            return int(t[:2]) * 60 + int(t[3:])\n        s1, e1 = to_minutes(event1[0]), to_minutes(event1[1])\n        s2, e2 = to_minutes(event2[0]), to_minutes(event2[1])\n        return not (e1 < s2 or e2 < s1)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.702170"
+}

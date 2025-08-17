@@ -1,0 +1,15 @@
+{
+  "id": 753,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public String crackSafe(int n, int k) {\n        if (n == 1 && k == 1) return \"0\";\n        StringBuilder sb = new StringBuilder();\n        int total = (int) Math.pow(k, n);\n        boolean[] seen = new boolean[total];\n        int node = 0;\n        for (int i = 0; i < n - 1; i++) sb.append('0');\n        dfs(node, k, n, total, seen, sb);\n        return sb.toString();\n    }\n\n    private void dfs(int node, int k, int n, int total, boolean[] seen, StringBuilder sb) {\n        for (int i = 0; i < k; i++) {\n            int nei = (node * k + i) % total;\n            if (!seen[nei]) {\n                seen[nei] = true;\n                dfs(nei, k, n, total, seen, sb);\n                sb.append((char) ('0' + i));\n            }\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(k^n)\nspace complexity: O(k^n)\nenergy implications: LOW\nexplanation: Uses Hierholzer’s algorithm on a de Bruijn graph to construct an Eulerian circuit that visits every n-digit password exactly once. The resulting string is the shortest superstring containing all possible passwords.",
+  "code": "class Solution {\n    public String crackSafe(int n, int k) {\n        if (n == 1 && k == 1) return \"0\";\n        StringBuilder sb = new StringBuilder();\n        int total = (int) Math.pow(k, n);\n        boolean[] seen = new boolean[total];\n        int node = 0;\n        for (int i = 0; i < n - 1; i++) sb.append('0');\n        dfs(node, k, n, total, seen, sb);\n        return sb.toString();\n    }\n\n    private void dfs(int node, int k, int n, int total, boolean[] seen, StringBuilder sb) {\n        for (int i = 0; i < k; i++) {\n            int nei = (node * k + i) % total;\n            if (!seen[nei]) {\n                seen[nei] = true;\n                dfs(nei, k, n, total, seen, sb);\n                sb.append((char) ('0' + i));\n            }\n        }\n    }\n}",
+  "timestamp": "2025-08-05T13:55:35.954902",
+  "code_extracted_previous": "class Solution {\n    public String crackSafe(int n, int k) {\n        if (n == 1 && k == 1) return \"0\";\n        StringBuilder sb = new StringBuilder();\n        int total = (int) Math.pow(k, n);\n        boolean[] seen = new boolean[total];\n        int node = 0;\n        for (int i = 0; i < n - 1; i++) sb.append('0');\n        dfs(node, k, n, total, seen, sb);\n        return sb.toString();\n    }\n\n    private void dfs(int node, int k, int n, int total, boolean[] seen, StringBuilder sb) {\n        for (int i = 0; i < k; i++) {\n            int nei = (node * k + i) % total;\n            if (!seen[nei]) {\n                seen[nei] = true;\n                dfs(nei, k, n, total, seen, sb);\n                sb.append((char) ('0' + i));\n            }\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.807818"
+}

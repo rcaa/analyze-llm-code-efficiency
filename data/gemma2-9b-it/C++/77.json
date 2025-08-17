@@ -1,0 +1,15 @@
+{
+  "id": 77,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> result;\n        vector<int> current;\n        backtrack(result, current, 1, n, k);\n        return result;\n    }\n    void backtrack(vector<vector<int>>& result, vector<int>& current, int start, int n, int k) {\n        if (current.size() == k) {\n            result.push_back(current);\n            return;\n        }\n        for (int i = start; i <= n; i++) {\n            current.push_back(i);\n            backtrack(result, current, i + 1, n, k);\n            current.pop_back();\n        }\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n*k*k!)\nspace complexity: O(k*n)\nenergy implications: LOW\nexplanation: The solution uses a recursive backtracking approach. It iterates through numbers from 1 to n, adding each number to the current combination until the combination size reaches k.  The function recursively explores all possible combinations.  The time complexity is dominated by the factorial term due to the exponential growth of combinations. The space complexity is primarily determined by the recursion depth and the size of the generated combinations. \n\n\n\n",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> result;\n        vector<int> current;\n        backtrack(result, current, 1, n, k);\n        return result;\n    }\n    void backtrack(vector<vector<int>>& result, vector<int>& current, int start, int n, int k) {\n        if (current.size() == k) {\n            result.push_back(current);\n            return;\n        }\n        for (int i = start; i <= n; i++) {\n            current.push_back(i);\n            backtrack(result, current, i + 1, n, k);\n            current.pop_back();\n        }\n    }\n};",
+  "timestamp": "2025-08-05T13:35:31.528545",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> result;\n        vector<int> current;\n        backtrack(result, current, 1, n, k);\n        return result;\n    }\n    void backtrack(vector<vector<int>>& result, vector<int>& current, int start, int n, int k) {\n        if (current.size() == k) {\n            result.push_back(current);\n            return;\n        }\n        for (int i = start; i <= n; i++) {\n            current.push_back(i);\n            backtrack(result, current, i + 1, n, k);\n            current.pop_back();\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.322323"
+}

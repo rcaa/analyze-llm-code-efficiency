@@ -1,0 +1,15 @@
+{
+  "id": 3594,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    double minTime(int n, int k, int m, vector<int>& time, vector<double>& mul) {\n        vector<vector<double>> dp(n + 1, vector<double>(m, 1e9));\n        dp[0][0] = 0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < m; j++) {\n                dp[i][j] = min(dp[i][j], dp[i - 1][(j + 1) % m] + time[i - 1] * mul[j]);\n                for (int x = 1; x <= k; x++) {\n                    if (i - x >= 0) {\n                        dp[i][j] = min(dp[i][j], dp[i - x][(j + 1) % m] + max(time[i - 1], time[i - x - 1]) * mul[j]);\n                    }\n                }\n            }\n        }\n        return dp[n][0] == 1e9 ? -1 : dp[n][0];\n    }\n```\nefficiency: HIGH\ntime complexity: O(n * m * k)\nspace complexity: O(n * m)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to find the minimum time required to transport all individuals. It maintains a 2D array dp where dp[i][j] represents the minimum time required to transport i individuals at stage j. The solution iterates over all individuals and stages, and for each individual, it tries to send them in different groups and updates the dp array accordingly.",
+  "code": "class Solution {\npublic:\n    double minTime(int n, int k, int m, vector<int>& time, vector<double>& mul) {\n        vector<vector<double>> dp(n + 1, vector<double>(m, 1e9));\n        dp[0][0] = 0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < m; j++) {\n                dp[i][j] = min(dp[i][j], dp[i - 1][(j + 1) % m] + time[i - 1] * mul[j]);\n                for (int x = 1; x <= k; x++) {\n                    if (i - x >= 0) {\n                        dp[i][j] = min(dp[i][j], dp[i - x][(j + 1) % m] + max(time[i - 1], time[i - x - 1]) * mul[j]);\n                    }\n                }\n            }\n        }\n        return dp[n][0] == 1e9 ? -1 : dp[n][0];\n    }",
+  "timestamp": "2025-08-05T12:20:18.126532",
+  "code_extracted_previous": "class Solution {\npublic:\n    double minTime(int n, int k, int m, vector<int>& time, vector<double>& mul) {\n        vector<vector<double>> dp(n + 1, vector<double>(m, 1e9));\n        dp[0][0] = 0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < m; j++) {\n                dp[i][j] = min(dp[i][j], dp[i - 1][(j + 1) % m] + time[i - 1] * mul[j]);\n                for (int x = 1; x <= k; x++) {\n                    if (i - x >= 0) {\n                        dp[i][j] = min(dp[i][j], dp[i - x][(j + 1) % m] + max(time[i - 1], time[i - x - 1]) * mul[j]);\n                    }\n                }\n            }\n        }\n        return dp[n][0] == 1e9 ? -1 : dp[n][0];\n    }",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.300382"
+}

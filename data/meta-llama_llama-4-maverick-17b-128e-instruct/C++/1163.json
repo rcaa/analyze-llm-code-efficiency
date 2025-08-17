@@ -1,0 +1,15 @@
+{
+  "id": 1163,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    string lastSubstring(string s) {\n        int i = 0, j = 1, n = s.size();\n        while (j < n) {\n            int k = 0;\n            while (j + k < n && s[i + k] == s[j + k]) k++;\n            if (j + k < n && s[i + k] < s[j + k]) i = (i + k + 1 > j) ? j : i + k + 1;\n            else j = j + k + 1;\n        }\n        return s.substr(i);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a two-pointer technique to compare substrings and determine the lexicographically largest substring. It maintains a pointer `i` for the current maximum substring start and `j` for the next potential maximum substring start, efficiently skipping over equal characters and adjusting `i` and `j` based on comparisons.",
+  "code": "class Solution {\npublic:\n    string lastSubstring(string s) {\n        int i = 0, j = 1, n = s.size();\n        while (j < n) {\n            int k = 0;\n            while (j + k < n && s[i + k] == s[j + k]) k++;\n            if (j + k < n && s[i + k] < s[j + k]) i = (i + k + 1 > j) ? j : i + k + 1;\n            else j = j + k + 1;\n        }\n        return s.substr(i);\n    }\n};",
+  "timestamp": "2025-08-06T01:15:06.084754",
+  "code_extracted_previous": "class Solution {\npublic:\n    string lastSubstring(string s) {\n        int i = 0, j = 1, n = s.size();\n        while (j < n) {\n            int k = 0;\n            while (j + k < n && s[i + k] == s[j + k]) k++;\n            if (j + k < n && s[i + k] < s[j + k]) i = (i + k + 1 > j) ? j : i + k + 1;\n            else j = j + k + 1;\n        }\n        return s.substr(i);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.639112"
+}

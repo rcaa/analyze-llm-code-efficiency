@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n\n    private int[] w;\n    private double[] prefixSum;\n\n    public Solution(int[] w) {\n        this.w = w;\n        prefixSum = new double[w.length + 1];\n        for (int i = 0; i < w.length; i++) {\n            prefixSum[i + 1] = prefixSum[i] + (double) w[i] / w[w.length - 1];\n        }\n    }\n    \n    public int pickIndex() {\n        double random = Math.random();\n        for (int i = 0; i < w.length; i++) {\n            if (random <= prefixSum[i + 1]) {\n                return i;\n            }\n        }\n        return w.length - 1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a prefix sum array to efficiently calculate the cumulative probability of each index. The `pickIndex` method generates a random number and iterates through the prefix sum array to find the index that corresponds to the generated random number. This approach ensures that the probability of picking each index is proportional to its weight.",
+  "code": "class Solution {\n\n    private int[] w;\n    private double[] prefixSum;\n\n    public Solution(int[] w) {\n        this.w = w;\n        prefixSum = new double[w.length + 1];\n        for (int i = 0; i < w.length; i++) {\n            prefixSum[i + 1] = prefixSum[i] + (double) w[i] / w[w.length - 1];\n        }\n    }\n    \n    public int pickIndex() {\n        double random = Math.random();\n        for (int i = 0; i < w.length; i++) {\n            if (random <= prefixSum[i + 1]) {\n                return i;\n            }\n        }\n        return w.length - 1;\n    }\n}",
+  "timestamp": "2025-08-05T12:59:36.157292",
+  "code_extracted_previous": "class Solution {\n\n    private int[] w;\n    private double[] prefixSum;\n\n    public Solution(int[] w) {\n        this.w = w;\n        prefixSum = new double[w.length + 1];\n        for (int i = 0; i < w.length; i++) {\n            prefixSum[i + 1] = prefixSum[i] + (double) w[i] / w[w.length - 1];\n        }\n    }\n    \n    public int pickIndex() {\n        double random = Math.random();\n        for (int i = 0; i < w.length; i++) {\n            if (random <= prefixSum[i + 1]) {\n                return i;\n            }\n        }\n        return w.length - 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.865456"
+}

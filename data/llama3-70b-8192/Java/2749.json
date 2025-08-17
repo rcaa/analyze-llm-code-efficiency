@@ -1,0 +1,15 @@
+{
+  "id": 2749,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int makeTheIntegerZero(int num1, int num2) {\n        if (num2 == 0) return num1 == 0 ? 0 : -1;\n        int gcd = gcd(Math.abs(num1), Math.abs(num2));\n        if (num1 % gcd != 0) return -1;\n        int res = 0;\n        while (num1 != 0) {\n            int i = (int) Math.floor(Math.log(Math.abs(num1)) / Math.log(2));\n            if (i > 60) i = 60;\n            num1 -= (2 * i + num2);\n            res++;\n        }\n        return res;\n    }\n\n    private int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(num1))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses the Euclidean algorithm to find the GCD of num1 and num2. If num1 is not a multiple of the GCD, it's impossible to make num1 equal to 0. Otherwise, it iteratively subtracts the maximum possible value (2*i + num2) from num1 until num1 becomes 0, keeping track of the number of operations.",
+  "code": "class Solution {\n    public int makeTheIntegerZero(int num1, int num2) {\n        if (num2 == 0) return num1 == 0 ? 0 : -1;\n        int gcd = gcd(Math.abs(num1), Math.abs(num2));\n        if (num1 % gcd != 0) return -1;\n        int res = 0;\n        while (num1 != 0) {\n            int i = (int) Math.floor(Math.log(Math.abs(num1)) / Math.log(2));\n            if (i > 60) i = 60;\n            num1 -= (2 * i + num2);\n            res++;\n        }\n        return res;\n    }\n\n    private int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}",
+  "timestamp": "2025-08-05T13:53:54.728007",
+  "code_extracted_previous": "class Solution {\n    public int makeTheIntegerZero(int num1, int num2) {\n        if (num2 == 0) return num1 == 0 ? 0 : -1;\n        int gcd = gcd(Math.abs(num1), Math.abs(num2));\n        if (num1 % gcd != 0) return -1;\n        int res = 0;\n        while (num1 != 0) {\n            int i = (int) Math.floor(Math.log(Math.abs(num1)) / Math.log(2));\n            if (i > 60) i = 60;\n            num1 -= (2 * i + num2);\n            res++;\n        }\n        return res;\n    }\n\n    private int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.304754"
+}

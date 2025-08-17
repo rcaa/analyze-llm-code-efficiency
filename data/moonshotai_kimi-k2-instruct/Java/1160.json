@@ -1,0 +1,15 @@
+{
+  "id": 1160,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int countCharacters(String[] words, String chars) {\n        int[] freq = new int[26];\n        for (char c : chars.toCharArray()) freq[c - 'a']++;\n        int sum = 0;\n        for (String w : words) {\n            int[] need = new int[26];\n            boolean ok = true;\n            for (char c : w.toCharArray()) {\n                int idx = c - 'a';\n                need[idx]++;\n                if (need[idx] > freq[idx]) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) sum += w.length();\n        }\n        return sum;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(N * L) where N = words.length and L = average word length\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count frequency of each character in chars once. For each word, count its characters and check against the global frequency array; if all counts are ≤ the global counts, add the word’s length to the result. Uses fixed-size arrays for O(1) space.",
+  "code": "class Solution {\n    public int countCharacters(String[] words, String chars) {\n        int[] freq = new int[26];\n        for (char c : chars.toCharArray()) freq[c - 'a']++;\n        int sum = 0;\n        for (String w : words) {\n            int[] need = new int[26];\n            boolean ok = true;\n            for (char c : w.toCharArray()) {\n                int idx = c - 'a';\n                need[idx]++;\n                if (need[idx] > freq[idx]) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) sum += w.length();\n        }\n        return sum;\n    }\n}",
+  "timestamp": "2025-08-05T12:38:57.906534",
+  "code_extracted_previous": "public int countCharacters(String[] words, String chars) {\n        int[] freq = new int[26];\n        for (char c : chars.toCharArray()) freq[c - 'a']++;\n        int sum = 0;\n        for (String w : words) {\n            int[] need = new int[26];\n            boolean ok = true;\n            for (char c : w.toCharArray()) {\n                int idx = c - 'a';\n                need[idx]++;\n                if (need[idx] > freq[idx]) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) sum += w.length();\n        }\n        return sum;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.470285"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def reorderedPowerOf2(self, n: int) -> bool:\n        count = [0] * 10\n        while n:\n            count[n % 10] += 1\n            n //= 10\n        n = 1\n        for i in range(10):\n            while count[i]:\n                n *= 2\n                count[i] -= 1\n                if n > 2 ** 30:\n                    return False\n        return n == 2 ** 30\n```\nefficiency: HIGH\ntime complexity: O(log10(n))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution first counts the frequency of each digit in the given number. Then it constructs a power of two by repeatedly multiplying the current number by 2 and decrementing the count of the current digit. If the constructed number exceeds 2^30, it returns False. Finally, it checks if the constructed number is equal to 2^30 and returns the result.",
+  "code": "class Solution:\n    def reorderedPowerOf2(self, n: int) -> bool:\n        count = [0] * 10\n        while n:\n            count[n % 10] += 1\n            n //= 10\n        n = 1\n        for i in range(10):\n            while count[i]:\n                n *= 2\n                count[i] -= 1\n                if n > 2 ** 30:\n                    return False\n        return n == 2 ** 30",
+  "timestamp": "2025-08-05T14:56:09.130461",
+  "code_extracted_previous": "class Solution:\n    def reorderedPowerOf2(self, n: int) -> bool:\n        count = [0] * 10\n        while n:\n            count[n % 10] += 1\n            n //= 10\n        n = 1\n        for i in range(10):\n            while count[i]:\n                n *= 2\n                count[i] -= 1\n                if n > 2 ** 30:\n                    return False\n        return n == 2 ** 30",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.469421"
+}

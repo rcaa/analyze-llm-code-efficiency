@@ -1,0 +1,15 @@
+{
+  "id": 2296,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass TextEditor {\npublic:\n    string text;\n    int cursor;\n\n    TextEditor() {\n        cursor = 0;\n    }\n    \n    void addText(string s) {\n        text.insert(cursor, s);\n        cursor += s.length();\n    }\n    \n    int deleteText(int k) {\n        int deleted = min(k, cursor);\n        text.erase(cursor - deleted, deleted);\n        cursor -= deleted;\n        return deleted;\n    }\n    \n    string cursorLeft(int k) {\n        cursor = max(0, cursor - k);\n        int len = min(10, cursor);\n        return text.substr(cursor - len, len);\n    }\n    \n    string cursorRight(int k) {\n        cursor = min((int)text.length(), cursor + k);\n        int len = min(10, cursor);\n        return text.substr(cursor - len, len);\n    }\n};\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(k)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The TextEditor class uses a string to store the text and an integer to track the cursor position. The addText method inserts the given text at the cursor position and updates the cursor position. The deleteText method removes the specified number of characters to the left of the cursor and updates the cursor position. The cursorLeft and cursorRight methods move the cursor to the left or right by the specified number of positions and return the last min(10, len) characters to the left of the cursor.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-06T15:09:36.265116",
+  "code_extracted_previous": "class TextEditor {\npublic:\n    string text;\n    int cursor;\n\n    TextEditor() {\n        cursor = 0;\n    }\n    \n    void addText(string s) {\n        text.insert(cursor, s);\n        cursor += s.length();\n    }\n    \n    int deleteText(int k) {\n        int deleted = min(k, cursor);\n        text.erase(cursor - deleted, deleted);\n        cursor -= deleted;\n        return deleted;\n    }\n    \n    string cursorLeft(int k) {\n        cursor = max(0, cursor - k);\n        int len = min(10, cursor);\n        return text.substr(cursor - len, len);\n    }\n    \n    string cursorRight(int k) {\n        cursor = min((int)text.length(), cursor + k);\n        int len = min(10, cursor);\n        return text.substr(cursor - len, len);\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:32.199603"
+}

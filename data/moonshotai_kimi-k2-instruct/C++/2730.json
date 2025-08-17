@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int max_len = 1;\n        for (int l = 0; l < n; ++l) {\n            int cnt = 0;\n            for (int r = l + 1; r < n; ++r) {\n                if (s[r] == s[r - 1]) ++cnt;\n                if (cnt > 1) break;\n                max_len = max(max_len, r - l + 1);\n            }\n        }\n        return max_len;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate every substring start index l, expand rightwards while counting adjacent duplicates; stop when a second duplicate pair appears. Track the longest valid substring. With n ≤ 50, the O(n²) approach is trivial and optimal.",
+  "code": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int max_len = 1;\n        for (int l = 0; l < n; ++l) {\n            int cnt = 0;\n            for (int r = l + 1; r < n; ++r) {\n                if (s[r] == s[r - 1]) ++cnt;\n                if (cnt > 1) break;\n                max_len = max(max_len, r - l + 1);\n            }\n        }\n        return max_len;\n    }\n};",
+  "timestamp": "2025-08-06T01:06:48.859046",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int max_len = 1;\n        for (int l = 0; l < n; ++l) {\n            int cnt = 0;\n            for (int r = l + 1; r < n; ++r) {\n                if (s[r] == s[r - 1]) ++cnt;\n                if (cnt > 1) break;\n                max_len = max(max_len, r - l + 1);\n            }\n        }\n        return max_len;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.815492"
+}

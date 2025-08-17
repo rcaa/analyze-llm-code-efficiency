@@ -1,0 +1,15 @@
+{
+  "id": 2353,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass FoodRatings:\n\n    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):\n        self.foods = {food: (rating, cuisine) for food, cuisine, rating in zip(foods, cuisines, ratings)}\n        self.foods_by_cuisine = defaultdict(lambda: [])\n\n    def changeRating(self, food: str, newRating: int) -> None:\n        del self.foods[food]\n        self.foods[food] = (newRating, self.foods[food][1])\n\n    def highestRated(self, cuisine: str) -> str:\n        return min((food for food, (rating, c) in self.foods.items() if c == cuisine and rating == max(r for r, c in self.foods.values() if c == cuisine)), key=lambda x: x)\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a dictionary to store the food items and their corresponding ratings and cuisines. The `changeRating` method updates the rating of a food item and the `highestRated` method returns the highest-rated food item for a given cuisine. The solution has a high efficiency due to the use of dictionaries and the `min` function with a lambda function, which allows for efficient lookup and sorting of the food items.",
+  "code": "class FoodRatings:\n\n    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):\n        self.foods = {food: (rating, cuisine) for food, cuisine, rating in zip(foods, cuisines, ratings)}\n        self.foods_by_cuisine = defaultdict(lambda: [])\n\n    def changeRating(self, food: str, newRating: int) -> None:\n        del self.foods[food]\n        self.foods[food] = (newRating, self.foods[food][1])\n\n    def highestRated(self, cuisine: str) -> str:\n        return min((food for food, (rating, c) in self.foods.items() if c == cuisine and rating == max(r for r, c in self.foods.values() if c == cuisine)), key=lambda x: x)",
+  "timestamp": "2025-08-05T13:30:12.382169",
+  "code_extracted_previous": "class FoodRatings:\n\n    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):\n        self.foods = {food: (rating, cuisine) for food, cuisine, rating in zip(foods, cuisines, ratings)}\n        self.foods_by_cuisine = defaultdict(lambda: [])\n\n    def changeRating(self, food: str, newRating: int) -> None:\n        del self.foods[food]\n        self.foods[food] = (newRating, self.foods[food][1])\n\n    def highestRated(self, cuisine: str) -> str:\n        return min((food for food, (rating, c) in self.foods.items() if c == cuisine and rating == max(r for r, c in self.foods.values() if c == cuisine)), key=lambda x: x)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:43.837069"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int findIntegers(int n) {\n        int[] fib = new int[31];\n        fib[0] = 1;\n        fib[1] = 2;\n        for (int i = 2; i <= 30; i++) {\n            fib[i] = fib[i - 1] + fib[i - 2];\n        }\n        int sum = 0;\n        boolean prev = false;\n        for (int i = 30; i >= 0; i--) {\n            if ((n & (1 << i)) != 0) {\n                sum += fib[i];\n                if (prev) {\n                    sum--;\n                    break;\n                }\n                prev = true;\n            } else {\n                prev = false;\n            }\n        }\n        return sum + 1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the Fibonacci sequence and then iterates through the binary representation of the input number to count the integers that do not contain consecutive ones.",
+  "code": "class Solution {\n    public int findIntegers(int n) {\n        int[] fib = new int[31];\n        fib[0] = 1;\n        fib[1] = 2;\n        for (int i = 2; i <= 30; i++) {\n            fib[i] = fib[i - 1] + fib[i - 2];\n        }\n        int sum = 0;\n        boolean prev = false;\n        for (int i = 30; i >= 0; i--) {\n            if ((n & (1 << i)) != 0) {\n                sum += fib[i];\n                if (prev) {\n                    sum--;\n                    break;\n                }\n                prev = true;\n            } else {\n                prev = false;\n            }\n        }\n        return sum + 1;\n    }\n}",
+  "timestamp": "2025-08-06T15:15:56.336642",
+  "code_extracted_previous": "class Solution {\n    public int findIntegers(int n) {\n        int[] fib = new int[31];\n        fib[0] = 1;\n        fib[1] = 2;\n        for (int i = 2; i <= 30; i++) {\n            fib[i] = fib[i - 1] + fib[i - 2];\n        }\n        int sum = 0;\n        boolean prev = false;\n        for (int i = 30; i >= 0; i--) {\n            if ((n & (1 << i)) != 0) {\n                sum += fib[i];\n                if (prev) {\n                    sum--;\n                    break;\n                }\n                prev = true;\n            } else {\n                prev = false;\n            }\n        }\n        return sum + 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.365767"
+}

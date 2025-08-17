@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: ```java\nimport java.util.*;\n\nclass Solution {\n    private int m, n, total;\n    private Map<Integer, Integer> map;\n    private Random rand;\n\n    public Solution(int m, int n) {\n        this.m = m;\n        this.n = n;\n        this.total = m * n;\n        this.map = new HashMap<>();\n        this.rand = new Random();\n    }\n    \n    public int[] flip() {\n        int idx = rand.nextInt(total--);\n        int actual = map.getOrDefault(idx, idx);\n        int last = map.getOrDefault(total, total);\n        map.put(idx, last);\n        return new int[]{actual / n, actual % n};\n    }\n    \n    public void reset() {\n        total = m * n;\n        map.clear();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1) per flip/reset\nspace complexity: O(k) where k is number of flipped cells\nenergy implications: LOW\nexplanation: Uses Fisher-Yates reservoir sampling with a hash map to map virtual indices to actual indices, ensuring uniform randomness with only one random call per flip. Space grows linearly with flipped cells, but remains minimal due to sparse storage.",
+  "code": "class Solution {\n    private int m, n, total;\n    private Map<Integer, Integer> map;\n    private Random rand;\n\n    public Solution(int m, int n) {\n        this.m = m;\n        this.n = n;\n        this.total = m * n;\n        this.map = new HashMap<>();\n        this.rand = new Random();\n    }\n    \n    public int[] flip() {\n        int idx = rand.nextInt(total--);\n        int actual = map.getOrDefault(idx, idx);\n        int last = map.getOrDefault(total, total);\n        map.put(idx, last);\n        return new int[]{actual / n, actual % n};\n    }\n    \n    public void reset() {\n        total = m * n;\n        map.clear();\n    }\n}",
+  "timestamp": "2025-08-06T02:32:08.310423",
+  "code_extracted_previous": "import java.util.*;\n\nclass Solution {\n    private int m, n, total;\n    private Map<Integer, Integer> map;\n    private Random rand;\n\n    public Solution(int m, int n) {\n        this.m = m;\n        this.n = n;\n        this.total = m * n;\n        this.map = new HashMap<>();\n        this.rand = new Random();\n    }\n    \n    public int[] flip() {\n        int idx = rand.nextInt(total--);\n        int actual = map.getOrDefault(idx, idx);\n        int last = map.getOrDefault(total, total);\n        map.put(idx, last);\n        return new int[]{actual / n, actual % n};\n    }\n    \n    public void reset() {\n        total = m * n;\n        map.clear();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.617509"
+}

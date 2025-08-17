@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int findNthDigit(int n) {\n        long long count = 1, digits = 1;\n        while (n > digits * count) {\n            n -= digits * count;\n            count *= 10;\n            digits++;\n        }\n        long long start = pow(10, digits - 1);\n        long long num = start + (n - 1) / digits;\n        string str = to_string(num);\n        return stol(str.substr((n - 1) % digits, 1));\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use a dynamic approach to find the nth digit. We calculate the number of digits in each number and the total count of digits. We then subtract the total count of digits from n and update the count and digits. Finally, we calculate the start number and the nth digit.",
+  "code": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long count = 1, digits = 1;\n        while (n > digits * count) {\n            n -= digits * count;\n            count *= 10;\n            digits++;\n        }\n        long long start = pow(10, digits - 1);\n        long long num = start + (n - 1) / digits;\n        string str = to_string(num);\n        return stol(str.substr((n - 1) % digits, 1));\n    }\n};",
+  "timestamp": "2025-08-05T15:42:00.567248",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long count = 1, digits = 1;\n        while (n > digits * count) {\n            n -= digits * count;\n            count *= 10;\n            digits++;\n        }\n        long long start = pow(10, digits - 1);\n        long long num = start + (n - 1) / digits;\n        string str = to_string(num);\n        return stol(str.substr((n - 1) % digits, 1));\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.337061"
+}

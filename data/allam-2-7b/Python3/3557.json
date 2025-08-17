@@ -1,0 +1,15 @@
+{
+  "id": 3557,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef maxSubstrings(self, word: str) -> int:\n    n = len(word)\n    max_count = 0\n    for i in range(n):\n        for j in range(i+1, n+1):\n            count = 0\n            for k in range(j, n+1):\n                if word[i:k+1] == word[i:j+1]:\n                    count += 1\n            max_count = max(max_count, count)\n    return max_count\n\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n^2)\nenergy implications: LOW\n\nExplanation:\nWe iterate through the string word three times: once for the starting index, once for the ending index, and once for the length of the substring. For each combination of starting and ending indices, we count the number of consecutive characters that match. The time complexity is O(n^3), where n is the length of the word. The space complexity is O(n^2), as we store two arrays to keep track of the starting and ending indices. The energy implications are low, as the solution only involves simple string operations and does not consume significant energy. ",
+  "code": "def maxSubstrings(self, word: str) -> int:\n    n = len(word)\n    max_count = 0\n    for i in range(n):\n        for j in range(i+1, n+1):\n            count = 0\n            for k in range(j, n+1):\n                if word[i:k+1] == word[i:j+1]:\n                    count += 1\n            max_count = max(max_count, count)\n    return max_count",
+  "timestamp": "2025-08-05T15:13:54.230931",
+  "code_extracted_previous": "def maxSubstrings(self, word: str) -> int:\n    n = len(word)\n    max_count = 0\n    for i in range(n):\n        for j in range(i+1, n+1):\n            count = 0\n            for k in range(j, n+1):\n                if word[i:k+1] == word[i:j+1]:\n                    count += 1\n            max_count = max(max_count, count)\n    return max_count",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.942764"
+}

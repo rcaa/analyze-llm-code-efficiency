@@ -1,0 +1,15 @@
+{
+  "id": 2472,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def maxPalindromes(self, s: str, k: int) -> int:\n        n = len(s)\n        dp = [[False]*n for _ in range(n)]\n        for i in range(n-1, -1, -1):\n            for j in range(i, n):\n                if s[i] == s[j] and (j-i <= 2 or dp[i+1][j-1]):\n                    dp[i][j] = True\n        res = 0\n        last = -1\n        for i in range(n):\n            for j in range(i+k-1, n):\n                if dp[i][j] and i > last:\n                    res += 1\n                    last = j\n                    break\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n^2)\nenergy implications: MEDIUM\nexplanation: Uses dynamic programming to precompute all palindromic substrings in O(n^2) time and space, then greedily selects the earliest-ending valid palindrome ≥k to maximize count while avoiding overlaps.",
+  "code": "class Solution:\n    def maxPalindromes(self, s: str, k: int) -> int:\n        n = len(s)\n        dp = [[False]*n for _ in range(n)]\n        for i in range(n-1, -1, -1):\n            for j in range(i, n):\n                if s[i] == s[j] and (j-i <= 2 or dp[i+1][j-1]):\n                    dp[i][j] = True\n        res = 0\n        last = -1\n        for i in range(n):\n            for j in range(i+k-1, n):\n                if dp[i][j] and i > last:\n                    res += 1\n                    last = j\n                    break\n        return res",
+  "timestamp": "2025-08-06T02:33:17.061995",
+  "code_extracted_previous": "class Solution:\n    def maxPalindromes(self, s: str, k: int) -> int:\n        n = len(s)\n        dp = [[False]*n for _ in range(n)]\n        for i in range(n-1, -1, -1):\n            for j in range(i, n):\n                if s[i] == s[j] and (j-i <= 2 or dp[i+1][j-1]):\n                    dp[i][j] = True\n        res = 0\n        last = -1\n        for i in range(n):\n            for j in range(i+k-1, n):\n                if dp[i][j] and i > last:\n                    res += 1\n                    last = j\n                    break\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.715838"
+}

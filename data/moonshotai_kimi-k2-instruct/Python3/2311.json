@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```\nclass Solution:\n    def longestSubsequence(self, s: str, k: int) -> int:\n        n = len(s)\n        # Count all zeros (they can always be included)\n        zeros = s.count('0')\n        # Collect ones from right to left to keep value small\n        ones = 0\n        val = 0\n        for i in range(n-1, -1, -1):\n            if s[i] == '1':\n                if val + (1 << ones) <= k:\n                    val += 1 << ones\n                    ones += 1\n                else:\n                    break\n        return zeros + ones\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Greedy right-to-left scan keeps the numeric value minimal by placing ones in the lowest possible bit positions, allowing the maximum count of ones while staying ≤ k. All zeros are always safe to include.",
+  "code": "class Solution:\n    def longestSubsequence(self, s: str, k: int) -> int:\n        n = len(s)\n        # Count all zeros (they can always be included)\n        zeros = s.count('0')\n        # Collect ones from right to left to keep value small\n        ones = 0\n        val = 0\n        for i in range(n-1, -1, -1):\n            if s[i] == '1':\n                if val + (1 << ones) <= k:\n                    val += 1 << ones\n                    ones += 1\n                else:\n                    break\n        return zeros + ones",
+  "timestamp": "2025-08-06T00:59:05.350125",
+  "code_extracted_previous": "class Solution:\n    def longestSubsequence(self, s: str, k: int) -> int:\n        n = len(s)\n        # Count all zeros (they can always be included)\n        zeros = s.count('0')\n        # Collect ones from right to left to keep value small\n        ones = 0\n        val = 0\n        for i in range(n-1, -1, -1):\n            if s[i] == '1':\n                if val + (1 << ones) <= k:\n                    val += 1 << ones\n                    ones += 1\n                else:\n                    break\n        return zeros + ones",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.615999"
+}

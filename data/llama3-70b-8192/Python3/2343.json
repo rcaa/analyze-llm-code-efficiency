@@ -1,0 +1,15 @@
+{
+  "id": 2343,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        res = []\n        for k, trim in queries:\n            trimmed_nums = [(int(num[-trim:]), i) for i, num in enumerate(nums)]\n            trimmed_nums.sort()\n            res.append(trimmed_nums[k-1][1])\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a list comprehension to trim each number in nums to the rightmost trim digits, and then sorts the trimmed numbers along with their original indices. The kth smallest trimmed number's index is then retrieved and added to the result list.",
+  "code": "class Solution:\n    def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        res = []\n        for k, trim in queries:\n            trimmed_nums = [(int(num[-trim:]), i) for i, num in enumerate(nums)]\n            trimmed_nums.sort()\n            res.append(trimmed_nums[k-1][1])\n        return res",
+  "timestamp": "2025-08-05T13:29:33.529946",
+  "code_extracted_previous": "class Solution:\n    def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        res = []\n        for k, trim in queries:\n            trimmed_nums = [(int(num[-trim:]), i) for i, num in enumerate(nums)]\n            trimmed_nums.sort()\n            res.append(trimmed_nums[k-1][1])\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.265633"
+}

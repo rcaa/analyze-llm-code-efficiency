@@ -1,0 +1,15 @@
+{
+  "id": 2446,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def haveConflict(self, event1: List[str], event2: List[str]) -> bool:\n        def time_to_minutes(time: str) -> int:\n            hours, minutes = map(int, time.split(':'))\n            return hours * 60 + minutes\n\n        start1, end1 = map(time_to_minutes, event1)\n        start2, end2 = map(time_to_minutes, event2)\n        return not (end1 < start2 or end2 < start1)\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution converts event times from \"HH:MM\" format to minutes for easier comparison, then checks for conflicts by ensuring that neither event ends before the other starts.",
+  "code": "class Solution:\n    def haveConflict(self, event1: List[str], event2: List[str]) -> bool:\n        def time_to_minutes(time: str) -> int:\n            hours, minutes = map(int, time.split(':'))\n            return hours * 60 + minutes\n\n        start1, end1 = map(time_to_minutes, event1)\n        start2, end2 = map(time_to_minutes, event2)\n        return not (end1 < start2 or end2 < start1)",
+  "timestamp": "2025-08-05T12:50:21.572933",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def haveConflict(self, event1: List[str], event2: List[str]) -> bool:\n        def time_to_minutes(time: str) -> int:\n            hours, minutes = map(int, time.split(':'))\n            return hours * 60 + minutes\n\n        start1, end1 = map(time_to_minutes, event1)\n        start2, end2 = map(time_to_minutes, event2)\n        return not (end1 < start2 or end2 < start1)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.203592"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2240,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n public long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long res = 0;\n        int maxPens = total / cost1;\n        int minCost = Math.min(cost1, cost2);\n        int maxPencils = total / minCost;\n        for (int i = 0; i <= maxPens; i++) {\n            int remaining = total - i * cost1;\n            res += remaining / cost2 + 1;\n        }\n        return res;\n }\n}\n```\nefficiency: HIGH\ntime complexity: O(total / cost1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over possible pen purchases, calculates the remaining budget for pencils, and sums up the possibilities. It optimizes by using integer division and minimizing iterations based on the cheaper writing utensil.",
+  "code": "class Solution {\n public long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long res = 0;\n        int maxPens = total / cost1;\n        int minCost = Math.min(cost1, cost2);\n        int maxPencils = total / minCost;\n        for (int i = 0; i <= maxPens; i++) {\n            int remaining = total - i * cost1;\n            res += remaining / cost2 + 1;\n        }\n        return res;\n }\n}",
+  "timestamp": "2025-08-05T15:57:46.065454",
+  "code_extracted_previous": "class Solution {\n public long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long res = 0;\n        int maxPens = total / cost1;\n        int minCost = Math.min(cost1, cost2);\n        int maxPencils = total / minCost;\n        for (int i = 0; i <= maxPens; i++) {\n            int remaining = total - i * cost1;\n            res += remaining / cost2 + 1;\n        }\n        return res;\n }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.697070"
+}

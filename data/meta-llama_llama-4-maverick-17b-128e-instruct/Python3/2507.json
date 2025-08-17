@@ -1,0 +1,15 @@
+{
+  "id": 2507,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def smallestValue(self, n: int) -> int:\n        def prime_factors_sum(n):\n            sum_factors = 0\n            i = 2\n            while i * i <= n:\n                while n % i == 0:\n                    sum_factors += i\n                    n //= i\n                i += 1\n            if n > 1:\n                sum_factors += n\n            return sum_factors\n\n        seen = set()\n        while n not in seen:\n            seen.add(n)\n            n = prime_factors_sum(n)\n        return n\n```\n\nefficiency: HIGH  \ntime complexity: O(sqrt(n))  \nspace complexity: O(1)  \nenergy implications: LOW  \nexplanation: The solution uses a helper function `prime_factors_sum` to calculate the sum of prime factors of a number. It iteratively replaces `n` with the sum of its prime factors until a cycle is detected by storing seen values in a set. The loop breaks when `n` is found in the set, indicating the smallest value `n` will take on in the cycle.",
+  "code": "def smallestValue(self, n: int) -> int:\n        def prime_factors_sum(n):\n            sum_factors = 0\n            i = 2\n            while i * i <= n:\n                while n % i == 0:\n                    sum_factors += i\n                    n //= i\n                i += 1\n            if n > 1:\n                sum_factors += n\n            return sum_factors\n\n        seen = set()\n        while n not in seen:\n            seen.add(n)\n            n = prime_factors_sum(n)\n        return n\n```",
+  "timestamp": "2025-08-05T15:58:08.131587",
+  "code_extracted_previous": "class Solution:\n    def smallestValue(self, n: int) -> int:\n        def prime_factors_sum(n):\n            sum_factors = 0\n            i = 2\n            while i * i <= n:\n                while n % i == 0:\n                    sum_factors += i\n                    n //= i\n                i += 1\n            if n > 1:\n                sum_factors += n\n            return sum_factors\n\n        seen = set()\n        while n not in seen:\n            seen.add(n)\n            n = prime_factors_sum(n)\n        return n",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.931123"
+}

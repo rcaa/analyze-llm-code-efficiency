@@ -1,0 +1,15 @@
+{
+  "id": 1358,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def numberOfSubstrings(self, s: str) -> int:\n        count = 0\n        left = 0\n        freq = [0, 0, 0]\n        for right in range(len(s)):\n            freq[ord(s[right]) - ord('a')] += 1\n            while all(freq):\n                count += len(s) - right\n                freq[ord(s[left]) - ord('a')] -= 1\n                left += 1\n        return count\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window technique counts valid substrings ending at each right index. Once the window contains at least one of each character, every extension to the right is valid, so add len(s)-right to the answer and shrink the left boundary until the window no longer satisfies the condition.",
+  "code": "class Solution:\n    def numberOfSubstrings(self, s: str) -> int:\n        count = 0\n        left = 0\n        freq = [0, 0, 0]\n        for right in range(len(s)):\n            freq[ord(s[right]) - ord('a')] += 1\n            while all(freq):\n                count += len(s) - right\n                freq[ord(s[left]) - ord('a')] -= 1\n                left += 1\n        return count",
+  "timestamp": "2025-08-06T02:32:39.722846",
+  "code_extracted_previous": "def numberOfSubstrings(self, s: str) -> int:\n        count = 0\n        left = 0\n        freq = [0, 0, 0]\n        for right in range(len(s)):\n            freq[ord(s[right]) - ord('a')] += 1\n            while all(freq):\n                count += len(s) - right\n                freq[ord(s[left]) - ord('a')] -= 1\n                left += 1\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.222212"
+}

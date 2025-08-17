@@ -1,0 +1,15 @@
+{
+  "id": 464,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {\n        if ((1 + maxChoosableInteger) * maxChoosableInteger / 2 < desiredTotal) return false;\n        int[] memo = new int[1 << maxChoosableInteger];\n        return canWin(desiredTotal, 0, maxChoosableInteger, memo);\n    }\n\n    private boolean canWin(int total, int state, int maxChoosableInteger, int[] memo) {\n        if (memo[state] != 0) return memo[state] == 1;\n        for (int i = 0; i < maxChoosableInteger; i++) {\n            if ((state & (1 << i)) == 0 && (i + 1 >= total || !canWin(total - (i + 1), state | (1 << i), maxChoosableInteger, memo))) {\n                memo[state] = 1;\n                return true;\n            }\n        }\n        memo[state] = -1;\n        return false;\n    }\n}\nsolution: The provided Java code.\nefficiency: HIGH\ntime complexity: O(2^n)\nspace complexity: O(2^n)\nenergy implications: LOW\nexplanation: The solution uses memoization to store the results of subproblems, avoiding redundant computation and improving efficiency. It checks all possible moves and their outcomes, ensuring optimal play. The use of bit manipulation to represent the state of chosen integers is efficient in terms of space and time complexity.",
+  "code": "The provided Java code.",
+  "timestamp": "2025-08-05T15:42:34.764723",
+  "code_extracted_previous": "The provided Java code.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:46.932389"
+}

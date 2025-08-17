@@ -1,0 +1,15 @@
+{
+  "id": 1387,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> nums(hi - lo + 1);\n        for (int i = lo; i <= hi; i++) {\n            int power = 0;\n            int x = i;\n            while (x != 1) {\n                power++;\n                x = (x % 2 == 0) ? x / 2 : 3 * x + 1;\n            }\n            nums[i - lo] = {power, i};\n        }\n        sort(nums.begin(), nums.end());\n        return nums[k - 1].second;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(hi - lo + 1)\nspace complexity: O(hi - lo + 1)\nenergy implications: LOW\nexplanation: This solution uses a vector to store the power value and the corresponding integer in the interval [lo, hi]. It then sorts the vector based on the power value and returns the kth element. The time complexity is O(hi - lo + 1) because it needs to calculate the power value for each integer in the interval. The space complexity is also O(hi - lo + 1) because it needs to store the power value and the corresponding integer for each integer in the interval.",
+  "code": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> nums(hi - lo + 1);\n        for (int i = lo; i <= hi; i++) {\n            int power = 0;\n            int x = i;\n            while (x != 1) {\n                power++;\n                x = (x % 2 == 0) ? x / 2 : 3 * x + 1;\n            }\n            nums[i - lo] = {power, i};\n        }\n        sort(nums.begin(), nums.end());\n        return nums[k - 1].second;\n    }\n};",
+  "timestamp": "2025-08-05T14:25:20.952496",
+  "code_extracted_previous": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> nums(hi - lo + 1);\n        for (int i = lo; i <= hi; i++) {\n            int power = 0;\n            int x = i;\n            while (x != 1) {\n                power++;\n                x = (x % 2 == 0) ? x / 2 : 3 * x + 1;\n            }\n            nums[i - lo] = {power, i};\n        }\n        sort(nums.begin(), nums.end());\n        return nums[k - 1].second;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.585794"
+}

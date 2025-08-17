@@ -1,0 +1,15 @@
+{
+  "id": 886,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    bool possibleBipartition(int n, vector<vector<int>>& dislikes) {\n        vector<int> group(n + 1, 0);\n        for (auto& dislike : dislikes) {\n            int a = dislike[0], b = dislike[1];\n            if (group[a] == group[b]) return false;\n            group[a] = -group[b];\n        }\n        return true;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a graph coloring approach to solve the problem. It initializes a group array for each person and then iterates over the dislikes. If two people dislike each other and are in the same group, it returns false. Otherwise, it assigns the opposite group to the person who dislikes. If it can assign groups to all people without any conflicts, it returns true.",
+  "code": "class Solution {\npublic:\n    bool possibleBipartition(int n, vector<vector<int>>& dislikes) {\n        vector<int> group(n + 1, 0);\n        for (auto& dislike : dislikes) {\n            int a = dislike[0], b = dislike[1];\n            if (group[a] == group[b]) return false;\n            group[a] = -group[b];\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-05T14:00:47.630794",
+  "code_extracted_previous": "public:\n    bool possibleBipartition(int n, vector<vector<int>>& dislikes) {\n        vector<int> group(n + 1, 0);\n        for (auto& dislike : dislikes) {\n            int a = dislike[0], b = dislike[1];\n            if (group[a] == group[b]) return false;\n            group[a] = -group[b];\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.715166"
+}

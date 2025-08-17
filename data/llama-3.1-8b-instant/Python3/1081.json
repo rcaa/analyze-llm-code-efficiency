@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        last = {c: i for i, c in enumerate(s)}\n        ans = used = 0\n        stack = []\n        for i, c in enumerate(s):\n            if c not in used:\n                while stack and c < stack[-1] and i < last[stack[-1]]:\n                    used -= 1 << ord(stack.pop()) - ord('a')\n                stack.append(c)\n                used += 1 << ord(c) - ord('a')\n        return ''.join(stack)\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to keep track of the lexicographically smallest subsequence. It iterates over the string, and for each character, it checks if it's already in the used set. If not, it pops characters from the stack that are larger than the current character and are not yet in the result. This ensures that the result is lexicographically smallest. The time complexity is O(n) because each character is pushed and popped from the stack at most once. The space complexity is also O(n) because in the worst case, the stack contains all characters.",
+  "code": "class Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        last = {c: i for i, c in enumerate(s)}\n        ans = used = 0\n        stack = []\n        for i, c in enumerate(s):\n            if c not in used:\n                while stack and c < stack[-1] and i < last[stack[-1]]:\n                    used -= 1 << ord(stack.pop()) - ord('a')\n                stack.append(c)\n                used += 1 << ord(c) - ord('a')\n        return ''.join(stack)",
+  "timestamp": "2025-08-06T00:48:07.420536",
+  "code_extracted_previous": "def smallestSubsequence(self, s: str) -> str:\n        last = {c: i for i, c in enumerate(s)}\n        ans = used = 0\n        stack = []\n        for i, c in enumerate(s):\n            if c not in used:\n                while stack and c < stack[-1] and i < last[stack[-1]]:\n                    used -= 1 << ord(stack.pop()) - ord('a')\n                stack.append(c)\n                used += 1 << ord(c) - ord('a')\n        return ''.join(stack)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.189553"
+}

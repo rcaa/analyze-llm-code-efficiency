@@ -1,0 +1,15 @@
+{
+  "id": 3303,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int minStartingIndex(String s, String pattern) {\n        int n = s.length();\n        int m = pattern.length();\n        int[][] dp = new int[n + 1][m + 1];\n\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (s.charAt(i - 1) == pattern.charAt(j - 1)) {\n                    dp[i][j] = j;\n                } else {\n                    dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n\n        return dp[n][m];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n.m)\nspace complexity: O(n.m)\nenergy implications: LOW\n\nExplanation:\n\nWe use a dynamic programming approach to solve the problem. We create a 2D array (dp) with dimensions (n+1)x(m+1), where n is the length of s and m is the length of pattern. We iterate through the characters of s and pattern, comparing each character. If the characters match, we set dp[i][j] to j, indicating that the substring starting at index i in s and index j in pattern is a match. If the characters don't match, we take the minimum of dp[i-1][j], dp[i][j-1], which represents the minimum number of characters to change in s and pattern to make them match starting from indices i and j, respectively.\n\nThis solution has a time complexity of O(n.m) and space complexity of O(n.m), where n is the length of s and m is the length of pattern. ",
+  "code": "class Solution {\n    public int minStartingIndex(String s, String pattern) {\n        int n = s.length();\n        int m = pattern.length();\n        int[][] dp = new int[n + 1][m + 1];\n\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (s.charAt(i - 1) == pattern.charAt(j - 1)) {\n                    dp[i][j] = j;\n                } else {\n                    dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n\n        return dp[n][m];\n    }\n}",
+  "timestamp": "2025-08-05T16:15:25.751348",
+  "code_extracted_previous": "class Solution {\n    public int minStartingIndex(String s, String pattern) {\n        int n = s.length();\n        int m = pattern.length();\n        int[][] dp = new int[n + 1][m + 1];\n\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (s.charAt(i - 1) == pattern.charAt(j - 1)) {\n                    dp[i][j] = j;\n                } else {\n                    dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n\n        return dp[n][m];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.506596"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.length();\n        int totalY = 0;\n        for (char c : customers) {\n            if (c == 'Y') totalY++;\n        }\n\n        int minPenalty = INT_MAX, res = 0;\n        int currPenalty = 0;\n\n        for (int i = 0; i < n; ++i) {\n            if (customers[i] == 'N') currPenalty++;\n            if (customers[i] == 'Y') totalY--;\n            if (currPenalty + totalY < minPenalty) {\n                minPenalty = currPenalty + totalY;\n                res = i;\n            }\n        }\n\n        if (totalY < minPenalty) {\n            res = n;\n        }\n\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The solution calculates the minimum penalty by iterating through the string once, maintaining a running penalty and total 'Y's. It avoids recalculating penalties from scratch for each closing time, making it efficient. The key strength is its linear time and constant space complexity. The weakness is that it requires careful tracking of penalties and indices.>",
+  "code": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.length();\n        int totalY = 0;\n        for (char c : customers) {\n            if (c == 'Y') totalY++;\n        }\n\n        int minPenalty = INT_MAX, res = 0;\n        int currPenalty = 0;\n\n        for (int i = 0; i < n; ++i) {\n            if (customers[i] == 'N') currPenalty++;\n            if (customers[i] == 'Y') totalY--;\n            if (currPenalty + totalY < minPenalty) {\n                minPenalty = currPenalty + totalY;\n                res = i;\n            }\n        }\n\n        if (totalY < minPenalty) {\n            res = n;\n        }\n\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:02:22.235221",
+  "code_extracted_previous": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.length();\n        int totalY = 0;\n        for (char c : customers) {\n            if (c == 'Y') totalY++;\n        }\n\n        int minPenalty = INT_MAX, res = 0;\n        int currPenalty = 0;\n\n        for (int i = 0; i < n; ++i) {\n            if (customers[i] == 'N') currPenalty++;\n            if (customers[i] == 'Y') totalY--;\n            if (currPenalty + totalY < minPenalty) {\n                minPenalty = currPenalty + totalY;\n                res = i;\n            }\n        }\n\n        if (totalY < minPenalty) {\n            res = n;\n        }\n\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:59.193645"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1061,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    string smallestEquivalentString(string s1, string s2, string baseStr) {\n        int n = s1.size();\n        vector<vector<char>> graph(26, vector<char>(26, '#'));\n        for (int i = 0; i < n; i++) {\n            graph[s1[i] - 'a'][s2[i] - 'a'] = '#';\n            graph[s2[i] - 'a'][s1[i] - 'a'] = '#';\n        }\n        string res;\n        for (char c : baseStr) {\n            int x = c - 'a';\n            while (graph[x][x] == '#') {\n                for (int i = 0; i < 26; i++) {\n                    if (graph[i][x] != '#') {\n                        x = i;\n                        break;\n                    }\n                }\n            }\n            res += x + 'a';\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use a graph to store the equivalency information from s1 and s2. Then, for each character in baseStr, we find the smallest equivalent character by traversing the graph.",
+  "code": "class Solution {\npublic:\n    string smallestEquivalentString(string s1, string s2, string baseStr) {\n        int n = s1.size();\n        vector<vector<char>> graph(26, vector<char>(26, '#'));\n        for (int i = 0; i < n; i++) {\n            graph[s1[i] - 'a'][s2[i] - 'a'] = '#';\n            graph[s2[i] - 'a'][s1[i] - 'a'] = '#';\n        }\n        string res;\n        for (char c : baseStr) {\n            int x = c - 'a';\n            while (graph[x][x] == '#') {\n                for (int i = 0; i < 26; i++) {\n                    if (graph[i][x] != '#') {\n                        x = i;\n                        break;\n                    }\n                }\n            }\n            res += x + 'a';\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:46:50.388942",
+  "code_extracted_previous": "class Solution {\npublic:\n    string smallestEquivalentString(string s1, string s2, string baseStr) {\n        int n = s1.size();\n        vector<vector<char>> graph(26, vector<char>(26, '#'));\n        for (int i = 0; i < n; i++) {\n            graph[s1[i] - 'a'][s2[i] - 'a'] = '#';\n            graph[s2[i] - 'a'][s1[i] - 'a'] = '#';\n        }\n        string res;\n        for (char c : baseStr) {\n            int x = c - 'a';\n            while (graph[x][x] == '#') {\n                for (int i = 0; i < 26; i++) {\n                    if (graph[i][x] != '#') {\n                        x = i;\n                        break;\n                    }\n                }\n            }\n            res += x + 'a';\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.366617"
+}

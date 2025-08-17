@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        int len1 = s1.length(), len2 = s2.length();\n        if (len1 > len2) return false;\n        \n        int[] count1 = new int[26];\n        int[] count2 = new int[26];\n        \n        for (int i = 0; i < len1; i++) {\n            count1[s1.charAt(i) - 'a']++;\n            count2[s2.charAt(i) - 'a']++;\n        }\n        \n        if (Arrays.equals(count1, count2)) return true;\n        \n        for (int i = len1; i < len2; i++) {\n            count2[s2.charAt(i) - 'a']++;\n            count2[s2.charAt(i - len1) - 'a']--;\n            if (Arrays.equals(count1, count2)) return true;\n        }\n        \n        return false;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(26 * n) = O(n)\nspace complexity: O(26) = O(1)\nenergy implications: LOW\nexplanation: Uses sliding window with fixed-size frequency arrays (26 counters) to compare character counts in constant time. Arrays.equals is O(26) per check, but overall linear in input size. Minimal memory footprint and no heavy operations.",
+  "code": "class Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        int len1 = s1.length(), len2 = s2.length();\n        if (len1 > len2) return false;\n        \n        int[] count1 = new int[26];\n        int[] count2 = new int[26];\n        \n        for (int i = 0; i < len1; i++) {\n            count1[s1.charAt(i) - 'a']++;\n            count2[s2.charAt(i) - 'a']++;\n        }\n        \n        if (Arrays.equals(count1, count2)) return true;\n        \n        for (int i = len1; i < len2; i++) {\n            count2[s2.charAt(i) - 'a']++;\n            count2[s2.charAt(i - len1) - 'a']--;\n            if (Arrays.equals(count1, count2)) return true;\n        }\n        \n        return false;\n    }\n}",
+  "timestamp": "2025-08-06T02:32:10.490676",
+  "code_extracted_previous": "class Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        int len1 = s1.length(), len2 = s2.length();\n        if (len1 > len2) return false;\n        \n        int[] count1 = new int[26];\n        int[] count2 = new int[26];\n        \n        for (int i = 0; i < len1; i++) {\n            count1[s1.charAt(i) - 'a']++;\n            count2[s2.charAt(i) - 'a']++;\n        }\n        \n        if (Arrays.equals(count1, count2)) return true;\n        \n        for (int i = len1; i < len2; i++) {\n            count2[s2.charAt(i) - 'a']++;\n            count2[s2.charAt(i - len1) - 'a']--;\n            if (Arrays.equals(count1, count2)) return true;\n        }\n        \n        return false;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.655859"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2466,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        int MOD = 1000000007;\n        int[] dp = new int[high + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= high; i++) {\n            if (i - zero >= 0) dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            if (i - one >= 0) dp[i] = (dp[i] + dp[i - one]) % MOD;\n        }\n        int res = 0;\n        for (int i = low; i <= high; i++) res = (res + dp[i]) % MOD;\n        return res;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(high)\nspace complexity: O(high)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We create an array dp where dp[i] represents the number of good strings of length i. We iterate over the array and for each position i, we check if we can append '0' or '1' to the string of length i - zero or i - one respectively. We add the number of good strings of length i - zero or i - one to dp[i] and take the modulo 10^9 + 7 to avoid overflow. Finally, we sum up the number of good strings from low to high and return the result.",
+  "code": "class Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        int MOD = 1000000007;\n        int[] dp = new int[high + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= high; i++) {\n            if (i - zero >= 0) dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            if (i - one >= 0) dp[i] = (dp[i] + dp[i - one]) % MOD;\n        }\n        int res = 0;\n        for (int i = low; i <= high; i++) res = (res + dp[i]) % MOD;\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:27:13.723955",
+  "code_extracted_previous": "class Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        int MOD = 1000000007;\n        int[] dp = new int[high + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= high; i++) {\n            if (i - zero >= 0) dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            if (i - one >= 0) dp[i] = (dp[i] + dp[i - one]) % MOD;\n        }\n        int res = 0;\n        for (int i = low; i <= high; i++) res = (res + dp[i]) % MOD;\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.308096"
+}

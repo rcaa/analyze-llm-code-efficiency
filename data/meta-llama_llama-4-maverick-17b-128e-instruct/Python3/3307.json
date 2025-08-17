@@ -1,0 +1,15 @@
+{
+  "id": 3307,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def kthCharacter(self, k: int, operations: List[int]) -> str:\n        length = 1\n        shift = 0\n        for op in reversed(operations):\n            if k > length:\n                k -= length\n                if op == 1:\n                    shift += 1\n                length *= 2\n            else:\n                break\n        return chr((ord('a') + (k - 1 + shift)) % 26 + ord('a'))\n```\n\nefficiency: HIGH  \ntime complexity: O(n)  \nspace complexity: O(1)  \nenergy implications: LOW  \nexplanation: The solution iterates over the operations in reverse order, effectively tracking the position of the kth character and the shift in the alphabet due to the operations. It uses a constant amount of space and has a linear time complexity with respect to the number of operations.",
+  "code": "def kthCharacter(self, k: int, operations: List[int]) -> str:\n        length = 1\n        shift = 0\n        for op in reversed(operations):\n            if k > length:\n                k -= length\n                if op == 1:\n                    shift += 1\n                length *= 2\n            else:\n                break\n        return chr((ord('a') + (k - 1 + shift)) % 26 + ord('a'))\n```",
+  "timestamp": "2025-08-05T15:23:51.761215",
+  "code_extracted_previous": "class Solution:\n    def kthCharacter(self, k: int, operations: List[int]) -> str:\n        length = 1\n        shift = 0\n        for op in reversed(operations):\n            if k > length:\n                k -= length\n                if op == 1:\n                    shift += 1\n                length *= 2\n            else:\n                break\n        return chr((ord('a') + (k - 1 + shift)) % 26 + ord('a'))",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.142965"
+}

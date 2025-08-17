@@ -1,0 +1,15 @@
+{
+  "id": 3298,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```java\nclass Solution {\n    public long validSubstringCount(String word1, String word2) {\n        int[] count1 = new int[26];\n        int[] count2 = new int[26];\n        for (char c : word2.toCharArray()) {\n            count2[c - 'a']++;\n        }\n        int required = 0;\n        for (int i = 0; i < 26; i++) {\n            if (count2[i] > 0) {\n                required++;\n            }\n        }\n        int left = 0;\n        int formed = 0;\n        long ans = 0;\n        for (int right = 0; right < word1.length(); right++) {\n            char c = word1.charAt(right);\n            count1[c - 'a']++;\n            if (count1[c - 'a'] == count2[c - 'a']) {\n                formed++;\n            }\n            while (formed == required && left <= right) {\n                ans += word1.length() - right;\n                char cl = word1.charAt(left);\n                count1[cl - 'a']--;\n                if (count1[cl - 'a'] < count2[cl - 'a']) {\n                    formed--;\n                }\n                left++;\n            }\n        }\n        return ans;\n    }\n}\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to efficiently count the valid substrings. It maintains two frequency arrays for the characters in word1 and word2, and expands the window to the right while contracting it from the left when the required characters are formed. The key strength lies in its linear runtime complexity.",
+  "code": "```java\nclass Solution {\n    public long validSubstringCount(String word1, String word2) {\n        int[] count1 = new int[26];\n        int[] count2 = new int[26];\n        for (char c : word2.toCharArray()) {\n            count2[c - 'a']++;\n        }\n        int required = 0;\n        for (int i = 0; i < 26; i++) {\n            if (count2[i] > 0) {\n                required++;\n            }\n        }\n        int left = 0;\n        int formed = 0;\n        long ans = 0;\n        for (int right = 0; right < word1.length(); right++) {\n            char c = word1.charAt(right);\n            count1[c - 'a']++;\n            if (count1[c - 'a'] == count2[c - 'a']) {\n                formed++;\n            }\n            while (formed == required && left <= right) {\n                ans += word1.length() - right;\n                char cl = word1.charAt(left);\n                count1[cl - 'a']--;\n                if (count1[cl - 'a'] < count2[cl - 'a']) {\n                    formed--;\n                }\n                left++;\n            }\n        }\n        return ans;\n    }\n}",
+  "timestamp": "2025-08-05T14:40:31.328003",
+  "code_extracted_previous": "",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.790473"
+}

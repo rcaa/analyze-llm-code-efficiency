@@ -1,0 +1,15 @@
+{
+  "id": 2486,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```c++\n#include <string>\n#include <unordered_set>\n\nclass Solution {\npublic:\n    int appendCharacters(std::string s, std::string t) {\n        std::unordered_set<char> t_set(t.begin(), t.end());\n        int result = s.length();\n        for (int i = s.length(); i > 0; --i) {\n            if (!t_set.count(s[i])) {\n                result = i;\n                break;\n            }\n        }\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nThe problem requires finding the minimum number of characters that need to be appended to string s so that t becomes a subsequence of s. We can solve this problem using a hash set to store the characters of t and then iterating through s backwards. If a character from s is not present in the hash set, we append it to s and break the loop. This approach has a time complexity of O(n) and space complexity of O(n), where n is the length of the strings s and t. ",
+  "code": "class Solution {\npublic:\n    int appendCharacters(std::string s, std::string t) {\n        std::unordered_set<char> t_set(t.begin(), t.end());\n        int result = s.length();\n        for (int i = s.length(); i > 0; --i) {\n            if (!t_set.count(s[i])) {\n                result = i;\n                break;\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T01:47:12.531737",
+  "code_extracted_previous": "#include <string>\n#include <unordered_set>\n\nclass Solution {\npublic:\n    int appendCharacters(std::string s, std::string t) {\n        std::unordered_set<char> t_set(t.begin(), t.end());\n        int result = s.length();\n        for (int i = s.length(); i > 0; --i) {\n            if (!t_set.count(s[i])) {\n                result = i;\n                break;\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.465820"
+}

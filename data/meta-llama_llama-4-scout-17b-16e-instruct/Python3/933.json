@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom collections import deque\n\nclass RecentCounter:\n\n    def __init__(self):\n        self.queue = deque()\n\n    def ping(self, t: int) -> int:\n        self.queue.append(t)\n        while self.queue[0] < t - 3000:\n            self.queue.popleft()\n        return len(self.queue)\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a deque to store timestamps. When a new ping is added, it appends the timestamp to the end of the deque. It then removes timestamps from the front of the deque that are older than 3000 milliseconds. The number of requests in the range [t - 3000, t] is simply the current length of the deque. This approach takes advantage of the fact that ping calls are made with strictly increasing values of t.",
+  "code": "class RecentCounter:\n\n    def __init__(self):\n        self.queue = deque()\n\n    def ping(self, t: int) -> int:\n        self.queue.append(t)\n        while self.queue[0] < t - 3000:\n            self.queue.popleft()\n        return len(self.queue)",
+  "timestamp": "2025-08-05T14:07:55.295900",
+  "code_extracted_previous": "from collections import deque\n\nclass RecentCounter:\n\n    def __init__(self):\n        self.queue = deque()\n\n    def ping(self, t: int) -> int:\n        self.queue.append(t)\n        while self.queue[0] < t - 3000:\n            self.queue.popleft()\n        return len(self.queue)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.040182"
+}

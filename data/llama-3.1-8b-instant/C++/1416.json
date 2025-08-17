@@ -1,0 +1,15 @@
+{
+  "id": 1416,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int numberOfArrays(string s, int k) {\n        int n = s.size();\n        long long dp[n + 1];\n        dp[0] = 1;\n        long long mod = 1e9 + 7;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 0;\n            int num = 0;\n            for (int j = i - 1; j >= 0; j--) {\n                num = num * 10 + (s[j] - '0');\n                if (num <= k && num != 0) {\n                    dp[i] = (dp[i] + dp[j] * (k / num)) % mod;\n                }\n            }\n        }\n        return dp[n];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int numberOfArrays(string s, int k) {\n        int n = s.size();\n        long long dp[n + 1];\n        dp[0] = 1;\n        long long mod = 1e9 + 7;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 0;\n            int num = 0;\n            for (int j = i - 1; j >= 0; j--) {\n                num = num * 10 + (s[j] - '0');\n                if (num <= k && num != 0) {\n                    dp[i] = (dp[i] + dp[j] * (k / num)) % mod;\n                }\n            }\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-06T03:09:59.881336",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfArrays(string s, int k) {\n        int n = s.size();\n        long long dp[n + 1];\n        dp[0] = 1;\n        long long mod = 1e9 + 7;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 0;\n            int num = 0;\n            for (int j = i - 1; j >= 0; j--) {\n                num = num * 10 + (s[j] - '0');\n                if (num <= k && num != 0) {\n                    dp[i] = (dp[i] + dp[j] * (k / num)) % mod;\n                }\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.394103"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 386,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<int> lexicalOrder(int n) {\n        vector<int> res(n);\n        int curr = 1;\n        for (int i = 0; i < n; i++) {\n            res[i] = curr;\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else {\n                if (curr + 1 > n) break;\n                curr++;\n                while (curr % 10 == 0) curr /= 10;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The algorithm iterates through numbers in lexicographical order by maintaining a current number and updating it according to lexicographical rules, achieving O(n) time complexity and O(1) extra space.",
+  "code": "class Solution {\npublic:\n    vector<int> lexicalOrder(int n) {\n        vector<int> res(n);\n        int curr = 1;\n        for (int i = 0; i < n; i++) {\n            res[i] = curr;\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else {\n                if (curr + 1 > n) break;\n                curr++;\n                while (curr % 10 == 0) curr /= 10;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:59:40.469214",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> lexicalOrder(int n) {\n        vector<int> res(n);\n        int curr = 1;\n        for (int i = 0; i < n; i++) {\n            res[i] = curr;\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else {\n                if (curr + 1 > n) break;\n                curr++;\n                while (curr % 10 == 0) curr /= 10;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.600069"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2447,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int subarrayGCD(int[] nums, int k) {\n        int n = nums.length, count = 0;\n        for (int i = 0; i < n; ++i) {\n            int g = 0;\n            for (int j = i; j < n; ++j) {\n                g = gcd(g, nums[j]);\n                if (g == k) ++count;\n                else if (g < k) break;\n            }\n        }\n        return count;\n    }\n    private int gcd(int a, int b) {\n        while (b != 0) {\n            int tmp = b;\n            b = a % b;\n            a = tmp;\n        }\n        return a;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n² log U) where U is the maximum value in nums\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate over every subarray start index, extend rightwards while maintaining the running GCD. When the GCD drops below k, further extensions cannot recover, so we break early. This pruning plus the small input size (n ≤ 1000) makes the quadratic scan fast and energy-efficient.",
+  "code": "class Solution {\n    public int subarrayGCD(int[] nums, int k) {\n        int n = nums.length, count = 0;\n        for (int i = 0; i < n; ++i) {\n            int g = 0;\n            for (int j = i; j < n; ++j) {\n                g = gcd(g, nums[j]);\n                if (g == k) ++count;\n                else if (g < k) break;\n            }\n        }\n        return count;\n    }\n    private int gcd(int a, int b) {\n        while (b != 0) {\n            int tmp = b;\n            b = a % b;\n            a = tmp;\n        }\n        return a;\n    }\n}",
+  "timestamp": "2025-08-05T13:32:21.871309",
+  "code_extracted_previous": "public int subarrayGCD(int[] nums, int k) {\n        int n = nums.length, count = 0;\n        for (int i = 0; i < n; ++i) {\n            int g = 0;\n            for (int j = i; j < n; ++j) {\n                g = gcd(g, nums[j]);\n                if (g == k) ++count;\n                else if (g < k) break;\n            }\n        }\n        return count;\n    }\n    private int gcd(int a, int b) {\n        while (b != 0) {\n            int tmp = b;\n            b = a % b;\n            a = tmp;\n        }\n        return a;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.081907"
+}

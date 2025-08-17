@@ -1,0 +1,15 @@
+{
+  "id": 753,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string crackSafe(int n, int k) {\n        string res(n, '0');\n        int vis = 1;\n        while (vis < pow(k, n)) {\n            for (int i = n - 1; i >= 0; --i) {\n                int cur = stoi(res.substr(i));\n                res[i] = '0' + ((cur + 1) % k);\n                if (stoi(res.substr(i)) == 0 || vis >> stoi(res.substr(i)) & 1 == 0) {\n                    vis |= 1 << stoi(res.substr(i));\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(k^n * n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a depth-first search approach to construct the string that will unlock the safe. It maintains a visited set to keep track of the states that have been visited and ensures that the constructed string has the minimum length required to unlock the safe. The key strength of this approach is that it efficiently explores the state space and avoids redundant computations. However, the time complexity is still exponential due to the nature of the problem.",
+  "code": "class Solution {\npublic:\n    string crackSafe(int n, int k) {\n        string res(n, '0');\n        int vis = 1;\n        while (vis < pow(k, n)) {\n            for (int i = n - 1; i >= 0; --i) {\n                int cur = stoi(res.substr(i));\n                res[i] = '0' + ((cur + 1) % k);\n                if (stoi(res.substr(i)) == 0 || vis >> stoi(res.substr(i)) & 1 == 0) {\n                    vis |= 1 << stoi(res.substr(i));\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:55:22.092523",
+  "code_extracted_previous": "class Solution {\npublic:\n    string crackSafe(int n, int k) {\n        string res(n, '0');\n        int vis = 1;\n        while (vis < pow(k, n)) {\n            for (int i = n - 1; i >= 0; --i) {\n                int cur = stoi(res.substr(i));\n                res[i] = '0' + ((cur + 1) % k);\n                if (stoi(res.substr(i)) == 0 || vis >> stoi(res.substr(i)) & 1 == 0) {\n                    vis |= 1 << stoi(res.substr(i));\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.940697"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            dp[i] = max(dp[i + 1], questions[i][0] + (dp[i + questions[i][1] + 1] if i + questions[i][1] + 1 < n else 0))\n        return dp[0]\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to store the maximum points that can be earned for each question. It iterates through the questions in reverse order, considering the maximum points that can be earned by solving or skipping each question.",
+  "code": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            dp[i] = max(dp[i + 1], questions[i][0] + (dp[i + questions[i][1] + 1] if i + questions[i][1] + 1 < n else 0))\n        return dp[0]",
+  "timestamp": "2025-08-05T13:25:08.999335",
+  "code_extracted_previous": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            dp[i] = max(dp[i + 1], questions[i][0] + (dp[i + questions[i][1] + 1] if i + questions[i][1] + 1 < n else 0))\n        return dp[0]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.165781"
+}

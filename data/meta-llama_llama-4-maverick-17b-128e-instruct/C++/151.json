@@ -1,0 +1,15 @@
+{
+  "id": 151,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    string reverseWords(string s) {\n        int left = 0, right = s.size() - 1;\n        // Remove leading and trailing spaces\n        while (left <= right && s[left] == ' ') ++left;\n        while (left <= right && s[right] == ' ') --right;\n        \n        string result;\n        int i = right;\n        while (i >= left) {\n            // Skip spaces\n            while (i >= left && s[i] == ' ') --i;\n            int j = i;\n            // Find word start\n            while (j >= left && s[j] != ' ') --j;\n            // Append word to result\n            if (!result.empty()) result += ' ';\n            result += s.substr(j + 1, i - j);\n            i = j;\n        }\n        return result;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution efficiently removes leading and trailing spaces, then iterates through the string from right to left, appending words to the result string. It handles multiple spaces between words and ensures a single space separates words in the output. The approach is efficient with a linear time complexity.",
+  "code": "```cpp\nclass Solution {\npublic:\n    string reverseWords(string s) {\n        int left = 0, right = s.size() - 1;\n        // Remove leading and trailing spaces\n        while (left <= right && s[left] == ' ') ++left;\n        while (left <= right && s[right] == ' ') --right;\n        \n        string result;\n        int i = right;\n        while (i >= left) {\n            // Skip spaces\n            while (i >= left && s[i] == ' ') --i;\n            int j = i;\n            // Find word start\n            while (j >= left && s[j] != ' ') --j;\n            // Append word to result\n            if (!result.empty()) result += ' ';\n            result += s.substr(j + 1, i - j);\n            i = j;\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T01:34:44.078797",
+  "code_extracted_previous": "",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.810564"
+}

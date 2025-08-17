@@ -1,0 +1,15 @@
+{
+  "id": 2276,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass CountIntervals {\npublic:\n    CountIntervals() {\n        total = 0;\n    }\n    \n    void add(int left, int right) {\n        int l = left, r = right;\n        while (l <= r) {\n            int x = l / 64;\n            int y = l % 64;\n            if (!(mask[x] & (1LL << y))) {\n                mask[x] |= (1LL << y);\n                total++;\n            }\n            l++;\n        }\n    }\n    \n    int count() {\n        return total;\n    }\nprivate:\n    int total;\n    vector<long long> mask(1e6 / 64 + 1, 0);\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Using a bit mask to store the presence of integers in the intervals, allowing for efficient addition and counting of intervals.",
+  "code": "class CountIntervals {\npublic:\n    CountIntervals() {\n        total = 0;\n    }\n    \n    void add(int left, int right) {\n        int l = left, r = right;\n        while (l <= r) {\n            int x = l / 64;\n            int y = l % 64;\n            if (!(mask[x] & (1LL << y))) {\n                mask[x] |= (1LL << y);\n                total++;\n            }\n            l++;\n        }\n    }\n    \n    int count() {\n        return total;\n    }\nprivate:\n    int total;\n    vector<long long> mask(1e6 / 64 + 1, 0);\n};",
+  "timestamp": "2025-08-05T14:06:01.459144",
+  "code_extracted_previous": "class CountIntervals {\npublic:\n    CountIntervals() {\n        total = 0;\n    }\n    \n    void add(int left, int right) {\n        int l = left, r = right;\n        while (l <= r) {\n            int x = l / 64;\n            int y = l % 64;\n            if (!(mask[x] & (1LL << y))) {\n                mask[x] |= (1LL << y);\n                total++;\n            }\n            l++;\n        }\n    }\n    \n    int count() {\n        return total;\n    }\nprivate:\n    int total;\n    vector<long long> mask(1e6 / 64 + 1, 0);\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:36.467317"
+}

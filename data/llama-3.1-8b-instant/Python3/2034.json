@@ -1,0 +1,15 @@
+{
+  "id": 2034,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass StockPrice:\n\n    def __init__(self):\n        self.price_map = {}\n        self.timestamp = 0\n        self.max_price = float('-inf')\n        self.min_price = float('inf')\n\n    def update(self, timestamp: int, price: int) -> None:\n        self.timestamp = max(self.timestamp, timestamp)\n        self.price_map[timestamp] = price\n        self.max_price = max(self.max_price, price)\n        self.min_price = min(self.min_price, price)\n\n    def current(self) -> int:\n        return self.price_map[self.timestamp]\n\n    def maximum(self) -> int:\n        return self.max_price\n\n    def minimum(self) -> int:\n        return self.min_price\n```\n\nsolution: \nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hash map to store the price at each timestamp, allowing for constant time updates and lookups. It also keeps track of the maximum and minimum prices seen so far, allowing for constant time maximum and minimum queries. The current price is simply the price at the latest timestamp.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-05T15:08:25.139631",
+  "code_extracted_previous": "class StockPrice:\n\n    def __init__(self):\n        self.price_map = {}\n        self.timestamp = 0\n        self.max_price = float('-inf')\n        self.min_price = float('inf')\n\n    def update(self, timestamp: int, price: int) -> None:\n        self.timestamp = max(self.timestamp, timestamp)\n        self.price_map[timestamp] = price\n        self.max_price = max(self.max_price, price)\n        self.min_price = min(self.min_price, price)\n\n    def current(self) -> int:\n        return self.price_map[self.timestamp]\n\n    def maximum(self) -> int:\n        return self.max_price\n\n    def minimum(self) -> int:\n        return self.min_price",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:30.535936"
+}

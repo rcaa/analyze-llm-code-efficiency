@@ -1,0 +1,15 @@
+{
+  "id": 2423,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) {\n            freq[c]++;\n        }\n        int uniqueChars = freq.size();\n        if (uniqueChars == 1) {\n            return true;\n        }\n        for (int i = 0; i < word.size(); i++) {\n            char c = word[i];\n            freq[c]--;\n            if (all_of(freq.begin(), freq.end(), [](auto& pair) { return pair.second == word.size() / uniqueChars; })) {\n                return true;\n            }\n            freq[c]++;\n        }\n        return false;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution iterates through each character in the string, removes it, checks if the remaining character frequencies are equal, and restores the character. It uses a hash map to efficiently store and update character frequencies.  The time complexity is linear due to the single pass through the string. The space complexity is also linear due to the hash map storing character frequencies. Energy implications are low as the operations are primarily memory-based. \n\n\n",
+  "code": "class Solution {\npublic:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) {\n            freq[c]++;\n        }\n        int uniqueChars = freq.size();\n        if (uniqueChars == 1) {\n            return true;\n        }\n        for (int i = 0; i < word.size(); i++) {\n            char c = word[i];\n            freq[c]--;\n            if (all_of(freq.begin(), freq.end(), [](auto& pair) { return pair.second == word.size() / uniqueChars; })) {\n                return true;\n            }\n            freq[c]++;\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T14:47:14.216474",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) {\n            freq[c]++;\n        }\n        int uniqueChars = freq.size();\n        if (uniqueChars == 1) {\n            return true;\n        }\n        for (int i = 0; i < word.size(); i++) {\n            char c = word[i];\n            freq[c]--;\n            if (all_of(freq.begin(), freq.end(), [](auto& pair) { return pair.second == word.size() / uniqueChars; })) {\n                return true;\n            }\n            freq[c]++;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.550637"
+}

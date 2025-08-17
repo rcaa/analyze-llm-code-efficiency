@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[1] = 1;\n        int share = 0, aware = 1;\n        for (int i = 2; i <= n; ++i) {\n            if (i > delay) share = (share + dp[i - delay]) % MOD;\n            if (i > forget) share = (share - dp[i - forget] + MOD) % MOD;\n            dp[i] = share;\n            aware = (aware + dp[i]) % MOD;\n        }\n        return aware;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming approach tracks the number of people who can share the secret and those who are aware of it, updating values based on delay and forget constraints.",
+  "code": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[1] = 1;\n        int share = 0, aware = 1;\n        for (int i = 2; i <= n; ++i) {\n            if (i > delay) share = (share + dp[i - delay]) % MOD;\n            if (i > forget) share = (share - dp[i - forget] + MOD) % MOD;\n            dp[i] = share;\n            aware = (aware + dp[i]) % MOD;\n        }\n        return aware;\n    }\n};",
+  "timestamp": "2025-08-05T14:26:24.855560",
+  "code_extracted_previous": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[1] = 1;\n        int share = 0, aware = 1;\n        for (int i = 2; i <= n; ++i) {\n            if (i > delay) share = (share + dp[i - delay]) % MOD;\n            if (i > forget) share = (share - dp[i - forget] + MOD) % MOD;\n            dp[i] = share;\n            aware = (aware + dp[i]) % MOD;\n        }\n        return aware;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.059473"
+}

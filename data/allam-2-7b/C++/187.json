@@ -1,0 +1,15 @@
+{
+  "id": 187,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```c++\n#include <unordered_set>\n#include <vector>\n#include <string>\n\nclass Solution {\npublic:\n    vector<string> findRepeatedDnaSequences(string s) {\n        vector<string> result;\n        unordered_set<string> seen;\n\n        for (char c : s) {\n            string substr = {c};\n            if (seen.find(substr) != seen.end()) {\n                result.push_back(substr);\n            }\n            seen.insert(substr);\n        }\n\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nThe solution uses a hash set (unordered_set) to store the substrings seen so far. It iterates through the input string and for each character, it creates a substring and checks if it is already in the hash set. If it is, it adds the substring to the result vector. Then, it inserts the substring into the hash set. This approach has a time complexity of O(n) because it iterates through the string once, and a space complexity of O(n) because it uses a hash set with n elements. ",
+  "code": "class Solution {\npublic:\n    vector<string> findRepeatedDnaSequences(string s) {\n        vector<string> result;\n        unordered_set<string> seen;\n\n        for (char c : s) {\n            string substr = {c};\n            if (seen.find(substr) != seen.end()) {\n                result.push_back(substr);\n            }\n            seen.insert(substr);\n        }\n\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T14:50:42.061651",
+  "code_extracted_previous": "#include <unordered_set>\n#include <vector>\n#include <string>\n\nclass Solution {\npublic:\n    vector<string> findRepeatedDnaSequences(string s) {\n        vector<string> result;\n        unordered_set<string> seen;\n\n        for (char c : s) {\n            string substr = {c};\n            if (seen.find(substr) != seen.end()) {\n                result.push_back(substr);\n            }\n            seen.insert(substr);\n        }\n\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.206628"
+}

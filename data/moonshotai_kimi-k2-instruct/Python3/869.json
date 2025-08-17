@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def reorderedPowerOf2(self, n: int) -> bool:\n        from collections import Counter\n        target = Counter(str(n))\n        for p in range(30):\n            if Counter(str(1 << p)) == target:\n                return True\n        return False\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Pre-compute digit-frequency signatures for all 30 possible 32-bit powers of two (up to 10^9). Compare the digit-frequency signature of n against each; if any match, a valid reordering exists.",
+  "code": "class Solution:\n    def reorderedPowerOf2(self, n: int) -> bool:\n        target = Counter(str(n))\n        for p in range(30):\n            if Counter(str(1 << p)) == target:\n                return True\n        return False",
+  "timestamp": "2025-08-06T02:34:33.193856",
+  "code_extracted_previous": "class Solution:\n    def reorderedPowerOf2(self, n: int) -> bool:\n        from collections import Counter\n        target = Counter(str(n))\n        for p in range(30):\n            if Counter(str(1 << p)) == target:\n                return True\n        return False",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.669078"
+}

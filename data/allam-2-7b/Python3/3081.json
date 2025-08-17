@@ -1,0 +1,15 @@
+{
+  "id": 3081,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef minimizeStringValue(self, s: str) -> str:\n    count_table = {}\n    for c in s:\n        if c in count_table:\n            count_table[c] += 1\n        else:\n            count_table[c] = 1\n\n    result = \"\"\n    for i in range(len(s)):\n        if s[i] == '?':\n            min_count = float('inf')\n            for c in count_table:\n                if count_table[c] < min_count:\n                    min_count = count_table[c]\n                    result += c\n\n            s[i] = result\n        else:\n            s[i] = s[i]\n\n    return s\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n1. Initialize a dictionary count_table to store the count of each character in the string s.\n2. Iterate through the string s to count the occurrences of each character in count_table.\n3. Iterate through the string s again, replacing '?' with the character with the minimum count in count_table.\n4. Update s in-place after replacing '?' with the minimum count character.\n5. Return the modified string s.\n\nThis solution has a time complexity of O(n) because it iterates through the string s only once. The space complexity is O(n) because we need to store the count of each character in the dictionary count_table. The energy implications are low because the algorithm only performs a few operations and does not consume significant energy. ",
+  "code": "def minimizeStringValue(self, s: str) -> str:\n    count_table = {}\n    for c in s:\n        if c in count_table:\n            count_table[c] += 1\n        else:\n            count_table[c] = 1\n\n    result = \"\"\n    for i in range(len(s)):\n        if s[i] == '?':\n            min_count = float('inf')\n            for c in count_table:\n                if count_table[c] < min_count:\n                    min_count = count_table[c]\n                    result += c\n\n            s[i] = result\n        else:\n            s[i] = s[i]\n\n    return s",
+  "timestamp": "2025-08-05T15:11:41.343913",
+  "code_extracted_previous": "def minimizeStringValue(self, s: str) -> str:\n    count_table = {}\n    for c in s:\n        if c in count_table:\n            count_table[c] += 1\n        else:\n            count_table[c] = 1\n\n    result = \"\"\n    for i in range(len(s)):\n        if s[i] == '?':\n            min_count = float('inf')\n            for c in count_table:\n                if count_table[c] < min_count:\n                    min_count = count_table[c]\n                    result += c\n\n            s[i] = result\n        else:\n            s[i] = s[i]\n\n    return s",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.825503"
+}

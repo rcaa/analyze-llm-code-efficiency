@@ -1,0 +1,15 @@
+{
+  "id": 89,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public List<Integer> grayCode(int n) {\n        List<Integer> result = new ArrayList<>();\n        int start = 1 << n - 1;\n        int end = (1 << n) - 1;\n\n        for (int i = start; i <= end; i = i ^ (i >> 1)) {\n            result.add(i);\n        }\n\n        return result;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nWe use a loop that iterates from the highest bit set (start) to the lowest bit set (end). In each iteration, we update i by XORing it with i >> 1 to flip the least significant bit. This ensures that we only iterate over the required range and generate valid n-bit gray code numbers. The solution has a high efficiency since the time complexity is O(log(n)) due to the iterative approach, and the space complexity is O(1) as we only use a constant amount of space to store the generated numbers. The energy implications are low as the solution does not involve any resource-consuming operations. ",
+  "code": "class Solution {\n    public List<Integer> grayCode(int n) {\n        List<Integer> result = new ArrayList<>();\n        int start = 1 << n - 1;\n        int end = (1 << n) - 1;\n\n        for (int i = start; i <= end; i = i ^ (i >> 1)) {\n            result.add(i);\n        }\n\n        return result;\n    }\n}",
+  "timestamp": "2025-08-06T00:41:21.481578",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> grayCode(int n) {\n        List<Integer> result = new ArrayList<>();\n        int start = 1 << n - 1;\n        int end = (1 << n) - 1;\n\n        for (int i = start; i <= end; i = i ^ (i >> 1)) {\n            result.add(i);\n        }\n\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.973860"
+}

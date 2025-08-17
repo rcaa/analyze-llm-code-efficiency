@@ -1,0 +1,15 @@
+{
+  "id": 523,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    bool checkSubarraySum(vector<int>& nums, int k) {\n        int n = nums.size();\n        if (n < 2) return false;\n        unordered_map<int, int> mp;\n        mp[0] = -1;\n        int prefix = 0;\n        for (int i = 0; i < n; ++i) {\n            prefix = (prefix + nums[i]) % k;\n            if (mp.count(prefix)) {\n                if (i - mp[prefix] >= 2) return true;\n            } else {\n                mp[prefix] = i;\n            }\n        }\n        return false;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, k))\nenergy implications: LOW\nexplanation: Uses prefix sums modulo k and a hash map to store the first index of each remainder. If the same remainder appears again at least two indices later, the subarray between them sums to a multiple of k.",
+  "code": "class Solution {\npublic:\n    bool checkSubarraySum(vector<int>& nums, int k) {\n        int n = nums.size();\n        if (n < 2) return false;\n        unordered_map<int, int> mp;\n        mp[0] = -1;\n        int prefix = 0;\n        for (int i = 0; i < n; ++i) {\n            prefix = (prefix + nums[i]) % k;\n            if (mp.count(prefix)) {\n                if (i - mp[prefix] >= 2) return true;\n            } else {\n                mp[prefix] = i;\n            }\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T12:57:24.461113",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool checkSubarraySum(vector<int>& nums, int k) {\n        int n = nums.size();\n        if (n < 2) return false;\n        unordered_map<int, int> mp;\n        mp[0] = -1;\n        int prefix = 0;\n        for (int i = 0; i < n; ++i) {\n            prefix = (prefix + nums[i]) % k;\n            if (mp.count(prefix)) {\n                if (i - mp[prefix] >= 2) return true;\n            } else {\n                mp[prefix] = i;\n            }\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.171272"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2111,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int kIncreasing(vector<int>& arr, int k) {\n        int n = arr.size();\n        vector<int> prefix(n + 1, 0);\n        for (int i = k; i < n; i++) {\n            prefix[i - k] = max(prefix[i - k], arr[i]);\n        }\n        int res = 0;\n        for (int i = 0; i < k; i++) {\n            int j = i;\n            while (j < n) {\n                res += (arr[j] < prefix[j + k]) ? 1 : 0;\n                j += k;\n            }\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a prefix array to store the maximum value in the subarray of size k ending at each position. Then, it iterates over the first k positions and counts the number of positions where the current value is less than the maximum value in the subarray of size k ending at that position. The total count is the minimum number of operations required to make the array K-increasing.",
+  "code": "class Solution {\npublic:\n    int kIncreasing(vector<int>& arr, int k) {\n        int n = arr.size();\n        vector<int> prefix(n + 1, 0);\n        for (int i = k; i < n; i++) {\n            prefix[i - k] = max(prefix[i - k], arr[i]);\n        }\n        int res = 0;\n        for (int i = 0; i < k; i++) {\n            int j = i;\n            while (j < n) {\n                res += (arr[j] < prefix[j + k]) ? 1 : 0;\n                j += k;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T12:05:14.237598",
+  "code_extracted_previous": "class Solution {\npublic:\n    int kIncreasing(vector<int>& arr, int k) {\n        int n = arr.size();\n        vector<int> prefix(n + 1, 0);\n        for (int i = k; i < n; i++) {\n            prefix[i - k] = max(prefix[i - k], arr[i]);\n        }\n        int res = 0;\n        for (int i = 0; i < k; i++) {\n            int j = i;\n            while (j < n) {\n                res += (arr[j] < prefix[j + k]) ? 1 : 0;\n                j += k;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.783654"
+}

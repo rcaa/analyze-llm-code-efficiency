@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int findTheLongestSubstring(String s) {\n        int countMap[][] = new int[5][26]; // 5 for 'a', 'e', 'i', 'o', 'u' and 26 for lowercase letters\n        int maxLength = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (countMap[c - 'a'][0] % 2 != 0) { // check if the current character is a vowel\n                countMap[c - 'a'][1]++; // increment count for consonant\n            } else {\n                countMap[c - 'a'][0]++; // increment count for vowel\n            }\n            maxLength = Math.max(maxLength, i - countMap[s.charAt(i - 1] - 'a' + 1); // update maxLength if needed\n        }\n        return maxLength;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\nWe use a 2D array to store the count of vowels and consonants. We iterate through the string and update the counts accordingly. Then, we update maxLength if needed. Finally, we return the maximum length. ",
+  "code": "class Solution {\n    public int findTheLongestSubstring(String s) {\n        int countMap[][] = new int[5][26]; // 5 for 'a', 'e', 'i', 'o', 'u' and 26 for lowercase letters\n        int maxLength = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (countMap[c - 'a'][0] % 2 != 0) { // check if the current character is a vowel\n                countMap[c - 'a'][1]++; // increment count for consonant\n            } else {\n                countMap[c - 'a'][0]++; // increment count for vowel\n            }\n            maxLength = Math.max(maxLength, i - countMap[s.charAt(i - 1] - 'a' + 1); // update maxLength if needed\n        }\n        return maxLength;\n    }\n}",
+  "timestamp": "2025-08-05T15:05:07.729161",
+  "code_extracted_previous": "class Solution {\n    public int findTheLongestSubstring(String s) {\n        int countMap[][] = new int[5][26]; // 5 for 'a', 'e', 'i', 'o', 'u' and 26 for lowercase letters\n        int maxLength = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (countMap[c - 'a'][0] % 2 != 0) { // check if the current character is a vowel\n                countMap[c - 'a'][1]++; // increment count for consonant\n            } else {\n                countMap[c - 'a'][0]++; // increment count for vowel\n            }\n            maxLength = Math.max(maxLength, i - countMap[s.charAt(i - 1] - 'a' + 1); // update maxLength if needed\n        }\n        return maxLength;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.532579"
+}

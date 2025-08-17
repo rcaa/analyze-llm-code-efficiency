@@ -1,0 +1,15 @@
+{
+  "id": 386,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    vector<int> lexicalOrder(int n) {\n        vector<int> result;\n        int num = 1;\n        for (int i = 0; i < n; ++i) {\n            result.push_back(num);\n            if (num * 10 <= n) {\n                num *= 10;\n            } else {\n                while (num % 10 == 9 || num >= n) {\n                    num /= 10;\n                }\n                ++num;\n            }\n        }\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution generates the lexicographical order by simulating the traversal of numbers as strings. It uses a single variable `num` to traverse the sequence, moving to the next lexicographical number by either multiplying by 10 or incrementing and backtracking when necessary. This approach ensures O(n) time and O(1) space.",
+  "code": "class Solution {\npublic:\n    vector<int> lexicalOrder(int n) {\n        vector<int> result;\n        int num = 1;\n        for (int i = 0; i < n; ++i) {\n            result.push_back(num);\n            if (num * 10 <= n) {\n                num *= 10;\n            } else {\n                while (num % 10 == 9 || num >= n) {\n                    num /= 10;\n                }\n                ++num;\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T03:04:07.144119",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> lexicalOrder(int n) {\n        vector<int> result;\n        int num = 1;\n        for (int i = 0; i < n; ++i) {\n            result.push_back(num);\n            if (num * 10 <= n) {\n                num *= 10;\n            } else {\n                while (num % 10 == 9 || num >= n) {\n                    num /= 10;\n                }\n                ++num;\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:00.667760"
+}

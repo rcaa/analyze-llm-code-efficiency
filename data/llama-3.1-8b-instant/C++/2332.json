@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int latestTimeCatchTheBus(vector<int>& buses, vector<int>& passengers, int capacity) {\n        sort(buses.begin(), buses.end());\n        sort(passengers.begin(), passengers.end());\n        int n = buses.size(), m = passengers.size();\n        int res = 0;\n        for (int i = 0, j = 0; i < n; i++) {\n            int k = j;\n            while (k < m && passengers[k] <= buses[i]) k++;\n            int cnt = min(k - j, capacity);\n            res = max(res, buses[i] - cnt + 1);\n            j = k;\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O((n + m) log(n + m) + n * m)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int latestTimeCatchTheBus(vector<int>& buses, vector<int>& passengers, int capacity) {\n        sort(buses.begin(), buses.end());\n        sort(passengers.begin(), passengers.end());\n        int n = buses.size(), m = passengers.size();\n        int res = 0;\n        for (int i = 0, j = 0; i < n; i++) {\n            int k = j;\n            while (k < m && passengers[k] <= buses[i]) k++;\n            int cnt = min(k - j, capacity);\n            res = max(res, buses[i] - cnt + 1);\n            j = k;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:28:12.691336",
+  "code_extracted_previous": "class Solution {\npublic:\n    int latestTimeCatchTheBus(vector<int>& buses, vector<int>& passengers, int capacity) {\n        sort(buses.begin(), buses.end());\n        sort(passengers.begin(), passengers.end());\n        int n = buses.size(), m = passengers.size();\n        int res = 0;\n        for (int i = 0, j = 0; i < n; i++) {\n            int k = j;\n            while (k < m && passengers[k] <= buses[i]) k++;\n            int cnt = min(k - j, capacity);\n            res = max(res, buses[i] - cnt + 1);\n            j = k;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.044748"
+}

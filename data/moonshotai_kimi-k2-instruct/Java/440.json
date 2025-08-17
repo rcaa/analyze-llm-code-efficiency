@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int findKthNumber(int n, int k) {\n        int curr = 1;\n        k--;\n        while (k > 0) {\n            long step = 0, first = curr, last = curr + 1;\n            while (first <= n) {\n                step += Math.min((long) n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (step <= k) {\n                curr++;\n                k -= step;\n            } else {\n                curr *= 10;\n                k--;\n            }\n        }\n        return curr;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n * log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a digit-tree counting approach: treat numbers as nodes in a 10-ary tree and count how many numbers fall under each prefix without generating them. Moves either to the next sibling or dives into the first child, adjusting k accordingly. Avoids full enumeration, handling the 1e9 bound efficiently.",
+  "code": "class Solution {\n    public int findKthNumber(int n, int k) {\n        int curr = 1;\n        k--;\n        while (k > 0) {\n            long step = 0, first = curr, last = curr + 1;\n            while (first <= n) {\n                step += Math.min((long) n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (step <= k) {\n                curr++;\n                k -= step;\n            } else {\n                curr *= 10;\n                k--;\n            }\n        }\n        return curr;\n    }\n}",
+  "timestamp": "2025-08-06T01:11:39.771282",
+  "code_extracted_previous": "public int findKthNumber(int n, int k) {\n        int curr = 1;\n        k--;\n        while (k > 0) {\n            long step = 0, first = curr, last = curr + 1;\n            while (first <= n) {\n                step += Math.min((long) n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (step <= k) {\n                curr++;\n                k -= step;\n            } else {\n                curr *= 10;\n                k--;\n            }\n        }\n        return curr;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.541257"
+}

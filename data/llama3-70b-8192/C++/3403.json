@@ -1,0 +1,15 @@
+{
+  "id": 3403,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string answerString(string word, int numFriends) {\n        vector<string> v;\n        for (int i = 1; i <= word.size(); ++i) {\n            if (word.size() % i == 0) {\n                string temp = \"\";\n                for (int j = 0; j < word.size(); ++j) {\n                    temp += word[j];\n                    if ((j + 1) % i == 0 && j != word.size() - 1) {\n                        v.push_back(temp);\n                        temp = \"\";\n                    }\n                }\n            }\n        }\n        sort(v.begin(), v.end(), greater<string>());\n        return v[0];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2 log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution generates all possible splits of the input string, stores them in a vector, and then sorts the vector in descending lexicographical order. The lexicographically largest string is then returned as the result.",
+  "code": "class Solution {\npublic:\n    string answerString(string word, int numFriends) {\n        vector<string> v;\n        for (int i = 1; i <= word.size(); ++i) {\n            if (word.size() % i == 0) {\n                string temp = \"\";\n                for (int j = 0; j < word.size(); ++j) {\n                    temp += word[j];\n                    if ((j + 1) % i == 0 && j != word.size() - 1) {\n                        v.push_back(temp);\n                        temp = \"\";\n                    }\n                }\n            }\n        }\n        sort(v.begin(), v.end(), greater<string>());\n        return v[0];\n    }\n};",
+  "timestamp": "2025-08-05T18:36:42.872875",
+  "code_extracted_previous": "public:\n    string answerString(string word, int numFriends) {\n        vector<string> v;\n        for (int i = 1; i <= word.size(); ++i) {\n            if (word.size() % i == 0) {\n                string temp = \"\";\n                for (int j = 0; j < word.size(); ++j) {\n                    temp += word[j];\n                    if ((j + 1) % i == 0 && j != word.size() - 1) {\n                        v.push_back(temp);\n                        temp = \"\";\n                    }\n                }\n            }\n        }\n        sort(v.begin(), v.end(), greater<string>());\n        return v[0];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.785513"
+}

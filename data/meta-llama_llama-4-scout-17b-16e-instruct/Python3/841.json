@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        n = len(rooms)\n        visited = [False] * n\n        stack = [0]\n        visited[0] = True\n        while stack:\n            node = stack.pop()\n            for neighbor in rooms[node]:\n                if not visited[neighbor]:\n                    stack.append(neighbor)\n                    visited[neighbor] = True\n        return all(visited)\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a depth-first search (DFS) approach with a stack to traverse through the rooms. It keeps track of visited rooms and explores new rooms using the keys found. The algorithm's efficiency comes from only visiting each room once and using a stack to manage the rooms to be visited, resulting in a linear time complexity relative to the number of rooms and keys.",
+  "code": "class Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        n = len(rooms)\n        visited = [False] * n\n        stack = [0]\n        visited[0] = True\n        while stack:\n            node = stack.pop()\n            for neighbor in rooms[node]:\n                if not visited[neighbor]:\n                    stack.append(neighbor)\n                    visited[neighbor] = True\n        return all(visited)",
+  "timestamp": "2025-08-05T14:00:33.089021",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        n = len(rooms)\n        visited = [False] * n\n        stack = [0]\n        visited[0] = True\n        while stack:\n            node = stack.pop()\n            for neighbor in rooms[node]:\n                if not visited[neighbor]:\n                    stack.append(neighbor)\n                    visited[neighbor] = True\n        return all(visited)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.973624"
+}

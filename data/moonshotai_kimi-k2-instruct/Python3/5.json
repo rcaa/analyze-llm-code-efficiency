@@ -1,0 +1,15 @@
+{
+  "id": 5,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \nclass Solution:\n    def longestPalindrome(self, s: str) -> str:\n        if not s:\n            return \"\"\n        start, end = 0, 0\n        n = len(s)\n        for i in range(n):\n            len1 = self.expand(s, i, i)\n            len2 = self.expand(s, i, i + 1)\n            max_len = max(len1, len2)\n            if max_len > end - start:\n                start = i - (max_len - 1) // 2\n                end = i + max_len // 2\n        return s[start:end + 1]\n\n    def expand(self, s: str, left: int, right: int) -> int:\n        while left >= 0 and right < len(s) and s[left] == s[right]:\n            left -= 1\n            right += 1\n        return right - left - 1\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Expand around every possible center (2n-1 centers) to find the longest palindrome in linear time per center, yielding quadratic total time with constant extra space.",
+  "code": "class Solution:\n    def longestPalindrome(self, s: str) -> str:\n        if not s:\n            return \"\"\n        start, end = 0, 0\n        n = len(s)\n        for i in range(n):\n            len1 = self.expand(s, i, i)\n            len2 = self.expand(s, i, i + 1)\n            max_len = max(len1, len2)\n            if max_len > end - start:\n                start = i - (max_len - 1) // 2\n                end = i + max_len // 2\n        return s[start:end + 1]\n\n    def expand(self, s: str, left: int, right: int) -> int:\n        while left >= 0 and right < len(s) and s[left] == s[right]:\n            left -= 1\n            right += 1\n        return right - left - 1",
+  "timestamp": "2025-08-06T01:33:36.185288",
+  "code_extracted_previous": "class Solution:\n    def longestPalindrome(self, s: str) -> str:\n        if not s:\n            return \"\"\n        start, end = 0, 0\n        n = len(s)\n        for i in range(n):\n            len1 = self.expand(s, i, i)\n            len2 = self.expand(s, i, i + 1)\n            max_len = max(len1, len2)\n            if max_len > end - start:\n                start = i - (max_len - 1) // 2\n                end = i + max_len // 2\n        return s[start:end + 1]\n\n    def expand(self, s: str, left: int, right: int) -> int:\n        while left >= 0 and right < len(s) and s[left] == s[right]:\n            left -= 1\n            right += 1\n        return right - left - 1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.287079"
+}

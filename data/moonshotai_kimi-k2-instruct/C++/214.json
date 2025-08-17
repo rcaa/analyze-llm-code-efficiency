@@ -1,0 +1,15 @@
+{
+  "id": 214,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    string shortestPalindrome(string s) {\n        int n = s.size();\n        if (n <= 1) return s;\n        string rev = s;\n        reverse(rev.begin(), rev.end());\n        string combined = s + \"#\" + rev;\n        vector<int> lps(combined.size(), 0);\n        for (int i = 1; i < combined.size(); ++i) {\n            int j = lps[i - 1];\n            while (j > 0 && combined[i] != combined[j]) j = lps[j - 1];\n            if (combined[i] == combined[j]) ++j;\n            lps[i] = j;\n        }\n        int len = lps.back();\n        string add = s.substr(len);\n        reverse(add.begin(), add.end());\n        return add + s;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses KMP's LPS array to find the longest palindromic prefix in linear time, then reverses the remaining suffix and prepends it to form the shortest palindrome.",
+  "code": "class Solution {\npublic:\n    string shortestPalindrome(string s) {\n        int n = s.size();\n        if (n <= 1) return s;\n        string rev = s;\n        reverse(rev.begin(), rev.end());\n        string combined = s + \"#\" + rev;\n        vector<int> lps(combined.size(), 0);\n        for (int i = 1; i < combined.size(); ++i) {\n            int j = lps[i - 1];\n            while (j > 0 && combined[i] != combined[j]) j = lps[j - 1];\n            if (combined[i] == combined[j]) ++j;\n            lps[i] = j;\n        }\n        int len = lps.back();\n        string add = s.substr(len);\n        reverse(add.begin(), add.end());\n        return add + s;\n    }\n};",
+  "timestamp": "2025-08-06T02:29:07.174498",
+  "code_extracted_previous": "class Solution {\npublic:\n    string shortestPalindrome(string s) {\n        int n = s.size();\n        if (n <= 1) return s;\n        string rev = s;\n        reverse(rev.begin(), rev.end());\n        string combined = s + \"#\" + rev;\n        vector<int> lps(combined.size(), 0);\n        for (int i = 1; i < combined.size(); ++i) {\n            int j = lps[i - 1];\n            while (j > 0 && combined[i] != combined[j]) j = lps[j - 1];\n            if (combined[i] == combined[j]) ++j;\n            lps[i] = j;\n        }\n        int len = lps.back();\n        string add = s.substr(len);\n        reverse(add.begin(), add.end());\n        return add + s;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.554039"
+}

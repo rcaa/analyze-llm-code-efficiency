@@ -1,0 +1,15 @@
+{
+  "id": 2193,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int minMovesToMakePalindrome(string s) {\n        int n = s.size();\n        int res = 0;\n        vector<int> count(26, 0);\n        for (char c : s) count[c - 'a']++;\n        for (int i = 0; i < n / 2; i++) {\n            char c = s[i];\n            if (count[c - 'a'] == 1) {\n                res += n / 2 - i;\n            } else {\n                int j = n - 1;\n                while (s[j] != c) j--;\n                res += n - 1 - j;\n                swap(s[j], s[n - 1]);\n                count[c - 'a']--;\n            }\n            count[s[i] - 'a']--;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution works by maintaining a count of characters and iterating through the string from both ends towards the center, swapping characters as needed to form a palindrome, and counting the moves.",
+  "code": "class Solution {\npublic:\n    int minMovesToMakePalindrome(string s) {\n        int n = s.size();\n        int res = 0;\n        vector<int> count(26, 0);\n        for (char c : s) count[c - 'a']++;\n        for (int i = 0; i < n / 2; i++) {\n            char c = s[i];\n            if (count[c - 'a'] == 1) {\n                res += n / 2 - i;\n            } else {\n                int j = n - 1;\n                while (s[j] != c) j--;\n                res += n - 1 - j;\n                swap(s[j], s[n - 1]);\n                count[c - 'a']--;\n            }\n            count[s[i] - 'a']--;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:15:29.456079",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minMovesToMakePalindrome(string s) {\n        int n = s.size();\n        int res = 0;\n        vector<int> count(26, 0);\n        for (char c : s) count[c - 'a']++;\n        for (int i = 0; i < n / 2; i++) {\n            char c = s[i];\n            if (count[c - 'a'] == 1) {\n                res += n / 2 - i;\n            } else {\n                int j = n - 1;\n                while (s[j] != c) j--;\n                res += n - 1 - j;\n                swap(s[j], s[n - 1]);\n                count[c - 'a']--;\n            }\n            count[s[i] - 'a']--;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.127886"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2825,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public boolean canMakeSubsequence(String str1, String str2) {\n        int[] charCount = new int[26];\n        for (int i = 0; i < str1.length(); i++) {\n            charCount[str1.charAt(i) - 'a']++;\n        }\n        \n        for (int i = 0; i < str2.length(); i++) {\n            if (charCount[str2.charAt(i) - 'a'] == 0) {\n                return false;\n            }\n            charCount[str2.charAt(i) - 'a']--;\n        }\n        return true;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nThe problem requires finding if it is possible to make str2 a subsequence of str1 by applying the operation at most once. We can solve this problem by using a hash map to count the occurrences of characters in str1 and then iterating through str2 to check if each character is present in the hash map. If a character is not found in the hash map, return false. Otherwise, decrement its count in the hash map. If the count becomes zero after iterating through str2, return false. Otherwise, return true.\n\nThe time complexity is O(n) because we iterate through both strings once. The space complexity is O(1) because we only use a hash map with a constant space complexity. The energy implications are low because the algorithm only performs a few operations and does not consume much energy. ",
+  "code": "class Solution {\n    public boolean canMakeSubsequence(String str1, String str2) {\n        int[] charCount = new int[26];\n        for (int i = 0; i < str1.length(); i++) {\n            charCount[str1.charAt(i) - 'a']++;\n        }\n        \n        for (int i = 0; i < str2.length(); i++) {\n            if (charCount[str2.charAt(i) - 'a'] == 0) {\n                return false;\n            }\n            charCount[str2.charAt(i) - 'a']--;\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-06T01:48:11.974709",
+  "code_extracted_previous": "class Solution {\n    public boolean canMakeSubsequence(String str1, String str2) {\n        int[] charCount = new int[26];\n        for (int i = 0; i < str1.length(); i++) {\n            charCount[str1.charAt(i) - 'a']++;\n        }\n        \n        for (int i = 0; i < str2.length(); i++) {\n            if (charCount[str2.charAt(i) - 'a'] == 0) {\n                return false;\n            }\n            charCount[str2.charAt(i) - 'a']--;\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.364972"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int n = s.length();\n        int ans = 0;\n        int[] index = new int[128]; // ASCII size\n        int left = 0;\n        for (int right = 0; right < n; right++) {\n            char c = s.charAt(right);\n            left = Math.max(left, index[c]);\n            ans = Math.max(ans, right - left + 1);\n            index[c] = right + 1;\n        }\n        return ans;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses the sliding window technique with a hash table to keep track of the last seen index of each character. It maintains a left pointer and a right pointer, expanding the window to the right and shrinking it from the left when a duplicate is found. The time complexity is O(n) and the space complexity is O(1) as the hash table size is constant.",
+  "code": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int n = s.length();\n        int ans = 0;\n        int[] index = new int[128]; // ASCII size\n        int left = 0;\n        for (int right = 0; right < n; right++) {\n            char c = s.charAt(right);\n            left = Math.max(left, index[c]);\n            ans = Math.max(ans, right - left + 1);\n            index[c] = right + 1;\n        }\n        return ans;\n    }\n}",
+  "timestamp": "2025-08-05T14:49:40.016997",
+  "code_extracted_previous": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int n = s.length();\n        int ans = 0;\n        int[] index = new int[128]; // ASCII size\n        int left = 0;\n        for (int right = 0; right < n; right++) {\n            char c = s.charAt(right);\n            left = Math.max(left, index[c]);\n            ans = Math.max(ans, right - left + 1);\n            index[c] = right + 1;\n        }\n        return ans;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.438024"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2092,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public List<Integer> findAllPeople(int n, int[][] meetings, int firstPerson) {\n        List<Integer> people = new ArrayList<>();\n        Set<Integer> visited = new HashSet<>();\n        Queue<Integer> queue = new LinkedList<>();\n        queue.offer(firstPerson);\n        visited.add(firstPerson);\n        while (!queue.isEmpty()) {\n            int person = queue.poll();\n            people.add(person);\n            for (int[] meeting : meetings) {\n                if (meeting[0] == person || meeting[1] == person) {\n                    int otherPerson = meeting[0] == person ? meeting[1] : meeting[0];\n                    if (!visited.contains(otherPerson)) {\n                        visited.add(otherPerson);\n                        queue.offer(otherPerson);\n                    }\n                }\n            }\n        }\n        return people;\n    }\n}\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n)\nexplanation: The solution uses a breadth-first search (BFS) approach to efficiently traverse the network of meetings. It starts from the person who initially has the secret and explores all reachable people through the meetings. The use of a set to track visited people prevents revisiting and ensures the algorithm terminates. The time complexity is linear with respect to the number of people (n) and meetings (m), while the space complexity is linear with respect to the number of people due to the visited set and the queue.\n",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-05T13:55:51.338985",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> findAllPeople(int n, int[][] meetings, int firstPerson) {\n        List<Integer> people = new ArrayList<>();\n        Set<Integer> visited = new HashSet<>();\n        Queue<Integer> queue = new LinkedList<>();\n        queue.offer(firstPerson);\n        visited.add(firstPerson);\n        while (!queue.isEmpty()) {\n            int person = queue.poll();\n            people.add(person);\n            for (int[] meeting : meetings) {\n                if (meeting[0] == person || meeting[1] == person) {\n                    int otherPerson = meeting[0] == person ? meeting[1] : meeting[0];\n                    if (!visited.contains(otherPerson)) {\n                        visited.add(otherPerson);\n                        queue.offer(otherPerson);\n                    }\n                }\n            }\n        }\n        return people;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.834498"
+}

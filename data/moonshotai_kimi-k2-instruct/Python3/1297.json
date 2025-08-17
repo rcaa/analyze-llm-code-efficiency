@@ -1,0 +1,15 @@
+{
+  "id": 1297,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        from collections import defaultdict\n        n = len(s)\n        max_occ = 0\n        freq = defaultdict(int)\n        \n        # Only need to check minSize because any longer valid substring\n        # will have <= occurrences of its minSize prefix\n        size = minSize\n        for i in range(n - size + 1):\n            sub = s[i:i+size]\n            unique = len(set(sub))\n            if unique <= maxLetters:\n                freq[sub] += 1\n                if freq[sub] > max_occ:\n                    max_occ = freq[sub]\n        return max_occ\n```\nefficiency: HIGH\ntime complexity: O(n * minSize)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Sliding-window counting of substrings of exactly minSize; any longer valid substring cannot appear more often than its minSize prefix, so we can ignore maxSize.",
+  "code": "class Solution:\n    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        n = len(s)\n        max_occ = 0\n        freq = defaultdict(int)\n        \n        # Only need to check minSize because any longer valid substring\n        # will have <= occurrences of its minSize prefix\n        size = minSize\n        for i in range(n - size + 1):\n            sub = s[i:i+size]\n            unique = len(set(sub))\n            if unique <= maxLetters:\n                freq[sub] += 1\n                if freq[sub] > max_occ:\n                    max_occ = freq[sub]\n        return max_occ",
+  "timestamp": "2025-08-06T02:32:36.882212",
+  "code_extracted_previous": "class Solution:\n    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        from collections import defaultdict\n        n = len(s)\n        max_occ = 0\n        freq = defaultdict(int)\n        \n        # Only need to check minSize because any longer valid substring\n        # will have <= occurrences of its minSize prefix\n        size = minSize\n        for i in range(n - size + 1):\n            sub = s[i:i+size]\n            unique = len(set(sub))\n            if unique <= maxLetters:\n                freq[sub] += 1\n                if freq[sub] > max_occ:\n                    max_occ = freq[sub]\n        return max_occ",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.094916"
+}

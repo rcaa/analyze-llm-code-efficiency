@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> res;\n        int start = 0, count = 1;\n        for (int i = 1; i < s.size(); i++) {\n            if (s[i] == s[i - 1]) {\n                count++;\n            } else {\n                if (count >= 3) {\n                    res.push_back({start, i - 1});\n                }\n                start = i;\n                count = 1;\n            }\n        }\n        if (count >= 3) {\n            res.push_back({start, s.size() - 1});\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a single pass through the string, keeping track of the start index and count of consecutive characters. When a new character is encountered, it checks if the previous group was large and adds it to the result if so.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> res;\n        int start = 0, count = 1;\n        for (int i = 1; i < s.size(); i++) {\n            if (s[i] == s[i - 1]) {\n                count++;\n            } else {\n                if (count >= 3) {\n                    res.push_back({start, i - 1});\n                }\n                start = i;\n                count = 1;\n            }\n        }\n        if (count >= 3) {\n            res.push_back({start, s.size() - 1});\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T23:38:42.279604",
+  "code_extracted_previous": "public:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> res;\n        int start = 0, count = 1;\n        for (int i = 1; i < s.size(); i++) {\n            if (s[i] == s[i - 1]) {\n                count++;\n            } else {\n                if (count >= 3) {\n                    res.push_back({start, i - 1});\n                }\n                start = i;\n                count = 1;\n            }\n        }\n        if (count >= 3) {\n            res.push_back({start, s.size() - 1});\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.095083"
+}

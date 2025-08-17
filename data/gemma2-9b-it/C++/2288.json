@@ -1,0 +1,15 @@
+{
+  "id": 2288,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    string discountPrices(string sentence, int discount) {\n        stringstream ss(sentence);\n        string word;\n        string result = \"\";\n        while (ss >> word) {\n            if (word.size() > 0 && word[0] == '$') {\n                double price = stod(word.substr(1));\n                double discountedPrice = price * (100 - discount) / 100;\n                result += to_string(fixed << setprecision(2) << discountedPrice) + \" \";\n            } else {\n                result += word + \" \";\n            }\n        }\n        return result.substr(0, result.length() - 1);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution iterates through each word in the sentence. If a word starts with '$', it's treated as a price, discounted, and formatted to two decimal places. Otherwise, the word is added to the result string as is.  This approach is efficient due to its linear time complexity and moderate space complexity. \n\n\n\n",
+  "code": "class Solution {\npublic:\n    string discountPrices(string sentence, int discount) {\n        stringstream ss(sentence);\n        string word;\n        string result = \"\";\n        while (ss >> word) {\n            if (word.size() > 0 && word[0] == '$') {\n                double price = stod(word.substr(1));\n                double discountedPrice = price * (100 - discount) / 100;\n                result += to_string(fixed << setprecision(2) << discountedPrice) + \" \";\n            } else {\n                result += word + \" \";\n            }\n        }\n        return result.substr(0, result.length() - 1);\n    }\n};",
+  "timestamp": "2025-08-06T00:58:13.192740",
+  "code_extracted_previous": "class Solution {\npublic:\n    string discountPrices(string sentence, int discount) {\n        stringstream ss(sentence);\n        string word;\n        string result = \"\";\n        while (ss >> word) {\n            if (word.size() > 0 && word[0] == '$') {\n                double price = stod(word.substr(1));\n                double discountedPrice = price * (100 - discount) / 100;\n                result += to_string(fixed << setprecision(2) << discountedPrice) + \" \";\n            } else {\n                result += word + \" \";\n            }\n        }\n        return result.substr(0, result.length() - 1);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.474321"
+}

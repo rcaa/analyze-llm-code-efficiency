@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int maxLen = -1;\n        Map<Character, Integer> map = new HashMap<>();\n        for (int i = 0; i < s.length(); i++) {\n            if (map.containsKey(s.charAt(i))) {\n                maxLen = Math.max(maxLen, i - map.get(s.charAt(i)) - 1);\n            } else {\n                map.put(s.charAt(i), i);\n            }\n        }\n        return maxLen;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a HashMap to store the first occurrence of each character. Then, it iterates through the string, updating the maximum length of the substring between equal characters whenever it finds a repeated character. The time complexity is O(n) because each character is processed once, and the space complexity is O(n) because in the worst case, all characters are stored in the HashMap.",
+  "code": "class Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int maxLen = -1;\n        Map<Character, Integer> map = new HashMap<>();\n        for (int i = 0; i < s.length(); i++) {\n            if (map.containsKey(s.charAt(i))) {\n                maxLen = Math.max(maxLen, i - map.get(s.charAt(i)) - 1);\n            } else {\n                map.put(s.charAt(i), i);\n            }\n        }\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-05T14:43:20.654605",
+  "code_extracted_previous": "public int maxLengthBetweenEqualCharacters(String s) {\n        int maxLen = -1;\n        Map<Character, Integer> map = new HashMap<>();\n        for (int i = 0; i < s.length(); i++) {\n            if (map.containsKey(s.charAt(i))) {\n                maxLen = Math.max(maxLen, i - map.get(s.charAt(i)) - 1);\n            } else {\n                map.put(s.charAt(i), i);\n            }\n        }\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.035197"
+}

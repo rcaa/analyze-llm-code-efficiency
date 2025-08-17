@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) {\n        this->k = k;\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    int add(int val) {\n        if (minHeap.size() < k) {\n            minHeap.push(val);\n        } else if (val > minHeap.top()) {\n            minHeap.pop();\n            minHeap.push(val);\n        }\n        return minHeap.top();\n    }\nprivate:\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n    int k;\n};\n```\nefficiency: HIGH\ntime complexity: O(log k) for add\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: The provided solution utilizes a min-heap to efficiently track the kth largest element. The min-heap stores the k largest elements seen so far. When a new score is added, it is compared to the smallest element in the heap (the top). If the heap has less than k elements, the new score is added. If the heap has k elements and the new score is larger than the smallest element, the smallest element is replaced. This ensures the heap always contains the k largest scores. The kth largest score is simply the top of the heap.",
+  "code": "class KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) {\n        this->k = k;\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    int add(int val) {\n        if (minHeap.size() < k) {\n            minHeap.push(val);\n        } else if (val > minHeap.top()) {\n            minHeap.pop();\n            minHeap.push(val);\n        }\n        return minHeap.top();\n    }\nprivate:\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n    int k;\n};",
+  "timestamp": "2025-08-06T01:11:12.979122",
+  "code_extracted_previous": "class KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) {\n        this->k = k;\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    int add(int val) {\n        if (minHeap.size() < k) {\n            minHeap.push(val);\n        } else if (val > minHeap.top()) {\n            minHeap.pop();\n            minHeap.push(val);\n        }\n        return minHeap.top();\n    }\nprivate:\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n    int k;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:49.915684"
+}

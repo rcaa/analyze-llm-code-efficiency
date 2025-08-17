@@ -1,0 +1,15 @@
+{
+  "id": 23,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public ListNode mergeKLists(ListNode[] lists) {\n        if (lists == null || lists.length == 0) return null;\n        ListNode dummy = new ListNode(0);\n        ListNode current = dummy;\n        PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> a.val - b.val);\n        for (ListNode list : lists) {\n            if (list != null) queue.add(list);\n        }\n        while (!queue.isEmpty()) {\n            ListNode node = queue.poll();\n            current.next = node;\n            current = current.next;\n            if (node.next != null) queue.add(node.next);\n        }\n        return dummy.next;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to efficiently merge the k sorted linked lists. The priority queue ensures that the smallest node is always at the front, allowing for a sorted merge.",
+  "code": "class Solution {\n    public ListNode mergeKLists(ListNode[] lists) {\n        if (lists == null || lists.length == 0) return null;\n        ListNode dummy = new ListNode(0);\n        ListNode current = dummy;\n        PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> a.val - b.val);\n        for (ListNode list : lists) {\n            if (list != null) queue.add(list);\n        }\n        while (!queue.isEmpty()) {\n            ListNode node = queue.poll();\n            current.next = node;\n            current = current.next;\n            if (node.next != null) queue.add(node.next);\n        }\n        return dummy.next;\n    }\n}",
+  "timestamp": "2025-08-05T15:14:06.504868",
+  "code_extracted_previous": "class Solution {\n    public ListNode mergeKLists(ListNode[] lists) {\n        if (lists == null || lists.length == 0) return null;\n        ListNode dummy = new ListNode(0);\n        ListNode current = dummy;\n        PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> a.val - b.val);\n        for (ListNode list : lists) {\n            if (list != null) queue.add(list);\n        }\n        while (!queue.isEmpty()) {\n            ListNode node = queue.poll();\n            current.next = node;\n            current = current.next;\n            if (node.next != null) queue.add(node.next);\n        }\n        return dummy.next;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.116541"
+}

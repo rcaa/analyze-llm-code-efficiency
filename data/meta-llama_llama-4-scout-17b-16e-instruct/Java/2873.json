@@ -1,0 +1,15 @@
+{
+  "id": 2873,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public long maximumTripletValue(int[] nums) {\n        long maxVal = 0;\n        int maxK = Integer.MIN_VALUE;\n        int minDiff = Integer.MIN_VALUE;\n\n        for (int k = nums.length - 1; k >= 2; k--) {\n            maxK = Math.max(maxK, nums[k]);\n            long currMax = maxK * (nums[k - 2] - nums[k - 1]);\n            maxVal = Math.max(maxVal, currMax);\n            if (k > 2) {\n                minDiff = Math.max(minDiff, nums[k - 2] - nums[k - 1]);\n            }\n            if (k < nums.length - 1) {\n                currMax = maxK * minDiff;\n                maxVal = Math.max(maxVal, currMax);\n            }\n        }\n        return Math.max(maxVal, 0);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the array from right to left, maintaining the maximum value of `nums[k]` and the maximum difference `nums[i] - nums[j]` seen so far. This allows it to efficiently compute the maximum triplet value.",
+  "code": "class Solution {\n    public long maximumTripletValue(int[] nums) {\n        long maxVal = 0;\n        int maxK = Integer.MIN_VALUE;\n        int minDiff = Integer.MIN_VALUE;\n\n        for (int k = nums.length - 1; k >= 2; k--) {\n            maxK = Math.max(maxK, nums[k]);\n            long currMax = maxK * (nums[k - 2] - nums[k - 1]);\n            maxVal = Math.max(maxVal, currMax);\n            if (k > 2) {\n                minDiff = Math.max(minDiff, nums[k - 2] - nums[k - 1]);\n            }\n            if (k < nums.length - 1) {\n                currMax = maxK * minDiff;\n                maxVal = Math.max(maxVal, currMax);\n            }\n        }\n        return Math.max(maxVal, 0);\n    }\n}",
+  "timestamp": "2025-08-05T12:54:00.292966",
+  "code_extracted_previous": "class Solution {\n    public long maximumTripletValue(int[] nums) {\n        long maxVal = 0;\n        int maxK = Integer.MIN_VALUE;\n        int minDiff = Integer.MIN_VALUE;\n\n        for (int k = nums.length - 1; k >= 2; k--) {\n            maxK = Math.max(maxK, nums[k]);\n            long currMax = maxK * (nums[k - 2] - nums[k - 1]);\n            maxVal = Math.max(maxVal, currMax);\n            if (k > 2) {\n                minDiff = Math.max(minDiff, nums[k - 2] - nums[k - 1]);\n            }\n            if (k < nums.length - 1) {\n                currMax = maxK * minDiff;\n                maxVal = Math.max(maxVal, currMax);\n            }\n        }\n        return Math.max(maxVal, 0);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.009366"
+}

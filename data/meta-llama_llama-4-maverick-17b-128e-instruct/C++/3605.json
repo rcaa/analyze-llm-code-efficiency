@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        int l = 0, cnt = 0;\n        for (int r = 0; r < n; ++r) {\n            if (nums[r] % 2 != 0) {\n                ++cnt;\n            }\n            while (cnt > maxC) {\n                if (nums[l++] % 2 != 0) {\n                    --cnt;\n                }\n            }\n        }\n        return n - l;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to track the maximum length of a subarray that can be made stable with at most maxC modifications. It counts the number of odd elements within the window and expands or shrinks the window based on the count. The minimum stability factor is then derived from the maximum length of the stable subarray that can be achieved.\n```",
+  "code": "class Solution {\npublic:\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        int l = 0, cnt = 0;\n        for (int r = 0; r < n; ++r) {\n            if (nums[r] % 2 != 0) {\n                ++cnt;\n            }\n            while (cnt > maxC) {\n                if (nums[l++] % 2 != 0) {\n                    --cnt;\n                }\n            }\n        }\n        return n - l;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to track the maximum length of a subarray that can be made stable with at most maxC modifications. It counts the number of odd elements within the window and expands or shrinks the window based on the count. The minimum stability factor is then derived from the maximum length of the stable subarray that can be achieved.",
+  "timestamp": "2025-08-05T12:22:59.416272",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        int l = 0, cnt = 0;\n        for (int r = 0; r < n; ++r) {\n            if (nums[r] % 2 != 0) {\n                ++cnt;\n            }\n            while (cnt > maxC) {\n                if (nums[l++] % 2 != 0) {\n                    --cnt;\n                }\n            }\n        }\n        return n - l;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.594965"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 921,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int minAddToMakeValid(string s) {\n        int res = 0, cnt = 0;\n        for (char c : s) {\n            cnt += c == '(' ? 1 : -1;\n            if (cnt < 0) res++;\n            cnt = max(cnt, 0);\n        }\n        return res + cnt;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a single pass through the string, keeping track of the difference between the number of open and close parentheses. When this difference becomes negative, it means we need to add an open parenthesis to make the string valid, so we increment the result. At the end, we add the remaining difference to the result, which is the number of close parentheses we need to add to make the string valid.",
+  "code": "class Solution {\npublic:\n    int minAddToMakeValid(string s) {\n        int res = 0, cnt = 0;\n        for (char c : s) {\n            cnt += c == '(' ? 1 : -1;\n            if (cnt < 0) res++;\n            cnt = max(cnt, 0);\n        }\n        return res + cnt;\n    }\n};",
+  "timestamp": "2025-08-05T16:57:22.172443",
+  "code_extracted_previous": "public:\n    int minAddToMakeValid(string s) {\n        int res = 0, cnt = 0;\n        for (char c : s) {\n            cnt += c == '(' ? 1 : -1;\n            if (cnt < 0) res++;\n            cnt = max(cnt, 0);\n        }\n        return res + cnt;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.740325"
+}

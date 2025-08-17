@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int n = customers.size();\n        int base = 0;\n        for (int i = 0; i < n; ++i)\n            if (grumpy[i] == 0) base += customers[i];\n        \n        int extra = 0;\n        for (int i = 0; i < minutes; ++i)\n            if (grumpy[i] == 1) extra += customers[i];\n        \n        int maxExtra = extra;\n        for (int i = minutes; i < n; ++i) {\n            if (grumpy[i - minutes] == 1) extra -= customers[i - minutes];\n            if (grumpy[i] == 1) extra += customers[i];\n            maxExtra = max(maxExtra, extra);\n        }\n        \n        return base + maxExtra;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Compute the baseline satisfied customers when the owner is naturally calm, then use a sliding window of size minutes to find the maximum additional customers that can be satisfied by applying the secret technique once.",
+  "code": "class Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int n = customers.size();\n        int base = 0;\n        for (int i = 0; i < n; ++i)\n            if (grumpy[i] == 0) base += customers[i];\n        \n        int extra = 0;\n        for (int i = 0; i < minutes; ++i)\n            if (grumpy[i] == 1) extra += customers[i];\n        \n        int maxExtra = extra;\n        for (int i = minutes; i < n; ++i) {\n            if (grumpy[i - minutes] == 1) extra -= customers[i - minutes];\n            if (grumpy[i] == 1) extra += customers[i];\n            maxExtra = max(maxExtra, extra);\n        }\n        \n        return base + maxExtra;\n    }\n};",
+  "timestamp": "2025-08-05T13:19:29.183769",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int n = customers.size();\n        int base = 0;\n        for (int i = 0; i < n; ++i)\n            if (grumpy[i] == 0) base += customers[i];\n        \n        int extra = 0;\n        for (int i = 0; i < minutes; ++i)\n            if (grumpy[i] == 1) extra += customers[i];\n        \n        int maxExtra = extra;\n        for (int i = minutes; i < n; ++i) {\n            if (grumpy[i - minutes] == 1) extra -= customers[i - minutes];\n            if (grumpy[i] == 1) extra += customers[i];\n            maxExtra = max(maxExtra, extra);\n        }\n        \n        return base + maxExtra;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.106015"
+}

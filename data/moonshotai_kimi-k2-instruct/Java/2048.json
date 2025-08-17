@@ -1,0 +1,15 @@
+{
+  "id": 2048,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int nextBeautifulNumber(int n) {\n        for (int x = n + 1; ; x++) {\n            int[] cnt = new int[10];\n            int t = x;\n            while (t > 0) {\n                cnt[t % 10]++;\n                t /= 10;\n            }\n            boolean ok = true;\n            for (int d = 0; d < 10; d++) {\n                if (cnt[d] != 0 && cnt[d] != d) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) return x;\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(D * (N_next - N)) where D is the number of digits in the candidate and N_next is the next balanced number; empirically bounded by the small set of valid balanced numbers.\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate upward from n+1, check each integer for the balanced property by counting digit frequencies and verifying that every digit d appears exactly d times. The search space is tiny because balanced numbers are rare and the next one is always close.",
+  "code": "class Solution {\n    public int nextBeautifulNumber(int n) {\n        for (int x = n + 1; ; x++) {\n            int[] cnt = new int[10];\n            int t = x;\n            while (t > 0) {\n                cnt[t % 10]++;\n                t /= 10;\n            }\n            boolean ok = true;\n            for (int d = 0; d < 10; d++) {\n                if (cnt[d] != 0 && cnt[d] != d) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) return x;\n        }\n    }\n}",
+  "timestamp": "2025-08-06T02:30:53.496929",
+  "code_extracted_previous": "public int nextBeautifulNumber(int n) {\n        for (int x = n + 1; ; x++) {\n            int[] cnt = new int[10];\n            int t = x;\n            while (t > 0) {\n                cnt[t % 10]++;\n                t /= 10;\n            }\n            boolean ok = true;\n            for (int d = 0; d < 10; d++) {\n                if (cnt[d] != 0 && cnt[d] != d) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) return x;\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.722848"
+}

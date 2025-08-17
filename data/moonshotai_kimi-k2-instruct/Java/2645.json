@@ -1,0 +1,15 @@
+{
+  "id": 2645,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int addMinimum(String word) {\n        int res = 0, expected = 0; // 0->'a', 1->'b', 2->'c'\n        for (char c : word.toCharArray()) {\n            int cur = c - 'a';\n            res += (cur - expected + 3) % 3;\n            expected = (cur + 1) % 3;\n        }\n        res += (3 - expected) % 3;\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Track the next expected character in the repeating \"abc\" pattern. For each character, compute how many insertions are needed to reach it from the expected position, then update the expected next character. After processing the string, add any missing characters to complete the final \"abc\" block.",
+  "code": "class Solution {\n    public int addMinimum(String word) {\n        int res = 0, expected = 0; // 0->'a', 1->'b', 2->'c'\n        for (char c : word.toCharArray()) {\n            int cur = c - 'a';\n            res += (cur - expected + 3) % 3;\n            expected = (cur + 1) % 3;\n        }\n        res += (3 - expected) % 3;\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T01:04:15.473608",
+  "code_extracted_previous": "public int addMinimum(String word) {\n        int res = 0, expected = 0; // 0->'a', 1->'b', 2->'c'\n        for (char c : word.toCharArray()) {\n            int cur = c - 'a';\n            res += (cur - expected + 3) % 3;\n            expected = (cur + 1) % 3;\n        }\n        res += (3 - expected) % 3;\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.151121"
+}

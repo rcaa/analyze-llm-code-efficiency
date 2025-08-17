@@ -1,0 +1,15 @@
+{
+  "id": 2097,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int[][] validArrangement(int[][] pairs) {\n        Map<Integer, List<int[]>> graph = new HashMap<>();\n        for (int[] pair : pairs) {\n            graph.computeIfAbsent(pair[1], k -> new ArrayList<>()).add(pair);\n        }\n        List<int[]> res = new ArrayList<>();\n        dfs(graph, pairs[0][0], res);\n        return res.toArray(new int[0][]);\n    }\n\n    private void dfs(Map<Integer, List<int[]>> graph, int node, List<int[]> res) {\n        while (graph.containsKey(node) && !graph.get(node).isEmpty()) {\n            int[] pair = graph.get(node).remove(0);\n            res.add(pair);\n            dfs(graph, pair[1], res);\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a graph to store the pairs and then performs a depth-first search to find a valid arrangement.",
+  "code": "class Solution {\n    public int[][] validArrangement(int[][] pairs) {\n        Map<Integer, List<int[]>> graph = new HashMap<>();\n        for (int[] pair : pairs) {\n            graph.computeIfAbsent(pair[1], k -> new ArrayList<>()).add(pair);\n        }\n        List<int[]> res = new ArrayList<>();\n        dfs(graph, pairs[0][0], res);\n        return res.toArray(new int[0][]);\n    }\n\n    private void dfs(Map<Integer, List<int[]>> graph, int node, List<int[]> res) {\n        while (graph.containsKey(node) && !graph.get(node).isEmpty()) {\n            int[] pair = graph.get(node).remove(0);\n            res.add(pair);\n            dfs(graph, pair[1], res);\n        }\n    }\n}",
+  "timestamp": "2025-08-05T13:56:16.526056",
+  "code_extracted_previous": "class Solution {\n    public int[][] validArrangement(int[][] pairs) {\n        Map<Integer, List<int[]>> graph = new HashMap<>();\n        for (int[] pair : pairs) {\n            graph.computeIfAbsent(pair[1], k -> new ArrayList<>()).add(pair);\n        }\n        List<int[]> res = new ArrayList<>();\n        dfs(graph, pairs[0][0], res);\n        return res.toArray(new int[0][]);\n    }\n\n    private void dfs(Map<Integer, List<int[]>> graph, int node, List<int[]> res) {\n        while (graph.containsKey(node) && !graph.get(node).isEmpty()) {\n            int[] pair = graph.get(node).remove(0);\n            res.add(pair);\n            dfs(graph, pair[1], res);\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.017332"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2092,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nfrom typing import List\nimport heapq\n\nclass Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y, time in meetings:\n            graph[x].append((time, y))\n            graph[y].append((time, x))\n        \n        pq = [(0, firstPerson)]\n        visited = set([firstPerson])\n        \n        while pq:\n            time, person = heapq.heappop(pq)\n            for t, neighbor in graph[person]:\n                if t > time and neighbor not in visited:\n                    visited.add(neighbor)\n                    heapq.heappush(pq, (t, neighbor))\n        \n        return list(visited)\n```\n\nefficiency: HIGH\ntime complexity: O(m log m)\nspace complexity: O(n + m)\nenergy implications: LOW",
+  "code": "class Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y, time in meetings:\n            graph[x].append((time, y))\n            graph[y].append((time, x))\n        \n        pq = [(0, firstPerson)]\n        visited = set([firstPerson])\n        \n        while pq:\n            time, person = heapq.heappop(pq)\n            for t, neighbor in graph[person]:\n                if t > time and neighbor not in visited:\n                    visited.add(neighbor)\n                    heapq.heappush(pq, (t, neighbor))\n        \n        return list(visited)",
+  "timestamp": "2025-08-05T13:56:02.080589",
+  "code_extracted_previous": "from typing import List\nimport heapq\n\nclass Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        graph = [[] for _ in range(n)]\n        for x, y, time in meetings:\n            graph[x].append((time, y))\n            graph[y].append((time, x))\n        \n        pq = [(0, firstPerson)]\n        visited = set([firstPerson])\n        \n        while pq:\n            time, person = heapq.heappop(pq)\n            for t, neighbor in graph[person]:\n                if t > time and neighbor not in visited:\n                    visited.add(neighbor)\n                    heapq.heappush(pq, (t, neighbor))\n        \n        return list(visited)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.555122"
+}

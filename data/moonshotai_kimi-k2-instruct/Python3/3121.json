@@ -1,0 +1,15 @@
+{
+  "id": 3121,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def numberOfSpecialChars(self, word: str) -> int:\n        lower_last = [-1] * 26\n        upper_first = [float('inf')] * 26\n        \n        for idx, ch in enumerate(word):\n            if 'a' <= ch <= 'z':\n                c = ord(ch) - ord('a')\n                if lower_last[c] == -1:\n                    lower_last[c] = idx\n            else:\n                c = ord(ch) - ord('A')\n                if upper_first[c] == float('inf'):\n                    upper_first[c] = idx\n        \n        count = 0\n        for i in range(26):\n            if lower_last[i] != -1 and upper_first[i] != float('inf') and lower_last[i] < upper_first[i]:\n                count += 1\n        return count\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass to record last lowercase and first uppercase positions for each letter, then count letters satisfying the condition. Constant extra space and linear time.",
+  "code": "class Solution:\n    def numberOfSpecialChars(self, word: str) -> int:\n        lower_last = [-1] * 26\n        upper_first = [float('inf')] * 26\n        \n        for idx, ch in enumerate(word):\n            if 'a' <= ch <= 'z':\n                c = ord(ch) - ord('a')\n                if lower_last[c] == -1:\n                    lower_last[c] = idx\n            else:\n                c = ord(ch) - ord('A')\n                if upper_first[c] == float('inf'):\n                    upper_first[c] = idx\n        \n        count = 0\n        for i in range(26):\n            if lower_last[i] != -1 and upper_first[i] != float('inf') and lower_last[i] < upper_first[i]:\n                count += 1\n        return count",
+  "timestamp": "2025-08-06T02:33:36.715173",
+  "code_extracted_previous": "class Solution:\n    def numberOfSpecialChars(self, word: str) -> int:\n        lower_last = [-1] * 26\n        upper_first = [float('inf')] * 26\n        \n        for idx, ch in enumerate(word):\n            if 'a' <= ch <= 'z':\n                c = ord(ch) - ord('a')\n                if lower_last[c] == -1:\n                    lower_last[c] = idx\n            else:\n                c = ord(ch) - ord('A')\n                if upper_first[c] == float('inf'):\n                    upper_first[c] = idx\n        \n        count = 0\n        for i in range(26):\n            if lower_last[i] != -1 and upper_first[i] != float('inf') and lower_last[i] < upper_first[i]:\n                count += 1\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.970347"
+}

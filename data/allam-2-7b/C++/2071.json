@@ -1,0 +1,15 @@
+{
+  "id": 2071,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```c++\nclass Solution {\npublic:\n    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {\n        int result = 0;\n        for (int i = 0; i < tasks.size(); i++) {\n            for (int j = 0; j < workers.size(); j++) {\n                if (tasks[i] <= workers[j] + pills) {\n                    result = max(result, tasks[i]);\n                    workers[j] += pills;\n                }\n            }\n        }\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nThe solution uses nested loops to iterate through tasks and workers. It checks if assigning a task to a worker is possible based on the worker's strength and the task's strength requirement. If a task can be assigned, the worker's strength is increased by the number of pills. The maximum result is stored in the result variable, and returned at the end. The time complexity is O(n*m) because of the nested loops, where n is the number of tasks and m is the number of workers. The space complexity is O(n) because we only use a constant amount of space for the result variable. The energy implications are low because the solution only involves simple arithmetic operations and does not consume significant energy. ",
+  "code": "class Solution {\npublic:\n    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {\n        int result = 0;\n        for (int i = 0; i < tasks.size(); i++) {\n            for (int j = 0; j < workers.size(); j++) {\n                if (tasks[i] <= workers[j] + pills) {\n                    result = max(result, tasks[i]);\n                    workers[j] += pills;\n                }\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T12:01:15.179170",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {\n        int result = 0;\n        for (int i = 0; i < tasks.size(); i++) {\n            for (int j = 0; j < workers.size(); j++) {\n                if (tasks[i] <= workers[j] + pills) {\n                    result = max(result, tasks[i]);\n                    workers[j] += pills;\n                }\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.259430"
+}

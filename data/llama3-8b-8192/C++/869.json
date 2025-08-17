@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    bool reorderedPowerOf2(int n) {\n        string s = to_string(n);\n        sort(s.begin(), s.end());\n        for (int i = 0; i < (1 << 20); i++) {\n            string t = to_string(1 << (20 - __builtin_clz(i)));\n            if (s == t) return true;\n        }\n        return false;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(20 log 10)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We first convert the integer to a string and sort it. Then we iterate over all possible powers of two and convert them to strings. If the sorted string of the original number is equal to the sorted string of a power of two, we return true.",
+  "code": "class Solution {\npublic:\n    bool reorderedPowerOf2(int n) {\n        string s = to_string(n);\n        sort(s.begin(), s.end());\n        for (int i = 0; i < (1 << 20); i++) {\n            string t = to_string(1 << (20 - __builtin_clz(i)));\n            if (s == t) return true;\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T14:56:07.930556",
+  "code_extracted_previous": "public:\n    bool reorderedPowerOf2(int n) {\n        string s = to_string(n);\n        sort(s.begin(), s.end());\n        for (int i = 0; i < (1 << 20); i++) {\n            string t = to_string(1 << (20 - __builtin_clz(i)));\n            if (s == t) return true;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.708078"
+}

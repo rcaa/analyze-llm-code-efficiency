@@ -1,0 +1,15 @@
+{
+  "id": 2135,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution:\n    def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_set = set()\n        for word in startWords:\n            start_set.add(frozenset(word))\n        \n        count = 0\n        for word in targetWords:\n            if frozenset(word) in start_set:\n                count += 1\n            else:\n                for i in range(len(word)):\n                    if frozenset(word[:i] + word[i+1:]) in start_set:\n                        count += 1\n                        break\n        return count\n```\n\nefficiency: HIGH\ntime complexity: O(n*m*(m+1)/2)\nspace complexity: O(n*m)\nenergy implications: MEDIUM\nexplanation: This solution uses a set to store the startWords, allowing for efficient lookups. It then iterates over the targetWords, checking if each word is in the set. If not, it checks all possible prefixes of the word to see if any of them are in the set. This approach has a high efficiency due to the use of a set, but the time complexity is higher due to the need to check all prefixes of each target word.",
+  "code": "class Solution:\n    def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_set = set()\n        for word in startWords:\n            start_set.add(frozenset(word))\n        \n        count = 0\n        for word in targetWords:\n            if frozenset(word) in start_set:\n                count += 1\n            else:\n                for i in range(len(word)):\n                    if frozenset(word[:i] + word[i+1:]) in start_set:\n                        count += 1\n                        break\n        return count",
+  "timestamp": "2025-08-05T13:23:15.859844",
+  "code_extracted_previous": "def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_set = set()\n        for word in startWords:\n            start_set.add(frozenset(word))\n        \n        count = 0\n        for word in targetWords:\n            if frozenset(word) in start_set:\n                count += 1\n            else:\n                for i in range(len(word)):\n                    if frozenset(word[:i] + word[i+1:]) in start_set:\n                        count += 1\n                        break\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.580300"
+}

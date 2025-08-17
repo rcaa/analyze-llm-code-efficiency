@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        int curr = 1;\n        k--;\n        while (k > 0) {\n            int steps = calcSteps(n, curr, curr + 1);\n            if (k >= steps) {\n                k -= steps;\n                curr += 1;\n            } else {\n                curr *= 10;\n                k -= 1;\n            }\n        }\n        return curr;\n    }\n    \n    int calcSteps(int n, long n1, long n2) {\n        int steps = 0;\n        while (n1 <= n) {\n            steps += min(n + 1, n2) - n1;\n            n1 *= 10;\n            n2 *= 10;\n        }\n        return steps;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a two-pointer approach to efficiently traverse the lexicographical order, leveraging the property that the next number in the order can be determined by appending a digit to the current number or incrementing the current number.",
+  "code": "class Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        int curr = 1;\n        k--;\n        while (k > 0) {\n            int steps = calcSteps(n, curr, curr + 1);\n            if (k >= steps) {\n                k -= steps;\n                curr += 1;\n            } else {\n                curr *= 10;\n                k -= 1;\n            }\n        }\n        return curr;\n    }\n    \n    int calcSteps(int n, long n1, long n2) {\n        int steps = 0;\n        while (n1 <= n) {\n            steps += min(n + 1, n2) - n1;\n            n1 *= 10;\n            n2 *= 10;\n        }\n        return steps;\n    }\n};",
+  "timestamp": "2025-08-06T01:12:53.373216",
+  "code_extracted_previous": "public:\n    int findKthNumber(int n, int k) {\n        int curr = 1;\n        k--;\n        while (k > 0) {\n            int steps = calcSteps(n, curr, curr + 1);\n            if (k >= steps) {\n                k -= steps;\n                curr += 1;\n            } else {\n                curr *= 10;\n                k -= 1;\n            }\n        }\n        return curr;\n    }\n    \n    int calcSteps(int n, long n1, long n2) {\n        int steps = 0;\n        while (n1 <= n) {\n            steps += min(n + 1, n2) - n1;\n            n1 *= 10;\n            n2 *= 10;\n        }\n        return steps;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.907448"
+}

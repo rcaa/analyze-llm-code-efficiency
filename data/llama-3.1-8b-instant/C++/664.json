@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, 0));\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i][i] = 1;\n            for (int j = i + 1; j < n; ++j) {\n                if (s[i] == s[j]) {\n                    dp[i][j] = dp[i + 1][j];\n                } else {\n                    dp[i][j] = min(dp[i][k] + dp[k + 1][j] for k in range(i, j));\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n^2)\nenergy implications: MEDIUM\nexplanation: This problem can be solved using dynamic programming. We create a 2D dp array where dp[i][j] represents the minimum number of turns needed to print the substring s[i...j]. We fill the dp array in a bottom-up manner, considering two cases: when the characters at positions i and j are the same, and when they are different. When they are different, we try to split the substring s[i...j] into two parts at each position k and take the minimum number of turns.",
+  "code": "class Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, 0));\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i][i] = 1;\n            for (int j = i + 1; j < n; ++j) {\n                if (s[i] == s[j]) {\n                    dp[i][j] = dp[i + 1][j];\n                } else {\n                    dp[i][j] = min(dp[i][k] + dp[k + 1][j] for k in range(i, j));\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};",
+  "timestamp": "2025-08-05T16:08:49.928199",
+  "code_extracted_previous": "class Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, 0));\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i][i] = 1;\n            for (int j = i + 1; j < n; ++j) {\n                if (s[i] == s[j]) {\n                    dp[i][j] = dp[i + 1][j];\n                } else {\n                    dp[i][j] = min(dp[i][k] + dp[k + 1][j] for k in range(i, j));\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.649471"
+}

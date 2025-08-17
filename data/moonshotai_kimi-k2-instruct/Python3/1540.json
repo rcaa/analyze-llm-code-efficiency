@@ -1,0 +1,15 @@
+{
+  "id": 1540,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def canConvertString(self, s: str, t: str, k: int) -> bool:\n        if len(s) != len(t):\n            return False\n        \n        freq = [0] * 26\n        for a, b in zip(s, t):\n            diff = (ord(b) - ord(a)) % 26\n            if diff:\n                freq[diff] += 1\n        \n        max_needed = 0\n        for d in range(1, 26):\n            if freq[d] == 0:\n                continue\n            cycles = freq[d] - 1\n            last_occurrence = cycles * 26 + d\n            max_needed = max(max_needed, last_occurrence)\n        \n        return max_needed <= k\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count how many times each shift distance d (1-25) is needed. For each d, the latest move that can be used is (count-1)*26 + d. The maximum of these values must be ≤ k.",
+  "code": "class Solution:\n    def canConvertString(self, s: str, t: str, k: int) -> bool:\n        if len(s) != len(t):\n            return False\n        \n        freq = [0] * 26\n        for a, b in zip(s, t):\n            diff = (ord(b) - ord(a)) % 26\n            if diff:\n                freq[diff] += 1\n        \n        max_needed = 0\n        for d in range(1, 26):\n            if freq[d] == 0:\n                continue\n            cycles = freq[d] - 1\n            last_occurrence = cycles * 26 + d\n            max_needed = max(max_needed, last_occurrence)\n        \n        return max_needed <= k",
+  "timestamp": "2025-08-06T02:32:46.795180",
+  "code_extracted_previous": "class Solution:\n    def canConvertString(self, s: str, t: str, k: int) -> bool:\n        if len(s) != len(t):\n            return False\n        \n        freq = [0] * 26\n        for a, b in zip(s, t):\n            diff = (ord(b) - ord(a)) % 26\n            if diff:\n                freq[diff] += 1\n        \n        max_needed = 0\n        for d in range(1, 26):\n            if freq[d] == 0:\n                continue\n            cycles = freq[d] - 1\n            last_occurrence = cycles * 26 + d\n            max_needed = max(max_needed, last_occurrence)\n        \n        return max_needed <= k",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.302078"
+}

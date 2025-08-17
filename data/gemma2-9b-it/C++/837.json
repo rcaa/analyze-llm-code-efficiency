@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        double dp[n + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= min(i, maxPts); ++j) {\n                dp[i] += dp[i - j] / maxPts;\n            }\n        }\n        double res = 0;\n        for (int i = k; i <= n; ++i) {\n            res += dp[i];\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * maxPts)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the probability of having n or fewer points. It iterates through possible points and calculates the probability of reaching each point based on previous probabilities.  The approach is efficient for smaller values of n and maxPts but can become computationally expensive for larger inputs. \n\n\n",
+  "code": "class Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        double dp[n + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= min(i, maxPts); ++j) {\n                dp[i] += dp[i - j] / maxPts;\n            }\n        }\n        double res = 0;\n        for (int i = k; i <= n; ++i) {\n            res += dp[i];\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:54:49.318845",
+  "code_extracted_previous": "class Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        double dp[n + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= min(i, maxPts); ++j) {\n                dp[i] += dp[i - j] / maxPts;\n            }\n        }\n        double res = 0;\n        for (int i = k; i <= n; ++i) {\n            res += dp[i];\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.340643"
+}

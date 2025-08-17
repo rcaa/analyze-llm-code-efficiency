@@ -1,0 +1,15 @@
+{
+  "id": 1541,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int minInsertions(String s) {\n        int ans = 0, a = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                if (a % 2 > 0) {\n                    ans++;\n                }\n                a += 2;\n            } else {\n                a--;\n                if (a < 0) {\n                    ans++;\n                    a += 2;\n                }\n            }\n        }\n        return ans + a;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a single pass through the string, maintaining a counter for the number of opening parentheses that need to be matched with two consecutive closing parentheses, and another counter for the number of insertions needed. It iterates over the string, updating these counters based on whether it encounters an opening or closing parenthesis, and finally returns the total number of insertions needed to balance the string.",
+  "code": "class Solution {\n    public int minInsertions(String s) {\n        int ans = 0, a = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                if (a % 2 > 0) {\n                    ans++;\n                }\n                a += 2;\n            } else {\n                a--;\n                if (a < 0) {\n                    ans++;\n                    a += 2;\n                }\n            }\n        }\n        return ans + a;\n    }\n}",
+  "timestamp": "2025-08-06T00:55:01.635611",
+  "code_extracted_previous": "class Solution {\n    public int minInsertions(String s) {\n        int ans = 0, a = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                if (a % 2 > 0) {\n                    ans++;\n                }\n                a += 2;\n            } else {\n                a--;\n                if (a < 0) {\n                    ans++;\n                    a += 2;\n                }\n            }\n        }\n        return ans + a;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.526104"
+}

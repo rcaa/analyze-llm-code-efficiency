@@ -1,0 +1,15 @@
+{
+  "id": 1155,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int numRollsToTarget(int n, int k, int target) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(n + 1, vector<int>(target + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 0; j <= target; ++j) {\n                for (int l = 1; l <= k; ++l) {\n                    if (j >= l) {\n                        dp[i][j] = (dp[i][j] + dp[i - 1][j - l]) % MOD;\n                    }\n                }\n            }\n        }\n        return dp[n][target];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n*k*target)\nspace complexity: O(n*target)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of ways to roll the dice. It builds a 2D table `dp` where `dp[i][j]` represents the number of ways to get a sum of `j` using `i` dice. The table is filled iteratively, considering all possible rolls for each die. The modulo operation ensures the result stays within the specified bounds.\n",
+  "code": "class Solution {\npublic:\n    int numRollsToTarget(int n, int k, int target) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(n + 1, vector<int>(target + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 0; j <= target; ++j) {\n                for (int l = 1; l <= k; ++l) {\n                    if (j >= l) {\n                        dp[i][j] = (dp[i][j] + dp[i - 1][j - l]) % MOD;\n                    }\n                }\n            }\n        }\n        return dp[n][target];\n    }\n};",
+  "timestamp": "2025-08-05T14:24:48.388111",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numRollsToTarget(int n, int k, int target) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(n + 1, vector<int>(target + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 0; j <= target; ++j) {\n                for (int l = 1; l <= k; ++l) {\n                    if (j >= l) {\n                        dp[i][j] = (dp[i][j] + dp[i - 1][j - l]) % MOD;\n                    }\n                }\n            }\n        }\n        return dp[n][target];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.141346"
+}

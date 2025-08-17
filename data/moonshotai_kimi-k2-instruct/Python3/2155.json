@@ -1,0 +1,15 @@
+{
+  "id": 2155,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        n = len(nums)\n        total_ones = sum(nums)\n        max_score = 0\n        best = []\n        zeros = 0\n        \n        for i in range(n + 1):\n            if i == 0:\n                score = total_ones\n            else:\n                if nums[i - 1] == 0:\n                    zeros += 1\n                score = zeros + (total_ones - (i - zeros))\n            \n            if score > max_score:\n                max_score = score\n                best = [i]\n            elif score == max_score:\n                best.append(i)\n        \n        return best\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1) excluding output list\nenergy implications: LOW\nexplanation: Single left-to-right pass tracking zeros seen so far and using total ones to compute ones on the right in O(1) per index.",
+  "code": "class Solution:\n    def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        n = len(nums)\n        total_ones = sum(nums)\n        max_score = 0\n        best = []\n        zeros = 0\n        \n        for i in range(n + 1):\n            if i == 0:\n                score = total_ones\n            else:\n                if nums[i - 1] == 0:\n                    zeros += 1\n                score = zeros + (total_ones - (i - zeros))\n            \n            if score > max_score:\n                max_score = score\n                best = [i]\n            elif score == max_score:\n                best.append(i)\n        \n        return best",
+  "timestamp": "2025-08-05T13:26:08.359120",
+  "code_extracted_previous": "class Solution:\n    def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        n = len(nums)\n        total_ones = sum(nums)\n        max_score = 0\n        best = []\n        zeros = 0\n        \n        for i in range(n + 1):\n            if i == 0:\n                score = total_ones\n            else:\n                if nums[i - 1] == 0:\n                    zeros += 1\n                score = zeros + (total_ones - (i - zeros))\n            \n            if score > max_score:\n                max_score = score\n                best = [i]\n            elif score == max_score:\n                best.append(i)\n        \n        return best",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.530880"
+}

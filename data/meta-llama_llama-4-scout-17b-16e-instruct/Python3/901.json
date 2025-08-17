@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        count = 1\n        while self.stack and self.stack[-1][0] <= price:\n            count += self.stack.pop()[1]\n        self.stack.append((price, count))\n        return count\n\n# Your StockSpanner object will be instantiated and called as such:\n# obj = StockSpanner()\n# param_1 = obj.next(price)\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The provided solution utilizes a stack to efficiently track the span of stock prices. By maintaining a stack of tuples containing the price and its corresponding span, the algorithm can quickly calculate the span of the current price by popping elements from the stack that have a lower or equal price, effectively reducing the number of operations required. This approach allows for a linear time complexity and space complexity, making it efficient for handling a large number of queries.",
+  "code": "class StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        count = 1\n        while self.stack and self.stack[-1][0] <= price:\n            count += self.stack.pop()[1]\n        self.stack.append((price, count))\n        return count\n\n# Your StockSpanner object will be instantiated and called as such:\n# obj = StockSpanner()\n# param_1 = obj.next(price)",
+  "timestamp": "2025-08-05T16:03:31.051725",
+  "code_extracted_previous": "class StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        count = 1\n        while self.stack and self.stack[-1][0] <= price:\n            count += self.stack.pop()[1]\n        self.stack.append((price, count))\n        return count\n\n# Your StockSpanner object will be instantiated and called as such:\n# obj = StockSpanner()\n# param_1 = obj.next(price)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.017489"
+}

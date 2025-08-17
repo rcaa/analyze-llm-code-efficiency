@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0) {\n            return 1.0;\n        }\n        double[] dp = new double[n + 1];\n        double sum = 0;\n        for (int i = 1; i <= maxPts; i++) {\n            sum += 1.0 / maxPts;\n        }\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = sum;\n            if (i < k) {\n                sum -= dp[i - 1] / maxPts;\n            }\n        }\n        double res = 0;\n        for (int i = k; i <= n; i++) {\n            res += dp[i];\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to calculate the probability of Alice having n or fewer points. It initializes a dp array to store the probability of Alice having i points, and then iterates through the array to calculate the probability. The time complexity is O(n) and the space complexity is O(n).",
+  "code": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0) {\n            return 1.0;\n        }\n        double[] dp = new double[n + 1];\n        double sum = 0;\n        for (int i = 1; i <= maxPts; i++) {\n            sum += 1.0 / maxPts;\n        }\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = sum;\n            if (i < k) {\n                sum -= dp[i - 1] / maxPts;\n            }\n        }\n        double res = 0;\n        for (int i = k; i <= n; i++) {\n            res += dp[i];\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T15:45:20.905774",
+  "code_extracted_previous": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0) {\n            return 1.0;\n        }\n        double[] dp = new double[n + 1];\n        double sum = 0;\n        for (int i = 1; i <= maxPts; i++) {\n            sum += 1.0 / maxPts;\n        }\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = sum;\n            if (i < k) {\n                sum -= dp[i - 1] / maxPts;\n            }\n        }\n        double res = 0;\n        for (int i = k; i <= n; i++) {\n            res += dp[i];\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:43.031184"
+}

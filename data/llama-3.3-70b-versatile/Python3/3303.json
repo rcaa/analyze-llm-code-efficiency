@@ -1,0 +1,15 @@
+{
+  "id": 3303,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minStartingIndex(self, s: str, pattern: str) -> int:\n        def is_almost_equal(s: str, pattern: str) -> bool:\n            diff_count = 0\n            for i in range(len(pattern)):\n                if s[i] != pattern[i]:\n                    diff_count += 1\n                if diff_count > 1:\n                    return False\n            return True\n\n        min_index = -1\n        for i in range(len(s) - len(pattern) + 1):\n            if is_almost_equal(s[i:i + len(pattern)], pattern):\n                return i\n        return min_index\n```\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to check every substring of `s` that has the same length as `pattern`. It uses a helper function `is_almost_equal` to check if a substring is almost equal to `pattern` by counting the number of different characters. If a substring is almost equal, it returns the starting index of the substring. If no such substring is found, it returns -1.",
+  "code": "def minStartingIndex(self, s: str, pattern: str) -> int:\n        def is_almost_equal(s: str, pattern: str) -> bool:\n            diff_count = 0\n            for i in range(len(pattern)):\n                if s[i] != pattern[i]:\n                    diff_count += 1\n                if diff_count > 1:\n                    return False\n            return True\n\n        min_index = -1\n        for i in range(len(s) - len(pattern) + 1):\n            if is_almost_equal(s[i:i + len(pattern)], pattern):\n                return i\n        return min_index\n```",
+  "timestamp": "2025-08-05T23:24:58.260994",
+  "code_extracted_previous": "class Solution:\n    def minStartingIndex(self, s: str, pattern: str) -> int:\n        def is_almost_equal(s: str, pattern: str) -> bool:\n            diff_count = 0\n            for i in range(len(pattern)):\n                if s[i] != pattern[i]:\n                    diff_count += 1\n                if diff_count > 1:\n                    return False\n            return True\n\n        min_index = -1\n        for i in range(len(s) - len(pattern) + 1):\n            if is_almost_equal(s[i:i + len(pattern)], pattern):\n                return i\n        return min_index",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.489711"
+}

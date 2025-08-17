@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        if (s1.length() > s2.length()) return false;\n        int[] count1 = new int[26];\n        int[] count2 = new int[26];\n        for (int i = 0; i < s1.length(); i++) {\n            count1[s1.charAt(i) - 'a']++;\n            count2[s2.charAt(i) - 'a']++;\n        }\n        for (int i = s1.length(); i < s2.length(); i++) {\n            if (match(count1, count2)) return true;\n            count2[s2.charAt(i) - 'a']++;\n            count2[s2.charAt(i - s1.length()) - 'a']--;\n        }\n        return match(count1, count2);\n    }\n\n    private boolean match(int[] count1, int[] count2) {\n        for (int i = 0; i < 26; i++) {\n            if (count1[i] != count2[i]) return false;\n        }\n        return true;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * m)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        if (s1.length() > s2.length()) return false;\n        int[] count1 = new int[26];\n        int[] count2 = new int[26];\n        for (int i = 0; i < s1.length(); i++) {\n            count1[s1.charAt(i) - 'a']++;\n            count2[s2.charAt(i) - 'a']++;\n        }\n        for (int i = s1.length(); i < s2.length(); i++) {\n            if (match(count1, count2)) return true;\n            count2[s2.charAt(i) - 'a']++;\n            count2[s2.charAt(i - s1.length()) - 'a']--;\n        }\n        return match(count1, count2);\n    }\n\n    private boolean match(int[] count1, int[] count2) {\n        for (int i = 0; i < 26; i++) {\n            if (count1[i] != count2[i]) return false;\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-05T14:56:06.662076",
+  "code_extracted_previous": "class Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        if (s1.length() > s2.length()) return false;\n        int[] count1 = new int[26];\n        int[] count2 = new int[26];\n        for (int i = 0; i < s1.length(); i++) {\n            count1[s1.charAt(i) - 'a']++;\n            count2[s2.charAt(i) - 'a']++;\n        }\n        for (int i = s1.length(); i < s2.length(); i++) {\n            if (match(count1, count2)) return true;\n            count2[s2.charAt(i) - 'a']++;\n            count2[s2.charAt(i - s1.length()) - 'a']--;\n        }\n        return match(count1, count2);\n    }\n\n    private boolean match(int[] count1, int[] count2) {\n        for (int i = 0; i < 26; i++) {\n            if (count1[i] != count2[i]) return false;\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.932310"
+}

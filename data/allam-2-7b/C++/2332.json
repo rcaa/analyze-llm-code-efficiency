@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```c++\nclass Solution {\npublic:\n    int latestTimeCatchTheBus(vector<int>& buses, vector<int>& passengers, int capacity) {\n        sort(buses.begin(), buses.end());\n        sort(passengers.begin(), passengers.end());\n\n        int result = buses[0];\n        for (int i = 1; i < buses.size(); i++) {\n            if (passengers[result + capacity - 1] <= buses[i]) {\n                result = i;\n            }\n        }\n        return result + capacity;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n.log(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\n1. Sort the buses array using the built-in `sort()` function to ensure that the earliest bus is always at index 0.\n2. Initialize `result` variable to index 0 (the earliest bus).\n3. Iterate through the remaining buses (from index 1 to the end of the buses array).\n4. For each bus, check if the passenger at `result + capacity - 1` (the last passenger) can board the bus. If so, update `result` to the index of that bus.\n5. Return the result plus the capacity of the bus.\n\nThis solution efficiently solves the problem by using the sorted buses array and iterating through the remaining buses while considering the last passenger's arrival time. The time complexity is O(n.log(n) due to the sorting operation, and the space complexity is O(n) since we only use a single integer variable (`result`). The energy implications are low since the algorithm only performs a single sorting operation and iterates through the remaining buses. ",
+  "code": "class Solution {\npublic:\n    int latestTimeCatchTheBus(vector<int>& buses, vector<int>& passengers, int capacity) {\n        sort(buses.begin(), buses.end());\n        sort(passengers.begin(), passengers.end());\n\n        int result = buses[0];\n        for (int i = 1; i < buses.size(); i++) {\n            if (passengers[result + capacity - 1] <= buses[i]) {\n                result = i;\n            }\n        }\n        return result + capacity;\n    }\n};",
+  "timestamp": "2025-08-05T13:28:08.126042",
+  "code_extracted_previous": "class Solution {\npublic:\n    int latestTimeCatchTheBus(vector<int>& buses, vector<int>& passengers, int capacity) {\n        sort(buses.begin(), buses.end());\n        sort(passengers.begin(), passengers.end());\n\n        int result = buses[0];\n        for (int i = 1; i < buses.size(); i++) {\n            if (passengers[result + capacity - 1] <= buses[i]) {\n                result = i;\n            }\n        }\n        return result + capacity;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.392530"
+}

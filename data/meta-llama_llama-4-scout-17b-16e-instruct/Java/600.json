@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findIntegers(int n) {\n        int a = 0, b = 1;\n        int res = 1;\n        for (int i = 2; i <= n; i++) {\n            int c = a + b;\n            if ((i & (i >> 1)) != 0) c -= a;\n            a = b;\n            b = c;\n            res += c;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Dynamic programming approach with a and b tracking the number of valid integers for the last two bits.",
+  "code": "class Solution {\n    public int findIntegers(int n) {\n        int a = 0, b = 1;\n        int res = 1;\n        for (int i = 2; i <= n; i++) {\n            int c = a + b;\n            if ((i & (i >> 1)) != 0) c -= a;\n            a = b;\n            b = c;\n            res += c;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:14:48.907487",
+  "code_extracted_previous": "class Solution {\n    public int findIntegers(int n) {\n        int a = 0, b = 1;\n        int res = 1;\n        for (int i = 2; i <= n; i++) {\n            int c = a + b;\n            if ((i & (i >> 1)) != 0) c -= a;\n            a = b;\n            b = c;\n            res += c;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.442062"
+}

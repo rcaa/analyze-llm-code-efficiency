@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        max_satisfied = 0\n        for i in range(n - minutes + 1):\n            current_satisfied = 0\n            for j in range(i, i + minutes):\n                if grumpy[j] == 0:\n                    current_satisfied += customers[j]\n            max_satisfied = max(max_satisfied, current_satisfied)\n        return max_satisfied + sum(customers[i] for i in range(n - minutes, n) if grumpy[i] == 0) \n```\nsolution: \n```python\nclass Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        max_satisfied = 0\n        for i in range(n - minutes + 1):\n            current_satisfied = 0\n            for j in range(i, i + minutes):\n                if grumpy[j] == 0:\n                    current_satisfied += customers[j]\n            max_satisfied = max(max_satisfied, current_satisfied)\n        return max_satisfied + sum(customers[i] for i in range(n - minutes, n) if grumpy[i] == 0) \n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through all possible starting points for the 'not grumpy' period. For each starting point, it calculates the number of satisfied customers within that period. The maximum of these values is chosen as the overall maximum. Finally, it adds the satisfied customers from the remaining minutes where the owner is not grumpy. This approach avoids redundant calculations and has a linear time complexity. \n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T13:19:01.789610",
+  "code_extracted_previous": "class Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        max_satisfied = 0\n        for i in range(n - minutes + 1):\n            current_satisfied = 0\n            for j in range(i, i + minutes):\n                if grumpy[j] == 0:\n                    current_satisfied += customers[j]\n            max_satisfied = max(max_satisfied, current_satisfied)\n        return max_satisfied + sum(customers[i] for i in range(n - minutes, n) if grumpy[i] == 0)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:25.852372"
+}

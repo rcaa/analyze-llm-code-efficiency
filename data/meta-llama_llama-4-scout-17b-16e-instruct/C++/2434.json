@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string robotWithString(string s) {\n        string result;\n        string stack;\n        \n        for (char c : s) {\n            stack.push_back(c);\n            while (!stack.empty() && (result.empty() || result.back() > stack.back())) {\n                result.push_back(stack.back());\n                stack.pop_back();\n            }\n        }\n        \n        while (!stack.empty()) {\n            result.push_back(stack.back());\n            stack.pop_back();\n        }\n        \n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, maintaining a stack to push characters to and pop them when they are smaller than the last character in the result string, ensuring the lexicographically smallest string is built.",
+  "code": "class Solution {\npublic:\n    string robotWithString(string s) {\n        string result;\n        string stack;\n        \n        for (char c : s) {\n            stack.push_back(c);\n            while (!stack.empty() && (result.empty() || result.back() > stack.back())) {\n                result.push_back(stack.back());\n                stack.pop_back();\n            }\n        }\n        \n        while (!stack.empty()) {\n            result.push_back(stack.back());\n            stack.pop_back();\n        }\n        \n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T15:10:19.896247",
+  "code_extracted_previous": "class Solution {\npublic:\n    string robotWithString(string s) {\n        string result;\n        string stack;\n        \n        for (char c : s) {\n            stack.push_back(c);\n            while (!stack.empty() && (result.empty() || result.back() > stack.back())) {\n                result.push_back(stack.back());\n                stack.pop_back();\n            }\n        }\n        \n        while (!stack.empty()) {\n            result.push_back(stack.back());\n            stack.pop_back();\n        }\n        \n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.108531"
+}

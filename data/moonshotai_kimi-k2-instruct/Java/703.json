@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass KthLargest {\n    private final int k;\n    private final PriorityQueue<Integer> minHeap;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.minHeap = new PriorityQueue<>(k);\n        for (int num : nums) add(num);\n    }\n    \n    public int add(int val) {\n        if (minHeap.size() < k) {\n            minHeap.offer(val);\n        } else if (val > minHeap.peek()) {\n            minHeap.poll();\n            minHeap.offer(val);\n        }\n        return minHeap.peek();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log k) per add, O(n log k) for constructor\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Uses a min-heap of size k to keep the k largest elements; the root is always the kth largest. Each add is a single heap operation, giving optimal asymptotic performance for streaming data.",
+  "code": "class KthLargest {\n    private final int k;\n    private final PriorityQueue<Integer> minHeap;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.minHeap = new PriorityQueue<>(k);\n        for (int num : nums) add(num);\n    }\n    \n    public int add(int val) {\n        if (minHeap.size() < k) {\n            minHeap.offer(val);\n        } else if (val > minHeap.peek()) {\n            minHeap.poll();\n            minHeap.offer(val);\n        }\n        return minHeap.peek();\n    }\n}",
+  "timestamp": "2025-08-06T02:32:15.378032",
+  "code_extracted_previous": "class KthLargest {\n    private final int k;\n    private final PriorityQueue<Integer> minHeap;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.minHeap = new PriorityQueue<>(k);\n        for (int num : nums) add(num);\n    }\n    \n    public int add(int val) {\n        if (minHeap.size() < k) {\n            minHeap.offer(val);\n        } else if (val > minHeap.peek()) {\n            minHeap.poll();\n            minHeap.offer(val);\n        }\n        return minHeap.peek();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:55.780455"
+}

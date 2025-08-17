@@ -1,0 +1,15 @@
+{
+  "id": 1131,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {\n        int res = 0;\n        for (int i = 0; i < arr1.size(); ++i) {\n            for (int j = i + 1; j < arr1.size(); ++j) {\n                res = max(res, abs(arr1[i] - arr1[j]) + abs(arr2[i] - arr2[j]) + j - i);\n                res = max(res, abs(arr1[i] + arr2[i] - arr1[j] - arr2[j]) + j - i);\n                res = max(res, abs(arr1[i] - arr2[i] - arr1[j] + arr2[j]) + j - i);\n                res = max(res, abs(arr1[i] + arr2[i] + arr1[j] + arr2[j]) + i - j);\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a brute-force approach with two nested loops to consider all possible pairs of indices. It calculates the maximum value of the given expression for each pair and updates the result accordingly.",
+  "code": "class Solution {\npublic:\n    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {\n        int res = 0;\n        for (int i = 0; i < arr1.size(); ++i) {\n            for (int j = i + 1; j < arr1.size(); ++j) {\n                res = max(res, abs(arr1[i] - arr1[j]) + abs(arr2[i] - arr2[j]) + j - i);\n                res = max(res, abs(arr1[i] + arr2[i] - arr1[j] - arr2[j]) + j - i);\n                res = max(res, abs(arr1[i] - arr2[i] - arr1[j] + arr2[j]) + j - i);\n                res = max(res, abs(arr1[i] + arr2[i] + arr1[j] + arr2[j]) + i - j);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:19:40.445052",
+  "code_extracted_previous": "public:\n    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {\n        int res = 0;\n        for (int i = 0; i < arr1.size(); ++i) {\n            for (int j = i + 1; j < arr1.size(); ++j) {\n                res = max(res, abs(arr1[i] - arr1[j]) + abs(arr2[i] - arr2[j]) + j - i);\n                res = max(res, abs(arr1[i] + arr2[i] - arr1[j] - arr2[j]) + j - i);\n                res = max(res, abs(arr1[i] - arr2[i] - arr1[j] + arr2[j]) + j - i);\n                res = max(res, abs(arr1[i] + arr2[i] + arr1[j] + arr2[j]) + i - j);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.003768"
+}

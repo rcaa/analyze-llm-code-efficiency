@@ -1,0 +1,15 @@
+{
+  "id": 2424,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass LUPrefix:\n\n    def __init__(self, n: int):\n        self.last_uploaded = 0\n        self.uploaded = [False] * (n + 1)\n\n    def upload(self, video: int) -> None:\n        self.uploaded[video] = True\n        self.last_uploaded = max(self.last_uploaded, video)\n\n    def longest(self) -> int:\n        for i in range(self.last_uploaded + 1):\n            if not self.uploaded[i]:\n                return i - 1\n        return self.last_uploaded\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: We use a boolean array to keep track of uploaded videos and a variable to keep track of the last uploaded video. In the upload method, we update the last uploaded video and mark the video as uploaded. In the longest method, we iterate from the last uploaded video to the first unuploaded video and return the length of the longest uploaded prefix.",
+  "code": "class LUPrefix:\n\n    def __init__(self, n: int):\n        self.last_uploaded = 0\n        self.uploaded = [False] * (n + 1)\n\n    def upload(self, video: int) -> None:\n        self.uploaded[video] = True\n        self.last_uploaded = max(self.last_uploaded, video)\n\n    def longest(self) -> int:\n        for i in range(self.last_uploaded + 1):\n            if not self.uploaded[i]:\n                return i - 1\n        return self.last_uploaded",
+  "timestamp": "2025-08-05T15:08:58.899850",
+  "code_extracted_previous": "class LUPrefix:\n\n    def __init__(self, n: int):\n        self.last_uploaded = 0\n        self.uploaded = [False] * (n + 1)\n\n    def upload(self, video: int) -> None:\n        self.uploaded[video] = True\n        self.last_uploaded = max(self.last_uploaded, video)\n\n    def longest(self) -> int:\n        for i in range(self.last_uploaded + 1):\n            if not self.uploaded[i]:\n                return i - 1\n        return self.last_uploaded",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:43.854413"
+}

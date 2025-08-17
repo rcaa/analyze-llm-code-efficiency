@@ -1,0 +1,15 @@
+{
+  "id": 1358,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def numberOfSubstrings(self, s: str) -> int:\n        count = { 'a': 0, 'b': 0, 'c': 0 }\n        left = 0\n        result = 0\n        for right in range(len(s)):\n            count[s[right]] += 1\n            while count['a'] > 0 and count['b'] > 0 and count['c'] > 0:\n                result += len(s) - right\n                count[s[left]] -= 1\n                left += 1\n        return result\n```\n\nefficiency: HIGH  \ntime complexity: O(N)  \nspace complexity: O(1)  \nenergy implications: LOW  \nexplanation: The solution uses a sliding window approach with two pointers, maintaining a count of 'a', 'b', 'c' within the window. When the window contains all three characters, it increments the result by the number of possible substrings that can be formed by extending the window to the right.",
+  "code": "def numberOfSubstrings(self, s: str) -> int:\n        count = { 'a': 0, 'b': 0, 'c': 0 }\n        left = 0\n        result = 0\n        for right in range(len(s)):\n            count[s[right]] += 1\n            while count['a'] > 0 and count['b'] > 0 and count['c'] > 0:\n                result += len(s) - right\n                count[s[left]] -= 1\n                left += 1\n        return result\n```",
+  "timestamp": "2025-08-05T15:02:04.552754",
+  "code_extracted_previous": "class Solution:\n    def numberOfSubstrings(self, s: str) -> int:\n        count = { 'a': 0, 'b': 0, 'c': 0 }\n        left = 0\n        result = 0\n        for right in range(len(s)):\n            count[s[right]] += 1\n            while count['a'] > 0 and count['b'] > 0 and count['c'] > 0:\n                result += len(s) - right\n                count[s[left]] -= 1\n                left += 1\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.497073"
+}

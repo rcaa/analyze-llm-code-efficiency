@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = dp[i - 1][m - 1] + dp[i][m - 1] + 1;\n            }\n        }\n        return m;\n    }\n};\nefficiency: HIGH\ntime complexity: O(k * m)\nspace complexity: O(k * m)\nenergy implications: LOW\nexplanation: Dynamic programming is used to solve this problem, where dp[i][j] represents the maximum number of floors that can be checked with i eggs and j moves. The minimum number of moves required to check all floors is found by iterating through the dp array until the maximum number of floors that can be checked is greater than or equal to n.",
+  "code": "class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = dp[i - 1][m - 1] + dp[i][m - 1] + 1;\n            }\n        }\n        return m;\n    }\n};",
+  "timestamp": "2025-08-05T15:18:10.597374",
+  "code_extracted_previous": "class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = dp[i - 1][m - 1] + dp[i][m - 1] + 1;\n            }\n        }\n        return m;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.121438"
+}

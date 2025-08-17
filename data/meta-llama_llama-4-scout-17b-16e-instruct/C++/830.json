@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> result;\n        int start = 0;\n        for (int end = 1; end <= s.length(); ++end) {\n            if (end == s.length() || s[end] != s[start]) {\n                if (end - start >= 3) {\n                    result.push_back({start, end - 1});\n                }\n                start = end;\n            }\n        }\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, identifying group boundaries and adding large groups to the result. It maintains a low space complexity by only storing large group intervals.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> result;\n        int start = 0;\n        for (int end = 1; end <= s.length(); ++end) {\n            if (end == s.length() || s[end] != s[start]) {\n                if (end - start >= 3) {\n                    result.push_back({start, end - 1});\n                }\n                start = end;\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T16:35:35.057279",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> result;\n        int start = 0;\n        for (int end = 1; end <= s.length(); ++end) {\n            if (end == s.length() || s[end] != s[start]) {\n                if (end - start >= 3) {\n                    result.push_back({start, end - 1});\n                }\n                start = end;\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.965816"
+}

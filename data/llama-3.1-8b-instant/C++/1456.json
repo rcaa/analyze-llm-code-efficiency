@@ -1,0 +1,15 @@
+{
+  "id": 1456,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int maxVowels = 0, vowels = 0, left = 0;\n        string vowelsStr = \"aeiou\";\n        for (int right = 0; right < s.length(); right++) {\n            if (vowelsStr.find(s[right]) != string::npos) vowels++;\n            if (right - left + 1 > k) {\n                if (vowelsStr.find(s[left]) != string::npos) vowels--;\n                left++;\n            }\n            maxVowels = max(maxVowels, vowels);\n        }\n        return maxVowels;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses the sliding window technique to efficiently track the maximum number of vowels in any substring of length k. It maintains two pointers, left and right, to represent the window. The right pointer moves to the right, and when the window size exceeds k, the left pointer moves to the right to shrink the window. The maximum number of vowels is updated whenever a new maximum is found. This approach has a time complexity of O(n) and a space complexity of O(1), making it efficient for large inputs.",
+  "code": "class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int maxVowels = 0, vowels = 0, left = 0;\n        string vowelsStr = \"aeiou\";\n        for (int right = 0; right < s.length(); right++) {\n            if (vowelsStr.find(s[right]) != string::npos) vowels++;\n            if (right - left + 1 > k) {\n                if (vowelsStr.find(s[left]) != string::npos) vowels--;\n                left++;\n            }\n            maxVowels = max(maxVowels, vowels);\n        }\n        return maxVowels;\n    }\n};",
+  "timestamp": "2025-08-06T00:53:27.880668",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int maxVowels = 0, vowels = 0, left = 0;\n        string vowelsStr = \"aeiou\";\n        for (int right = 0; right < s.length(); right++) {\n            if (vowelsStr.find(s[right]) != string::npos) vowels++;\n            if (right - left + 1 > k) {\n                if (vowelsStr.find(s[left]) != string::npos) vowels--;\n                left++;\n            }\n            maxVowels = max(maxVowels, vowels);\n        }\n        return maxVowels;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.407195"
+}

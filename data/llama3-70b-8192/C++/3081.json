@@ -1,0 +1,15 @@
+{
+  "id": 3081,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string minimizeStringValue(string s) {\n        string res = \"\";\n        char c = 'a';\n        unordered_map<char, int> count;\n        for (char ch : s) {\n            if (ch != '?') {\n                res += ch;\n                count[ch]++;\n            }\n        }\n        for (char ch : s) {\n            if (ch == '?') {\n                while (count.find(c) != count.end()) {\n                    c++;\n                }\n                res += c;\n                count[c]++;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string twice, first to count the occurrences of each character and then to replace the '?' characters with the smallest possible character that does not increase the cost.",
+  "code": "class Solution {\npublic:\n    string minimizeStringValue(string s) {\n        string res = \"\";\n        char c = 'a';\n        unordered_map<char, int> count;\n        for (char ch : s) {\n            if (ch != '?') {\n                res += ch;\n                count[ch]++;\n            }\n        }\n        for (char ch : s) {\n            if (ch == '?') {\n                while (count.find(c) != count.end()) {\n                    c++;\n                }\n                res += c;\n                count[c]++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:11:26.154537",
+  "code_extracted_previous": "public:\n    string minimizeStringValue(string s) {\n        string res = \"\";\n        char c = 'a';\n        unordered_map<char, int> count;\n        for (char ch : s) {\n            if (ch != '?') {\n                res += ch;\n                count[ch]++;\n            }\n        }\n        for (char ch : s) {\n            if (ch == '?') {\n                while (count.find(c) != count.end()) {\n                    c++;\n                }\n                res += c;\n                count[c]++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.707695"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3081,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public String minimizeStringValue(String s) {\n        char[] t = s.toCharArray();\n        int n = t.length;\n        int[] freq = new int[26];\n        for (char c : t) if (c != '?') freq[c - 'a']++;\n\n        List<Integer> qPos = new ArrayList<>();\n        for (int i = 0; i < n; i++) if (t[i] == '?') qPos.add(i);\n\n        char[] fill = new char[qPos.size()];\n        for (int i = 0; i < fill.length; i++) {\n            int minChar = 0;\n            for (int j = 1; j < 26; j++) if (freq[j] < freq[minChar]) minChar = j;\n            fill[i] = (char) (minChar + 'a');\n            freq[minChar]++;\n        }\n        Arrays.sort(fill);\n\n        for (int i = 0; i < qPos.size(); i++) t[qPos.get(i)] = fill[i];\n        return new String(t);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Count fixed-letter frequencies, then greedily assign the least-used letter to each '?' to minimize future cost. Sort the chosen letters lexicographically to satisfy the tie-breaker.",
+  "code": "class Solution {\n    public String minimizeStringValue(String s) {\n        char[] t = s.toCharArray();\n        int n = t.length;\n        int[] freq = new int[26];\n        for (char c : t) if (c != '?') freq[c - 'a']++;\n\n        List<Integer> qPos = new ArrayList<>();\n        for (int i = 0; i < n; i++) if (t[i] == '?') qPos.add(i);\n\n        char[] fill = new char[qPos.size()];\n        for (int i = 0; i < fill.length; i++) {\n            int minChar = 0;\n            for (int j = 1; j < 26; j++) if (freq[j] < freq[minChar]) minChar = j;\n            fill[i] = (char) (minChar + 'a');\n            freq[minChar]++;\n        }\n        Arrays.sort(fill);\n\n        for (int i = 0; i < qPos.size(); i++) t[qPos.get(i)] = fill[i];\n        return new String(t);\n    }\n}",
+  "timestamp": "2025-08-06T02:31:36.189908",
+  "code_extracted_previous": "class Solution {\n    public String minimizeStringValue(String s) {\n        char[] t = s.toCharArray();\n        int n = t.length;\n        int[] freq = new int[26];\n        for (char c : t) if (c != '?') freq[c - 'a']++;\n\n        List<Integer> qPos = new ArrayList<>();\n        for (int i = 0; i < n; i++) if (t[i] == '?') qPos.add(i);\n\n        char[] fill = new char[qPos.size()];\n        for (int i = 0; i < fill.length; i++) {\n            int minChar = 0;\n            for (int j = 1; j < 26; j++) if (freq[j] < freq[minChar]) minChar = j;\n            fill[i] = (char) (minChar + 'a');\n            freq[minChar]++;\n        }\n        Arrays.sort(fill);\n\n        for (int i = 0; i < qPos.size(); i++) t[qPos.get(i)] = fill[i];\n        return new String(t);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.281092"
+}

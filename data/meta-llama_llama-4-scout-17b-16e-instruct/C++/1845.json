@@ -1,0 +1,15 @@
+{
+  "id": 1845,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass SeatManager {\npublic:\n    SeatManager(int n) {\n        for (int i = 1; i <= n; i++) {\n            available_seats.push(i);\n        }\n    }\n    \n    int reserve() {\n        int smallest_seat = available_seats.top();\n        available_seats.pop();\n        return smallest_seat;\n    }\n    \n    void unreserve(int seatNumber) {\n        available_seats.push(seatNumber);\n    }\nprivate:\n    std::priority_queue<int, std::vector<int>, std::greater<int>> available_seats;\n};\n```\n\nefficiency: HIGH\ntime complexity: \n- `SeatManager(int n)`: O(n)\n- `reserve()`: O(log n)\n- `unreserve(int seatNumber)`: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The `SeatManager` class utilizes a min-heap (implemented as a priority queue in C++) to efficiently manage the available seats. The constructor initializes the min-heap with all seat numbers from 1 to n. The `reserve` method retrieves the smallest available seat by popping the top element from the min-heap, while the `unreserve` method adds the seat back into the min-heap, allowing it to be considered for future reservations. This approach ensures that the smallest available seat is always reserved first.",
+  "code": "class SeatManager {\npublic:\n    SeatManager(int n) {\n        for (int i = 1; i <= n; i++) {\n            available_seats.push(i);\n        }\n    }\n    \n    int reserve() {\n        int smallest_seat = available_seats.top();\n        available_seats.pop();\n        return smallest_seat;\n    }\n    \n    void unreserve(int seatNumber) {\n        available_seats.push(seatNumber);\n    }\nprivate:\n    std::priority_queue<int, std::vector<int>, std::greater<int>> available_seats;\n};",
+  "timestamp": "2025-08-05T14:13:06.549266",
+  "code_extracted_previous": "class SeatManager {\npublic:\n    SeatManager(int n) {\n        for (int i = 1; i <= n; i++) {\n            available_seats.push(i);\n        }\n    }\n    \n    int reserve() {\n        int smallest_seat = available_seats.top();\n        available_seats.pop();\n        return smallest_seat;\n    }\n    \n    void unreserve(int seatNumber) {\n        available_seats.push(seatNumber);\n    }\nprivate:\n    std::priority_queue<int, std::vector<int>, std::greater<int>> available_seats;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.866665"
+}

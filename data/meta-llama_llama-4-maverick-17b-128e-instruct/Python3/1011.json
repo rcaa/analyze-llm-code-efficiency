@@ -1,0 +1,15 @@
+{
+  "id": 1011,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def shipWithinDays(self, weights: List[int], days: int) -> int:\n        def can_ship(capacity):\n            day_count = 1\n            current_load = 0\n            for weight in weights:\n                if current_load + weight > capacity:\n                    day_count += 1\n                    current_load = weight\n                else:\n                    current_load += weight\n            return day_count <= days\n\n        left, right = max(weights), sum(weights)\n        while left < right:\n            mid = (left + right) // 2\n            if can_ship(mid):\n                right = mid\n            else:\n                left = mid + 1\n        return left\n```\nefficiency: HIGH\ntime complexity: O(N log(SUM - MAX))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the minimum capacity that can ship all packages within the given days. The search range is between the maximum weight and the sum of all weights. The `can_ship` function checks if it's possible to ship all packages within the given days with a certain capacity.",
+  "code": "def shipWithinDays(self, weights: List[int], days: int) -> int:\n        def can_ship(capacity):\n            day_count = 1\n            current_load = 0\n            for weight in weights:\n                if current_load + weight > capacity:\n                    day_count += 1\n                    current_load = weight\n                else:\n                    current_load += weight\n            return day_count <= days\n\n        left, right = max(weights), sum(weights)\n        while left < right:\n            mid = (left + right) // 2\n            if can_ship(mid):\n                right = mid\n            else:\n                left = mid + 1\n        return left\n```",
+  "timestamp": "2025-08-05T13:17:37.963276",
+  "code_extracted_previous": "class Solution:\n    def shipWithinDays(self, weights: List[int], days: int) -> int:\n        def can_ship(capacity):\n            day_count = 1\n            current_load = 0\n            for weight in weights:\n                if current_load + weight > capacity:\n                    day_count += 1\n                    current_load = weight\n                else:\n                    current_load += weight\n            return day_count <= days\n\n        left, right = max(weights), sum(weights)\n        while left < right:\n            mid = (left + right) // 2\n            if can_ship(mid):\n                right = mid\n            else:\n                left = mid + 1\n        return left",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.216800"
+}

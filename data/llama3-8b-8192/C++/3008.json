@@ -1,0 +1,15 @@
+{
+  "id": 3008,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i <= s.size() - a.size(); i++) {\n            if (s.substr(i, a.size()) == a) {\n                for (int j = 0; j <= s.size() - b.size(); j++) {\n                    if (s.substr(j, b.size()) == b && abs(i - j) <= k) {\n                        res.push_back(i);\n                        break;\n                    }\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(s.size() * (a.size() + b.size()))\nspace complexity: O(s.size() * (a.size() + b.size()))\nenergy implications: LOW\nexplanation: This solution uses two nested loops to iterate over the string and check for the presence of strings a and b. The outer loop checks for the presence of string a, and the inner loop checks for the presence of string b. If both conditions are met, the index is added to the result vector. The result vector is then sorted to ensure the indices are in ascending order.",
+  "code": "class Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i <= s.size() - a.size(); i++) {\n            if (s.substr(i, a.size()) == a) {\n                for (int j = 0; j <= s.size() - b.size(); j++) {\n                    if (s.substr(j, b.size()) == b && abs(i - j) <= k) {\n                        res.push_back(i);\n                        break;\n                    }\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:20:42.650835",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i <= s.size() - a.size(); i++) {\n            if (s.substr(i, a.size()) == a) {\n                for (int j = 0; j <= s.size() - b.size(); j++) {\n                    if (s.substr(j, b.size()) == b && abs(i - j) <= k) {\n                        res.push_back(i);\n                        break;\n                    }\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.171440"
+}

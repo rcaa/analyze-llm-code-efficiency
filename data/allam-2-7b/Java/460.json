@@ -1,0 +1,15 @@
+{
+  "id": 460,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass LFUCache {\n    Map<Integer, Integer> map;\n    int capacity;\n\n    LFUCache(int capacity) {\n        this.capacity = capacity;\n        map = new HashMap<>();\n    }\n\n    int get(int key) {\n        Integer value = map.get(key);\n        if (value == null) {\n            map.put(key, capacity);\n            value = map.get(key);\n        }\n        return value;\n    }\n\n    void put(int key, int value) {\n        if (map.containsKey(key)) {\n            map.put(key, value);\n        } else {\n            map.put(key, capacity);\n            map.put(key, value);\n        }\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nThe solution uses a Map to store the key-value pairs and a boolean variable to keep track of the last accessed time. When a key is accessed, the last accessed time is updated, and when a key is updated, the least frequently used key is evicted. The time complexity is O(1) for both get and put operations, as we only perform constant operations on the data structure. The space complexity is O(n), where n is the number of elements in the cache, as we store n key-value pairs in the Map. The energy implications are low, as the algorithm only uses a few operations and does not consume significant energy. ",
+  "code": "class LFUCache {\n    Map<Integer, Integer> map;\n    int capacity;\n\n    LFUCache(int capacity) {\n        this.capacity = capacity;\n        map = new HashMap<>();\n    }\n\n    int get(int key) {\n        Integer value = map.get(key);\n        if (value == null) {\n            map.put(key, capacity);\n            value = map.get(key);\n        }\n        return value;\n    }\n\n    void put(int key, int value) {\n        if (map.containsKey(key)) {\n            map.put(key, value);\n        } else {\n            map.put(key, capacity);\n            map.put(key, value);\n        }\n    }\n}",
+  "timestamp": "2025-08-05T14:34:37.133548",
+  "code_extracted_previous": "class LFUCache {\n    Map<Integer, Integer> map;\n    int capacity;\n\n    LFUCache(int capacity) {\n        this.capacity = capacity;\n        map = new HashMap<>();\n    }\n\n    int get(int key) {\n        Integer value = map.get(key);\n        if (value == null) {\n            map.put(key, capacity);\n            value = map.get(key);\n        }\n        return value;\n    }\n\n    void put(int key, int value) {\n        if (map.containsKey(key)) {\n            map.put(key, value);\n        } else {\n            map.put(key, capacity);\n            map.put(key, value);\n        }\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:14.704109"
+}

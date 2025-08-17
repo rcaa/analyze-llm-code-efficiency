@@ -1,0 +1,15 @@
+{
+  "id": 2240,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    long long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long long res = 0;\n        if (cost1 == 0 && cost2 == 0) return 1LL * (total + 1) * (total + 1);\n        if (cost1 == 0) return 1LL * (total / cost2 + 1) * (total + 1);\n        if (cost2 == 0) return 1LL * (total / cost1 + 1) * (total + 1);\n        \n        for (long long pens = 0; pens * cost1 <= total; ++pens) {\n            long long rem = total - pens * cost1;\n            res += rem / cost2 + 1;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(total / cost1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate over every possible count of pens (0 to total/cost1). For each count, the remaining money determines how many pencils can be bought (0 to rem/cost2), giving rem/cost2 + 1 choices. Summing these counts yields the answer. The loop runs at most 10^6 iterations, which is trivial for modern CPUs.",
+  "code": "class Solution {\npublic:\n    long long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long long res = 0;\n        if (cost1 == 0 && cost2 == 0) return 1LL * (total + 1) * (total + 1);\n        if (cost1 == 0) return 1LL * (total / cost2 + 1) * (total + 1);\n        if (cost2 == 0) return 1LL * (total / cost1 + 1) * (total + 1);\n        \n        for (long long pens = 0; pens * cost1 <= total; ++pens) {\n            long long rem = total - pens * cost1;\n            res += rem / cost2 + 1;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T02:29:12.161324",
+  "code_extracted_previous": "public:\n    long long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long long res = 0;\n        if (cost1 == 0 && cost2 == 0) return 1LL * (total + 1) * (total + 1);\n        if (cost1 == 0) return 1LL * (total / cost2 + 1) * (total + 1);\n        if (cost2 == 0) return 1LL * (total / cost1 + 1) * (total + 1);\n        \n        for (long long pens = 0; pens * cost1 <= total; ++pens) {\n            long long rem = total - pens * cost1;\n            res += rem / cost2 + 1;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.596545"
+}

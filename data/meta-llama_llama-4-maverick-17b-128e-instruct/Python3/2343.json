@@ -1,0 +1,15 @@
+{
+  "id": 2343,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        answer = []\n        for k, trim in queries:\n            trimmed_nums = [(num[-trim:], i) for i, num in enumerate(nums)]\n            trimmed_nums.sort(key=lambda x: (x[0], x[1]))\n            answer.append(trimmed_nums[k-1][1])\n        return answer\nefficiency: MEDIUM\ntime complexity: O(Q * N log N)\nspace complexity: O(N + Q)\nenergy implications: LOW\nexplanation: This solution iterates over each query, trims the numbers, sorts them, and finds the kth smallest. It uses a lambda function as the sorting key to consider both the trimmed number and its original index. The time complexity is dominated by the sorting operation for each query.\n```",
+  "code": "def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        answer = []\n        for k, trim in queries:\n            trimmed_nums = [(num[-trim:], i) for i, num in enumerate(nums)]\n            trimmed_nums.sort(key=lambda x: (x[0], x[1]))\n            answer.append(trimmed_nums[k-1][1])\n        return answer",
+  "timestamp": "2025-08-05T13:29:37.845527",
+  "code_extracted_previous": "class Solution:\n    def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        answer = []\n        for k, trim in queries:\n            trimmed_nums = [(num[-trim:], i) for i, num in enumerate(nums)]\n            trimmed_nums.sort(key=lambda x: (x[0], x[1]))\n            answer.append(trimmed_nums[k-1][1])\n        return answer",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.874007"
+}

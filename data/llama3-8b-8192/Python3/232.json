@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass MyQueue:\n\n    def __init__(self):\n        self.stack1 = []\n        self.stack2 = []\n\n    def push(self, x: int) -> None:\n        self.stack1.append(x)\n\n    def pop(self) -> int:\n        if not self.empty():\n            while len(self.stack1) > 1:\n                self.stack2.append(self.stack1.pop())\n            return self.stack1.pop()\n        return None\n\n    def peek(self) -> int:\n        if not self.empty():\n            while len(self.stack1) > 1:\n                self.stack2.append(self.stack1.pop())\n            return self.stack1[-1]\n        return None\n\n    def empty(self) -> bool:\n        return len(self.stack1) == 0\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: We use two stacks to implement the queue. The first stack (stack1) is used to push elements and the second stack (stack2) is used to pop elements. When popping an element, we move all elements from stack1 to stack2 except the top element, which is the front of the queue. This way, we can achieve O(1) time complexity for push and pop operations.",
+  "code": "class MyQueue:\n\n    def __init__(self):\n        self.stack1 = []\n        self.stack2 = []\n\n    def push(self, x: int) -> None:\n        self.stack1.append(x)\n\n    def pop(self) -> int:\n        if not self.empty():\n            while len(self.stack1) > 1:\n                self.stack2.append(self.stack1.pop())\n            return self.stack1.pop()\n        return None\n\n    def peek(self) -> int:\n        if not self.empty():\n            while len(self.stack1) > 1:\n                self.stack2.append(self.stack1.pop())\n            return self.stack1[-1]\n        return None\n\n    def empty(self) -> bool:\n        return len(self.stack1) == 0",
+  "timestamp": "2025-08-06T01:59:14.602247",
+  "code_extracted_previous": "class MyQueue:\n\n    def __init__(self):\n        self.stack1 = []\n        self.stack2 = []\n\n    def push(self, x: int) -> None:\n        self.stack1.append(x)\n\n    def pop(self) -> int:\n        if not self.empty():\n            while len(self.stack1) > 1:\n                self.stack2.append(self.stack1.pop())\n            return self.stack1.pop()\n        return None\n\n    def peek(self) -> int:\n        if not self.empty():\n            while len(self.stack1) > 1:\n                self.stack2.append(self.stack1.pop())\n            return self.stack1[-1]\n        return None\n\n    def empty(self) -> bool:\n        return len(self.stack1) == 0",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:43.811243"
+}

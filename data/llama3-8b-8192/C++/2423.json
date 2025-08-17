@@ -1,0 +1,15 @@
+{
+  "id": 2423,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) {\n            freq[c]++;\n        }\n        for (char c : word) {\n            freq[c]--;\n            bool ok = true;\n            for (auto p : freq) {\n                if (p.second > 0) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) return true;\n            freq[c]++;\n        }\n        return false;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a frequency map to count the occurrences of each character in the word. Then, it iterates over the word, removing each character and checking if the frequency of all characters becomes equal. If it finds a character that makes all frequencies equal, it returns true. If it doesn't find such a character, it returns false.",
+  "code": "class Solution {\npublic:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) {\n            freq[c]++;\n        }\n        for (char c : word) {\n            freq[c]--;\n            bool ok = true;\n            for (auto p : freq) {\n                if (p.second > 0) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) return true;\n            freq[c]++;\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T14:47:05.513520",
+  "code_extracted_previous": "public:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) {\n            freq[c]++;\n        }\n        for (char c : word) {\n            freq[c]--;\n            bool ok = true;\n            for (auto p : freq) {\n                if (p.second > 0) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) return true;\n            freq[c]++;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.002716"
+}

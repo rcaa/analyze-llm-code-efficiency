@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        visited[0] = true;\n\n        for (int i = 1; i < n; i++) {\n            for (int key : rooms[i]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    return true;\n                }\n            }\n        }\n        return false;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use a boolean array `visited` to keep track of which rooms have been visited. We start by visiting room 0 and mark it as visited. Then, for each room i, we iterate over the keys (keys are the numbers of the rooms that room i can unlock) and mark each key as visited if it hasn't been visited yet. If we find a room that hasn't been visited, we return true, indicating that we can visit all rooms. Otherwise, we return false, indicating that we cannot visit all rooms. ",
+  "code": "class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        visited[0] = true;\n\n        for (int i = 1; i < n; i++) {\n            for (int key : rooms[i]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    return true;\n                }\n            }\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T14:00:33.789648",
+  "code_extracted_previous": "public:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        visited[0] = true;\n\n        for (int i = 1; i < n; i++) {\n            for (int key : rooms[i]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    return true;\n                }\n            }\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.238088"
+}

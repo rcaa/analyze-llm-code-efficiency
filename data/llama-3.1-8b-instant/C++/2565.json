@@ -1,0 +1,15 @@
+{
+  "id": 2565,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int n = s.size(), m = t.size();\n        int i = 0, j = 0, left = 0, right = 0, ans = m;\n        while (i < n && j < m) {\n            if (s[i] == t[j]) j++;\n            if (j == m) return 0;\n            if (s[i] != t[j]) {\n                left = i;\n                while (j < m && s[i] != t[j]) {\n                    right = i;\n                    i++;\n                    j++;\n                }\n                if (j == m) return right - left + 1;\n                ans = min(ans, right - left + 1);\n            }\n            i++;\n        }\n        return ans;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int n = s.size(), m = t.size();\n        int i = 0, j = 0, left = 0, right = 0, ans = m;\n        while (i < n && j < m) {\n            if (s[i] == t[j]) j++;\n            if (j == m) return 0;\n            if (s[i] != t[j]) {\n                left = i;\n                while (j < m && s[i] != t[j]) {\n                    right = i;\n                    i++;\n                    j++;\n                }\n                if (j == m) return right - left + 1;\n                ans = min(ans, right - left + 1);\n            }\n            i++;\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-06T01:19:05.912612",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int n = s.size(), m = t.size();\n        int i = 0, j = 0, left = 0, right = 0, ans = m;\n        while (i < n && j < m) {\n            if (s[i] == t[j]) j++;\n            if (j == m) return 0;\n            if (s[i] != t[j]) {\n                left = i;\n                while (j < m && s[i] != t[j]) {\n                    right = i;\n                    i++;\n                    j++;\n                }\n                if (j == m) return right - left + 1;\n                ans = min(ans, right - left + 1);\n            }\n            i++;\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.150738"
+}

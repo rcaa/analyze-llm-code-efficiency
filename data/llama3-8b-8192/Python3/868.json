@@ -1,0 +1,15 @@
+{
+  "id": 868,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def binaryGap(self, n: int) -> int:\n        bin_n = bin(n)[2:]\n        max_gap = 0\n        prev_one = -1\n        for i, bit in enumerate(bin_n):\n            if bit == '1':\n                if prev_one != -1:\n                    max_gap = max(max_gap, i - prev_one)\n                prev_one = i\n        return max_gap\n```\n\nefficiency: HIGH\n\ntime complexity: O(log n)\n\nspace complexity: O(1)\n\nenergy implications: LOW\n\nexplanation: This solution uses a single pass through the binary representation of the input number, keeping track of the position of the most recent '1' and updating the maximum gap whenever a new '1' is found. The time complexity is O(log n) because the binary representation of n has a length of approximately log2(n), and the space complexity is O(1) because we only use a constant amount of space to store the maximum gap and the position of the most recent '1'.",
+  "code": "class Solution:\n    def binaryGap(self, n: int) -> int:\n        bin_n = bin(n)[2:]\n        max_gap = 0\n        prev_one = -1\n        for i, bit in enumerate(bin_n):\n            if bit == '1':\n                if prev_one != -1:\n                    max_gap = max(max_gap, i - prev_one)\n                prev_one = i\n        return max_gap",
+  "timestamp": "2025-08-05T13:49:26.467836",
+  "code_extracted_previous": "class Solution:\n    def binaryGap(self, n: int) -> int:\n        bin_n = bin(n)[2:]\n        max_gap = 0\n        prev_one = -1\n        for i, bit in enumerate(bin_n):\n            if bit == '1':\n                if prev_one != -1:\n                    max_gap = max(max_gap, i - prev_one)\n                prev_one = i\n        return max_gap",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.466900"
+}

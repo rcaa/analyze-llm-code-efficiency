@@ -1,0 +1,15 @@
+{
+  "id": 1286,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass CombinationIterator {\nprivate:\n    string characters;\n    int combinationLength;\n    vector<int> indices;\n    bool has_next;\n\npublic:\n    CombinationIterator(string characters, int combinationLength) : characters(characters), combinationLength(combinationLength) {\n        indices.resize(combinationLength);\n        for (int i = 0; i < combinationLength; ++i) {\n            indices[i] = i;\n        }\n        has_next = true;\n        if (combinationLength > characters.size()) {\n            has_next = false;\n        }\n    }\n\n    string next() {\n        string result;\n        for (int i = 0; i < combinationLength; ++i) {\n            result += characters[indices[i]];\n        }\n        int i = combinationLength - 1;\n        while (i >= 0 && indices[i] == characters.size() - combinationLength + i) {\n            --i;\n        }\n        if (i < 0) {\n            has_next = false;\n        } else {\n            ++indices[i];\n            for (int j = i + 1; j < combinationLength; ++j) {\n                indices[j] = indices[j - 1] + 1;\n            }\n        }\n        return result;\n    }\n\n    bool hasNext() {\n        return has_next;\n    }\n};\n\nsolution: The provided C++ code.\nefficiency: HIGH\ntime complexity: O(combinationLength)\nspace complexity: O(combinationLength)\nenergy implications: LOW\nexplanation: The CombinationIterator class generates combinations of a given length from a string of unique characters in lexicographical order. It uses a vector of indices to track the current combination and updates these indices to generate the next combination in the next() method. The hasNext() method checks if there are more combinations to generate. The time complexity is O(combinationLength) because generating the next combination involves updating the indices and potentially iterating over the combination length. The space complexity is also O(combinationLength) for storing the indices. The energy implications are low due to the efficient algorithmic approach.",
+  "code": "The provided C++ code.",
+  "timestamp": "2025-08-06T00:50:35.740109",
+  "code_extracted_previous": "The provided C++ code.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:44.674788"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1702,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String maximumBinaryString(String binary) {\n        char[] chars = binary.toCharArray();\n        int zeroCount = 0;\n        for (int i = 0; i < chars.length; i++) {\n            if (chars[i] == '0') {\n                zeroCount++;\n            } else {\n                zeroCount = 0;\n            }\n            if (zeroCount >= 3) {\n                chars[i - 2] = '1';\n                zeroCount = 0;\n            }\n        }\n        return new String(chars);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The approach iterates through the binary string once, replacing '0's with '1's when possible to maximize the binary value. It maintains a count of consecutive '0's and updates the string accordingly. This results in a highly efficient solution with linear time and space complexity.",
+  "code": "class Solution {\n    public String maximumBinaryString(String binary) {\n        char[] chars = binary.toCharArray();\n        int zeroCount = 0;\n        for (int i = 0; i < chars.length; i++) {\n            if (chars[i] == '0') {\n                zeroCount++;\n            } else {\n                zeroCount = 0;\n            }\n            if (zeroCount >= 3) {\n                chars[i - 2] = '1';\n                zeroCount = 0;\n            }\n        }\n        return new String(chars);\n    }\n}",
+  "timestamp": "2025-08-06T00:55:32.784074",
+  "code_extracted_previous": "class Solution {\n    public String maximumBinaryString(String binary) {\n        char[] chars = binary.toCharArray();\n        int zeroCount = 0;\n        for (int i = 0; i < chars.length; i++) {\n            if (chars[i] == '0') {\n                zeroCount++;\n            } else {\n                zeroCount = 0;\n            }\n            if (zeroCount >= 3) {\n                chars[i - 2] = '1';\n                zeroCount = 0;\n            }\n        }\n        return new String(chars);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.500861"
+}

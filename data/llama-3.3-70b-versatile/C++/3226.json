@@ -1,0 +1,15 @@
+{
+  "id": 3226,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int minChanges(int n, int k) {\n        int changes = 0;\n        while (n != k && n > 0) {\n            if ((n & k) != k) return -1;\n            changes++;\n            n = n ^ (n & -n);\n        }\n        return n == k ? changes : -1;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses bitwise operations to compare and modify the binary representations of n and k, ensuring that n can be transformed into k by flipping bits from 1 to 0. It checks if the bits set in k are a subset of the bits set in n and returns -1 if not. Otherwise, it counts the number of changes needed to make n equal to k.",
+  "code": "class Solution {\npublic:\n    int minChanges(int n, int k) {\n        int changes = 0;\n        while (n != k && n > 0) {\n            if ((n & k) != k) return -1;\n            changes++;\n            n = n ^ (n & -n);\n        }\n        return n == k ? changes : -1;\n    }\n};",
+  "timestamp": "2025-08-06T15:10:55.304203",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minChanges(int n, int k) {\n        int changes = 0;\n        while (n != k && n > 0) {\n            if ((n & k) != k) return -1;\n            changes++;\n            n = n ^ (n & -n);\n        }\n        return n == k ? changes : -1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.617528"
+}

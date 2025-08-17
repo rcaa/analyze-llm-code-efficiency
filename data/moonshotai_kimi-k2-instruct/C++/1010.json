@@ -1,0 +1,15 @@
+{
+  "id": 1010,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        int cnt[60] = {0};\n        long long ans = 0;\n        for (int t : time) {\n            int r = t % 60;\n            ans += cnt[(60 - r) % 60];\n            cnt[r]++;\n        }\n        return (int)ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count remainders mod 60 in a fixed-size array. For each song, the needed complement is (60 - r) % 60; add the current count of that complement to the answer, then increment the remainder's count. Single pass, constant memory.",
+  "code": "class Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        int cnt[60] = {0};\n        long long ans = 0;\n        for (int t : time) {\n            int r = t % 60;\n            ans += cnt[(60 - r) % 60];\n            cnt[r]++;\n        }\n        return (int)ans;\n    }\n};",
+  "timestamp": "2025-08-05T13:17:18.998356",
+  "code_extracted_previous": "public:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        int cnt[60] = {0};\n        long long ans = 0;\n        for (int t : time) {\n            int r = t % 60;\n            ans += cnt[(60 - r) % 60];\n            cnt[r]++;\n        }\n        return (int)ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.079505"
+}

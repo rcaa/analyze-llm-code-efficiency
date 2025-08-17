@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```\nclass Solution:\n    def repairCars(self, ranks: List[int], cars: int) -> int:\n        def can_repair_all(time: int) -> bool:\n            total = 0\n            for r in ranks:\n                total += int((time // r) ** 0.5)\n                if total >= cars:\n                    return True\n            return total >= cars\n        \n        left, right = 0, min(ranks) * cars * cars\n        while left < right:\n            mid = (left + right) // 2\n            if can_repair_all(mid):\n                right = mid\n            else:\n                left = mid + 1\n        return left\n```\nefficiency: HIGH\ntime complexity: O(n log(max_time))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search on the minimum time; for each candidate time, compute how many cars each mechanic can fix (floor(sqrt(time/rank))) and sum them to check feasibility.",
+  "code": "class Solution:\n    def repairCars(self, ranks: List[int], cars: int) -> int:\n        def can_repair_all(time: int) -> bool:\n            total = 0\n            for r in ranks:\n                total += int((time // r) ** 0.5)\n                if total >= cars:\n                    return True\n            return total >= cars\n        \n        left, right = 0, min(ranks) * cars * cars\n        while left < right:\n            mid = (left + right) // 2\n            if can_repair_all(mid):\n                right = mid\n            else:\n                left = mid + 1\n        return left",
+  "timestamp": "2025-08-05T13:33:03.668007",
+  "code_extracted_previous": "class Solution:\n    def repairCars(self, ranks: List[int], cars: int) -> int:\n        def can_repair_all(time: int) -> bool:\n            total = 0\n            for r in ranks:\n                total += int((time // r) ** 0.5)\n                if total >= cars:\n                    return True\n            return total >= cars\n        \n        left, right = 0, min(ranks) * cars * cars\n        while left < right:\n            mid = (left + right) // 2\n            if can_repair_all(mid):\n                right = mid\n            else:\n                left = mid + 1\n        return left",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.759221"
+}

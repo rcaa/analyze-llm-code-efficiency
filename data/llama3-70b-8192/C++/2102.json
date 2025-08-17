@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass SORTracker {\npublic:\n    SORTracker() {\n        idx = 0;\n    }\n    \n    void add(string name, int score) {\n        pq.push({score, name});\n    }\n    \n    string get() {\n        for (int i = 0; i < idx; i++) {\n            pq.pop();\n        }\n        idx++;\n        string res = pq.top().second;\n        pq.pop();\n        return res;\n    }\nprivate:\n    priority_queue<pair<int, string>, vector<pair<int, string>>, less<pair<int, string>>> pq;\n    int idx;\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to store the scenic locations. The priority queue is ordered by the score in descending order and the name in ascending order. The `add` method adds a new location to the priority queue. The `get` method returns the `i`th best location by popping the top `i-1` elements from the priority queue and returning the top element.",
+  "code": "class SORTracker {\npublic:\n    SORTracker() {\n        idx = 0;\n    }\n    \n    void add(string name, int score) {\n        pq.push({score, name});\n    }\n    \n    string get() {\n        for (int i = 0; i < idx; i++) {\n            pq.pop();\n        }\n        idx++;\n        string res = pq.top().second;\n        pq.pop();\n        return res;\n    }\nprivate:\n    priority_queue<pair<int, string>, vector<pair<int, string>>, less<pair<int, string>>> pq;\n    int idx;\n};",
+  "timestamp": "2025-08-05T14:04:30.859911",
+  "code_extracted_previous": "class SORTracker {\npublic:\n    SORTracker() {\n        idx = 0;\n    }\n    \n    void add(string name, int score) {\n        pq.push({score, name});\n    }\n    \n    string get() {\n        for (int i = 0; i < idx; i++) {\n            pq.pop();\n        }\n        idx++;\n        string res = pq.top().second;\n        pq.pop();\n        return res;\n    }\nprivate:\n    priority_queue<pair<int, string>, vector<pair<int, string>>, less<pair<int, string>>> pq;\n    int idx;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:36.401995"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1799,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nfrom math import gcd\nfrom functools import reduce\nfrom operator import mul\nfrom typing import List\n\nclass Solution:\n    def maxScore(self, nums: List[int]) -> int:\n        n = len(nums) // 2\n        freq = {}\n        for num in nums:\n            freq[num] = freq.get(num, 0) + 1\n        pairs = []\n        for num in freq:\n            pairs.append((num, freq[num]))\n        pairs.sort(key=lambda x: x[1], reverse=True)\n        score = 0\n        for i, (num, freq) in enumerate(pairs):\n            score += (i + 1) * num * freq\n            freq -= 2\n            if freq > 0:\n                pairs.append((num, freq))\n                pairs.sort(key=lambda x: x[1], reverse=True)\n        return score\n```\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution:\n    def maxScore(self, nums: List[int]) -> int:\n        n = len(nums) // 2\n        freq = {}\n        for num in nums:\n            freq[num] = freq.get(num, 0) + 1\n        pairs = []\n        for num in freq:\n            pairs.append((num, freq[num]))\n        pairs.sort(key=lambda x: x[1], reverse=True)\n        score = 0\n        for i, (num, freq) in enumerate(pairs):\n            score += (i + 1) * num * freq\n            freq -= 2\n            if freq > 0:\n                pairs.append((num, freq))\n                pairs.sort(key=lambda x: x[1], reverse=True)\n        return score",
+  "timestamp": "2025-08-05T11:54:27.262597",
+  "code_extracted_previous": "from math import gcd\nfrom functools import reduce\nfrom operator import mul\nfrom typing import List\n\nclass Solution:\n    def maxScore(self, nums: List[int]) -> int:\n        n = len(nums) // 2\n        freq = {}\n        for num in nums:\n            freq[num] = freq.get(num, 0) + 1\n        pairs = []\n        for num in freq:\n            pairs.append((num, freq[num]))\n        pairs.sort(key=lambda x: x[1], reverse=True)\n        score = 0\n        for i, (num, freq) in enumerate(pairs):\n            score += (i + 1) * num * freq\n            freq -= 2\n            if freq > 0:\n                pairs.append((num, freq))\n                pairs.sort(key=lambda x: x[1], reverse=True)\n        return score",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.462198"
+}

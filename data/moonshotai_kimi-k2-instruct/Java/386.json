@@ -1,0 +1,15 @@
+{
+  "id": 386,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> res = new ArrayList<>(n);\n        int curr = 1;\n        for (int i = 0; i < n; i++) {\n            res.add(curr);\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else {\n                if (curr >= n) curr /= 10;\n                curr += 1;\n                while (curr % 10 == 0) curr /= 10;\n            }\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Generates the lexicographical sequence by simulating a depth-first preorder walk of a 10-ary trie without recursion or extra structures. Each of the n iterations performs O(1) work, yielding optimal linear time while using only the output list and a few primitive variables.",
+  "code": "class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> res = new ArrayList<>(n);\n        int curr = 1;\n        for (int i = 0; i < n; i++) {\n            res.add(curr);\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else {\n                if (curr >= n) curr /= 10;\n                curr += 1;\n                while (curr % 10 == 0) curr /= 10;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:00:02.067807",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> res = new ArrayList<>(n);\n        int curr = 1;\n        for (int i = 0; i < n; i++) {\n            res.add(curr);\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else {\n                if (curr >= n) curr /= 10;\n                curr += 1;\n                while (curr % 10 == 0) curr /= 10;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.461365"
+}

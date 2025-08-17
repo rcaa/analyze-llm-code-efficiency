@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n        self.maxf = 0\n\n    def push(self, val: int) -> None:\n        f = self.freq.get(val, 0) + 1\n        self.freq[val] = f\n        if f > self.maxf:\n            self.maxf = f\n        self.group.setdefault(f, []).append(val)\n\n    def pop(self) -> int:\n        val = self.group[self.maxf].pop()\n        self.freq[val] -= 1\n        if not self.group[self.maxf]:\n            self.maxf -= 1\n        return val\n\n\n# Your FreqStack object will be instantiated and called as such:\n# obj = FreqStack()\n# obj.push(val)\n# param_2 = obj.pop()```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses two dictionaries: one to track per-value frequencies and another to store stacks of values keyed by frequency. push updates both in O(1); pop removes from the highest-frequency stack in O(1). Space is proportional to total pushes.",
+  "code": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n        self.maxf = 0\n\n    def push(self, val: int) -> None:\n        f = self.freq.get(val, 0) + 1\n        self.freq[val] = f\n        if f > self.maxf:\n            self.maxf = f\n        self.group.setdefault(f, []).append(val)\n\n    def pop(self) -> int:\n        val = self.group[self.maxf].pop()\n        self.freq[val] -= 1\n        if not self.group[self.maxf]:\n            self.maxf -= 1\n        return val\n\n\n# Your FreqStack object will be instantiated and called as such:\n# obj = FreqStack()\n# obj.push(val)\n# param_2 = obj.pop()",
+  "timestamp": "2025-08-05T14:38:37.102425",
+  "code_extracted_previous": "def __init__(self):\n        self.freq = {}\n        self.group = {}\n        self.maxf = 0\n\n    def push(self, val: int) -> None:\n        f = self.freq.get(val, 0) + 1\n        self.freq[val] = f\n        if f > self.maxf:\n            self.maxf = f\n        self.group.setdefault(f, []).append(val)\n\n    def pop(self) -> int:\n        val = self.group[self.maxf].pop()\n        self.freq[val] -= 1\n        if not self.group[self.maxf]:\n            self.maxf -= 1\n        return val\n\n\n# Your FreqStack object will be instantiated and called as such:\n# obj = FreqStack()\n# obj.push(val)\n# param_2 = obj.pop()",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:57.695927"
+}

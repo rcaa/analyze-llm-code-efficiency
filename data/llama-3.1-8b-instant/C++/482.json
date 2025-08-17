@@ -1,0 +1,15 @@
+{
+  "id": 482,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string licenseKeyFormatting(string s, int k) {\n        string res;\n        int n = s.size();\n        int count = 0;\n        for (int i = n - 1; i >= 0; --i) {\n            if (s[i] != '-') {\n                if (count == k) {\n                    res = '-' + res;\n                    count = 0;\n                }\n                res = toupper(s[i]) + res;\n                count++;\n            }\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution iterates over the input string from right to left, maintaining a count of characters in the current group. When the count reaches k, it prepends a dash to the result and resets the count. This approach ensures that each group contains exactly k characters, except for the first group, which could be shorter. The time complexity is O(n) as we only iterate over the input string once, and the space complexity is also O(n) as we build the result string. The energy implications are low as we only perform a constant amount of work for each character in the input string.",
+  "code": "class Solution {\npublic:\n    string licenseKeyFormatting(string s, int k) {\n        string res;\n        int n = s.size();\n        int count = 0;\n        for (int i = n - 1; i >= 0; --i) {\n            if (s[i] != '-') {\n                if (count == k) {\n                    res = '-' + res;\n                    count = 0;\n                }\n                res = toupper(s[i]) + res;\n                count++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T16:25:29.908507",
+  "code_extracted_previous": "class Solution {\npublic:\n    string licenseKeyFormatting(string s, int k) {\n        string res;\n        int n = s.size();\n        int count = 0;\n        for (int i = n - 1; i >= 0; --i) {\n            if (s[i] != '-') {\n                if (count == k) {\n                    res = '-' + res;\n                    count = 0;\n                }\n                res = toupper(s[i]) + res;\n                count++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.575591"
+}

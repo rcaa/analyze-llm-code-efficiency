@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution:\ndef largeGroupPositions(self, s: str) -> List[List[int]]:\n    groups = [(i, i+1) for i in range(len(s))]\n    result = []\n    for i in range(len(s)):\n        for j in range(i+1, len(s)):\n            if s[i] == s[j]:\n                groups[i][j] = (j, i)\n                if len(groups[i]) >= 3:\n                    result.append([groups[i][0], groups[i][1])\n    return result\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW ",
+  "code": "def largeGroupPositions(self, s: str) -> List[List[int]]:\n    groups = [(i, i+1) for i in range(len(s))]\n    result = []\n    for i in range(len(s)):\n        for j in range(i+1, len(s)):\n            if s[i] == s[j]:\n                groups[i][j] = (j, i)\n                if len(groups[i]) >= 3:\n                    result.append([groups[i][0], groups[i][1])\n    return result",
+  "timestamp": "2025-08-05T16:35:39.111476",
+  "code_extracted_previous": "def largeGroupPositions(self, s: str) -> List[List[int]]:\n    groups = [(i, i+1) for i in range(len(s))]\n    result = []\n    for i in range(len(s)):\n        for j in range(i+1, len(s)):\n            if s[i] == s[j]:\n                groups[i][j] = (j, i)\n                if len(groups[i]) >= 3:\n                    result.append([groups[i][0], groups[i][1])\n    return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:16.208262"
+}

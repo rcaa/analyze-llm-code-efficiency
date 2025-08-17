@@ -1,0 +1,15 @@
+{
+  "id": 2034,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass StockPrice:\n\n    def __init__(self):\n        self.timestamp_to_price = {}\n        self.max_price = float('-inf')\n        self.min_price = float('inf')\n        self.latest_timestamp = -1\n\n    def update(self, timestamp: int, price: int) -> None:\n        self.timestamp_to_price[timestamp] = price\n        self.max_price = max(self.max_price, price)\n        self.min_price = min(self.min_price, price)\n        self.latest_timestamp = max(self.latest_timestamp, timestamp)\n\n    def current(self) -> int:\n        return self.timestamp_to_price.get(self.latest_timestamp, 0)\n\n    def maximum(self) -> int:\n        return self.max_price\n\n    def minimum(self) -> int:\n        return self.min_price\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a dictionary to store the price at each timestamp, and three variables to keep track of the maximum, minimum, and latest prices. The update method updates these variables in constant time, and the current, maximum, and minimum methods return the corresponding values in constant time.",
+  "code": "class StockPrice:\n\n    def __init__(self):\n        self.timestamp_to_price = {}\n        self.max_price = float('-inf')\n        self.min_price = float('inf')\n        self.latest_timestamp = -1\n\n    def update(self, timestamp: int, price: int) -> None:\n        self.timestamp_to_price[timestamp] = price\n        self.max_price = max(self.max_price, price)\n        self.min_price = min(self.min_price, price)\n        self.latest_timestamp = max(self.latest_timestamp, timestamp)\n\n    def current(self) -> int:\n        return self.timestamp_to_price.get(self.latest_timestamp, 0)\n\n    def maximum(self) -> int:\n        return self.max_price\n\n    def minimum(self) -> int:\n        return self.min_price",
+  "timestamp": "2025-08-05T15:08:03.191848",
+  "code_extracted_previous": "class StockPrice:\n\n    def __init__(self):\n        self.timestamp_to_price = {}\n        self.max_price = float('-inf')\n        self.min_price = float('inf')\n        self.latest_timestamp = -1\n\n    def update(self, timestamp: int, price: int) -> None:\n        self.timestamp_to_price[timestamp] = price\n        self.max_price = max(self.max_price, price)\n        self.min_price = min(self.min_price, price)\n        self.latest_timestamp = max(self.latest_timestamp, timestamp)\n\n    def current(self) -> int:\n        return self.timestamp_to_price.get(self.latest_timestamp, 0)\n\n    def maximum(self) -> int:\n        return self.max_price\n\n    def minimum(self) -> int:\n        return self.min_price",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:43.645252"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2447,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            int gcd_count = 0;\n            for (int j = i; j < nums.size(); j++) {\n                if (gcd(nums[i], nums[j]) == k) {\n                    gcd_count++;\n                }\n            }\n            count += gcd_count;\n        }\n        return count;\n    }\n\n    int gcd(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nThe solution uses two nested loops to iterate through the array and count the number of subarrays where the greatest common divisor of the subarray's elements is k. The outer loop iterates through the array once, and the inner loop iterates through the remaining elements after the current element in the outer loop. The gcd function is used to calculate the greatest common divisor of two numbers.\n\nThe time complexity is O(n) because both loops iterate through the array exactly once. The space complexity is O(1) because we only use a constant amount of space for the two counters and the gcd function. The energy implications are low because the algorithm only requires a small amount of computational resources. ",
+  "code": "class Solution {\npublic:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            int gcd_count = 0;\n            for (int j = i; j < nums.size(); j++) {\n                if (gcd(nums[i], nums[j]) == k) {\n                    gcd_count++;\n                }\n            }\n            count += gcd_count;\n        }\n        return count;\n    }\n\n    int gcd(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n};",
+  "timestamp": "2025-08-05T13:31:50.560563",
+  "code_extracted_previous": "public:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            int gcd_count = 0;\n            for (int j = i; j < nums.size(); j++) {\n                if (gcd(nums[i], nums[j]) == k) {\n                    gcd_count++;\n                }\n            }\n            count += gcd_count;\n        }\n        return count;\n    }\n\n    int gcd(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.448045"
+}

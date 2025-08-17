@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maximumOr(self, nums: List[int], k: int) -> int:\n        def check(x):\n            cnt = 0\n            for num in nums:\n                t = x | num\n                while t > num:\n                    num <<= 1\n                    cnt += 1\n                    if cnt > k:\n                        return False\n            return cnt <= k\n\n        l, r = 0, 2**31 - 1\n        while l < r:\n            mid = (l + r + 1) // 2\n            if check(mid):\n                l = mid\n            else:\n                r = mid - 1\n        return l\n```\nefficiency: HIGH\ntime complexity: O(n * k * log(2^31))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the maximum possible value of the bitwise OR operation, and for each mid value, we check if it's possible to obtain it by multiplying some numbers in the array by 2 at most k times.",
+  "code": "def maximumOr(self, nums: List[int], k: int) -> int:\n        def check(x):\n            cnt = 0\n            for num in nums:\n                t = x | num\n                while t > num:\n                    num <<= 1\n                    cnt += 1\n                    if cnt > k:\n                        return False\n            return cnt <= k\n\n        l, r = 0, 2**31 - 1\n        while l < r:\n            mid = (l + r + 1) // 2\n            if check(mid):\n                l = mid\n            else:\n                r = mid - 1\n        return l\n```",
+  "timestamp": "2025-08-06T15:19:08.444152",
+  "code_extracted_previous": "class Solution:\n    def maximumOr(self, nums: List[int], k: int) -> int:\n        def check(x):\n            cnt = 0\n            for num in nums:\n                t = x | num\n                while t > num:\n                    num <<= 1\n                    cnt += 1\n                    if cnt > k:\n                        return False\n            return cnt <= k\n\n        l, r = 0, 2**31 - 1\n        while l < r:\n            mid = (l + r + 1) // 2\n            if check(mid):\n                l = mid\n            else:\n                r = mid - 1\n        return l",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.335733"
+}

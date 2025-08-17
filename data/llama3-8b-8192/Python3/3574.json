@@ -1,0 +1,15 @@
+{
+  "id": 3574,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def maxGCDScore(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        prefix_gcd = [nums[0]]\n        for i in range(1, n):\n            prefix_gcd.append(gcd(prefix_gcd[-1], nums[i]))\n        dp = [[0, 0] for _ in range(n + 1)]\n        for i in range(1, n + 1):\n            for j in range(i):\n                if k > 0:\n                    dp[i][0] = max(dp[i][0], dp[j][0] + (i - j) * prefix_gcd[i - 1])\n                else:\n                    dp[i][0] = max(dp[i][0], dp[j][0] + (i - j) * prefix_gcd[i - 1] // prefix_gcd[j - 1])\n                dp[i][1] = max(dp[i][1], dp[j][1] + (i - j) * prefix_gcd[i - 1])\n        return dp[-1][0]\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to build up the maximum score for each subarray. It first calculates the prefix GCDs of the input array, then uses a 2D DP table to store the maximum score for each subarray. The time complexity is O(n^2) and the space complexity is O(n), making it efficient for the given constraints.",
+  "code": "class Solution:\n    def maxGCDScore(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        prefix_gcd = [nums[0]]\n        for i in range(1, n):\n            prefix_gcd.append(gcd(prefix_gcd[-1], nums[i]))\n        dp = [[0, 0] for _ in range(n + 1)]\n        for i in range(1, n + 1):\n            for j in range(i):\n                if k > 0:\n                    dp[i][0] = max(dp[i][0], dp[j][0] + (i - j) * prefix_gcd[i - 1])\n                else:\n                    dp[i][0] = max(dp[i][0], dp[j][0] + (i - j) * prefix_gcd[i - 1] // prefix_gcd[j - 1])\n                dp[i][1] = max(dp[i][1], dp[j][1] + (i - j) * prefix_gcd[i - 1])\n        return dp[-1][0]",
+  "timestamp": "2025-08-05T12:11:50.086813",
+  "code_extracted_previous": "class Solution:\n    def maxGCDScore(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        prefix_gcd = [nums[0]]\n        for i in range(1, n):\n            prefix_gcd.append(gcd(prefix_gcd[-1], nums[i]))\n        dp = [[0, 0] for _ in range(n + 1)]\n        for i in range(1, n + 1):\n            for j in range(i):\n                if k > 0:\n                    dp[i][0] = max(dp[i][0], dp[j][0] + (i - j) * prefix_gcd[i - 1])\n                else:\n                    dp[i][0] = max(dp[i][0], dp[j][0] + (i - j) * prefix_gcd[i - 1] // prefix_gcd[j - 1])\n                dp[i][1] = max(dp[i][1], dp[j][1] + (i - j) * prefix_gcd[i - 1])\n        return dp[-1][0]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.169151"
+}

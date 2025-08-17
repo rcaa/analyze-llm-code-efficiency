@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String robotWithString(String s) {\n        StringBuilder t = new StringBuilder();\n        StringBuilder result = new StringBuilder();\n        int i = 0;\n        while (i < s.length() || t.length() > 0) {\n            if (i < s.length() && (t.length() == 0 || s.charAt(i) <= t.charAt(0))) {\n                t.append(s.charAt(i++));\n            } else {\n                result.append(t.charAt(0));\n                t.deleteCharAt(0);\n            }\n        }\n        return result.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the string `s` and uses a `StringBuilder` to simulate the robot's string `t`. It prioritizes appending smaller characters to `t` and popping characters from `t` to form the result when it is lexicographically smallest. This greedy approach ensures the lexicographically smallest string is written on the paper.",
+  "code": "class Solution {\n    public String robotWithString(String s) {\n        StringBuilder t = new StringBuilder();\n        StringBuilder result = new StringBuilder();\n        int i = 0;\n        while (i < s.length() || t.length() > 0) {\n            if (i < s.length() && (t.length() == 0 || s.charAt(i) <= t.charAt(0))) {\n                t.append(s.charAt(i++));\n            } else {\n                result.append(t.charAt(0));\n                t.deleteCharAt(0);\n            }\n        }\n        return result.toString();\n    }\n}",
+  "timestamp": "2025-08-05T15:10:24.581485",
+  "code_extracted_previous": "class Solution {\n    public String robotWithString(String s) {\n        StringBuilder t = new StringBuilder();\n        StringBuilder result = new StringBuilder();\n        int i = 0;\n        while (i < s.length() || t.length() > 0) {\n            if (i < s.length() && (t.length() == 0 || s.charAt(i) <= t.charAt(0))) {\n                t.append(s.charAt(i++));\n            } else {\n                result.append(t.charAt(0));\n                t.deleteCharAt(0);\n            }\n        }\n        return result.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.824955"
+}

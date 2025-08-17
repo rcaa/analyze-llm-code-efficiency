@@ -1,0 +1,15 @@
+{
+  "id": 2571,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int minOperations(int n) {\n        if (n == 0) return 0;\n        int low = (n & -n);\n        int high = low << 1;\n        return 1 + min(minOperations(n - low), minOperations(high - n));\n    }\n};```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n) (recursion depth)\nenergy implications: LOW\nexplanation: Recursively choose the closer of the two nearest powers of 2 (the lowest set bit or the next higher bit) and take the minimum path to zero. Each step halves the problem size, yielding logarithmic complexity.",
+  "code": "class Solution {\npublic:\n    int minOperations(int n) {\n        if (n == 0) return 0;\n        int low = (n & -n);\n        int high = low << 1;\n        return 1 + min(minOperations(n - low), minOperations(high - n));\n    }\n};",
+  "timestamp": "2025-08-06T02:29:32.195279",
+  "code_extracted_previous": "public:\n    int minOperations(int n) {\n        if (n == 0) return 0;\n        int low = (n & -n);\n        int high = low << 1;\n        return 1 + min(minOperations(n - low), minOperations(high - n));\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.771001"
+}

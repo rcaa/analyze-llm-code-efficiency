@@ -1,0 +1,15 @@
+{
+  "id": 341,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        flatten(nestedList);\n    }\n    \n    int next() {\n        if (stack.empty()) return -1;\n        return stack.top()-- > 0 ? stack.top()-- : stack.pop();\n    }\n    \n    bool hasNext() {\n        while (!stack.empty() && stack.top() == 0) {\n            stack.pop();\n        }\n        if (stack.empty()) return false;\n        return true;\n    }\n    \nprivate:\n    vector<int> stack;\n    void flatten(vector<NestedInteger> &nestedList) {\n        for (auto &ni : nestedList) {\n            if (ni.isInteger()) {\n                stack.push_back(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        flatten(nestedList);\n    }\n    \n    int next() {\n        if (stack.empty()) return -1;\n        return stack.top()-- > 0 ? stack.top()-- : stack.pop();\n    }\n    \n    bool hasNext() {\n        while (!stack.empty() && stack.top() == 0) {\n            stack.pop();\n        }\n        if (stack.empty()) return false;\n        return true;\n    }\n    \nprivate:\n    vector<int> stack;\n    void flatten(vector<NestedInteger> &nestedList) {\n        for (auto &ni : nestedList) {\n            if (ni.isInteger()) {\n                stack.push_back(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n};",
+  "timestamp": "2025-08-06T01:57:30.725996",
+  "code_extracted_previous": "class NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        flatten(nestedList);\n    }\n    \n    int next() {\n        if (stack.empty()) return -1;\n        return stack.top()-- > 0 ? stack.top()-- : stack.pop();\n    }\n    \n    bool hasNext() {\n        while (!stack.empty() && stack.top() == 0) {\n            stack.pop();\n        }\n        if (stack.empty()) return false;\n        return true;\n    }\n    \nprivate:\n    vector<int> stack;\n    void flatten(vector<NestedInteger> &nestedList) {\n        for (auto &ni : nestedList) {\n            if (ni.isInteger()) {\n                stack.push_back(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:28.406550"
+}

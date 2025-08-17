@@ -1,0 +1,15 @@
+{
+  "id": 2466,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1'000'000'007;\n        vector<int> dp(high + 1, 0);\n        dp[0] = 1;\n        for (int len = 1; len <= high; ++len) {\n            if (len >= zero) dp[len] = (dp[len] + dp[len - zero]) % MOD;\n            if (len >= one)  dp[len] = (dp[len] + dp[len - one]) % MOD;\n        }\n        int ans = 0;\n        for (int len = low; len <= high; ++len) {\n            ans = (ans + dp[len]) % MOD;\n        }\n        return ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(high)\nspace complexity: O(high)\nenergy implications: LOW\nexplanation: Uses a single dynamic-programming pass to count all strings up to length high, then sums the counts in the target range. The DP array stores the number of ways to reach each length by appending either zero '0's or one '1's.",
+  "code": "class Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1'000'000'007;\n        vector<int> dp(high + 1, 0);\n        dp[0] = 1;\n        for (int len = 1; len <= high; ++len) {\n            if (len >= zero) dp[len] = (dp[len] + dp[len - zero]) % MOD;\n            if (len >= one)  dp[len] = (dp[len] + dp[len - one]) % MOD;\n        }\n        int ans = 0;\n        for (int len = low; len <= high; ++len) {\n            ans = (ans + dp[len]) % MOD;\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T14:27:18.140779",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1'000'000'007;\n        vector<int> dp(high + 1, 0);\n        dp[0] = 1;\n        for (int len = 1; len <= high; ++len) {\n            if (len >= zero) dp[len] = (dp[len] + dp[len - zero]) % MOD;\n            if (len >= one)  dp[len] = (dp[len] + dp[len - one]) % MOD;\n        }\n        int ans = 0;\n        for (int len = low; len <= high; ++len) {\n            ans = (ans + dp[len]) % MOD;\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.729575"
+}

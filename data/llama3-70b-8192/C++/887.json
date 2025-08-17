@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = 1 + max(dp[i - 1][m - 1], dp[i][m - 1]);\n            }\n        }\n        return m;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(kn)\nspace complexity: O(kn)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to build a table of minimum moves required for each number of eggs and floors. It iteratively calculates the minimum moves by considering the maximum of breaking and not breaking the egg at each floor.",
+  "code": "class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = 1 + max(dp[i - 1][m - 1], dp[i][m - 1]);\n            }\n        }\n        return m;\n    }\n};",
+  "timestamp": "2025-08-05T15:17:04.073967",
+  "code_extracted_previous": "class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = 1 + max(dp[i - 1][m - 1], dp[i][m - 1]);\n            }\n        }\n        return m;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.137839"
+}

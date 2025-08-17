@@ -1,0 +1,15 @@
+{
+  "id": 449,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Codec {\npublic:\n\n    // Encodes a tree to a single string.\n    string serialize(TreeNode* root) {\n        if (!root) return \"X,\";\n        return to_string(root->val) + \",\" + serialize(root->left) + serialize(root->right);\n    }\n\n    // Decodes your encoded data to tree.\n    TreeNode* deserialize(string data) {\n        stringstream ss(data);\n        return deserializeHelper(ss);\n    }\n\nprivate:\n    TreeNode* deserializeHelper(stringstream& ss) {\n        string val;\n        getline(ss, val, ',');\n        if (val == \"X\") return NULL;\n        TreeNode* node = new TreeNode(stoi(val));\n        node->left = deserializeHelper(ss);\n        node->right = deserializeHelper(ss);\n        return node;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a pre-order traversal to serialize the binary search tree, and a recursive helper function to deserialize the string back into a tree.",
+  "code": "class Codec {\npublic:\n\n    // Encodes a tree to a single string.\n    string serialize(TreeNode* root) {\n        if (!root) return \"X,\";\n        return to_string(root->val) + \",\" + serialize(root->left) + serialize(root->right);\n    }\n\n    // Decodes your encoded data to tree.\n    TreeNode* deserialize(string data) {\n        stringstream ss(data);\n        return deserializeHelper(ss);\n    }\n\nprivate:\n    TreeNode* deserializeHelper(stringstream& ss) {\n        string val;\n        getline(ss, val, ',');\n        if (val == \"X\") return NULL;\n        TreeNode* node = new TreeNode(stoi(val));\n        node->left = deserializeHelper(ss);\n        node->right = deserializeHelper(ss);\n        return node;\n    }\n};",
+  "timestamp": "2025-08-05T16:48:35.961266",
+  "code_extracted_previous": "class Codec {\npublic:\n\n    // Encodes a tree to a single string.\n    string serialize(TreeNode* root) {\n        if (!root) return \"X,\";\n        return to_string(root->val) + \",\" + serialize(root->left) + serialize(root->right);\n    }\n\n    // Decodes your encoded data to tree.\n    TreeNode* deserialize(string data) {\n        stringstream ss(data);\n        return deserializeHelper(ss);\n    }\n\nprivate:\n    TreeNode* deserializeHelper(stringstream& ss) {\n        string val;\n        getline(ss, val, ',');\n        if (val == \"X\") return NULL;\n        TreeNode* node = new TreeNode(stoi(val));\n        node->left = deserializeHelper(ss);\n        node->right = deserializeHelper(ss);\n        return node;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:36.917013"
+}

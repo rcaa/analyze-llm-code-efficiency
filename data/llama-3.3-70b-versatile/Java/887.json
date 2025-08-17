@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = dp[i][m - 1] + dp[i - 1][m - 1] + 1;\n            }\n        }\n        return m;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(k * m)\nspace complexity: O(k * m)\nenergy implications: LOW\nexplanation: Dynamic programming is used to solve this problem, where dp[i][j] represents the maximum number of floors that can be checked with i eggs and j moves. The solution iteratively calculates the minimum number of moves required to check all floors with the given number of eggs.",
+  "code": "class Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = dp[i][m - 1] + dp[i - 1][m - 1] + 1;\n            }\n        }\n        return m;\n    }\n}",
+  "timestamp": "2025-08-06T15:16:20.516080",
+  "code_extracted_previous": "class Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        int m = 0;\n        while (dp[k][m] < n) {\n            m++;\n            for (int i = 1; i <= k; i++) {\n                dp[i][m] = dp[i][m - 1] + dp[i - 1][m - 1] + 1;\n            }\n        }\n        return m;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.496803"
+}

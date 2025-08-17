@@ -1,0 +1,15 @@
+{
+  "id": 1370,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    string sortString(string s) {\n        int freq[26] = {0};\n        for (char c : s) {\n            freq[c - 'a']++;\n        }\n\n        string result = \"\";\n        while (result.length() < s.length()) {\n            for (int i = 0; i < 26; i++) {\n                if (freq[i] > 0) {\n                    result += 'a' + i;\n                    freq[i]--;\n                }\n            }\n\n            for (int i = 25; i >= 0; i--) {\n                if (freq[i] > 0) {\n                    result += 'a' + i;\n                    freq[i]--;\n                }\n            }\n        }\n\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a frequency array to count occurrences of each character. It then builds the result string by first appending the smallest available characters and then the largest available characters in alternating passes until all characters are used. This approach ensures efficient sorting and construction of the result.",
+  "code": "class Solution {\npublic:\n    string sortString(string s) {\n        int freq[26] = {0};\n        for (char c : s) {\n            freq[c - 'a']++;\n        }\n\n        string result = \"\";\n        while (result.length() < s.length()) {\n            for (int i = 0; i < 26; i++) {\n                if (freq[i] > 0) {\n                    result += 'a' + i;\n                    freq[i]--;\n                }\n            }\n\n            for (int i = 25; i >= 0; i--) {\n                if (freq[i] > 0) {\n                    result += 'a' + i;\n                    freq[i]--;\n                }\n            }\n        }\n\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T02:38:28.967708",
+  "code_extracted_previous": "class Solution {\npublic:\n    string sortString(string s) {\n        int freq[26] = {0};\n        for (char c : s) {\n            freq[c - 'a']++;\n        }\n\n        string result = \"\";\n        while (result.length() < s.length()) {\n            for (int i = 0; i < 26; i++) {\n                if (freq[i] > 0) {\n                    result += 'a' + i;\n                    freq[i]--;\n                }\n            }\n\n            for (int i = 25; i >= 0; i--) {\n                if (freq[i] > 0) {\n                    result += 'a' + i;\n                    freq[i]--;\n                }\n            }\n        }\n\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:58.136374"
+}

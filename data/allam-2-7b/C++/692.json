@@ -1,0 +1,15 @@
+{
+  "id": 692,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> wordCount;\n        vector<string> result;\n\n        for (string word : words) {\n            wordCount[word]++;\n        }\n\n        int maxCount = 0;\n        for (auto count : wordCount) {\n            if (count.second > maxCount) {\n                maxCount = count.second;\n            }\n        }\n\n        for (auto count : wordCount) {\n            if (count.second == maxCount) {\n                result.push_back(count.first);\n            }\n        }\n\n        sort(result.begin(), result.end());\n        result.resize(k);\n\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n1. Create a map to store word counts.\n2. Iterate over the map to find the word with the maximum count.\n3. Iterate over the map again to find words with equal count as the maximum and add them to the result vector.\n4. Sort the result vector by frequency and then by lexicographical order.\n5. Truncate the result vector to k elements.\n6. Return the result vector. ",
+  "code": "class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> wordCount;\n        vector<string> result;\n\n        for (string word : words) {\n            wordCount[word]++;\n        }\n\n        int maxCount = 0;\n        for (auto count : wordCount) {\n            if (count.second > maxCount) {\n                maxCount = count.second;\n            }\n        }\n\n        for (auto count : wordCount) {\n            if (count.second == maxCount) {\n                result.push_back(count.first);\n            }\n        }\n\n        sort(result.begin(), result.end());\n        result.resize(k);\n\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T13:15:55.932689",
+  "code_extracted_previous": "public:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> wordCount;\n        vector<string> result;\n\n        for (string word : words) {\n            wordCount[word]++;\n        }\n\n        int maxCount = 0;\n        for (auto count : wordCount) {\n            if (count.second > maxCount) {\n                maxCount = count.second;\n            }\n        }\n\n        for (auto count : wordCount) {\n            if (count.second == maxCount) {\n                result.push_back(count.first);\n            }\n        }\n\n        sort(result.begin(), result.end());\n        result.resize(k);\n\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.119970"
+}

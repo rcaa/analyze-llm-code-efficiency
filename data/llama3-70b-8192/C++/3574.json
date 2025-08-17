@@ -1,0 +1,15 @@
+{
+  "id": 3574,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    long long maxGCDScore(vector<int>& nums, int k) {\n        int n = nums.size();\n        vector<int> gcds(n, 0);\n        gcds[0] = nums[0];\n        for (int i = 1; i < n; i++) {\n            gcds[i] = __gcd(gcds[i-1], nums[i]);\n        }\n        long long res = 0;\n        for (int i = 0; i < n; i++) {\n            long long cur = 0;\n            for (int j = i; j < n; j++) {\n                cur = max(cur, (j - i + 1) * gcds[j]);\n                if (k > 0) {\n                    cur = max(cur, (j - i + 1) * __gcd(gcds[i-1], nums[j] * 2));\n                    k--;\n                }\n            }\n            res = max(res, cur);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to store the GCD of each prefix of the array. Then, it iterates over the array and for each element, it calculates the maximum score that can be achieved by selecting a contiguous subarray ending at that element, considering the possibility of doubling the current element.",
+  "code": "class Solution {\npublic:\n    long long maxGCDScore(vector<int>& nums, int k) {\n        int n = nums.size();\n        vector<int> gcds(n, 0);\n        gcds[0] = nums[0];\n        for (int i = 1; i < n; i++) {\n            gcds[i] = __gcd(gcds[i-1], nums[i]);\n        }\n        long long res = 0;\n        for (int i = 0; i < n; i++) {\n            long long cur = 0;\n            for (int j = i; j < n; j++) {\n                cur = max(cur, (j - i + 1) * gcds[j]);\n                if (k > 0) {\n                    cur = max(cur, (j - i + 1) * __gcd(gcds[i-1], nums[j] * 2));\n                    k--;\n                }\n            }\n            res = max(res, cur);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T12:11:51.292280",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long maxGCDScore(vector<int>& nums, int k) {\n        int n = nums.size();\n        vector<int> gcds(n, 0);\n        gcds[0] = nums[0];\n        for (int i = 1; i < n; i++) {\n            gcds[i] = __gcd(gcds[i-1], nums[i]);\n        }\n        long long res = 0;\n        for (int i = 0; i < n; i++) {\n            long long cur = 0;\n            for (int j = i; j < n; j++) {\n                cur = max(cur, (j - i + 1) * gcds[j]);\n                if (k > 0) {\n                    cur = max(cur, (j - i + 1) * __gcd(gcds[i-1], nums[j] * 2));\n                    k--;\n                }\n            }\n            res = max(res, cur);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.841160"
+}

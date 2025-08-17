@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1, 0);\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int j = min(i + brainpower + 1, n);\n            dp[i] = max(dp[i + 1], points + dp[j]);\n        }\n        return dp[0];\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to solve the problem, where dp[i] represents the maximum points that can be earned from question i to the end. The solution iterates through the questions in reverse order, and for each question, it calculates the maximum points that can be earned by either solving the current question or skipping it. The maximum points are updated in the dp array, and the final result is returned as dp[0]. The time complexity is O(n), where n is the number of questions, and the space complexity is also O(n) due to the dp array. The energy implications are low since the solution only involves a single pass through the questions.",
+  "code": "class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1, 0);\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int j = min(i + brainpower + 1, n);\n            dp[i] = max(dp[i + 1], points + dp[j]);\n        }\n        return dp[0];\n    }\n};",
+  "timestamp": "2025-08-06T12:21:22.849773",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1, 0);\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int j = min(i + brainpower + 1, n);\n            dp[i] = max(dp[i + 1], points + dp[j]);\n        }\n        return dp[0];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.039420"
+}

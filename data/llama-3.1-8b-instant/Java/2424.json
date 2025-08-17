@@ -1,0 +1,15 @@
+{
+  "id": 2424,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass LUPrefix {\n    int n;\n    int lastUploaded;\n    boolean[] uploaded;\n\n    public LUPrefix(int n) {\n        this.n = n;\n        this.lastUploaded = 0;\n        this.uploaded = new boolean[n + 1];\n    }\n    \n    public void upload(int video) {\n        if (video >= lastUploaded && !uploaded[video]) {\n            lastUploaded = video;\n            while (lastUploaded <= n && uploaded[lastUploaded]) {\n                lastUploaded++;\n            }\n        }\n        uploaded[video] = true;\n    }\n    \n    public int longest() {\n        return lastUploaded - 1;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class LUPrefix {\n    int n;\n    int lastUploaded;\n    boolean[] uploaded;\n\n    public LUPrefix(int n) {\n        this.n = n;\n        this.lastUploaded = 0;\n        this.uploaded = new boolean[n + 1];\n    }\n    \n    public void upload(int video) {\n        if (video >= lastUploaded && !uploaded[video]) {\n            lastUploaded = video;\n            while (lastUploaded <= n && uploaded[lastUploaded]) {\n                lastUploaded++;\n            }\n        }\n        uploaded[video] = true;\n    }\n    \n    public int longest() {\n        return lastUploaded - 1;\n    }\n}",
+  "timestamp": "2025-08-05T15:09:46.446346",
+  "code_extracted_previous": "class LUPrefix {\n    int n;\n    int lastUploaded;\n    boolean[] uploaded;\n\n    public LUPrefix(int n) {\n        this.n = n;\n        this.lastUploaded = 0;\n        this.uploaded = new boolean[n + 1];\n    }\n    \n    public void upload(int video) {\n        if (video >= lastUploaded && !uploaded[video]) {\n            lastUploaded = video;\n            while (lastUploaded <= n && uploaded[lastUploaded]) {\n                lastUploaded++;\n            }\n        }\n        uploaded[video] = true;\n    }\n    \n    public int longest() {\n        return lastUploaded - 1;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:29.285990"
+}

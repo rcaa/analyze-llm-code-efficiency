@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int minSwapsCouples(int[] row) {\n        int n = row.length;\n        int[] partner = new int[n];\n        int[] pos = new int[n];\n        for (int i = 0; i < n; i++) {\n            partner[i] = i % 2 == 0 ? i + 1 : i - 1;\n            pos[row[i]] = i;\n        }\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            if (row[i + 1] != partner[row[i]]) {\n                int x = pos[partner[row[i]]];\n                int temp = row[i + 1];\n                row[i + 1] = row[x];\n                row[x] = temp;\n                pos[temp] = x;\n                pos[row[i + 1]] = i + 1;\n                swaps++;\n            }\n        }\n        return swaps;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a greedy approach with partner and position arrays to minimize swaps, achieving linear time complexity.\n```",
+  "code": "class Solution {\n    public int minSwapsCouples(int[] row) {\n        int n = row.length;\n        int[] partner = new int[n];\n        int[] pos = new int[n];\n        for (int i = 0; i < n; i++) {\n            partner[i] = i % 2 == 0 ? i + 1 : i - 1;\n            pos[row[i]] = i;\n        }\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            if (row[i + 1] != partner[row[i]]) {\n                int x = pos[partner[row[i]]];\n                int temp = row[i + 1];\n                row[i + 1] = row[x];\n                row[x] = temp;\n                pos[temp] = x;\n                pos[row[i + 1]] = i + 1;\n                swaps++;\n            }\n        }\n        return swaps;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a greedy approach with partner and position arrays to minimize swaps, achieving linear time complexity.",
+  "timestamp": "2025-08-05T14:30:51.068865",
+  "code_extracted_previous": "class Solution {\n    public int minSwapsCouples(int[] row) {\n        int n = row.length;\n        int[] partner = new int[n];\n        int[] pos = new int[n];\n        for (int i = 0; i < n; i++) {\n            partner[i] = i % 2 == 0 ? i + 1 : i - 1;\n            pos[row[i]] = i;\n        }\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            if (row[i + 1] != partner[row[i]]) {\n                int x = pos[partner[row[i]]];\n                int temp = row[i + 1];\n                row[i + 1] = row[x];\n                row[x] = temp;\n                pos[temp] = x;\n                pos[row[i + 1]] = i + 1;\n                swaps++;\n            }\n        }\n        return swaps;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:47.109573"
+}

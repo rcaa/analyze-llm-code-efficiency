@@ -1,0 +1,15 @@
+{
+  "id": 2911,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def minimumChanges(self, s: str, k: int) -> int:\n        n = len(s)\n        res = float('inf')\n        for d in range(1, n):\n            if n % d == 0:\n                groups = [s[i:i+d] for i in range(0, n, d)]\n                changes = sum(c1 != c2 for group in groups for c1, c2 in zip(group, group[::-1]))\n                res = min(res, changes)\n        return res if res <= k else -1\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: We iterate over all possible divisors of the string's length and for each divisor, we divide the string into groups. We then calculate the number of changes needed to make each group a palindrome and update the result with the minimum changes. If the result is less than or equal to k, we return it; otherwise, we return -1.",
+  "code": "class Solution:\n    def minimumChanges(self, s: str, k: int) -> int:\n        n = len(s)\n        res = float('inf')\n        for d in range(1, n):\n            if n % d == 0:\n                groups = [s[i:i+d] for i in range(0, n, d)]\n                changes = sum(c1 != c2 for group in groups for c1, c2 in zip(group, group[::-1]))\n                res = min(res, changes)\n        return res if res <= k else -1",
+  "timestamp": "2025-08-06T01:19:17.461926",
+  "code_extracted_previous": "class Solution:\n    def minimumChanges(self, s: str, k: int) -> int:\n        n = len(s)\n        res = float('inf')\n        for d in range(1, n):\n            if n % d == 0:\n                groups = [s[i:i+d] for i in range(0, n, d)]\n                changes = sum(c1 != c2 for group in groups for c1, c2 in zip(group, group[::-1]))\n                res = min(res, changes)\n        return res if res <= k else -1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.005110"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        last_occurrence = {char: idx for idx, char in enumerate(s)}\n        stack = []\n        seen = set()\n        \n        for idx, char in enumerate(s):\n            if char not in seen:\n                while stack and char < stack[-1] and idx < last_occurrence[stack[-1]]:\n                    seen.remove(stack.pop())\n                seen.add(char)\n                stack.append(char)\n        \n        return ''.join(stack)\n\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses a stack to track the lexicographically smallest subsequence and a set to keep track of seen characters, ensuring each character is processed once.\n```",
+  "code": "def smallestSubsequence(self, s: str) -> str:\n        last_occurrence = {char: idx for idx, char in enumerate(s)}\n        stack = []\n        seen = set()\n        \n        for idx, char in enumerate(s):\n            if char not in seen:\n                while stack and char < stack[-1] and idx < last_occurrence[stack[-1]]:\n                    seen.remove(stack.pop())\n                seen.add(char)\n                stack.append(char)\n        \n        return ''.join(stack)",
+  "timestamp": "2025-08-06T00:48:05.153603",
+  "code_extracted_previous": "class Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        last_occurrence = {char: idx for idx, char in enumerate(s)}\n        stack = []\n        seen = set()\n        \n        for idx, char in enumerate(s):\n            if char not in seen:\n                while stack and char < stack[-1] and idx < last_occurrence[stack[-1]]:\n                    seen.remove(stack.pop())\n                seen.add(char)\n                stack.append(char)\n        \n        return ''.join(stack)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.249513"
+}

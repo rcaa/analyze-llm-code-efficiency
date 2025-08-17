@@ -1,0 +1,15 @@
+{
+  "id": 581,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        int n = nums.size();\n        int max_so_far = 0, max_ending_here = 0;\n\n        for (int i = 0; i < n; i++) {\n            max_ending_here = max(nums[i], max_ending_here + nums[i]);\n            if (max_so_far < max_ending_here) {\n                max_so_far = max_ending_here;\n            }\n        }\n\n        return max_so_far;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nThe problem requires finding the shortest subarray in the given array that, if sorted, would sort the entire array in ascending order. We can solve this problem using a two-pointer approach. Initialize two pointers, max_so_far and max_ending_here, and iterate through the array. For each element, update max_ending_here to be the maximum of the current element and the sum of the previous max_ending_here and the current element. If max_so_far becomes greater than max_ending_here, update max_so_far to be max_ending_here. Finally, return max_so_far.\n\nThis solution has a time complexity of O(n) because we only iterate through the array once. The space complexity is O(1) because we only use a constant amount of space for the two pointers. The energy implications are low because the algorithm only requires a small amount of energy to run. ",
+  "code": "class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        int n = nums.size();\n        int max_so_far = 0, max_ending_here = 0;\n\n        for (int i = 0; i < n; i++) {\n            max_ending_here = max(nums[i], max_ending_here + nums[i]);\n            if (max_so_far < max_ending_here) {\n                max_so_far = max_ending_here;\n            }\n        }\n\n        return max_so_far;\n    }\n};",
+  "timestamp": "2025-08-05T13:01:48.713632",
+  "code_extracted_previous": "public:\n    int findUnsortedSubarray(vector<int>& nums) {\n        int n = nums.size();\n        int max_so_far = 0, max_ending_here = 0;\n\n        for (int i = 0; i < n; i++) {\n            max_ending_here = max(nums[i], max_ending_here + nums[i]);\n            if (max_so_far < max_ending_here) {\n                max_so_far = max_ending_here;\n            }\n        }\n\n        return max_so_far;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.067870"
+}

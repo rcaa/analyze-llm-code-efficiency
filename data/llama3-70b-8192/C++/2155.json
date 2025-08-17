@@ -1,0 +1,15 @@
+{
+  "id": 2155,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<int> maxScoreIndices(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> left(n + 1, 0), right(n + 1, 0);\n        for (int i = 0; i < n; i++) {\n            left[i + 1] = left[i] + (1 - nums[i]);\n            right[n - i - 1] = right[n - i] + nums[n - i - 1];\n        }\n        int maxScore = 0;\n        vector<int> res;\n        for (int i = 0; i <= n; i++) {\n            int score = left[i] + right[i];\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.push_back(i);\n            } else if (score == maxScore) {\n                res.push_back(i);\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses two arrays, left and right, to store the number of 0's and 1's on the left and right sides of each index. It then iterates through the arrays to find the maximum division score and the corresponding indices.",
+  "code": "class Solution {\npublic:\n    vector<int> maxScoreIndices(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> left(n + 1, 0), right(n + 1, 0);\n        for (int i = 0; i < n; i++) {\n            left[i + 1] = left[i] + (1 - nums[i]);\n            right[n - i - 1] = right[n - i] + nums[n - i - 1];\n        }\n        int maxScore = 0;\n        vector<int> res;\n        for (int i = 0; i <= n; i++) {\n            int score = left[i] + right[i];\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.push_back(i);\n            } else if (score == maxScore) {\n                res.push_back(i);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:25:37.788752",
+  "code_extracted_previous": "public:\n    vector<int> maxScoreIndices(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> left(n + 1, 0), right(n + 1, 0);\n        for (int i = 0; i < n; i++) {\n            left[i + 1] = left[i] + (1 - nums[i]);\n            right[n - i - 1] = right[n - i] + nums[n - i - 1];\n        }\n        int maxScore = 0;\n        vector<int> res;\n        for (int i = 0; i <= n; i++) {\n            int score = left[i] + right[i];\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.push_back(i);\n            } else if (score == maxScore) {\n                res.push_back(i);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.425446"
+}

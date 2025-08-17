@@ -1,0 +1,15 @@
+{
+  "id": 1910,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def removeOccurrences(self, s: str, part: str) -> str:\n        stack = []\n        part_len = len(part)\n        for char in s:\n            stack.append(char)\n            if len(stack) >= part_len and ''.join(stack[-part_len:]) == part:\n                for _ in range(part_len):\n                    stack.pop()\n        return ''.join(stack)\n\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a stack to efficiently remove occurrences of the substring by checking the end of the stack against the target substring, allowing for a linear scan through the input string with a potential linear cost for each character due to substring comparison.\n```",
+  "code": "def removeOccurrences(self, s: str, part: str) -> str:\n        stack = []\n        part_len = len(part)\n        for char in s:\n            stack.append(char)\n            if len(stack) >= part_len and ''.join(stack[-part_len:]) == part:\n                for _ in range(part_len):\n                    stack.pop()\n        return ''.join(stack)",
+  "timestamp": "2025-08-06T00:55:58.627764",
+  "code_extracted_previous": "class Solution:\n    def removeOccurrences(self, s: str, part: str) -> str:\n        stack = []\n        part_len = len(part)\n        for char in s:\n            stack.append(char)\n            if len(stack) >= part_len and ''.join(stack[-part_len:]) == part:\n                for _ in range(part_len):\n                    stack.pop()\n        return ''.join(stack)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.666689"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    Solution(int m, int n) : m(m), n(n), total(m * n) {\n        matrix.resize(m, vector<int>(n, 0));\n    }\n    \n    vector<int> flip() {\n        int idx = rand() % total;\n        total--;\n        for (int i = 0; i < m; i++) {\n            if (idx < n) {\n                if (matrix[i][idx] == 0) {\n                    matrix[i][idx] = 1;\n                    return {i, idx};\n                }\n                idx++;\n            } else {\n                idx -= n;\n            }\n        }\n        return {};\n    }\n    \n    void reset() {\n        total = m * n;\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                matrix[i][j] = 0;\n            }\n        }\n    }\nprivate:\n    int m, n, total;\n    vector<vector<int>> matrix;\n};\n```\nefficiency: HIGH\ntime complexity: O(m)\nspace complexity: O(m*n)\nenergy implications: LOW\nexplanation: The solution uses a single random number generation per flip operation and maintains a count of available cells to ensure equal likelihood of selection.",
+  "code": "class Solution {\npublic:\n    Solution(int m, int n) : m(m), n(n), total(m * n) {\n        matrix.resize(m, vector<int>(n, 0));\n    }\n    \n    vector<int> flip() {\n        int idx = rand() % total;\n        total--;\n        for (int i = 0; i < m; i++) {\n            if (idx < n) {\n                if (matrix[i][idx] == 0) {\n                    matrix[i][idx] = 1;\n                    return {i, idx};\n                }\n                idx++;\n            } else {\n                idx -= n;\n            }\n        }\n        return {};\n    }\n    \n    void reset() {\n        total = m * n;\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                matrix[i][j] = 0;\n            }\n        }\n    }\nprivate:\n    int m, n, total;\n    vector<vector<int>> matrix;\n};",
+  "timestamp": "2025-08-05T14:54:28.185013",
+  "code_extracted_previous": "class Solution {\npublic:\n    Solution(int m, int n) : m(m), n(n), total(m * n) {\n        matrix.resize(m, vector<int>(n, 0));\n    }\n    \n    vector<int> flip() {\n        int idx = rand() % total;\n        total--;\n        for (int i = 0; i < m; i++) {\n            if (idx < n) {\n                if (matrix[i][idx] == 0) {\n                    matrix[i][idx] = 1;\n                    return {i, idx};\n                }\n                idx++;\n            } else {\n                idx -= n;\n            }\n        }\n        return {};\n    }\n    \n    void reset() {\n        total = m * n;\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                matrix[i][j] = 0;\n            }\n        }\n    }\nprivate:\n    int m, n, total;\n    vector<vector<int>> matrix;\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.953436"
+}

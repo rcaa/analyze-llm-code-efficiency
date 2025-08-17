@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        Arrays.fill(dp, n);\n        dp[0] = 0;\n        for (int i = 1; i <= n; i++) {\n            char c = s.charAt(i - 1);\n            for (int j = i - 1; j >= 1; j--) {\n                if (s.charAt(j - 1) == c) {\n                    dp[i] = Math.min(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return dp[n];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        Arrays.fill(dp, n);\n        dp[0] = 0;\n        for (int i = 1; i <= n; i++) {\n            char c = s.charAt(i - 1);\n            for (int j = i - 1; j >= 1; j--) {\n                if (s.charAt(j - 1) == c) {\n                    dp[i] = Math.min(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T23:14:35.837812",
+  "code_extracted_previous": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        Arrays.fill(dp, n);\n        dp[0] = 0;\n        for (int i = 1; i <= n; i++) {\n            char c = s.charAt(i - 1);\n            for (int j = i - 1; j >= 1; j--) {\n                if (s.charAt(j - 1) == c) {\n                    dp[i] = Math.min(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.963861"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1387,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int,int>> v;\n        for(int x = lo; x <= hi; ++x){\n            long long n = x;\n            int steps = 0;\n            while(n != 1){\n                if(n & 1) n = 3*n + 1;\n                else n >>= 1;\n                ++steps;\n            }\n            v.emplace_back(steps, x);\n        }\n        nth_element(v.begin(), v.begin() + k - 1, v.end(),\n                  [](const pair<int,int>& a, const pair<int,int>& b){\n                      return a.first == b.first ? a.second < b.second : a.first < b.first;\n                  });\n        return v[k-1].second;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N log N) worst-case, O(N) average due to nth_element\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Compute power for each number in [lo, hi] with iterative Collatz steps, store (power, value) pairs, then use nth_element to find the k-th smallest pair ordered by power then value. nth_element gives linear-time average performance.",
+  "code": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int,int>> v;\n        for(int x = lo; x <= hi; ++x){\n            long long n = x;\n            int steps = 0;\n            while(n != 1){\n                if(n & 1) n = 3*n + 1;\n                else n >>= 1;\n                ++steps;\n            }\n            v.emplace_back(steps, x);\n        }\n        nth_element(v.begin(), v.begin() + k - 1, v.end(),\n                  [](const pair<int,int>& a, const pair<int,int>& b){\n                      return a.first == b.first ? a.second < b.second : a.first < b.first;\n                  });\n        return v[k-1].second;\n    }\n};",
+  "timestamp": "2025-08-05T14:26:03.330148",
+  "code_extracted_previous": "public:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int,int>> v;\n        for(int x = lo; x <= hi; ++x){\n            long long n = x;\n            int steps = 0;\n            while(n != 1){\n                if(n & 1) n = 3*n + 1;\n                else n >>= 1;\n                ++steps;\n            }\n            v.emplace_back(steps, x);\n        }\n        nth_element(v.begin(), v.begin() + k - 1, v.end(),\n                  [](const pair<int,int>& a, const pair<int,int>& b){\n                      return a.first == b.first ? a.second < b.second : a.first < b.first;\n                  });\n        return v[k-1].second;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.220544"
+}

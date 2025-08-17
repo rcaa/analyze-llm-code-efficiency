@@ -1,0 +1,15 @@
+{
+  "id": 3333,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def possibleStringCount(self, word: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = len(word)\n        dp = [[0] * (k + 1) for _ in range(n + 1)]\n        dp[0][0] = 1\n        for i in range(1, n + 1):\n            for j in range(1, min(i, k) + 1):\n                if word[i - 1] == word[i - 2]:\n                    dp[i][j] = dp[i - 1][j - 1] + dp[i - 2][j - 1] + dp[i - 3][j - 1] if i >= 3 else dp[i - 1][j - 1] + dp[i - 2][j - 1] if i >= 2 else dp[i - 1][j - 1]\n                else:\n                    dp[i][j] = dp[i - 1][j - 1]\n                dp[i][j] %= MOD\n        return sum(dp[n][j] for j in range(k, k + 1)) % MOD\n```\nefficiency: HIGH\ntime complexity: O(n*k)\nspace complexity: O(n*k)\nenergy implications: LOW\nexplanation: Dynamic programming is used to solve this problem, where dp[i][j] represents the number of possible original strings of length j that can be formed using the first i characters of the word. The final result is the sum of dp[n][j] for j in range(k, k + 1), which represents the number of possible original strings of length at least k.",
+  "code": "def possibleStringCount(self, word: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = len(word)\n        dp = [[0] * (k + 1) for _ in range(n + 1)]\n        dp[0][0] = 1\n        for i in range(1, n + 1):\n            for j in range(1, min(i, k) + 1):\n                if word[i - 1] == word[i - 2]:\n                    dp[i][j] = dp[i - 1][j - 1] + dp[i - 2][j - 1] + dp[i - 3][j - 1] if i >= 3 else dp[i - 1][j - 1] + dp[i - 2][j - 1] if i >= 2 else dp[i - 1][j - 1]\n                else:\n                    dp[i][j] = dp[i - 1][j - 1]\n                dp[i][j] %= MOD\n        return sum(dp[n][j] for j in range(k, k + 1)) % MOD\n```",
+  "timestamp": "2025-08-05T23:33:36.188863",
+  "code_extracted_previous": "class Solution:\n    def possibleStringCount(self, word: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = len(word)\n        dp = [[0] * (k + 1) for _ in range(n + 1)]\n        dp[0][0] = 1\n        for i in range(1, n + 1):\n            for j in range(1, min(i, k) + 1):\n                if word[i - 1] == word[i - 2]:\n                    dp[i][j] = dp[i - 1][j - 1] + dp[i - 2][j - 1] + dp[i - 3][j - 1] if i >= 3 else dp[i - 1][j - 1] + dp[i - 2][j - 1] if i >= 2 else dp[i - 1][j - 1]\n                else:\n                    dp[i][j] = dp[i - 1][j - 1]\n                dp[i][j] %= MOD\n        return sum(dp[n][j] for j in range(k, k + 1)) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.502797"
+}

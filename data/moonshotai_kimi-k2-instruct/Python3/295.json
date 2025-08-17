@@ -1,0 +1,15 @@
+{
+  "id": 295,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: ```class MedianFinder:\n    import heapq\n    def __init__(self):\n        self.lo = []   # max-heap (negated values)\n        self.hi = []   # min-heap\n\n    def addNum(self, num: int) -> None:\n        heapq.heappush(self.lo, -num)\n        if self.lo and self.hi and (-self.lo[0] > self.hi[0]):\n            val = -heapq.heappop(self.lo)\n            heapq.heappush(self.hi, val)\n        if len(self.lo) > len(self.hi) + 1:\n            val = -heapq.heappop(self.lo)\n            heapq.heappush(self.hi, val)\n        if len(self.hi) > len(self.lo):\n            val = heapq.heappop(self.hi)\n            heapq.heappush(self.lo, -val)\n\n    def findMedian(self) -> float:\n        if len(self.lo) > len(self.hi):\n            return float(-self.lo[0])\n        return (-self.lo[0] + self.hi[0]) / 2.0\n```\nefficiency: HIGH\ntime complexity: O(log N) addNum, O(1) findMedian\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses two heaps to maintain the lower and upper halves of the data stream. The max-heap (lo) and min-heap (hi) are balanced so their tops give the median in constant time. Each insertion triggers at most three heap operations, each O(log N).",
+  "code": "class MedianFinder:\n    def __init__(self):\n        self.lo = []   # max-heap (negated values)\n        self.hi = []   # min-heap\n\n    def addNum(self, num: int) -> None:\n        heapq.heappush(self.lo, -num)\n        if self.lo and self.hi and (-self.lo[0] > self.hi[0]):\n            val = -heapq.heappop(self.lo)\n            heapq.heappush(self.hi, val)\n        if len(self.lo) > len(self.hi) + 1:\n            val = -heapq.heappop(self.lo)\n            heapq.heappush(self.hi, val)\n        if len(self.hi) > len(self.lo):\n            val = heapq.heappop(self.hi)\n            heapq.heappush(self.lo, -val)\n\n    def findMedian(self) -> float:\n        if len(self.lo) > len(self.hi):\n            return float(-self.lo[0])\n        return (-self.lo[0] + self.hi[0]) / 2.0",
+  "timestamp": "2025-08-06T01:13:02.631321",
+  "code_extracted_previous": "import heapq\n    def __init__(self):\n        self.lo = []   # max-heap (negated values)\n        self.hi = []   # min-heap\n\n    def addNum(self, num: int) -> None:\n        heapq.heappush(self.lo, -num)\n        if self.lo and self.hi and (-self.lo[0] > self.hi[0]):\n            val = -heapq.heappop(self.lo)\n            heapq.heappush(self.hi, val)\n        if len(self.lo) > len(self.hi) + 1:\n            val = -heapq.heappop(self.lo)\n            heapq.heappush(self.hi, val)\n        if len(self.hi) > len(self.lo):\n            val = heapq.heappop(self.hi)\n            heapq.heappush(self.lo, -val)\n\n    def findMedian(self) -> float:\n        if len(self.lo) > len(self.hi):\n            return float(-self.lo[0])\n        return (-self.lo[0] + self.hi[0]) / 2.0",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:56.877994"
+}

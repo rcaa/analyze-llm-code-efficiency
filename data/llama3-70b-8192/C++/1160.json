@@ -1,0 +1,15 @@
+{
+  "id": 1160,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        vector<int> charCount(26, 0);\n        for (char c : chars) charCount[c - 'a']++;\n        \n        int res = 0;\n        for (string word : words) {\n            vector<int> wordCount(26, 0);\n            for (char c : word) wordCount[c - 'a']++;\n            bool good = true;\n            for (int i = 0; i < 26; i++) {\n                if (wordCount[i] > charCount[i]) {\n                    good = false;\n                    break;\n                }\n            }\n            if (good) res += word.size();\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(NM)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count the frequency of each character in `chars` and each word in `words`, then check if the word can be formed by characters from `chars`.",
+  "code": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        vector<int> charCount(26, 0);\n        for (char c : chars) charCount[c - 'a']++;\n        \n        int res = 0;\n        for (string word : words) {\n            vector<int> wordCount(26, 0);\n            for (char c : word) wordCount[c - 'a']++;\n            bool good = true;\n            for (int i = 0; i < 26; i++) {\n                if (wordCount[i] > charCount[i]) {\n                    good = false;\n                    break;\n                }\n            }\n            if (good) res += word.size();\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T12:38:11.699152",
+  "code_extracted_previous": "public:\n    int countCharacters(vector<string>& words, string chars) {\n        vector<int> charCount(26, 0);\n        for (char c : chars) charCount[c - 'a']++;\n        \n        int res = 0;\n        for (string word : words) {\n            vector<int> wordCount(26, 0);\n            for (char c : word) wordCount[c - 'a']++;\n            bool good = true;\n            for (int i = 0; i < 26; i++) {\n                if (wordCount[i] > charCount[i]) {\n                    good = false;\n                    break;\n                }\n            }\n            if (good) res += word.size();\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.023027"
+}

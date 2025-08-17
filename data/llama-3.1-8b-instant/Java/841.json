@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        boolean[] visited = new boolean[rooms.size()];\n        dfs(rooms, 0, visited);\n        for (boolean b : visited) {\n            if (!b) return false;\n        }\n        return true;\n    }\n    \n    private void dfs(List<List<Integer>> rooms, int room, boolean[] visited) {\n        visited[room] = true;\n        for (int key : rooms.get(room)) {\n            if (!visited[key]) dfs(rooms, key, visited);\n        }\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        boolean[] visited = new boolean[rooms.size()];\n        dfs(rooms, 0, visited);\n        for (boolean b : visited) {\n            if (!b) return false;\n        }\n        return true;\n    }\n    \n    private void dfs(List<List<Integer>> rooms, int room, boolean[] visited) {\n        visited[room] = true;\n        for (int key : rooms.get(room)) {\n            if (!visited[key]) dfs(rooms, key, visited);\n        }\n    }\n}",
+  "timestamp": "2025-08-05T14:00:37.539362",
+  "code_extracted_previous": "class Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        boolean[] visited = new boolean[rooms.size()];\n        dfs(rooms, 0, visited);\n        for (boolean b : visited) {\n            if (!b) return false;\n        }\n        return true;\n    }\n    \n    private void dfs(List<List<Integer>> rooms, int room, boolean[] visited) {\n        visited[room] = true;\n        for (int key : rooms.get(room)) {\n            if (!visited[key]) dfs(rooms, key, visited);\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:30.048334"
+}

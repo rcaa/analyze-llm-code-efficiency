@@ -1,0 +1,15 @@
+{
+  "id": 1845,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nimport heapq\n\nclass SeatManager:\n\n    def __init__(self, n: int):\n        self.available = list(range(1, n + 1))\n        heapq.heapify(self.available)\n\n    def reserve(self) -> int:\n        return heapq.heappop(self.available)\n\n    def unreserve(self, seatNumber: int) -> None:\n        heapq.heappush(self.available, seatNumber)\n```\nefficiency: HIGH\ntime complexity: O(log n) for reserve and unreserve\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a min-heap to efficiently manage available seats. The smallest-numbered seat is always at the top of the heap for quick retrieval during reservation. Unreserving a seat simply pushes it back into the heap, maintaining the heap property. This ensures optimal performance for both operations.",
+  "code": "class SeatManager:\n\n    def __init__(self, n: int):\n        self.available = list(range(1, n + 1))\n        heapq.heapify(self.available)\n\n    def reserve(self) -> int:\n        return heapq.heappop(self.available)\n\n    def unreserve(self, seatNumber: int) -> None:\n        heapq.heappush(self.available, seatNumber)",
+  "timestamp": "2025-08-06T15:34:12.105941",
+  "code_extracted_previous": "import heapq\n\nclass SeatManager:\n\n    def __init__(self, n: int):\n        self.available = list(range(1, n + 1))\n        heapq.heapify(self.available)\n\n    def reserve(self) -> int:\n        return heapq.heappop(self.available)\n\n    def unreserve(self, seatNumber: int) -> None:\n        heapq.heappush(self.available, seatNumber)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:04.303574"
+}

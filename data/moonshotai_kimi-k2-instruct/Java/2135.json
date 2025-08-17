@@ -1,0 +1,15 @@
+{
+  "id": 2135,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int wordCount(String[] startWords, String[] targetWords) {\n        java.util.Set<Integer> set = new java.util.HashSet<>();\n        for (String w : startWords) {\n            int mask = 0;\n            for (char c : w.toCharArray()) mask |= 1 << (c - 'a');\n            set.add(mask);\n        }\n        int res = 0;\n        for (String w : targetWords) {\n            int mask = 0;\n            for (char c : w.toCharArray()) mask |= 1 << (c - 'a');\n            for (char c : w.toCharArray()) {\n                int prev = mask ^ (1 << (c - 'a'));\n                if (set.contains(prev)) {\n                    res++;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N*26 + M*26)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Represent each word as a 26-bit mask. Store all start masks in a hash set. For each target mask, check if removing any single bit yields a mask present in the set. This avoids sorting and uses O(1) lookups.",
+  "code": "class Solution {\n    public int wordCount(String[] startWords, String[] targetWords) {\n        java.util.Set<Integer> set = new java.util.HashSet<>();\n        for (String w : startWords) {\n            int mask = 0;\n            for (char c : w.toCharArray()) mask |= 1 << (c - 'a');\n            set.add(mask);\n        }\n        int res = 0;\n        for (String w : targetWords) {\n            int mask = 0;\n            for (char c : w.toCharArray()) mask |= 1 << (c - 'a');\n            for (char c : w.toCharArray()) {\n                int prev = mask ^ (1 << (c - 'a'));\n                if (set.contains(prev)) {\n                    res++;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:23:26.130142",
+  "code_extracted_previous": "class Solution {\n    public int wordCount(String[] startWords, String[] targetWords) {\n        java.util.Set<Integer> set = new java.util.HashSet<>();\n        for (String w : startWords) {\n            int mask = 0;\n            for (char c : w.toCharArray()) mask |= 1 << (c - 'a');\n            set.add(mask);\n        }\n        int res = 0;\n        for (String w : targetWords) {\n            int mask = 0;\n            for (char c : w.toCharArray()) mask |= 1 << (c - 'a');\n            for (char c : w.toCharArray()) {\n                int prev = mask ^ (1 << (c - 'a'));\n                if (set.contains(prev)) {\n                    res++;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.755928"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1702,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def maximumBinaryString(self, binary: str) -> str:\n        n = len(binary)\n        if n < 2:\n            return binary\n        cnt0 = binary.count('0')\n        if cnt0 < 2:\n            return binary\n        first0 = binary.find('0')\n        res = ['1'] * n\n        res[first0 + cnt0 - 1] = '0'\n        return ''.join(res)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The key insight is that any sequence of operations can be reduced to moving all zeros to the right and leaving at most one zero. The optimal string has a single zero at position (first_zero_index + zero_count - 1) and all other positions as '1'. This is achieved by counting zeros and their first occurrence, then constructing the result directly.",
+  "code": "class Solution:\n    def maximumBinaryString(self, binary: str) -> str:\n        n = len(binary)\n        if n < 2:\n            return binary\n        cnt0 = binary.count('0')\n        if cnt0 < 2:\n            return binary\n        first0 = binary.find('0')\n        res = ['1'] * n\n        res[first0 + cnt0 - 1] = '0'\n        return ''.join(res)",
+  "timestamp": "2025-08-06T00:55:31.172741",
+  "code_extracted_previous": "class Solution:\n    def maximumBinaryString(self, binary: str) -> str:\n        n = len(binary)\n        if n < 2:\n            return binary\n        cnt0 = binary.count('0')\n        if cnt0 < 2:\n            return binary\n        first0 = binary.find('0')\n        res = ['1'] * n\n        res[first0 + cnt0 - 1] = '0'\n        return ''.join(res)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.345980"
+}

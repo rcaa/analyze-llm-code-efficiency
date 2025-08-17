@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        int[] freq1 = new int[26];\n        int[] freq2 = new int[26];\n\n        for (char c : s1.toCharArray()) {\n            freq1[c - 'a']++;\n        }\n\n        for (char c : s2.toCharArray()) {\n            freq2[c - 'a']--;\n            if (freq2 < 0) {\n                return false;\n            }\n        }\n\n        for (int i = 0; i < s1.length(); i++) {\n            if (freq1[s1.charAt(i) - 'a'] == 0) {\n                return false;\n            }\n            freq1[s1.charAt(i) - 'a']--;\n        }\n\n        return true;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\n1. Create two arrays, freq1 and freq2, to store the frequency of characters in s1 and s2, respectively.\n2. Iterate through s2 and decrement the frequency of each character in freq2. If the frequency becomes negative, it means s2 does not contain all characters from s1, so return false.\n3. Iterate through s1 and decrement the frequency of each character in freq1. If the frequency becomes zero, it means s2 does not contain all characters from s1, so return false.\n4. If both steps above return true, then s2 contains a permutation of s1, so return true. ",
+  "code": "class Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        int[] freq1 = new int[26];\n        int[] freq2 = new int[26];\n\n        for (char c : s1.toCharArray()) {\n            freq1[c - 'a']++;\n        }\n\n        for (char c : s2.toCharArray()) {\n            freq2[c - 'a']--;\n            if (freq2 < 0) {\n                return false;\n            }\n        }\n\n        for (int i = 0; i < s1.length(); i++) {\n            if (freq1[s1.charAt(i) - 'a'] == 0) {\n                return false;\n            }\n            freq1[s1.charAt(i) - 'a']--;\n        }\n\n        return true;\n    }\n}",
+  "timestamp": "2025-08-05T14:56:03.079318",
+  "code_extracted_previous": "class Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        int[] freq1 = new int[26];\n        int[] freq2 = new int[26];\n\n        for (char c : s1.toCharArray()) {\n            freq1[c - 'a']++;\n        }\n\n        for (char c : s2.toCharArray()) {\n            freq2[c - 'a']--;\n            if (freq2 < 0) {\n                return false;\n            }\n        }\n\n        for (int i = 0; i < s1.length(); i++) {\n            if (freq1[s1.charAt(i) - 'a'] == 0) {\n                return false;\n            }\n            freq1[s1.charAt(i) - 'a']--;\n        }\n\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.792941"
+}

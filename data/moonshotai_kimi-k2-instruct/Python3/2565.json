@@ -1,0 +1,15 @@
+{
+  "id": 2565,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def minimumScore(self, s: str, t: str) -> int:\n        n, m = len(s), len(t)\n        left = [-1] * m\n        j = 0\n        for i in range(n):\n            if j < m and s[i] == t[j]:\n                left[j] = i\n                j += 1\n        if j == m:\n            return 0\n        right = [-1] * m\n        j = m - 1\n        for i in range(n - 1, -1, -1):\n            if j >= 0 and s[i] == t[j]:\n                right[j] = i\n                j -= 1\n        res = m\n        k = 0\n        for i in range(m + 1):\n            while k < m and (i > k or left[i] == -1 or (k < m and right[k] != -1 and left[i] >= right[k])):\n                k += 1\n            res = min(res, k - i)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: Precompute the earliest positions in s that match prefixes of t (left array) and the latest positions that match suffixes (right array). Then use a sliding window to find the smallest segment of t to remove so the remaining parts form a subsequence of s.",
+  "code": "class Solution:\n    def minimumScore(self, s: str, t: str) -> int:\n        n, m = len(s), len(t)\n        left = [-1] * m\n        j = 0\n        for i in range(n):\n            if j < m and s[i] == t[j]:\n                left[j] = i\n                j += 1\n        if j == m:\n            return 0\n        right = [-1] * m\n        j = m - 1\n        for i in range(n - 1, -1, -1):\n            if j >= 0 and s[i] == t[j]:\n                right[j] = i\n                j -= 1\n        res = m\n        k = 0\n        for i in range(m + 1):\n            while k < m and (i > k or left[i] == -1 or (k < m and right[k] != -1 and left[i] >= right[k])):\n                k += 1\n            res = min(res, k - i)\n        return res",
+  "timestamp": "2025-08-06T02:33:20.488292",
+  "code_extracted_previous": "class Solution:\n    def minimumScore(self, s: str, t: str) -> int:\n        n, m = len(s), len(t)\n        left = [-1] * m\n        j = 0\n        for i in range(n):\n            if j < m and s[i] == t[j]:\n                left[j] = i\n                j += 1\n        if j == m:\n            return 0\n        right = [-1] * m\n        j = m - 1\n        for i in range(n - 1, -1, -1):\n            if j >= 0 and s[i] == t[j]:\n                right[j] = i\n                j -= 1\n        res = m\n        k = 0\n        for i in range(m + 1):\n            while k < m and (i > k or left[i] == -1 or (k < m and right[k] != -1 and left[i] >= right[k])):\n                k += 1\n            res = min(res, k - i)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.744569"
+}

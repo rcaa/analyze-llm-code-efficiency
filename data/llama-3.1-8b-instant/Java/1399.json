@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37];\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int temp = i;\n            while (temp > 0) {\n                sum += temp % 10;\n                temp /= 10;\n            }\n            count[sum]++;\n        }\n        int max = 0;\n        int res = 0;\n        for (int i = 0; i < 37; i++) {\n            if (count[i] > max) {\n                max = count[i];\n                res = 1;\n            } else if (count[i] == max) {\n                res++;\n            }\n        }\n        return res;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a single pass through the numbers from 1 to n to calculate the sum of digits for each number and store the count in an array. Then it iterates through the array to find the maximum count and the number of groups with this maximum count. The space complexity is O(1) because the size of the array is fixed and does not depend on the input n.",
+  "code": "class Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37];\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int temp = i;\n            while (temp > 0) {\n                sum += temp % 10;\n                temp /= 10;\n            }\n            count[sum]++;\n        }\n        int max = 0;\n        int res = 0;\n        for (int i = 0; i < 37; i++) {\n            if (count[i] > max) {\n                max = count[i];\n                res = 1;\n            } else if (count[i] == max) {\n                res++;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:43:18.986726",
+  "code_extracted_previous": "class Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37];\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int temp = i;\n            while (temp > 0) {\n                sum += temp % 10;\n                temp /= 10;\n            }\n            count[sum]++;\n        }\n        int max = 0;\n        int res = 0;\n        for (int i = 0; i < 37; i++) {\n            if (count[i] > max) {\n                max = count[i];\n                res = 1;\n            } else if (count[i] == max) {\n                res++;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.970175"
+}

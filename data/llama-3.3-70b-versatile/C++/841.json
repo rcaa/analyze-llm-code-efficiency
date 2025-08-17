@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        visited[0] = true;\n        stack<int> s;\n        s.push(0);\n        \n        while (!s.empty()) {\n            int room = s.top();\n            s.pop();\n            for (int key : rooms[room]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    s.push(key);\n                }\n            }\n        }\n        \n        for (bool v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a depth-first search (DFS) approach with a stack to traverse the rooms and keys, marking visited rooms to avoid revisiting and ensuring all rooms are accessible.",
+  "code": "class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        visited[0] = true;\n        stack<int> s;\n        s.push(0);\n        \n        while (!s.empty()) {\n            int room = s.top();\n            s.pop();\n            for (int key : rooms[room]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    s.push(key);\n                }\n            }\n        }\n        \n        for (bool v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-06T15:11:47.739731",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        visited[0] = true;\n        stack<int> s;\n        s.push(0);\n        \n        while (!s.empty()) {\n            int room = s.top();\n            s.pop();\n            for (int key : rooms[room]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    s.push(key);\n                }\n            }\n        }\n        \n        for (bool v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.089670"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3080,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        n = len(nums)\n        marked = [False] * n\n        unmarked_sum = sum(nums)\n        \n        result = []\n        for index, k in queries:\n            index -= 1\n            if not marked[index]:\n                marked[index] = True\n                unmarked_sum -= nums[index]\n            unmarked = sorted((i, num) for i, num in enumerate(nums) if not marked[i])\n            unmarked = [num for i, num in unmarked if i < k]\n            marked.extend([True] * len(unmarked))\n            unmarked_sum -= sum(unmarked)\n            result.append(unmarked_sum)\n        return result\n```\n\nefficiency: HIGH\ntime complexity: O(m * n log n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution uses a two-pointer approach to efficiently mark the elements in the array. It first sorts the unmarked elements by their indices and then marks the smallest unmarked elements. The time complexity is O(m * n log n) due to the sorting operation, and the space complexity is O(n) for the marked array.",
+  "code": "class Solution:\n    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        n = len(nums)\n        marked = [False] * n\n        unmarked_sum = sum(nums)\n        \n        result = []\n        for index, k in queries:\n            index -= 1\n            if not marked[index]:\n                marked[index] = True\n                unmarked_sum -= nums[index]\n            unmarked = sorted((i, num) for i, num in enumerate(nums) if not marked[i])\n            unmarked = [num for i, num in unmarked if i < k]\n            marked.extend([True] * len(unmarked))\n            unmarked_sum -= sum(unmarked)\n            result.append(unmarked_sum)\n        return result",
+  "timestamp": "2025-08-05T13:35:09.059136",
+  "code_extracted_previous": "class Solution:\n    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        n = len(nums)\n        marked = [False] * n\n        unmarked_sum = sum(nums)\n        \n        result = []\n        for index, k in queries:\n            index -= 1\n            if not marked[index]:\n                marked[index] = True\n                unmarked_sum -= nums[index]\n            unmarked = sorted((i, num) for i, num in enumerate(nums) if not marked[i])\n            unmarked = [num for i, num in unmarked if i < k]\n            marked.extend([True] * len(unmarked))\n            unmarked_sum -= sum(unmarked)\n            result.append(unmarked_sum)\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.059228"
+}

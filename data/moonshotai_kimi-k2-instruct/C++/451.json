@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    string frequencySort(string s) {\n        int freq[128] = {0};\n        for (char c : s) ++freq[c];\n        \n        vector<pair<int,char>> v;\n        for (int i = 0; i < 128; ++i)\n            if (freq[i]) v.emplace_back(freq[i], i);\n        \n        sort(v.begin(), v.end(), [](const auto& a, const auto& b) {\n            return a.first > b.first;\n        });\n        \n        string res;\n        res.reserve(s.size());\n        for (const auto& p : v)\n            res.append(p.first, p.second);\n        \n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n + k log k) where k ≤ 128\nspace complexity: O(k) where k ≤ 128\nenergy implications: LOW\nexplanation: Count frequencies with a fixed-size array, sort the 128 possible characters by frequency, then build the result string by repeating each character its frequency times.",
+  "code": "class Solution {\npublic:\n    string frequencySort(string s) {\n        int freq[128] = {0};\n        for (char c : s) ++freq[c];\n        \n        vector<pair<int,char>> v;\n        for (int i = 0; i < 128; ++i)\n            if (freq[i]) v.emplace_back(freq[i], i);\n        \n        sort(v.begin(), v.end(), [](const auto& a, const auto& b) {\n            return a.first > b.first;\n        });\n        \n        string res;\n        res.reserve(s.size());\n        for (const auto& p : v)\n            res.append(p.first, p.second);\n        \n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T02:30:04.551242",
+  "code_extracted_previous": "class Solution {\npublic:\n    string frequencySort(string s) {\n        int freq[128] = {0};\n        for (char c : s) ++freq[c];\n        \n        vector<pair<int,char>> v;\n        for (int i = 0; i < 128; ++i)\n            if (freq[i]) v.emplace_back(freq[i], i);\n        \n        sort(v.begin(), v.end(), [](const auto& a, const auto& b) {\n            return a.first > b.first;\n        });\n        \n        string res;\n        res.reserve(s.size());\n        for (const auto& p : v)\n            res.append(p.first, p.second);\n        \n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.115009"
+}

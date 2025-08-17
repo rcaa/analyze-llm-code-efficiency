@@ -1,0 +1,15 @@
+{
+  "id": 1190,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    string reverseParentheses(string s) {\n        stack<string> st;\n        st.push(\"\");\n        for (char c : s) {\n            if (c == '(') {\n                st.push(\"\");\n            } else if (c == ')') {\n                string t = st.top();\n                st.pop();\n                reverse(t.begin(), t.end());\n                st.top() += t;\n            } else {\n                st.top() += c;\n            }\n        }\n        return st.top();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a stack to build segments; each segment is reversed exactly once when its closing parenthesis is encountered, giving linear time and space.",
+  "code": "class Solution {\npublic:\n    string reverseParentheses(string s) {\n        stack<string> st;\n        st.push(\"\");\n        for (char c : s) {\n            if (c == '(') {\n                st.push(\"\");\n            } else if (c == ')') {\n                string t = st.top();\n                st.pop();\n                reverse(t.begin(), t.end());\n                st.top() += t;\n            } else {\n                st.top() += c;\n            }\n        }\n        return st.top();\n    }\n};",
+  "timestamp": "2025-08-06T00:49:56.076573",
+  "code_extracted_previous": "public:\n    string reverseParentheses(string s) {\n        stack<string> st;\n        st.push(\"\");\n        for (char c : s) {\n            if (c == '(') {\n                st.push(\"\");\n            } else if (c == ')') {\n                string t = st.top();\n                st.pop();\n                reverse(t.begin(), t.end());\n                st.top() += t;\n            } else {\n                st.top() += c;\n            }\n        }\n        return st.top();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.157798"
+}

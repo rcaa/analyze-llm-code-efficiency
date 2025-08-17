@@ -1,0 +1,15 @@
+{
+  "id": 3337,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Solution:\n    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:\n        MOD = 10**9 + 7\n        result = list(s)\n        for _ in range(t):\n            new_result = []\n            for char in result:\n                shift = nums[ord(char) - ord('a')]\n                new_char = chr((ord(char) - ord('a') + shift) % 26 + ord('a'))\n                new_result.append(new_char)\n            result = new_result\n        return len(''.join(result)) % MOD\n```\n\nefficiency: HIGH\ntime complexity: O(n*t)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution:\n    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:\n        MOD = 10**9 + 7\n        result = list(s)\n        for _ in range(t):\n            new_result = []\n            for char in result:\n                shift = nums[ord(char) - ord('a')]\n                new_char = chr((ord(char) - ord('a') + shift) % 26 + ord('a'))\n                new_result.append(new_char)\n            result = new_result\n        return len(''.join(result)) % MOD",
+  "timestamp": "2025-08-05T14:41:29.499242",
+  "code_extracted_previous": "class Solution:\n    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:\n        MOD = 10**9 + 7\n        result = list(s)\n        for _ in range(t):\n            new_result = []\n            for char in result:\n                shift = nums[ord(char) - ord('a')]\n                new_char = chr((ord(char) - ord('a') + shift) % 26 + ord('a'))\n                new_result.append(new_char)\n            result = new_result\n        return len(''.join(result)) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.139676"
+}

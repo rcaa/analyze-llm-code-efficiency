@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def numberOfWays(self, n: int, x: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, n + 1):\n            j = 1\n            while j ** x <= i:\n                dp[i] = (dp[i] + dp[i - j ** x]) % MOD\n                j += 1\n        return dp[n]\n```\nefficiency: HIGH\ntime complexity: O(n^(1 + 1/x))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to store the number of ways to express each number up to n as the sum of the xth power of unique positive integers, reducing redundant calculations and improving efficiency.",
+  "code": "def numberOfWays(self, n: int, x: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, n + 1):\n            j = 1\n            while j ** x <= i:\n                dp[i] = (dp[i] + dp[i - j ** x]) % MOD\n                j += 1\n        return dp[n]\n```",
+  "timestamp": "2025-08-06T15:19:13.572432",
+  "code_extracted_previous": "class Solution:\n    def numberOfWays(self, n: int, x: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        for i in range(1, n + 1):\n            j = 1\n            while j ** x <= i:\n                dp[i] = (dp[i] + dp[i - j ** x]) % MOD\n                j += 1\n        return dp[n]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.367950"
+}

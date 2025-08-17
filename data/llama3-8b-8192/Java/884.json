@@ -1,0 +1,15 @@
+{
+  "id": 884,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public String[] uncommonFromSentences(String s1, String s2) {\n        Map<String, Integer> map = new HashMap<>();\n        String[] s1Array = s1.split(\" \");\n        String[] s2Array = s2.split(\" \");\n        \n        for (String word : s1Array) {\n            map.put(word, map.getOrDefault(word, 0) + 1);\n        }\n        \n        for (String word : s2Array) {\n            map.put(word, map.getOrDefault(word, 0) + 1);\n        }\n        \n        List<String> result = new ArrayList<>();\n        for (Map.Entry<String, Integer> entry : map.entrySet()) {\n            if (entry.getValue() == 1) {\n                result.add(entry.getKey());\n            }\n        }\n        \n        return result.toArray(new String[0]);\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a HashMap to count the frequency of each word in both sentences. Then, it iterates over the map to find the words that appear only once and adds them to the result list. The time complexity is O(n) because we iterate over the sentences twice and the space complexity is also O(n) because we store the frequency of each word in the map.",
+  "code": "class Solution {\n    public String[] uncommonFromSentences(String s1, String s2) {\n        Map<String, Integer> map = new HashMap<>();\n        String[] s1Array = s1.split(\" \");\n        String[] s2Array = s2.split(\" \");\n        \n        for (String word : s1Array) {\n            map.put(word, map.getOrDefault(word, 0) + 1);\n        }\n        \n        for (String word : s2Array) {\n            map.put(word, map.getOrDefault(word, 0) + 1);\n        }\n        \n        List<String> result = new ArrayList<>();\n        for (Map.Entry<String, Integer> entry : map.entrySet()) {\n            if (entry.getValue() == 1) {\n                result.add(entry.getKey());\n            }\n        }\n        \n        return result.toArray(new String[0]);\n    }\n}",
+  "timestamp": "2025-08-05T14:41:31.224744",
+  "code_extracted_previous": "public String[] uncommonFromSentences(String s1, String s2) {\n        Map<String, Integer> map = new HashMap<>();\n        String[] s1Array = s1.split(\" \");\n        String[] s2Array = s2.split(\" \");\n        \n        for (String word : s1Array) {\n            map.put(word, map.getOrDefault(word, 0) + 1);\n        }\n        \n        for (String word : s2Array) {\n            map.put(word, map.getOrDefault(word, 0) + 1);\n        }\n        \n        List<String> result = new ArrayList<>();\n        for (Map.Entry<String, Integer> entry : map.entrySet()) {\n            if (entry.getValue() == 1) {\n                result.add(entry.getKey());\n            }\n        }\n        \n        return result.toArray(new String[0]);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:43.069528"
+}

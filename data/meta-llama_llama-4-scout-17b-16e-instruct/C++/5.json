@@ -1,0 +1,15 @@
+{
+  "id": 5,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string longestPalindrome(string s) {\n        string longest = \"\";\n        for (int i = 0; i < s.length(); i++) {\n            string odd = expandAroundCenter(s, i, i);\n            string even = expandAroundCenter(s, i, i + 1);\n            if (odd.length() > longest.length()) longest = odd;\n            if (even.length() > longest.length()) longest = even;\n        }\n        return longest;\n    }\n    \n    string expandAroundCenter(string s, int left, int right) {\n        while (left >= 0 && right < s.length() && s[left] == s[right]) {\n            left--;\n            right++;\n        }\n        return s.substr(left + 1, right - left - 1);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution expands around the center of potential palindromes, treating each character as a potential center and checking for both odd and even length palindromes. This approach minimizes the number of string operations and comparisons.",
+  "code": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        string longest = \"\";\n        for (int i = 0; i < s.length(); i++) {\n            string odd = expandAroundCenter(s, i, i);\n            string even = expandAroundCenter(s, i, i + 1);\n            if (odd.length() > longest.length()) longest = odd;\n            if (even.length() > longest.length()) longest = even;\n        }\n        return longest;\n    }\n    \n    string expandAroundCenter(string s, int left, int right) {\n        while (left >= 0 && right < s.length() && s[left] == s[right]) {\n            left--;\n            right++;\n        }\n        return s.substr(left + 1, right - left - 1);\n    }\n};",
+  "timestamp": "2025-08-06T01:33:46.369477",
+  "code_extracted_previous": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        string longest = \"\";\n        for (int i = 0; i < s.length(); i++) {\n            string odd = expandAroundCenter(s, i, i);\n            string even = expandAroundCenter(s, i, i + 1);\n            if (odd.length() > longest.length()) longest = odd;\n            if (even.length() > longest.length()) longest = even;\n        }\n        return longest;\n    }\n    \n    string expandAroundCenter(string s, int left, int right) {\n        while (left >= 0 && right < s.length() && s[left] == s[right]) {\n            left--;\n            right++;\n        }\n        return s.substr(left + 1, right - left - 1);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.700361"
+}

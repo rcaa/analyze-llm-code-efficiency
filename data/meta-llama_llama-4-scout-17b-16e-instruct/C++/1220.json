@@ -1,0 +1,15 @@
+{
+  "id": 1220,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int countVowelPermutation(int n) {\n        const int MOD = 1e9 + 7;\n        vector<long long> dp(5, 1);\n        vector<vector<int>> next = {{1}, {0, 2}, {0, 1, 3, 4}, {3, 4}, {0}};\n        \n        for (int _ = 1; _ < n; ++_) {\n            vector<long long> newDp(5, 0);\n            for (int j = 0; j < 5; ++j) {\n                for (int k : next[j]) {\n                    newDp[k] = (newDp[k] + dp[j]) % MOD;\n                }\n            }\n            dp = newDp;\n        }\n        \n        long long res = 0;\n        for (int i = 0; i < 5; ++i) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Dynamic programming with memoization to track vowel transitions efficiently.",
+  "code": "class Solution {\npublic:\n    int countVowelPermutation(int n) {\n        const int MOD = 1e9 + 7;\n        vector<long long> dp(5, 1);\n        vector<vector<int>> next = {{1}, {0, 2}, {0, 1, 3, 4}, {3, 4}, {0}};\n        \n        for (int _ = 1; _ < n; ++_) {\n            vector<long long> newDp(5, 0);\n            for (int j = 0; j < 5; ++j) {\n                for (int k : next[j]) {\n                    newDp[k] = (newDp[k] + dp[j]) % MOD;\n                }\n            }\n            dp = newDp;\n        }\n        \n        long long res = 0;\n        for (int i = 0; i < 5; ++i) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:17:26.921425",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countVowelPermutation(int n) {\n        const int MOD = 1e9 + 7;\n        vector<long long> dp(5, 1);\n        vector<vector<int>> next = {{1}, {0, 2}, {0, 1, 3, 4}, {3, 4}, {0}};\n        \n        for (int _ = 1; _ < n; ++_) {\n            vector<long long> newDp(5, 0);\n            for (int j = 0; j < 5; ++j) {\n                for (int k : next[j]) {\n                    newDp[k] = (newDp[k] + dp[j]) % MOD;\n                }\n            }\n            dp = newDp;\n        }\n        \n        long long res = 0;\n        for (int i = 0; i < 5; ++i) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.661974"
+}

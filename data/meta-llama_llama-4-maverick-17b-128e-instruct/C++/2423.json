@@ -1,0 +1,15 @@
+{
+  "id": 2423,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) freq[c]++;\n        \n        unordered_map<int, int> count;\n        for (auto& f : freq) count[f.second]++;\n        \n        if (count.size() == 1) {\n            int f = freq.begin()->second;\n            return f == 1 || count[f - 1] == 1;\n        }\n        \n        if (count.size() != 2) return false;\n        \n        auto it = count.begin();\n        int f1 = it->first, c1 = it->second;\n        it++;\n        int f2 = it->first, c2 = it->second;\n        \n        return (f1 == 1 && c1 == 1) || (f2 == 1 && c2 == 1) || (f1 - 1 == f2 && c2 == 1) || (f2 - 1 == f1 && c1 == 1);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution works by first counting the frequency of each character, then counting the frequency of these frequencies. It checks if it's possible to make all frequencies equal by removing one character, considering cases where there's one or two different frequencies.",
+  "code": "class Solution {\npublic:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) freq[c]++;\n        \n        unordered_map<int, int> count;\n        for (auto& f : freq) count[f.second]++;\n        \n        if (count.size() == 1) {\n            int f = freq.begin()->second;\n            return f == 1 || count[f - 1] == 1;\n        }\n        \n        if (count.size() != 2) return false;\n        \n        auto it = count.begin();\n        int f1 = it->first, c1 = it->second;\n        it++;\n        int f2 = it->first, c2 = it->second;\n        \n        return (f1 == 1 && c1 == 1) || (f2 == 1 && c2 == 1) || (f1 - 1 == f2 && c2 == 1) || (f2 - 1 == f1 && c1 == 1);\n    }\n};",
+  "timestamp": "2025-08-05T14:47:11.460460",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool equalFrequency(string word) {\n        unordered_map<char, int> freq;\n        for (char c : word) freq[c]++;\n        \n        unordered_map<int, int> count;\n        for (auto& f : freq) count[f.second]++;\n        \n        if (count.size() == 1) {\n            int f = freq.begin()->second;\n            return f == 1 || count[f - 1] == 1;\n        }\n        \n        if (count.size() != 2) return false;\n        \n        auto it = count.begin();\n        int f1 = it->first, c1 = it->second;\n        it++;\n        int f2 = it->first, c2 = it->second;\n        \n        return (f1 == 1 && c1 == 1) || (f2 == 1 && c2 == 1) || (f1 - 1 == f2 && c2 == 1) || (f2 - 1 == f1 && c1 == 1);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.229813"
+}

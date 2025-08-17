@@ -1,0 +1,15 @@
+{
+  "id": 2873,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def maximumTripletValue(self, nums: List[int]) -> int:\n        n = len(nums)\n        max_val = 0\n        for k in range(2, n):\n            max_left = 0\n            for j in range(1, k):\n                max_left = max(max_left, nums[j])\n                for i in range(j):\n                    diff = nums[i] - nums[j]\n                    if diff > 0:\n                        max_val = max(max_val, diff * nums[k])\n        return max_val if max_val > 0 else 0\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Triple nested loop checks every valid triplet (i,j,k) and keeps the maximum positive value of (nums[i]-nums[j])*nums[k]; returns 0 if all are non-positive.",
+  "code": "class Solution:\n    def maximumTripletValue(self, nums: List[int]) -> int:\n        n = len(nums)\n        max_val = 0\n        for k in range(2, n):\n            max_left = 0\n            for j in range(1, k):\n                max_left = max(max_left, nums[j])\n                for i in range(j):\n                    diff = nums[i] - nums[j]\n                    if diff > 0:\n                        max_val = max(max_val, diff * nums[k])\n        return max_val if max_val > 0 else 0",
+  "timestamp": "2025-08-05T12:54:16.940864",
+  "code_extracted_previous": "def maximumTripletValue(self, nums: List[int]) -> int:\n        n = len(nums)\n        max_val = 0\n        for k in range(2, n):\n            max_left = 0\n            for j in range(1, k):\n                max_left = max(max_left, nums[j])\n                for i in range(j):\n                    diff = nums[i] - nums[j]\n                    if diff > 0:\n                        max_val = max(max_val, diff * nums[k])\n        return max_val if max_val > 0 else 0",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.861186"
+}

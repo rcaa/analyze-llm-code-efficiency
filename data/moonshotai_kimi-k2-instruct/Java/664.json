@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        if (n == 0) return 0;\n        int[][] dp = new int[n][n];\n        for (int i = 0; i < n; i++) dp[i][i] = 1;\n        for (int len = 2; len <= n; len++) {\n            for (int l = 0; l <= n - len; l++) {\n                int r = l + len - 1;\n                dp[l][r] = dp[l][r - 1] + 1;\n                for (int k = l; k < r; k++) {\n                    if (s.charAt(k) == s.charAt(r)) {\n                        dp[l][r] = Math.min(dp[l][r], dp[l][k] + dp[k + 1][r - 1]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n^2)\nenergy implications: LOW\nexplanation: Uses dynamic programming on substrings; dp[l][r] stores the minimum prints for substring s[l..r]. When s[k] == s[r], the same print stroke can cover both positions, reducing the count.",
+  "code": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        if (n == 0) return 0;\n        int[][] dp = new int[n][n];\n        for (int i = 0; i < n; i++) dp[i][i] = 1;\n        for (int len = 2; len <= n; len++) {\n            for (int l = 0; l <= n - len; l++) {\n                int r = l + len - 1;\n                dp[l][r] = dp[l][r - 1] + 1;\n                for (int k = l; k < r; k++) {\n                    if (s.charAt(k) == s.charAt(r)) {\n                        dp[l][r] = Math.min(dp[l][r], dp[l][k] + dp[k + 1][r - 1]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}",
+  "timestamp": "2025-08-05T19:55:07.649027",
+  "code_extracted_previous": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        if (n == 0) return 0;\n        int[][] dp = new int[n][n];\n        for (int i = 0; i < n; i++) dp[i][i] = 1;\n        for (int len = 2; len <= n; len++) {\n            for (int l = 0; l <= n - len; l++) {\n                int r = l + len - 1;\n                dp[l][r] = dp[l][r - 1] + 1;\n                for (int k = l; k < r; k++) {\n                    if (s.charAt(k) == s.charAt(r)) {\n                        dp[l][r] = Math.min(dp[l][r], dp[l][k] + dp[k + 1][r - 1]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.704479"
+}

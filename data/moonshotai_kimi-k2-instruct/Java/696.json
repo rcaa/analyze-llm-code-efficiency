@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int countBinarySubstrings(String s) {\n        int prev = 0, curr = 1, res = 0;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1)) {\n                curr++;\n            } else {\n                res += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        res += Math.min(prev, curr);\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass counts consecutive runs of 0s and 1s; each transition contributes min(prevRun, currRun) valid substrings. Constant space, linear time, minimal energy use.",
+  "code": "class Solution {\n    public int countBinarySubstrings(String s) {\n        int prev = 0, curr = 1, res = 0;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1)) {\n                curr++;\n            } else {\n                res += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        res += Math.min(prev, curr);\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T01:29:04.377022",
+  "code_extracted_previous": "class Solution {\n    public int countBinarySubstrings(String s) {\n        int prev = 0, curr = 1, res = 0;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1)) {\n                curr++;\n            } else {\n                res += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        res += Math.min(prev, curr);\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.765897"
+}

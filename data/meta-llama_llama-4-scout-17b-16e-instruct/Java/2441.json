@@ -1,0 +1,15 @@
+{
+  "id": 2441,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findMaxK(int[] nums) {\n        int maxK = -1;\n        boolean[] exists = new boolean[2001];\n        \n        for (int num : nums) {\n            exists[num + 1000] = true;\n        }\n        \n        for (int i = 1000; i >= 0; i--) {\n            if (exists[i] && exists[1000 - i]) {\n                maxK = i;\n                break;\n            }\n        }\n        \n        return maxK;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a boolean array to track the existence of each number in the input array. It then iterates through the array from the largest possible positive value to 0, checking if both the number and its negative counterpart exist. This approach ensures a high efficiency and low energy implications due to its linear time and space complexity.",
+  "code": "class Solution {\n    public int findMaxK(int[] nums) {\n        int maxK = -1;\n        boolean[] exists = new boolean[2001];\n        \n        for (int num : nums) {\n            exists[num + 1000] = true;\n        }\n        \n        for (int i = 1000; i >= 0; i--) {\n            if (exists[i] && exists[1000 - i]) {\n                maxK = i;\n                break;\n            }\n        }\n        \n        return maxK;\n    }\n}",
+  "timestamp": "2025-08-05T12:49:00.647077",
+  "code_extracted_previous": "class Solution {\n    public int findMaxK(int[] nums) {\n        int maxK = -1;\n        boolean[] exists = new boolean[2001];\n        \n        for (int num : nums) {\n            exists[num + 1000] = true;\n        }\n        \n        for (int i = 1000; i >= 0; i--) {\n            if (exists[i] && exists[1000 - i]) {\n                maxK = i;\n                break;\n            }\n        }\n        \n        return maxK;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.827948"
+}

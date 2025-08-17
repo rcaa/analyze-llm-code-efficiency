@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass Solution {\npublic:\n    string robotWithString(string s) {\n        string t = \"\";\n        while (!s.empty() || !t.empty()) {\n            if (!s.empty() && t.empty()) {\n                t += s[0];\n                s.erase(0, 1);\n            } else if (!t.empty() && s.empty()) {\n                t.pop_back();\n            } else if (s[0] < t.back()) {\n                t += s[0];\n                s.erase(0, 1);\n            } else {\n                t.pop_back();\n            }\n        }\n        return t;\n    }\n};\n```\n\nsolution: ```c++\nclass Solution {\npublic:\n    string robotWithString(string s) {\n        string t = \"\";\n        while (!s.empty() || !t.empty()) {\n            if (!s.empty() && t.empty()) {\n                t += s[0];\n                s.erase(0, 1);\n            } else if (!t.empty() && s.empty()) {\n                t.pop_back();\n            } else if (s[0] < t.back()) {\n                t += s[0];\n                s.erase(0, 1);\n            } else {\n                t.pop_back();\n            }\n        }\n        return t;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The algorithm iteratively processes the input string `s` and the robot's string `t`. It prioritizes appending characters from `s` to `t` if they are lexicographically smaller than the last character of `t`. Otherwise, it removes the last character from `t`. This process continues until both strings are empty, resulting in the lexicographically smallest string written by the robot.\n\n\n\n",
+  "code": "class Solution {\npublic:\n    string robotWithString(string s) {\n        string t = \"\";\n        while (!s.empty() || !t.empty()) {\n            if (!s.empty() && t.empty()) {\n                t += s[0];\n                s.erase(0, 1);\n            } else if (!t.empty() && s.empty()) {\n                t.pop_back();\n            } else if (s[0] < t.back()) {\n                t += s[0];\n                s.erase(0, 1);\n            } else {\n                t.pop_back();\n            }\n        }\n        return t;\n    }\n};",
+  "timestamp": "2025-08-05T15:10:13.299332",
+  "code_extracted_previous": "class Solution {\npublic:\n    string robotWithString(string s) {\n        string t = \"\";\n        while (!s.empty() || !t.empty()) {\n            if (!s.empty() && t.empty()) {\n                t += s[0];\n                s.erase(0, 1);\n            } else if (!t.empty() && s.empty()) {\n                t.pop_back();\n            } else if (s[0] < t.back()) {\n                t += s[0];\n                s.erase(0, 1);\n            } else {\n                t.pop_back();\n            }\n        }\n        return t;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.565122"
+}

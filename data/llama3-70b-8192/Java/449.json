@@ -1,0 +1,15 @@
+{
+  "id": 449,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\npublic class Codec {\n\n    // Encodes a tree to a single string.\n    public String serialize(TreeNode root) {\n        if (root == null) return \"X,\";\n        return root.val + \",\" + serialize(root.left) + serialize(root.right);\n    }\n\n    // Decodes your encoded data to tree.\n    public TreeNode deserialize(String data) {\n        String[] nodes = data.split(\",\");\n        return deserializeHelper(nodes);\n    }\n\n    private TreeNode deserializeHelper(String[] nodes) {\n        if (nodes[0].equals(\"X\")) {\n            nodes[0] = \"\";\n            return null;\n        }\n        TreeNode node = new TreeNode(Integer.parseInt(nodes[0]));\n        nodes[0] = \"\";\n        node.left = deserializeHelper(nodes);\n        node.right = deserializeHelper(nodes);\n        return node;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a pre-order traversal to serialize the binary search tree, and a recursive helper function to deserialize the string back into a tree.",
+  "code": "public class Codec {\n\n    // Encodes a tree to a single string.\n    public String serialize(TreeNode root) {\n        if (root == null) return \"X,\";\n        return root.val + \",\" + serialize(root.left) + serialize(root.right);\n    }\n\n    // Decodes your encoded data to tree.\n    public TreeNode deserialize(String data) {\n        String[] nodes = data.split(\",\");\n        return deserializeHelper(nodes);\n    }\n\n    private TreeNode deserializeHelper(String[] nodes) {\n        if (nodes[0].equals(\"X\")) {\n            nodes[0] = \"\";\n            return null;\n        }\n        TreeNode node = new TreeNode(Integer.parseInt(nodes[0]));\n        nodes[0] = \"\";\n        node.left = deserializeHelper(nodes);\n        node.right = deserializeHelper(nodes);\n        return node;\n    }\n}",
+  "timestamp": "2025-08-05T23:50:01.296351",
+  "code_extracted_previous": "public class Codec {\n\n    // Encodes a tree to a single string.\n    public String serialize(TreeNode root) {\n        if (root == null) return \"X,\";\n        return root.val + \",\" + serialize(root.left) + serialize(root.right);\n    }\n\n    // Decodes your encoded data to tree.\n    public TreeNode deserialize(String data) {\n        String[] nodes = data.split(\",\");\n        return deserializeHelper(nodes);\n    }\n\n    private TreeNode deserializeHelper(String[] nodes) {\n        if (nodes[0].equals(\"X\")) {\n            nodes[0] = \"\";\n            return null;\n        }\n        TreeNode node = new TreeNode(Integer.parseInt(nodes[0]));\n        nodes[0] = \"\";\n        node.left = deserializeHelper(nodes);\n        node.right = deserializeHelper(nodes);\n        return node;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:38.566085"
+}

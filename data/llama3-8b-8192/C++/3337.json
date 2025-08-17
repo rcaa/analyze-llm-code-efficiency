@@ -1,0 +1,15 @@
+{
+  "id": 3337,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int lengthAfterTransformations(string s, int t, vector<int>& nums) {\n        int res = s.size();\n        for (int i = 0; i < t; i++) {\n            string temp = \"\";\n            for (char c : s) {\n                int idx = c - 'a';\n                for (int j = 0; j < nums[idx]; j++) {\n                    temp += (char)(idx + 'a' + j % 26);\n                }\n            }\n            s = temp;\n            res = min(res, (int)s.size());\n        }\n        return res % (1e9 + 7);\n    }\n};```\nefficiency: HIGH\ntime complexity: O(t * s.size())\nspace complexity: O(s.size())\nenergy implications: LOW\nexplanation: The solution iterates over the string `s` for `t` times, performing transformations in each iteration. The time complexity is O(t * s.size()) due to the nested loops. The space complexity is O(s.size()) as we store the transformed string in each iteration. The energy implications are low as the operations are simple and the data structures used are small.",
+  "code": "class Solution {\npublic:\n    int lengthAfterTransformations(string s, int t, vector<int>& nums) {\n        int res = s.size();\n        for (int i = 0; i < t; i++) {\n            string temp = \"\";\n            for (char c : s) {\n                int idx = c - 'a';\n                for (int j = 0; j < nums[idx]; j++) {\n                    temp += (char)(idx + 'a' + j % 26);\n                }\n            }\n            s = temp;\n            res = min(res, (int)s.size());\n        }\n        return res % (1e9 + 7);\n    }\n};",
+  "timestamp": "2025-08-05T14:40:51.231292",
+  "code_extracted_previous": "public:\n    int lengthAfterTransformations(string s, int t, vector<int>& nums) {\n        int res = s.size();\n        for (int i = 0; i < t; i++) {\n            string temp = \"\";\n            for (char c : s) {\n                int idx = c - 'a';\n                for (int j = 0; j < nums[idx]; j++) {\n                    temp += (char)(idx + 'a' + j % 26);\n                }\n            }\n            s = temp;\n            res = min(res, (int)s.size());\n        }\n        return res % (1e9 + 7);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.234991"
+}

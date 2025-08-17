@@ -1,0 +1,15 @@
+{
+  "id": 698,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:\n        total = sum(nums)\n        if total % k != 0:\n            return False\n        target = total // k\n        nums.sort(reverse=True)\n        if nums[0] > target:\n            return False\n        def dfs(groups):\n            if not nums:\n                return True\n            v = nums.pop(0)\n            for i, group in enumerate(groups):\n                if group + v <= target:\n                    groups[i] += v\n                    if dfs(nums):\n                        return True\n                    groups[i] -= v\n                if not group:\n                    break\n            nums.insert(0, v)\n            return False\n        return dfs([0]*k)\n```\nefficiency: HIGH\ntime complexity: O(k * 2^n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a depth-first search (DFS) approach to try all possible combinations of numbers in the subsets, ensuring that the sum of each subset does not exceed the target sum. The use of sorting and early pruning helps to reduce the search space and improve efficiency.",
+  "code": "def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:\n        total = sum(nums)\n        if total % k != 0:\n            return False\n        target = total // k\n        nums.sort(reverse=True)\n        if nums[0] > target:\n            return False\n        def dfs(groups):\n            if not nums:\n                return True\n            v = nums.pop(0)\n            for i, group in enumerate(groups):\n                if group + v <= target:\n                    groups[i] += v\n                    if dfs(nums):\n                        return True\n                    groups[i] -= v\n                if not group:\n                    break\n            nums.insert(0, v)\n            return False\n        return dfs([0]*k)\n```",
+  "timestamp": "2025-08-05T13:16:55.756982",
+  "code_extracted_previous": "class Solution:\n    def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:\n        total = sum(nums)\n        if total % k != 0:\n            return False\n        target = total // k\n        nums.sort(reverse=True)\n        if nums[0] > target:\n            return False\n        def dfs(groups):\n            if not nums:\n                return True\n            v = nums.pop(0)\n            for i, group in enumerate(groups):\n                if group + v <= target:\n                    groups[i] += v\n                    if dfs(nums):\n                        return True\n                    groups[i] -= v\n                if not group:\n                    break\n            nums.insert(0, v)\n            return False\n        return dfs([0]*k)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.794167"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2466,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        int MOD = (int) (1e9 + 7);\n        int[] dp = new int[high + 1];\n        dp[0] = 1;\n        int result = 0;\n        for (int i = 1; i <= high; i++) {\n            if (i >= zero) {\n                dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            }\n            if (i >= one) {\n                dp[i] = (dp[i] + dp[i - one]) % MOD;\n            }\n            if (i >= low) {\n                result = (result + dp[i]) % MOD;\n            }\n        }\n        return result;\n    }\n}\nefficiency: HIGH\ntime complexity: O(high)\nspace complexity: O(high)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently count the number of good strings by iteratively building up the count of strings of different lengths, utilizing the given zero and one values, and summing the counts within the specified range.\n```",
+  "code": "class Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        int MOD = (int) (1e9 + 7);\n        int[] dp = new int[high + 1];\n        dp[0] = 1;\n        int result = 0;\n        for (int i = 1; i <= high; i++) {\n            if (i >= zero) {\n                dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            }\n            if (i >= one) {\n                dp[i] = (dp[i] + dp[i - one]) % MOD;\n            }\n            if (i >= low) {\n                result = (result + dp[i]) % MOD;\n            }\n        }\n        return result;\n    }\n}\nefficiency: HIGH\ntime complexity: O(high)\nspace complexity: O(high)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently count the number of good strings by iteratively building up the count of strings of different lengths, utilizing the given zero and one values, and summing the counts within the specified range.",
+  "timestamp": "2025-08-05T14:26:54.838705",
+  "code_extracted_previous": "class Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        int MOD = (int) (1e9 + 7);\n        int[] dp = new int[high + 1];\n        dp[0] = 1;\n        int result = 0;\n        for (int i = 1; i <= high; i++) {\n            if (i >= zero) {\n                dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            }\n            if (i >= one) {\n                dp[i] = (dp[i] + dp[i - one]) % MOD;\n            }\n            if (i >= low) {\n                result = (result + dp[i]) % MOD;\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.610556"
+}

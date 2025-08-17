@@ -1,0 +1,15 @@
+{
+  "id": 23,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: ```\n# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nimport heapq\nclass Solution:\n    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        heap = []\n        for idx, node in enumerate(lists):\n            if node:\n                heapq.heappush(heap, (node.val, idx, node))\n        dummy = ListNode(0)\n        curr = dummy\n        while heap:\n            val, idx, node = heapq.heappop(heap)\n            curr.next = node\n            curr = curr.next\n            if node.next:\n                heapq.heappush(heap, (node.next.val, idx, node.next))\n        return dummy.next\n```\nefficiency: HIGH\ntime complexity: O(N log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Uses a min-heap to always extract the smallest head among the k lists, achieving optimal log k per insertion/extraction. Only k nodes are stored in the heap, minimizing memory usage.",
+  "code": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        heap = []\n        for idx, node in enumerate(lists):\n            if node:\n                heapq.heappush(heap, (node.val, idx, node))\n        dummy = ListNode(0)\n        curr = dummy\n        while heap:\n            val, idx, node = heapq.heappop(heap)\n            curr.next = node\n            curr = curr.next\n            if node.next:\n                heapq.heappush(heap, (node.next.val, idx, node.next))\n        return dummy.next",
+  "timestamp": "2025-08-06T02:33:08.882585",
+  "code_extracted_previous": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nimport heapq\nclass Solution:\n    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        heap = []\n        for idx, node in enumerate(lists):\n            if node:\n                heapq.heappush(heap, (node.val, idx, node))\n        dummy = ListNode(0)\n        curr = dummy\n        while heap:\n            val, idx, node = heapq.heappop(heap)\n            curr.next = node\n            curr = curr.next\n            if node.next:\n                heapq.heappush(heap, (node.next.val, idx, node.next))\n        return dummy.next",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.606892"
+}

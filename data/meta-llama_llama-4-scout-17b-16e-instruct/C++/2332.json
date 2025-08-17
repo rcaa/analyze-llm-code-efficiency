@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int latestTimeCatchTheBus(vector<int>& buses, vector<int>& passengers, int capacity) {\n        sort(buses.begin(), buses.end());\n        sort(passengers.begin(), passengers.end());\n        \n        int n = buses.size(), m = passengers.size();\n        int i = m - 1;\n        \n        for (int j = n - 1; j >= 0; --j) {\n            int cnt = 0;\n            while (i >= 0 && passengers[i] > buses[j]) --i;\n            ++i;\n            cnt = min(capacity, i + 1);\n            i -= cnt;\n        }\n        \n        return passengers[i];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The approach involves sorting both the buses and passengers arrays. Then, it iterates through the buses in reverse order, determining how many passengers can board each bus based on the capacity and the number of passengers waiting. The latest time to catch a bus is essentially the arrival time of the last passenger who can still board a bus without missing it, which is directly obtained from the passengers array after processing.",
+  "code": "class Solution {\npublic:\n    int latestTimeCatchTheBus(vector<int>& buses, vector<int>& passengers, int capacity) {\n        sort(buses.begin(), buses.end());\n        sort(passengers.begin(), passengers.end());\n        \n        int n = buses.size(), m = passengers.size();\n        int i = m - 1;\n        \n        for (int j = n - 1; j >= 0; --j) {\n            int cnt = 0;\n            while (i >= 0 && passengers[i] > buses[j]) --i;\n            ++i;\n            cnt = min(capacity, i + 1);\n            i -= cnt;\n        }\n        \n        return passengers[i];\n    }\n};",
+  "timestamp": "2025-08-05T13:28:05.169125",
+  "code_extracted_previous": "class Solution {\npublic:\n    int latestTimeCatchTheBus(vector<int>& buses, vector<int>& passengers, int capacity) {\n        sort(buses.begin(), buses.end());\n        sort(passengers.begin(), passengers.end());\n        \n        int n = buses.size(), m = passengers.size();\n        int i = m - 1;\n        \n        for (int j = n - 1; j >= 0; --j) {\n            int cnt = 0;\n            while (i >= 0 && passengers[i] > buses[j]) --i;\n            ++i;\n            cnt = min(capacity, i + 1);\n            i -= cnt;\n        }\n        \n        return passengers[i];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.066024"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int max_len = -1;\n        unordered_map<char, int> last_seen;\n        for (int i = 0; i < s.length(); i++) {\n            if (last_seen.find(s[i]) != last_seen.end()) {\n                max_len = max(max_len, i - last_seen[s[i]] - 1);\n            }\n            last_seen[s[i]] = i;\n        }\n        return max_len;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hash map to store the last seen index of each character. It then iterates over the string, updating the maximum length of the substring between equal characters whenever it finds a repeated character. The time complexity is O(n) due to the single pass over the string, and the space complexity is also O(n) for storing the last seen indices of all characters.",
+  "code": "class Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int max_len = -1;\n        unordered_map<char, int> last_seen;\n        for (int i = 0; i < s.length(); i++) {\n            if (last_seen.find(s[i]) != last_seen.end()) {\n                max_len = max(max_len, i - last_seen[s[i]] - 1);\n            }\n            last_seen[s[i]] = i;\n        }\n        return max_len;\n    }\n};",
+  "timestamp": "2025-08-05T14:43:42.924299",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int max_len = -1;\n        unordered_map<char, int> last_seen;\n        for (int i = 0; i < s.length(); i++) {\n            if (last_seen.find(s[i]) != last_seen.end()) {\n                max_len = max(max_len, i - last_seen[s[i]] - 1);\n            }\n            last_seen[s[i]] = i;\n        }\n        return max_len;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.445019"
+}

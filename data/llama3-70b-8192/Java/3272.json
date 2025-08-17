@@ -1,0 +1,15 @@
+{
+  "id": 3272,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public long countGoodIntegers(int n, int k) {\n        int[] count = new int[10];\n        for (int i = (int) Math.pow(10, n - 1); i < (int) Math.pow(10, n); i++) {\n            char[] chars = String.valueOf(i).toCharArray();\n            Arrays.sort(chars);\n            String s = new String(chars);\n            if (Integer.parseInt(s) % k == 0) {\n                count[Integer.parseInt(String.valueOf(s.charAt(0)))]++;\n            }\n        }\n        long res = 0;\n        for (int i = 1; i < 10; i++) {\n            res += count[i] * (count[i] - 1) / 2;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(10^n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a counting approach to count the number of good integers. It iterates over all n-digit numbers, sorts their digits, and checks if the resulting number is divisible by k. The count of good integers is then calculated based on the counts of leading digits.",
+  "code": "class Solution {\n    public long countGoodIntegers(int n, int k) {\n        int[] count = new int[10];\n        for (int i = (int) Math.pow(10, n - 1); i < (int) Math.pow(10, n); i++) {\n            char[] chars = String.valueOf(i).toCharArray();\n            Arrays.sort(chars);\n            String s = new String(chars);\n            if (Integer.parseInt(s) % k == 0) {\n                count[Integer.parseInt(String.valueOf(s.charAt(0)))]++;\n            }\n        }\n        long res = 0;\n        for (int i = 1; i < 10; i++) {\n            res += count[i] * (count[i] - 1) / 2;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:39:58.326560",
+  "code_extracted_previous": "class Solution {\n    public long countGoodIntegers(int n, int k) {\n        int[] count = new int[10];\n        for (int i = (int) Math.pow(10, n - 1); i < (int) Math.pow(10, n); i++) {\n            char[] chars = String.valueOf(i).toCharArray();\n            Arrays.sort(chars);\n            String s = new String(chars);\n            if (Integer.parseInt(s) % k == 0) {\n                count[Integer.parseInt(String.valueOf(s.charAt(0)))]++;\n            }\n        }\n        long res = 0;\n        for (int i = 1; i < 10; i++) {\n            res += count[i] * (count[i] - 1) / 2;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.427049"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1513,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef numSub(self, s: str) -> int:\n    n = len(s)\n    count = [0] * 2\n    for i in range(n):\n        count[int(s[i])] += 1\n    result = 0\n    for i in range(n):\n        for j in range(i+1, n+1):\n            result = (result + count[int(s[i:j+1])] % 1000000007) % 1000000007\n    return result\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\nWe use two arrays to count the number of occurrences of 0 and 1 in the string. Then, we iterate through the string to calculate the number of substrings with only 1s using a nested loop. Finally, we calculate the result modulo 1000000007 and return it. This solution has a time complexity of O(n^2) and a space complexity of O(n), where n is the length of the string. ",
+  "code": "def numSub(self, s: str) -> int:\n    n = len(s)\n    count = [0] * 2\n    for i in range(n):\n        count[int(s[i])] += 1\n    result = 0\n    for i in range(n):\n        for j in range(i+1, n+1):\n            result = (result + count[int(s[i:j+1])] % 1000000007) % 1000000007\n    return result",
+  "timestamp": "2025-08-06T00:44:36.588993",
+  "code_extracted_previous": "def numSub(self, s: str) -> int:\n    n = len(s)\n    count = [0] * 2\n    for i in range(n):\n        count[int(s[i])] += 1\n    result = 0\n    for i in range(n):\n        for j in range(i+1, n+1):\n            result = (result + count[int(s[i:j+1])] % 1000000007) % 1000000007\n    return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.229489"
+}

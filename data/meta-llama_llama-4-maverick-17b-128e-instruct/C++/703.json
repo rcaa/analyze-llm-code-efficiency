@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) : k(k) {\n        for (int num : nums) {\n            minHeap.push(num);\n            if (minHeap.size() > k) {\n                minHeap.pop();\n            }\n        }\n    }\n    \n    int add(int val) {\n        minHeap.push(val);\n        if (minHeap.size() > k) {\n            minHeap.pop();\n        }\n        return minHeap.top();\n    }\nprivate:\n    int k;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n};\n/**\n * Your KthLargest object will be instantiated and called as such:\n * KthLargest* obj = new KthLargest(k, nums);\n * int param_1 = obj->add(val);\n */\n```\n\nefficiency: HIGH  \ntime complexity: O(n log k) for initialization, O(log k) for add operation  \nspace complexity: O(k)  \nenergy implications: LOW  \nexplanation: The KthLargest class uses a min-heap to efficiently track the kth largest element. The min-heap stores the k largest elements seen so far, with the smallest of these (the kth largest) at the top. The add operation maintains this invariant by pushing the new value onto the heap and popping the smallest element if the heap size exceeds k. This ensures that the top of the heap always contains the kth largest element.",
+  "code": "class KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) : k(k) {\n        for (int num : nums) {\n            minHeap.push(num);\n            if (minHeap.size() > k) {\n                minHeap.pop();\n            }\n        }\n    }\n    \n    int add(int val) {\n        minHeap.push(val);\n        if (minHeap.size() > k) {\n            minHeap.pop();\n        }\n        return minHeap.top();\n    }\nprivate:\n    int k;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n};\n/**\n * Your KthLargest object will be instantiated and called as such:\n * KthLargest* obj = new KthLargest(k, nums);\n * int param_1 = obj->add(val);\n */",
+  "timestamp": "2025-08-06T01:11:03.530792",
+  "code_extracted_previous": "class KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) : k(k) {\n        for (int num : nums) {\n            minHeap.push(num);\n            if (minHeap.size() > k) {\n                minHeap.pop();\n            }\n        }\n    }\n    \n    int add(int val) {\n        minHeap.push(val);\n        if (minHeap.size() > k) {\n            minHeap.pop();\n        }\n        return minHeap.top();\n    }\nprivate:\n    int k;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n};\n/**\n * Your KthLargest object will be instantiated and called as such:\n * KthLargest* obj = new KthLargest(k, nums);\n * int param_1 = obj->add(val);\n */",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:45.793723"
+}

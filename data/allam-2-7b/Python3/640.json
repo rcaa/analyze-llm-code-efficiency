@@ -1,0 +1,15 @@
+{
+  "id": 640,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution:\ndef solveEquation(self, equation: str) -> str:\n    coefficients = equation.split('=')[0].split()\n    variables = equation.split('=')[1].split()\n    \n    for i in range(len(coefficients)):\n        coefficients[i] = int(coefficients[i])\n        variables[i] = int(variables[i])\n    \n    sign = 1\n    for i in range(len(coefficients)):\n        if coefficients[i] < 0:\n            sign *= -1\n            coefficients[i] *= -1\n            variables[i] *= -1\n    \n    x = 0\n    for i in range(len(variables)):\n        x += coefficients[i] * variables[i]\n        x *= sign\n    \n    if x == 0:\n        return \"No solution\"\n    elif x > 0:\n        return f\"x={x}\"\n    else:\n        return f\"x=-{x}\"\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW ",
+  "code": "def solveEquation(self, equation: str) -> str:\n    coefficients = equation.split('=')[0].split()\n    variables = equation.split('=')[1].split()\n    \n    for i in range(len(coefficients)):\n        coefficients[i] = int(coefficients[i])\n        variables[i] = int(variables[i])\n    \n    sign = 1\n    for i in range(len(coefficients)):\n        if coefficients[i] < 0:\n            sign *= -1\n            coefficients[i] *= -1\n            variables[i] *= -1\n    \n    x = 0\n    for i in range(len(variables)):\n        x += coefficients[i] * variables[i]\n        x *= sign\n    \n    if x == 0:\n        return \"No solution\"\n    elif x > 0:\n        return f\"x={x}\"\n    else:\n        return f\"x=-{x}\"",
+  "timestamp": "2025-08-05T15:44:22.350213",
+  "code_extracted_previous": "def solveEquation(self, equation: str) -> str:\n    coefficients = equation.split('=')[0].split()\n    variables = equation.split('=')[1].split()\n    \n    for i in range(len(coefficients)):\n        coefficients[i] = int(coefficients[i])\n        variables[i] = int(variables[i])\n    \n    sign = 1\n    for i in range(len(coefficients)):\n        if coefficients[i] < 0:\n            sign *= -1\n            coefficients[i] *= -1\n            variables[i] *= -1\n    \n    x = 0\n    for i in range(len(variables)):\n        x += coefficients[i] * variables[i]\n        x *= sign\n    \n    if x == 0:\n        return \"No solution\"\n    elif x > 0:\n        return f\"x={x}\"\n    else:\n        return f\"x=-{x}\"",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:16.111575"
+}

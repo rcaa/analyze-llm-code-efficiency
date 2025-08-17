@@ -1,0 +1,15 @@
+{
+  "id": 3133,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    long long minEnd(int n, int x) {\n        --n;\n        long long res = x;\n        long long mask = 1;\n        while (n) {\n            if (!(x & mask)) {\n                if (n & 1) res |= mask;\n                n >>= 1;\n            }\n            mask <<= 1;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(n) + log(x))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Treat the strictly increasing sequence as x OR k for k = 0,1,2,...,n-1 while ensuring the AND remains x by only setting bits that are 0 in x. The minimal last element is x OR (n-1) after skipping the bits already set in x.",
+  "code": "class Solution {\npublic:\n    long long minEnd(int n, int x) {\n        --n;\n        long long res = x;\n        long long mask = 1;\n        while (n) {\n            if (!(x & mask)) {\n                if (n & 1) res |= mask;\n                n >>= 1;\n            }\n            mask <<= 1;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:54:29.649060",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long minEnd(int n, int x) {\n        --n;\n        long long res = x;\n        long long mask = 1;\n        while (n) {\n            if (!(x & mask)) {\n                if (n & 1) res |= mask;\n                n >>= 1;\n            }\n            mask <<= 1;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.920110"
+}

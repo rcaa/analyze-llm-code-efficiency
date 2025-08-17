@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        while self.stack and self.stack[-1][0] <= price:\n            self.stack.pop()\n        if not self.stack:\n            self.stack.append((price, 1))\n        else:\n            self.stack.append((price, self.stack[-1][1] + 1))\n        return self.stack[-1][1]\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to keep track of the prices and their corresponding spans. It iterates through the prices and pops the stack until it finds a price that is greater than the current price. Then, it pushes the current price and its span onto the stack. The time complexity is O(1) because each operation takes constant time, and the space complexity is O(n) because in the worst case, the stack will store all the prices.",
+  "code": "class StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        while self.stack and self.stack[-1][0] <= price:\n            self.stack.pop()\n        if not self.stack:\n            self.stack.append((price, 1))\n        else:\n            self.stack.append((price, self.stack[-1][1] + 1))\n        return self.stack[-1][1]",
+  "timestamp": "2025-08-06T01:59:42.864868",
+  "code_extracted_previous": "class StockSpanner:\n\n    def __init__(self):\n        self.stack = []\n\n    def next(self, price: int) -> int:\n        while self.stack and self.stack[-1][0] <= price:\n            self.stack.pop()\n        if not self.stack:\n            self.stack.append((price, 1))\n        else:\n            self.stack.append((price, self.stack[-1][1] + 1))\n        return self.stack[-1][1]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:44.490578"
+}

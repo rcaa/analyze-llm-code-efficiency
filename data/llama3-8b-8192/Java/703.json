@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass KthLargest {\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.heap = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    public int add(int val) {\n        heap.add(val);\n        if (heap.size() > k) {\n            heap.poll();\n        }\n        return (int) heap.peek();\n    }\n\n    private PriorityQueue<Integer> heap;\n    private int k;\n}\n```\nefficiency: HIGH\ntime complexity: O(logk)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: We use a min-heap to store the k largest elements. In the constructor, we add all the initial elements to the heap. In the add method, we add the new element to the heap and if the heap size exceeds k, we remove the smallest element (which is the k+1th largest element). The peek operation returns the kth largest element. The time complexity is O(logk) for each add operation and the space complexity is O(k) for storing the k largest elements.",
+  "code": "class KthLargest {\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.heap = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    public int add(int val) {\n        heap.add(val);\n        if (heap.size() > k) {\n            heap.poll();\n        }\n        return (int) heap.peek();\n    }\n\n    private PriorityQueue<Integer> heap;\n    private int k;\n}",
+  "timestamp": "2025-08-06T01:11:06.272517",
+  "code_extracted_previous": "class KthLargest {\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        this.heap = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    public int add(int val) {\n        heap.add(val);\n        if (heap.size() > k) {\n            heap.poll();\n        }\n        return (int) heap.peek();\n    }\n\n    private PriorityQueue<Integer> heap;\n    private int k;\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:42.976456"
+}

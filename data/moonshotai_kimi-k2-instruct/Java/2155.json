@@ -1,0 +1,15 @@
+{
+  "id": 2155,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public List<Integer> maxScoreIndices(int[] nums) {\n        int n = nums.length;\n        int totalOnes = 0;\n        for (int num : nums) totalOnes += num;\n        \n        int maxScore = 0;\n        List<Integer> res = new ArrayList<>();\n        int zerosLeft = 0;\n        int onesRight = totalOnes;\n        \n        for (int i = 0; i <= n; i++) {\n            int score = zerosLeft + onesRight;\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.add(i);\n            } else if (score == maxScore) {\n                res.add(i);\n            }\n            if (i < n) {\n                if (nums[i] == 0) zerosLeft++;\n                else onesRight--;\n            }\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1) excluding output list\nenergy implications: LOW\nexplanation: Single left-to-right pass tracking running counts of zeros on the left and ones on the right; avoids extra arrays and recomputation.",
+  "code": "class Solution {\n    public List<Integer> maxScoreIndices(int[] nums) {\n        int n = nums.length;\n        int totalOnes = 0;\n        for (int num : nums) totalOnes += num;\n        \n        int maxScore = 0;\n        List<Integer> res = new ArrayList<>();\n        int zerosLeft = 0;\n        int onesRight = totalOnes;\n        \n        for (int i = 0; i <= n; i++) {\n            int score = zerosLeft + onesRight;\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.add(i);\n            } else if (score == maxScore) {\n                res.add(i);\n            }\n            if (i < n) {\n                if (nums[i] == 0) zerosLeft++;\n                else onesRight--;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:26:05.865111",
+  "code_extracted_previous": "public List<Integer> maxScoreIndices(int[] nums) {\n        int n = nums.length;\n        int totalOnes = 0;\n        for (int num : nums) totalOnes += num;\n        \n        int maxScore = 0;\n        List<Integer> res = new ArrayList<>();\n        int zerosLeft = 0;\n        int onesRight = totalOnes;\n        \n        for (int i = 0; i <= n; i++) {\n            int score = zerosLeft + onesRight;\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.add(i);\n            } else if (score == maxScore) {\n                res.add(i);\n            }\n            if (i < n) {\n                if (nums[i] == 0) zerosLeft++;\n                else onesRight--;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.806290"
+}

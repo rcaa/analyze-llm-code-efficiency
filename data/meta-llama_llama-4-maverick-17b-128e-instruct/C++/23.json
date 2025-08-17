@@ -1,0 +1,15 @@
+{
+  "id": 23,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        auto compare = [](ListNode* a, ListNode* b) { return a->val > b->val; };\n        priority_queue<ListNode*, vector<ListNode*>, decltype(compare)> minHeap(compare);\n        \n        for (ListNode* node : lists) {\n            if (node) {\n                minHeap.push(node);\n            }\n        }\n        \n        ListNode dummy(0);\n        ListNode* current = &dummy;\n        \n        while (!minHeap.empty()) {\n            ListNode* smallest = minHeap.top();\n            minHeap.pop();\n            current->next = smallest;\n            current = current->next;\n            if (smallest->next) {\n                minHeap.push(smallest->next);\n            }\n        }\n        \n        return dummy.next;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Utilizes a min-heap to efficiently merge k sorted linked lists. The min-heap stores the current smallest node from each list, allowing for O(log k) time complexity for extracting the smallest node and O(1) for inserting a new node from the same list. This results in an overall time complexity of O(N log k), where N is the total number of nodes across all lists. The space complexity is O(k) due to the min-heap storing k nodes at most. This approach is efficient and scalable for large inputs.",
+  "code": "```cpp\nclass Solution {\npublic:\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        auto compare = [](ListNode* a, ListNode* b) { return a->val > b->val; };\n        priority_queue<ListNode*, vector<ListNode*>, decltype(compare)> minHeap(compare);\n        \n        for (ListNode* node : lists) {\n            if (node) {\n                minHeap.push(node);\n            }\n        }\n        \n        ListNode dummy(0);\n        ListNode* current = &dummy;\n        \n        while (!minHeap.empty()) {\n            ListNode* smallest = minHeap.top();\n            minHeap.pop();\n            current->next = smallest;\n            current = current->next;\n            if (smallest->next) {\n                minHeap.push(smallest->next);\n            }\n        }\n        \n        return dummy.next;\n    }\n};",
+  "timestamp": "2025-08-05T15:14:08.692592",
+  "code_extracted_previous": "",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.170278"
+}

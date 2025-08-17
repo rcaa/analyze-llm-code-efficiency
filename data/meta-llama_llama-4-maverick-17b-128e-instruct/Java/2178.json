@@ -1,0 +1,15 @@
+{
+  "id": 2178,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> result = new ArrayList<>();\n        if (finalSum % 2 != 0) return result;\n        long sum = 0;\n        long num = 2;\n        while (sum + num <= finalSum) {\n            sum += num;\n            result.add(num);\n            num += 2;\n        }\n        long diff = finalSum - sum;\n        result.set(result.size() - 1, result.get(result.size() - 1) + diff);\n        return result;\n    }\n}\nefficiency: HIGH\ntime complexity: O(sqrt(n))\nspace complexity: O(sqrt(n))\nenergy implications: LOW\nexplanation: The solution starts by checking if the finalSum is even. It then iteratively adds the smallest even numbers to the result list until the sum is just below or equal to finalSum. The last number in the list is then adjusted to make the sum equal to finalSum. This greedy approach ensures the maximum number of unique even integers.\n```",
+  "code": "class Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> result = new ArrayList<>();\n        if (finalSum % 2 != 0) return result;\n        long sum = 0;\n        long num = 2;\n        while (sum + num <= finalSum) {\n            sum += num;\n            result.add(num);\n            num += 2;\n        }\n        long diff = finalSum - sum;\n        result.set(result.size() - 1, result.get(result.size() - 1) + diff);\n        return result;\n    }\n}\nefficiency: HIGH\ntime complexity: O(sqrt(n))\nspace complexity: O(sqrt(n))\nenergy implications: LOW\nexplanation: The solution starts by checking if the finalSum is even. It then iteratively adds the smallest even numbers to the result list until the sum is just below or equal to finalSum. The last number in the list is then adjusted to make the sum equal to finalSum. This greedy approach ensures the maximum number of unique even integers.",
+  "timestamp": "2025-08-05T15:56:40.703419",
+  "code_extracted_previous": "class Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> result = new ArrayList<>();\n        if (finalSum % 2 != 0) return result;\n        long sum = 0;\n        long num = 2;\n        while (sum + num <= finalSum) {\n            sum += num;\n            result.add(num);\n            num += 2;\n        }\n        long diff = finalSum - sum;\n        result.set(result.size() - 1, result.get(result.size() - 1) + diff);\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.480294"
+}

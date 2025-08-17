@@ -1,0 +1,15 @@
+{
+  "id": 2318,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int distinctSequences(int n) {\n        int MOD = 1000000007;\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 0;\n            for (int j = 1; j <= 6; j++) {\n                if (i >= j) {\n                    for (int k = 1; k <= 6; k++) {\n                        if (k != j && gcd(j, k) == 1) {\n                            dp[i] = (dp[i] + dp[i - j]) % MOD;\n                        }\n                    }\n                }\n            }\n        }\n        return dp[n];\n    }\n    int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n * 6^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to count the number of distinct sequences. For each roll, it iterates over all possible values and checks if the current value and the previous value have a GCD of 1. If they do, it adds the number of sequences ending at the previous roll to the current count. The GCD function is used to calculate the greatest common divisor of two numbers.",
+  "code": "class Solution {\n    public int distinctSequences(int n) {\n        int MOD = 1000000007;\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 0;\n            for (int j = 1; j <= 6; j++) {\n                if (i >= j) {\n                    for (int k = 1; k <= 6; k++) {\n                        if (k != j && gcd(j, k) == 1) {\n                            dp[i] = (dp[i] + dp[i - j]) % MOD;\n                        }\n                    }\n                }\n            }\n        }\n        return dp[n];\n    }\n    int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "timestamp": "2025-08-05T14:21:43.527304",
+  "code_extracted_previous": "public int distinctSequences(int n) {\n        int MOD = 1000000007;\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 0;\n            for (int j = 1; j <= 6; j++) {\n                if (i >= j) {\n                    for (int k = 1; k <= 6; k++) {\n                        if (k != j && gcd(j, k) == 1) {\n                            dp[i] = (dp[i] + dp[i - j]) % MOD;\n                        }\n                    }\n                }\n            }\n        }\n        return dp[n];\n    }\n    int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.353945"
+}

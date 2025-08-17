@@ -1,0 +1,15 @@
+{
+  "id": 1540,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public boolean canConvertString(String s, String t, int k) {\n        int n = s.length();\n        int[] cnt = new int[26];\n        for (int i = 0; i < n; i++) {\n            int diff = (t.charAt(i) - s.charAt(i) + 26) % 26;\n            cnt[diff]++;\n        }\n        for (int i = 1; i < 26; i++) {\n            if (cnt[i] > 0 && cnt[i] > (k / i)) {\n                return false;\n            }\n        }\n        return true;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count the frequency of each possible shift, and check if it's possible to make the shifts within k moves.",
+  "code": "class Solution {\n    public boolean canConvertString(String s, String t, int k) {\n        int n = s.length();\n        int[] cnt = new int[26];\n        for (int i = 0; i < n; i++) {\n            int diff = (t.charAt(i) - s.charAt(i) + 26) % 26;\n            cnt[diff]++;\n        }\n        for (int i = 1; i < 26; i++) {\n            if (cnt[i] > 0 && cnt[i] > (k / i)) {\n                return false;\n            }\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-05T15:07:10.718010",
+  "code_extracted_previous": "class Solution {\n    public boolean canConvertString(String s, String t, int k) {\n        int n = s.length();\n        int[] cnt = new int[26];\n        for (int i = 0; i < n; i++) {\n            int diff = (t.charAt(i) - s.charAt(i) + 26) % 26;\n            cnt[diff]++;\n        }\n        for (int i = 1; i < 26; i++) {\n            if (cnt[i] > 0 && cnt[i] > (k / i)) {\n                return false;\n            }\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.575179"
+}

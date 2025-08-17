@@ -1,0 +1,15 @@
+{
+  "id": 1358,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int count[3] = {0};\n        int res = 0;\n        for (char c : s) {\n            count[c - 'a']++;\n            if (count[0] && count[1] && count[2]) {\n                res += s.size() - *max_element(count, count + 3) + 1;\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a frequency array to count the occurrences of each character. It then iterates through the string, updating the frequency array and checking if all characters are present. If they are, it calculates the number of substrings containing all characters and adds it to the result. The time complexity is O(n) due to the single pass through the string, and the space complexity is O(1) as the frequency array uses a constant amount of space.",
+  "code": "class Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int count[3] = {0};\n        int res = 0;\n        for (char c : s) {\n            count[c - 'a']++;\n            if (count[0] && count[1] && count[2]) {\n                res += s.size() - *max_element(count, count + 3) + 1;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:01:46.922436",
+  "code_extracted_previous": "public:\n    int numberOfSubstrings(string s) {\n        int count[3] = {0};\n        int res = 0;\n        for (char c : s) {\n            count[c - 'a']++;\n            if (count[0] && count[1] && count[2]) {\n                res += s.size() - *max_element(count, count + 3) + 1;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.570760"
+}

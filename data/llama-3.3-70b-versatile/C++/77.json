@@ -1,0 +1,15 @@
+{
+  "id": 77,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> result;\n        vector<int> current;\n        backtrack(result, current, 1, n, k);\n        return result;\n    }\n    \n    void backtrack(vector<vector<int>>& result, vector<int>& current, int start, int n, int k) {\n        if (k == 0) {\n            result.push_back(current);\n            return;\n        }\n        for (int i = start; i <= n; i++) {\n            current.push_back(i);\n            backtrack(result, current, i + 1, n, k - 1);\n            current.pop_back();\n        }\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(C(n, k))\nspace complexity: O(C(n, k))\nenergy implications: LOW\nexplanation: The solution uses a recursive backtracking approach to generate all combinations of k numbers chosen from the range [1, n]. The backtrack function explores all possible combinations by adding numbers to the current combination and recursively calling itself with the updated current combination and the remaining numbers to choose. The base case is when k becomes 0, at which point the current combination is added to the result. The time and space complexity are both O(C(n, k)), where C(n, k) is the number of combinations of n items taken k at a time.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> result;\n        vector<int> current;\n        backtrack(result, current, 1, n, k);\n        return result;\n    }\n    \n    void backtrack(vector<vector<int>>& result, vector<int>& current, int start, int n, int k) {\n        if (k == 0) {\n            result.push_back(current);\n            return;\n        }\n        for (int i = start; i <= n; i++) {\n            current.push_back(i);\n            backtrack(result, current, i + 1, n, k - 1);\n            current.pop_back();\n        }\n    }\n};",
+  "timestamp": "2025-08-05T13:35:54.211224",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> result;\n        vector<int> current;\n        backtrack(result, current, 1, n, k);\n        return result;\n    }\n    \n    void backtrack(vector<vector<int>>& result, vector<int>& current, int start, int n, int k) {\n        if (k == 0) {\n            result.push_back(current);\n            return;\n        }\n        for (int i = start; i <= n; i++) {\n            current.push_back(i);\n            backtrack(result, current, i + 1, n, k - 1);\n            current.pop_back();\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.071442"
+}

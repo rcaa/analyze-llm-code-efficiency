@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int n = s.length();\n        int[] charValues = new int[26];\n        for (int i = 0; i < 26; i++) {\n            charValues[i] = i + 1;\n        }\n        for (int i = 0; i < chars.length(); i++) {\n            charValues[chars.charAt(i) - 'a'] = vals[i];\n        }\n        int maxCost = 0;\n        for (int i = 0; i < n; i++) {\n            int currentCost = 0;\n            for (int j = i; j < n; j++) {\n                currentCost += charValues[s.charAt(j) - 'a'];\n                maxCost = Math.max(maxCost, currentCost);\n            }\n        }\n        return maxCost;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a dynamic approach to calculate the cost of each substring and keeps track of the maximum cost found. It utilizes an array to store the values of characters, allowing for efficient lookups and updates. The algorithm iterates over the string, considering all possible substrings and updating the maximum cost as needed.",
+  "code": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int n = s.length();\n        int[] charValues = new int[26];\n        for (int i = 0; i < 26; i++) {\n            charValues[i] = i + 1;\n        }\n        for (int i = 0; i < chars.length(); i++) {\n            charValues[chars.charAt(i) - 'a'] = vals[i];\n        }\n        int maxCost = 0;\n        for (int i = 0; i < n; i++) {\n            int currentCost = 0;\n            for (int j = i; j < n; j++) {\n                currentCost += charValues[s.charAt(j) - 'a'];\n                maxCost = Math.max(maxCost, currentCost);\n            }\n        }\n        return maxCost;\n    }\n}",
+  "timestamp": "2025-08-06T15:14:15.092094",
+  "code_extracted_previous": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int n = s.length();\n        int[] charValues = new int[26];\n        for (int i = 0; i < 26; i++) {\n            charValues[i] = i + 1;\n        }\n        for (int i = 0; i < chars.length(); i++) {\n            charValues[chars.charAt(i) - 'a'] = vals[i];\n        }\n        int maxCost = 0;\n        for (int i = 0; i < n; i++) {\n            int currentCost = 0;\n            for (int j = i; j < n; j++) {\n                currentCost += charValues[s.charAt(j) - 'a'];\n                maxCost = Math.max(maxCost, currentCost);\n            }\n        }\n        return maxCost;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.992337"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 23,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\n# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        if not lists:\n            return None\n        import heapq\n        heap = [(head.val, i, head) for i, head in enumerate(lists) if head]\n        heapq.heapify(heap)\n        dummy = ListNode()\n        tail = dummy\n        while heap:\n            val, i, node = heapq.heappop(heap)\n            tail.next = node\n            tail = tail.next\n            if node.next:\n                heapq.heappush(heap, (node.next.val, i, node.next))\n        return dummy.next\n```\nsolution: \n```python\n# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        if not lists:\n            return None\n        import heapq\n        heap = [(head.val, i, head) for i, head in enumerate(lists) if head]\n        heapq.heapify(heap)\n        dummy = ListNode()\n        tail = dummy\n        while heap:\n            val, i, node = heapq.heappop(heap)\n            tail.next = node\n            tail = tail.next\n            if node.next:\n                heapq.heappush(heap, (node.next.val, i, node.next))\n        return dummy.next\n```\nefficiency: HIGH\ntime complexity: O(N log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Utilizes a min-heap to efficiently track the smallest nodes across all lists. Iteratively extracts the smallest node, appends it to the merged list, and updates the heap.  The heap operations dominate the time complexity, resulting in O(N log k) where N is the total number of nodes and k is the number of lists. Space complexity is O(k) due to the heap storing at most k nodes.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T15:14:15.499647",
+  "code_extracted_previous": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        if not lists:\n            return None\n        import heapq\n        heap = [(head.val, i, head) for i, head in enumerate(lists) if head]\n        heapq.heapify(heap)\n        dummy = ListNode()\n        tail = dummy\n        while heap:\n            val, i, node = heapq.heappop(heap)\n            tail.next = node\n            tail = tail.next\n            if node.next:\n                heapq.heappush(heap, (node.next.val, i, node.next))\n        return dummy.next",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.226725"
+}

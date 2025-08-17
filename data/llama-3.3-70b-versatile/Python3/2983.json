@@ -1,0 +1,15 @@
+{
+  "id": 2983,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nfrom typing import List\nfrom collections import Counter\n\nclass Solution:\n    def canMakePalindromeQueries(self, s: str, queries: List[List[int]]) -> List[bool]:\n        answer = []\n        for a, b, c, d in queries:\n            left = s[a:b+1]\n            right = s[c:d+1]\n            left_count = Counter(left)\n            right_count = Counter(right)\n            combined_count = left_count + right_count\n            odd_count = sum(val % 2 for val in combined_count.values())\n            middle = s[b+1:c]\n            middle_count = Counter(middle)\n            odd_middle_count = sum(val % 2 for val in middle_count.values())\n            answer.append(odd_count <= 1 and odd_middle_count <= 1)\n        return answer\n```\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a counter to count the frequency of characters in the left and right substrings and then combines them. It checks if the total count of odd frequency characters is less than or equal to 1 and also checks the middle substring. If both conditions are met, it is possible to make the string a palindrome.",
+  "code": "def canMakePalindromeQueries(self, s: str, queries: List[List[int]]) -> List[bool]:\n        answer = []\n        for a, b, c, d in queries:\n            left = s[a:b+1]\n            right = s[c:d+1]\n            left_count = Counter(left)\n            right_count = Counter(right)\n            combined_count = left_count + right_count\n            odd_count = sum(val % 2 for val in combined_count.values())\n            middle = s[b+1:c]\n            middle_count = Counter(middle)\n            odd_middle_count = sum(val % 2 for val in middle_count.values())\n            answer.append(odd_count <= 1 and odd_middle_count <= 1)\n        return answer\n```",
+  "timestamp": "2025-08-06T15:19:18.889630",
+  "code_extracted_previous": "from typing import List\nfrom collections import Counter\n\nclass Solution:\n    def canMakePalindromeQueries(self, s: str, queries: List[List[int]]) -> List[bool]:\n        answer = []\n        for a, b, c, d in queries:\n            left = s[a:b+1]\n            right = s[c:d+1]\n            left_count = Counter(left)\n            right_count = Counter(right)\n            combined_count = left_count + right_count\n            odd_count = sum(val % 2 for val in combined_count.values())\n            middle = s[b+1:c]\n            middle_count = Counter(middle)\n            odd_middle_count = sum(val % 2 for val in middle_count.values())\n            answer.append(odd_count <= 1 and odd_middle_count <= 1)\n        return answer",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.398197"
+}

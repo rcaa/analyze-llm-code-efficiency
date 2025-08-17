@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass RecentCounter {\npublic:\n    RecentCounter() {\n        \n    }\n    \n    int ping(int t) {\n        requests.push_back(t);\n        while (requests.front() < t - 3000) {\n            requests.pop_front();\n        }\n        return requests.size();\n    }\nprivate:\n    std::deque<int> requests;\n};\n```\nsolution: ```c++\nclass RecentCounter {\npublic:\n    RecentCounter() {\n        \n    }\n    \n    int ping(int t) {\n        requests.push_back(t);\n        while (requests.front() < t - 3000) {\n            requests.pop_front();\n        }\n        return requests.size();\n    }\nprivate:\n    std::deque<int> requests;\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a deque to store recent requests. When ping is called, the new request is added to the back. The deque is then trimmed from the front to remove requests older than 3000 milliseconds. The size of the deque represents the number of recent requests.  The deque allows for efficient insertion and removal at both ends, resulting in constant time complexity for ping operations. Space complexity is linear as the deque can store up to n requests.\n\n\n\n",
+  "code": "class RecentCounter {\npublic:\n    RecentCounter() {\n        \n    }\n    \n    int ping(int t) {\n        requests.push_back(t);\n        while (requests.front() < t - 3000) {\n            requests.pop_front();\n        }\n        return requests.size();\n    }\nprivate:\n    std::deque<int> requests;\n};",
+  "timestamp": "2025-08-05T14:07:50.748363",
+  "code_extracted_previous": "class RecentCounter {\npublic:\n    RecentCounter() {\n        \n    }\n    \n    int ping(int t) {\n        requests.push_back(t);\n        while (requests.front() < t - 3000) {\n            requests.pop_front();\n        }\n        return requests.size();\n    }\nprivate:\n    std::deque<int> requests;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.404833"
+}

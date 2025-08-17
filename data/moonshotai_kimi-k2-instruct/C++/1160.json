@@ -1,0 +1,15 @@
+{
+  "id": 1160,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        int freq[26] = {0};\n        for (char c : chars) ++freq[c - 'a'];\n        \n        int total = 0;\n        for (const string& w : words) {\n            int cnt[26] = {0};\n            bool ok = true;\n            for (char c : w) {\n                int idx = c - 'a';\n                if (++cnt[idx] > freq[idx]) { ok = false; break; }\n            }\n            if (ok) total += w.size();\n        }\n        return total;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N * L) where N = words.size(), L = average word length\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count frequency of each character in chars once. For each word, count its characters and check against the global frequency; if all counts are ≤ the global counts, add the word’s length to the total. Uses fixed-size arrays for O(1) space and minimal branching.",
+  "code": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        int freq[26] = {0};\n        for (char c : chars) ++freq[c - 'a'];\n        \n        int total = 0;\n        for (const string& w : words) {\n            int cnt[26] = {0};\n            bool ok = true;\n            for (char c : w) {\n                int idx = c - 'a';\n                if (++cnt[idx] > freq[idx]) { ok = false; break; }\n            }\n            if (ok) total += w.size();\n        }\n        return total;\n    }\n};",
+  "timestamp": "2025-08-05T12:38:55.168468",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        int freq[26] = {0};\n        for (char c : chars) ++freq[c - 'a'];\n        \n        int total = 0;\n        for (const string& w : words) {\n            int cnt[26] = {0};\n            bool ok = true;\n            for (char c : w) {\n                int idx = c - 'a';\n                if (++cnt[idx] > freq[idx]) { ok = false; break; }\n            }\n            if (ok) total += w.size();\n        }\n        return total;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.146666"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1702,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    string maximumBinaryString(string binary) {\n        int n = binary.size();\n        int firstZeroIdx = -1, zerosCount = 0, onesAfterFirstZero = 0;\n        for (int i = 0; i < n; ++i) {\n            if (binary[i] == '0') {\n                if (firstZeroIdx == -1) firstZeroIdx = i;\n                zerosCount++;\n            } else if (firstZeroIdx != -1) {\n                onesAfterFirstZero++;\n            }\n        }\n        if (zerosCount == 0) return binary;\n        string result(n, '1');\n        result[n - zerosCount] = '0';\n        return result;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the binary string once, counting zeros and tracking the index of the first zero. It then constructs the maximum binary string by placing '1's before the last '0', effectively maximizing the binary representation.\n```",
+  "code": "class Solution {\npublic:\n    string maximumBinaryString(string binary) {\n        int n = binary.size();\n        int firstZeroIdx = -1, zerosCount = 0, onesAfterFirstZero = 0;\n        for (int i = 0; i < n; ++i) {\n            if (binary[i] == '0') {\n                if (firstZeroIdx == -1) firstZeroIdx = i;\n                zerosCount++;\n            } else if (firstZeroIdx != -1) {\n                onesAfterFirstZero++;\n            }\n        }\n        if (zerosCount == 0) return binary;\n        string result(n, '1');\n        result[n - zerosCount] = '0';\n        return result;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the binary string once, counting zeros and tracking the index of the first zero. It then constructs the maximum binary string by placing '1's before the last '0', effectively maximizing the binary representation.",
+  "timestamp": "2025-08-06T00:55:34.112174",
+  "code_extracted_previous": "class Solution {\npublic:\n    string maximumBinaryString(string binary) {\n        int n = binary.size();\n        int firstZeroIdx = -1, zerosCount = 0, onesAfterFirstZero = 0;\n        for (int i = 0; i < n; ++i) {\n            if (binary[i] == '0') {\n                if (firstZeroIdx == -1) firstZeroIdx = i;\n                zerosCount++;\n            } else if (firstZeroIdx != -1) {\n                onesAfterFirstZero++;\n            }\n        }\n        if (zerosCount == 0) return binary;\n        string result(n, '1');\n        result[n - zerosCount] = '0';\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.925337"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public long maximumOr(int[] nums, int k) {\n        long maxOr = 0;\n        for (int i = 0; i < nums.length; i++) {\n            maxOr |= nums[i];\n        }\n        int bits = 30;\n        while (k > 0 && bits >= 0) {\n            int canChange = 0;\n            for (int num : nums) {\n                if (((num >> bits) & 1) == 0) {\n                    canChange++;\n                }\n            }\n            if (canChange <= k) {\n                k -= canChange;\n                maxOr |= (1L << bits);\n            }\n            bits--;\n        }\n        return maxOr;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n * 30)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through each bit position from most significant to least significant. For each bit position, it checks how many numbers can be changed to have that bit set. If the number of changes required is less than or equal to the remaining operations, it sets that bit in the result and subtracts the required changes from the total operations. This greedy approach ensures the maximum possible value.",
+  "code": "class Solution {\n    public long maximumOr(int[] nums, int k) {\n        long maxOr = 0;\n        for (int i = 0; i < nums.length; i++) {\n            maxOr |= nums[i];\n        }\n        int bits = 30;\n        while (k > 0 && bits >= 0) {\n            int canChange = 0;\n            for (int num : nums) {\n                if (((num >> bits) & 1) == 0) {\n                    canChange++;\n                }\n            }\n            if (canChange <= k) {\n                k -= canChange;\n                maxOr |= (1L << bits);\n            }\n            bits--;\n        }\n        return maxOr;\n    }\n}",
+  "timestamp": "2025-08-05T13:34:08.652149",
+  "code_extracted_previous": "class Solution {\n    public long maximumOr(int[] nums, int k) {\n        long maxOr = 0;\n        for (int i = 0; i < nums.length; i++) {\n            maxOr |= nums[i];\n        }\n        int bits = 30;\n        while (k > 0 && bits >= 0) {\n            int canChange = 0;\n            for (int num : nums) {\n                if (((num >> bits) & 1) == 0) {\n                    canChange++;\n                }\n            }\n            if (canChange <= k) {\n                k -= canChange;\n                maxOr |= (1L << bits);\n            }\n            bits--;\n        }\n        return maxOr;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.904831"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    long long maximumOr(vector<int>& nums, int k) {\n        int bits = 30;\n        long long ans = 0;\n        for (int i = bits; i >= 0; --i) {\n            long long curr = ans | (1LL << i);\n            int ops = 0;\n            for (int x : nums) {\n                if ((x | curr) != curr) {\n                    if (x * (1 << i) | curr == curr) ++ops;\n                }\n            }\n            if (ops <= k) ans = curr;\n        }\n        return ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * 30)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterates through each bit position from most significant to least, checking if setting that bit in the result is feasible within the given operation limit.",
+  "code": "class Solution {\npublic:\n    long long maximumOr(vector<int>& nums, int k) {\n        int bits = 30;\n        long long ans = 0;\n        for (int i = bits; i >= 0; --i) {\n            long long curr = ans | (1LL << i);\n            int ops = 0;\n            for (int x : nums) {\n                if ((x | curr) != curr) {\n                    if (x * (1 << i) | curr == curr) ++ops;\n                }\n            }\n            if (ops <= k) ans = curr;\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T13:34:06.820536",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long maximumOr(vector<int>& nums, int k) {\n        int bits = 30;\n        long long ans = 0;\n        for (int i = bits; i >= 0; --i) {\n            long long curr = ans | (1LL << i);\n            int ops = 0;\n            for (int x : nums) {\n                if ((x | curr) != curr) {\n                    if (x * (1 << i) | curr == curr) ++ops;\n                }\n            }\n            if (ops <= k) ans = curr;\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.192060"
+}

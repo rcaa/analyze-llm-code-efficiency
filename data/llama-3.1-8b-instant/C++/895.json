@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass FreqStack {\npublic:\n    FreqStack() {\n        freq = 0;\n    }\n    \n    void push(int val) {\n        freqStack[val].push(val);\n        freqStack[val].top() == val ? freq++ : freq;\n        freqMap[freq]++;\n    }\n    \n    int pop() {\n        int maxFreq = 0;\n        for (auto& pair : freqMap) {\n            if (pair.second > maxFreq) {\n                maxFreq = pair.second;\n            }\n        }\n        int val = freqStack[maxFreq].top();\n        freqStack[maxFreq].pop();\n        freqMap[maxFreq]--;\n        if (freqMap[maxFreq] == 0) {\n            freqMap.erase(maxFreq);\n        }\n        return val;\n    }\nprivate:\n    int freq;\n    unordered_map<int, stack<int>> freqStack;\n    unordered_map<int, int> freqMap;\n};\n```\n\nefficiency: HIGH\ntime complexity: O(1) amortized for push, O(n) for pop\nspace complexity: O(n)\nenergy implications: MEDIUM",
+  "code": "class FreqStack {\npublic:\n    FreqStack() {\n        freq = 0;\n    }\n    \n    void push(int val) {\n        freqStack[val].push(val);\n        freqStack[val].top() == val ? freq++ : freq;\n        freqMap[freq]++;\n    }\n    \n    int pop() {\n        int maxFreq = 0;\n        for (auto& pair : freqMap) {\n            if (pair.second > maxFreq) {\n                maxFreq = pair.second;\n            }\n        }\n        int val = freqStack[maxFreq].top();\n        freqStack[maxFreq].pop();\n        freqMap[maxFreq]--;\n        if (freqMap[maxFreq] == 0) {\n            freqMap.erase(maxFreq);\n        }\n        return val;\n    }\nprivate:\n    int freq;\n    unordered_map<int, stack<int>> freqStack;\n    unordered_map<int, int> freqMap;\n};",
+  "timestamp": "2025-08-05T14:38:11.360431",
+  "code_extracted_previous": "class FreqStack {\npublic:\n    FreqStack() {\n        freq = 0;\n    }\n    \n    void push(int val) {\n        freqStack[val].push(val);\n        freqStack[val].top() == val ? freq++ : freq;\n        freqMap[freq]++;\n    }\n    \n    int pop() {\n        int maxFreq = 0;\n        for (auto& pair : freqMap) {\n            if (pair.second > maxFreq) {\n                maxFreq = pair.second;\n            }\n        }\n        int val = freqStack[maxFreq].top();\n        freqStack[maxFreq].pop();\n        freqMap[maxFreq]--;\n        if (freqMap[maxFreq] == 0) {\n            freqMap.erase(maxFreq);\n        }\n        return val;\n    }\nprivate:\n    int freq;\n    unordered_map<int, stack<int>> freqStack;\n    unordered_map<int, int> freqMap;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:28.785774"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1163,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        int i = 0, j = 1, k = 0;\n        while (j + k < n) {\n            if (s.charAt(i + k) == s.charAt(j + k)) {\n                k++;\n            } else if (s.charAt(i + k) < s.charAt(j + k)) {\n                i = Math.max(i + k + 1, j);\n                j = i + 1;\n                k = 0;\n            } else {\n                j += k + 1;\n                k = 0;\n            }\n        }\n        return s.substring(i);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The algorithm uses a two-pointer technique to find the last substring in lexicographical order in linear time. It compares substrings starting at indices i and j, and adjusts the pointers based on character comparisons. The key strength is its linear time complexity, making it efficient for large input sizes. The main weakness is its complexity in understanding and implementation.>",
+  "code": "class Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        int i = 0, j = 1, k = 0;\n        while (j + k < n) {\n            if (s.charAt(i + k) == s.charAt(j + k)) {\n                k++;\n            } else if (s.charAt(i + k) < s.charAt(j + k)) {\n                i = Math.max(i + k + 1, j);\n                j = i + 1;\n                k = 0;\n            } else {\n                j += k + 1;\n                k = 0;\n            }\n        }\n        return s.substring(i);\n    }\n}",
+  "timestamp": "2025-08-06T01:15:18.035287",
+  "code_extracted_previous": "class Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        int i = 0, j = 1, k = 0;\n        while (j + k < n) {\n            if (s.charAt(i + k) == s.charAt(j + k)) {\n                k++;\n            } else if (s.charAt(i + k) < s.charAt(j + k)) {\n                i = Math.max(i + k + 1, j);\n                j = i + 1;\n                k = 0;\n            } else {\n                j += k + 1;\n                k = 0;\n            }\n        }\n        return s.substring(i);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:01.521878"
+}

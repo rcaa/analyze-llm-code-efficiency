@@ -1,0 +1,15 @@
+{
+  "id": 1160,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        unordered_map<char, int> charsCount;\n        for (char c : chars) {\n            charsCount[c]++;\n        }\n        int res = 0;\n        for (string& word : words) {\n            unordered_map<char, int> wordCount;\n            for (char c : word) {\n                wordCount[c]++;\n            }\n            bool isGood = true;\n            for (auto& pair : wordCount) {\n                if (pair.second > charsCount[pair.first]) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                res += word.size();\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N * M + L)\nspace complexity: O(L)\nenergy implications: LOW\nexplanation: The solution iterates through each word and checks if it can be formed from the given characters. It uses two hash maps to count the frequency of characters in the word and the given characters. If a word can be formed, its length is added to the result.",
+  "code": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        unordered_map<char, int> charsCount;\n        for (char c : chars) {\n            charsCount[c]++;\n        }\n        int res = 0;\n        for (string& word : words) {\n            unordered_map<char, int> wordCount;\n            for (char c : word) {\n                wordCount[c]++;\n            }\n            bool isGood = true;\n            for (auto& pair : wordCount) {\n                if (pair.second > charsCount[pair.first]) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                res += word.size();\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T12:38:19.867160",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        unordered_map<char, int> charsCount;\n        for (char c : chars) {\n            charsCount[c]++;\n        }\n        int res = 0;\n        for (string& word : words) {\n            unordered_map<char, int> wordCount;\n            for (char c : word) {\n                wordCount[c]++;\n            }\n            bool isGood = true;\n            for (auto& pair : wordCount) {\n                if (pair.second > charsCount[pair.first]) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                res += word.size();\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.633652"
+}

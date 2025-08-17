@@ -1,0 +1,15 @@
+{
+  "id": 187,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    vector<string> findRepeatedDnaSequences(string s) {\n        if (s.size() < 11) return {};\n        unordered_map<int, int> seen;\n        vector<string> ans;\n        int key = 0;\n        for (int i = 0; i < 9; ++i) {\n            key = (key << 2) | ((s[i] >> 1) & 3);\n        }\n        for (int i = 9; i < s.size(); ++i) {\n            key = ((key << 2) & 0xFFFFF) | ((s[i] >> 1) & 3);\n            if (++seen[key] == 2) {\n                ans.push_back(s.substr(i - 9, 10));\n            }\n        }\n        return ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses bit-packing to map each 10-letter substring to a 20-bit integer, enabling O(1) hashing and avoiding string copies. Single linear scan collects duplicates on the fly.",
+  "code": "class Solution {\npublic:\n    vector<string> findRepeatedDnaSequences(string s) {\n        if (s.size() < 11) return {};\n        unordered_map<int, int> seen;\n        vector<string> ans;\n        int key = 0;\n        for (int i = 0; i < 9; ++i) {\n            key = (key << 2) | ((s[i] >> 1) & 3);\n        }\n        for (int i = 9; i < s.size(); ++i) {\n            key = ((key << 2) & 0xFFFFF) | ((s[i] >> 1) & 3);\n            if (++seen[key] == 2) {\n                ans.push_back(s.substr(i - 9, 10));\n            }\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-06T02:29:02.390785",
+  "code_extracted_previous": "public:\n    vector<string> findRepeatedDnaSequences(string s) {\n        if (s.size() < 11) return {};\n        unordered_map<int, int> seen;\n        vector<string> ans;\n        int key = 0;\n        for (int i = 0; i < 9; ++i) {\n            key = (key << 2) | ((s[i] >> 1) & 3);\n        }\n        for (int i = 9; i < s.size(); ++i) {\n            key = ((key << 2) & 0xFFFFF) | ((s[i] >> 1) & 3);\n            if (++seen[key] == 2) {\n                ans.push_back(s.substr(i - 9, 10));\n            }\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.351416"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3121,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def numberOfSpecialChars(self, word: str) -> int:\n        count = 0\n        last_lower = {}\n        for i, char in enumerate(word):\n            if char.islower():\n                last_lower[char] = i\n            elif char.isupper() and char in last_lower and last_lower[char] < i:\n                count += 1\n        return count\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(26)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, keeping track of the last occurrence of each lowercase letter. If an uppercase letter is encountered and its lowercase counterpart has appeared previously before it, it's counted as a special character. \n\n\n",
+  "code": "class Solution:\n    def numberOfSpecialChars(self, word: str) -> int:\n        count = 0\n        last_lower = {}\n        for i, char in enumerate(word):\n            if char.islower():\n                last_lower[char] = i\n            elif char.isupper() and char in last_lower and last_lower[char] < i:\n                count += 1\n        return count",
+  "timestamp": "2025-08-05T15:12:18.819508",
+  "code_extracted_previous": "class Solution:\n    def numberOfSpecialChars(self, word: str) -> int:\n        count = 0\n        last_lower = {}\n        for i, char in enumerate(word):\n            if char.islower():\n                last_lower[char] = i\n            elif char.isupper() and char in last_lower and last_lower[char] < i:\n                count += 1\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:26.625723"
+}

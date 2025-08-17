@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            int val = pow(i, x);\n            if (val > n) break;\n            for (int j = n; j >= val; --j) {\n                dp[j] = (dp[j] + dp[j - val]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^(1/x) * n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming approach with memoization to efficiently compute the number of ways to express n as the sum of xth powers of unique integers.",
+  "code": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            int val = pow(i, x);\n            if (val > n) break;\n            for (int j = n; j >= val; --j) {\n                dp[j] = (dp[j] + dp[j - val]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-05T14:28:14.280307",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            int val = pow(i, x);\n            if (val > n) break;\n            for (int j = n; j >= val; --j) {\n                dp[j] = (dp[j] + dp[j - val]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.330496"
+}

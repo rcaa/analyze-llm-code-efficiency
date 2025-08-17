@@ -1,0 +1,15 @@
+{
+  "id": 2337,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public boolean canChange(String start, String target) {\n        if (start.length() != target.length()) {\n            return false;\n        }\n        int left = 0;\n        int right = start.length() - 1;\n        while (left <= right) {\n            if (start.charAt(left) == 'L' && target.charAt(left) == 'L' && start.charAt(left) != '_') {\n                if (left > 0 && start.charAt(left - 1) == '_') {\n                    left++;\n                } else {\n                    return false;\n                }\n            } else if (start.charAt(right) == 'R' && target.charAt(right) == 'R' && start.charAt(right) != '_') {\n                if (right < start.length() - 1 && start.charAt(right + 1) == '_') {\n                    right--;\n                } else {\n                    return false;\n                }\n            } else {\n                left++;\n                right--;\n            }\n        }\n        return true;\n    }\n}\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW \nexplanation: The solution iterates through the strings from both ends, checking if the pieces can be moved to their target positions. It uses a two-pointer approach to efficiently traverse the strings and determine if a valid sequence of moves is possible. The algorithm has a time complexity of O(N) as it iterates through the strings once, and a space complexity of O(1) as it uses a constant amount of extra space. The energy implications are low as it involves minimal computations.\n",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-06T01:45:18.724795",
+  "code_extracted_previous": "class Solution {\n    public boolean canChange(String start, String target) {\n        if (start.length() != target.length()) {\n            return false;\n        }\n        int left = 0;\n        int right = start.length() - 1;\n        while (left <= right) {\n            if (start.charAt(left) == 'L' && target.charAt(left) == 'L' && start.charAt(left) != '_') {\n                if (left > 0 && start.charAt(left - 1) == '_') {\n                    left++;\n                } else {\n                    return false;\n                }\n            } else if (start.charAt(right) == 'R' && target.charAt(right) == 'R' && start.charAt(right) != '_') {\n                if (right < start.length() - 1 && start.charAt(right + 1) == '_') {\n                    right--;\n                } else {\n                    return false;\n                }\n            } else {\n                left++;\n                right--;\n            }\n        }\n        return true;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.975528"
+}

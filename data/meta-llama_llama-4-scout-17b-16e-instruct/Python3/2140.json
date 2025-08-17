@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            points, brainpower = questions[i]\n            dp[i] = max(points + dp[min(n, i + brainpower + 1)], dp[i + 1])\n        return dp[0]\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming approach solving the problem in a bottom-up manner, utilizing a DP array to track maximum points that can be earned up to each question, considering the brainpower constraint.",
+  "code": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            points, brainpower = questions[i]\n            dp[i] = max(points + dp[min(n, i + brainpower + 1)], dp[i + 1])\n        return dp[0]",
+  "timestamp": "2025-08-05T13:25:18.113476",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            points, brainpower = questions[i]\n            dp[i] = max(points + dp[min(n, i + brainpower + 1)], dp[i + 1])\n        return dp[0]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.061996"
+}

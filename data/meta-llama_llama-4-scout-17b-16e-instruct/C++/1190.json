@@ -1,0 +1,15 @@
+{
+  "id": 1190,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string reverseParentheses(string s) {\n        while (s.find('(') != string::npos) {\n            int start = s.find_last_of('(');\n            int end = s.find(')', start);\n            string substr = s.substr(start + 1, end - start - 1);\n            reverse(substr.begin(), substr.end());\n            s.replace(start, end - start + 1, substr);\n        }\n        return s;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Iteratively finds innermost parentheses, reverses the substring, and replaces it until no more parentheses are found.",
+  "code": "class Solution {\npublic:\n    string reverseParentheses(string s) {\n        while (s.find('(') != string::npos) {\n            int start = s.find_last_of('(');\n            int end = s.find(')', start);\n            string substr = s.substr(start + 1, end - start - 1);\n            reverse(substr.begin(), substr.end());\n            s.replace(start, end - start + 1, substr);\n        }\n        return s;\n    }\n};",
+  "timestamp": "2025-08-06T00:49:58.472628",
+  "code_extracted_previous": "class Solution {\npublic:\n    string reverseParentheses(string s) {\n        while (s.find('(') != string::npos) {\n            int start = s.find_last_of('(');\n            int end = s.find(')', start);\n            string substr = s.substr(start + 1, end - start - 1);\n            reverse(substr.begin(), substr.end());\n            s.replace(start, end - start + 1, substr);\n        }\n        return s;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.645723"
+}

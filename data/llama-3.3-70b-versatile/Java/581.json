@@ -1,0 +1,15 @@
+{
+  "id": 581,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int findUnsortedSubarray(int[] nums) {\n        int[] sorted = nums.clone();\n        Arrays.sort(sorted);\n        int start = nums.length, end = 0;\n        for (int i = 0; i < nums.length; i++) {\n            if (nums[i] != sorted[i]) {\n                start = Math.min(start, i);\n                end = Math.max(end, i);\n            }\n        }\n        return end - start >= 0 ? end - start + 1 : 0;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution creates a sorted copy of the input array and then iterates through both arrays to find the first and last indices where the elements differ, which represent the start and end of the shortest subarray that needs to be sorted.",
+  "code": "class Solution {\n    public int findUnsortedSubarray(int[] nums) {\n        int[] sorted = nums.clone();\n        Arrays.sort(sorted);\n        int start = nums.length, end = 0;\n        for (int i = 0; i < nums.length; i++) {\n            if (nums[i] != sorted[i]) {\n                start = Math.min(start, i);\n                end = Math.max(end, i);\n            }\n        }\n        return end - start >= 0 ? end - start + 1 : 0;\n    }\n}",
+  "timestamp": "2025-08-05T13:03:55.959967",
+  "code_extracted_previous": "class Solution {\n    public int findUnsortedSubarray(int[] nums) {\n        int[] sorted = nums.clone();\n        Arrays.sort(sorted);\n        int start = nums.length, end = 0;\n        for (int i = 0; i < nums.length; i++) {\n            if (nums[i] != sorted[i]) {\n                start = Math.min(start, i);\n                end = Math.max(end, i);\n            }\n        }\n        return end - start >= 0 ? end - start + 1 : 0;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.363762"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1291,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> result;\n        string num = \"123456789\";\n        for (int length = to_string(low).size(); length <= to_string(high).size(); ++length) {\n            for (int start = 0; start <= 9 - length; ++start) {\n                int currentNum = stoi(num.substr(start, length));\n                if (low <= currentNum && currentNum <= high) {\n                    result.push_back(currentNum);\n                }\n            }\n        }\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(high) * 10)\nspace complexity: O(log(high))\nenergy implications: LOW\nexplanation: The solution generates all possible sequential numbers within the given range by iterating over possible lengths and start digits, then checks if each generated number falls within the range.",
+  "code": "class Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> result;\n        string num = \"123456789\";\n        for (int length = to_string(low).size(); length <= to_string(high).size(); ++length) {\n            for (int start = 0; start <= 9 - length; ++start) {\n                int currentNum = stoi(num.substr(start, length));\n                if (low <= currentNum && currentNum <= high) {\n                    result.push_back(currentNum);\n                }\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T14:30:31.192853",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> result;\n        string num = \"123456789\";\n        for (int length = to_string(low).size(); length <= to_string(high).size(); ++length) {\n            for (int start = 0; start <= 9 - length; ++start) {\n                int currentNum = stoi(num.substr(start, length));\n                if (low <= currentNum && currentNum <= high) {\n                    result.push_back(currentNum);\n                }\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.703639"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 482,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    string licenseKeyFormatting(string s, int k) {\n        string res;\n        int count = 0;\n        for (int i = s.size() - 1; i >= 0; --i) {\n            if (s[i] != '-') {\n                res += toupper(s[i]);\n                count++;\n                if (count == k) {\n                    res += '-';\n                    count = 0;\n                }\n            }\n        }\n        if (!res.empty() && res.back() == '-') res.pop_back();\n        reverse(res.begin(), res.end());\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Processes the input string from right to left, skipping dashes, converting to uppercase, and grouping characters into sets of k, handling the first group as a special case.",
+  "code": "class Solution {\npublic:\n    string licenseKeyFormatting(string s, int k) {\n        string res;\n        int count = 0;\n        for (int i = s.size() - 1; i >= 0; --i) {\n            if (s[i] != '-') {\n                res += toupper(s[i]);\n                count++;\n                if (count == k) {\n                    res += '-';\n                    count = 0;\n                }\n            }\n        }\n        if (!res.empty() && res.back() == '-') res.pop_back();\n        reverse(res.begin(), res.end());\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T16:24:40.172584",
+  "code_extracted_previous": "class Solution {\npublic:\n    string licenseKeyFormatting(string s, int k) {\n        string res;\n        int count = 0;\n        for (int i = s.size() - 1; i >= 0; --i) {\n            if (s[i] != '-') {\n                res += toupper(s[i]);\n                count++;\n                if (count == k) {\n                    res += '-';\n                    count = 0;\n                }\n            }\n        }\n        if (!res.empty() && res.back() == '-') res.pop_back();\n        reverse(res.begin(), res.end());\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.686048"
+}

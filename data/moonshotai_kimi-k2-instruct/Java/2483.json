@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int totalY = 0;\n        for (char c : customers.toCharArray()) {\n            if (c == 'Y') totalY++;\n        }\n        int minPenalty = totalY;\n        int bestJ = 0;\n        int prefixN = 0;\n        for (int j = 0; j < n; j++) {\n            if (customers.charAt(j) == 'N') {\n                prefixN++;\n            }\n            int penalty = prefixN + (totalY - (j + 1 - prefixN));\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestJ = j + 1;\n            }\n        }\n        return bestJ;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single left-to-right pass counts total 'Y's, then computes running prefix of 'N's and suffix of 'Y's to evaluate each closing hour in constant time, returning the earliest minimal-penalty index.",
+  "code": "class Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int totalY = 0;\n        for (char c : customers.toCharArray()) {\n            if (c == 'Y') totalY++;\n        }\n        int minPenalty = totalY;\n        int bestJ = 0;\n        int prefixN = 0;\n        for (int j = 0; j < n; j++) {\n            if (customers.charAt(j) == 'N') {\n                prefixN++;\n            }\n            int penalty = prefixN + (totalY - (j + 1 - prefixN));\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestJ = j + 1;\n            }\n        }\n        return bestJ;\n    }\n}",
+  "timestamp": "2025-08-06T01:02:06.224159",
+  "code_extracted_previous": "class Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int totalY = 0;\n        for (char c : customers.toCharArray()) {\n            if (c == 'Y') totalY++;\n        }\n        int minPenalty = totalY;\n        int bestJ = 0;\n        int prefixN = 0;\n        for (int j = 0; j < n; j++) {\n            if (customers.charAt(j) == 'N') {\n                prefixN++;\n            }\n            int penalty = prefixN + (totalY - (j + 1 - prefixN));\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestJ = j + 1;\n            }\n        }\n        return bestJ;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.093055"
+}

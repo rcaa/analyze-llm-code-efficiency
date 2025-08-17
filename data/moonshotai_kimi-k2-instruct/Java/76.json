@@ -1,0 +1,15 @@
+{
+  "id": 76,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public String minWindow(String s, String t) {\n        if (t.length() > s.length()) return \"\";\n        int[] need = new int[128];\n        for (char c : t.toCharArray()) need[c]++;\n        int left = 0, right = 0, count = t.length(), minLen = Integer.MAX_VALUE, start = 0;\n        while (right < s.length()) {\n            if (need[s.charAt(right++)]-- > 0) count--;\n            while (count == 0) {\n                if (right - left < minLen) {\n                    minLen = right - left;\n                    start = left;\n                }\n                if (++need[s.charAt(left++)] > 0) count++;\n            }\n        }\n        return minLen == Integer.MAX_VALUE ? \"\" : s.substring(start, start + minLen);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(m + n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window with two pointers and frequency counts. Expand right until all chars in t are covered, then contract left to minimize window while maintaining coverage. Uses fixed-size array for counts, giving constant space.",
+  "code": "class Solution {\n    public String minWindow(String s, String t) {\n        if (t.length() > s.length()) return \"\";\n        int[] need = new int[128];\n        for (char c : t.toCharArray()) need[c]++;\n        int left = 0, right = 0, count = t.length(), minLen = Integer.MAX_VALUE, start = 0;\n        while (right < s.length()) {\n            if (need[s.charAt(right++)]-- > 0) count--;\n            while (count == 0) {\n                if (right - left < minLen) {\n                    minLen = right - left;\n                    start = left;\n                }\n                if (++need[s.charAt(left++)] > 0) count++;\n            }\n        }\n        return minLen == Integer.MAX_VALUE ? \"\" : s.substring(start, start + minLen);\n    }\n}",
+  "timestamp": "2025-08-06T02:32:18.225738",
+  "code_extracted_previous": "public String minWindow(String s, String t) {\n        if (t.length() > s.length()) return \"\";\n        int[] need = new int[128];\n        for (char c : t.toCharArray()) need[c]++;\n        int left = 0, right = 0, count = t.length(), minLen = Integer.MAX_VALUE, start = 0;\n        while (right < s.length()) {\n            if (need[s.charAt(right++)]-- > 0) count--;\n            while (count == 0) {\n                if (right - left < minLen) {\n                    minLen = right - left;\n                    start = left;\n                }\n                if (++need[s.charAt(left++)] > 0) count++;\n            }\n        }\n        return minLen == Integer.MAX_VALUE ? \"\" : s.substring(start, start + minLen);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.813948"
+}

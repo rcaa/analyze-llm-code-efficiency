@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        def gcd(a, b):\n            while b:\n                a, b = b, a % b\n            return a\n        n = len(nums)\n        res = 0\n        for i in range(n):\n            cnt = 0\n            g = nums[i]\n            for j in range(i, n):\n                g = gcd(g, nums[j])\n                if g >= 2:\n                    cnt += 1\n                else:\n                    break\n            res = max(res, cnt)\n            if maxC >= cnt:\n                res = max(res, cnt + 1)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a nested loop to find the longest stable subarray for each starting index. It calculates the GCD of the subarray and checks if it's greater than or equal to 2. If it is, it updates the maximum stability factor. It also checks if the maximum number of changes is sufficient to make the subarray stable and updates the result accordingly.",
+  "code": "class Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        def gcd(a, b):\n            while b:\n                a, b = b, a % b\n            return a\n        n = len(nums)\n        res = 0\n        for i in range(n):\n            cnt = 0\n            g = nums[i]\n            for j in range(i, n):\n                g = gcd(g, nums[j])\n                if g >= 2:\n                    cnt += 1\n                else:\n                    break\n            res = max(res, cnt)\n            if maxC >= cnt:\n                res = max(res, cnt + 1)\n        return res",
+  "timestamp": "2025-08-05T12:22:57.466827",
+  "code_extracted_previous": "class Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        def gcd(a, b):\n            while b:\n                a, b = b, a % b\n            return a\n        n = len(nums)\n        res = 0\n        for i in range(n):\n            cnt = 0\n            g = nums[i]\n            for j in range(i, n):\n                g = gcd(g, nums[j])\n                if g >= 2:\n                    cnt += 1\n                else:\n                    break\n            res = max(res, cnt)\n            if maxC >= cnt:\n                res = max(res, cnt + 1)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.806648"
+}

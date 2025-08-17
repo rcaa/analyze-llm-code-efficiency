@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        vector<int> cnt(100001, 0);\n        for (int x : nums) {\n            for (int i = 2; i * i <= x; i++) {\n                if (x % i == 0) {\n                    cnt[i]++;\n                    while (x % i == 0) x /= i;\n                }\n            }\n            if (x > 1) cnt[x]++;\n        }\n        int res = 0;\n        for (int i = 100000; i >= 2; i--) {\n            if (cnt[i] > maxC) {\n                res = max(res, cnt[i] - maxC);\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * sqrt(m))\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution uses a frequency count array to store the count of each prime factor in the array. Then, it iterates from the highest prime factor to the lowest, updating the result with the maximum possible stability factor.",
+  "code": "class Solution {\npublic:\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        vector<int> cnt(100001, 0);\n        for (int x : nums) {\n            for (int i = 2; i * i <= x; i++) {\n                if (x % i == 0) {\n                    cnt[i]++;\n                    while (x % i == 0) x /= i;\n                }\n            }\n            if (x > 1) cnt[x]++;\n        }\n        int res = 0;\n        for (int i = 100000; i >= 2; i--) {\n            if (cnt[i] > maxC) {\n                res = max(res, cnt[i] - maxC);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T12:22:55.390917",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        vector<int> cnt(100001, 0);\n        for (int x : nums) {\n            for (int i = 2; i * i <= x; i++) {\n                if (x % i == 0) {\n                    cnt[i]++;\n                    while (x % i == 0) x /= i;\n                }\n            }\n            if (x > 1) cnt[x]++;\n        }\n        int res = 0;\n        for (int i = 100000; i >= 2; i--) {\n            if (cnt[i] > maxC) {\n                res = max(res, cnt[i] - maxC);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.859405"
+}

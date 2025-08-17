@@ -1,0 +1,15 @@
+{
+  "id": 1042,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n        vector<vector<int>> graph(n + 1);\n        for (auto& path : paths) {\n            graph[path[0]].push_back(path[1]);\n            graph[path[1]].push_back(path[0]);\n        }\n        vector<int> ans(n + 1);\n        for (int i = 1; i <= n; i++) {\n            set<int> used;\n            for (int j : graph[i]) {\n                used.insert(ans[j]);\n            }\n            for (int k = 1; k <= 4; k++) {\n                if (used.count(k) == 0) {\n                    ans[i] = k;\n                    break;\n                }\n            }\n        }\n        ans.erase(ans.begin());\n        return ans;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: We first build an adjacency list to represent the graph. Then, for each garden, we iterate over its neighbors and find the first available flower type that is not used by its neighbors. This approach ensures that for any two connected gardens, they have different types of flowers.",
+  "code": "class Solution {\npublic:\n    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n        vector<vector<int>> graph(n + 1);\n        for (auto& path : paths) {\n            graph[path[0]].push_back(path[1]);\n            graph[path[1]].push_back(path[0]);\n        }\n        vector<int> ans(n + 1);\n        for (int i = 1; i <= n; i++) {\n            set<int> used;\n            for (int j : graph[i]) {\n                used.insert(ans[j]);\n            }\n            for (int k = 1; k <= 4; k++) {\n                if (used.count(k) == 0) {\n                    ans[i] = k;\n                    break;\n                }\n            }\n        }\n        ans.erase(ans.begin());\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T14:01:52.255606",
+  "code_extracted_previous": "public:\n    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n        vector<vector<int>> graph(n + 1);\n        for (auto& path : paths) {\n            graph[path[0]].push_back(path[1]);\n            graph[path[1]].push_back(path[0]);\n        }\n        vector<int> ans(n + 1);\n        for (int i = 1; i <= n; i++) {\n            set<int> used;\n            for (int j : graph[i]) {\n                used.insert(ans[j]);\n            }\n            for (int k = 1; k <= 4; k++) {\n                if (used.count(k) == 0) {\n                    ans[i] = k;\n                    break;\n                }\n            }\n        }\n        ans.erase(ans.begin());\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.356952"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass MyQueue {\npublic:\n    stack<int> s1, s2;\n    MyQueue() {\n        \n    }\n    \n    void push(int x) {\n        s1.push(x);\n    }\n    \n    int pop() {\n        if(s2.empty()) {\n            while(!s1.empty()) {\n                s2.push(s1.top());\n                s1.pop();\n            }\n        }\n        int x = s2.top();\n        s2.pop();\n        return x;\n    }\n    \n    int peek() {\n        if(s2.empty()) {\n            while(!s1.empty()) {\n                s2.push(s1.top());\n                s1.pop();\n            }\n        }\n        return s2.top();\n    }\n    \n    bool empty() {\n        return s1.empty() && s2.empty();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1) amortized\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Using two stacks to implement a queue, where one stack is used to store the incoming elements and the other stack is used to store the elements in the order they should be dequeued.",
+  "code": "class MyQueue {\npublic:\n    stack<int> s1, s2;\n    MyQueue() {\n        \n    }\n    \n    void push(int x) {\n        s1.push(x);\n    }\n    \n    int pop() {\n        if(s2.empty()) {\n            while(!s1.empty()) {\n                s2.push(s1.top());\n                s1.pop();\n            }\n        }\n        int x = s2.top();\n        s2.pop();\n        return x;\n    }\n    \n    int peek() {\n        if(s2.empty()) {\n            while(!s1.empty()) {\n                s2.push(s1.top());\n                s1.pop();\n            }\n        }\n        return s2.top();\n    }\n    \n    bool empty() {\n        return s1.empty() && s2.empty();\n    }\n};",
+  "timestamp": "2025-08-05T16:01:03.104945",
+  "code_extracted_previous": "class MyQueue {\npublic:\n    stack<int> s1, s2;\n    MyQueue() {\n        \n    }\n    \n    void push(int x) {\n        s1.push(x);\n    }\n    \n    int pop() {\n        if(s2.empty()) {\n            while(!s1.empty()) {\n                s2.push(s1.top());\n                s1.pop();\n            }\n        }\n        int x = s2.top();\n        s2.pop();\n        return x;\n    }\n    \n    int peek() {\n        if(s2.empty()) {\n            while(!s1.empty()) {\n                s2.push(s1.top());\n                s1.pop();\n            }\n        }\n        return s2.top();\n    }\n    \n    bool empty() {\n        return s1.empty() && s2.empty();\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:36.499314"
+}

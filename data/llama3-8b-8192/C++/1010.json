@@ -1,0 +1,15 @@
+{
+  "id": 1010,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        int count[60] = {0};\n        for (int t : time) {\n            count[t % 60]++;\n        }\n        int res = 0;\n        for (int i = 0; i < 30; i++) {\n            res += count[i] * (count[60 - i] - (i == 0 ? 1 : 0));\n        }\n        res += count[30] * (count[30] - 1);\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use a count array to store the frequency of each remainder when divided by 60. Then we calculate the number of pairs for each remainder and sum them up.",
+  "code": "class Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        int count[60] = {0};\n        for (int t : time) {\n            count[t % 60]++;\n        }\n        int res = 0;\n        for (int i = 0; i < 30; i++) {\n            res += count[i] * (count[60 - i] - (i == 0 ? 1 : 0));\n        }\n        res += count[30] * (count[30] - 1);\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:16:56.176331",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        int count[60] = {0};\n        for (int t : time) {\n            count[t % 60]++;\n        }\n        int res = 0;\n        for (int i = 0; i < 30; i++) {\n            res += count[i] * (count[60 - i] - (i == 0 ? 1 : 0));\n        }\n        res += count[30] * (count[30] - 1);\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.328240"
+}

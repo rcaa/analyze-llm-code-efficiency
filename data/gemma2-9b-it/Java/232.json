@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass MyQueue {\n\n    private Stack<Integer> inputStack;\n    private Stack<Integer> outputStack;\n\n    public MyQueue() {\n        inputStack = new Stack<>();\n        outputStack = new Stack<>();\n    }\n    \n    public void push(int x) {\n        inputStack.push(x);\n    }\n    \n    public int pop() {\n        if (outputStack.isEmpty()) {\n            while (!inputStack.isEmpty()) {\n                outputStack.push(inputStack.pop());\n            }\n        }\n        return outputStack.pop();\n    }\n    \n    public int peek() {\n        if (outputStack.isEmpty()) {\n            while (!inputStack.isEmpty()) {\n                outputStack.push(inputStack.pop());\n            }\n        }\n        return outputStack.peek();\n    }\n    \n    public boolean empty() {\n        return inputStack.isEmpty() && outputStack.isEmpty();\n    }\n}\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nexplanation: Uses two stacks. `inputStack` for enqueuing and `outputStack` for dequeuing.  Amortized O(1) time complexity achieved by transferring elements from `inputStack` to `outputStack` only when needed for dequeueing.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-06T08:40:59.213219",
+  "code_extracted_previous": "class MyQueue {\n\n    private Stack<Integer> inputStack;\n    private Stack<Integer> outputStack;\n\n    public MyQueue() {\n        inputStack = new Stack<>();\n        outputStack = new Stack<>();\n    }\n    \n    public void push(int x) {\n        inputStack.push(x);\n    }\n    \n    public int pop() {\n        if (outputStack.isEmpty()) {\n            while (!inputStack.isEmpty()) {\n                outputStack.push(inputStack.pop());\n            }\n        }\n        return outputStack.pop();\n    }\n    \n    public int peek() {\n        if (outputStack.isEmpty()) {\n            while (!inputStack.isEmpty()) {\n                outputStack.push(inputStack.pop());\n            }\n        }\n        return outputStack.peek();\n    }\n    \n    public boolean empty() {\n        return inputStack.isEmpty() && outputStack.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.959248"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass Solution {\npublic:\n    Solution(vector<int>& w) {\n        this->w = w;\n        this->totalSum = accumulate(w.begin(), w.end(), 0);\n    }\n    \n    int pickIndex() {\n        double random = rand() / (double)RAND_MAX * totalSum;\n        int index = 0;\n        for (; index < w.size(); index++) {\n            if (random < w[index]) {\n                break;\n            }\n            random -= w[index];\n        }\n        return index;\n    }\nprivate:\n    vector<int> w;\n    int totalSum;\n};\n```\nsolution: \n```c++\nclass Solution {\npublic:\n    Solution(vector<int>& w) {\n        this->w = w;\n        this->totalSum = accumulate(w.begin(), w.end(), 0);\n    }\n    \n    int pickIndex() {\n        double random = rand() / (double)RAND_MAX * totalSum;\n        int index = 0;\n        for (; index < w.size(); index++) {\n            if (random < w[index]) {\n                break;\n            }\n            random -= w[index];\n        }\n        return index;\n    }\nprivate:\n    vector<int> w;\n    int totalSum;\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a cumulative sum of the weights to efficiently determine the index to return. It generates a random number within the range of the total sum and iterates through the weights, stopping when the random number is less than the current weight. This approach ensures that the probability of picking an index is proportional to its weight.\n",
+  "code": "class Solution {\npublic:\n    Solution(vector<int>& w) {\n        this->w = w;\n        this->totalSum = accumulate(w.begin(), w.end(), 0);\n    }\n    \n    int pickIndex() {\n        double random = rand() / (double)RAND_MAX * totalSum;\n        int index = 0;\n        for (; index < w.size(); index++) {\n            if (random < w[index]) {\n                break;\n            }\n            random -= w[index];\n        }\n        return index;\n    }\nprivate:\n    vector<int> w;\n    int totalSum;\n};",
+  "timestamp": "2025-08-05T12:59:43.515226",
+  "code_extracted_previous": "class Solution {\npublic:\n    Solution(vector<int>& w) {\n        this->w = w;\n        this->totalSum = accumulate(w.begin(), w.end(), 0);\n    }\n    \n    int pickIndex() {\n        double random = rand() / (double)RAND_MAX * totalSum;\n        int index = 0;\n        for (; index < w.size(); index++) {\n            if (random < w[index]) {\n                break;\n            }\n            random -= w[index];\n        }\n        return index;\n    }\nprivate:\n    vector<int> w;\n    int totalSum;\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.178373"
+}

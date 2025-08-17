@@ -1,0 +1,15 @@
+{
+  "id": 3519,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int countNumbers(string l, string r, int b) {\n        int res = 0;\n        for (int i = stoi(l); i <= stoi(r); i++) {\n            string s = to_string(i);\n            bool flag = true;\n            for (int j = 0; j < s.length() - 1; j++) {\n                if (stoi(string(1, s[j])) > stoi(string(1, s[j + 1]))) {\n                    flag = false;\n                    break;\n                }\n            }\n            if (flag) res = (res + 1) % (1e9 + 7);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O((r-l+1) * log(r))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the range [l, r] and checks each number to see if its digits are in non-decreasing order. It uses a flag to track whether the digits are non-decreasing, and if they are, it increments the result. The result is taken modulo 10^9 + 7 to avoid overflow. The time complexity is O((r-l+1) * log(r)) because converting a string to an integer takes O(log(r)) time, and there are (r-l+1) numbers in the range.",
+  "code": "class Solution {\npublic:\n    int countNumbers(string l, string r, int b) {\n        int res = 0;\n        for (int i = stoi(l); i <= stoi(r); i++) {\n            string s = to_string(i);\n            bool flag = true;\n            for (int j = 0; j < s.length() - 1; j++) {\n                if (stoi(string(1, s[j])) > stoi(string(1, s[j + 1]))) {\n                    flag = false;\n                    break;\n                }\n            }\n            if (flag) res = (res + 1) % (1e9 + 7);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:26:52.621545",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countNumbers(string l, string r, int b) {\n        int res = 0;\n        for (int i = stoi(l); i <= stoi(r); i++) {\n            string s = to_string(i);\n            bool flag = true;\n            for (int j = 0; j < s.length() - 1; j++) {\n                if (stoi(string(1, s[j])) > stoi(string(1, s[j + 1]))) {\n                    flag = false;\n                    break;\n                }\n            }\n            if (flag) res = (res + 1) % (1e9 + 7);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.277957"
+}

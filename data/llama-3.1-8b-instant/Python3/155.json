@@ -1,0 +1,15 @@
+{
+  "id": 155,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass MinStack:\n\n    def __init__(self):\n        self.stack = []\n        self.min_stack = []\n\n    def push(self, val: int) -> None:\n        self.stack.append(val)\n        if not self.min_stack or val <= self.min_stack[-1]:\n            self.min_stack.append(val)\n\n    def pop(self) -> None:\n        if self.stack:\n            if self.stack[-1] == self.min_stack[-1]:\n                self.min_stack.pop()\n            self.stack.pop()\n\n    def top(self) -> int:\n        if self.stack:\n            return self.stack[-1]\n\n    def getMin(self) -> int:\n        if self.min_stack:\n            return self.min_stack[-1]\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: This solution uses two stacks to achieve O(1) time complexity for each function. The main stack stores the actual elements, and the min stack stores the minimum elements encountered so far. When pushing an element, we check if it's less than or equal to the current minimum, and if so, we push it to the min stack. When popping an element, we check if it's equal to the current minimum, and if so, we pop it from the min stack. This way, we can retrieve the minimum element in constant time.",
+  "code": "class MinStack:\n\n    def __init__(self):\n        self.stack = []\n        self.min_stack = []\n\n    def push(self, val: int) -> None:\n        self.stack.append(val)\n        if not self.min_stack or val <= self.min_stack[-1]:\n            self.min_stack.append(val)\n\n    def pop(self) -> None:\n        if self.stack:\n            if self.stack[-1] == self.min_stack[-1]:\n                self.min_stack.pop()\n            self.stack.pop()\n\n    def top(self) -> int:\n        if self.stack:\n            return self.stack[-1]\n\n    def getMin(self) -> int:\n        if self.min_stack:\n            return self.min_stack[-1]",
+  "timestamp": "2025-08-06T01:57:43.161980",
+  "code_extracted_previous": "class MinStack:\n\n    def __init__(self):\n        self.stack = []\n        self.min_stack = []\n\n    def push(self, val: int) -> None:\n        self.stack.append(val)\n        if not self.min_stack or val <= self.min_stack[-1]:\n            self.min_stack.append(val)\n\n    def pop(self) -> None:\n        if self.stack:\n            if self.stack[-1] == self.min_stack[-1]:\n                self.min_stack.pop()\n            self.stack.pop()\n\n    def top(self) -> int:\n        if self.stack:\n            return self.stack[-1]\n\n    def getMin(self) -> int:\n        if self.min_stack:\n            return self.min_stack[-1]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:30.403188"
+}

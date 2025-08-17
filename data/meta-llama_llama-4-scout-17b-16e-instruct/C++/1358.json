@@ -1,0 +1,15 @@
+{
+  "id": 1358,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int count[3] = {0}, res = 0;\n        int left = 0;\n        for (int right = 0; right < s.size(); ++right) {\n            count[s[right] - 'a']++;\n            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {\n                res += s.size() - right;\n                count[s[left] - 'a']--;\n                left++;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with two pointers, left and right. It maintains a count array to track the occurrences of 'a', 'b', and 'c'. When all three characters are present in the current window, it increments the result by the number of substrings that can be formed with the remaining characters.",
+  "code": "class Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int count[3] = {0}, res = 0;\n        int left = 0;\n        for (int right = 0; right < s.size(); ++right) {\n            count[s[right] - 'a']++;\n            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {\n                res += s.size() - right;\n                count[s[left] - 'a']--;\n                left++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:02:08.133560",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int count[3] = {0}, res = 0;\n        int left = 0;\n        for (int right = 0; right < s.size(); ++right) {\n            count[s[right] - 'a']++;\n            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {\n                res += s.size() - right;\n                count[s[left] - 'a']--;\n                left++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.736210"
+}

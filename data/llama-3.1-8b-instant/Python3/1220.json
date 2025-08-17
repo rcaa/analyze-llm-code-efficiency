@@ -1,0 +1,15 @@
+{
+  "id": 1220,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def countVowelPermutation(self, n: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * 5\n        dp[0] = 1\n        for _ in range(n - 1):\n            ndp = [0] * 5\n            ndp[0] = (dp[1] + dp[2] + dp[4]) % MOD\n            ndp[1] = (dp[0] + dp[2]) % MOD\n            ndp[2] = (dp[1] + dp[3]) % MOD\n            ndp[3] = dp[2] % MOD\n            ndp[4] = (dp[2] + dp[3]) % MOD\n            dp = ndp\n        return sum(dp) % MOD\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We maintain a list dp where dp[i] represents the number of strings of length i that can be formed. We iterate n-1 times, and in each iteration, we calculate the next list ndp based on the current list dp. The final answer is the sum of all elements in the last list dp modulo 10^9 + 7.",
+  "code": "class Solution:\n    def countVowelPermutation(self, n: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * 5\n        dp[0] = 1\n        for _ in range(n - 1):\n            ndp = [0] * 5\n            ndp[0] = (dp[1] + dp[2] + dp[4]) % MOD\n            ndp[1] = (dp[0] + dp[2]) % MOD\n            ndp[2] = (dp[1] + dp[3]) % MOD\n            ndp[3] = dp[2] % MOD\n            ndp[4] = (dp[2] + dp[3]) % MOD\n            dp = ndp\n        return sum(dp) % MOD",
+  "timestamp": "2025-08-05T14:17:36.736747",
+  "code_extracted_previous": "class Solution:\n    def countVowelPermutation(self, n: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * 5\n        dp[0] = 1\n        for _ in range(n - 1):\n            ndp = [0] * 5\n            ndp[0] = (dp[1] + dp[2] + dp[4]) % MOD\n            ndp[1] = (dp[0] + dp[2]) % MOD\n            ndp[2] = (dp[1] + dp[3]) % MOD\n            ndp[3] = dp[2] % MOD\n            ndp[4] = (dp[2] + dp[3]) % MOD\n            dp = ndp\n        return sum(dp) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.265710"
+}

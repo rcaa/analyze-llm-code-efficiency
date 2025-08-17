@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string robotWithString(string s) {\n        string res = \"\";\n        string t = \"\";\n        for (char c : s) {\n            t += c;\n            while (!t.empty() && res + t.back() < res + t.substr(1) + t.back()) {\n                res += t.back();\n                t.pop_back();\n            }\n        }\n        return res + t;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a greedy approach to build the result string. It iterates over the input string, appending each character to the temporary string `t`. Then, it checks if the last character of `t` can be appended to the result string `res` without changing the lexicographical order. If so, it appends the character to `res` and removes it from `t`. Finally, it appends the remaining characters in `t` to `res`. The time complexity is O(n) because each character is processed once, and the space complexity is O(n) because the maximum size of `res` and `t` is equal to the length of the input string.",
+  "code": "class Solution {\npublic:\n    string robotWithString(string s) {\n        string res = \"\";\n        string t = \"\";\n        for (char c : s) {\n            t += c;\n            while (!t.empty() && res + t.back() < res + t.substr(1) + t.back()) {\n                res += t.back();\n                t.pop_back();\n            }\n        }\n        return res + t;\n    }\n};",
+  "timestamp": "2025-08-05T15:10:03.705629",
+  "code_extracted_previous": "public:\n    string robotWithString(string s) {\n        string res = \"\";\n        string t = \"\";\n        for (char c : s) {\n            t += c;\n            while (!t.empty() && res + t.back() < res + t.substr(1) + t.back()) {\n                res += t.back();\n                t.pop_back();\n            }\n        }\n        return res + t;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.020556"
+}

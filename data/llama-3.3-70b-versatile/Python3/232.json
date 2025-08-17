@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass MyQueue:\n\n    def __init__(self):\n        self.stack1 = []\n        self.stack2 = []\n\n    def push(self, x: int) -> None:\n        self.stack1.append(x)\n\n    def pop(self) -> int:\n        self.shift_stacks()\n        return self.stack2.pop()\n\n    def peek(self) -> int:\n        self.shift_stacks()\n        return self.stack2[-1]\n\n    def empty(self) -> bool:\n        return len(self.stack1) == 0 and len(self.stack2) == 0\n\n    def shift_stacks(self):\n        if not self.stack2:\n            while self.stack1:\n                self.stack2.append(self.stack1.pop())\n\nsolution: \nefficiency: HIGH\ntime complexity: O(1) amortized\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Two stacks are used to implement the queue. The first stack is used for pushing elements and the second stack is used for popping and peeking elements. When popping or peeking, if the second stack is empty, elements are shifted from the first stack to the second stack. This ensures that the most recently added element is at the top of the first stack and the oldest element is at the top of the second stack, thus maintaining the FIFO order.\n```",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-06T15:18:29.029955",
+  "code_extracted_previous": "class MyQueue:\n\n    def __init__(self):\n        self.stack1 = []\n        self.stack2 = []\n\n    def push(self, x: int) -> None:\n        self.stack1.append(x)\n\n    def pop(self) -> int:\n        self.shift_stacks()\n        return self.stack2.pop()\n\n    def peek(self) -> int:\n        self.shift_stacks()\n        return self.stack2[-1]\n\n    def empty(self) -> bool:\n        return len(self.stack1) == 0 and len(self.stack2) == 0\n\n    def shift_stacks(self):\n        if not self.stack2:\n            while self.stack1:\n                self.stack2.append(self.stack1.pop())",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.172803"
+}

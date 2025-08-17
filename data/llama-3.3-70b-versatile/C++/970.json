@@ -1,0 +1,15 @@
+{
+  "id": 970,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> res;\n        for (long i = 1; i <= bound; i *= x) {\n            for (long j = 1; i + j <= bound; j *= y) {\n                res.insert(i + j);\n                if (y == 1) break;\n            }\n            if (x == 1) break;\n        }\n        vector<int> ans(res.begin(), res.end());\n        return ans;\n    }\n};\nefficiency: HIGH\ntime complexity: O(log(bound) * log(bound))\nspace complexity: O(log(bound) * log(bound))\nenergy implications: LOW\nexplanation: Utilize two nested loops to generate all possible powerful integers, storing unique values in an unordered set to eliminate duplicates, then convert the set to a vector for the final result.",
+  "code": "class Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> res;\n        for (long i = 1; i <= bound; i *= x) {\n            for (long j = 1; i + j <= bound; j *= y) {\n                res.insert(i + j);\n                if (y == 1) break;\n            }\n            if (x == 1) break;\n        }\n        vector<int> ans(res.begin(), res.end());\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-06T15:12:08.070533",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        unordered_set<int> res;\n        for (long i = 1; i <= bound; i *= x) {\n            for (long j = 1; i + j <= bound; j *= y) {\n                res.insert(i + j);\n                if (y == 1) break;\n            }\n            if (x == 1) break;\n        }\n        vector<int> ans(res.begin(), res.end());\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.168665"
+}

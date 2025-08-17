@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        if (arrLen > steps / 2 + 1) arrLen = steps / 2 + 1;\n        int mod = 1e9 + 7;\n        vector<int> dp(steps + 1);\n        dp[0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j <= i; j++) {\n                if (j > 0) dp[i] = (dp[i] + dp[i - j]) % mod;\n                if (j < i) dp[i] = (dp[i] + dp[j]) % mod;\n            }\n        }\n        return dp[steps];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(steps^2)\nspace complexity: O(steps)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        if (arrLen > steps / 2 + 1) arrLen = steps / 2 + 1;\n        int mod = 1e9 + 7;\n        vector<int> dp(steps + 1);\n        dp[0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j <= i; j++) {\n                if (j > 0) dp[i] = (dp[i] + dp[i - j]) % mod;\n                if (j < i) dp[i] = (dp[i] + dp[j]) % mod;\n            }\n        }\n        return dp[steps];\n    }\n};",
+  "timestamp": "2025-08-05T14:19:22.965831",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        if (arrLen > steps / 2 + 1) arrLen = steps / 2 + 1;\n        int mod = 1e9 + 7;\n        vector<int> dp(steps + 1);\n        dp[0] = 1;\n        for (int i = 1; i <= steps; i++) {\n            for (int j = 0; j <= i; j++) {\n                if (j > 0) dp[i] = (dp[i] + dp[i - j]) % mod;\n                if (j < i) dp[i] = (dp[i] + dp[j]) % mod;\n            }\n        }\n        return dp[steps];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.316768"
+}

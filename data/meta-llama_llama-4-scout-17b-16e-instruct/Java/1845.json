@@ -1,0 +1,15 @@
+{
+  "id": 1845,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```java\nimport java.util.PriorityQueue;\n\nclass SeatManager {\n\n    private PriorityQueue<Integer> availableSeats;\n\n    public SeatManager(int n) {\n        availableSeats = new PriorityQueue<>();\n        for (int i = 1; i <= n; i++) {\n            availableSeats.offer(i);\n        }\n    }\n    \n    public int reserve() {\n        return availableSeats.poll();\n    }\n    \n    public void unreserve(int seatNumber) {\n        availableSeats.offer(seatNumber);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The PriorityQueue in Java is implemented as a binary heap, which allows for efficient insertion and removal of the smallest element. This makes it suitable for managing the reservation state of seats, where we need to frequently find and reserve the smallest available seat number, as well as unreserve seats. The time complexity of reserve and unreserve operations is O(log n) due to the heap operations, and the space complexity is O(n) for storing all seat numbers.",
+  "code": "class SeatManager {\n\n    private PriorityQueue<Integer> availableSeats;\n\n    public SeatManager(int n) {\n        availableSeats = new PriorityQueue<>();\n        for (int i = 1; i <= n; i++) {\n            availableSeats.offer(i);\n        }\n    }\n    \n    public int reserve() {\n        return availableSeats.poll();\n    }\n    \n    public void unreserve(int seatNumber) {\n        availableSeats.offer(seatNumber);\n    }\n}",
+  "timestamp": "2025-08-05T14:13:07.538303",
+  "code_extracted_previous": "import java.util.PriorityQueue;\n\nclass SeatManager {\n\n    private PriorityQueue<Integer> availableSeats;\n\n    public SeatManager(int n) {\n        availableSeats = new PriorityQueue<>();\n        for (int i = 1; i <= n; i++) {\n            availableSeats.offer(i);\n        }\n    }\n    \n    public int reserve() {\n        return availableSeats.poll();\n    }\n    \n    public void unreserve(int seatNumber) {\n        availableSeats.offer(seatNumber);\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:50.542428"
+}

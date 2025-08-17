@@ -1,0 +1,15 @@
+{
+  "id": 1155,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int numRollsToTarget(int n, int k, int target) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(n + 1, vector<int>(target + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = i; j <= target; j++) {\n                for (int x = 1; x <= k && x <= j; x++) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - x]) % MOD;\n                }\n            }\n        }\n        return dp[n][target];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * target * k)\nspace complexity: O(n * target)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to solve the problem. It creates a 2D array dp where dp[i][j] represents the number of ways to get a sum of j using i dice. It then iterates over each die and each possible sum, and for each possible sum, it adds the number of ways to get the sum minus the current die's face value. The result is the number of ways to get the target sum using n dice.",
+  "code": "class Solution {\npublic:\n    int numRollsToTarget(int n, int k, int target) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(n + 1, vector<int>(target + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = i; j <= target; j++) {\n                for (int x = 1; x <= k && x <= j; x++) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - x]) % MOD;\n                }\n            }\n        }\n        return dp[n][target];\n    }\n};",
+  "timestamp": "2025-08-05T14:24:38.961134",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numRollsToTarget(int n, int k, int target) {\n        const int MOD = 1e9 + 7;\n        vector<vector<int>> dp(n + 1, vector<int>(target + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = i; j <= target; j++) {\n                for (int x = 1; x <= k && x <= j; x++) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - x]) % MOD;\n                }\n            }\n        }\n        return dp[n][target];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.408004"
+}

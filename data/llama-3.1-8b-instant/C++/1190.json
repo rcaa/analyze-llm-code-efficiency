@@ -1,0 +1,15 @@
+{
+  "id": 1190,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string reverseParentheses(string s) {\n        stack<string> st;\n        for (char c : s) {\n            if (c == '(') {\n                st.push(\"\");\n            } else if (c == ')') {\n                string temp = st.top();\n                st.pop();\n                string rev = temp;\n                reverse(rev.begin(), rev.end());\n                for (char c : rev) {\n                    st.top() += c;\n                }\n            } else {\n                st.top() += c;\n            }\n        }\n        string res = \"\";\n        while (!st.empty()) {\n            res = st.top() + res;\n            st.pop();\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to keep track of the substrings within parentheses. When encountering a closing parenthesis, it reverses the top substring and appends it to the previous substring. Finally, it pops all substrings from the stack and concatenates them in reverse order to get the result. This approach has a high efficiency due to its constant time complexity for each operation.",
+  "code": "class Solution {\npublic:\n    string reverseParentheses(string s) {\n        stack<string> st;\n        for (char c : s) {\n            if (c == '(') {\n                st.push(\"\");\n            } else if (c == ')') {\n                string temp = st.top();\n                st.pop();\n                string rev = temp;\n                reverse(rev.begin(), rev.end());\n                for (char c : rev) {\n                    st.top() += c;\n                }\n            } else {\n                st.top() += c;\n            }\n        }\n        string res = \"\";\n        while (!st.empty()) {\n            res = st.top() + res;\n            st.pop();\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:50:01.787988",
+  "code_extracted_previous": "class Solution {\npublic:\n    string reverseParentheses(string s) {\n        stack<string> st;\n        for (char c : s) {\n            if (c == '(') {\n                st.push(\"\");\n            } else if (c == ')') {\n                string temp = st.top();\n                st.pop();\n                string rev = temp;\n                reverse(rev.begin(), rev.end());\n                for (char c : rev) {\n                    st.top() += c;\n                }\n            } else {\n                st.top() += c;\n            }\n        }\n        string res = \"\";\n        while (!st.empty()) {\n            res = st.top() + res;\n            st.pop();\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.298136"
+}

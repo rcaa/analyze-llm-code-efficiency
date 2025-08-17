@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int largestInteger(int num) {\n        string s = to_string(num);\n        vector<int> odd, even;\n        for (char c : s) {\n            if ((c - '0') % 2 == 0) even.push_back(c - '0');\n            else odd.push_back(c - '0');\n        }\n        sort(odd.rbegin(), odd.rend());\n        sort(even.rbegin(), even.rend());\n        int o = 0, e = 0;\n        for (char c : s) {\n            if ((c - '0') % 2 == 0) {\n                s[c - '0' + '0' - '0'] = even[e] + '0';\n                e++;\n            } else {\n                s[c - '0' + '0' - '0'] = odd[o] + '0';\n                o++;\n            }\n        }\n        return stoi(s);\n    }\n};\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution works by separating the digits into two groups based on their parity, sorting each group in descending order, and then reconstructing the number by replacing each digit with the largest possible digit of the same parity.",
+  "code": "class Solution {\npublic:\n    int largestInteger(int num) {\n        string s = to_string(num);\n        vector<int> odd, even;\n        for (char c : s) {\n            if ((c - '0') % 2 == 0) even.push_back(c - '0');\n            else odd.push_back(c - '0');\n        }\n        sort(odd.rbegin(), odd.rend());\n        sort(even.rbegin(), even.rend());\n        int o = 0, e = 0;\n        for (char c : s) {\n            if ((c - '0') % 2 == 0) {\n                s[c - '0' + '0' - '0'] = even[e] + '0';\n                e++;\n            } else {\n                s[c - '0' + '0' - '0'] = odd[o] + '0';\n                o++;\n            }\n        }\n        return stoi(s);\n    }\n};",
+  "timestamp": "2025-08-05T16:00:13.898094",
+  "code_extracted_previous": "class Solution {\npublic:\n    int largestInteger(int num) {\n        string s = to_string(num);\n        vector<int> odd, even;\n        for (char c : s) {\n            if ((c - '0') % 2 == 0) even.push_back(c - '0');\n            else odd.push_back(c - '0');\n        }\n        sort(odd.rbegin(), odd.rend());\n        sort(even.rbegin(), even.rend());\n        int o = 0, e = 0;\n        for (char c : s) {\n            if ((c - '0') % 2 == 0) {\n                s[c - '0' + '0' - '0'] = even[e] + '0';\n                e++;\n            } else {\n                s[c - '0' + '0' - '0'] = odd[o] + '0';\n                o++;\n            }\n        }\n        return stoi(s);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.082115"
+}

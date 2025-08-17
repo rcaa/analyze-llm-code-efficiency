@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def numWays(self, steps: int, arrLen: int) -> int:\n        MOD = 10**9 + 7\n        arrLen = min(arrLen, steps + 1)\n        dp = [0] * arrLen\n        dp[0] = 1\n        for _ in range(steps):\n            new_dp = [0] * arrLen\n            for i in range(arrLen):\n                new_dp[i] = dp[i]\n                if i > 0:\n                    new_dp[i] = (new_dp[i] + dp[i - 1]) % MOD\n                if i + 1 < arrLen:\n                    new_dp[i] = (new_dp[i] + dp[i + 1]) % MOD\n            dp = new_dp\n        return dp[0] % MOD\n```\n\nefficiency: HIGH\ntime complexity: O(steps * min(arrLen, steps))\nspace complexity: O(min(arrLen, steps))\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the number of ways to reach each index at each step, with optimizations to minimize space usage and apply modulo operation to avoid large numbers.",
+  "code": "def numWays(self, steps: int, arrLen: int) -> int:\n        MOD = 10**9 + 7\n        arrLen = min(arrLen, steps + 1)\n        dp = [0] * arrLen\n        dp[0] = 1\n        for _ in range(steps):\n            new_dp = [0] * arrLen\n            for i in range(arrLen):\n                new_dp[i] = dp[i]\n                if i > 0:\n                    new_dp[i] = (new_dp[i] + dp[i - 1]) % MOD\n                if i + 1 < arrLen:\n                    new_dp[i] = (new_dp[i] + dp[i + 1]) % MOD\n            dp = new_dp\n        return dp[0] % MOD\n```",
+  "timestamp": "2025-08-05T14:19:13.386608",
+  "code_extracted_previous": "class Solution:\n    def numWays(self, steps: int, arrLen: int) -> int:\n        MOD = 10**9 + 7\n        arrLen = min(arrLen, steps + 1)\n        dp = [0] * arrLen\n        dp[0] = 1\n        for _ in range(steps):\n            new_dp = [0] * arrLen\n            for i in range(arrLen):\n                new_dp[i] = dp[i]\n                if i > 0:\n                    new_dp[i] = (new_dp[i] + dp[i - 1]) % MOD\n                if i + 1 < arrLen:\n                    new_dp[i] = (new_dp[i] + dp[i + 1]) % MOD\n            dp = new_dp\n        return dp[0] % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.445038"
+}

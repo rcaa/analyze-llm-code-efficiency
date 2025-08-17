@@ -1,0 +1,15 @@
+{
+  "id": 3226,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int minChanges(int n, int k) {\n        int count = 0;\n        while (n != k) {\n            if (n < k) return -1;\n            int diff = n ^ k;\n            if ((diff & (diff - 1)) == 0) count++;\n            else {\n                int rightmostSetBit = diff & -diff;\n                n ^= rightmostSetBit;\n                count++;\n            }\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses bitwise operations to find the differences between n and k, and then flips the bits one by one to make n equal to k. It returns -1 if it's impossible to make n equal to k.",
+  "code": "class Solution {\n    public int minChanges(int n, int k) {\n        int count = 0;\n        while (n != k) {\n            if (n < k) return -1;\n            int diff = n ^ k;\n            if ((diff & (diff - 1)) == 0) count++;\n            else {\n                int rightmostSetBit = diff & -diff;\n                n ^= rightmostSetBit;\n                count++;\n            }\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T13:52:00.383394",
+  "code_extracted_previous": "class Solution {\n    public int minChanges(int n, int k) {\n        int count = 0;\n        while (n != k) {\n            if (n < k) return -1;\n            int diff = n ^ k;\n            if ((diff & (diff - 1)) == 0) count++;\n            else {\n                int rightmostSetBit = diff & -diff;\n                n ^= rightmostSetBit;\n                count++;\n            }\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.417472"
+}

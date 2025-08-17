@@ -1,0 +1,15 @@
+{
+  "id": 967,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    vector<int> numsSameConsecDiff(int n, int k) {\n        vector<int> result;\n        for (int i = 1; i <= 9; ++i) {\n            dfs(i, n - 1, k, result);\n        }\n        return result;\n    }\n    \n    void dfs(int num, int n, int k, vector<int>& result) {\n        if (n == 0) {\n            result.push_back(num);\n            return;\n        }\n        int lastDigit = num % 10;\n        if (lastDigit + k <= 9) {\n            dfs(num * 10 + lastDigit + k, n - 1, k, result);\n        }\n        if (k != 0 && lastDigit - k >= 0) {\n            dfs(num * 10 + lastDigit - k, n - 1, k, result);\n        }\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(2^n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses depth-first search to generate numbers of length n with the given difference k between consecutive digits, avoiding numbers with leading zeros.",
+  "code": "class Solution {\npublic:\n    vector<int> numsSameConsecDiff(int n, int k) {\n        vector<int> result;\n        for (int i = 1; i <= 9; ++i) {\n            dfs(i, n - 1, k, result);\n        }\n        return result;\n    }\n    \n    void dfs(int num, int n, int k, vector<int>& result) {\n        if (n == 0) {\n            result.push_back(num);\n            return;\n        }\n        int lastDigit = num % 10;\n        if (lastDigit + k <= 9) {\n            dfs(num * 10 + lastDigit + k, n - 1, k, result);\n        }\n        if (k != 0 && lastDigit - k >= 0) {\n            dfs(num * 10 + lastDigit - k, n - 1, k, result);\n        }\n    }\n};",
+  "timestamp": "2025-08-05T13:36:01.477850",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> numsSameConsecDiff(int n, int k) {\n        vector<int> result;\n        for (int i = 1; i <= 9; ++i) {\n            dfs(i, n - 1, k, result);\n        }\n        return result;\n    }\n    \n    void dfs(int num, int n, int k, vector<int>& result) {\n        if (n == 0) {\n            result.push_back(num);\n            return;\n        }\n        int lastDigit = num % 10;\n        if (lastDigit + k <= 9) {\n            dfs(num * 10 + lastDigit + k, n - 1, k, result);\n        }\n        if (k != 0 && lastDigit - k >= 0) {\n            dfs(num * 10 + lastDigit - k, n - 1, k, result);\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.940318"
+}

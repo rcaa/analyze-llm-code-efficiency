@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findTheLongestSubstring(String s) {\n        int maxLen = 0;\n        int[] vowel = new int[1 << 5]; // 32 bits to represent 5 vowels\n        int state = 0;\n        vowel[0] = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (\"aeiou\".indexOf(c) != -1) {\n                state ^= 1 << (\"aeiou\".indexOf(c));\n            }\n            if (vowel[state] != 0) {\n                maxLen = Math.max(maxLen, i - vowel[state] + 1);\n            } else {\n                vowel[state] = i + 1;\n            }\n        }\n        return maxLen;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a bitwise XOR operation to efficiently track the state of vowels in the current substring. It iterates through the string once, updating the maximum length of the substring with even vowel counts whenever it encounters a new state or a repeated state. The space complexity is O(1) because the size of the vowel array is fixed, regardless of the input size.",
+  "code": "class Solution {\n    public int findTheLongestSubstring(String s) {\n        int maxLen = 0;\n        int[] vowel = new int[1 << 5]; // 32 bits to represent 5 vowels\n        int state = 0;\n        vowel[0] = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (\"aeiou\".indexOf(c) != -1) {\n                state ^= 1 << (\"aeiou\".indexOf(c));\n            }\n            if (vowel[state] != 0) {\n                maxLen = Math.max(maxLen, i - vowel[state] + 1);\n            } else {\n                vowel[state] = i + 1;\n            }\n        }\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-05T15:05:28.813167",
+  "code_extracted_previous": "class Solution {\n    public int findTheLongestSubstring(String s) {\n        int maxLen = 0;\n        int[] vowel = new int[1 << 5]; // 32 bits to represent 5 vowels\n        int state = 0;\n        vowel[0] = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (\"aeiou\".indexOf(c) != -1) {\n                state ^= 1 << (\"aeiou\".indexOf(c));\n            }\n            if (vowel[state] != 0) {\n                maxLen = Math.max(maxLen, i - vowel[state] + 1);\n            } else {\n                vowel[state] = i + 1;\n            }\n        }\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.960607"
+}

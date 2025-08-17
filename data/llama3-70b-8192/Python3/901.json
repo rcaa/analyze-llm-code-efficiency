@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass StockSpanner:\n    def __init__(self):\n        self.prices = []\n        self.spans = []\n\n    def next(self, price: int) -> int:\n        span = 1\n        while self.prices and self.prices[-1] <= price:\n            span += self.spans[-1]\n            self.prices.pop()\n            self.spans.pop()\n        self.prices.append(price)\n        self.spans.append(span)\n        return span\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a stack to store the prices and their corresponding spans. For each new price, it pops the stack until it finds a price greater than the current one, adding the spans to the current span. This approach ensures that the span of each price is calculated efficiently.",
+  "code": "class StockSpanner:\n    def __init__(self):\n        self.prices = []\n        self.spans = []\n\n    def next(self, price: int) -> int:\n        span = 1\n        while self.prices and self.prices[-1] <= price:\n            span += self.spans[-1]\n            self.prices.pop()\n            self.spans.pop()\n        self.prices.append(price)\n        self.spans.append(span)\n        return span",
+  "timestamp": "2025-08-05T16:03:20.331531",
+  "code_extracted_previous": "class StockSpanner:\n    def __init__(self):\n        self.prices = []\n        self.spans = []\n\n    def next(self, price: int) -> int:\n        span = 1\n        while self.prices and self.prices[-1] <= price:\n            span += self.spans[-1]\n            self.prices.pop()\n            self.spans.pop()\n        self.prices.append(price)\n        self.spans.append(span)\n        return span",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:40.202121"
+}

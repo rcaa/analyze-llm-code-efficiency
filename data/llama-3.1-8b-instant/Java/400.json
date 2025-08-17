@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findNthDigit(int n) {\n        long numDigits = 1;\n        long start = 1;\n        long count = 9;\n        while (n > count * numDigits) {\n            n -= count * numDigits;\n            start *= 10;\n            numDigits += 1;\n            count *= 10;\n        }\n        start += (n - 1) / numDigits;\n        return (int) (start + (n - 1) % numDigits) / numDigits % 10;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution efficiently calculates the nth digit by first determining the number of digits in the sequence that come before the nth digit. It then calculates the starting number of the sequence that contains the nth digit and finally extracts the nth digit from that number.",
+  "code": "class Solution {\n    public int findNthDigit(int n) {\n        long numDigits = 1;\n        long start = 1;\n        long count = 9;\n        while (n > count * numDigits) {\n            n -= count * numDigits;\n            start *= 10;\n            numDigits += 1;\n            count *= 10;\n        }\n        start += (n - 1) / numDigits;\n        return (int) (start + (n - 1) % numDigits) / numDigits % 10;\n    }\n}",
+  "timestamp": "2025-08-05T15:42:24.455898",
+  "code_extracted_previous": "class Solution {\n    public int findNthDigit(int n) {\n        long numDigits = 1;\n        long start = 1;\n        long count = 9;\n        while (n > count * numDigits) {\n            n -= count * numDigits;\n            start *= 10;\n            numDigits += 1;\n            count *= 10;\n        }\n        start += (n - 1) / numDigits;\n        return (int) (start + (n - 1) % numDigits) / numDigits % 10;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.809750"
+}

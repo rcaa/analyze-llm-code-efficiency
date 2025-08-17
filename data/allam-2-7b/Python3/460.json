@@ -1,0 +1,15 @@
+{
+  "id": 460,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```python\nclass LFUCache:\n    def __init__(self, capacity):\n        self.cache = {}\n        self.count = {}\n        for i in range(capacity):\n            self.cache[i] = (0, 0)\n\n    def get(self, key):\n        if key not in self.cache:\n            return -1\n        count, value = self.cache[key]\n        self.cache[key] = (count + 1, value)\n        self.count[key] = count + 1\n        return value\n\n    def put(self, key, value):\n        if key in self.cache:\n            del self.cache[key]\n        else:\n            count, value = self.cache[key]\n            self.cache[key] = (count + 1, value)\n            self.count[key] = count + 1\n            return value\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nThe solution uses a dictionary to store the cache and another dictionary to store the count of each key. When a key is accessed, the count is incremented, and when a key is updated, the old count is deleted and a new count is assigned. The time complexity is O(1) for both get and put operations, as the operations are performed on constant-time hash lookups. The space complexity is O(n), where n is the capacity of the cache. The energy implications are low, as the algorithm only requires a constant amount of energy to perform the operations. ",
+  "code": "class LFUCache:\n    def __init__(self, capacity):\n        self.cache = {}\n        self.count = {}\n        for i in range(capacity):\n            self.cache[i] = (0, 0)\n\n    def get(self, key):\n        if key not in self.cache:\n            return -1\n        count, value = self.cache[key]\n        self.cache[key] = (count + 1, value)\n        self.count[key] = count + 1\n        return value\n\n    def put(self, key, value):\n        if key in self.cache:\n            del self.cache[key]\n        else:\n            count, value = self.cache[key]\n            self.cache[key] = (count + 1, value)\n            self.count[key] = count + 1\n            return value",
+  "timestamp": "2025-08-05T14:34:46.472943",
+  "code_extracted_previous": "class LFUCache:\n    def __init__(self, capacity):\n        self.cache = {}\n        self.count = {}\n        for i in range(capacity):\n            self.cache[i] = (0, 0)\n\n    def get(self, key):\n        if key not in self.cache:\n            return -1\n        count, value = self.cache[key]\n        self.cache[key] = (count + 1, value)\n        self.count[key] = count + 1\n        return value\n\n    def put(self, key, value):\n        if key in self.cache:\n            del self.cache[key]\n        else:\n            count, value = self.cache[key]\n            self.cache[key] = (count + 1, value)\n            self.count[key] = count + 1\n            return value",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:16.024213"
+}

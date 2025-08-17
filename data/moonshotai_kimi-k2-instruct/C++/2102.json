@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass SORTracker {\n    struct Location {\n        string name;\n        int score;\n        bool operator<(const Location& other) const {\n            if (score != other.score) return score > other.score;\n            return name < other.name;\n        }\n    };\n    multiset<Location> locations;\n    int queryCount = 0;\npublic:\n    SORTracker() {}\n    \n    void add(string name, int score) {\n        locations.insert({name, score});\n    }\n    \n    string get() {\n        auto it = locations.begin();\n        advance(it, queryCount);\n        ++queryCount;\n        return it->name;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log N) for add, O(K) for get where K is queryCount\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses a multiset to maintain locations in sorted order by score descending then name ascending. Each add is O(log N) insertion. Each get uses advance to move the iterator to the K-th element (K = queryCount) in O(K) time. With up to 4e4 calls, worst-case K is 4e4, giving acceptable performance.",
+  "code": "class SORTracker {\n    struct Location {\n        string name;\n        int score;\n        bool operator<(const Location& other) const {\n            if (score != other.score) return score > other.score;\n            return name < other.name;\n        }\n    };\n    multiset<Location> locations;\n    int queryCount = 0;\npublic:\n    SORTracker() {}\n    \n    void add(string name, int score) {\n        locations.insert({name, score});\n    }\n    \n    string get() {\n        auto it = locations.begin();\n        advance(it, queryCount);\n        ++queryCount;\n        return it->name;\n    }\n};",
+  "timestamp": "2025-08-05T14:05:32.557783",
+  "code_extracted_previous": "class SORTracker {\n    struct Location {\n        string name;\n        int score;\n        bool operator<(const Location& other) const {\n            if (score != other.score) return score > other.score;\n            return name < other.name;\n        }\n    };\n    multiset<Location> locations;\n    int queryCount = 0;\npublic:\n    SORTracker() {}\n    \n    void add(string name, int score) {\n        locations.insert({name, score});\n    }\n    \n    string get() {\n        auto it = locations.begin();\n        advance(it, queryCount);\n        ++queryCount;\n        return it->name;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.524671"
+}

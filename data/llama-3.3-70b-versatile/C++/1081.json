@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    string smallestSubsequence(string s) {\n        int n = s.size();\n        vector<int> last(26);\n        for (int i = 0; i < n; i++) {\n            last[s[i] - 'a'] = i;\n        }\n        vector<bool> visited(26, false);\n        string res;\n        for (int i = 0; i < n; i++) {\n            int idx = s[i] - 'a';\n            if (visited[idx]) continue;\n            while (!res.empty() && res.back() > s[i] && last[res.back() - 'a'] > i) {\n                visited[res.back() - 'a'] = false;\n                res.pop_back();\n            }\n            res.push_back(s[i]);\n            visited[idx] = true;\n        }\n        return res;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a stack to keep track of the lexicographically smallest subsequence, and a visited array to ensure each character is added only once. It iterates through the string, popping characters from the stack if they are larger than the current character and appear later in the string.",
+  "code": "class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        int n = s.size();\n        vector<int> last(26);\n        for (int i = 0; i < n; i++) {\n            last[s[i] - 'a'] = i;\n        }\n        vector<bool> visited(26, false);\n        string res;\n        for (int i = 0; i < n; i++) {\n            int idx = s[i] - 'a';\n            if (visited[idx]) continue;\n            while (!res.empty() && res.back() > s[i] && last[res.back() - 'a'] > i) {\n                visited[res.back() - 'a'] = false;\n                res.pop_back();\n            }\n            res.push_back(s[i]);\n            visited[idx] = true;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:48:36.228673",
+  "code_extracted_previous": "class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        int n = s.size();\n        vector<int> last(26);\n        for (int i = 0; i < n; i++) {\n            last[s[i] - 'a'] = i;\n        }\n        vector<bool> visited(26, false);\n        string res;\n        for (int i = 0; i < n; i++) {\n            int idx = s[i] - 'a';\n            if (visited[idx]) continue;\n            while (!res.empty() && res.back() > s[i] && last[res.back() - 'a'] > i) {\n                visited[res.back() - 'a'] = false;\n                res.pop_back();\n            }\n            res.push_back(s[i]);\n            visited[idx] = true;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.638347"
+}

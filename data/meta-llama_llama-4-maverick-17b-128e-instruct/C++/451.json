@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        \n        auto cmp = [](const pair<char, int>& a, const pair<char, int>& b) {\n            return a.second < b.second;\n        };\n        \n        priority_queue<pair<char, int>, vector<pair<char, int>>, decltype(cmp)> maxHeap(cmp);\n        for (auto& it : freq) {\n            maxHeap.push(it);\n        }\n        \n        string result;\n        while (!maxHeap.empty()) {\n            auto top = maxHeap.top();\n            maxHeap.pop();\n            result.append(top.second, top.first);\n        }\n        \n        return result;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a max heap to efficiently sort characters by frequency, achieving a good balance between time and space complexity.\n```",
+  "code": "class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        \n        auto cmp = [](const pair<char, int>& a, const pair<char, int>& b) {\n            return a.second < b.second;\n        };\n        \n        priority_queue<pair<char, int>, vector<pair<char, int>>, decltype(cmp)> maxHeap(cmp);\n        for (auto& it : freq) {\n            maxHeap.push(it);\n        }\n        \n        string result;\n        while (!maxHeap.empty()) {\n            auto top = maxHeap.top();\n            maxHeap.pop();\n            result.append(top.second, top.first);\n        }\n        \n        return result;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a max heap to efficiently sort characters by frequency, achieving a good balance between time and space complexity.",
+  "timestamp": "2025-08-05T14:53:50.186629",
+  "code_extracted_previous": "class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (char c : s) {\n            freq[c]++;\n        }\n        \n        auto cmp = [](const pair<char, int>& a, const pair<char, int>& b) {\n            return a.second < b.second;\n        };\n        \n        priority_queue<pair<char, int>, vector<pair<char, int>>, decltype(cmp)> maxHeap(cmp);\n        for (auto& it : freq) {\n            maxHeap.push(it);\n        }\n        \n        string result;\n        while (!maxHeap.empty()) {\n            auto top = maxHeap.top();\n            maxHeap.pop();\n            result.append(top.second, top.first);\n        }\n        \n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.649210"
+}

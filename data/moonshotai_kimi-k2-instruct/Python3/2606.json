@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        val_map = {}\n        for c, v in zip(chars, vals):\n            val_map[c] = v\n        arr = []\n        for ch in s:\n            if ch in val_map:\n                arr.append(val_map[ch])\n            else:\n                arr.append(ord(ch) - ord('a') + 1)\n        max_sum = 0\n        cur_sum = 0\n        for num in arr:\n            cur_sum = max(num, cur_sum + num)\n            max_sum = max(max_sum, cur_sum)\n        return max_sum\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Map each character to its value, then apply Kadane’s algorithm to find the maximum subarray sum, resetting the running sum whenever it becomes negative.",
+  "code": "class Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        val_map = {}\n        for c, v in zip(chars, vals):\n            val_map[c] = v\n        arr = []\n        for ch in s:\n            if ch in val_map:\n                arr.append(val_map[ch])\n            else:\n                arr.append(ord(ch) - ord('a') + 1)\n        max_sum = 0\n        cur_sum = 0\n        for num in arr:\n            cur_sum = max(num, cur_sum + num)\n            max_sum = max(max_sum, cur_sum)\n        return max_sum",
+  "timestamp": "2025-08-05T13:33:41.859145",
+  "code_extracted_previous": "def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        val_map = {}\n        for c, v in zip(chars, vals):\n            val_map[c] = v\n        arr = []\n        for ch in s:\n            if ch in val_map:\n                arr.append(val_map[ch])\n            else:\n                arr.append(ord(ch) - ord('a') + 1)\n        max_sum = 0\n        cur_sum = 0\n        for num in arr:\n            cur_sum = max(num, cur_sum + num)\n            max_sum = max(max_sum, cur_sum)\n        return max_sum",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.766787"
+}

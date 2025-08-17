@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        int f = ++freq[val];\n        if (f > maxFreq) maxFreq = f;\n        group[f].push_back(val);\n    }\n    \n    int pop() {\n        int val = group[maxFreq].back();\n        group[maxFreq].pop_back();\n        --freq[val];\n        if (group[maxFreq].empty()) --maxFreq;\n        return val;\n    }\nprivate:\n    unordered_map<int,int> freq;\n    unordered_map<int,vector<int>> group;\n    int maxFreq = 0;\n};\n\n/**\n * Your FreqStack object will be instantiated and called as such:\n * FreqStack* obj = new FreqStack();\n * obj->push(val);\n * int param_2 = obj->pop();\n */```\nefficiency: HIGH\ntime complexity: O(1) amortized\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses two hash maps: one to track per-value frequencies and another to store per-frequency stacks. push updates frequency and appends to the current frequency stack; pop removes from the highest frequency stack and decrements frequency. Both operations are constant-time amortized.",
+  "code": "class FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        int f = ++freq[val];\n        if (f > maxFreq) maxFreq = f;\n        group[f].push_back(val);\n    }\n    \n    int pop() {\n        int val = group[maxFreq].back();\n        group[maxFreq].pop_back();\n        --freq[val];\n        if (group[maxFreq].empty()) --maxFreq;\n        return val;\n    }\nprivate:\n    unordered_map<int,int> freq;\n    unordered_map<int,vector<int>> group;\n    int maxFreq = 0;\n};\n\n/**\n * Your FreqStack object will be instantiated and called as such:\n * FreqStack* obj = new FreqStack();\n * obj->push(val);\n * int param_2 = obj->pop();\n */",
+  "timestamp": "2025-08-05T14:38:32.800227",
+  "code_extracted_previous": "public:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        int f = ++freq[val];\n        if (f > maxFreq) maxFreq = f;\n        group[f].push_back(val);\n    }\n    \n    int pop() {\n        int val = group[maxFreq].back();\n        group[maxFreq].pop_back();\n        --freq[val];\n        if (group[maxFreq].empty()) --maxFreq;\n        return val;\n    }\nprivate:\n    unordered_map<int,int> freq;\n    unordered_map<int,vector<int>> group;\n    int maxFreq = 0;\n};\n\n/**\n * Your FreqStack object will be instantiated and called as such:\n * FreqStack* obj = new FreqStack();\n * obj->push(val);\n * int param_2 = obj->pop();\n */",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:54.349247"
+}

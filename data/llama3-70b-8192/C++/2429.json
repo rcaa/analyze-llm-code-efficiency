@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int cnt = __builtin_popcount(num2);\n        int x = 0;\n        for (int i = 0; i < 30; ++i) {\n            if (cnt > 0 && ((num1 >> i) & 1) == 0) {\n                x |= (1 << i);\n                --cnt;\n            }\n        }\n        return x;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(logN)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses bitwise operations to efficiently count the number of set bits in num2 and then constructs the minimal XOR value x by iterating through the bits of num1.",
+  "code": "class Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int cnt = __builtin_popcount(num2);\n        int x = 0;\n        for (int i = 0; i < 30; ++i) {\n            if (cnt > 0 && ((num1 >> i) & 1) == 0) {\n                x |= (1 << i);\n                --cnt;\n            }\n        }\n        return x;\n    }\n};",
+  "timestamp": "2025-08-05T14:31:13.880852",
+  "code_extracted_previous": "public:\n    int minimizeXor(int num1, int num2) {\n        int cnt = __builtin_popcount(num2);\n        int x = 0;\n        for (int i = 0; i < 30; ++i) {\n            if (cnt > 0 && ((num1 >> i) & 1) == 0) {\n                x |= (1 << i);\n                --cnt;\n            }\n        }\n        return x;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.544829"
+}

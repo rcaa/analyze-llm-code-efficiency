@@ -1,0 +1,15 @@
+{
+  "id": 443,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int compress(vector<char>& chars) {\n        int n = chars.size();\n        int write = 0;\n        int read = 0;\n        while (read < n) {\n            char current = chars[read];\n            int count = 0;\n            while (read < n && chars[read] == current) {\n                read++;\n                count++;\n            }\n            chars[write++] = current;\n            if (count > 1) {\n                string num = to_string(count);\n                for (char c : num) {\n                    chars[write++] = c;\n                }\n            }\n        }\n        return write;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass with two pointers (read and write) compresses in-place; no extra memory beyond a few variables.",
+  "code": "class Solution {\npublic:\n    int compress(vector<char>& chars) {\n        int n = chars.size();\n        int write = 0;\n        int read = 0;\n        while (read < n) {\n            char current = chars[read];\n            int count = 0;\n            while (read < n && chars[read] == current) {\n                read++;\n                count++;\n            }\n            chars[write++] = current;\n            if (count > 1) {\n                string num = to_string(count);\n                for (char c : num) {\n                    chars[write++] = c;\n                }\n            }\n        }\n        return write;\n    }\n};",
+  "timestamp": "2025-08-06T01:36:15.701114",
+  "code_extracted_previous": "class Solution {\npublic:\n    int compress(vector<char>& chars) {\n        int n = chars.size();\n        int write = 0;\n        int read = 0;\n        while (read < n) {\n            char current = chars[read];\n            int count = 0;\n            while (read < n && chars[read] == current) {\n                read++;\n                count++;\n            }\n            chars[write++] = current;\n            if (count > 1) {\n                string num = to_string(count);\n                for (char c : num) {\n                    chars[write++] = c;\n                }\n            }\n        }\n        return write;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.103410"
+}

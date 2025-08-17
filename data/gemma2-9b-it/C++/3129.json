@@ -1,0 +1,15 @@
+{
+  "id": 3129,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        long long dp[zero + 1][one + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0][0] = 1;\n        for (int i = 1; i <= zero; ++i) {\n            for (int j = 1; j <= one; ++j) {\n                dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % (1e9 + 7);\n                if (i > 0 && j > 0 && i + j > limit) {\n                    dp[i][j] = (dp[i][j] - dp[i - 1][j - 1] + 1e9 + 7) % (1e9 + 7);\n                }\n            }\n        }\n        return dp[zero][one];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(zero * one)\nspace complexity: O(zero * one)\nenergy implications: LOW \nexplanation: The solution uses dynamic programming to calculate the number of stable arrays. It builds a 2D table `dp` where `dp[i][j]` represents the number of stable arrays with `i` zeros and `j` ones. The table is filled iteratively, considering the constraints of the problem.  The time complexity is O(zero * one) due to the nested loops iterating through the table. The space complexity is also O(zero * one) due to the size of the `dp` table. The energy implications are low as the algorithm involves primarily arithmetic operations. \n\n\n\n",
+  "code": "class Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        long long dp[zero + 1][one + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0][0] = 1;\n        for (int i = 1; i <= zero; ++i) {\n            for (int j = 1; j <= one; ++j) {\n                dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % (1e9 + 7);\n                if (i > 0 && j > 0 && i + j > limit) {\n                    dp[i][j] = (dp[i][j] - dp[i - 1][j - 1] + 1e9 + 7) % (1e9 + 7);\n                }\n            }\n        }\n        return dp[zero][one];\n    }\n};",
+  "timestamp": "2025-08-05T14:29:33.883046",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        long long dp[zero + 1][one + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0][0] = 1;\n        for (int i = 1; i <= zero; ++i) {\n            for (int j = 1; j <= one; ++j) {\n                dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % (1e9 + 7);\n                if (i > 0 && j > 0 && i + j > limit) {\n                    dp[i][j] = (dp[i][j] - dp[i - 1][j - 1] + 1e9 + 7) % (1e9 + 7);\n                }\n            }\n        }\n        return dp[zero][one];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.763572"
+}

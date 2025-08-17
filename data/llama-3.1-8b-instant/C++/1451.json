@@ -1,0 +1,15 @@
+{
+  "id": 1451,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string arrangeWords(string text) {\n        vector<string> words;\n        string word = \"\";\n        for (char c : text) {\n            if (c == ' ') {\n                words.push_back(word);\n                word = \"\";\n            } else {\n                word += tolower(c);\n            }\n        }\n        words.push_back(word);\n        \n        sort(words.begin(), words.end(), [](string a, string b) {\n            if (a.length() == b.length()) return a < b;\n            return a.length() < b.length();\n        });\n        \n        string result = words[0];\n        for (int i = 1; i < words.size(); i++) {\n            result += \" \" + words[i];\n        }\n        result[0] = toupper(result[0]);\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    string arrangeWords(string text) {\n        vector<string> words;\n        string word = \"\";\n        for (char c : text) {\n            if (c == ' ') {\n                words.push_back(word);\n                word = \"\";\n            } else {\n                word += tolower(c);\n            }\n        }\n        words.push_back(word);\n        \n        sort(words.begin(), words.end(), [](string a, string b) {\n            if (a.length() == b.length()) return a < b;\n            return a.length() < b.length();\n        });\n        \n        string result = words[0];\n        for (int i = 1; i < words.size(); i++) {\n            result += \" \" + words[i];\n        }\n        result[0] = toupper(result[0]);\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T00:52:33.126348",
+  "code_extracted_previous": "class Solution {\npublic:\n    string arrangeWords(string text) {\n        vector<string> words;\n        string word = \"\";\n        for (char c : text) {\n            if (c == ' ') {\n                words.push_back(word);\n                word = \"\";\n            } else {\n                word += tolower(c);\n            }\n        }\n        words.push_back(word);\n        \n        sort(words.begin(), words.end(), [](string a, string b) {\n            if (a.length() == b.length()) return a < b;\n            return a.length() < b.length();\n        });\n        \n        string result = words[0];\n        for (int i = 1; i < words.size(); i++) {\n            result += \" \" + words[i];\n        }\n        result[0] = toupper(result[0]);\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.399631"
+}

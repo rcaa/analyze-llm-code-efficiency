@@ -1,0 +1,15 @@
+{
+  "id": 2343,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \nclass Solution:\n    def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        n = len(nums)\n        L = len(nums[0])\n        ans = []\n        cache = {}\n        \n        for k, trim in queries:\n            key = (k, trim)\n            if key in cache:\n                ans.append(cache[key])\n                continue\n            \n            trimmed = []\n            for idx, num in enumerate(nums):\n                val = num[-trim:] if trim <= L else num\n                trimmed.append((int(val), idx))\n            \n            trimmed.sort(key=lambda x: (x[0], x[1]))\n            res = trimmed[k-1][1]\n            cache[key] = res\n            ans.append(res)\n        \n        return ans\nefficiency: HIGH\ntime complexity: O(Q * N log N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: For each query we trim every string to its rightmost trim digits, convert to int, and sort the (value, index) pairs. The k-th smallest index is then selected. Caching repeated queries avoids recomputation.",
+  "code": "class Solution:\n    def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        n = len(nums)\n        L = len(nums[0])\n        ans = []\n        cache = {}\n        \n        for k, trim in queries:\n            key = (k, trim)\n            if key in cache:\n                ans.append(cache[key])\n                continue\n            \n            trimmed = []\n            for idx, num in enumerate(nums):\n                val = num[-trim:] if trim <= L else num\n                trimmed.append((int(val), idx))\n            \n            trimmed.sort(key=lambda x: (x[0], x[1]))\n            res = trimmed[k-1][1]\n            cache[key] = res\n            ans.append(res)\n        \n        return ans",
+  "timestamp": "2025-08-06T02:33:13.408122",
+  "code_extracted_previous": "class Solution:\n    def smallestTrimmedNumbers(self, nums: List[str], queries: List[List[int]]) -> List[int]:\n        n = len(nums)\n        L = len(nums[0])\n        ans = []\n        cache = {}\n        \n        for k, trim in queries:\n            key = (k, trim)\n            if key in cache:\n                ans.append(cache[key])\n                continue\n            \n            trimmed = []\n            for idx, num in enumerate(nums):\n                val = num[-trim:] if trim <= L else num\n                trimmed.append((int(val), idx))\n            \n            trimmed.sort(key=lambda x: (x[0], x[1]))\n            res = trimmed[k-1][1]\n            cache[key] = res\n            ans.append(res)\n        \n        return ans",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.652904"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int findTheLongestSubstring(String s) {\n        int n = s.length();\n        int res = 0;\n        int[] count = new int[1 << 5];\n        count[0] = 1;\n        int mask = 0;\n        for (int i = 0; i < n; i++) {\n            char c = s.charAt(i);\n            if (c == 'a') mask ^= 1;\n            else if (c == 'e') mask ^= 2;\n            else if (c == 'i') mask ^= 4;\n            else if (c == 'o') mask ^= 8;\n            else if (c == 'u') mask ^= 16;\n            res = Math.max(res, i + 1 - (count[mask] == 0 ? n : count[mask]));\n            count[mask]++;\n        }\n        return res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a bitmask to track the parity of each vowel, allowing for efficient calculation of the longest substring with even counts of all vowels.",
+  "code": "class Solution {\n    public int findTheLongestSubstring(String s) {\n        int n = s.length();\n        int res = 0;\n        int[] count = new int[1 << 5];\n        count[0] = 1;\n        int mask = 0;\n        for (int i = 0; i < n; i++) {\n            char c = s.charAt(i);\n            if (c == 'a') mask ^= 1;\n            else if (c == 'e') mask ^= 2;\n            else if (c == 'i') mask ^= 4;\n            else if (c == 'o') mask ^= 8;\n            else if (c == 'u') mask ^= 16;\n            res = Math.max(res, i + 1 - (count[mask] == 0 ? n : count[mask]));\n            count[mask]++;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T15:13:07.007280",
+  "code_extracted_previous": "class Solution {\n    public int findTheLongestSubstring(String s) {\n        int n = s.length();\n        int res = 0;\n        int[] count = new int[1 << 5];\n        count[0] = 1;\n        int mask = 0;\n        for (int i = 0; i < n; i++) {\n            char c = s.charAt(i);\n            if (c == 'a') mask ^= 1;\n            else if (c == 'e') mask ^= 2;\n            else if (c == 'i') mask ^= 4;\n            else if (c == 'o') mask ^= 8;\n            else if (c == 'u') mask ^= 16;\n            res = Math.max(res, i + 1 - (count[mask] == 0 ? n : count[mask]));\n            count[mask]++;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.472636"
+}

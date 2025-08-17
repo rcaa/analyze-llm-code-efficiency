@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int countLargestGroup(int n) {\n        unordered_map<int, int> count;\n        int maxCount = 0, result = 0;\n        for (int i = 1; i <= n; ++i) {\n            int sum = 0;\n            for (int num = i; num > 0; num /= 10) {\n                sum += num % 10;\n            }\n            count[sum]++;\n            if (count[sum] > maxCount) {\n                maxCount = count[sum];\n                result = 1;\n            } else if (count[sum] == maxCount) {\n                result++;\n            }\n        }\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over numbers from 1 to n, calculating the sum of digits for each and storing the count in an unordered_map. It keeps track of the maximum count and the number of groups with this maximum count, updating them as necessary.",
+  "code": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        unordered_map<int, int> count;\n        int maxCount = 0, result = 0;\n        for (int i = 1; i <= n; ++i) {\n            int sum = 0;\n            for (int num = i; num > 0; num /= 10) {\n                sum += num % 10;\n            }\n            count[sum]++;\n            if (count[sum] > maxCount) {\n                maxCount = count[sum];\n                result = 1;\n            } else if (count[sum] == maxCount) {\n                result++;\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T14:42:58.571062",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        unordered_map<int, int> count;\n        int maxCount = 0, result = 0;\n        for (int i = 1; i <= n; ++i) {\n            int sum = 0;\n            for (int num = i; num > 0; num /= 10) {\n                sum += num % 10;\n            }\n            count[sum]++;\n            if (count[sum] > maxCount) {\n                maxCount = count[sum];\n                result = 1;\n            } else if (count[sum] == maxCount) {\n                result++;\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.722613"
+}

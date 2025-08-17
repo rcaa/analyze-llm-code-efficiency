@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    long long maximumOr(vector<int>& nums, int k) {\n        priority_queue<int, vector<int>, greater<int>> pq(nums.begin(), nums.end());\n        while (k--) {\n            int x = pq.top();\n            pq.pop();\n            pq.push(x * 2);\n        }\n        long long res = 0;\n        while (!pq.empty()) {\n            res |= pq.top();\n            pq.pop();\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a priority queue to efficiently select the smallest element in the array and multiply it by 2 in each operation, maximizing the bitwise OR result.",
+  "code": "class Solution {\npublic:\n    long long maximumOr(vector<int>& nums, int k) {\n        priority_queue<int, vector<int>, greater<int>> pq(nums.begin(), nums.end());\n        while (k--) {\n            int x = pq.top();\n            pq.pop();\n            pq.push(x * 2);\n        }\n        long long res = 0;\n        while (!pq.empty()) {\n            res |= pq.top();\n            pq.pop();\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:33:44.420461",
+  "code_extracted_previous": "public:\n    long long maximumOr(vector<int>& nums, int k) {\n        priority_queue<int, vector<int>, greater<int>> pq(nums.begin(), nums.end());\n        while (k--) {\n            int x = pq.top();\n            pq.pop();\n            pq.push(x * 2);\n        }\n        long long res = 0;\n        while (!pq.empty()) {\n            res |= pq.top();\n            pq.pop();\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.616649"
+}

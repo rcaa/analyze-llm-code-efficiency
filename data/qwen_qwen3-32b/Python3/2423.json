@@ -1,0 +1,15 @@
+{
+  "id": 2423,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def equalFrequency(self, word: str) -> bool:\n        from collections import Counter\n\n        freq = Counter(word)\n        freq_counts = Counter(freq.values())\n\n        if len(freq_counts) > 2:\n            return False\n\n        (count1, freq1), (count2, freq2) = *freq_counts.items(), (0, 0)\n\n        if count1 == 1 and freq1 - 1 == freq2:\n            return True\n        if count2 == 1 and freq2 - 1 == freq1:\n            return True\n        if (freq1 == 1 and count1 == 1) or (freq2 == 1 and count2 == 1):\n            return True\n\n        return False\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The solution uses frequency counting to determine if removing one character can make all remaining characters have equal frequency. It checks for specific conditions where one frequency is higher by one and occurs once, or if a frequency is 1 and occurs once. The approach is efficient and leverages Python's Counter for frequency tracking.>",
+  "code": "class Solution:\n    def equalFrequency(self, word: str) -> bool:\n\n        freq = Counter(word)\n        freq_counts = Counter(freq.values())\n\n        if len(freq_counts) > 2:\n            return False\n\n        (count1, freq1), (count2, freq2) = *freq_counts.items(), (0, 0)\n\n        if count1 == 1 and freq1 - 1 == freq2:\n            return True\n        if count2 == 1 and freq2 - 1 == freq1:\n            return True\n        if (freq1 == 1 and count1 == 1) or (freq2 == 1 and count2 == 1):\n            return True\n\n        return False",
+  "timestamp": "2025-08-06T17:25:11.228266",
+  "code_extracted_previous": "class Solution:\n    def equalFrequency(self, word: str) -> bool:\n        from collections import Counter\n\n        freq = Counter(word)\n        freq_counts = Counter(freq.values())\n\n        if len(freq_counts) > 2:\n            return False\n\n        (count1, freq1), (count2, freq2) = *freq_counts.items(), (0, 0)\n\n        if count1 == 1 and freq1 - 1 == freq2:\n            return True\n        if count2 == 1 and freq2 - 1 == freq1:\n            return True\n        if (freq1 == 1 and count1 == 1) or (freq2 == 1 and count2 == 1):\n            return True\n\n        return False",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:05.374928"
+}

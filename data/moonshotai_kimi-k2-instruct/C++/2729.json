@@ -1,0 +1,15 @@
+{
+  "id": 2729,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    bool isFascinating(int n) {\n        int val = n * 1000000 + (n * 2) * 1000 + (n * 3);\n        int mask = 0;\n        while (val) {\n            int d = val % 10;\n            if (d == 0 || (mask >> d) & 1) return false;\n            mask |= 1 << d;\n            val /= 10;\n        }\n        return mask == 0b1111111110;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Concatenate n, 2n, 3n into a single integer, then use a bitmask to check for duplicates, zeros, and completeness of 1-9 in one pass.",
+  "code": "class Solution {\npublic:\n    bool isFascinating(int n) {\n        int val = n * 1000000 + (n * 2) * 1000 + (n * 3);\n        int mask = 0;\n        while (val) {\n            int d = val % 10;\n            if (d == 0 || (mask >> d) & 1) return false;\n            mask |= 1 << d;\n            val /= 10;\n        }\n        return mask == 0b1111111110;\n    }\n};",
+  "timestamp": "2025-08-06T02:29:35.470676",
+  "code_extracted_previous": "public:\n    bool isFascinating(int n) {\n        int val = n * 1000000 + (n * 2) * 1000 + (n * 3);\n        int mask = 0;\n        while (val) {\n            int d = val % 10;\n            if (d == 0 || (mask >> d) & 1) return false;\n            mask |= 1 << d;\n            val /= 10;\n        }\n        return mask == 0b1111111110;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.812131"
+}

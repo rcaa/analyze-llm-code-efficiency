@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        long long curr = 1;\n        k--;\n        while (k > 0) {\n            long long step = 0, first = curr, last = curr + 1;\n            while (first <= n) {\n                step += min((long long)n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k >= step) {\n                k -= step;\n                curr++;\n            } else {\n                k--;\n                curr *= 10;\n            }\n        }\n        return (int)curr;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(n) + log(n)*k)\n Corrected to: time complexity: O(log(n)*k)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a trie-like traversal to find the kth lexicographically smallest number, efficiently handling large inputs by calculating the number of nodes in the current subtree.",
+  "code": "class Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        long long curr = 1;\n        k--;\n        while (k > 0) {\n            long long step = 0, first = curr, last = curr + 1;\n            while (first <= n) {\n                step += min((long long)n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k >= step) {\n                k -= step;\n                curr++;\n            } else {\n                k--;\n                curr *= 10;\n            }\n        }\n        return (int)curr;\n    }\n};",
+  "timestamp": "2025-08-06T01:11:41.365454",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        long long curr = 1;\n        k--;\n        while (k > 0) {\n            long long step = 0, first = curr, last = curr + 1;\n            while (first <= n) {\n                step += min((long long)n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k >= step) {\n                k -= step;\n                curr++;\n            } else {\n                k--;\n                curr *= 10;\n            }\n        }\n        return (int)curr;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.642693"
+}

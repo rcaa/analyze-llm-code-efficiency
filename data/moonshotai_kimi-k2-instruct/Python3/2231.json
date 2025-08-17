@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def largestInteger(self, num: int) -> int:\n        s = list(str(num))\n        n = len(s)\n        for i in range(n):\n            for j in range(i + 1, n):\n                if (int(s[i]) & 1) == (int(s[j]) & 1) and s[j] > s[i]:\n                    s[i], s[j] = s[j], s[i]\n        return int(''.join(s))\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Separate digits by parity, sort each group descending, then reconstruct the number by picking the largest available digit of the correct parity for each position.",
+  "code": "class Solution:\n    def largestInteger(self, num: int) -> int:\n        s = list(str(num))\n        n = len(s)\n        for i in range(n):\n            for j in range(i + 1, n):\n                if (int(s[i]) & 1) == (int(s[j]) & 1) and s[j] > s[i]:\n                    s[i], s[j] = s[j], s[i]\n        return int(''.join(s))",
+  "timestamp": "2025-08-06T02:33:02.169079",
+  "code_extracted_previous": "class Solution:\n    def largestInteger(self, num: int) -> int:\n        s = list(str(num))\n        n = len(s)\n        for i in range(n):\n            for j in range(i + 1, n):\n                if (int(s[i]) & 1) == (int(s[j]) & 1) and s[j] > s[i]:\n                    s[i], s[j] = s[j], s[i]\n        return int(''.join(s))",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.570205"
+}

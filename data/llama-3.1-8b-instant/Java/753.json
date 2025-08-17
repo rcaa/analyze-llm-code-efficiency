@@ -1,0 +1,15 @@
+{
+  "id": 753,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String crackSafe(int n, int k) {\n        Set<String> visited = new HashSet<>();\n        StringBuilder res = new StringBuilder();\n        dfs(0, 0, n, k, visited, res);\n        return \"0\".repeat(n - 1) + res.toString();\n    }\n    \n    private void dfs(int node, int prev, int n, int k, Set<String> visited, StringBuilder res) {\n        for (int i = 0; i < k; i++) {\n            String cur = String.valueOf(i);\n            int next = (node * k + i) % (k * (int) Math.pow(10, n - 1));\n            if (!visited.contains(cur)) {\n                visited.add(cur);\n                res.append(i);\n                dfs(next, i, n, k, visited, res);\n                visited.remove(cur);\n                res.deleteCharAt(res.length() - 1);\n            }\n        }\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(k^n)\nspace complexity: O(k^n)\nenergy implications: MEDIUM",
+  "code": "class Solution {\n    public String crackSafe(int n, int k) {\n        Set<String> visited = new HashSet<>();\n        StringBuilder res = new StringBuilder();\n        dfs(0, 0, n, k, visited, res);\n        return \"0\".repeat(n - 1) + res.toString();\n    }\n    \n    private void dfs(int node, int prev, int n, int k, Set<String> visited, StringBuilder res) {\n        for (int i = 0; i < k; i++) {\n            String cur = String.valueOf(i);\n            int next = (node * k + i) % (k * (int) Math.pow(10, n - 1));\n            if (!visited.contains(cur)) {\n                visited.add(cur);\n                res.append(i);\n                dfs(next, i, n, k, visited, res);\n                visited.remove(cur);\n                res.deleteCharAt(res.length() - 1);\n            }\n        }\n    }\n}",
+  "timestamp": "2025-08-05T13:55:28.331535",
+  "code_extracted_previous": "class Solution {\n    public String crackSafe(int n, int k) {\n        Set<String> visited = new HashSet<>();\n        StringBuilder res = new StringBuilder();\n        dfs(0, 0, n, k, visited, res);\n        return \"0\".repeat(n - 1) + res.toString();\n    }\n    \n    private void dfs(int node, int prev, int n, int k, Set<String> visited, StringBuilder res) {\n        for (int i = 0; i < k; i++) {\n            String cur = String.valueOf(i);\n            int next = (node * k + i) % (k * (int) Math.pow(10, n - 1));\n            if (!visited.contains(cur)) {\n                visited.add(cur);\n                res.append(i);\n                dfs(next, i, n, k, visited, res);\n                visited.remove(cur);\n                res.deleteCharAt(res.length() - 1);\n            }\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:30.017271"
+}

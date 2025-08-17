@@ -1,0 +1,15 @@
+{
+  "id": 3302,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def validSequence(self, word1: str, word2: str) -> List[int]:\n        n, m = len(word1), len(word2)\n        next_pos = [n] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            next_pos[i] = next_pos[i + 1]\n            if word1[i] == word2[0]:\n                next_pos[i] = i\n        res = []\n        i = 0\n        diff = 0\n        for j in range(m):\n            idx = next_pos[i]\n            if idx == n:\n                return []\n            res.append(idx)\n            i = idx + 1\n            if word1[idx] != word2[j]:\n                diff += 1\n                if diff > 1:\n                    return []\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution efficiently finds the lexicographically smallest valid sequence by using a greedy approach with a precomputed next position array. It ensures at most one character difference between the formed string and word2. The main strength is its linear time complexity, while the weakness is that it may not handle all edge cases explicitly, such as when multiple differences exist.",
+  "code": "class Solution:\n    def validSequence(self, word1: str, word2: str) -> List[int]:\n        n, m = len(word1), len(word2)\n        next_pos = [n] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            next_pos[i] = next_pos[i + 1]\n            if word1[i] == word2[0]:\n                next_pos[i] = i\n        res = []\n        i = 0\n        diff = 0\n        for j in range(m):\n            idx = next_pos[i]\n            if idx == n:\n                return []\n            res.append(idx)\n            i = idx + 1\n            if word1[idx] != word2[j]:\n                diff += 1\n                if diff > 1:\n                    return []\n        return res",
+  "timestamp": "2025-08-06T17:32:37.408327",
+  "code_extracted_previous": "class Solution:\n    def validSequence(self, word1: str, word2: str) -> List[int]:\n        n, m = len(word1), len(word2)\n        next_pos = [n] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            next_pos[i] = next_pos[i + 1]\n            if word1[i] == word2[0]:\n                next_pos[i] = i\n        res = []\n        i = 0\n        diff = 0\n        for j in range(m):\n            idx = next_pos[i]\n            if idx == n:\n                return []\n            res.append(idx)\n            i = idx + 1\n            if word1[idx] != word2[j]:\n                diff += 1\n                if diff > 1:\n                    return []\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:06.043725"
+}

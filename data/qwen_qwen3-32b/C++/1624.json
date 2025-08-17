@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int maxLen = -1;\n        int charIndex[26] = {0}; // To store the first occurrence index of each character\n\n        for (int i = 0; i < s.length(); ++i) {\n            int idx = s[i] - 'a';\n            if (charIndex[idx] != 0) {\n                int len = i - charIndex[idx] - 1;\n                maxLen = max(maxLen, len);\n            } else {\n                charIndex[idx] = i + 1; // Store i+1 to avoid -1 check for first occurrence\n            }\n        }\n\n        return maxLen;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The solution uses an array to store the first occurrence of each character. For each character, if it has been seen before, the distance between the current index and the first index is calculated and compared to find the maximum. This approach ensures linear time complexity and constant space usage.>",
+  "code": "class Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int maxLen = -1;\n        int charIndex[26] = {0}; // To store the first occurrence index of each character\n\n        for (int i = 0; i < s.length(); ++i) {\n            int idx = s[i] - 'a';\n            if (charIndex[idx] != 0) {\n                int len = i - charIndex[idx] - 1;\n                maxLen = max(maxLen, len);\n            } else {\n                charIndex[idx] = i + 1; // Store i+1 to avoid -1 check for first occurrence\n            }\n        }\n\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-06T02:40:18.152788",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxLengthBetweenEqualCharacters(string s) {\n        int maxLen = -1;\n        int charIndex[26] = {0}; // To store the first occurrence index of each character\n\n        for (int i = 0; i < s.length(); ++i) {\n            int idx = s[i] - 'a';\n            if (charIndex[idx] != 0) {\n                int len = i - charIndex[idx] - 1;\n                maxLen = max(maxLen, len);\n            } else {\n                charIndex[idx] = i + 1; // Store i+1 to avoid -1 check for first occurrence\n            }\n        }\n\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:58.366968"
+}

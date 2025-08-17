@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[][] dp = new int[n][n];\n        for (int i = 0; i < n; i++) {\n            dp[i][i] = 1;\n        }\n        for (int len = 2; len <= n; len++) {\n            for (int i = 0; i <= n - len; i++) {\n                int j = i + len - 1;\n                dp[i][j] = len;\n                for (int k = i; k < j; k++) {\n                    if (s.charAt(k) == s.charAt(j)) {\n                        dp[i][j] = Math.min(dp[i][j], dp[i][k - 1] + 1);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n^2)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We create a 2D array dp where dp[i][j] represents the minimum number of turns needed to print the substring s[i...j]. We initialize dp[i][i] to 1 because it takes one turn to print a single character. Then we fill up the dp array by considering all possible substrings. For each substring, we try to find the last character that is the same as the last character of the substring, and update dp[i][j] accordingly. Finally, we return dp[0][n-1] which represents the minimum number of turns needed to print the whole string.",
+  "code": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[][] dp = new int[n][n];\n        for (int i = 0; i < n; i++) {\n            dp[i][i] = 1;\n        }\n        for (int len = 2; len <= n; len++) {\n            for (int i = 0; i <= n - len; i++) {\n                int j = i + len - 1;\n                dp[i][j] = len;\n                for (int k = i; k < j; k++) {\n                    if (s.charAt(k) == s.charAt(j)) {\n                        dp[i][j] = Math.min(dp[i][j], dp[i][k - 1] + 1);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}",
+  "timestamp": "2025-08-06T01:59:06.234545",
+  "code_extracted_previous": "public int strangePrinter(String s) {\n        int n = s.length();\n        int[][] dp = new int[n][n];\n        for (int i = 0; i < n; i++) {\n            dp[i][i] = 1;\n        }\n        for (int len = 2; len <= n; len++) {\n            for (int i = 0; i <= n - len; i++) {\n                int j = i + len - 1;\n                dp[i][j] = len;\n                for (int k = i; k < j; k++) {\n                    if (s.charAt(k) == s.charAt(j)) {\n                        dp[i][j] = Math.min(dp[i][j], dp[i][k - 1] + 1);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.931520"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1694,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def reformatNumber(self, number: str) -> str:\n        number = number.replace(\" \", \"\").replace(\"-\", \"\")\n        if len(number) <= 4:\n            return number\n        blocks = []\n        for i in range(0, len(number), 3):\n            blocks.append(number[i:i+3])\n        if len(number) % 3 != 0:\n            blocks[-1] = number[-3:]\n        if len(blocks) > 2:\n            blocks = blocks[:-1] + [\"-\" + \"-\".join(blocks[-1:])]\n        return \"-\".join(blocks)\n```\nsolution: ```python\nclass Solution:\n    def reformatNumber(self, number: str) -> str:\n        number = number.replace(\" \", \"\").replace(\"-\", \"\")\n        if len(number) <= 4:\n            return number\n        blocks = []\n        for i in range(0, len(number), 3):\n            blocks.append(number[i:i+3])\n        if len(number) % 3 != 0:\n            blocks[-1] = number[-3:]\n        if len(blocks) > 2:\n            blocks = blocks[:-1] + [\"-\" + \"-\".join(blocks[-1:])]\n        return \"-\".join(blocks)\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution iterates through the input string once to extract blocks of digits. It then performs constant-time operations to join the blocks with dashes. The space complexity is linear due to the creation of the `blocks` list.",
+  "code": "solution:",
+  "timestamp": "2025-08-05T23:41:30.519502",
+  "code_extracted_previous": "class Solution:\n    def reformatNumber(self, number: str) -> str:\n        number = number.replace(\" \", \"\").replace(\"-\", \"\")\n        if len(number) <= 4:\n            return number\n        blocks = []\n        for i in range(0, len(number), 3):\n            blocks.append(number[i:i+3])\n        if len(number) % 3 != 0:\n            blocks[-1] = number[-3:]\n        if len(blocks) > 2:\n            blocks = blocks[:-1] + [\"-\" + \"-\".join(blocks[-1:])]\n        return \"-\".join(blocks)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.015994"
+}

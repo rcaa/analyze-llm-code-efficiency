@@ -1,0 +1,15 @@
+{
+  "id": 647,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int countSubstrings(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += countPalindromes(s, i, i);\n            count += countPalindromes(s, i, i + 1);\n        }\n        return count;\n    }\n\n    private int countPalindromes(String s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a helper function to count palindromic substrings centered at each position in the string, considering both odd and even length palindromes. It iterates over the string, expanding around each center to count all palindromic substrings.",
+  "code": "class Solution {\n    public int countSubstrings(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += countPalindromes(s, i, i);\n            count += countPalindromes(s, i, i + 1);\n        }\n        return count;\n    }\n\n    private int countPalindromes(String s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T15:15:58.188449",
+  "code_extracted_previous": "class Solution {\n    public int countSubstrings(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += countPalindromes(s, i, i);\n            count += countPalindromes(s, i, i + 1);\n        }\n        return count;\n    }\n\n    private int countPalindromes(String s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.373839"
+}

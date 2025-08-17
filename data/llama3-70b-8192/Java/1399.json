@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37];\n        int maxCount = 0, ans = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0, num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            count[sum]++;\n            maxCount = Math.max(maxCount, count[sum]);\n        }\n        for (int i = 0; i < 37; i++) {\n            if (count[i] == maxCount) ans++;\n        }\n        return ans;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a frequency array to count the occurrences of each digit sum, then iterates through the array to find the maximum count and the number of groups with that count.",
+  "code": "class Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37];\n        int maxCount = 0, ans = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0, num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            count[sum]++;\n            maxCount = Math.max(maxCount, count[sum]);\n        }\n        for (int i = 0; i < 37; i++) {\n            if (count[i] == maxCount) ans++;\n        }\n        return ans;\n    }\n}",
+  "timestamp": "2025-08-05T14:42:56.444673",
+  "code_extracted_previous": "class Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37];\n        int maxCount = 0, ans = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0, num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            count[sum]++;\n            maxCount = Math.max(maxCount, count[sum]);\n        }\n        for (int i = 0; i < 37; i++) {\n            if (count[i] == maxCount) ans++;\n        }\n        return ans;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.521460"
+}

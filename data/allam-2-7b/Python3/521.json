@@ -1,0 +1,15 @@
+{
+  "id": 521,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution:\ndef findLUSlength(self, a: str, b: str) -> int:\n    n = len(a)\n    m = len(b)\n    dp = [[None]*(m+1) for _ in range(n+1)]\n    for i in range(1, n+1):\n        for j in range(1, m+1):\n            if a[i-1] == b[j-1]:\n                dp[i][j] = dp[i-1][j-1]\n            else:\n                dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n    return dp[n][m]\n\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n)\nenergy implications: LOW ",
+  "code": "def findLUSlength(self, a: str, b: str) -> int:\n    n = len(a)\n    m = len(b)\n    dp = [[None]*(m+1) for _ in range(n+1)]\n    for i in range(1, n+1):\n        for j in range(1, m+1):\n            if a[i-1] == b[j-1]:\n                dp[i][j] = dp[i-1][j-1]\n            else:\n                dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n    return dp[n][m]",
+  "timestamp": "2025-08-05T16:31:18.821816",
+  "code_extracted_previous": "def findLUSlength(self, a: str, b: str) -> int:\n    n = len(a)\n    m = len(b)\n    dp = [[None]*(m+1) for _ in range(n+1)]\n    for i in range(1, n+1):\n        for j in range(1, m+1):\n            if a[i-1] == b[j-1]:\n                dp[i][j] = dp[i-1][j-1]\n            else:\n                dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n    return dp[n][m]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:16.070466"
+}

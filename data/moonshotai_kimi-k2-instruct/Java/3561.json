@@ -1,0 +1,15 @@
+{
+  "id": 3561,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public String resultingString(String s) {\n        StringBuilder sb = new StringBuilder(s);\n        boolean changed;\n        do {\n            changed = false;\n            int n = sb.length();\n            for (int i = 0; i < n - 1; i++) {\n                char a = sb.charAt(i);\n                char b = sb.charAt(i + 1);\n                int diff = Math.abs(a - b);\n                if (diff == 1 || diff == 25) {\n                    sb.delete(i, i + 2);\n                    changed = true;\n                    break;\n                }\n            }\n        } while (changed);\n        return sb.toString();\n    }\n}\n```\nefficiency: MEDIUM\ntime complexity: O(n^2) in the worst case\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: Uses a greedy left-to-right scan with a StringBuilder to repeatedly remove the first qualifying pair until none remain. The quadratic worst-case occurs when removals cascade from left to right (e.g., \"ababab...\").",
+  "code": "class Solution {\n    public String resultingString(String s) {\n        StringBuilder sb = new StringBuilder(s);\n        boolean changed;\n        do {\n            changed = false;\n            int n = sb.length();\n            for (int i = 0; i < n - 1; i++) {\n                char a = sb.charAt(i);\n                char b = sb.charAt(i + 1);\n                int diff = Math.abs(a - b);\n                if (diff == 1 || diff == 25) {\n                    sb.delete(i, i + 2);\n                    changed = true;\n                    break;\n                }\n            }\n        } while (changed);\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-06T01:08:09.552268",
+  "code_extracted_previous": "class Solution {\n    public String resultingString(String s) {\n        StringBuilder sb = new StringBuilder(s);\n        boolean changed;\n        do {\n            changed = false;\n            int n = sb.length();\n            for (int i = 0; i < n - 1; i++) {\n                char a = sb.charAt(i);\n                char b = sb.charAt(i + 1);\n                int diff = Math.abs(a - b);\n                if (diff == 1 || diff == 25) {\n                    sb.delete(i, i + 2);\n                    changed = true;\n                    break;\n                }\n            }\n        } while (changed);\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.412177"
+}

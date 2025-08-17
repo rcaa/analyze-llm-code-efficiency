@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> result;\n        int start = 0;\n        for (int i = 1; i < s.size(); i++) {\n            if (s[i] != s[i - 1]) {\n                if (i - start >= 3) {\n                    result.push_back({start, i - 1});\n                }\n                start = i;\n            }\n        }\n        if (s.size() - start >= 3) {\n            result.push_back({start, s.size() - 1});\n        }\n        return result;\n    }\n};\n```\n\nsolution: \n```c++\nclass Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> result;\n        int start = 0;\n        for (int i = 1; i < s.size(); i++) {\n            if (s[i] != s[i - 1]) {\n                if (i - start >= 3) {\n                    result.push_back({start, i - 1});\n                }\n                start = i;\n            }\n        }\n        if (s.size() - start >= 3) {\n            result.push_back({start, s.size() - 1});\n        }\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, identifying consecutive groups of characters. If a group has 3 or more characters, its start and end indices are added to the result vector.  This approach is efficient as it has linear time complexity and space complexity proportional to the number of large groups. \n\n\n\n",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> result;\n        int start = 0;\n        for (int i = 1; i < s.size(); i++) {\n            if (s[i] != s[i - 1]) {\n                if (i - start >= 3) {\n                    result.push_back({start, i - 1});\n                }\n                start = i;\n            }\n        }\n        if (s.size() - start >= 3) {\n            result.push_back({start, s.size() - 1});\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T23:38:46.705874",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> largeGroupPositions(string s) {\n        vector<vector<int>> result;\n        int start = 0;\n        for (int i = 1; i < s.size(); i++) {\n            if (s[i] != s[i - 1]) {\n                if (i - start >= 3) {\n                    result.push_back({start, i - 1});\n                }\n                start = i;\n            }\n        }\n        if (s.size() - start >= 3) {\n            result.push_back({start, s.size() - 1});\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.337081"
+}

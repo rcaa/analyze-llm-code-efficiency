@@ -1,0 +1,15 @@
+{
+  "id": 3594,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public double minTime(int n, int k, int m, int[] time, double[] mul) {\n        Arrays.sort(time);\n        double res = 0;\n        int i = n - 1;\n        int stage = 0;\n        while (i >= 0) {\n            int cnt = Math.min(k, i + 1);\n            double maxTime = 0;\n            for (int j = 0; j < cnt; j++) {\n                maxTime = Math.max(maxTime, time[i - j]);\n            }\n            res += maxTime * mul[stage % m];\n            stage = (stage + (int) Math.floor(maxTime * mul[stage % m])) % m;\n            i -= cnt;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a greedy approach to minimize the total time by always sending the strongest individuals first and returning the strongest individual to the base camp. It sorts the individuals by their rowing strengths and iteratively sends groups of k individuals or the remaining individuals, whichever is smaller, to the destination, updating the stage and total time accordingly.",
+  "code": "class Solution {\n    public double minTime(int n, int k, int m, int[] time, double[] mul) {\n        Arrays.sort(time);\n        double res = 0;\n        int i = n - 1;\n        int stage = 0;\n        while (i >= 0) {\n            int cnt = Math.min(k, i + 1);\n            double maxTime = 0;\n            for (int j = 0; j < cnt; j++) {\n                maxTime = Math.max(maxTime, time[i - j]);\n            }\n            res += maxTime * mul[stage % m];\n            stage = (stage + (int) Math.floor(maxTime * mul[stage % m])) % m;\n            i -= cnt;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T12:20:21.828654",
+  "code_extracted_previous": "class Solution {\n    public double minTime(int n, int k, int m, int[] time, double[] mul) {\n        Arrays.sort(time);\n        double res = 0;\n        int i = n - 1;\n        int stage = 0;\n        while (i >= 0) {\n            int cnt = Math.min(k, i + 1);\n            double maxTime = 0;\n            for (int j = 0; j < cnt; j++) {\n                maxTime = Math.max(maxTime, time[i - j]);\n            }\n            res += maxTime * mul[stage % m];\n            stage = (stage + (int) Math.floor(maxTime * mul[stage % m])) % m;\n            i -= cnt;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.508599"
+}

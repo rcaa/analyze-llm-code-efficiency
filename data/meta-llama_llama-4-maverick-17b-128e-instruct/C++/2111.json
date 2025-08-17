@@ -1,0 +1,15 @@
+{
+  "id": 2111,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int kIncreasing(vector<int>& arr, int k) {\n        int n = arr.size(), res = 0;\n        for (int i = 0; i < k; ++i) {\n            vector<int> subseq;\n            for (int j = i; j < n; j += k) {\n                auto it = upper_bound(subseq.begin(), subseq.end(), arr[j]);\n                if (it == subseq.end()) subseq.push_back(arr[j]);\n                else *it = arr[j];\n            }\n            res += subseq.size();\n        }\n        return n - res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over the array in steps of k, maintaining a subsequence of elements that are in non-decreasing order. It uses binary search to find the correct position to insert or update elements in the subsequence, effectively counting the length of the longest non-decreasing subsequence for each starting index i. The total count of operations required is then the difference between the total number of elements and the sum of the lengths of these subsequences.",
+  "code": "class Solution {\npublic:\n    int kIncreasing(vector<int>& arr, int k) {\n        int n = arr.size(), res = 0;\n        for (int i = 0; i < k; ++i) {\n            vector<int> subseq;\n            for (int j = i; j < n; j += k) {\n                auto it = upper_bound(subseq.begin(), subseq.end(), arr[j]);\n                if (it == subseq.end()) subseq.push_back(arr[j]);\n                else *it = arr[j];\n            }\n            res += subseq.size();\n        }\n        return n - res;\n    }\n};",
+  "timestamp": "2025-08-05T12:04:47.310631",
+  "code_extracted_previous": "class Solution {\npublic:\n    int kIncreasing(vector<int>& arr, int k) {\n        int n = arr.size(), res = 0;\n        for (int i = 0; i < k; ++i) {\n            vector<int> subseq;\n            for (int j = i; j < n; j += k) {\n                auto it = upper_bound(subseq.begin(), subseq.end(), arr[j]);\n                if (it == subseq.end()) subseq.push_back(arr[j]);\n                else *it = arr[j];\n            }\n            res += subseq.size();\n        }\n        return n - res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.081357"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1850,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def getMinSwaps(self, num: str, k: int) -> int:\n        n = len(num)\n        num = list(num)\n        def is_wonderful(num):\n            return sorted(num) == num and num != list(num)\n        \n        def next_wonderful(num):\n            for i in range(n - 1, -1, -1):\n                if num[i] < num[i - 1]:\n                    return num[:i - 1] + sorted(num[i - 1:], reverse=True)\n            return num\n        \n        count = 0\n        for _ in range(k):\n            num = next_wonderful(num)\n            count += sum(a != b for a, b in zip(num, num[1:]))\n        return count\n```\n\nefficiency: HIGH\ntime complexity: O(n^2 * k)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution uses a helper function to generate the next wonderful number by finding the first pair of digits that are in the wrong order and swapping them with the smallest possible pair. It then counts the number of swaps needed to reach the kth wonderful number. The time complexity is O(n^2 * k) because generating the next wonderful number takes O(n^2) time and we do this k times. The space complexity is O(n) because we need to store the wonderful numbers.",
+  "code": "class Solution:\n    def getMinSwaps(self, num: str, k: int) -> int:\n        n = len(num)\n        num = list(num)\n        def is_wonderful(num):\n            return sorted(num) == num and num != list(num)\n        \n        def next_wonderful(num):\n            for i in range(n - 1, -1, -1):\n                if num[i] < num[i - 1]:\n                    return num[:i - 1] + sorted(num[i - 1:], reverse=True)\n            return num\n        \n        count = 0\n        for _ in range(k):\n            num = next_wonderful(num)\n            count += sum(a != b for a, b in zip(num, num[1:]))\n        return count",
+  "timestamp": "2025-08-06T01:43:09.938848",
+  "code_extracted_previous": "class Solution:\n    def getMinSwaps(self, num: str, k: int) -> int:\n        n = len(num)\n        num = list(num)\n        def is_wonderful(num):\n            return sorted(num) == num and num != list(num)\n        \n        def next_wonderful(num):\n            for i in range(n - 1, -1, -1):\n                if num[i] < num[i - 1]:\n                    return num[:i - 1] + sorted(num[i - 1:], reverse=True)\n            return num\n        \n        count = 0\n        for _ in range(k):\n            num = next_wonderful(num)\n            count += sum(a != b for a, b in zip(num, num[1:]))\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.480362"
+}

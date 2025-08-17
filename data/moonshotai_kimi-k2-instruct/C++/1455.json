@@ -1,0 +1,15 @@
+{
+  "id": 1455,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int isPrefixOfWord(string sentence, string searchWord) {\n        int idx = 1;\n        size_t start = 0;\n        size_t space;\n        while (true) {\n            space = sentence.find(' ', start);\n            string word = sentence.substr(start, space - start);\n            if (word.compare(0, searchWord.size(), searchWord) == 0) return idx;\n            if (space == string::npos) break;\n            start = space + 1;\n            ++idx;\n        }\n        return -1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(M)\nenergy implications: LOW\nexplanation: Scan the sentence once, splitting on spaces; for each word check if searchWord is a prefix using direct string comparison. Early exit on first match keeps work minimal.",
+  "code": "class Solution {\npublic:\n    int isPrefixOfWord(string sentence, string searchWord) {\n        int idx = 1;\n        size_t start = 0;\n        size_t space;\n        while (true) {\n            space = sentence.find(' ', start);\n            string word = sentence.substr(start, space - start);\n            if (word.compare(0, searchWord.size(), searchWord) == 0) return idx;\n            if (space == string::npos) break;\n            start = space + 1;\n            ++idx;\n        }\n        return -1;\n    }\n};",
+  "timestamp": "2025-08-06T01:31:50.384285",
+  "code_extracted_previous": "public:\n    int isPrefixOfWord(string sentence, string searchWord) {\n        int idx = 1;\n        size_t start = 0;\n        size_t space;\n        while (true) {\n            space = sentence.find(' ', start);\n            string word = sentence.substr(start, space - start);\n            if (word.compare(0, searchWord.size(), searchWord) == 0) return idx;\n            if (space == string::npos) break;\n            start = space + 1;\n            ++idx;\n        }\n        return -1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.240101"
+}

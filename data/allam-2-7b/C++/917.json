@@ -1,0 +1,15 @@
+{
+  "id": 917,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    string reverseOnlyLetters(string s) {\n        string result = \"\";\n        int start = 0, end = s.length() - 1;\n        while (start < end) {\n            if (isEnglishLetter(s[start])) {\n                swap(s[start], s[end]);\n                start++;\n                end--;\n            }\n        }\n        reverse(s.begin() + start, s.begin() + end + 1);\n        return result + s.substr(start, s.length() - start) + s.substr(end + 1, s.length() - end);\n    }\n\n    bool isEnglishLetter(char c) {\n        return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n1. Initialize result and two pointers (start and end) to find the range of English letters.\n2. Iterate while start is less than end.\n3. If the current character is an English letter, swap it with the last character and update start and end pointers.\n4. Reverse the string using the reverse function.\n5. Join the reversed substring with the original substring and return the result.\n6. Implement a helper function isEnglishLetter() to check if a character is an English letter. ",
+  "code": "class Solution {\npublic:\n    string reverseOnlyLetters(string s) {\n        string result = \"\";\n        int start = 0, end = s.length() - 1;\n        while (start < end) {\n            if (isEnglishLetter(s[start])) {\n                swap(s[start], s[end]);\n                start++;\n                end--;\n            }\n        }\n        reverse(s.begin() + start, s.begin() + end + 1);\n        return result + s.substr(start, s.length() - start) + s.substr(end + 1, s.length() - end);\n    }\n\n    bool isEnglishLetter(char c) {\n        return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');\n    }\n};",
+  "timestamp": "2025-08-06T01:30:30.006143",
+  "code_extracted_previous": "public:\n    string reverseOnlyLetters(string s) {\n        string result = \"\";\n        int start = 0, end = s.length() - 1;\n        while (start < end) {\n            if (isEnglishLetter(s[start])) {\n                swap(s[start], s[end]);\n                start++;\n                end--;\n            }\n        }\n        reverse(s.begin() + start, s.begin() + end + 1);\n        return result + s.substr(start, s.length() - start) + s.substr(end + 1, s.length() - end);\n    }\n\n    bool isEnglishLetter(char c) {\n        return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.307226"
+}

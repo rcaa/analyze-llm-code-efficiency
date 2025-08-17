@@ -1,0 +1,15 @@
+{
+  "id": 2178,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    vector<long long> maximumEvenSplit(long long finalSum) {\n        vector<long long> res;\n        if (finalSum % 2) return res;\n        long long cur = 2;\n        long long rem = finalSum;\n        while (rem >= cur) {\n            res.push_back(cur);\n            rem -= cur;\n            cur += 2;\n        }\n        if (rem) res.back() += rem;\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(sqrt(finalSum))\nspace complexity: O(sqrt(finalSum))\nenergy implications: LOW\nexplanation: Greedy construction of the longest strictly increasing sequence of distinct even numbers starting from 2. The loop runs until the remaining sum is smaller than the next even number, then the leftover is added to the last term to keep uniqueness.",
+  "code": "class Solution {\npublic:\n    vector<long long> maximumEvenSplit(long long finalSum) {\n        vector<long long> res;\n        if (finalSum % 2) return res;\n        long long cur = 2;\n        long long rem = finalSum;\n        while (rem >= cur) {\n            res.push_back(cur);\n            rem -= cur;\n            cur += 2;\n        }\n        if (rem) res.back() += rem;\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T02:29:10.396212",
+  "code_extracted_previous": "public:\n    vector<long long> maximumEvenSplit(long long finalSum) {\n        vector<long long> res;\n        if (finalSum % 2) return res;\n        long long cur = 2;\n        long long rem = finalSum;\n        while (rem >= cur) {\n            res.push_back(cur);\n            rem -= cur;\n            cur += 2;\n        }\n        if (rem) res.back() += rem;\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.578064"
+}

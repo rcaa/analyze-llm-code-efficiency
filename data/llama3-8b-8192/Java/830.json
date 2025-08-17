@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public List<List<Integer>> largeGroupPositions(String s) {\n        List<List<Integer>> result = new ArrayList<>();\n        int start = 0;\n        for (int end = 0; end < s.length(); end++) {\n            if (s.charAt(end) != s.charAt(start)) {\n                if (end - start >= 3) {\n                    result.add(Arrays.asList(start, end));\n                }\n                start = end;\n            }\n        }\n        if (s.length() - start >= 3) {\n            result.add(Arrays.asList(start, s.length() - 1));\n        }\n        return result;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution iterates through the string once, keeping track of the start and end indices of each group. It checks if the group has 3 or more characters and adds it to the result list if it does. The solution has a high efficiency due to its linear time complexity and low space complexity.",
+  "code": "class Solution {\n    public List<List<Integer>> largeGroupPositions(String s) {\n        List<List<Integer>> result = new ArrayList<>();\n        int start = 0;\n        for (int end = 0; end < s.length(); end++) {\n            if (s.charAt(end) != s.charAt(start)) {\n                if (end - start >= 3) {\n                    result.add(Arrays.asList(start, end));\n                }\n                start = end;\n            }\n        }\n        if (s.length() - start >= 3) {\n            result.add(Arrays.asList(start, s.length() - 1));\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T23:38:40.804960",
+  "code_extracted_previous": "public List<List<Integer>> largeGroupPositions(String s) {\n        List<List<Integer>> result = new ArrayList<>();\n        int start = 0;\n        for (int end = 0; end < s.length(); end++) {\n            if (s.charAt(end) != s.charAt(start)) {\n                if (end - start >= 3) {\n                    result.add(Arrays.asList(start, end));\n                }\n                start = end;\n            }\n        }\n        if (s.length() - start >= 3) {\n            result.add(Arrays.asList(start, s.length() - 1));\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:43.029174"
+}

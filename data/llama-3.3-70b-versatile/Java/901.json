@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass StockSpanner {\n    private int[] prices;\n    private int index;\n\n    public StockSpanner() {\n        prices = new int[10001];\n        index = -1;\n    }\n    \n    public int next(int price) {\n        index++;\n        prices[index] = price;\n        int span = 1;\n        for (int i = index - 1; i >= 0; i--) {\n            if (prices[i] <= price) {\n                span++;\n            } else {\n                break;\n            }\n        }\n        return span;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The StockSpanner class uses an array to store the daily prices. The next method calculates the span by iterating backwards through the array, counting the number of consecutive days with a price less than or equal to the current day's price. This approach ensures efficient calculation of the span for each day.",
+  "code": "class StockSpanner {\n    private int[] prices;\n    private int index;\n\n    public StockSpanner() {\n        prices = new int[10001];\n        index = -1;\n    }\n    \n    public int next(int price) {\n        index++;\n        prices[index] = price;\n        int span = 1;\n        for (int i = index - 1; i >= 0; i--) {\n            if (prices[i] <= price) {\n                span++;\n            } else {\n                break;\n            }\n        }\n        return span;\n    }\n}",
+  "timestamp": "2025-08-06T15:16:23.401130",
+  "code_extracted_previous": "class StockSpanner {\n    private int[] prices;\n    private int index;\n\n    public StockSpanner() {\n        prices = new int[10001];\n        index = -1;\n    }\n    \n    public int next(int price) {\n        index++;\n        prices[index] = price;\n        int span = 1;\n        for (int i = index - 1; i >= 0; i--) {\n            if (prices[i] <= price) {\n                span++;\n            } else {\n                break;\n            }\n        }\n        return span;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.507487"
+}

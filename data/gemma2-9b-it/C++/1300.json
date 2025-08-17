@@ -1,0 +1,15 @@
+{
+  "id": 1300,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int findBestValue(vector<int>& arr, int target) {\n        int n = arr.size();\n        sort(arr.begin(), arr.end());\n        long long sum = 0;\n        for (int i = 0; i < n; i++) {\n            sum += arr[i];\n        }\n        long long diff = INT_MAX;\n        int ans = arr[n - 1];\n        for (int i = arr[0]; i <= arr[n - 1]; i++) {\n            long long newSum = sum - (long long)arr[n - 1] + (long long)i;\n            long long curDiff = abs(newSum - target);\n            if (curDiff < diff) {\n                diff = curDiff;\n                ans = i;\n            } else if (curDiff == diff && ans > i) {\n                ans = i;\n            }\n        }\n        return ans;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(N log N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution sorts the array and iterates through potential values, calculating the sum with the modified array and comparing the absolute difference to the target. It selects the value that minimizes the difference and, in case of a tie, chooses the smaller value.\n\n\n\n",
+  "code": "class Solution {\npublic:\n    int findBestValue(vector<int>& arr, int target) {\n        int n = arr.size();\n        sort(arr.begin(), arr.end());\n        long long sum = 0;\n        for (int i = 0; i < n; i++) {\n            sum += arr[i];\n        }\n        long long diff = INT_MAX;\n        int ans = arr[n - 1];\n        for (int i = arr[0]; i <= arr[n - 1]; i++) {\n            long long newSum = sum - (long long)arr[n - 1] + (long long)i;\n            long long curDiff = abs(newSum - target);\n            if (curDiff < diff) {\n                diff = curDiff;\n                ans = i;\n            } else if (curDiff == diff && ans > i) {\n                ans = i;\n            }\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T13:20:52.920669",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findBestValue(vector<int>& arr, int target) {\n        int n = arr.size();\n        sort(arr.begin(), arr.end());\n        long long sum = 0;\n        for (int i = 0; i < n; i++) {\n            sum += arr[i];\n        }\n        long long diff = INT_MAX;\n        int ans = arr[n - 1];\n        for (int i = arr[0]; i <= arr[n - 1]; i++) {\n            long long newSum = sum - (long long)arr[n - 1] + (long long)i;\n            long long curDiff = abs(newSum - target);\n            if (curDiff < diff) {\n                diff = curDiff;\n                ans = i;\n            } else if (curDiff == diff && ans > i) {\n                ans = i;\n            }\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.190551"
+}

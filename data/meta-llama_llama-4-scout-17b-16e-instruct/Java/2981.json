@@ -1,0 +1,15 @@
+{
+  "id": 2981,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maximumLength(String s) {\n        int maxLen = -1;\n        for (char c = 'a'; c <= 'z'; c++) {\n            int count = 0;\n            int currLen = 0;\n            for (int i = 0; i < s.length(); i++) {\n                if (s.charAt(i) == c) {\n                    currLen++;\n                } else {\n                    if (currLen > 0) {\n                        count++;\n                        currLen = 0;\n                    }\n                }\n            }\n            if (currLen > 0) {\n                count++;\n            }\n            if (count >= 3) {\n                maxLen = Math.max(maxLen, currLen);\n            }\n        }\n        return maxLen;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string once for each character, keeping track of the current length of the special substring and the count of occurrences. If a character's special substring occurs at least thrice, it updates the maximum length.",
+  "code": "class Solution {\n    public int maximumLength(String s) {\n        int maxLen = -1;\n        for (char c = 'a'; c <= 'z'; c++) {\n            int count = 0;\n            int currLen = 0;\n            for (int i = 0; i < s.length(); i++) {\n                if (s.charAt(i) == c) {\n                    currLen++;\n                } else {\n                    if (currLen > 0) {\n                        count++;\n                        currLen = 0;\n                    }\n                }\n            }\n            if (currLen > 0) {\n                count++;\n            }\n            if (count >= 3) {\n                maxLen = Math.max(maxLen, currLen);\n            }\n        }\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-05T15:10:59.106602",
+  "code_extracted_previous": "class Solution {\n    public int maximumLength(String s) {\n        int maxLen = -1;\n        for (char c = 'a'; c <= 'z'; c++) {\n            int count = 0;\n            int currLen = 0;\n            for (int i = 0; i < s.length(); i++) {\n                if (s.charAt(i) == c) {\n                    currLen++;\n                } else {\n                    if (currLen > 0) {\n                        count++;\n                        currLen = 0;\n                    }\n                }\n            }\n            if (currLen > 0) {\n                count++;\n            }\n            if (count >= 3) {\n                maxLen = Math.max(maxLen, currLen);\n            }\n        }\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.065918"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass SORTracker {\npublic:\n    SORTracker() {\n        \n    }\n    \n    void add(string name, int score) {\n        locations.emplace(score, name);\n        query_count++;\n    }\n    \n    string get() {\n        auto it = locations.begin();\n        advance(it, query_count - 1);\n        string result = it->second;\n        locations.erase(it);\n        return result;\n    }\nprivate:\n    tree< pair<int, string>, nullptr, greater<pair<int, string>>> locations;\n    int query_count = 0;\n};\n```\nefficiency: HIGH\ntime complexity: \n- add: O(logN)\n- get: O(logN)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The provided solution utilizes a sorted data structure (a tree) to efficiently store and retrieve scenic locations based on their scores and names. When adding a location, it simply inserts the location into the tree. When querying for the i-th best location, it finds the i-th element in the tree and removes it. This approach ensures that the locations are always sorted, allowing for efficient retrieval of the best locations.",
+  "code": "class SORTracker {\npublic:\n    SORTracker() {\n        \n    }\n    \n    void add(string name, int score) {\n        locations.emplace(score, name);\n        query_count++;\n    }\n    \n    string get() {\n        auto it = locations.begin();\n        advance(it, query_count - 1);\n        string result = it->second;\n        locations.erase(it);\n        return result;\n    }\nprivate:\n    tree< pair<int, string>, nullptr, greater<pair<int, string>>> locations;\n    int query_count = 0;\n};",
+  "timestamp": "2025-08-05T14:04:42.611473",
+  "code_extracted_previous": "class SORTracker {\npublic:\n    SORTracker() {\n        \n    }\n    \n    void add(string name, int score) {\n        locations.emplace(score, name);\n        query_count++;\n    }\n    \n    string get() {\n        auto it = locations.begin();\n        advance(it, query_count - 1);\n        string result = it->second;\n        locations.erase(it);\n        return result;\n    }\nprivate:\n    tree< pair<int, string>, nullptr, greater<pair<int, string>>> locations;\n    int query_count = 0;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.954027"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2507,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int smallestValue(int n) {\n        while (true) {\n            int sum = 0;\n            int x = n;\n            for (int p = 2; p * p <= x; p++) {\n                while (x % p == 0) {\n                    sum += p;\n                    x /= p;\n                }\n            }\n            if (x > 1) sum += x;\n            if (sum == n) return n;\n            n = sum;\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Repeatedly factorize n and replace it with the sum of its prime factors (counting multiplicity). The loop stops when the sum equals n, which is the fixed point and the smallest value. Factorization is done via trial division up to √n, yielding fast performance for the given constraint.",
+  "code": "class Solution {\n    public int smallestValue(int n) {\n        while (true) {\n            int sum = 0;\n            int x = n;\n            for (int p = 2; p * p <= x; p++) {\n                while (x % p == 0) {\n                    sum += p;\n                    x /= p;\n                }\n            }\n            if (x > 1) sum += x;\n            if (sum == n) return n;\n            n = sum;\n        }\n    }\n}",
+  "timestamp": "2025-08-06T02:31:19.415985",
+  "code_extracted_previous": "public int smallestValue(int n) {\n        while (true) {\n            int sum = 0;\n            int x = n;\n            for (int p = 2; p * p <= x; p++) {\n                while (x % p == 0) {\n                    sum += p;\n                    x /= p;\n                }\n            }\n            if (x > 1) sum += x;\n            if (sum == n) return n;\n            n = sum;\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.101059"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        for (int i = 1; i <= k; i++) {\n            dp[i][1] = 1;\n            dp[i][0] = 0;\n        }\n        for (int j = 1; j <= n; j++) {\n            dp[1][j] = j;\n        }\n        for (int i = 2; i <= k; i++) {\n            for (int j = 2; j <= n; j++) {\n                dp[i][j] = Integer.MAX_VALUE;\n                for (int x = 1; x <= j; x++) {\n                    int res = 1 + Math.max(dp[i - 1][x - 1], dp[i][j - x]);\n                    dp[i][j] = Math.min(dp[i][j], res);\n                }\n            }\n        }\n        return dp[k][n];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(k * n^2)\nspace complexity: O(k * n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        for (int i = 1; i <= k; i++) {\n            dp[i][1] = 1;\n            dp[i][0] = 0;\n        }\n        for (int j = 1; j <= n; j++) {\n            dp[1][j] = j;\n        }\n        for (int i = 2; i <= k; i++) {\n            for (int j = 2; j <= n; j++) {\n                dp[i][j] = Integer.MAX_VALUE;\n                for (int x = 1; x <= j; x++) {\n                    int res = 1 + Math.max(dp[i - 1][x - 1], dp[i][j - x]);\n                    dp[i][j] = Math.min(dp[i][j], res);\n                }\n            }\n        }\n        return dp[k][n];\n    }\n}",
+  "timestamp": "2025-08-05T15:17:39.604384",
+  "code_extracted_previous": "class Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        for (int i = 1; i <= k; i++) {\n            dp[i][1] = 1;\n            dp[i][0] = 0;\n        }\n        for (int j = 1; j <= n; j++) {\n            dp[1][j] = j;\n        }\n        for (int i = 2; i <= k; i++) {\n            for (int j = 2; j <= n; j++) {\n                dp[i][j] = Integer.MAX_VALUE;\n                for (int x = 1; x <= j; x++) {\n                    int res = 1 + Math.max(dp[i - 1][x - 1], dp[i][j - x]);\n                    dp[i][j] = Math.min(dp[i][j], res);\n                }\n            }\n        }\n        return dp[k][n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:30.079493"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int count = 0;\n        vector<int> prevCount(s.size());\n        int prev = 0;\n        for (int i = 0; i < s.size(); i++) {\n            if (s[i] == '0') {\n                prevCount[i] = prev;\n                prev = 0;\n            } else {\n                prevCount[i] = prev + 1;\n                prev = prevCount[i];\n            }\n        }\n        for (int i = 1; i < s.size(); i++) {\n            count += min(prevCount[i - 1], prevCount[i]);\n        }\n        return count;\n    }\n};\n```\n\nsolution: \n```c++\nint countBinarySubstrings(string s) {\n        int count = 0;\n        vector<int> prevCount(s.size());\n        int prev = 0;\n        for (int i = 0; i < s.size(); i++) {\n            if (s[i] == '0') {\n                prevCount[i] = prev;\n                prev = 0;\n            } else {\n                prevCount[i] = prev + 1;\n                prev = prevCount[i];\n            }\n        }\n        for (int i = 1; i < s.size(); i++) {\n            count += min(prevCount[i - 1], prevCount[i]);\n        }\n        return count;\n    }\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a sliding window approach to efficiently count the number of valid substrings. It iterates through the binary string, keeping track of the count of consecutive '0's and '1's. The `min` function is used to determine the number of valid substrings formed by the current and previous counts.\n",
+  "code": "int countBinarySubstrings(string s) {\n        int count = 0;\n        vector<int> prevCount(s.size());\n        int prev = 0;\n        for (int i = 0; i < s.size(); i++) {\n            if (s[i] == '0') {\n                prevCount[i] = prev;\n                prev = 0;\n            } else {\n                prevCount[i] = prev + 1;\n                prev = prevCount[i];\n            }\n        }\n        for (int i = 1; i < s.size(); i++) {\n            count += min(prevCount[i - 1], prevCount[i]);\n        }\n        return count;\n    }",
+  "timestamp": "2025-08-06T01:29:11.452690",
+  "code_extracted_previous": "int countBinarySubstrings(string s) {\n        int count = 0;\n        vector<int> prevCount(s.size());\n        int prev = 0;\n        for (int i = 0; i < s.size(); i++) {\n            if (s[i] == '0') {\n                prevCount[i] = prev;\n                prev = 0;\n            } else {\n                prevCount[i] = prev + 1;\n                prev = prevCount[i];\n            }\n        }\n        for (int i = 1; i < s.size(); i++) {\n            count += min(prevCount[i - 1], prevCount[i]);\n        }\n        return count;\n    }",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.257214"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        mask = 0\n        seen = {0: -1}\n        max_len = 0\n        vowel_map = {'a': 1, 'e': 2, 'i': 4, 'o': 8, 'u': 16}\n        \n        for i, c in enumerate(s):\n            if c in vowel_map:\n                mask ^= vowel_map[c]\n            if mask not in seen:\n                seen[mask] = i\n            else:\n                max_len = max(max_len, i - seen[mask])\n        \n        return max_len\n```\n\nefficiency: HIGH  \ntime complexity: O(n)  \nspace complexity: O(n)  \nenergy implications: LOW  \nexplanation: Utilizes bitmasking to track parity of vowels and a hashmap to store seen masks and their indices, enabling efficient computation of the longest substring with even vowel counts.",
+  "code": "def findTheLongestSubstring(self, s: str) -> int:\n        mask = 0\n        seen = {0: -1}\n        max_len = 0\n        vowel_map = {'a': 1, 'e': 2, 'i': 4, 'o': 8, 'u': 16}\n        \n        for i, c in enumerate(s):\n            if c in vowel_map:\n                mask ^= vowel_map[c]\n            if mask not in seen:\n                seen[mask] = i\n            else:\n                max_len = max(max_len, i - seen[mask])\n        \n        return max_len\n```",
+  "timestamp": "2025-08-05T15:04:19.904774",
+  "code_extracted_previous": "class Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        mask = 0\n        seen = {0: -1}\n        max_len = 0\n        vowel_map = {'a': 1, 'e': 2, 'i': 4, 'o': 8, 'u': 16}\n        \n        for i, c in enumerate(s):\n            if c in vowel_map:\n                mask ^= vowel_map[c]\n            if mask not in seen:\n                seen[mask] = i\n            else:\n                max_len = max(max_len, i - seen[mask])\n        \n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.502596"
+}

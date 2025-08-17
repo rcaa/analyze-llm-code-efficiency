@@ -1,0 +1,15 @@
+{
+  "id": 2318,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int distinctSequences(int n) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= 6; ++j) {\n                if (i >= 2) {\n                    for (int k = 1; k <= 6; ++k) {\n                        if (__gcd(j, k) == 1 && j != k) {\n                            dp[i] = (dp[i] + dp[i - 2]) % MOD;\n                        }\n                    }\n                }\n                dp[i] = (dp[i] + dp[i - 1]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently calculate the total number of distinct sequences. It iterates through each roll and considers all possible values, ensuring that the conditions are met.",
+  "code": "class Solution {\npublic:\n    int distinctSequences(int n) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= 6; ++j) {\n                if (i >= 2) {\n                    for (int k = 1; k <= 6; ++k) {\n                        if (__gcd(j, k) == 1 && j != k) {\n                            dp[i] = (dp[i] + dp[i - 2]) % MOD;\n                        }\n                    }\n                }\n                dp[i] = (dp[i] + dp[i - 1]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-05T14:21:45.226885",
+  "code_extracted_previous": "public:\n    int distinctSequences(int n) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= 6; ++j) {\n                if (i >= 2) {\n                    for (int k = 1; k <= 6; ++k) {\n                        if (__gcd(j, k) == 1 && j != k) {\n                            dp[i] = (dp[i] + dp[i - 2]) % MOD;\n                        }\n                    }\n                }\n                dp[i] = (dp[i] + dp[i - 1]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.496315"
+}

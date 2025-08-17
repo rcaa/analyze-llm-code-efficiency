@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, 1));\n        for (int len = 2; len <= n; ++len) {\n            for (int i = 0; i <= n - len; ++i) {\n                int j = i + len - 1;\n                for (int k = i; k < j; ++k) {\n                    if (s[i] == s[k]) {\n                        dp[i][j] = min(dp[i][j], dp[i + 1][k] + dp[k + 1][j]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n^2)\nenergy implications: MEDIUM\nexplanation: Dynamic programming approach with memoization to optimize turns by checking character matches.",
+  "code": "class Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, 1));\n        for (int len = 2; len <= n; ++len) {\n            for (int i = 0; i <= n - len; ++i) {\n                int j = i + len - 1;\n                for (int k = i; k < j; ++k) {\n                    if (s[i] == s[k]) {\n                        dp[i][j] = min(dp[i][j], dp[i + 1][k] + dp[k + 1][j]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};",
+  "timestamp": "2025-08-05T16:08:34.077625",
+  "code_extracted_previous": "class Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, 1));\n        for (int len = 2; len <= n; ++len) {\n            for (int i = 0; i <= n - len; ++i) {\n                int j = i + len - 1;\n                for (int k = i; k < j; ++k) {\n                    if (s[i] == s[k]) {\n                        dp[i][j] = min(dp[i][j], dp[i + 1][k] + dp[k + 1][j]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.857752"
+}

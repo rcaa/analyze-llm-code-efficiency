@@ -1,0 +1,15 @@
+{
+  "id": 1190,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string reverseParentheses(string s) {\n        string res = \"\";\n        stack<int> st;\n        for (int i = 0; i < s.size(); i++) {\n            if (s[i] == '(') st.push(i);\n            else if (s[i] == ')') {\n                int j = st.top(); st.pop();\n                reverse(res.begin() + j, res.end());\n                res.erase(res.begin() + j, res.end());\n                res += s.substr(j + 1, i - j - 1);\n            } else res += s[i];\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Using a stack to track the indices of opening parentheses, and reversing the substrings in between the matching parentheses.",
+  "code": "class Solution {\npublic:\n    string reverseParentheses(string s) {\n        string res = \"\";\n        stack<int> st;\n        for (int i = 0; i < s.size(); i++) {\n            if (s[i] == '(') st.push(i);\n            else if (s[i] == ')') {\n                int j = st.top(); st.pop();\n                reverse(res.begin() + j, res.end());\n                res.erase(res.begin() + j, res.end());\n                res += s.substr(j + 1, i - j - 1);\n            } else res += s[i];\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:49:53.517971",
+  "code_extracted_previous": "public:\n    string reverseParentheses(string s) {\n        string res = \"\";\n        stack<int> st;\n        for (int i = 0; i < s.size(); i++) {\n            if (s[i] == '(') st.push(i);\n            else if (s[i] == ')') {\n                int j = st.top(); st.pop();\n                reverse(res.begin() + j, res.end());\n                res.erase(res.begin() + j, res.end());\n                res += s.substr(j + 1, i - j - 1);\n            } else res += s[i];\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.034090"
+}

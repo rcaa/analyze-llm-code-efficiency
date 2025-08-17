@@ -1,0 +1,15 @@
+{
+  "id": 2134,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int minSwaps(int[] nums) {\n        int n = nums.length;\n        int ones = 0;\n        for (int num : nums) ones += num;\n        if (ones == 0 || ones == n) return 0;\n\n        int[] doubled = new int[2 * n];\n        for (int i = 0; i < n; i++) doubled[i] = doubled[i + n] = nums[i];\n\n        int zeros = 0;\n        for (int i = 0; i < ones; i++) if (doubled[i] == 0) zeros++;\n\n        int minSwaps = zeros;\n        for (int i = ones; i < 2 * n; i++) {\n            if (doubled[i - ones] == 0) zeros--;\n            if (doubled[i] == 0) zeros++;\n            if (i >= n && i - ones < n) {\n                minSwaps = Math.min(minSwaps, zeros);\n            }\n        }\n        return minSwaps;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: Count total 1's (k). The optimal window of k consecutive positions (circular) must contain all 1's; the number of 0's in that window equals the swaps needed. Use sliding window on doubled array to find the window with the most 1's (least 0's) in O(n) time.",
+  "code": "class Solution {\n    public int minSwaps(int[] nums) {\n        int n = nums.length;\n        int ones = 0;\n        for (int num : nums) ones += num;\n        if (ones == 0 || ones == n) return 0;\n\n        int[] doubled = new int[2 * n];\n        for (int i = 0; i < n; i++) doubled[i] = doubled[i + n] = nums[i];\n\n        int zeros = 0;\n        for (int i = 0; i < ones; i++) if (doubled[i] == 0) zeros++;\n\n        int minSwaps = zeros;\n        for (int i = ones; i < 2 * n; i++) {\n            if (doubled[i - ones] == 0) zeros--;\n            if (doubled[i] == 0) zeros++;\n            if (i >= n && i - ones < n) {\n                minSwaps = Math.min(minSwaps, zeros);\n            }\n        }\n        return minSwaps;\n    }\n}",
+  "timestamp": "2025-08-05T13:21:48.283710",
+  "code_extracted_previous": "public int minSwaps(int[] nums) {\n        int n = nums.length;\n        int ones = 0;\n        for (int num : nums) ones += num;\n        if (ones == 0 || ones == n) return 0;\n\n        int[] doubled = new int[2 * n];\n        for (int i = 0; i < n; i++) doubled[i] = doubled[i + n] = nums[i];\n\n        int zeros = 0;\n        for (int i = 0; i < ones; i++) if (doubled[i] == 0) zeros++;\n\n        int minSwaps = zeros;\n        for (int i = ones; i < 2 * n; i++) {\n            if (doubled[i - ones] == 0) zeros--;\n            if (doubled[i] == 0) zeros++;\n            if (i >= n && i - ones < n) {\n                minSwaps = Math.min(minSwaps, zeros);\n            }\n        }\n        return minSwaps;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.751902"
+}

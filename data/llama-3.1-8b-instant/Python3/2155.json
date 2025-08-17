@@ -1,0 +1,15 @@
+{
+  "id": 2155,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        left_sum = 0\n        right_sum = sum(nums)\n        max_score = 0\n        max_indices = []\n        for i in range(len(nums)):\n            if nums[i] == 0:\n                left_sum += 1\n            else:\n                right_sum -= 1\n            if left_sum + right_sum == max_score:\n                max_indices.append(i)\n            elif left_sum + right_sum > max_score:\n                max_score = left_sum + right_sum\n                max_indices = [i]\n        return max_indices\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the input array once, keeping track of the sum of zeros to the left and ones to the right of the current index. It updates the maximum score and the list of indices with the maximum score whenever it encounters a higher score. This approach has a time complexity of O(n) and a space complexity of O(1), making it efficient for large inputs.",
+  "code": "class Solution:\n    def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        left_sum = 0\n        right_sum = sum(nums)\n        max_score = 0\n        max_indices = []\n        for i in range(len(nums)):\n            if nums[i] == 0:\n                left_sum += 1\n            else:\n                right_sum -= 1\n            if left_sum + right_sum == max_score:\n                max_indices.append(i)\n            elif left_sum + right_sum > max_score:\n                max_score = left_sum + right_sum\n                max_indices = [i]\n        return max_indices",
+  "timestamp": "2025-08-05T13:25:56.802444",
+  "code_extracted_previous": "class Solution:\n    def maxScoreIndices(self, nums: List[int]) -> List[int]:\n        left_sum = 0\n        right_sum = sum(nums)\n        max_score = 0\n        max_indices = []\n        for i in range(len(nums)):\n            if nums[i] == 0:\n                left_sum += 1\n            else:\n                right_sum -= 1\n            if left_sum + right_sum == max_score:\n                max_indices.append(i)\n            elif left_sum + right_sum > max_score:\n                max_score = left_sum + right_sum\n                max_indices = [i]\n        return max_indices",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.594474"
+}

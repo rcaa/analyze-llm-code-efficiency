@@ -1,0 +1,15 @@
+{
+  "id": 165,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int compareVersion(String version1, String version2) {\n        String[] v1 = version1.split(\"\\\\.\");\n        String[] v2 = version2.split(\"\\\\.\");\n        int maxLen = Math.max(v1.length, v2.length);\n        \n        for (int i = 0; i < maxLen; i++) {\n            int ver1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;\n            int ver2 = i < v2.length ? Integer.parseInt(v2[i]) : 0;\n            \n            if (ver1 < ver2) return -1;\n            if (ver1 > ver2) return 1;\n        }\n        return 0;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(max(n, m))\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: The solution splits the version strings into arrays of revisions, then iterates through the maximum length of the two arrays. It compares the revisions at each index, treating missing revisions as 0. If a version is less than or greater than the other, it immediately returns -1 or 1. If all revisions are equal, it returns 0.",
+  "code": "class Solution {\n    public int compareVersion(String version1, String version2) {\n        String[] v1 = version1.split(\"\\\\.\");\n        String[] v2 = version2.split(\"\\\\.\");\n        int maxLen = Math.max(v1.length, v2.length);\n        \n        for (int i = 0; i < maxLen; i++) {\n            int ver1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;\n            int ver2 = i < v2.length ? Integer.parseInt(v2[i]) : 0;\n            \n            if (ver1 < ver2) return -1;\n            if (ver1 > ver2) return 1;\n        }\n        return 0;\n    }\n}",
+  "timestamp": "2025-08-06T01:35:41.643594",
+  "code_extracted_previous": "class Solution {\n    public int compareVersion(String version1, String version2) {\n        String[] v1 = version1.split(\"\\\\.\");\n        String[] v2 = version2.split(\"\\\\.\");\n        int maxLen = Math.max(v1.length, v2.length);\n        \n        for (int i = 0; i < maxLen; i++) {\n            int ver1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;\n            int ver2 = i < v2.length ? Integer.parseInt(v2[i]) : 0;\n            \n            if (ver1 < ver2) return -1;\n            if (ver1 > ver2) return 1;\n        }\n        return 0;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.491041"
+}

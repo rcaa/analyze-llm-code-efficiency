@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        dp[0] = (long) questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = Math.max(questions[i][0] + dp[i - questions[i][1]], dp[i - 1]);\n        }\n        return dp[n - 1];\n    }\n}\n```\nsolution: `int n = questions.length; long[] dp = new long[n]; dp[0] = (long) questions[0][0]; for (int i = 1; i < n; i++) { dp[i] = Math.max(questions[i][0] + dp[i - questions[i][1]], dp[i - 1]); } return dp[n - 1];`\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW \nexplanation: The solution uses dynamic programming to calculate the maximum points achievable. It iterates through the questions, storing the maximum points achievable up to each index in the `dp` array. The `dp[i]` value represents the maximum points achievable by considering whether to solve the `i`-th question or skip it.  The time complexity is linear as it iterates through the questions once. The space complexity is also linear due to the `dp` array. The energy implications are low as it involves primarily computation.",
+  "code": "`int n = questions.length; long[] dp = new long[n]; dp[0] = (long) questions[0][0]; for (int i = 1; i < n; i++) { dp[i] = Math.max(questions[i][0] + dp[i - questions[i][1]], dp[i - 1]); } return dp[n - 1];`",
+  "timestamp": "2025-08-05T13:25:14.777888",
+  "code_extracted_previous": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n];\n        dp[0] = (long) questions[0][0];\n        for (int i = 1; i < n; i++) {\n            dp[i] = Math.max(questions[i][0] + dp[i - questions[i][1]], dp[i - 1]);\n        }\n        return dp[n - 1];\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.865087"
+}

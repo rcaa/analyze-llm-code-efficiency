@@ -1,0 +1,15 @@
+{
+  "id": 692,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nimport java.util.*;\n\nclass Solution {\n    public List<String> topKFrequent(String[] words, int k) {\n        Map<String, Integer> count = new HashMap<>();\n        for (String word : words) {\n            count.put(word, count.getOrDefault(word, 0) + 1);\n        }\n        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>((a, b) -> {\n            if (a.getValue().equals(b.getValue())) {\n                return b.getKey().compareTo(a.getKey());\n            }\n            return b.getValue() - a.getValue();\n        });\n        for (Map.Entry<String, Integer> entry : count.entrySet()) {\n            pq.offer(entry);\n        }\n        List<String> res = new ArrayList<>();\n        for (int i = 0; i < k; i++) {\n            res.add(pq.poll().getKey());\n        }\n        return res;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public List<String> topKFrequent(String[] words, int k) {\n        Map<String, Integer> count = new HashMap<>();\n        for (String word : words) {\n            count.put(word, count.getOrDefault(word, 0) + 1);\n        }\n        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>((a, b) -> {\n            if (a.getValue().equals(b.getValue())) {\n                return b.getKey().compareTo(a.getKey());\n            }\n            return b.getValue() - a.getValue();\n        });\n        for (Map.Entry<String, Integer> entry : count.entrySet()) {\n            pq.offer(entry);\n        }\n        List<String> res = new ArrayList<>();\n        for (int i = 0; i < k; i++) {\n            res.add(pq.poll().getKey());\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:15:59.236627",
+  "code_extracted_previous": "import java.util.*;\n\nclass Solution {\n    public List<String> topKFrequent(String[] words, int k) {\n        Map<String, Integer> count = new HashMap<>();\n        for (String word : words) {\n            count.put(word, count.getOrDefault(word, 0) + 1);\n        }\n        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>((a, b) -> {\n            if (a.getValue().equals(b.getValue())) {\n                return b.getKey().compareTo(a.getKey());\n            }\n            return b.getValue() - a.getValue();\n        });\n        for (Map.Entry<String, Integer> entry : count.entrySet()) {\n            pq.offer(entry);\n        }\n        List<String> res = new ArrayList<>();\n        for (int i = 0; i < k; i++) {\n            res.add(pq.poll().getKey());\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.974721"
+}

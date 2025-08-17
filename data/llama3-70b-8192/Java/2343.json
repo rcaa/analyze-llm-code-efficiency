@@ -1,0 +1,15 @@
+{
+  "id": 2343,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {\n        int n = nums.length;\n        int[] res = new int[queries.length];\n        for (int i = 0; i < queries.length; i++) {\n            int k = queries[i][0];\n            int trim = queries[i][1];\n            String[] trimmedNums = new String[n];\n            for (int j = 0; j < n; j++) {\n                trimmedNums[j] = nums[j].substring(nums[j].length() - trim);\n            }\n            Integer[] indices = new Integer[n];\n            for (int j = 0; j < n; j++) {\n                indices[j] = j;\n            }\n            Arrays.sort(indices, (a, b) -> trimmedNums[a].compareTo(trimmedNums[b]));\n            res[i] = indices[k - 1];\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(m * n * log(n) + m * n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a two-step approach. First, it trims each number in the input array to the required length. Then, it sorts the indices of the trimmed numbers based on their values and returns the kth smallest index for each query.",
+  "code": "class Solution {\n    public int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {\n        int n = nums.length;\n        int[] res = new int[queries.length];\n        for (int i = 0; i < queries.length; i++) {\n            int k = queries[i][0];\n            int trim = queries[i][1];\n            String[] trimmedNums = new String[n];\n            for (int j = 0; j < n; j++) {\n                trimmedNums[j] = nums[j].substring(nums[j].length() - trim);\n            }\n            Integer[] indices = new Integer[n];\n            for (int j = 0; j < n; j++) {\n                indices[j] = j;\n            }\n            Arrays.sort(indices, (a, b) -> trimmedNums[a].compareTo(trimmedNums[b]));\n            res[i] = indices[k - 1];\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:29:32.528621",
+  "code_extracted_previous": "class Solution {\n    public int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {\n        int n = nums.length;\n        int[] res = new int[queries.length];\n        for (int i = 0; i < queries.length; i++) {\n            int k = queries[i][0];\n            int trim = queries[i][1];\n            String[] trimmedNums = new String[n];\n            for (int j = 0; j < n; j++) {\n                trimmedNums[j] = nums[j].substring(nums[j].length() - trim);\n            }\n            Integer[] indices = new Integer[n];\n            for (int j = 0; j < n; j++) {\n                indices[j] = j;\n            }\n            Arrays.sort(indices, (a, b) -> trimmedNums[a].compareTo(trimmedNums[b]));\n            res[i] = indices[k - 1];\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.151216"
+}

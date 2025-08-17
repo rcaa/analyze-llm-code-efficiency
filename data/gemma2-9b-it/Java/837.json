@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        double[] dp = new double[n + 1];\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= Math.min(i, maxPts); j++) {\n                dp[i] += dp[i - j] / maxPts;\n            }\n        }\n        double res = 0;\n        for (int i = k; i <= n; i++) {\n            res += dp[i];\n        }\n        return res;\n    }\n}\n```\nsolution: ```java\nclass Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        double[] dp = new double[n + 1];\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= Math.min(i, maxPts); j++) {\n                dp[i] += dp[i - j] / maxPts;\n            }\n        }\n        double res = 0;\n        for (int i = k; i <= n; i++) {\n            res += dp[i];\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n * maxPts)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the probability of Alice having n or fewer points. It iterates through all possible points from 0 to n, calculating the probability of reaching each point based on the probabilities of reaching previous points.  The time complexity is O(n * maxPts) due to the nested loops, and the space complexity is O(n) for the dp array.\n\n\n\n",
+  "code": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        double[] dp = new double[n + 1];\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= Math.min(i, maxPts); j++) {\n                dp[i] += dp[i - j] / maxPts;\n            }\n        }\n        double res = 0;\n        for (int i = k; i <= n; i++) {\n            res += dp[i];\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T01:54:58.713534",
+  "code_extracted_previous": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        double[] dp = new double[n + 1];\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= Math.min(i, maxPts); j++) {\n                dp[i] += dp[i - j] / maxPts;\n            }\n        }\n        double res = 0;\n        for (int i = k; i <= n; i++) {\n            res += dp[i];\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.729518"
+}

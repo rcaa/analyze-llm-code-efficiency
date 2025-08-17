@@ -1,0 +1,15 @@
+{
+  "id": 3561,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def resultingString(self, s: str) -> str:\n        stack = []\n        for char in s:\n            if stack and ord(stack[-1]) == ord(char) - 1 or stack and ord(stack[-1]) == ord('z') - ord(char) + 1:\n                stack.pop()\n            else:\n                stack.append(char)\n        return ''.join(stack)\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to keep track of the characters in the string. It iterates over the string, and for each character, it checks if the top of the stack is the previous character in the alphabet. If it is, it removes the top of the stack. Otherwise, it adds the character to the stack. This approach has a high efficiency because it only requires a single pass over the string and uses a stack to keep track of the characters. The time complexity is O(n) because it makes a single pass over the string, and the space complexity is also O(n) because in the worst case, the stack will contain all characters from the string. The energy implications are low because the solution only requires a single pass over the string and uses a stack to keep track of the characters.",
+  "code": "class Solution:\n    def resultingString(self, s: str) -> str:\n        stack = []\n        for char in s:\n            if stack and ord(stack[-1]) == ord(char) - 1 or stack and ord(stack[-1]) == ord('z') - ord(char) + 1:\n                stack.pop()\n            else:\n                stack.append(char)\n        return ''.join(stack)",
+  "timestamp": "2025-08-06T01:08:15.958880",
+  "code_extracted_previous": "class Solution:\n    def resultingString(self, s: str) -> str:\n        stack = []\n        for char in s:\n            if stack and ord(stack[-1]) == ord(char) - 1 or stack and ord(stack[-1]) == ord('z') - ord(char) + 1:\n                stack.pop()\n            else:\n                stack.append(char)\n        return ''.join(stack)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.195821"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2288,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    string discountPrices(string sentence, int discount) {\n        stringstream ss(sentence);\n        string word, res = \"\";\n        while (ss >> word) {\n            if (word.size() > 1 && word[0] == '$') {\n                string price = word.substr(1);\n                double val = stod(price);\n                val *= (100 - discount) / 100.0;\n                res += \"$\" + to_string((int)(val * 100 + 0.5) / 100.0) + \" \";\n            } else {\n                res += word + \" \";\n            }\n        }\n        res.pop_back();\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a stringstream to split the input sentence into words. It then checks each word to see if it represents a price. If it does, it applies the discount and updates the word. Finally, it constructs the modified sentence by concatenating the updated words.",
+  "code": "class Solution {\npublic:\n    string discountPrices(string sentence, int discount) {\n        stringstream ss(sentence);\n        string word, res = \"\";\n        while (ss >> word) {\n            if (word.size() > 1 && word[0] == '$') {\n                string price = word.substr(1);\n                double val = stod(price);\n                val *= (100 - discount) / 100.0;\n                res += \"$\" + to_string((int)(val * 100 + 0.5) / 100.0) + \" \";\n            } else {\n                res += word + \" \";\n            }\n        }\n        res.pop_back();\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:57:19.779217",
+  "code_extracted_previous": "class Solution {\npublic:\n    string discountPrices(string sentence, int discount) {\n        stringstream ss(sentence);\n        string word, res = \"\";\n        while (ss >> word) {\n            if (word.size() > 1 && word[0] == '$') {\n                string price = word.substr(1);\n                double val = stod(price);\n                val *= (100 - discount) / 100.0;\n                res += \"$\" + to_string((int)(val * 100 + 0.5) / 100.0) + \" \";\n            } else {\n                res += word + \" \";\n            }\n        }\n        res.pop_back();\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.479359"
+}

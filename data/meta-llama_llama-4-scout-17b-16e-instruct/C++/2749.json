@@ -1,0 +1,15 @@
+{
+  "id": 2749,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int makeTheIntegerZero(int num1, int num2) {\n        if (num2 >= 0) {\n            if (num1 % num2 == 0) {\n                return num1 / num2;\n            } else {\n                return -1;\n            }\n        } else {\n            int operations = 0;\n            while (num1 > 0) {\n                if (num1 < 60) {\n                    if (num1 >= abs(num2)) {\n                        return operations + 1;\n                    } else {\n                        return -1;\n                    }\n                }\n                num1 -= (1 << min(num1.bit_length() - 1, 60)) + num2;\n                operations++;\n            }\n            return operations;\n        }\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution handles cases based on the sign of `num2`. For non-negative `num2`, it checks divisibility. For negative `num2`, it iteratively subtracts the largest possible power of 2 plus `num2` from `num1` until `num1` becomes 0 or it's determined that it's impossible to reach 0.",
+  "code": "class Solution {\npublic:\n    int makeTheIntegerZero(int num1, int num2) {\n        if (num2 >= 0) {\n            if (num1 % num2 == 0) {\n                return num1 / num2;\n            } else {\n                return -1;\n            }\n        } else {\n            int operations = 0;\n            while (num1 > 0) {\n                if (num1 < 60) {\n                    if (num1 >= abs(num2)) {\n                        return operations + 1;\n                    } else {\n                        return -1;\n                    }\n                }\n                num1 -= (1 << min(num1.bit_length() - 1, 60)) + num2;\n                operations++;\n            }\n            return operations;\n        }\n    }\n};",
+  "timestamp": "2025-08-05T13:54:03.023003",
+  "code_extracted_previous": "class Solution {\npublic:\n    int makeTheIntegerZero(int num1, int num2) {\n        if (num2 >= 0) {\n            if (num1 % num2 == 0) {\n                return num1 / num2;\n            } else {\n                return -1;\n            }\n        } else {\n            int operations = 0;\n            while (num1 > 0) {\n                if (num1 < 60) {\n                    if (num1 >= abs(num2)) {\n                        return operations + 1;\n                    } else {\n                        return -1;\n                    }\n                }\n                num1 -= (1 << min(num1.bit_length() - 1, 60)) + num2;\n                operations++;\n            }\n            return operations;\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.316363"
+}

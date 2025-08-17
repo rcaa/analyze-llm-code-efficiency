@@ -1,0 +1,15 @@
+{
+  "id": 3519,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countNumbers(String l, String r, int b) {\n        long res = 0;\n        for (int len = l.length(); len <= r.length(); len++) {\n            long start = Long.parseLong(l, b);\n            long end = Long.parseLong(r, b);\n            long cur = start;\n            while (cur <= end) {\n                String str = Long.toString(cur, b);\n                boolean flag = true;\n                for (int i = 0; i < str.length() - 1; i++) {\n                    if (str.charAt(i) > str.charAt(i + 1)) {\n                        flag = false;\n                        break;\n                    }\n                }\n                if (flag) res = (res + 1) % 1000000007;\n                cur++;\n            }\n        }\n        return (int) res;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(r.length() * log(r))\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int countNumbers(String l, String r, int b) {\n        long res = 0;\n        for (int len = l.length(); len <= r.length(); len++) {\n            long start = Long.parseLong(l, b);\n            long end = Long.parseLong(r, b);\n            long cur = start;\n            while (cur <= end) {\n                String str = Long.toString(cur, b);\n                boolean flag = true;\n                for (int i = 0; i < str.length() - 1; i++) {\n                    if (str.charAt(i) > str.charAt(i + 1)) {\n                        flag = false;\n                        break;\n                    }\n                }\n                if (flag) res = (res + 1) % 1000000007;\n                cur++;\n            }\n        }\n        return (int) res;\n    }\n}",
+  "timestamp": "2025-08-05T15:27:47.962658",
+  "code_extracted_previous": "class Solution {\n    public int countNumbers(String l, String r, int b) {\n        long res = 0;\n        for (int len = l.length(); len <= r.length(); len++) {\n            long start = Long.parseLong(l, b);\n            long end = Long.parseLong(r, b);\n            long cur = start;\n            while (cur <= end) {\n                String str = Long.toString(cur, b);\n                boolean flag = true;\n                for (int i = 0; i < str.length() - 1; i++) {\n                    if (str.charAt(i) > str.charAt(i + 1)) {\n                        flag = false;\n                        break;\n                    }\n                }\n                if (flag) res = (res + 1) % 1000000007;\n                cur++;\n            }\n        }\n        return (int) res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.713310"
+}

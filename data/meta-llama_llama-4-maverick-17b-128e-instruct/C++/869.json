@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool reorderedPowerOf2(int n) {\n        string str = to_string(n);\n        sort(str.begin(), str.end());\n        for (int i = 0; i < 32; i++) {\n            string powerOf2 = to_string(1 << i);\n            sort(powerOf2.begin(), powerOf2.end());\n            if (str == powerOf2) return true;\n        }\n        return false;\n    }\n};\nefficiency: HIGH\ntime complexity: O(log(n) * log(log(n)))\nspace complexity: O(log(n))\nenergy implications: LOW\nexplanation: The solution converts the input number to a string, sorts its digits, and checks if it matches any sorted power of 2 up to 2^31. It leverages the property that a number is a power of 2 if and only if its binary representation has exactly one '1' bit. The key strength is its simplicity and effectiveness in handling the given constraints.\n```",
+  "code": "class Solution {\npublic:\n    bool reorderedPowerOf2(int n) {\n        string str = to_string(n);\n        sort(str.begin(), str.end());\n        for (int i = 0; i < 32; i++) {\n            string powerOf2 = to_string(1 << i);\n            sort(powerOf2.begin(), powerOf2.end());\n            if (str == powerOf2) return true;\n        }\n        return false;\n    }\n};\nefficiency: HIGH\ntime complexity: O(log(n) * log(log(n)))\nspace complexity: O(log(n))\nenergy implications: LOW\nexplanation: The solution converts the input number to a string, sorts its digits, and checks if it matches any sorted power of 2 up to 2^31. It leverages the property that a number is a power of 2 if and only if its binary representation has exactly one '1' bit. The key strength is its simplicity and effectiveness in handling the given constraints.",
+  "timestamp": "2025-08-05T14:56:17.048259",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool reorderedPowerOf2(int n) {\n        string str = to_string(n);\n        sort(str.begin(), str.end());\n        for (int i = 0; i < 32; i++) {\n            string powerOf2 = to_string(1 << i);\n            sort(powerOf2.begin(), powerOf2.end());\n            if (str == powerOf2) return true;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.874304"
+}

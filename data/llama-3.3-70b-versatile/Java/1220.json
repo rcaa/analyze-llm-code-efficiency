@@ -1,0 +1,15 @@
+{
+  "id": 1220,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int countVowelPermutation(int n) {\n        long[] dp = new long[5];\n        dp[0] = dp[1] = dp[2] = dp[3] = dp[4] = 1;\n        for (int i = 2; i <= n; i++) {\n            long[] next = new long[5];\n            next[0] = (dp[1] + dp[2] + dp[4]) % MOD;\n            next[1] = (dp[0] + dp[2]) % MOD;\n            next[2] = (dp[0] + dp[1] + dp[3]) % MOD;\n            next[3] = (dp[2]) % MOD;\n            next[4] = (dp[0] + dp[2]) % MOD;\n            dp = next;\n        }\n        return (int)((dp[0] + dp[1] + dp[2] + dp[3] + dp[4]) % MOD);\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently calculate the number of possible strings of length n, considering the given rules for vowel sequences. It maintains an array dp where dp[i] represents the number of strings ending with the ith vowel. The solution iterates through each length from 2 to n, updating the dp array based on the allowed vowel transitions, and finally returns the sum of all dp values modulo 10^9 + 7.",
+  "code": "class Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int countVowelPermutation(int n) {\n        long[] dp = new long[5];\n        dp[0] = dp[1] = dp[2] = dp[3] = dp[4] = 1;\n        for (int i = 2; i <= n; i++) {\n            long[] next = new long[5];\n            next[0] = (dp[1] + dp[2] + dp[4]) % MOD;\n            next[1] = (dp[0] + dp[2]) % MOD;\n            next[2] = (dp[0] + dp[1] + dp[3]) % MOD;\n            next[3] = (dp[2]) % MOD;\n            next[4] = (dp[0] + dp[2]) % MOD;\n            dp = next;\n        }\n        return (int)((dp[0] + dp[1] + dp[2] + dp[3] + dp[4]) % MOD);\n    }\n}",
+  "timestamp": "2025-08-06T15:12:42.005215",
+  "code_extracted_previous": "class Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int countVowelPermutation(int n) {\n        long[] dp = new long[5];\n        dp[0] = dp[1] = dp[2] = dp[3] = dp[4] = 1;\n        for (int i = 2; i <= n; i++) {\n            long[] next = new long[5];\n            next[0] = (dp[1] + dp[2] + dp[4]) % MOD;\n            next[1] = (dp[0] + dp[2]) % MOD;\n            next[2] = (dp[0] + dp[1] + dp[3]) % MOD;\n            next[3] = (dp[2]) % MOD;\n            next[4] = (dp[0] + dp[2]) % MOD;\n            dp = next;\n        }\n        return (int)((dp[0] + dp[1] + dp[2] + dp[3] + dp[4]) % MOD);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.332206"
+}

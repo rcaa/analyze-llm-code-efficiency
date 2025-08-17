@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int n = s.length();\n        int max_len = 0;\n        for (int i = 0; i < n; i++) {\n            int count_zero = 0, count_one = 0;\n            for (int j = i; j < n; j++) {\n                if (s[j] == '0') {\n                    count_zero++;\n                } else {\n                    count_one++;\n                }\n                if (count_zero > count_one) {\n                    max_len = max(max_len, i + count_zero - count_one);\n                }\n            }\n        }\n        return max_len;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nWe iterate through the string from the beginning to the end (O(n)) and keep track of the count of zeroes and ones. If the count of zeroes is greater than the count of ones, we update the maximum length variable (O(1) space complexity). The solution returns the maximum length found. ",
+  "code": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int n = s.length();\n        int max_len = 0;\n        for (int i = 0; i < n; i++) {\n            int count_zero = 0, count_one = 0;\n            for (int j = i; j < n; j++) {\n                if (s[j] == '0') {\n                    count_zero++;\n                } else {\n                    count_one++;\n                }\n                if (count_zero > count_one) {\n                    max_len = max(max_len, i + count_zero - count_one);\n                }\n            }\n        }\n        return max_len;\n    }\n};",
+  "timestamp": "2025-08-05T16:41:49.312965",
+  "code_extracted_previous": "public:\n    int findTheLongestBalancedSubstring(string s) {\n        int n = s.length();\n        int max_len = 0;\n        for (int i = 0; i < n; i++) {\n            int count_zero = 0, count_one = 0;\n            for (int j = i; j < n; j++) {\n                if (s[j] == '0') {\n                    count_zero++;\n                } else {\n                    count_one++;\n                }\n                if (count_zero > count_one) {\n                    max_len = max(max_len, i + count_zero - count_one);\n                }\n            }\n        }\n        return max_len;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.521363"
+}

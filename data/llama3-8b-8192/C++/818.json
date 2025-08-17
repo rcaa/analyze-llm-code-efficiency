@@ -1,0 +1,15 @@
+{
+  "id": 818,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int racecar(int target) {\n        int memo[10005] = {0};\n        function<int(int)> dfs = [&](int pos) {\n            if (pos == 0) return 0;\n            if (memo[pos] > 0) return memo[pos];\n            int res = 1e9;\n            for (int speed = 1; pos + speed * (1 << (int)log2(speed)) <= target; speed <<= 1) {\n                res = min(res, 1 + dfs(-speed));\n            }\n            memo[pos] = res;\n            return res;\n        };\n        return dfs(target);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(target log target)\nspace complexity: O(target)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming and memoization to efficiently solve the problem. It maintains a memoization array to store the shortest sequence length for each position. The dfs function explores all possible speeds and updates the memoization array accordingly. The time complexity is O(target log target) due to the binary search in the loop.",
+  "code": "class Solution {\npublic:\n    int racecar(int target) {\n        int memo[10005] = {0};\n        function<int(int)> dfs = [&](int pos) {\n            if (pos == 0) return 0;\n            if (memo[pos] > 0) return memo[pos];\n            int res = 1e9;\n            for (int speed = 1; pos + speed * (1 << (int)log2(speed)) <= target; speed <<= 1) {\n                res = min(res, 1 + dfs(-speed));\n            }\n            memo[pos] = res;\n            return res;\n        };\n        return dfs(target);\n    }\n};",
+  "timestamp": "2025-08-05T14:16:12.657276",
+  "code_extracted_previous": "class Solution {\npublic:\n    int racecar(int target) {\n        int memo[10005] = {0};\n        function<int(int)> dfs = [&](int pos) {\n            if (pos == 0) return 0;\n            if (memo[pos] > 0) return memo[pos];\n            int res = 1e9;\n            for (int speed = 1; pos + speed * (1 << (int)log2(speed)) <= target; speed <<= 1) {\n                res = min(res, 1 + dfs(-speed));\n            }\n            memo[pos] = res;\n            return res;\n        };\n        return dfs(target);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.676728"
+}

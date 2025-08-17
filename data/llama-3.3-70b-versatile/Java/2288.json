@@ -1,0 +1,15 @@
+{
+  "id": 2288,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public String discountPrices(String sentence, int discount) {\n        String[] words = sentence.split(\" \");\n        for (int i = 0; i < words.length; i++) {\n            if (words[i].length() > 1 && words[i].charAt(0) == '$' && words[i].substring(1).matches(\"\\\\d+\")) {\n                int price = Integer.parseInt(words[i].substring(1));\n                double discountedPrice = price * (100 - discount) / 100.0;\n                words[i] = String.format(\"$%.2f\", discountedPrice);\n            }\n        }\n        return String.join(\" \", words);\n    }\n}\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n*m)\nenergy implications: LOW\nexplanation: The solution splits the input sentence into words, checks each word to see if it represents a price, applies the discount if it does, and then joins the words back together into a sentence. The use of regular expressions to validate the price and the String.format method to format the discounted price as a string with exactly two decimal places are key strengths of this approach.",
+  "code": "class Solution {\n    public String discountPrices(String sentence, int discount) {\n        String[] words = sentence.split(\" \");\n        for (int i = 0; i < words.length; i++) {\n            if (words[i].length() > 1 && words[i].charAt(0) == '$' && words[i].substring(1).matches(\"\\\\d+\")) {\n                int price = Integer.parseInt(words[i].substring(1));\n                double discountedPrice = price * (100 - discount) / 100.0;\n                words[i] = String.format(\"$%.2f\", discountedPrice);\n            }\n        }\n        return String.join(\" \", words);\n    }\n}",
+  "timestamp": "2025-08-06T00:58:58.709584",
+  "code_extracted_previous": "class Solution {\n    public String discountPrices(String sentence, int discount) {\n        String[] words = sentence.split(\" \");\n        for (int i = 0; i < words.length; i++) {\n            if (words[i].length() > 1 && words[i].charAt(0) == '$' && words[i].substring(1).matches(\"\\\\d+\")) {\n                int price = Integer.parseInt(words[i].substring(1));\n                double discountedPrice = price * (100 - discount) / 100.0;\n                words[i] = String.format(\"$%.2f\", discountedPrice);\n            }\n        }\n        return String.join(\" \", words);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.842576"
+}

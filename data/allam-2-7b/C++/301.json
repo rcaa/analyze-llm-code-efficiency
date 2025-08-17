@@ -1,0 +1,15 @@
+{
+  "id": 301,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\nvector<string> removeInvalidParentheses(string s) {\n    vector<string> result;\n    int openBrackets = 0;\n    for (char c : s) {\n        if (c == '(') {\n            openBrackets++;\n        } else if (c == ')') {\n            openBrackets--;\n            if (openBrackets < 0) {\n                continue;\n            }\n        }\n        result.push_back(s.substr(result.size(), s.length()));\n    }\n    return result;\n}\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\nThe solution iterates through the input string character by character. For each character, it checks if it is an opening bracket or a closing bracket. If it is an opening bracket, the count of opening brackets is incremented. If it is a closing bracket, the count of opening brackets is decremented. If the count becomes negative, it means there are more closing brackets than opening brackets, so the current substring is invalid and is skipped. Otherwise, the substring from the current position to the end of the string is appended to the result vector. Since the input string has a fixed length, the time complexity is O(n), where n is the length of the string. The space complexity is O(1) because the result vector has a constant size. The energy implications are low because the algorithm only performs a few operations on the input string. ",
+  "code": "vector<string> removeInvalidParentheses(string s) {\n    vector<string> result;\n    int openBrackets = 0;\n    for (char c : s) {\n        if (c == '(') {\n            openBrackets++;\n        } else if (c == ')') {\n            openBrackets--;\n            if (openBrackets < 0) {\n                continue;\n            }\n        }\n        result.push_back(s.substr(result.size(), s.length()));\n    }\n    return result;\n}",
+  "timestamp": "2025-08-05T16:05:27.084533",
+  "code_extracted_previous": "vector<string> removeInvalidParentheses(string s) {\n    vector<string> result;\n    int openBrackets = 0;\n    for (char c : s) {\n        if (c == '(') {\n            openBrackets++;\n        } else if (c == ')') {\n            openBrackets--;\n            if (openBrackets < 0) {\n                continue;\n            }\n        }\n        result.push_back(s.substr(result.size(), s.length()));\n    }\n    return result;\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:12.639299"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 581,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        int n = nums.size();\n        int left = -1, right = -1;\n        int maxVal = INT_MIN, minVal = INT_MAX;\n\n        for (int i = 0; i < n; ++i) {\n            if (nums[i] < maxVal) right = i;\n            else maxVal = nums[i];\n\n            if (nums[n - 1 - i] > minVal) left = n - 1 - i;\n            else minVal = nums[n - 1 - i];\n        }\n\n        return (left == -1) ? 0 : right - left + 1;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single left-to-right and right-to-left pass to find the rightmost and leftmost positions where the order is violated, using running max and min values. Compact and cache-friendly.",
+  "code": "class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        int n = nums.size();\n        int left = -1, right = -1;\n        int maxVal = INT_MIN, minVal = INT_MAX;\n\n        for (int i = 0; i < n; ++i) {\n            if (nums[i] < maxVal) right = i;\n            else maxVal = nums[i];\n\n            if (nums[n - 1 - i] > minVal) left = n - 1 - i;\n            else minVal = nums[n - 1 - i];\n        }\n\n        return (left == -1) ? 0 : right - left + 1;\n    }\n};",
+  "timestamp": "2025-08-05T13:01:57.745331",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        int n = nums.size();\n        int left = -1, right = -1;\n        int maxVal = INT_MIN, minVal = INT_MAX;\n\n        for (int i = 0; i < n; ++i) {\n            if (nums[i] < maxVal) right = i;\n            else maxVal = nums[i];\n\n            if (nums[n - 1 - i] > minVal) left = n - 1 - i;\n            else minVal = nums[n - 1 - i];\n        }\n\n        return (left == -1) ? 0 : right - left + 1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.192264"
+}

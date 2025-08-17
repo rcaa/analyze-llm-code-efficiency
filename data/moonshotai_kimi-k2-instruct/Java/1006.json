@@ -1,0 +1,15 @@
+{
+  "id": 1006,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int clumsy(int n) {\n        if (n <= 2) return n;\n        if (n == 3) return 6;\n        int res = n * (n - 1) / (n - 2) + (n - 3);\n        n -= 4;\n        while (n >= 4) {\n            res -= n * (n - 1) / (n - 2) - (n - 3);\n            n -= 4;\n        }\n        if (n == 3) res -= 6;\n        else if (n == 2) res -= 2;\n        else if (n == 1) res -= 1;\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Process the expression in chunks of four numbers, handling the first chunk separately to start with a positive term. Each subsequent chunk is subtracted as a whole, leveraging the pattern that every group of four after the first contributes -(n)(n-1)/(n-2)+(n-3). The loop runs ⌊n/4⌋ times, and the remaining 0–3 terms are handled in constant time.",
+  "code": "class Solution {\n    public int clumsy(int n) {\n        if (n <= 2) return n;\n        if (n == 3) return 6;\n        int res = n * (n - 1) / (n - 2) + (n - 3);\n        n -= 4;\n        while (n >= 4) {\n            res -= n * (n - 1) / (n - 2) - (n - 3);\n            n -= 4;\n        }\n        if (n == 3) res -= 6;\n        else if (n == 2) res -= 2;\n        else if (n == 1) res -= 1;\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T02:30:26.254440",
+  "code_extracted_previous": "public int clumsy(int n) {\n        if (n <= 2) return n;\n        if (n == 3) return 6;\n        int res = n * (n - 1) / (n - 2) + (n - 3);\n        n -= 4;\n        while (n >= 4) {\n            res -= n * (n - 1) / (n - 2) - (n - 3);\n            n -= 4;\n        }\n        if (n == 3) res -= 6;\n        else if (n == 2) res -= 2;\n        else if (n == 1) res -= 1;\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.391065"
+}

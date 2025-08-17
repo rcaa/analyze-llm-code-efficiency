@@ -1,0 +1,15 @@
+{
+  "id": 3503,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```c++\n#include <unordered_set>\n\nclass Solution {\npublic:\n    int longestPalindrome(string s, string t) {\n        unordered_set<string> seen;\n        int max_len = 0;\n        for (int i = 0; i < s.length(); i++) {\n            string prefix = s.substr(0, i);\n            string suffix = t.substr(0, i);\n            if (seen.find(prefix + suffix) != seen.end() && seen[prefix + suffix].length() > max_len) {\n                max_len = seen[prefix + suffix].length();\n            }\n            seen.insert(prefix + suffix);\n        }\n        return max_len;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n1. Initialize an unordered_set to store previously seen prefixes and suffixes.\n2. Iterate through the characters of s and t.\n3. For each character pair (prefix, suffix), check if it is already in the unordered_set and if its length is greater than the current maximum length. If so, update max_len.\n4. Add the current prefix and suffix to the unordered_set.\n5. Return the maximum length found.\n\nThis solution has a time complexity of O(n) because it iterates through the characters of s and t once. The space complexity is O(n) because the unordered_set requires space proportional to the number of elements. The energy implications are low because the algorithm only performs simple string operations and uses a constant-time lookup in the unordered_set. ",
+  "code": "class Solution {\npublic:\n    int longestPalindrome(string s, string t) {\n        unordered_set<string> seen;\n        int max_len = 0;\n        for (int i = 0; i < s.length(); i++) {\n            string prefix = s.substr(0, i);\n            string suffix = t.substr(0, i);\n            if (seen.find(prefix + suffix) != seen.end() && seen[prefix + suffix].length() > max_len) {\n                max_len = seen[prefix + suffix].length();\n            }\n            seen.insert(prefix + suffix);\n        }\n        return max_len;\n    }\n};",
+  "timestamp": "2025-08-05T18:39:57.090556",
+  "code_extracted_previous": "#include <unordered_set>\n\nclass Solution {\npublic:\n    int longestPalindrome(string s, string t) {\n        unordered_set<string> seen;\n        int max_len = 0;\n        for (int i = 0; i < s.length(); i++) {\n            string prefix = s.substr(0, i);\n            string suffix = t.substr(0, i);\n            if (seen.find(prefix + suffix) != seen.end() && seen[prefix + suffix].length() > max_len) {\n                max_len = seen[prefix + suffix].length();\n            }\n            seen.insert(prefix + suffix);\n        }\n        return max_len;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.770648"
+}

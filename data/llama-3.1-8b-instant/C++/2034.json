@@ -1,0 +1,15 @@
+{
+  "id": 2034,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass StockPrice {\npublic:\n    StockPrice() {\n        maxPrice = INT_MIN;\n        minPrice = INT_MAX;\n    }\n    \n    void update(int timestamp, int price) {\n        if (prices.find(timestamp) != prices.end()) {\n            prices[timestamp] = price;\n            maxPrice = std::max(maxPrice, price);\n            minPrice = std::min(minPrice, price);\n        } else {\n            prices[timestamp] = price;\n            maxPrice = std::max(maxPrice, price);\n            minPrice = std::min(minPrice, price);\n        }\n    }\n    \n    int current() {\n        int maxTimestamp = 0;\n        for (auto& pair : prices) {\n            if (pair.first > maxTimestamp) {\n                maxTimestamp = pair.first;\n            }\n        }\n        return prices[maxTimestamp];\n    }\n    \n    int maximum() {\n        return maxPrice;\n    }\n    \n    int minimum() {\n        return minPrice;\n    }\nprivate:\n    int maxPrice;\n    int minPrice;\n    std::unordered_map<int, int> prices;\n};\n```\n\nsolution: \nefficiency: HIGH\ntime complexity: O(1) for update, O(n) for current, O(1) for maximum and minimum\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-05T15:08:21.900317",
+  "code_extracted_previous": "class StockPrice {\npublic:\n    StockPrice() {\n        maxPrice = INT_MIN;\n        minPrice = INT_MAX;\n    }\n    \n    void update(int timestamp, int price) {\n        if (prices.find(timestamp) != prices.end()) {\n            prices[timestamp] = price;\n            maxPrice = std::max(maxPrice, price);\n            minPrice = std::min(minPrice, price);\n        } else {\n            prices[timestamp] = price;\n            maxPrice = std::max(maxPrice, price);\n            minPrice = std::min(minPrice, price);\n        }\n    }\n    \n    int current() {\n        int maxTimestamp = 0;\n        for (auto& pair : prices) {\n            if (pair.first > maxTimestamp) {\n                maxTimestamp = pair.first;\n            }\n        }\n        return prices[maxTimestamp];\n    }\n    \n    int maximum() {\n        return maxPrice;\n    }\n    \n    int minimum() {\n        return minPrice;\n    }\nprivate:\n    int maxPrice;\n    int minPrice;\n    std::unordered_map<int, int> prices;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:27.659341"
+}

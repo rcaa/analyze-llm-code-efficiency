@@ -1,0 +1,15 @@
+{
+  "id": 23,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public ListNode mergeKLists(ListNode[] lists) {\n        if (lists == null || lists.length == 0) return null;\n        PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> a.val - b.val);\n        for (ListNode list : lists) {\n            if (list != null) queue.offer(list);\n        }\n        ListNode dummy = new ListNode(0);\n        ListNode current = dummy;\n        while (!queue.isEmpty()) {\n            ListNode node = queue.poll();\n            current.next = node;\n            current = current.next;\n            if (node.next != null) queue.offer(node.next);\n        }\n        return dummy.next;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(N log k)\nspace complexity: O(k)\nenergy implications: LOW",
+  "code": "class Solution {\n    public ListNode mergeKLists(ListNode[] lists) {\n        if (lists == null || lists.length == 0) return null;\n        PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> a.val - b.val);\n        for (ListNode list : lists) {\n            if (list != null) queue.offer(list);\n        }\n        ListNode dummy = new ListNode(0);\n        ListNode current = dummy;\n        while (!queue.isEmpty()) {\n            ListNode node = queue.poll();\n            current.next = node;\n            current = current.next;\n            if (node.next != null) queue.offer(node.next);\n        }\n        return dummy.next;\n    }\n}",
+  "timestamp": "2025-08-05T15:14:30.244259",
+  "code_extracted_previous": "class Solution {\n    public ListNode mergeKLists(ListNode[] lists) {\n        if (lists == null || lists.length == 0) return null;\n        PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> a.val - b.val);\n        for (ListNode list : lists) {\n            if (list != null) queue.offer(list);\n        }\n        ListNode dummy = new ListNode(0);\n        ListNode current = dummy;\n        while (!queue.isEmpty()) {\n            ListNode node = queue.poll();\n            current.next = node;\n            current = current.next;\n            if (node.next != null) queue.offer(node.next);\n        }\n        return dummy.next;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.229352"
+}

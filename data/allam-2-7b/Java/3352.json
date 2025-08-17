@@ -1,0 +1,15 @@
+{
+  "id": 3352,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int countKReducibleNumbers(String s, int k) {\n        int result = 0;\n        int num = Integer.parseInt(s);\n        int mask = 1 << k;\n\n        for (int i = num; i >= 1; i--) {\n            int count = 0;\n            while (i % mask == 0) {\n                count++;\n                i >>= k;\n            }\n            result += count;\n        }\n\n        return result % (1000000007);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\n1. Convert the input string to an integer (num) using `Integer.parseInt(s)`.\n2. Calculate the mask representing the k-th power of 2 using `1 << k`.\n3. Iterate from num to 1, decrementing i by mask in each iteration.\n4. Within the loop, count the number of set bits in i using a while loop and the bitwise right shift operator (`>>`).\n5. Add the count to the result variable.\n6. Return the result modulo 1000000007 (prime number 7) to ensure the result is within the desired range.\n\nThis solution has a time complexity of O(log(n)) due to the iterative approach and a space complexity of O(1) since we only use a single variable (result) and no additional data structures. The energy implications are low since the algorithm is efficient and requires minimal resources. ",
+  "code": "class Solution {\n    public int countKReducibleNumbers(String s, int k) {\n        int result = 0;\n        int num = Integer.parseInt(s);\n        int mask = 1 << k;\n\n        for (int i = num; i >= 1; i--) {\n            int count = 0;\n            while (i % mask == 0) {\n                count++;\n                i >>= k;\n            }\n            result += count;\n        }\n\n        return result % (1000000007);\n    }\n}",
+  "timestamp": "2025-08-05T15:26:45.731769",
+  "code_extracted_previous": "class Solution {\n    public int countKReducibleNumbers(String s, int k) {\n        int result = 0;\n        int num = Integer.parseInt(s);\n        int mask = 1 << k;\n\n        for (int i = num; i >= 1; i--) {\n            int count = 0;\n            while (i % mask == 0) {\n                count++;\n                i >>= k;\n            }\n            result += count;\n        }\n\n        return result % (1000000007);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.531536"
+}

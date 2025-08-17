@@ -1,0 +1,15 @@
+{
+  "id": 1456,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int maxVowels = 0, currentVowels = 0;\n        for (int i = 0; i < k; i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')\n                currentVowels++;\n        }\n        maxVowels = currentVowels;\n        for (int i = k; i < s.length(); i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')\n                currentVowels++;\n            if (s[i - k] == 'a' || s[i - k] == 'e' || s[i - k] == 'i' || s[i - k] == 'o' || s[i - k] == 'u')\n                currentVowels--;\n            maxVowels = max(maxVowels, currentVowels);\n        }\n        return maxVowels;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach to efficiently count the maximum number of vowel letters in any substring of length k. It maintains a running count of vowel letters in the current window and updates the maximum count as it slides the window through the string.",
+  "code": "class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int maxVowels = 0, currentVowels = 0;\n        for (int i = 0; i < k; i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')\n                currentVowels++;\n        }\n        maxVowels = currentVowels;\n        for (int i = k; i < s.length(); i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')\n                currentVowels++;\n            if (s[i - k] == 'a' || s[i - k] == 'e' || s[i - k] == 'i' || s[i - k] == 'o' || s[i - k] == 'u')\n                currentVowels--;\n            maxVowels = max(maxVowels, currentVowels);\n        }\n        return maxVowels;\n    }\n};",
+  "timestamp": "2025-08-06T00:53:29.948762",
+  "code_extracted_previous": "public:\n    int maxVowels(string s, int k) {\n        int maxVowels = 0, currentVowels = 0;\n        for (int i = 0; i < k; i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')\n                currentVowels++;\n        }\n        maxVowels = currentVowels;\n        for (int i = k; i < s.length(); i++) {\n            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')\n                currentVowels++;\n            if (s[i - k] == 'a' || s[i - k] == 'e' || s[i - k] == 'i' || s[i - k] == 'o' || s[i - k] == 'u')\n                currentVowels--;\n            maxVowels = max(maxVowels, currentVowels);\n        }\n        return maxVowels;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.615378"
+}

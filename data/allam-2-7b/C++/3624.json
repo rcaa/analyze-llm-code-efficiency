@@ -1,0 +1,15 @@
+{
+  "id": 3624,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```cpp\n#include <iostream>\n#include <vector>\n#include <bitset>\n\nvector<int> popcountDepth(vector<int>& nums, vector<vector<int>>& queries) {\n    vector<int> answer(queries[0].size());\n    int popcount = 0;\n    int depth = 0;\n\n    for (int i = 0; i < queries.size(); i++) {\n        int l = queries[i][0], r = queries[i][1], k = queries[i][2], idx = queries[i][3];\n        nums[idx] = popcount;\n        while (depth < k) {\n            popcount = 0;\n            for (int j = l; j <= r; j++) {\n                popcount += bitset<32>(nums[j]).count();\n                depth++;\n            }\n        }\n        answer[i] = depth;\n    }\n    return answer;\n}\n```\n\nEfficiency: HIGH\nEfficiency: HIGH\nTime complexity: O(n)\nSpace complexity: O(n)\nEnergy implications: LOW\n\nExplanation:\n\nThe solution iterates through the given queries and updates the popcount and depth accordingly. For each query, it updates the value of nums[idx] with the current popcount value. Then, it iterates through the range [l, r] and updates the popcount for each index j. Finally, it updates the answer[i] with the depth value. The algorithm has a time complexity of O(n) because it iterates through the array once for each query. The space complexity is O(n) because it uses a single integer array to store the answer. The energy implications are low because the algorithm does not require any additional energy consumption. ",
+  "code": "vector<int> popcountDepth(vector<int>& nums, vector<vector<int>>& queries) {\n    vector<int> answer(queries[0].size());\n    int popcount = 0;\n    int depth = 0;\n\n    for (int i = 0; i < queries.size(); i++) {\n        int l = queries[i][0], r = queries[i][1], k = queries[i][2], idx = queries[i][3];\n        nums[idx] = popcount;\n        while (depth < k) {\n            popcount = 0;\n            for (int j = l; j <= r; j++) {\n                popcount += bitset<32>(nums[j]).count();\n                depth++;\n            }\n        }\n        answer[i] = depth;\n    }\n    return answer;\n}",
+  "timestamp": "2025-08-05T12:33:06.585893",
+  "code_extracted_previous": "#include <iostream>\n#include <vector>\n#include <bitset>\n\nvector<int> popcountDepth(vector<int>& nums, vector<vector<int>>& queries) {\n    vector<int> answer(queries[0].size());\n    int popcount = 0;\n    int depth = 0;\n\n    for (int i = 0; i < queries.size(); i++) {\n        int l = queries[i][0], r = queries[i][1], k = queries[i][2], idx = queries[i][3];\n        nums[idx] = popcount;\n        while (depth < k) {\n            popcount = 0;\n            for (int j = l; j <= r; j++) {\n                popcount += bitset<32>(nums[j]).count();\n                depth++;\n            }\n        }\n        answer[i] = depth;\n    }\n    return answer;\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:12.821358"
+}

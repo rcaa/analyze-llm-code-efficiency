@@ -1,0 +1,15 @@
+{
+  "id": 609,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\nclass Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_dict = {}\n        for path in paths:\n            dir, *files = path.split(' ')\n            for file in files:\n                name, content = file.split('(')\n                if content in content_dict:\n                    content_dict[content].append(dir + '/' + name)\n                else:\n                    content_dict[content] = [dir + '/' + name]\n        return [v for v in content_dict.values() if len(v) > 1]\n```\n\nefficiency: HIGH\ntime complexity: O(N * M)\nspace complexity: O(N * M)\nenergy implications: LOW\nexplanation: This solution uses a dictionary to store the file contents as keys and their corresponding paths as values. It then iterates over the paths and files to populate the dictionary. Finally, it returns the values in the dictionary that have more than one element, which represent the duplicate files. The time complexity is O(N * M) where N is the number of paths and M is the average number of files per path. The space complexity is also O(N * M) as we need to store all the file contents and their paths.",
+  "code": "class Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_dict = {}\n        for path in paths:\n            dir, *files = path.split(' ')\n            for file in files:\n                name, content = file.split('(')\n                if content in content_dict:\n                    content_dict[content].append(dir + '/' + name)\n                else:\n                    content_dict[content] = [dir + '/' + name]\n        return [v for v in content_dict.values() if len(v) > 1]",
+  "timestamp": "2025-08-05T13:04:32.222749",
+  "code_extracted_previous": "from typing import List\nclass Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_dict = {}\n        for path in paths:\n            dir, *files = path.split(' ')\n            for file in files:\n                name, content = file.split('(')\n                if content in content_dict:\n                    content_dict[content].append(dir + '/' + name)\n                else:\n                    content_dict[content] = [dir + '/' + name]\n        return [v for v in content_dict.values() if len(v) > 1]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.395635"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 146,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass LRUCache {\n    private Map<Integer, Integer> cache;\n    private int capacity;\n    private Deque<Integer> keyOrder;\n\n    public LRUCache(int capacity) {\n        this.capacity = capacity;\n        cache = new HashMap<>();\n        keyOrder = new LinkedList<>();\n    }\n    \n    public int get(int key) {\n        if (!cache.containsKey(key)) {\n            return -1;\n        }\n        keyOrder.remove(Integer.valueOf(key));\n        keyOrder.addFirst(key);\n        return cache.get(key);\n    }\n    \n    public void put(int key, int value) {\n        if (cache.containsKey(key)) {\n            cache.put(key, value);\n            keyOrder.remove(Integer.valueOf(key));\n            keyOrder.addFirst(key);\n        } else {\n            if (cache.size() == capacity) {\n                int evictKey = keyOrder.removeLast();\n                cache.remove(evictKey);\n            }\n            cache.put(key, value);\n            keyOrder.addFirst(key);\n        }\n    }\n}\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(capacity)\nenergy implications: LOW \nexplanation: Utilizes a HashMap for O(1) key lookups and a Doubly Linked List to track key order for efficient eviction of the least recently used item.  \n\n\n\n",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-05T14:49:55.015074",
+  "code_extracted_previous": "class LRUCache {\n    private Map<Integer, Integer> cache;\n    private int capacity;\n    private Deque<Integer> keyOrder;\n\n    public LRUCache(int capacity) {\n        this.capacity = capacity;\n        cache = new HashMap<>();\n        keyOrder = new LinkedList<>();\n    }\n    \n    public int get(int key) {\n        if (!cache.containsKey(key)) {\n            return -1;\n        }\n        keyOrder.remove(Integer.valueOf(key));\n        keyOrder.addFirst(key);\n        return cache.get(key);\n    }\n    \n    public void put(int key, int value) {\n        if (cache.containsKey(key)) {\n            cache.put(key, value);\n            keyOrder.remove(Integer.valueOf(key));\n            keyOrder.addFirst(key);\n        } else {\n            if (cache.size() == capacity) {\n                int evictKey = keyOrder.removeLast();\n                cache.remove(evictKey);\n            }\n            cache.put(key, value);\n            keyOrder.addFirst(key);\n        }\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.632012"
+}

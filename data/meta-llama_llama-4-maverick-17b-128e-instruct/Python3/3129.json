@@ -1,0 +1,15 @@
+{
+  "id": 3129,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n        @lru_cache(None)\n        def dp(z, o, lst):\n            if z == 0 and o == 0: return 1\n            res = 0\n            if z > 0 and (lst != 0 or z <= limit):\n                res += dp(z-1, o, 0)\n            if o > 0 and (lst != 1 or o <= limit):\n                res += dp(z, o-1, 1)\n            return res % MOD\n        \n        return (dp(zero, one, -1)) % MOD\nefficiency: HIGH\ntime complexity: O(zero * one)\nspace complexity: O(zero * one)\nenergy implications: LOW\nexplanation: Utilizes dynamic programming with memoization to efficiently count stable binary arrays, handling the modulo operation to avoid large numbers.\n```",
+  "code": "def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n        @lru_cache(None)\n        def dp(z, o, lst):\n            if z == 0 and o == 0: return 1\n            res = 0\n            if z > 0 and (lst != 0 or z <= limit):\n                res += dp(z-1, o, 0)\n            if o > 0 and (lst != 1 or o <= limit):\n                res += dp(z, o-1, 1)\n            return res % MOD\n        \n        return (dp(zero, one, -1)) % MOD",
+  "timestamp": "2025-08-05T14:29:32.782939",
+  "code_extracted_previous": "class Solution:\n    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:\n        MOD = 10**9 + 7\n        @lru_cache(None)\n        def dp(z, o, lst):\n            if z == 0 and o == 0: return 1\n            res = 0\n            if z > 0 and (lst != 0 or z <= limit):\n                res += dp(z-1, o, 0)\n            if o > 0 and (lst != 1 or o <= limit):\n                res += dp(z, o-1, 1)\n            return res % MOD\n        \n        return (dp(zero, one, -1)) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.102307"
+}

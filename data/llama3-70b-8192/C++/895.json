@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        freq[val]++;\n        maxFreq = max(maxFreq, freq[val]);\n        freqStack[freq[val]].push(val);\n    }\n    \n    int pop() {\n        int val = freqStack[maxFreq].top();\n        freqStack[maxFreq].pop();\n        freq[val]--;\n        if(freqStack[maxFreq].empty()) maxFreq--;\n        return val;\n    }\nprivate:\n    unordered_map<int, int> freq;\n    unordered_map<int, stack<int>> freqStack;\n    int maxFreq = 0;\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Using a frequency map and a stack of stacks to store elements by frequency, allowing for O(1) push and pop operations.",
+  "code": "class FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        freq[val]++;\n        maxFreq = max(maxFreq, freq[val]);\n        freqStack[freq[val]].push(val);\n    }\n    \n    int pop() {\n        int val = freqStack[maxFreq].top();\n        freqStack[maxFreq].pop();\n        freq[val]--;\n        if(freqStack[maxFreq].empty()) maxFreq--;\n        return val;\n    }\nprivate:\n    unordered_map<int, int> freq;\n    unordered_map<int, stack<int>> freqStack;\n    int maxFreq = 0;\n};",
+  "timestamp": "2025-08-05T14:37:48.532075",
+  "code_extracted_previous": "class FreqStack {\npublic:\n    FreqStack() {\n        \n    }\n    \n    void push(int val) {\n        freq[val]++;\n        maxFreq = max(maxFreq, freq[val]);\n        freqStack[freq[val]].push(val);\n    }\n    \n    int pop() {\n        int val = freqStack[maxFreq].top();\n        freqStack[maxFreq].pop();\n        freq[val]--;\n        if(freqStack[maxFreq].empty()) maxFreq--;\n        return val;\n    }\nprivate:\n    unordered_map<int, int> freq;\n    unordered_map<int, stack<int>> freqStack;\n    int maxFreq = 0;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:37.145613"
+}

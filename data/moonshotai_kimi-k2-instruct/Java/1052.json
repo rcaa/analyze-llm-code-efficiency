@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int n = customers.length;\n        int base = 0;\n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) base += customers[i];\n        }\n        int gain = 0;\n        for (int i = 0; i < minutes; i++) {\n            if (grumpy[i] == 1) gain += customers[i];\n        }\n        int maxGain = gain;\n        for (int i = minutes; i < n; i++) {\n            if (grumpy[i - minutes] == 1) gain -= customers[i - minutes];\n            if (grumpy[i] == 1) gain += customers[i];\n            maxGain = Math.max(maxGain, gain);\n        }\n        return base + maxGain;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Compute the baseline satisfied customers when the owner is naturally calm, then use a sliding window to find the best consecutive `minutes` where flipping grumpy to calm yields the maximum extra satisfied customers.",
+  "code": "class Solution {\n    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int n = customers.length;\n        int base = 0;\n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) base += customers[i];\n        }\n        int gain = 0;\n        for (int i = 0; i < minutes; i++) {\n            if (grumpy[i] == 1) gain += customers[i];\n        }\n        int maxGain = gain;\n        for (int i = minutes; i < n; i++) {\n            if (grumpy[i - minutes] == 1) gain -= customers[i - minutes];\n            if (grumpy[i] == 1) gain += customers[i];\n            maxGain = Math.max(maxGain, gain);\n        }\n        return base + maxGain;\n    }\n}",
+  "timestamp": "2025-08-05T13:19:32.653109",
+  "code_extracted_previous": "public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int n = customers.length;\n        int base = 0;\n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) base += customers[i];\n        }\n        int gain = 0;\n        for (int i = 0; i < minutes; i++) {\n            if (grumpy[i] == 1) gain += customers[i];\n        }\n        int maxGain = gain;\n        for (int i = minutes; i < n; i++) {\n            if (grumpy[i - minutes] == 1) gain -= customers[i - minutes];\n            if (grumpy[i] == 1) gain += customers[i];\n            maxGain = Math.max(maxGain, gain);\n        }\n        return base + maxGain;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.429327"
+}

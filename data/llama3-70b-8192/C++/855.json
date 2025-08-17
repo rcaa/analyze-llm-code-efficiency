@@ -1,0 +1,15 @@
+{
+  "id": 855,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass ExamRoom {\npublic:\n    ExamRoom(int n) : n(n), seats(n + 1, false) {}\n\n    int seat() {\n        if (!last) {\n            last = 0;\n            return 0;\n        }\n        int maxDist = 0, idx = 0;\n        for (int i = 0; i < n; ++i) {\n            if (seats[i]) continue;\n            int dist = i;\n            if (i > 0 && seats[i - 1]) dist = (i - (i - 1)) / 2;\n            if (i < n - 1 && seats[i + 1]) dist = (i + 1 - i) / 2;\n            if (dist > maxDist) {\n                maxDist = dist;\n                idx = i;\n            }\n        }\n        seats[idx] = true;\n        last = idx;\n        return idx;\n    }\n\n    void leave(int p) {\n        seats[p] = false;\n        last = p;\n    }\n\nprivate:\n    int n;\n    vector<bool> seats;\n    int last = -1;\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a boolean array to keep track of occupied seats. The seat function iterates over the seats to find the one with the maximum distance to the closest person. The leave function simply marks the seat as unoccupied.",
+  "code": "class ExamRoom {\npublic:\n    ExamRoom(int n) : n(n), seats(n + 1, false) {}\n\n    int seat() {\n        if (!last) {\n            last = 0;\n            return 0;\n        }\n        int maxDist = 0, idx = 0;\n        for (int i = 0; i < n; ++i) {\n            if (seats[i]) continue;\n            int dist = i;\n            if (i > 0 && seats[i - 1]) dist = (i - (i - 1)) / 2;\n            if (i < n - 1 && seats[i + 1]) dist = (i + 1 - i) / 2;\n            if (dist > maxDist) {\n                maxDist = dist;\n                idx = i;\n            }\n        }\n        seats[idx] = true;\n        last = idx;\n        return idx;\n    }\n\n    void leave(int p) {\n        seats[p] = false;\n        last = p;\n    }\n\nprivate:\n    int n;\n    vector<bool> seats;\n    int last = -1;\n};",
+  "timestamp": "2025-08-05T14:09:48.328155",
+  "code_extracted_previous": "class ExamRoom {\npublic:\n    ExamRoom(int n) : n(n), seats(n + 1, false) {}\n\n    int seat() {\n        if (!last) {\n            last = 0;\n            return 0;\n        }\n        int maxDist = 0, idx = 0;\n        for (int i = 0; i < n; ++i) {\n            if (seats[i]) continue;\n            int dist = i;\n            if (i > 0 && seats[i - 1]) dist = (i - (i - 1)) / 2;\n            if (i < n - 1 && seats[i + 1]) dist = (i + 1 - i) / 2;\n            if (dist > maxDist) {\n                maxDist = dist;\n                idx = i;\n            }\n        }\n        seats[idx] = true;\n        last = idx;\n        return idx;\n    }\n\n    void leave(int p) {\n        seats[p] = false;\n        last = p;\n    }\n\nprivate:\n    int n;\n    vector<bool> seats;\n    int last = -1;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:37.117810"
+}

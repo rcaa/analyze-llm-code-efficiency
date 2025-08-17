@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        long mod = 1000000007;\n        long[][] dp = new long[n + 1][goal + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= goal; j++) {\n                dp[i][j] = dp[i - 1][j];\n                if (j >= i) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - i]) % mod;\n                }\n                if (k > 0 && j >= i) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - i] * (j - i + 1)) % mod;\n                }\n            }\n        }\n        return (int) dp[n][goal];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n*goal)\nspace complexity: O(n*goal)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of possible playlists. It builds a 2D array `dp` where `dp[i][j]` represents the number of playlists with `i` songs and `j` goals. The base case is `dp[0][0] = 1` (an empty playlist with 0 goals). The recurrence relation considers adding a new song to the playlist and updates `dp` accordingly based on the `k` constraint.  \n\n\n\n",
+  "code": "class Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        long mod = 1000000007;\n        long[][] dp = new long[n + 1][goal + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= goal; j++) {\n                dp[i][j] = dp[i - 1][j];\n                if (j >= i) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - i]) % mod;\n                }\n                if (k > 0 && j >= i) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - i] * (j - i + 1)) % mod;\n                }\n            }\n        }\n        return (int) dp[n][goal];\n    }\n}",
+  "timestamp": "2025-08-05T15:18:20.230836",
+  "code_extracted_previous": "class Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        long mod = 1000000007;\n        long[][] dp = new long[n + 1][goal + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= goal; j++) {\n                dp[i][j] = dp[i - 1][j];\n                if (j >= i) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - i]) % mod;\n                }\n                if (k > 0 && j >= i) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - i] * (j - i + 1)) % mod;\n                }\n            }\n        }\n        return (int) dp[n][goal];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.783204"
+}

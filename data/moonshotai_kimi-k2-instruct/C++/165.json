@@ -1,0 +1,15 @@
+{
+  "id": 165,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        int i = 0, j = 0;\n        int n1 = version1.size(), n2 = version2.size();\n        while (i < n1 || j < n2) {\n            int v1 = 0;\n            while (i < n1 && version1[i] != '.') {\n                v1 = v1 * 10 + (version1[i++] - '0');\n            }\n            i++; // skip '.'\n            int v2 = 0;\n            while (j < n2 && version2[j] != '.') {\n                v2 = v2 * 10 + (version2[j++] - '0');\n            }\n            j++; // skip '.'\n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n        }\n        return 0;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N + M)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Parse both strings simultaneously, converting each revision to an integer on the fly without extra storage. Compare revisions left-to-right, treating missing ones as 0. Single pass, no dynamic allocation, minimal CPU cycles.",
+  "code": "class Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        int i = 0, j = 0;\n        int n1 = version1.size(), n2 = version2.size();\n        while (i < n1 || j < n2) {\n            int v1 = 0;\n            while (i < n1 && version1[i] != '.') {\n                v1 = v1 * 10 + (version1[i++] - '0');\n            }\n            i++; // skip '.'\n            int v2 = 0;\n            while (j < n2 && version2[j] != '.') {\n                v2 = v2 * 10 + (version2[j++] - '0');\n            }\n            j++; // skip '.'\n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n        }\n        return 0;\n    }\n};",
+  "timestamp": "2025-08-06T01:35:26.944631",
+  "code_extracted_previous": "class Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        int i = 0, j = 0;\n        int n1 = version1.size(), n2 = version2.size();\n        while (i < n1 || j < n2) {\n            int v1 = 0;\n            while (i < n1 && version1[i] != '.') {\n                v1 = v1 * 10 + (version1[i++] - '0');\n            }\n            i++; // skip '.'\n            int v2 = 0;\n            while (j < n2 && version2[j] != '.') {\n                v2 = v2 * 10 + (version2[j++] - '0');\n            }\n            j++; // skip '.'\n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n        }\n        return 0;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.292046"
+}

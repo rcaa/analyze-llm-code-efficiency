@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        int n = s.length();\n        int maxLengthSoFar = 0;\n        int currLength = 1;\n        set<char> seen;\n\n        for (int i = 0; i < n; i++) {\n            if (seen.find(s[i]) != seen.end()) {\n                seen.erase(s[currLength - 1]);\n                currLength--;\n            }\n            seen.insert(s[i]);\n            maxLengthSoFar = max(maxLengthSoFar, currLength + 1);\n        }\n\n        return maxLengthSoFar;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\nWe use a set to store the characters we have seen so far. We iterate through the string and for each character, we check if it has been seen before. If it has, we remove the previous character from the set and decrement the current length. Then, we insert the current character into the set and update the maximum length if the current length is greater than the current maximum. This approach has a time complexity of O(n) because we only iterate through the string once. The space complexity is O(n) because we use a set with a size of n. ",
+  "code": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        int n = s.length();\n        int maxLengthSoFar = 0;\n        int currLength = 1;\n        set<char> seen;\n\n        for (int i = 0; i < n; i++) {\n            if (seen.find(s[i]) != seen.end()) {\n                seen.erase(s[currLength - 1]);\n                currLength--;\n            }\n            seen.insert(s[i]);\n            maxLengthSoFar = max(maxLengthSoFar, currLength + 1);\n        }\n\n        return maxLengthSoFar;\n    }\n};",
+  "timestamp": "2025-08-05T14:49:33.661425",
+  "code_extracted_previous": "public:\n    int lengthOfLongestSubstring(string s) {\n        int n = s.length();\n        int maxLengthSoFar = 0;\n        int currLength = 1;\n        set<char> seen;\n\n        for (int i = 0; i < n; i++) {\n            if (seen.find(s[i]) != seen.end()) {\n                seen.erase(s[currLength - 1]);\n                currLength--;\n            }\n            seen.insert(s[i]);\n            maxLengthSoFar = max(maxLengthSoFar, currLength + 1);\n        }\n\n        return maxLengthSoFar;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.620419"
+}

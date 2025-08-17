@@ -1,0 +1,15 @@
+{
+  "id": 2333,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        diff = sorted((abs(a - b), i) for i, (a, b) in enumerate(zip(nums1, nums2)))\n        res, k = 0, k1 + k2\n        for d, _ in diff:\n            if k >= d:\n                k -= d\n                res += 0\n            else:\n                res += (d - k) ** 2\n                break\n            res += d ** 2\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Sort the absolute differences between corresponding elements of nums1 and nums2, then iteratively reduce the differences by k1 + k2, and calculate the sum of squared differences.",
+  "code": "class Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        diff = sorted((abs(a - b), i) for i, (a, b) in enumerate(zip(nums1, nums2)))\n        res, k = 0, k1 + k2\n        for d, _ in diff:\n            if k >= d:\n                k -= d\n                res += 0\n            else:\n                res += (d - k) ** 2\n                break\n            res += d ** 2\n        return res",
+  "timestamp": "2025-08-05T13:28:27.601729",
+  "code_extracted_previous": "class Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        diff = sorted((abs(a - b), i) for i, (a, b) in enumerate(zip(nums1, nums2)))\n        res, k = 0, k1 + k2\n        for d, _ in diff:\n            if k >= d:\n                k -= d\n                res += 0\n            else:\n                res += (d - k) ** 2\n                break\n            res += d ** 2\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.257900"
+}

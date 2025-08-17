@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls, cows = 0, 0\n        secret_count, guess_count = [0]*10, [0]*10\n        for i in range(len(secret)):\n            if secret[i] == guess[i]:\n                bulls += 1\n            else:\n                secret_count[int(secret[i])] += 1\n                guess_count[int(guess[i])] += 1\n        for i in range(10):\n            cows += min(secret_count[i], guess_count[i])\n        return str(bulls) + 'A' + str(cows) + 'B'\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses two arrays to count the frequency of each digit in the secret and guess strings. It then iterates through the strings to count the bulls and cows. The time complexity is O(n) where n is the length of the strings, and the space complexity is O(1) since the size of the arrays is constant.",
+  "code": "class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls, cows = 0, 0\n        secret_count, guess_count = [0]*10, [0]*10\n        for i in range(len(secret)):\n            if secret[i] == guess[i]:\n                bulls += 1\n            else:\n                secret_count[int(secret[i])] += 1\n                guess_count[int(guess[i])] += 1\n        for i in range(10):\n            cows += min(secret_count[i], guess_count[i])\n        return str(bulls) + 'A' + str(cows) + 'B'",
+  "timestamp": "2025-08-05T14:51:59.435873",
+  "code_extracted_previous": "class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls, cows = 0, 0\n        secret_count, guess_count = [0]*10, [0]*10\n        for i in range(len(secret)):\n            if secret[i] == guess[i]:\n                bulls += 1\n            else:\n                secret_count[int(secret[i])] += 1\n                guess_count[int(guess[i])] += 1\n        for i in range(10):\n            cows += min(secret_count[i], guess_count[i])\n        return str(bulls) + 'A' + str(cows) + 'B'",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.446954"
+}

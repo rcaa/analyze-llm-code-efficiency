@@ -1,0 +1,15 @@
+{
+  "id": 2911,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int minimumChanges(string s, int k) {\n        int n = s.size();\n        int res = INT_MAX;\n        for (int d = 1; d < n; d++) {\n            int changes = 0;\n            for (int i = 0; i < n; i += d) {\n                string t = s.substr(i, d);\n                changes += (t != reverse(t).substr(0, t.size()));\n            }\n            res = min(res, changes);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We iterate over all possible divisors of the string's length and for each divisor, we calculate the number of changes needed to make each group a palindrome. We keep track of the minimum number of changes found and return it.",
+  "code": "class Solution {\npublic:\n    int minimumChanges(string s, int k) {\n        int n = s.size();\n        int res = INT_MAX;\n        for (int d = 1; d < n; d++) {\n            int changes = 0;\n            for (int i = 0; i < n; i += d) {\n                string t = s.substr(i, d);\n                changes += (t != reverse(t).substr(0, t.size()));\n            }\n            res = min(res, changes);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:19:15.701355",
+  "code_extracted_previous": "public:\n    int minimumChanges(string s, int k) {\n        int n = s.size();\n        int res = INT_MAX;\n        for (int d = 1; d < n; d++) {\n            int changes = 0;\n            for (int i = 0; i < n; i += d) {\n                string t = s.substr(i, d);\n                changes += (t != reverse(t).substr(0, t.size()));\n            }\n            res = min(res, changes);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.133846"
+}

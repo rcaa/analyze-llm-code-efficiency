@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        boolean[] visited = new boolean[rooms.size()];\n        visited[0] = true;\n        Queue<Integer> queue = new LinkedList<>();\n        queue.offer(0);\n        while (!queue.isEmpty()) {\n            int room = queue.poll();\n            for (int key : rooms.get(room)) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    queue.offer(key);\n                }\n            }\n        }\n        for (boolean v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a queue to perform a breadth-first search (BFS) to visit all the rooms. It starts by visiting room 0 and then iteratively visits all the rooms that can be unlocked by the keys found in the previously visited rooms. The solution keeps track of the visited rooms using a boolean array. If all rooms are visited, it returns true; otherwise, it returns false.",
+  "code": "class Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        boolean[] visited = new boolean[rooms.size()];\n        visited[0] = true;\n        Queue<Integer> queue = new LinkedList<>();\n        queue.offer(0);\n        while (!queue.isEmpty()) {\n            int room = queue.poll();\n            for (int key : rooms.get(room)) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    queue.offer(key);\n                }\n            }\n        }\n        for (boolean v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-05T14:00:09.550392",
+  "code_extracted_previous": "class Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        boolean[] visited = new boolean[rooms.size()];\n        visited[0] = true;\n        Queue<Integer> queue = new LinkedList<>();\n        queue.offer(0);\n        while (!queue.isEmpty()) {\n            int room = queue.poll();\n            for (int key : rooms.get(room)) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    queue.offer(key);\n                }\n            }\n        }\n        for (boolean v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:43.036717"
+}

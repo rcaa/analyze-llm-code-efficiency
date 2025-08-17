@@ -1,0 +1,15 @@
+{
+  "id": 1553,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nfrom collections import deque\nclass Solution:\n    def minDays(self, n: int) -> int:\n        queue = deque([(n, 0)])\n        visited = set([n])\n        while queue:\n            oranges, days = queue.popleft()\n            if oranges == 0:\n                return days\n            for next_oranges in [oranges - 1, oranges - oranges // 2, oranges - 2 * (oranges // 3)]:\n                if next_oranges > 0 and next_oranges not in visited:\n                    queue.append((next_oranges, days + 1))\n                    visited.add(next_oranges)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a breadth-first search (BFS) approach to find the minimum number of days to eat n oranges. It uses a queue to keep track of the remaining oranges and the number of days, and a set to avoid revisiting the same state.",
+  "code": "class Solution:\n    def minDays(self, n: int) -> int:\n        queue = deque([(n, 0)])\n        visited = set([n])\n        while queue:\n            oranges, days = queue.popleft()\n            if oranges == 0:\n                return days\n            for next_oranges in [oranges - 1, oranges - oranges // 2, oranges - 2 * (oranges // 3)]:\n                if next_oranges > 0 and next_oranges not in visited:\n                    queue.append((next_oranges, days + 1))\n                    visited.add(next_oranges)",
+  "timestamp": "2025-08-05T14:19:48.081168",
+  "code_extracted_previous": "from collections import deque\nclass Solution:\n    def minDays(self, n: int) -> int:\n        queue = deque([(n, 0)])\n        visited = set([n])\n        while queue:\n            oranges, days = queue.popleft()\n            if oranges == 0:\n                return days\n            for next_oranges in [oranges - 1, oranges - oranges // 2, oranges - 2 * (oranges // 3)]:\n                if next_oranges > 0 and next_oranges not in visited:\n                    queue.append((next_oranges, days + 1))\n                    visited.add(next_oranges)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:38.986615"
+}

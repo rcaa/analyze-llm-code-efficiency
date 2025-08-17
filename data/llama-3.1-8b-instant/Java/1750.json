@@ -1,0 +1,15 @@
+{
+  "id": 1750,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int minimumLength(String s) {\n        int left = 0, right = s.length() - 1;\n        while (left < right) {\n            if (s.charAt(left) == s.charAt(right)) {\n                char c = s.charAt(left);\n                while (left <= right && s.charAt(left) == c) left++;\n                while (left <= right && s.charAt(right) == c) right--;\n            } else {\n                break;\n            }\n        }\n        return right - left + 1;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer approach to find the minimum length of the string after applying the given operations. It maintains two pointers, one at the start and one at the end of the string, and moves them towards each other based on the characters at the current positions. If the characters at the current positions are the same, it moves both pointers until it finds a pair of characters that are different. The time complexity is O(n) because each character is visited at most twice, and the space complexity is O(1) because it only uses a constant amount of space to store the pointers and the character.",
+  "code": "class Solution {\n    public int minimumLength(String s) {\n        int left = 0, right = s.length() - 1;\n        while (left < right) {\n            if (s.charAt(left) == s.charAt(right)) {\n                char c = s.charAt(left);\n                while (left <= right && s.charAt(left) == c) left++;\n                while (left <= right && s.charAt(right) == c) right--;\n            } else {\n                break;\n            }\n        }\n        return right - left + 1;\n    }\n}",
+  "timestamp": "2025-08-06T01:41:10.743644",
+  "code_extracted_previous": "class Solution {\n    public int minimumLength(String s) {\n        int left = 0, right = s.length() - 1;\n        while (left < right) {\n            if (s.charAt(left) == s.charAt(right)) {\n                char c = s.charAt(left);\n                while (left <= right && s.charAt(left) == c) left++;\n                while (left <= right && s.charAt(right) == c) right--;\n            } else {\n                break;\n            }\n        }\n        return right - left + 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.044504"
+}

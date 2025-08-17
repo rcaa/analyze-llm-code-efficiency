@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (x > target) return 1;\n        \n        int res = INT_MAX;\n        long long a = 1;\n        for (int i = 30; i >= 0; --i) {\n            if ((target - a) % x == 0) {\n                res = min(res, i + (target - a) / x);\n            }\n            a *= x;\n        }\n        \n        return res + 1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(target))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a greedy approach to find the minimum number of operations required to express the target using the given number x and basic arithmetic operators. It iterates through powers of x to find the closest value to the target and calculates the minimum number of operations needed.",
+  "code": "class Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (x > target) return 1;\n        \n        int res = INT_MAX;\n        long long a = 1;\n        for (int i = 30; i >= 0; --i) {\n            if ((target - a) % x == 0) {\n                res = min(res, i + (target - a) / x);\n            }\n            a *= x;\n        }\n        \n        return res + 1;\n    }\n};",
+  "timestamp": "2025-08-06T02:28:14.882828",
+  "code_extracted_previous": "class Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (x > target) return 1;\n        \n        int res = INT_MAX;\n        long long a = 1;\n        for (int i = 30; i >= 0; --i) {\n            if ((target - a) % x == 0) {\n                res = min(res, i + (target - a) / x);\n            }\n            a *= x;\n        }\n        \n        return res + 1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.121207"
+}

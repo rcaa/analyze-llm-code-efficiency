@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1, cnt = 9, start = 1;\n        while (n > len * cnt) {\n            n -= len * cnt;\n            len++;\n            cnt *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string num = to_string(start);\n        return num[(n - 1) % len] - '0';\n    }\n};\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Identify the digit-length block containing the nth digit, compute the exact number and the digit within that number using arithmetic, avoiding full sequence generation.",
+  "code": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1, cnt = 9, start = 1;\n        while (n > len * cnt) {\n            n -= len * cnt;\n            len++;\n            cnt *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string num = to_string(start);\n        return num[(n - 1) % len] - '0';\n    }\n};",
+  "timestamp": "2025-08-06T02:30:00.314857",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long len = 1, cnt = 9, start = 1;\n        while (n > len * cnt) {\n            n -= len * cnt;\n            len++;\n            cnt *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / len;\n        string num = to_string(start);\n        return num[(n - 1) % len] - '0';\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.074316"
+}

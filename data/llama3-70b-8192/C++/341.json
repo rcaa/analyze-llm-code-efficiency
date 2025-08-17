@@ -1,0 +1,15 @@
+{
+  "id": 341,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        flatten(nestedList);\n    }\n    \n    int next() {\n        return vals.front(), vals.pop_front();\n    }\n    \n    bool hasNext() {\n        return !vals.empty();\n    }\n\nprivate:\n    list<int> vals;\n    void flatten(vector<NestedInteger> &nestedList) {\n        for (auto &ni : nestedList) {\n            if (ni.isInteger()) {\n                vals.push_back(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a recursive approach to flatten the nested list and store the integers in a list. The hasNext and next methods are then used to iterate over the flattened list.",
+  "code": "class NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        flatten(nestedList);\n    }\n    \n    int next() {\n        return vals.front(), vals.pop_front();\n    }\n    \n    bool hasNext() {\n        return !vals.empty();\n    }\n\nprivate:\n    list<int> vals;\n    void flatten(vector<NestedInteger> &nestedList) {\n        for (auto &ni : nestedList) {\n            if (ni.isInteger()) {\n                vals.push_back(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n};",
+  "timestamp": "2025-08-05T16:01:46.043458",
+  "code_extracted_previous": "class NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        flatten(nestedList);\n    }\n    \n    int next() {\n        return vals.front(), vals.pop_front();\n    }\n    \n    bool hasNext() {\n        return !vals.empty();\n    }\n\nprivate:\n    list<int> vals;\n    void flatten(vector<NestedInteger> &nestedList) {\n        for (auto &ni : nestedList) {\n            if (ni.isInteger()) {\n                vals.push_back(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:36.788518"
+}

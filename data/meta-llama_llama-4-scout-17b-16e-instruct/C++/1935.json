@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> broken(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        stringstream ss(text);\n        string word;\n        while (ss >> word) {\n            bool valid = true;\n            for (char c : word) {\n                if (broken.count(c)) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) count++;\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution uses an unordered_set to store broken letters for O(1) lookup. It then iterates through each word in the text, checking if any characters are in the broken set. If a word is valid, it increments the count. This approach minimizes unnecessary iterations and uses efficient data structures.",
+  "code": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> broken(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        stringstream ss(text);\n        string word;\n        while (ss >> word) {\n            bool valid = true;\n            for (char c : word) {\n                if (broken.count(c)) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) count++;\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T14:43:57.301872",
+  "code_extracted_previous": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> broken(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        stringstream ss(text);\n        string word;\n        while (ss >> word) {\n            bool valid = true;\n            for (char c : word) {\n                if (broken.count(c)) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) count++;\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.893790"
+}

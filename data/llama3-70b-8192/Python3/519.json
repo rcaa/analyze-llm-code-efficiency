@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n```\nimport random\n\nclass Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m, self.n = m, n\n        self.total = m * n\n        self.mat = [[0]*n for _ in range(m)]\n\n    def flip(self) -> List[int]:\n        idx = random.randint(0, self.total - 1)\n        self.total -= 1\n        m, n = idx // self.n, idx % self.n\n        while self.mat[m][n] == 1:\n            idx = (idx + 1) % (self.m * self.n)\n            m, n = idx // self.n, idx % self.n\n        self.mat[m][n] = 1\n        return [m, n]\n\n    def reset(self) -> None:\n        self.total = self.m * self.n\n        for i in range(self.m):\n            for j in range(self.n):\n                self.mat[i][j] = 0\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(m*n)\nenergy implications: LOW\nexplanation: The solution uses a 2D matrix to store the state of the grid and a counter to keep track of the remaining zeros. The flip function generates a random index, marks the corresponding cell as 1, and updates the counter. The reset function resets the counter and the matrix.",
+  "code": "class Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m, self.n = m, n\n        self.total = m * n\n        self.mat = [[0]*n for _ in range(m)]\n\n    def flip(self) -> List[int]:\n        idx = random.randint(0, self.total - 1)\n        self.total -= 1\n        m, n = idx // self.n, idx % self.n\n        while self.mat[m][n] == 1:\n            idx = (idx + 1) % (self.m * self.n)\n            m, n = idx // self.n, idx % self.n\n        self.mat[m][n] = 1\n        return [m, n]\n\n    def reset(self) -> None:\n        self.total = self.m * self.n\n        for i in range(self.m):\n            for j in range(self.n):\n                self.mat[i][j] = 0",
+  "timestamp": "2025-08-05T14:54:31.051419",
+  "code_extracted_previous": "import random\n\nclass Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m, self.n = m, n\n        self.total = m * n\n        self.mat = [[0]*n for _ in range(m)]\n\n    def flip(self) -> List[int]:\n        idx = random.randint(0, self.total - 1)\n        self.total -= 1\n        m, n = idx // self.n, idx % self.n\n        while self.mat[m][n] == 1:\n            idx = (idx + 1) % (self.m * self.n)\n            m, n = idx // self.n, idx % self.n\n        self.mat[m][n] = 1\n        return [m, n]\n\n    def reset(self) -> None:\n        self.total = self.m * self.n\n        for i in range(self.m):\n            for j in range(self.n):\n                self.mat[i][j] = 0",
+  "starter_ok": false,
+  "starter_check_reason": "assinatura divergente: esperada '__init__(self, m, n)'",
+  "reavaliado_em": "2025-08-17T12:23:39.916046"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1702,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution {\n    public String maximumBinaryString(String binary) {\n        int ones = 0, zeros = 0;\n        for (char c : binary.toCharArray()) {\n            if (c == '0') zeros++;\n            else ones++;\n        }\n        StringBuilder res = new StringBuilder();\n        while (zeros > 0) {\n            res.append('1');\n            zeros--;\n        }\n        res.append(ones, 0, ones);\n        while (zeros > 0) {\n            res.insert(0, '0');\n            zeros--;\n        }\n        return res.toString();\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over the input string to count the number of '0's and '1's. Then, it constructs the maximum binary string by appending '1's, followed by the counted '1's, and finally inserting '0's at the beginning. This approach ensures the maximum binary string is constructed in a single pass, making it efficient.",
+  "code": "class Solution {\n    public String maximumBinaryString(String binary) {\n        int ones = 0, zeros = 0;\n        for (char c : binary.toCharArray()) {\n            if (c == '0') zeros++;\n            else ones++;\n        }\n        StringBuilder res = new StringBuilder();\n        while (zeros > 0) {\n            res.append('1');\n            zeros--;\n        }\n        res.append(ones, 0, ones);\n        while (zeros > 0) {\n            res.insert(0, '0');\n            zeros--;\n        }\n        return res.toString();\n    }\n}",
+  "timestamp": "2025-08-06T00:55:39.161115",
+  "code_extracted_previous": "public String maximumBinaryString(String binary) {\n        int ones = 0, zeros = 0;\n        for (char c : binary.toCharArray()) {\n            if (c == '0') zeros++;\n            else ones++;\n        }\n        StringBuilder res = new StringBuilder();\n        while (zeros > 0) {\n            res.append('1');\n            zeros--;\n        }\n        res.append(ones, 0, ones);\n        while (zeros > 0) {\n            res.insert(0, '0');\n            zeros--;\n        }\n        return res.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.046206"
+}

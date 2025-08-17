@@ -1,0 +1,15 @@
+{
+  "id": 3007,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def findMaximumNumber(self, k: int, x: int) -> int:\n        def count_set_bits(n, x):\n            count = 0\n            while n:\n                if n % (2 ** x) >= 2 ** (x - 1):\n                    count += 1\n                n //= 2 ** x\n            return count\n        \n        accumulated_price = 0\n        num = 0\n        while accumulated_price <= k:\n            num += 1\n            accumulated_price += count_set_bits(num, x)\n        return num - 1\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a helper function to count the set bits at positions x, 2x, 3x, etc. in the binary representation of a number. It then iterates from 1 to num, calculating the accumulated price and returning the greatest cheap number.",
+  "code": "class Solution:\n    def findMaximumNumber(self, k: int, x: int) -> int:\n        def count_set_bits(n, x):\n            count = 0\n            while n:\n                if n % (2 ** x) >= 2 ** (x - 1):\n                    count += 1\n                n //= 2 ** x\n            return count\n        \n        accumulated_price = 0\n        num = 0\n        while accumulated_price <= k:\n            num += 1\n            accumulated_price += count_set_bits(num, x)\n        return num - 1",
+  "timestamp": "2025-08-05T13:46:32.914616",
+  "code_extracted_previous": "class Solution:\n    def findMaximumNumber(self, k: int, x: int) -> int:\n        def count_set_bits(n, x):\n            count = 0\n            while n:\n                if n % (2 ** x) >= 2 ** (x - 1):\n                    count += 1\n                n //= 2 ** x\n            return count\n        \n        accumulated_price = 0\n        num = 0\n        while accumulated_price <= k:\n            num += 1\n            accumulated_price += count_set_bits(num, x)\n        return num - 1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.470638"
+}

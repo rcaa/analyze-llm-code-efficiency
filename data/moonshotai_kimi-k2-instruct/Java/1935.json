@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        boolean[] broken = new boolean[26];\n        for (char c : brokenLetters.toCharArray()) {\n            broken[c - 'a'] = true;\n        }\n        int count = 0;\n        for (String word : text.split(\" \")) {\n            boolean ok = true;\n            for (char c : word.toCharArray()) {\n                if (broken[c - 'a']) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) count++;\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N + M)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a boolean array to mark broken letters for O(1) lookup. Splits the text into words and checks each character in each word against the broken set. Early-exit on first broken character minimizes work.",
+  "code": "class Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        boolean[] broken = new boolean[26];\n        for (char c : brokenLetters.toCharArray()) {\n            broken[c - 'a'] = true;\n        }\n        int count = 0;\n        for (String word : text.split(\" \")) {\n            boolean ok = true;\n            for (char c : word.toCharArray()) {\n                if (broken[c - 'a']) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) count++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T02:30:51.651783",
+  "code_extracted_previous": "class Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        boolean[] broken = new boolean[26];\n        for (char c : brokenLetters.toCharArray()) {\n            broken[c - 'a'] = true;\n        }\n        int count = 0;\n        for (String word : text.split(\" \")) {\n            boolean ok = true;\n            for (char c : word.toCharArray()) {\n                if (broken[c - 'a']) {\n                    ok = false;\n                    break;\n                }\n            }\n            if (ok) count++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.685260"
+}

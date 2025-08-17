@@ -1,0 +1,15 @@
+{
+  "id": 1422,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxScore(string s) {\n        int n = s.size();\n        int ones = 0, zeros = 0;\n        for (int i = 0; i < n; i++) {\n            if (s[i] == '1') ones++;\n        }\n        int max_score = 0;\n        for (int i = 0; i < n - 1; i++) {\n            zeros += s[i] == '0';\n            max_score = max(max_score, ones - zeros);\n        }\n        return max_score;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We first count the total number of ones in the string. Then, we iterate through the string, counting the number of zeros in the left substring and updating the maximum score.",
+  "code": "class Solution {\npublic:\n    int maxScore(string s) {\n        int n = s.size();\n        int ones = 0, zeros = 0;\n        for (int i = 0; i < n; i++) {\n            if (s[i] == '1') ones++;\n        }\n        int max_score = 0;\n        for (int i = 0; i < n - 1; i++) {\n            zeros += s[i] == '0';\n            max_score = max(max_score, ones - zeros);\n        }\n        return max_score;\n    }\n};",
+  "timestamp": "2025-08-05T16:36:42.236280",
+  "code_extracted_previous": "public:\n    int maxScore(string s) {\n        int n = s.size();\n        int ones = 0, zeros = 0;\n        for (int i = 0; i < n; i++) {\n            if (s[i] == '1') ones++;\n        }\n        int max_score = 0;\n        for (int i = 0; i < n - 1; i++) {\n            zeros += s[i] == '0';\n            max_score = max(max_score, ones - zeros);\n        }\n        return max_score;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.605673"
+}

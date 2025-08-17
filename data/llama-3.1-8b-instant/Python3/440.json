@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```class Solution:\n    def findKthNumber(self, n: int, k: int) -> int:\n        node = 1\n        k -= 1\n        while k > 0:\n            children = self.countChildren(node, n)\n            if k >= children:\n                k -= children\n                node *= 10\n            else:\n                node += k // (n - node + 1)\n                k = 1\n        return node\n    def countChildren(self, node, n):\n        count = 0\n        node_str = str(node)\n        for i in range(len(node_str)):\n            if i == len(node_str) - 1:\n                count += n - int(node_str[:i+1]) + 1\n            else:\n                count += int(str(node_str[:i+1]) + '9') - int(node_str[:i+1])\n        return count\n```\n\nefficiency: HIGH\ntime complexity: O(log n + log k)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution:\n    def findKthNumber(self, n: int, k: int) -> int:\n        node = 1\n        k -= 1\n        while k > 0:\n            children = self.countChildren(node, n)\n            if k >= children:\n                k -= children\n                node *= 10\n            else:\n                node += k // (n - node + 1)\n                k = 1\n        return node\n    def countChildren(self, node, n):\n        count = 0\n        node_str = str(node)\n        for i in range(len(node_str)):\n            if i == len(node_str) - 1:\n                count += n - int(node_str[:i+1]) + 1\n            else:\n                count += int(str(node_str[:i+1]) + '9') - int(node_str[:i+1])\n        return count",
+  "timestamp": "2025-08-06T01:12:59.631636",
+  "code_extracted_previous": "def findKthNumber(self, n: int, k: int) -> int:\n        node = 1\n        k -= 1\n        while k > 0:\n            children = self.countChildren(node, n)\n            if k >= children:\n                k -= children\n                node *= 10\n            else:\n                node += k // (n - node + 1)\n                k = 1\n        return node\n    def countChildren(self, node, n):\n        count = 0\n        node_str = str(node)\n        for i in range(len(node_str)):\n            if i == len(node_str) - 1:\n                count += n - int(node_str[:i+1]) + 1\n            else:\n                count += int(str(node_str[:i+1]) + '9') - int(node_str[:i+1])\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.300525"
+}

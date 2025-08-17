@@ -1,0 +1,15 @@
+{
+  "id": 3455,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int shortestMatchingSubstring(String s, String p) {\n        int minLen = Integer.MAX_VALUE;\n        int idx1 = p.indexOf('*');\n        int idx2 = p.lastIndexOf('*');\n        String prefix = p.substring(0, idx1);\n        String suffix = p.substring(idx2 + 1);\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j <= s.length(); j++) {\n                String substr = s.substring(i, j);\n                if (substr.startsWith(prefix) && substr.endsWith(suffix)) {\n                    minLen = Math.min(minLen, substr.length());\n                }\n            }\n        }\n        return minLen == Integer.MAX_VALUE ? -1 : minLen;\n    }\n}\nefficiency: MEDIUM\ntime complexity: O(n^3)\nspace complexity: O(1)\nenergy implications: MEDIUM\nexplanation: The solution uses a brute-force approach to find the shortest matching substring by checking all possible substrings of the input string. It uses the prefix and suffix of the pattern string to filter out non-matching substrings, reducing the search space. However, the time complexity remains cubic due to the nested loops.",
+  "code": "class Solution {\n    public int shortestMatchingSubstring(String s, String p) {\n        int minLen = Integer.MAX_VALUE;\n        int idx1 = p.indexOf('*');\n        int idx2 = p.lastIndexOf('*');\n        String prefix = p.substring(0, idx1);\n        String suffix = p.substring(idx2 + 1);\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j <= s.length(); j++) {\n                String substr = s.substring(i, j);\n                if (substr.startsWith(prefix) && substr.endsWith(suffix)) {\n                    minLen = Math.min(minLen, substr.length());\n                }\n            }\n        }\n        return minLen == Integer.MAX_VALUE ? -1 : minLen;\n    }\n}",
+  "timestamp": "2025-08-06T01:23:38.117756",
+  "code_extracted_previous": "class Solution {\n    public int shortestMatchingSubstring(String s, String p) {\n        int minLen = Integer.MAX_VALUE;\n        int idx1 = p.indexOf('*');\n        int idx2 = p.lastIndexOf('*');\n        String prefix = p.substring(0, idx1);\n        String suffix = p.substring(idx2 + 1);\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j <= s.length(); j++) {\n                String substr = s.substring(i, j);\n                if (substr.startsWith(prefix) && substr.endsWith(suffix)) {\n                    minLen = Math.min(minLen, substr.length());\n                }\n            }\n        }\n        return minLen == Integer.MAX_VALUE ? -1 : minLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.182231"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        vector<int> nums;\n        int i = 1;\n        while (pow(i, x) <= n) {\n            nums.push_back(pow(i, x));\n            i++;\n        }\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int num : nums) {\n            for (int j = n; j >= num; j--) {\n                dp[j] = (dp[j] + dp[j - num]) % (int)(1e9 + 7);\n            }\n        }\n        return dp[n];\n    }\n};\nefficiency: HIGH\ntime complexity: O(n * number of nums)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently count the number of ways to express n as the sum of the xth power of unique positive integers. The key insight is to pre-calculate the xth powers of integers up to a certain limit and then use a bottom-up DP approach to fill up the dp array, where dp[j] represents the number of ways to express j as the sum of the xth power of unique positive integers. The final result is returned modulo 10^9 + 7 to avoid overflow.\n```",
+  "code": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        vector<int> nums;\n        int i = 1;\n        while (pow(i, x) <= n) {\n            nums.push_back(pow(i, x));\n            i++;\n        }\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int num : nums) {\n            for (int j = n; j >= num; j--) {\n                dp[j] = (dp[j] + dp[j - num]) % (int)(1e9 + 7);\n            }\n        }\n        return dp[n];\n    }\n};\nefficiency: HIGH\ntime complexity: O(n * number of nums)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently count the number of ways to express n as the sum of the xth power of unique positive integers. The key insight is to pre-calculate the xth powers of integers up to a certain limit and then use a bottom-up DP approach to fill up the dp array, where dp[j] represents the number of ways to express j as the sum of the xth power of unique positive integers. The final result is returned modulo 10^9 + 7 to avoid overflow.",
+  "timestamp": "2025-08-05T14:28:05.299443",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        vector<int> nums;\n        int i = 1;\n        while (pow(i, x) <= n) {\n            nums.push_back(pow(i, x));\n            i++;\n        }\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int num : nums) {\n            for (int j = n; j >= num; j--) {\n                dp[j] = (dp[j] + dp[j - num]) % (int)(1e9 + 7);\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.372281"
+}

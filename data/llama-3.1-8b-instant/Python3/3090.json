@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```class Solution:\n    def maximumLengthSubstring(self, s: str) -> int:\n        max_len = 0\n        left = 0\n        char_count = {}\n        \n        for right in range(len(s)):\n            char_count[s[right]] = char_count.get(s[right], 0) + 1\n            \n            while len(char_count) > 2 or (len(char_count) == 2 and list(char_count.values())[0] > list(char_count.values())[1]):\n                char_count[s[left]] -= 1\n                if char_count[s[left]] == 0:\n                    del char_count[s[left]]\n                left += 1\n            \n            max_len = max(max_len, right - left + 1)\n        \n        return max_len\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, m))\nenergy implications: LOW",
+  "code": "class Solution:\n    def maximumLengthSubstring(self, s: str) -> int:\n        max_len = 0\n        left = 0\n        char_count = {}\n        \n        for right in range(len(s)):\n            char_count[s[right]] = char_count.get(s[right], 0) + 1\n            \n            while len(char_count) > 2 or (len(char_count) == 2 and list(char_count.values())[0] > list(char_count.values())[1]):\n                char_count[s[left]] -= 1\n                if char_count[s[left]] == 0:\n                    del char_count[s[left]]\n                left += 1\n            \n            max_len = max(max_len, right - left + 1)\n        \n        return max_len",
+  "timestamp": "2025-08-05T14:49:17.005638",
+  "code_extracted_previous": "def maximumLengthSubstring(self, s: str) -> int:\n        max_len = 0\n        left = 0\n        char_count = {}\n        \n        for right in range(len(s)):\n            char_count[s[right]] = char_count.get(s[right], 0) + 1\n            \n            while len(char_count) > 2 or (len(char_count) == 2 and list(char_count.values())[0] > list(char_count.values())[1]):\n                char_count[s[left]] -= 1\n                if char_count[s[left]] == 0:\n                    del char_count[s[left]]\n                left += 1\n            \n            max_len = max(max_len, right - left + 1)\n        \n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.070312"
+}

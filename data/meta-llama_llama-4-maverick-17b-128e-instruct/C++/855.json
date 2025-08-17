@@ -1,0 +1,15 @@
+{
+  "id": 855,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass ExamRoom {\npublic:\n    int n;\n    set<int> seats;\n\n    ExamRoom(int n) : n(n) {}\n\n    int seat() {\n        if (seats.empty()) {\n            seats.insert(0);\n            return 0;\n        }\n\n        int maxDist = *seats.begin();\n        int prev = -1;\n        int res = 0;\n\n        for (int seat : seats) {\n            if (prev != -1) {\n                int dist = (seat - prev) / 2;\n                if (dist > maxDist) {\n                    maxDist = dist;\n                    res = prev + dist;\n                }\n            }\n            prev = seat;\n        }\n\n        int distToEnd = n - 1 - *seats.rbegin();\n        if (distToEnd > maxDist) {\n            res = n - 1;\n        }\n\n        seats.insert(res);\n        return res;\n    }\n\n    void leave(int p) {\n        seats.erase(p);\n    }\n};\n\nsolution: The above code implements the ExamRoom class.\nefficiency: HIGH\ntime complexity: O(log n) for seat() and O(log n) for leave() due to set operations.\nspace complexity: O(n) for storing occupied seats in the set.\nenergy implications: LOW\nexplanation: The ExamRoom class uses a set to store occupied seats. The seat() function iterates over the set to find the maximum distance between two occupied seats or between an occupied seat and the room's end. It then inserts the new seat into the set. The leave() function simply removes the seat from the set.",
+  "code": "The above code implements the ExamRoom class.",
+  "timestamp": "2025-08-05T14:09:52.697942",
+  "code_extracted_previous": "The above code implements the ExamRoom class.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:45.863327"
+}

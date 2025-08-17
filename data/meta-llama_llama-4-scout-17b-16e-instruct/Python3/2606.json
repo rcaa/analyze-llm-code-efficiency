@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        char_values = {char: val for char, val in zip(chars, vals)}\n        for i in range(26):\n            char_values[chr(ord('a') + i)] = char_values.get(chr(ord('a') + i), i + 1)\n\n        max_current = max_global = 0\n        for char in s:\n            max_current = max(0, max_current + char_values[char])\n            max_global = max(max_global, max_current)\n        return max_global\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution initializes a dictionary to store character values, then iterates through the string to find the maximum cost substring using Kadane's algorithm.",
+  "code": "class Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        char_values = {char: val for char, val in zip(chars, vals)}\n        for i in range(26):\n            char_values[chr(ord('a') + i)] = char_values.get(chr(ord('a') + i), i + 1)\n\n        max_current = max_global = 0\n        for char in s:\n            max_current = max(0, max_current + char_values[char])\n            max_global = max(max_global, max_current)\n        return max_global",
+  "timestamp": "2025-08-05T13:33:19.124160",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        char_values = {char: val for char, val in zip(chars, vals)}\n        for i in range(26):\n            char_values[chr(ord('a') + i)] = char_values.get(chr(ord('a') + i), i + 1)\n\n        max_current = max_global = 0\n        for char in s:\n            max_current = max(0, max_current + char_values[char])\n            max_global = max(max_global, max_current)\n        return max_global",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.358011"
+}

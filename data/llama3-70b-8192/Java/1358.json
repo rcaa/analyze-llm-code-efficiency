@@ -1,0 +1,15 @@
+{
+  "id": 1358,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int numberOfSubstrings(String s) {\n        int a = 0, b = 0, c = 0, res = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == 'a') a++;\n            if (s.charAt(i) == 'b') b++;\n            if (s.charAt(i) == 'c') c++;\n            res += (a > 0 && b > 0 && c > 0) ? 1 : 0;\n            if (i >= 3) {\n                if (s.charAt(i - 3) == 'a') a--;\n                if (s.charAt(i - 3) == 'b') b--;\n                if (s.charAt(i - 3) == 'c') c--;\n            }\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach to count the number of substrings containing at least one occurrence of all characters a, b, and c. It maintains a count of each character and updates the result accordingly.",
+  "code": "class Solution {\n    public int numberOfSubstrings(String s) {\n        int a = 0, b = 0, c = 0, res = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == 'a') a++;\n            if (s.charAt(i) == 'b') b++;\n            if (s.charAt(i) == 'c') c++;\n            res += (a > 0 && b > 0 && c > 0) ? 1 : 0;\n            if (i >= 3) {\n                if (s.charAt(i - 3) == 'a') a--;\n                if (s.charAt(i - 3) == 'b') b--;\n                if (s.charAt(i - 3) == 'c') c--;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T15:01:50.600339",
+  "code_extracted_previous": "class Solution {\n    public int numberOfSubstrings(String s) {\n        int a = 0, b = 0, c = 0, res = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == 'a') a++;\n            if (s.charAt(i) == 'b') b++;\n            if (s.charAt(i) == 'c') c++;\n            res += (a > 0 && b > 0 && c > 0) ? 1 : 0;\n            if (i >= 3) {\n                if (s.charAt(i - 3) == 'a') a--;\n                if (s.charAt(i - 3) == 'b') b--;\n                if (s.charAt(i - 3) == 'c') c--;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.505368"
+}

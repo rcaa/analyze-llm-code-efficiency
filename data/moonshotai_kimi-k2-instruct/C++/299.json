@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        vector<int> freq(10, 0);\n        \n        for (int i = 0; i < secret.size(); ++i) {\n            if (secret[i] == guess[i]) {\n                ++bulls;\n            } else {\n                ++freq[secret[i] - '0'];\n            }\n        }\n        \n        for (int i = 0; i < guess.size(); ++i) {\n            if (secret[i] != guess[i] && freq[guess[i] - '0'] > 0) {\n                ++cows;\n                --freq[guess[i] - '0'];\n            }\n        }\n        \n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass to count bulls and build frequency array of non-bull digits in secret; second pass over guess counts cows by decrementing frequencies. Constant extra space and linear time.",
+  "code": "class Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        vector<int> freq(10, 0);\n        \n        for (int i = 0; i < secret.size(); ++i) {\n            if (secret[i] == guess[i]) {\n                ++bulls;\n            } else {\n                ++freq[secret[i] - '0'];\n            }\n        }\n        \n        for (int i = 0; i < guess.size(); ++i) {\n            if (secret[i] != guess[i] && freq[guess[i] - '0'] > 0) {\n                ++cows;\n                --freq[guess[i] - '0'];\n            }\n        }\n        \n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};",
+  "timestamp": "2025-08-06T02:29:39.259668",
+  "code_extracted_previous": "class Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        vector<int> freq(10, 0);\n        \n        for (int i = 0; i < secret.size(); ++i) {\n            if (secret[i] == guess[i]) {\n                ++bulls;\n            } else {\n                ++freq[secret[i] - '0'];\n            }\n        }\n        \n        for (int i = 0; i < guess.size(); ++i) {\n            if (secret[i] != guess[i] && freq[guess[i] - '0'] > 0) {\n                ++cows;\n                --freq[guess[i] - '0'];\n            }\n        }\n        \n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.865083"
+}

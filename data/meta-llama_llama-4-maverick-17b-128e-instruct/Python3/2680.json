@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maximumOr(self, nums: List[int], k: int) -> int:\n        prefix = [0] * (len(nums) + 1)\n        for i in range(len(nums)):\n            prefix[i + 1] = prefix[i] | nums[i]\n        \n        suffix = [0] * (len(nums) + 1)\n        for i in range(len(nums) - 1, -1, -1):\n            suffix[i] = suffix[i + 1] | nums[i]\n        \n        res = 0\n        for i in range(len(nums)):\n            res = max(res, (nums[i] << k) | prefix[i] | suffix[i + 1])\n        return res\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses prefix and suffix arrays to efficiently compute the bitwise OR of all numbers before and after each index, then iterates through the array to find the maximum possible value by multiplying each number by 2^k and combining it with the prefix and suffix OR values.",
+  "code": "def maximumOr(self, nums: List[int], k: int) -> int:\n        prefix = [0] * (len(nums) + 1)\n        for i in range(len(nums)):\n            prefix[i + 1] = prefix[i] | nums[i]\n        \n        suffix = [0] * (len(nums) + 1)\n        for i in range(len(nums) - 1, -1, -1):\n            suffix[i] = suffix[i + 1] | nums[i]\n        \n        res = 0\n        for i in range(len(nums)):\n            res = max(res, (nums[i] << k) | prefix[i] | suffix[i + 1])\n        return res\n```",
+  "timestamp": "2025-08-05T13:34:03.193302",
+  "code_extracted_previous": "class Solution:\n    def maximumOr(self, nums: List[int], k: int) -> int:\n        prefix = [0] * (len(nums) + 1)\n        for i in range(len(nums)):\n            prefix[i + 1] = prefix[i] | nums[i]\n        \n        suffix = [0] * (len(nums) + 1)\n        for i in range(len(nums) - 1, -1, -1):\n            suffix[i] = suffix[i + 1] | nums[i]\n        \n        res = 0\n        for i in range(len(nums)):\n            res = max(res, (nums[i] << k) | prefix[i] | suffix[i + 1])\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.986309"
+}

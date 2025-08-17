@@ -1,0 +1,15 @@
+{
+  "id": 207,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {\n        vector<int> graph[numCourses];\n        vector<int> visited(numCourses, 0);\n        for (auto p : prerequisites) {\n            graph[p[1]].push_back(p[0]);\n        }\n        for (int i = 0; i < numCourses; i++) {\n            if (!dfs(graph, visited, i)) return false;\n        }\n        return true;\n    }\n    bool dfs(vector<vector<int>>& graph, vector<int>& visited, int i) {\n        if (visited[i] == 1) return false;\n        if (visited[i] == 2) return true;\n        visited[i] = 1;\n        for (int j : graph[i]) {\n            if (!dfs(graph, visited, j)) return false;\n        }\n        visited[i] = 2;\n        return true;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N + P)\nspace complexity: O(N + P)\nenergy implications: LOW\nexplanation: This solution uses a depth-first search (DFS) approach to detect cycles in the graph, where N is the number of courses and P is the number of prerequisites.",
+  "code": "class Solution {\npublic:\n    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {\n        vector<int> graph[numCourses];\n        vector<int> visited(numCourses, 0);\n        for (auto p : prerequisites) {\n            graph[p[1]].push_back(p[0]);\n        }\n        for (int i = 0; i < numCourses; i++) {\n            if (!dfs(graph, visited, i)) return false;\n        }\n        return true;\n    }\n    bool dfs(vector<vector<int>>& graph, vector<int>& visited, int i) {\n        if (visited[i] == 1) return false;\n        if (visited[i] == 2) return true;\n        visited[i] = 1;\n        for (int j : graph[i]) {\n            if (!dfs(graph, visited, j)) return false;\n        }\n        visited[i] = 2;\n        return true;\n    }\n};",
+  "timestamp": "2025-08-05T13:57:11.596708",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {\n        vector<int> graph[numCourses];\n        vector<int> visited(numCourses, 0);\n        for (auto p : prerequisites) {\n            graph[p[1]].push_back(p[0]);\n        }\n        for (int i = 0; i < numCourses; i++) {\n            if (!dfs(graph, visited, i)) return false;\n        }\n        return true;\n    }\n    bool dfs(vector<vector<int>>& graph, vector<int>& visited, int i) {\n        if (visited[i] == 1) return false;\n        if (visited[i] == 2) return true;\n        visited[i] = 1;\n        for (int j : graph[i]) {\n            if (!dfs(graph, visited, j)) return false;\n        }\n        visited[i] = 2;\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.363849"
+}

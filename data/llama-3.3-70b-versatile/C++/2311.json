@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int n = s.size();\n        int res = 0;\n        for (int mask = 0; mask < (1 << n); mask++) {\n            string sub;\n            for (int i = 0; i < n; i++) {\n                if ((mask & (1 << i)) != 0) {\n                    sub += s[i];\n                }\n            }\n            int num = stoi(sub, 0, 2);\n            if (num <= k) {\n                res = max(res, (int)sub.size());\n            }\n        }\n        return res;\n    }\n};\n\nefficiency: LOW\ntime complexity: O(2^n * n)\nspace complexity: O(n)\nenergy implications: HIGH\nexplanation: The solution uses a bitmask to generate all possible subsequences of the binary string, then checks if the decimal value of each subsequence is less than or equal to k, updating the result with the maximum length found.",
+  "code": "class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int n = s.size();\n        int res = 0;\n        for (int mask = 0; mask < (1 << n); mask++) {\n            string sub;\n            for (int i = 0; i < n; i++) {\n                if ((mask & (1 << i)) != 0) {\n                    sub += s[i];\n                }\n            }\n            int num = stoi(sub, 0, 2);\n            if (num <= k) {\n                res = max(res, (int)sub.size());\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:00:20.670723",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int n = s.size();\n        int res = 0;\n        for (int mask = 0; mask < (1 << n); mask++) {\n            string sub;\n            for (int i = 0; i < n; i++) {\n                if ((mask & (1 << i)) != 0) {\n                    sub += s[i];\n                }\n            }\n            int num = stoi(sub, 0, 2);\n            if (num <= k) {\n                res = max(res, (int)sub.size());\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.239452"
+}

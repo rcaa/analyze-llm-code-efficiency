@@ -1,0 +1,15 @@
+{
+  "id": 1825,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass MKAverage {\npublic:\n    MKAverage(int m, int k) : m(m), k(k), sum(0) {\n        lo = new multiset<int>();\n        mid = new multiset<int>();\n        hi = new multiset<int>();\n    }\n    \n    void addElement(int num) {\n        if (dq.size() == m) {\n            int front = dq.front();\n            dq.pop_front();\n            if (lo->count(front)) {\n                lo->erase(lo->find(front));\n            } else if (mid->count(front)) {\n                mid->erase(mid->find(front));\n                sum -= front;\n            } else {\n                hi->erase(hi->find(front));\n            }\n        }\n        dq.push_back(num);\n        if (lo->size() == 0 || num <= *lo->rbegin()) {\n            lo->insert(num);\n        } else if (hi->size() == 0 || num >= *hi->begin()) {\n            hi->insert(num);\n        } else {\n            mid->insert(num);\n            sum += num;\n        }\n        rebalance();\n    }\n    \n    int calculateMKAverage() {\n        if (dq.size() < m) return -1;\n        return sum / mid->size();\n    }\n\nprivate:\n    int m, k;\n    long long sum;\n    deque<int> dq;\n    multiset<int>* lo;\n    multiset<int>* mid;\n    multiset<int>* hi;\n\n    void rebalance() {\n        while (lo->size() > k) {\n            int val = *lo->rbegin();\n            lo->erase(lo->find(val));\n            mid->insert(val);\n            sum += val;\n        }\n        while (hi->size() > k) {\n            int val = *hi->begin();\n            hi->erase(hi->find(val));\n            mid->insert(val);\n            sum += val;\n        }\n        while (lo->size() < k && mid->size() > 0) {\n            int val = *mid->begin();\n            mid->erase(mid->begin());\n            sum -= val;\n            lo->insert(val);\n        }\n        while (hi->size() < k && mid->size() > 0) {\n            int val = *mid->rbegin();\n            mid->erase(mid->find(val));\n            sum -= val;\n            hi->insert(val);\n        }\n    }\n};\n\nsolution: The above C++ code implements the MKAverage class.\nefficiency: HIGH\ntime complexity: O(log m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution uses a combination of a deque and three multisets to efficiently maintain the MKAverage. The deque stores the last 'm' elements, and the multisets are used to track the smallest 'k', middle, and largest 'k' elements. The 'rebalance' function ensures that the multisets are updated correctly after adding a new element. This approach allows for efficient calculation of the MKAverage in O(log m) time.",
+  "code": "The above C++ code implements the MKAverage class.",
+  "timestamp": "2025-08-05T14:03:52.116580",
+  "code_extracted_previous": "The above C++ code implements the MKAverage class.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:44.964569"
+}

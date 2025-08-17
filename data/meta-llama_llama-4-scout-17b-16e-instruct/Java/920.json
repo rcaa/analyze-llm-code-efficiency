@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        long MOD = 1L * 1000000007;\n        long[][] dp = new long[goal + 1][n + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            for (int j = 1; j <= Math.min(i, n); j++) {\n                dp[i][j] = (dp[i - 1][j - 1] * (n - j + 1)) % MOD;\n                if (j > k) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j] * (j - k)) % MOD;\n                }\n            }\n        }\n        return (int) dp[goal][n];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(goal * n)\nspace complexity: O(goal * n)\nenergy implications: LOW\nexplanation: Dynamic programming approach to track the number of playlists with a certain number of songs and unique songs played, utilizing memoization to avoid redundant calculations.",
+  "code": "class Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        long MOD = 1L * 1000000007;\n        long[][] dp = new long[goal + 1][n + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            for (int j = 1; j <= Math.min(i, n); j++) {\n                dp[i][j] = (dp[i - 1][j - 1] * (n - j + 1)) % MOD;\n                if (j > k) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j] * (j - k)) % MOD;\n                }\n            }\n        }\n        return (int) dp[goal][n];\n    }\n}",
+  "timestamp": "2025-08-06T02:28:25.335766",
+  "code_extracted_previous": "class Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        long MOD = 1L * 1000000007;\n        long[][] dp = new long[goal + 1][n + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            for (int j = 1; j <= Math.min(i, n); j++) {\n                dp[i][j] = (dp[i - 1][j - 1] * (n - j + 1)) % MOD;\n                if (j > k) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j] * (j - k)) % MOD;\n                }\n            }\n        }\n        return (int) dp[goal][n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.619362"
+}

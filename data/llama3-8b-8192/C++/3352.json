@@ -1,0 +1,15 @@
+{
+  "id": 3352,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int countKReducibleNumbers(string s, int k) {\n        int n = 0, res = 0;\n        for (char c : s) {\n            n = n * 2 + (c - '0');\n        }\n        for (int i = 1; i < n; i++) {\n            int x = i, cnt = 0;\n            while (x > 1) {\n                x = __builtin_popcount(x);\n                cnt++;\n                if (cnt > k) break;\n            }\n            if (x == 1) res++;\n        }\n        return res % (1e9 + 7);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We first convert the binary string to an integer. Then, we iterate over all integers less than the given number and check if they are k-reducible. We use the built-in popcount function to count the set bits in the binary representation of the integer. If the count exceeds k, we break the loop. If the integer becomes 1, we increment the result. Finally, we return the result modulo 10^9 + 7.",
+  "code": "class Solution {\npublic:\n    int countKReducibleNumbers(string s, int k) {\n        int n = 0, res = 0;\n        for (char c : s) {\n            n = n * 2 + (c - '0');\n        }\n        for (int i = 1; i < n; i++) {\n            int x = i, cnt = 0;\n            while (x > 1) {\n                x = __builtin_popcount(x);\n                cnt++;\n                if (cnt > k) break;\n            }\n            if (x == 1) res++;\n        }\n        return res % (1e9 + 7);\n    }\n};",
+  "timestamp": "2025-08-05T15:26:20.986935",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countKReducibleNumbers(string s, int k) {\n        int n = 0, res = 0;\n        for (char c : s) {\n            n = n * 2 + (c - '0');\n        }\n        for (int i = 1; i < n; i++) {\n            int x = i, cnt = 0;\n            while (x > 1) {\n                x = __builtin_popcount(x);\n                cnt++;\n                if (cnt > k) break;\n            }\n            if (x == 1) res++;\n        }\n        return res % (1e9 + 7);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.236997"
+}

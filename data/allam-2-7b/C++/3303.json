@@ -1,0 +1,15 @@
+{
+  "id": 3303,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int minStartingIndex(string s, string pattern) {\n        int n = s.length();\n        int m = pattern.length();\n\n        vector<vector<int>> dp(n + 1, vector<int>(m + 1));\n\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (s[i - 1] == pattern[j - 1]) {\n                    dp[i][j] = j;\n                } else {\n                    dp[i][j] = min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]});\n                }\n            }\n        }\n\n        int result = dp[n][m];\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * m)\nspace complexity: O(n * m)\nenergy implications: LOW\n\nExplanation:\n\nWe use a dynamic programming approach to solve the problem. We create a 2D array (dp) with dimensions (n+1)x(m+1), where n is the length of string s and m is the length of string pattern. We iterate through the strings s and pattern to fill the dp array. If the characters at positions i-1 in s and j-1 in pattern are equal, we set dp[i][j] to j. Otherwise, we find the minimum of the three following values: dp[i-1][j], dp[i][j-1], and dp[i-1][j-1].\n\nFinally, we return the value at dp[n][m], which represents the minimum number of changes needed to make s[i] and pattern[j] equal. ",
+  "code": "class Solution {\npublic:\n    int minStartingIndex(string s, string pattern) {\n        int n = s.length();\n        int m = pattern.length();\n\n        vector<vector<int>> dp(n + 1, vector<int>(m + 1));\n\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (s[i - 1] == pattern[j - 1]) {\n                    dp[i][j] = j;\n                } else {\n                    dp[i][j] = min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]});\n                }\n            }\n        }\n\n        int result = dp[n][m];\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T16:15:24.911660",
+  "code_extracted_previous": "public:\n    int minStartingIndex(string s, string pattern) {\n        int n = s.length();\n        int m = pattern.length();\n\n        vector<vector<int>> dp(n + 1, vector<int>(m + 1));\n\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= m; j++) {\n                if (s[i - 1] == pattern[j - 1]) {\n                    dp[i][j] = j;\n                } else {\n                    dp[i][j] = min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]});\n                }\n            }\n        }\n\n        int result = dp[n][m];\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.705555"
+}

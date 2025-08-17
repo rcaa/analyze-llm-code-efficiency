@@ -1,0 +1,15 @@
+{
+  "id": 1900,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public int[] earliestAndLatest(int n, int firstPlayer, int secondPlayer) {\n        int[] result = new int[2];\n        int earliest = (int) Math.ceil((double) (Math.log(n) / Math.log(2)));\n        int latest = earliest;\n        while (earliest <= latest) {\n            if ((firstPlayer + latest - 1) % n == secondPlayer % n) {\n                result[0] = earliest;\n                break;\n            }\n            latest++;\n        }\n        result[1] = latest;\n        return result;\n    }\n}\n```\nsolution: \n```java\nclass Solution {\n    public int[] earliestAndLatest(int n, int firstPlayer, int secondPlayer) {\n        int[] result = new int[2];\n        int earliest = (int) Math.ceil((double) (Math.log(n) / Math.log(2)));\n        int latest = earliest;\n        while (earliest <= latest) {\n            if ((firstPlayer + latest - 1) % n == secondPlayer % n) {\n                result[0] = earliest;\n                break;\n            }\n            latest++;\n        }\n        result[1] = latest;\n        return result;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution utilizes binary search to efficiently determine the earliest and latest rounds where the two players will compete. It leverages the fact that the players are paired based on their positions in the row, which are cyclically shifted after each round.  The algorithm iteratively checks for a match in the pairing based on the current round number, effectively narrowing down the search space.\n",
+  "code": "class Solution {\n    public int[] earliestAndLatest(int n, int firstPlayer, int secondPlayer) {\n        int[] result = new int[2];\n        int earliest = (int) Math.ceil((double) (Math.log(n) / Math.log(2)));\n        int latest = earliest;\n        while (earliest <= latest) {\n            if ((firstPlayer + latest - 1) % n == secondPlayer % n) {\n                result[0] = earliest;\n                break;\n            }\n            latest++;\n        }\n        result[1] = latest;\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T14:21:07.032410",
+  "code_extracted_previous": "class Solution {\n    public int[] earliestAndLatest(int n, int firstPlayer, int secondPlayer) {\n        int[] result = new int[2];\n        int earliest = (int) Math.ceil((double) (Math.log(n) / Math.log(2)));\n        int latest = earliest;\n        while (earliest <= latest) {\n            if ((firstPlayer + latest - 1) % n == secondPlayer % n) {\n                result[0] = earliest;\n                break;\n            }\n            latest++;\n        }\n        result[1] = latest;\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.772312"
+}

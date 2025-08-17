@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def largestInteger(self, num: int) -> int:\n        num_str = list(str(num))\n        odd = sorted([int(x) for x in num_str if int(x) % 2 == 1], reverse=True)\n        even = sorted([int(x) for x in num_str if int(x) % 2 == 0], reverse=True)\n        odd_index, even_index = 0, 0\n        for i in range(len(num_str)):\n            if int(num_str[i]) % 2 == 1:\n                num_str[i] = str(odd[odd_index])\n                odd_index += 1\n            else:\n                num_str[i] = str(even[even_index])\n                even_index += 1\n        return int(''.join(num_str))\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution works by first separating the digits into odd and even lists, sorting them in descending order, and then replacing the original digits with the largest possible digits of the same parity.",
+  "code": "def largestInteger(self, num: int) -> int:\n        num_str = list(str(num))\n        odd = sorted([int(x) for x in num_str if int(x) % 2 == 1], reverse=True)\n        even = sorted([int(x) for x in num_str if int(x) % 2 == 0], reverse=True)\n        odd_index, even_index = 0, 0\n        for i in range(len(num_str)):\n            if int(num_str[i]) % 2 == 1:\n                num_str[i] = str(odd[odd_index])\n                odd_index += 1\n            else:\n                num_str[i] = str(even[even_index])\n                even_index += 1\n        return int(''.join(num_str))\n```",
+  "timestamp": "2025-08-06T15:17:47.979931",
+  "code_extracted_previous": "class Solution:\n    def largestInteger(self, num: int) -> int:\n        num_str = list(str(num))\n        odd = sorted([int(x) for x in num_str if int(x) % 2 == 1], reverse=True)\n        even = sorted([int(x) for x in num_str if int(x) % 2 == 0], reverse=True)\n        odd_index, even_index = 0, 0\n        for i in range(len(num_str)):\n            if int(num_str[i]) % 2 == 1:\n                num_str[i] = str(odd[odd_index])\n                odd_index += 1\n            else:\n                num_str[i] = str(even[even_index])\n                even_index += 1\n        return int(''.join(num_str))",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.106955"
+}

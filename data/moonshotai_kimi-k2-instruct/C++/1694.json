@@ -1,0 +1,15 @@
+{
+  "id": 1694,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    string reformatNumber(string number) {\n        string digits;\n        for (char c : number) {\n            if (isdigit(c)) digits += c;\n        }\n        int n = digits.size();\n        string res;\n        int i = 0;\n        while (i < n) {\n            if (i) res += '-';\n            int rem = n - i;\n            if (rem > 4) {\n                res += digits.substr(i, 3);\n                i += 3;\n            } else if (rem == 4) {\n                res += digits.substr(i, 2) + '-' + digits.substr(i + 2, 2);\n                break;\n            } else {\n                res += digits.substr(i, rem);\n                break;\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Collect digits in one pass, then build the result by greedily taking 3-digit blocks until ≤4 digits remain, handling the final 4 digits as two 2-digit blocks. Single linear scan and minimal extra memory.",
+  "code": "class Solution {\npublic:\n    string reformatNumber(string number) {\n        string digits;\n        for (char c : number) {\n            if (isdigit(c)) digits += c;\n        }\n        int n = digits.size();\n        string res;\n        int i = 0;\n        while (i < n) {\n            if (i) res += '-';\n            int rem = n - i;\n            if (rem > 4) {\n                res += digits.substr(i, 3);\n                i += 3;\n            } else if (rem == 4) {\n                res += digits.substr(i, 2) + '-' + digits.substr(i + 2, 2);\n                break;\n            } else {\n                res += digits.substr(i, rem);\n                break;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T23:41:32.915278",
+  "code_extracted_previous": "public:\n    string reformatNumber(string number) {\n        string digits;\n        for (char c : number) {\n            if (isdigit(c)) digits += c;\n        }\n        int n = digits.size();\n        string res;\n        int i = 0;\n        while (i < n) {\n            if (i) res += '-';\n            int rem = n - i;\n            if (rem > 4) {\n                res += digits.substr(i, 3);\n                i += 3;\n            } else if (rem == 4) {\n                res += digits.substr(i, 2) + '-' + digits.substr(i + 2, 2);\n                break;\n            } else {\n                res += digits.substr(i, rem);\n                break;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.303300"
+}

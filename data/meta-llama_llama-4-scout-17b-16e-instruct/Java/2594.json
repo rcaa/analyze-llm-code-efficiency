@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n public long repairCars(int[] ranks, int cars) {\n     Arrays.sort(ranks);\n     long left = 0, right = (long) ranks[ranks.length - 1] * cars * cars;\n     while (left < right) {\n         long mid = left + (right - left) / 2;\n         long count = 0;\n         for (int rank : ranks) {\n             count += (long) Math.sqrt(mid / rank);\n         }\n         if (count < cars) {\n             left = mid + 1;\n         } else {\n             right = mid;\n         }\n     }\n     return left;\n }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses binary search to find the minimum time required to repair all cars. The search range is initially set to [0, max_rank * cars^2]. In each iteration, it calculates the number of cars that can be repaired within the current time and adjusts the search range accordingly. The time complexity is dominated by the binary search (O(log m)) and the iteration over the ranks array (O(n)), resulting in O(n log m). The space complexity is O(1) as it only uses a constant amount of space.",
+  "code": "class Solution {\n public long repairCars(int[] ranks, int cars) {\n     Arrays.sort(ranks);\n     long left = 0, right = (long) ranks[ranks.length - 1] * cars * cars;\n     while (left < right) {\n         long mid = left + (right - left) / 2;\n         long count = 0;\n         for (int rank : ranks) {\n             count += (long) Math.sqrt(mid / rank);\n         }\n         if (count < cars) {\n             left = mid + 1;\n         } else {\n             right = mid;\n         }\n     }\n     return left;\n }\n}",
+  "timestamp": "2025-08-05T13:32:36.962654",
+  "code_extracted_previous": "class Solution {\n public long repairCars(int[] ranks, int cars) {\n     Arrays.sort(ranks);\n     long left = 0, right = (long) ranks[ranks.length - 1] * cars * cars;\n     while (left < right) {\n         long mid = left + (right - left) / 2;\n         long count = 0;\n         for (int rank : ranks) {\n             count += (long) Math.sqrt(mid / rank);\n         }\n         if (count < cars) {\n             left = mid + 1;\n         } else {\n             right = mid;\n         }\n     }\n     return left;\n }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.885166"
+}

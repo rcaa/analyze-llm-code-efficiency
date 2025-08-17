@@ -1,0 +1,15 @@
+{
+  "id": 686,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int repeatedStringMatch(String a, String b) {\n        int count = (b.length() + a.length() - 1) / a.length();\n        String repeatedA = \"\";\n        for (int i = 0; i < count; i++) {\n            repeatedA += a;\n        }\n        if (repeatedA.endsWith(b)) {\n            return count;\n        }\n        if (repeatedA + a.endsWith(b)) {\n            return count + 1;\n        }\n        return -1;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(a.length() + b.length())\nspace complexity: O(a.length() + b.length())\nenergy implications: LOW\nexplanation: We efficiently solve this problem by first calculating the minimum number of times we need to repeat string a to make its length greater than or equal to the length of string b. Then, we check if string b is a substring of the repeated string a. If it is, we return the count. If not, we check if string b is a substring of the repeated string a plus the original string a. If it is, we return the count plus one. If not, we return -1.",
+  "code": "class Solution {\n    public int repeatedStringMatch(String a, String b) {\n        int count = (b.length() + a.length() - 1) / a.length();\n        String repeatedA = \"\";\n        for (int i = 0; i < count; i++) {\n            repeatedA += a;\n        }\n        if (repeatedA.endsWith(b)) {\n            return count;\n        }\n        if (repeatedA + a.endsWith(b)) {\n            return count + 1;\n        }\n        return -1;\n    }\n}",
+  "timestamp": "2025-08-05T23:52:20.425200",
+  "code_extracted_previous": "public int repeatedStringMatch(String a, String b) {\n        int count = (b.length() + a.length() - 1) / a.length();\n        String repeatedA = \"\";\n        for (int i = 0; i < count; i++) {\n            repeatedA += a;\n        }\n        if (repeatedA.endsWith(b)) {\n            return count;\n        }\n        if (repeatedA + a.endsWith(b)) {\n            return count + 1;\n        }\n        return -1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.950028"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3006,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution:\n    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        n = len(s)\n        a_indices = [i for i in range(n) if s[i:i+len(a)] == a]\n        b_indices = [i for i in range(n) if s[i:i+len(b)] == b]\n        beautiful_indices = []\n        for a_index in a_indices:\n            for b_index in b_indices:\n                if abs(a_index - b_index) <= k:\n                    beautiful_indices.append(a_index)\n        return sorted(list(set(beautiful_indices)))\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution uses two list comprehensions to find all indices of string a and string b in the input string s. Then it iterates over the indices of a and b, checks if the absolute difference between the indices is less than or equal to k, and adds the indices of a to the result list. Finally, it removes duplicates from the result list and returns it in sorted order. The time complexity is O(n^2) due to the nested loops, and the space complexity is O(n) for storing the indices of a and b.",
+  "code": "class Solution:\n    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        n = len(s)\n        a_indices = [i for i in range(n) if s[i:i+len(a)] == a]\n        b_indices = [i for i in range(n) if s[i:i+len(b)] == b]\n        beautiful_indices = []\n        for a_index in a_indices:\n            for b_index in b_indices:\n                if abs(a_index - b_index) <= k:\n                    beautiful_indices.append(a_index)\n        return sorted(list(set(beautiful_indices)))",
+  "timestamp": "2025-08-06T01:49:11.375044",
+  "code_extracted_previous": "def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        n = len(s)\n        a_indices = [i for i in range(n) if s[i:i+len(a)] == a]\n        b_indices = [i for i in range(n) if s[i:i+len(b)] == b]\n        beautiful_indices = []\n        for a_index in a_indices:\n            for b_index in b_indices:\n                if abs(a_index - b_index) <= k:\n                    beautiful_indices.append(a_index)\n        return sorted(list(set(beautiful_indices)))",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.043443"
+}

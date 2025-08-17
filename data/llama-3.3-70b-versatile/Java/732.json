@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass MyCalendarThree {\n    TreeMap<Integer, Integer> calendar;\n\n    public MyCalendarThree() {\n        calendar = new TreeMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        calendar.put(startTime, calendar.getOrDefault(startTime, 0) + 1);\n        calendar.put(endTime, calendar.getOrDefault(endTime, 0) - 1);\n        int max = 0, curr = 0;\n        for (int v : calendar.values()) {\n            curr += v;\n            max = Math.max(max, curr);\n        }\n        return max;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a TreeMap to efficiently track event start and end times, allowing for O(n) time complexity and O(n) space complexity, where n is the number of events. The TreeMap automatically handles event time ordering, simplifying the k-booking calculation.",
+  "code": "class MyCalendarThree {\n    TreeMap<Integer, Integer> calendar;\n\n    public MyCalendarThree() {\n        calendar = new TreeMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        calendar.put(startTime, calendar.getOrDefault(startTime, 0) + 1);\n        calendar.put(endTime, calendar.getOrDefault(endTime, 0) - 1);\n        int max = 0, curr = 0;\n        for (int v : calendar.values()) {\n            curr += v;\n            max = Math.max(max, curr);\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-06T15:16:06.939633",
+  "code_extracted_previous": "class MyCalendarThree {\n    TreeMap<Integer, Integer> calendar;\n\n    public MyCalendarThree() {\n        calendar = new TreeMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        calendar.put(startTime, calendar.getOrDefault(startTime, 0) + 1);\n        calendar.put(endTime, calendar.getOrDefault(endTime, 0) - 1);\n        int max = 0, curr = 0;\n        for (int v : calendar.values()) {\n            curr += v;\n            max = Math.max(max, curr);\n        }\n        return max;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.436025"
+}

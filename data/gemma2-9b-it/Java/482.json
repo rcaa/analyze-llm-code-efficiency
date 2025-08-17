@@ -1,0 +1,15 @@
+{
+  "id": 482,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String licenseKeyFormatting(String s, int k) {\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) != '-') {\n                sb.append(Character.toUpperCase(s.charAt(i)));\n            }\n        }\n        if (sb.length() == 0) {\n            return \"\";\n        }\n        int groups = sb.length() / k;\n        int remainder = sb.length() % k;\n        for (int i = 0; i < groups; i++) {\n            sb.insert(i * k + i, '-');\n        }\n        if (remainder > 0) {\n            sb.insert(0, '-');\n        }\n        return sb.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution first removes all dashes and converts the string to uppercase. Then, it calculates the number of groups and inserts dashes between each group of k characters. Finally, it handles the case where the string length is not a multiple of k.\n",
+  "code": "class Solution {\n    public String licenseKeyFormatting(String s, int k) {\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) != '-') {\n                sb.append(Character.toUpperCase(s.charAt(i)));\n            }\n        }\n        if (sb.length() == 0) {\n            return \"\";\n        }\n        int groups = sb.length() / k;\n        int remainder = sb.length() % k;\n        for (int i = 0; i < groups; i++) {\n            sb.insert(i * k + i, '-');\n        }\n        if (remainder > 0) {\n            sb.insert(0, '-');\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-05T22:51:44.701298",
+  "code_extracted_previous": "class Solution {\n    public String licenseKeyFormatting(String s, int k) {\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) != '-') {\n                sb.append(Character.toUpperCase(s.charAt(i)));\n            }\n        }\n        if (sb.length() == 0) {\n            return \"\";\n        }\n        int groups = sb.length() / k;\n        int remainder = sb.length() % k;\n        for (int i = 0; i < groups; i++) {\n            sb.insert(i * k + i, '-');\n        }\n        if (remainder > 0) {\n            sb.insert(0, '-');\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.562483"
+}

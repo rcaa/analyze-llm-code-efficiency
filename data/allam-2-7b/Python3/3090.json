@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef maximumLengthSubstring(s: str) -> int:\n    n = len(s)\n    max_length = 0\n    for i in range(n):\n        count_dict = {}\n        for j in range(i, n):\n            char = s[j]\n            if char in count_dict:\n                count_dict[char] += 1\n            else:\n                count_dict[char] = 1\n            if sum(count_dict.values()) <= 2:\n                max_length = max(max_length, j - i + 1)\n    return max_length\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\nWe iterate through the string once using two nested loops. We keep a dictionary to count the occurrences of each character. If the sum of character counts is less than or equal to 2, we update the maximum length. Since the string length n is constant, the time complexity is O(n). The space complexity is O(1) as we only use a constant amount of space for the dictionary. ",
+  "code": "def maximumLengthSubstring(s: str) -> int:\n    n = len(s)\n    max_length = 0\n    for i in range(n):\n        count_dict = {}\n        for j in range(i, n):\n            char = s[j]\n            if char in count_dict:\n                count_dict[char] += 1\n            else:\n                count_dict[char] = 1\n            if sum(count_dict.values()) <= 2:\n                max_length = max(max_length, j - i + 1)\n    return max_length",
+  "timestamp": "2025-08-05T14:49:14.390317",
+  "code_extracted_previous": "def maximumLengthSubstring(s: str) -> int:\n    n = len(s)\n    max_length = 0\n    for i in range(n):\n        count_dict = {}\n        for j in range(i, n):\n            char = s[j]\n            if char in count_dict:\n                count_dict[char] += 1\n            else:\n                count_dict[char] = 1\n            if sum(count_dict.values()) <= 2:\n                max_length = max(max_length, j - i + 1)\n    return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.831500"
+}

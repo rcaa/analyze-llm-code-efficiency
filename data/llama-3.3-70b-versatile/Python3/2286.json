@@ -1,0 +1,15 @@
+{
+  "id": 2286,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass BookMyShow:\n\n    def __init__(self, n: int, m: int):\n        self.n = n\n        self.m = m\n        self.seats = [[True]*m for _ in range(n)]\n\n    def gather(self, k: int, maxRow: int) -> List[int]:\n        for i in range(min(maxRow+1, self.n)):\n            for j in range(self.m-k+1):\n                if all(self.seats[i][j+l] for l in range(k)):\n                    for l in range(k):\n                        self.seats[i][j+l] = False\n                    return [i, j]\n        return []\n\n    def scatter(self, k: int, maxRow: int) -> bool:\n        count = 0\n        for i in range(min(maxRow+1, self.n)):\n            for j in range(self.m):\n                if self.seats[i][j]:\n                    self.seats[i][j] = False\n                    count += 1\n                    if count == k:\n                        return True\n        return False\n\n\n# Your BookMyShow object will be instantiated and called as such:\n# obj = BookMyShow(n, m)\n# param_1 = obj.gather(k,maxRow)\n# param_2 = obj.scatter(k,maxRow)\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n*m)\nenergy implications: LOW\nexplanation: The solution uses a 2D list to track the availability of seats in the concert hall. The gather method checks for consecutive available seats in each row, while the scatter method allocates available seats in any row.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-06T15:18:21.405095",
+  "code_extracted_previous": "class BookMyShow:\n\n    def __init__(self, n: int, m: int):\n        self.n = n\n        self.m = m\n        self.seats = [[True]*m for _ in range(n)]\n\n    def gather(self, k: int, maxRow: int) -> List[int]:\n        for i in range(min(maxRow+1, self.n)):\n            for j in range(self.m-k+1):\n                if all(self.seats[i][j+l] for l in range(k)):\n                    for l in range(k):\n                        self.seats[i][j+l] = False\n                    return [i, j]\n        return []\n\n    def scatter(self, k: int, maxRow: int) -> bool:\n        count = 0\n        for i in range(min(maxRow+1, self.n)):\n            for j in range(self.m):\n                if self.seats[i][j]:\n                    self.seats[i][j] = False\n                    count += 1\n                    if count == k:\n                        return True\n        return False\n\n\n# Your BookMyShow object will be instantiated and called as such:\n# obj = BookMyShow(n, m)\n# param_1 = obj.gather(k,maxRow)\n# param_2 = obj.scatter(k,maxRow)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.135155"
+}

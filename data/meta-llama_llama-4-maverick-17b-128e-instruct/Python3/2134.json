@@ -1,0 +1,15 @@
+{
+  "id": 2134,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        total_ones = sum(nums)\n        n = len(nums)\n        nums = nums + nums\n        max_ones_in_window = sum(nums[:total_ones])\n        current_ones_in_window = max_ones_in_window\n        for i in range(total_ones, 2 * n):\n            current_ones_in_window += nums[i] - nums[i - total_ones]\n            max_ones_in_window = max(max_ones_in_window, current_ones_in_window)\n        return total_ones - max_ones_in_window\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to efficiently count the maximum number of 1s within a window of size equal to the total number of 1s in the array, considering the circular property by concatenating the array with itself. The minimum number of swaps required is then calculated as the difference between the total number of 1s and the maximum number of 1s found within the window.",
+  "code": "def minSwaps(self, nums: List[int]) -> int:\n        total_ones = sum(nums)\n        n = len(nums)\n        nums = nums + nums\n        max_ones_in_window = sum(nums[:total_ones])\n        current_ones_in_window = max_ones_in_window\n        for i in range(total_ones, 2 * n):\n            current_ones_in_window += nums[i] - nums[i - total_ones]\n            max_ones_in_window = max(max_ones_in_window, current_ones_in_window)\n        return total_ones - max_ones_in_window\n```",
+  "timestamp": "2025-08-05T13:21:26.898974",
+  "code_extracted_previous": "class Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        total_ones = sum(nums)\n        n = len(nums)\n        nums = nums + nums\n        max_ones_in_window = sum(nums[:total_ones])\n        current_ones_in_window = max_ones_in_window\n        for i in range(total_ones, 2 * n):\n            current_ones_in_window += nums[i] - nums[i - total_ones]\n            max_ones_in_window = max(max_ones_in_window, current_ones_in_window)\n        return total_ones - max_ones_in_window",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.764785"
+}

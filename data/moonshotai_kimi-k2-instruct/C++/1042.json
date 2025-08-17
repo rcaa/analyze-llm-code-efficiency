@@ -1,0 +1,15 @@
+{
+  "id": 1042,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n        vector<vector<int>> adj(n + 1);\n        for (const auto& p : paths) {\n            adj[p[0]].push_back(p[1]);\n            adj[p[1]].push_back(p[0]);\n        }\n        vector<int> res(n);\n        for (int i = 1; i <= n; ++i) {\n            bool used[5] = {};\n            for (int v : adj[i]) {\n                if (res[v - 1]) used[res[v - 1]] = true;\n            }\n            for (int c = 1; c <= 4; ++c) {\n                if (!used[c]) {\n                    res[i - 1] = c;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: Build adjacency list, then greedily assign the first available color (1-4) to each garden by checking only its direct neighbors. With max degree 3 and 4 colors, a valid color always exists, so no backtracking is needed.",
+  "code": "class Solution {\npublic:\n    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n        vector<vector<int>> adj(n + 1);\n        for (const auto& p : paths) {\n            adj[p[0]].push_back(p[1]);\n            adj[p[1]].push_back(p[0]);\n        }\n        vector<int> res(n);\n        for (int i = 1; i <= n; ++i) {\n            bool used[5] = {};\n            for (int v : adj[i]) {\n                if (res[v - 1]) used[res[v - 1]] = true;\n            }\n            for (int c = 1; c <= 4; ++c) {\n                if (!used[c]) {\n                    res[i - 1] = c;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:02:21.689538",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n        vector<vector<int>> adj(n + 1);\n        for (const auto& p : paths) {\n            adj[p[0]].push_back(p[1]);\n            adj[p[1]].push_back(p[0]);\n        }\n        vector<int> res(n);\n        for (int i = 1; i <= n; ++i) {\n            bool used[5] = {};\n            for (int v : adj[i]) {\n                if (res[v - 1]) used[res[v - 1]] = true;\n            }\n            for (int c = 1; c <= 4; ++c) {\n                if (!used[c]) {\n                    res[i - 1] = c;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.103018"
+}

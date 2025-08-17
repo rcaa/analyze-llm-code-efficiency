@@ -1,0 +1,15 @@
+{
+  "id": 967,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def numsSameConsecDiff(self, n: int, k: int) -> List[int]:\n        def dfs(path):\n            if len(path) == n:\n                res.append(int(''.join(map(str, path))))\n                return\n            last_digit = path[-1]\n            for digit in [last_digit + k, last_digit - k]:\n                if 0 <= digit <= 9:\n                    path.append(digit)\n                    dfs(path)\n                    path.pop()\n\n        res = []\n        for i in range(1, 10):\n            path = [i]\n            dfs(path)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(2^n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a depth-first search (DFS) approach to generate all possible numbers of length n where the difference between every two consecutive digits is k. It starts with digits 1-9 and explores all possible paths. The key strength is that it prunes branches that lead to invalid numbers (e.g., numbers with leading zeros or out-of-range digits). The main weakness is the potential for exponential time complexity in the worst case.",
+  "code": "class Solution:\n    def numsSameConsecDiff(self, n: int, k: int) -> List[int]:\n        def dfs(path):\n            if len(path) == n:\n                res.append(int(''.join(map(str, path))))\n                return\n            last_digit = path[-1]\n            for digit in [last_digit + k, last_digit - k]:\n                if 0 <= digit <= 9:\n                    path.append(digit)\n                    dfs(path)\n                    path.pop()\n\n        res = []\n        for i in range(1, 10):\n            path = [i]\n            dfs(path)\n        return res",
+  "timestamp": "2025-08-05T13:36:11.198663",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def numsSameConsecDiff(self, n: int, k: int) -> List[int]:\n        def dfs(path):\n            if len(path) == n:\n                res.append(int(''.join(map(str, path))))\n                return\n            last_digit = path[-1]\n            for digit in [last_digit + k, last_digit - k]:\n                if 0 <= digit <= 9:\n                    path.append(digit)\n                    dfs(path)\n                    path.pop()\n\n        res = []\n        for i in range(1, 10):\n            path = [i]\n            dfs(path)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:53.046730"
+}

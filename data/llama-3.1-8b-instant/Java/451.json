@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> map = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            map.put(c, map.getOrDefault(c, 0) + 1);\n        }\n        PriorityQueue<Map.Entry<Character, Integer>> pq = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());\n        pq.addAll(map.entrySet());\n        StringBuilder sb = new StringBuilder();\n        while (!pq.isEmpty()) {\n            Map.Entry<Character, Integer> entry = pq.poll();\n            sb.append(String.valueOf(entry.getKey()).repeat(entry.getValue()));\n        }\n        return sb.toString();\n    }\n}\n```\n\nefficiency: HIGH\n\ntime complexity: O(n log n)\n\nspace complexity: O(n)\n\nenergy implications: LOW",
+  "code": "class Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> map = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            map.put(c, map.getOrDefault(c, 0) + 1);\n        }\n        PriorityQueue<Map.Entry<Character, Integer>> pq = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());\n        pq.addAll(map.entrySet());\n        StringBuilder sb = new StringBuilder();\n        while (!pq.isEmpty()) {\n            Map.Entry<Character, Integer> entry = pq.poll();\n            sb.append(String.valueOf(entry.getKey()).repeat(entry.getValue()));\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-05T14:54:08.888565",
+  "code_extracted_previous": "class Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> map = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            map.put(c, map.getOrDefault(c, 0) + 1);\n        }\n        PriorityQueue<Map.Entry<Character, Integer>> pq = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());\n        pq.addAll(map.entrySet());\n        StringBuilder sb = new StringBuilder();\n        while (!pq.isEmpty()) {\n            Map.Entry<Character, Integer> entry = pq.poll();\n            sb.append(String.valueOf(entry.getKey()).repeat(entry.getValue()));\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.854231"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 967,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int[] numsSameConsecDiff(int n, int k) {\n        List<Integer> res = new ArrayList<>();\n        for (int d = 1; d <= 9; ++d) dfs(n - 1, k, d, res);\n        return res.stream().mapToInt(i -> i).toArray();\n    }\n    private void dfs(int rem, int k, int cur, List<Integer> res) {\n        if (rem == 0) { res.add(cur); return; }\n        int last = cur % 10;\n        if (last + k <= 9) dfs(rem - 1, k, cur * 10 + (last + k), res);\n        if (k != 0 && last - k >= 0) dfs(rem - 1, k, cur * 10 + (last - k), res);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(2^n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Depth-first search builds each valid number digit by digit, pruning branches early. Each step appends one digit differing by k from the last, avoiding leading zeros by starting digits 1-9. Output size is up to 2^n numbers, so the DFS is asymptotically optimal.",
+  "code": "class Solution {\n    public int[] numsSameConsecDiff(int n, int k) {\n        List<Integer> res = new ArrayList<>();\n        for (int d = 1; d <= 9; ++d) dfs(n - 1, k, d, res);\n        return res.stream().mapToInt(i -> i).toArray();\n    }\n    private void dfs(int rem, int k, int cur, List<Integer> res) {\n        if (rem == 0) { res.add(cur); return; }\n        int last = cur % 10;\n        if (last + k <= 9) dfs(rem - 1, k, cur * 10 + (last + k), res);\n        if (k != 0 && last - k >= 0) dfs(rem - 1, k, cur * 10 + (last - k), res);\n    }\n}",
+  "timestamp": "2025-08-05T13:36:55.421555",
+  "code_extracted_previous": "class Solution {\n    public int[] numsSameConsecDiff(int n, int k) {\n        List<Integer> res = new ArrayList<>();\n        for (int d = 1; d <= 9; ++d) dfs(n - 1, k, d, res);\n        return res.stream().mapToInt(i -> i).toArray();\n    }\n    private void dfs(int rem, int k, int cur, List<Integer> res) {\n        if (rem == 0) { res.add(cur); return; }\n        int last = cur % 10;\n        if (last + k <= 9) dfs(rem - 1, k, cur * 10 + (last + k), res);\n        if (k != 0 && last - k >= 0) dfs(rem - 1, k, cur * 10 + (last - k), res);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.935207"
+}

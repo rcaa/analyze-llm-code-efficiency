@@ -1,0 +1,15 @@
+{
+  "id": 2155,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<int> maxScoreIndices(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> left(n, 0), right(n, 0);\n        for (int i = 0; i < n; i++) {\n            if (nums[i] == 0) left[i]++;\n            else right[n - i - 1]++;\n        }\n        int max_score = left[0] + right[n - 1];\n        vector<int> ans;\n        for (int i = 0; i < n; i++) {\n            if (left[i] + right[n - i - 1] == max_score) ans.push_back(i);\n        }\n        return ans;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution first calculates the sum of zeros in the left part and the sum of ones in the right part for each index. Then it finds the maximum score and adds the indices with this maximum score to the answer. The time complexity is O(n) because we need to traverse the array twice. The space complexity is also O(n) because we need to store the left and right arrays.",
+  "code": "class Solution {\npublic:\n    vector<int> maxScoreIndices(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> left(n, 0), right(n, 0);\n        for (int i = 0; i < n; i++) {\n            if (nums[i] == 0) left[i]++;\n            else right[n - i - 1]++;\n        }\n        int max_score = left[0] + right[n - 1];\n        vector<int> ans;\n        for (int i = 0; i < n; i++) {\n            if (left[i] + right[n - i - 1] == max_score) ans.push_back(i);\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T13:25:54.988618",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> maxScoreIndices(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> left(n, 0), right(n, 0);\n        for (int i = 0; i < n; i++) {\n            if (nums[i] == 0) left[i]++;\n            else right[n - i - 1]++;\n        }\n        int max_score = left[0] + right[n - 1];\n        vector<int> ans;\n        for (int i = 0; i < n; i++) {\n            if (left[i] + right[n - i - 1] == max_score) ans.push_back(i);\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.910663"
+}

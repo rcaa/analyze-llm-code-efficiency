@@ -1,0 +1,15 @@
+{
+  "id": 2712,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```\nclass Solution {\npublic:\n    long long minimumCost(string s) {\n        int n = s.length();\n        int cost[n + 1][2];\n        for (int i = 0; i <= n; i++) {\n            cost[i][0] = i;\n            cost[i][1] = i;\n        }\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j <= n; j++) {\n                if (s[j] == '0') {\n                    cost[i][0] = min(cost[i][0], cost[i - s[j] - 1][0];\n                } else {\n                    cost[i][1] = min(cost[i][1], cost[i - s[j] - 1][1];\n                }\n            }\n        }\n        return cost[n][1];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use a 2D array to store the minimum cost for each index i considering the characters before it (cost[i][0]) and considering the characters after it (cost[i][1]). We iterate through the string once to calculate the costs and return the minimum cost at the end.\n\nThe time complexity is O(n^2) because we have two nested loops, one for each dimension of the 2D array. The space complexity is O(n) because we use a 2D array with n rows and 2 columns. The energy implications are low because the algorithm only performs a single pass through the string and does not require any additional energy-consuming operations. ",
+  "code": "class Solution {\npublic:\n    long long minimumCost(string s) {\n        int n = s.length();\n        int cost[n + 1][2];\n        for (int i = 0; i <= n; i++) {\n            cost[i][0] = i;\n            cost[i][1] = i;\n        }\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j <= n; j++) {\n                if (s[j] == '0') {\n                    cost[i][0] = min(cost[i][0], cost[i - s[j] - 1][0];\n                } else {\n                    cost[i][1] = min(cost[i][1], cost[i - s[j] - 1][1];\n                }\n            }\n        }\n        return cost[n][1];\n    }\n};",
+  "timestamp": "2025-08-06T01:05:48.981293",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long minimumCost(string s) {\n        int n = s.length();\n        int cost[n + 1][2];\n        for (int i = 0; i <= n; i++) {\n            cost[i][0] = i;\n            cost[i][1] = i;\n        }\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j <= n; j++) {\n                if (s[j] == '0') {\n                    cost[i][0] = min(cost[i][0], cost[i - s[j] - 1][0];\n                } else {\n                    cost[i][1] = min(cost[i][1], cost[i - s[j] - 1][1];\n                }\n            }\n        }\n        return cost[n][1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.545047"
+}

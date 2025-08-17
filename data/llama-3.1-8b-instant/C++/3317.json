@@ -1,0 +1,15 @@
+{
+  "id": 3317,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int numberOfWays(int n, int x, int y) {\n        long long mod = 1e9 + 7;\n        long long ans = 1;\n        for (int i = 1; i <= n; i++) {\n            ans = (ans * (y + i - 1)) % mod;\n        }\n        return (ans * pow(x, n)) % mod;\n    }\nprivate:\n    long long pow(long long x, long long n) {\n        long long res = 1;\n        while (n) {\n            if (n & 1) res = res * x % 1e9 + 7;\n            x = x * x % 1e9 + 7;\n            n >>= 1;\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n log x)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int numberOfWays(int n, int x, int y) {\n        long long mod = 1e9 + 7;\n        long long ans = 1;\n        for (int i = 1; i <= n; i++) {\n            ans = (ans * (y + i - 1)) % mod;\n        }\n        return (ans * pow(x, n)) % mod;\n    }\nprivate:\n    long long pow(long long x, long long n) {\n        long long res = 1;\n        while (n) {\n            if (n & 1) res = res * x % 1e9 + 7;\n            x = x * x % 1e9 + 7;\n            n >>= 1;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:24:50.457319",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfWays(int n, int x, int y) {\n        long long mod = 1e9 + 7;\n        long long ans = 1;\n        for (int i = 1; i <= n; i++) {\n            ans = (ans * (y + i - 1)) % mod;\n        }\n        return (ans * pow(x, n)) % mod;\n    }\nprivate:\n    long long pow(long long x, long long n) {\n        long long res = 1;\n        while (n) {\n            if (n & 1) res = res * x % 1e9 + 7;\n            x = x * x % 1e9 + 7;\n            n >>= 1;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.386210"
+}

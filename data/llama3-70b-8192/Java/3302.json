@@ -1,0 +1,15 @@
+{
+  "id": 3302,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int[] validSequence(String word1, String word2) {\n        int n = word1.length(), m = word2.length();\n        int[] res = new int[m];\n        int j = 0, k = 0;\n        while (j < n && k < m) {\n            if (word1.charAt(j) == word2.charAt(k)) {\n                res[k] = j;\n                k++;\n            }\n            j++;\n        }\n        if (k != m) return new int[0];\n        for (int i = 0; i < m; i++) {\n            if (i > 0 && res[i] - res[i - 1] > 1) return new int[0];\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution uses a two-pointer approach to find the lexicographically smallest valid sequence of indices. It iterates through word1 and word2 simultaneously, matching characters and storing the indices in the result array. If a mismatch is found, it returns an empty array. Finally, it checks if the indices are in ascending order with a difference of at most 1, and returns the result if valid.",
+  "code": "class Solution {\n    public int[] validSequence(String word1, String word2) {\n        int n = word1.length(), m = word2.length();\n        int[] res = new int[m];\n        int j = 0, k = 0;\n        while (j < n && k < m) {\n            if (word1.charAt(j) == word2.charAt(k)) {\n                res[k] = j;\n                k++;\n            }\n            j++;\n        }\n        if (k != m) return new int[0];\n        for (int i = 0; i < m; i++) {\n            if (i > 0 && res[i] - res[i - 1] > 1) return new int[0];\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T22:30:11.768746",
+  "code_extracted_previous": "class Solution {\n    public int[] validSequence(String word1, String word2) {\n        int n = word1.length(), m = word2.length();\n        int[] res = new int[m];\n        int j = 0, k = 0;\n        while (j < n && k < m) {\n            if (word1.charAt(j) == word2.charAt(k)) {\n                res[k] = j;\n                k++;\n            }\n            j++;\n        }\n        if (k != m) return new int[0];\n        for (int i = 0; i < m; i++) {\n            if (i > 0 && res[i] - res[i - 1] > 1) return new int[0];\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.432098"
+}

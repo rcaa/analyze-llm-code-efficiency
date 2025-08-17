@@ -1,0 +1,15 @@
+{
+  "id": 2441,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int findMaxK(vector<int>& nums) {\n        unordered_set<int> numSet;\n        int maxK = -1;\n        for (int num : nums) {\n            numSet.insert(num);\n            if (numSet.find(-num) != numSet.end() && -num > 0) {\n                maxK = max(maxK, abs(num));\n            }\n        }\n        return maxK;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses an unordered_set to store the numbers in the array, allowing for efficient lookups of negative counterparts. It iterates through the array once, updating the maximum k as it finds valid pairs. This approach minimizes unnecessary iterations and memory usage.",
+  "code": "class Solution {\npublic:\n    int findMaxK(vector<int>& nums) {\n        unordered_set<int> numSet;\n        int maxK = -1;\n        for (int num : nums) {\n            numSet.insert(num);\n            if (numSet.find(-num) != numSet.end() && -num > 0) {\n                maxK = max(maxK, abs(num));\n            }\n        }\n        return maxK;\n    }\n};",
+  "timestamp": "2025-08-05T12:48:59.685641",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findMaxK(vector<int>& nums) {\n        unordered_set<int> numSet;\n        int maxK = -1;\n        for (int num : nums) {\n            numSet.insert(num);\n            if (numSet.find(-num) != numSet.end() && -num > 0) {\n                maxK = max(maxK, abs(num));\n            }\n        }\n        return maxK;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.112042"
+}

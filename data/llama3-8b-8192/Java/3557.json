@@ -1,0 +1,15 @@
+{
+  "id": 3557,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int maxSubstrings(String word) {\n        int count = 0;\n        int maxCount = 0;\n        char prev = word.charAt(0);\n        int start = 0;\n        for (int i = 1; i < word.length(); i++) {\n            if (word.charAt(i) == prev) {\n                start = i;\n            } else {\n                if (i - start >= 4) {\n                    count++;\n                }\n                prev = word.charAt(i);\n            }\n        }\n        if (word.length() - start >= 4) {\n            count++;\n        }\n        return Math.max(count, maxCount);\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a single pass through the string to count the number of non-intersecting substrings that start and end with the same letter. It keeps track of the current substring and updates the count when a new substring is found. The solution has a high efficiency due to its linear time complexity and constant space complexity.",
+  "code": "class Solution {\n    public int maxSubstrings(String word) {\n        int count = 0;\n        int maxCount = 0;\n        char prev = word.charAt(0);\n        int start = 0;\n        for (int i = 1; i < word.length(); i++) {\n            if (word.charAt(i) == prev) {\n                start = i;\n            } else {\n                if (i - start >= 4) {\n                    count++;\n                }\n                prev = word.charAt(i);\n            }\n        }\n        if (word.length() - start >= 4) {\n            count++;\n        }\n        return Math.max(count, maxCount);\n    }\n}",
+  "timestamp": "2025-08-05T15:13:36.629517",
+  "code_extracted_previous": "public int maxSubstrings(String word) {\n        int count = 0;\n        int maxCount = 0;\n        char prev = word.charAt(0);\n        int start = 0;\n        for (int i = 1; i < word.length(); i++) {\n            if (word.charAt(i) == prev) {\n                start = i;\n            } else {\n                if (i - start >= 4) {\n                    count++;\n                }\n                prev = word.charAt(i);\n            }\n        }\n        if (word.length() - start >= 4) {\n            count++;\n        }\n        return Math.max(count, maxCount);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.718775"
+}

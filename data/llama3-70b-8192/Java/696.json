@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int countBinarySubstrings(String s) {\n        int prev = 0, curr = 1, res = 0;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1)) {\n                curr++;\n            } else {\n                res += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return res + Math.min(prev, curr);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the string, counting consecutive groups of 0's and 1's, and updates the result with the minimum count of the current and previous groups whenever a group changes.",
+  "code": "class Solution {\n    public int countBinarySubstrings(String s) {\n        int prev = 0, curr = 1, res = 0;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1)) {\n                curr++;\n            } else {\n                res += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return res + Math.min(prev, curr);\n    }\n}",
+  "timestamp": "2025-08-06T01:29:30.261480",
+  "code_extracted_previous": "class Solution {\n    public int countBinarySubstrings(String s) {\n        int prev = 0, curr = 1, res = 0;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == s.charAt(i - 1)) {\n                curr++;\n            } else {\n                res += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return res + Math.min(prev, curr);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.674403"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1456,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public int maxVowels(String s, int k) {\n        int maxVowels = 0;\n        int currentVowels = 0;\n        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));\n\n        for (int i = 0; i < s.length(); i++) {\n            if (vowels.contains(s.charAt(i))) {\n                currentVowels++;\n            }\n            if (i >= k && vowels.contains(s.charAt(i - k))) {\n                currentVowels--;\n            }\n            maxVowels = Math.max(maxVowels, currentVowels);\n        }\n\n        return maxVowels;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach to efficiently count vowels in substrings of length k. It maintains a running count of vowels in the current window and updates it as the window slides. The use of a set for vowels allows O(1) lookup time. The main strength is its linear time complexity, making it suitable for large input sizes. The weakness is that it only works for fixed substring lengths.",
+  "code": "class Solution {\n    public int maxVowels(String s, int k) {\n        int maxVowels = 0;\n        int currentVowels = 0;\n        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));\n\n        for (int i = 0; i < s.length(); i++) {\n            if (vowels.contains(s.charAt(i))) {\n                currentVowels++;\n            }\n            if (i >= k && vowels.contains(s.charAt(i - k))) {\n                currentVowels--;\n            }\n            maxVowels = Math.max(maxVowels, currentVowels);\n        }\n\n        return maxVowels;\n    }\n}",
+  "timestamp": "2025-08-06T00:53:37.531460",
+  "code_extracted_previous": "class Solution {\n    public int maxVowels(String s, int k) {\n        int maxVowels = 0;\n        int currentVowels = 0;\n        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));\n\n        for (int i = 0; i < s.length(); i++) {\n            if (vowels.contains(s.charAt(i))) {\n                currentVowels++;\n            }\n            if (i >= k && vowels.contains(s.charAt(i - k))) {\n                currentVowels--;\n            }\n            maxVowels = Math.max(maxVowels, currentVowels);\n        }\n\n        return maxVowels;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:01.717796"
+}

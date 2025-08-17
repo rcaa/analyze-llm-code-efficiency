@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int total = 0, maxExtra = 0;\n        for (int i = 0; i < customers.length; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            } else {\n                maxExtra += customers[i];\n            }\n        }\n        for (int i = 0; i < customers.length - minutes + 1; i++) {\n            maxExtra = Math.max(maxExtra, customers[i + minutes - 1] + customers[i] + customers[i + 1] + ... + customers[i + minutes - 2]);\n        }\n        return total + Math.max(0, maxExtra - minutes * customers[0]);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution first calculates the total number of satisfied customers without using the technique and the maximum number of extra customers that can be satisfied by using the technique. It then returns the sum of these two values.",
+  "code": "class Solution {\n    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int total = 0, maxExtra = 0;\n        for (int i = 0; i < customers.length; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            } else {\n                maxExtra += customers[i];\n            }\n        }\n        for (int i = 0; i < customers.length - minutes + 1; i++) {\n            maxExtra = Math.max(maxExtra, customers[i + minutes - 1] + customers[i] + customers[i + 1] + ... + customers[i + minutes - 2]);\n        }\n        return total + Math.max(0, maxExtra - minutes * customers[0]);\n    }\n}",
+  "timestamp": "2025-08-05T13:18:49.686444",
+  "code_extracted_previous": "public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n        int total = 0, maxExtra = 0;\n        for (int i = 0; i < customers.length; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            } else {\n                maxExtra += customers[i];\n            }\n        }\n        for (int i = 0; i < customers.length - minutes + 1; i++) {\n            maxExtra = Math.max(maxExtra, customers[i + minutes - 1] + customers[i] + customers[i + 1] + ... + customers[i + minutes - 2]);\n        }\n        return total + Math.max(0, maxExtra - minutes * customers[0]);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.815715"
+}

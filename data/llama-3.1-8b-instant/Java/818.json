@@ -1,0 +1,15 @@
+{
+  "id": 818,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int racecar(int target) {\n        int n = target;\n        int[] dp = new int[n + 1];\n        for (int i = 1; i <= n; i++) {\n            dp[i] = i;\n        }\n        for (int i = 1; i <= n; i++) {\n            int speed = 1;\n            int pos = 0;\n            for (int t = 0; t <= i; t++) {\n                if (pos >= i) {\n                    break;\n                }\n                if (pos + speed >= i) {\n                    dp[i] = Math.min(dp[i], dp[pos] + t + 1 + (i - pos - speed) / speed);\n                }\n                if (speed > 0) {\n                    speed = -1;\n                } else {\n                    speed = 1;\n                }\n                pos += speed;\n            }\n        }\n        return dp[target];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int racecar(int target) {\n        int n = target;\n        int[] dp = new int[n + 1];\n        for (int i = 1; i <= n; i++) {\n            dp[i] = i;\n        }\n        for (int i = 1; i <= n; i++) {\n            int speed = 1;\n            int pos = 0;\n            for (int t = 0; t <= i; t++) {\n                if (pos >= i) {\n                    break;\n                }\n                if (pos + speed >= i) {\n                    dp[i] = Math.min(dp[i], dp[pos] + t + 1 + (i - pos - speed) / speed);\n                }\n                if (speed > 0) {\n                    speed = -1;\n                } else {\n                    speed = 1;\n                }\n                pos += speed;\n            }\n        }\n        return dp[target];\n    }\n}",
+  "timestamp": "2025-08-05T14:16:54.272500",
+  "code_extracted_previous": "class Solution {\n    public int racecar(int target) {\n        int n = target;\n        int[] dp = new int[n + 1];\n        for (int i = 1; i <= n; i++) {\n            dp[i] = i;\n        }\n        for (int i = 1; i <= n; i++) {\n            int speed = 1;\n            int pos = 0;\n            for (int t = 0; t <= i; t++) {\n                if (pos >= i) {\n                    break;\n                }\n                if (pos + speed >= i) {\n                    dp[i] = Math.min(dp[i], dp[pos] + t + 1 + (i - pos - speed) / speed);\n                }\n                if (speed > 0) {\n                    speed = -1;\n                } else {\n                    speed = 1;\n                }\n                pos += speed;\n            }\n        }\n        return dp[target];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:30.037677"
+}

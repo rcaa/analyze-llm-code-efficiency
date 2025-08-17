@@ -1,0 +1,15 @@
+{
+  "id": 3333,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int possibleStringCount(string word, int k) {\n        const int MOD = 1e9 + 7;\n        int n = word.size();\n        vector<int> cnt(26, 0);\n        for (char c : word) cnt[c - 'a']++;\n        int res = 1;\n        for (int i = 0; i < 26; i++) {\n            if (cnt[i] >= k) res = res * (cnt[i] - k + 1) % MOD;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count the frequency of each character in the word and calculate the number of possible original strings by considering the combinations of characters that appear at least k times.",
+  "code": "class Solution {\npublic:\n    int possibleStringCount(string word, int k) {\n        const int MOD = 1e9 + 7;\n        int n = word.size();\n        vector<int> cnt(26, 0);\n        for (char c : word) cnt[c - 'a']++;\n        int res = 1;\n        for (int i = 0; i < 26; i++) {\n            if (cnt[i] >= k) res = res * (cnt[i] - k + 1) % MOD;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T16:16:44.720758",
+  "code_extracted_previous": "public:\n    int possibleStringCount(string word, int k) {\n        const int MOD = 1e9 + 7;\n        int n = word.size();\n        vector<int> cnt(26, 0);\n        for (char c : word) cnt[c - 'a']++;\n        int res = 1;\n        for (int i = 0; i < 26; i++) {\n            if (cnt[i] >= k) res = res * (cnt[i] - k + 1) % MOD;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.770745"
+}

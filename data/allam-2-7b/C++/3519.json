@@ -1,0 +1,15 @@
+{
+  "id": 3519,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int countNumbers(string l, string r, int b) {\n        int count = 0;\n        int base = b;\n        int num = 0;\n\n        while (l < r) {\n            num = (num * base + stoi(l)) % 10 * base + stoi(r) % 10;\n            count += (num >= 0 && num < base);\n            l++;\n            r++;\n        }\n\n        return count;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(log(log(n))\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nThe problem requires finding the number of integers between l and r (inclusive) whose digits are in non-decreasing order when represented in base b. We can solve this problem by converting the strings to integers, performing the calculation, and checking if the result is within the given range and has non-decreasing digits.\n\nThe algorithm iterates from l to r, converting the strings to integers, performing the calculation, and updating the count accordingly. The time complexity is O(log(log(n)) because the loop iterates log(n) times, where n is the length of the string r. The space complexity is O(1) since we only use a constant amount of space for the variables. The energy implications are low because the algorithm performs simple arithmetic operations and does not consume significant energy. ",
+  "code": "class Solution {\npublic:\n    int countNumbers(string l, string r, int b) {\n        int count = 0;\n        int base = b;\n        int num = 0;\n\n        while (l < r) {\n            num = (num * base + stoi(l)) % 10 * base + stoi(r) % 10;\n            count += (num >= 0 && num < base);\n            l++;\n            r++;\n        }\n\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T15:27:44.880978",
+  "code_extracted_previous": "public:\n    int countNumbers(string l, string r, int b) {\n        int count = 0;\n        int base = b;\n        int num = 0;\n\n        while (l < r) {\n            num = (num * base + stoi(l)) % 10 * base + stoi(r) % 10;\n            count += (num >= 0 && num < base);\n            l++;\n            r++;\n        }\n\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.782267"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3557,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maxSubstrings(String word) {\n        int n = word.length();\n        boolean[] seen = new boolean[26];\n        int count = 0;\n        for (int i = 0; i < n; i++) {\n            char c = word.charAt(i);\n            int idx = c - 'a';\n            if (seen[idx]) continue;\n            seen[idx] = true;\n            int j = i + 3;\n            while (j < n && word.charAt(j) != c) j++;\n            if (j < n) count++;\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, maintaining a boolean array to track seen characters. For each character, it checks if a non-intersecting substring can be formed and updates the count accordingly.",
+  "code": "class Solution {\n    public int maxSubstrings(String word) {\n        int n = word.length();\n        boolean[] seen = new boolean[26];\n        int count = 0;\n        for (int i = 0; i < n; i++) {\n            char c = word.charAt(i);\n            int idx = c - 'a';\n            if (seen[idx]) continue;\n            seen[idx] = true;\n            int j = i + 3;\n            while (j < n && word.charAt(j) != c) j++;\n            if (j < n) count++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T15:13:51.149731",
+  "code_extracted_previous": "class Solution {\n    public int maxSubstrings(String word) {\n        int n = word.length();\n        boolean[] seen = new boolean[26];\n        int count = 0;\n        for (int i = 0; i < n; i++) {\n            char c = word.charAt(i);\n            int idx = c - 'a';\n            if (seen[idx]) continue;\n            seen[idx] = true;\n            int j = i + 3;\n            while (j < n && word.charAt(j) != c) j++;\n            if (j < n) count++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.217588"
+}

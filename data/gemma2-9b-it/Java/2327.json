@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        long mod = 1000000007;\n        long[] dp = new long[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1];\n            if (i >= delay && i % forget != 0 && i - delay >= 0) {\n                dp[i] = (dp[i] + dp[i - delay]) % mod;\n            }\n        }\n        return (int) dp[n];\n    }\n}\n```\n\nsolution: `long mod = 1000000007; long[] dp = new long[n + 1]; dp[0] = 1; for (int i = 1; i <= n; i++) { dp[i] = dp[i - 1]; if (i >= delay && i % forget != 0 && i - delay >= 0) { dp[i] = (dp[i] + dp[i - delay]) % mod; } } return (int) dp[n];`\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of people aware of the secret on each day. It iterates through each day and updates the count based on the delay and forget parameters. The modulo operation ensures that the result stays within the specified range.\n",
+  "code": "`long mod = 1000000007; long[] dp = new long[n + 1]; dp[0] = 1; for (int i = 1; i <= n; i++) { dp[i] = dp[i - 1]; if (i >= delay && i % forget != 0 && i - delay >= 0) { dp[i] = (dp[i] + dp[i - delay]) % mod; } } return (int) dp[n];`",
+  "timestamp": "2025-08-05T14:26:22.576224",
+  "code_extracted_previous": "class Solution {\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        long mod = 1000000007;\n        long[] dp = new long[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1];\n            if (i >= delay && i % forget != 0 && i - delay >= 0) {\n                dp[i] = (dp[i] + dp[i - delay]) % mod;\n            }\n        }\n        return (int) dp[n];\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:24.962272"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {\n        Arrays.sort(buses);\n        Arrays.sort(passengers);\n        int result = buses[passengers.length];\n        for (int i = 0; i < passengers.length; i++) {\n            if (passengers[i] <= buses[result]) {\n                result = Math.min(result, passengers[i]);\n            }\n        }\n        return result - 1;\n    }\n}\n```\n\nefficiency:\n\nEfficiency: HIGH\nTime complexity: O(n) (where n is the length of the buses array)\nSpace complexity: O(1) (constant space complexity)\nEnergy implications: LOW\n\nExplanation:\n\n1. Sort both buses and passengers arrays to ensure comparing elements in sorted order.\n2. Initialize result variable with the last index of buses array (buses.length).\n3. Iterate through the passengers array and update result if the current passenger's arrival time is less than or equal to the current bus's departure time.\n4. Return result - 1 to account for the initial bus departure time. ",
+  "code": "class Solution {\n    public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {\n        Arrays.sort(buses);\n        Arrays.sort(passengers);\n        int result = buses[passengers.length];\n        for (int i = 0; i < passengers.length; i++) {\n            if (passengers[i] <= buses[result]) {\n                result = Math.min(result, passengers[i]);\n            }\n        }\n        return result - 1;\n    }\n}",
+  "timestamp": "2025-08-05T13:28:08.648508",
+  "code_extracted_previous": "class Solution {\n    public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {\n        Arrays.sort(buses);\n        Arrays.sort(passengers);\n        int result = buses[passengers.length];\n        for (int i = 0; i < passengers.length; i++) {\n            if (passengers[i] <= buses[result]) {\n                result = Math.min(result, passengers[i]);\n            }\n        }\n        return result - 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.032197"
+}

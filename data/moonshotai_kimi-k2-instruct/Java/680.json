@@ -1,0 +1,15 @@
+{
+  "id": 680,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public boolean validPalindrome(String s) {\n        int left = 0, right = s.length() - 1;\n        while (left < right) {\n            if (s.charAt(left) != s.charAt(right)) {\n                return isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1);\n            }\n            left++;\n            right--;\n        }\n        return true;\n    }\n\n    private boolean isPalindrome(String s, int l, int r) {\n        while (l < r) {\n            if (s.charAt(l++) != s.charAt(r--)) return false;\n        }\n        return true;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Two-pointer scan from both ends; on the first mismatch, check both possible single deletions (skip left or skip right) via a helper that verifies the remaining substring is a palindrome. Only one extra pass is needed in the worst case, keeping memory usage constant.",
+  "code": "class Solution {\n    public boolean validPalindrome(String s) {\n        int left = 0, right = s.length() - 1;\n        while (left < right) {\n            if (s.charAt(left) != s.charAt(right)) {\n                return isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1);\n            }\n            left++;\n            right--;\n        }\n        return true;\n    }\n\n    private boolean isPalindrome(String s, int l, int r) {\n        while (l < r) {\n            if (s.charAt(l++) != s.charAt(r--)) return false;\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-06T01:28:02.730978",
+  "code_extracted_previous": "class Solution {\n    public boolean validPalindrome(String s) {\n        int left = 0, right = s.length() - 1;\n        while (left < right) {\n            if (s.charAt(left) != s.charAt(right)) {\n                return isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1);\n            }\n            left++;\n            right--;\n        }\n        return true;\n    }\n\n    private boolean isPalindrome(String s, int l, int r) {\n        while (l < r) {\n            if (s.charAt(l++) != s.charAt(r--)) return false;\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.730044"
+}

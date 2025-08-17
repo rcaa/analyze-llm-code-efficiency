@@ -1,0 +1,15 @@
+{
+  "id": 2472,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxPalindromes(string s, int k) {\n        int n = s.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + k; j <= n; j++) {\n                string t = s.substr(i, j - i);\n                if (t == reverse(t) && j - i >= k) {\n                    res++;\n                    i = j;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use two nested loops to generate all possible substrings of length at least k. For each substring, we check if it is a palindrome by comparing it with its reverse. If it is, we increment the result and move the inner loop start to the end of the current substring to avoid overlapping. This approach has a high efficiency due to the use of a single loop and the fact that we only consider substrings of length at least k.",
+  "code": "class Solution {\npublic:\n    int maxPalindromes(string s, int k) {\n        int n = s.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + k; j <= n; j++) {\n                string t = s.substr(i, j - i);\n                if (t == reverse(t) && j - i >= k) {\n                    res++;\n                    i = j;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T02:27:54.332676",
+  "code_extracted_previous": "public:\n    int maxPalindromes(string s, int k) {\n        int n = s.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + k; j <= n; j++) {\n                string t = s.substr(i, j - i);\n                if (t == reverse(t) && j - i >= k) {\n                    res++;\n                    i = j;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.035172"
+}

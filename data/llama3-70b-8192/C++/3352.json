@@ -1,0 +1,15 @@
+{
+  "id": 3352,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int countKReducibleNumbers(string s, int k) {\n        int n = stoi(s, 0, 2);\n        int res = 0;\n        for (int i = 1; i < n; ++i) {\n            int cnt = 0, x = i;\n            while (x > 1) {\n                cnt += __builtin_popcount(x);\n                x = __builtin_popcount(x);\n                if (cnt > k) break;\n            }\n            if (cnt <= k) res++;\n        }\n        return res % (1e9 + 7);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over all numbers less than n and checks if they are k-reducible by repeatedly counting the set bits in their binary representation.",
+  "code": "class Solution {\npublic:\n    int countKReducibleNumbers(string s, int k) {\n        int n = stoi(s, 0, 2);\n        int res = 0;\n        for (int i = 1; i < n; ++i) {\n            int cnt = 0, x = i;\n            while (x > 1) {\n                cnt += __builtin_popcount(x);\n                x = __builtin_popcount(x);\n                if (cnt > k) break;\n            }\n            if (cnt <= k) res++;\n        }\n        return res % (1e9 + 7);\n    }\n};",
+  "timestamp": "2025-08-05T15:26:23.367697",
+  "code_extracted_previous": "public:\n    int countKReducibleNumbers(string s, int k) {\n        int n = stoi(s, 0, 2);\n        int res = 0;\n        for (int i = 1; i < n; ++i) {\n            int cnt = 0, x = i;\n            while (x > 1) {\n                cnt += __builtin_popcount(x);\n                x = __builtin_popcount(x);\n                if (cnt > k) break;\n            }\n            if (cnt <= k) res++;\n        }\n        return res % (1e9 + 7);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.778308"
+}

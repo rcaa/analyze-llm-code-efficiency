@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        int ops = 0;\n        while (target) {\n            int k = 0;\n            long p = 1;\n            while (p * x <= target) {\n                p *= x;\n                ++k;\n            }\n            if (p == target) return ops + k - 1;\n            int rem = target % p;\n            if (rem == 0) return ops + k - 1 + (target / p - 1);\n            int cand1 = ops + k + leastOpsExpressTarget(x, rem);\n            int cand2 = ops + k + 1 + leastOpsExpressTarget(x, p - rem);\n            if (p - rem < rem) {\n                return cand2;\n            } else {\n                return cand1;\n            }\n        }\n        return 0;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log_x(target) * log_x(target))\nspace complexity: O(log_x(target))\nenergy implications: LOW\nexplanation: Uses greedy decomposition into powers of x and dynamic programming via recursion with memoization (add unordered_map<int,int> memo; and wrap return with memo[target] = ...). Chooses the smaller of using remainder or (power – remainder) to minimize operators.",
+  "code": "class Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        int ops = 0;\n        while (target) {\n            int k = 0;\n            long p = 1;\n            while (p * x <= target) {\n                p *= x;\n                ++k;\n            }\n            if (p == target) return ops + k - 1;\n            int rem = target % p;\n            if (rem == 0) return ops + k - 1 + (target / p - 1);\n            int cand1 = ops + k + leastOpsExpressTarget(x, rem);\n            int cand2 = ops + k + 1 + leastOpsExpressTarget(x, p - rem);\n            if (p - rem < rem) {\n                return cand2;\n            } else {\n                return cand1;\n            }\n        }\n        return 0;\n    }\n};",
+  "timestamp": "2025-08-06T02:30:23.187832",
+  "code_extracted_previous": "public:\n    int leastOpsExpressTarget(int x, int target) {\n        int ops = 0;\n        while (target) {\n            int k = 0;\n            long p = 1;\n            while (p * x <= target) {\n                p *= x;\n                ++k;\n            }\n            if (p == target) return ops + k - 1;\n            int rem = target % p;\n            if (rem == 0) return ops + k - 1 + (target / p - 1);\n            int cand1 = ops + k + leastOpsExpressTarget(x, rem);\n            int cand2 = ops + k + 1 + leastOpsExpressTarget(x, p - rem);\n            if (p - rem < rem) {\n                return cand2;\n            } else {\n                return cand1;\n            }\n        }\n        return 0;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.370434"
+}

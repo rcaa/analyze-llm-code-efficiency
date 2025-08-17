@@ -1,0 +1,15 @@
+{
+  "id": 345,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def reverseVowels(self, s: str) -> str:\n        vowels = set('aeiouAEIOU')\n        s_list = list(s)\n        left, right = 0, len(s) - 1\n        while left < right:\n            while left < right and s_list[left] not in vowels:\n                left += 1\n            while left < right and s_list[right] not in vowels:\n                right -= 1\n            if left < right:\n                s_list[left], s_list[right] = s_list[right], s_list[left]\n                left += 1\n                right -= 1\n        return ''.join(s_list)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Two-pointer scan collects vowels in place and swaps them from both ends; single pass, minimal extra memory.",
+  "code": "class Solution:\n    def reverseVowels(self, s: str) -> str:\n        vowels = set('aeiouAEIOU')\n        s_list = list(s)\n        left, right = 0, len(s) - 1\n        while left < right:\n            while left < right and s_list[left] not in vowels:\n                left += 1\n            while left < right and s_list[right] not in vowels:\n                right -= 1\n            if left < right:\n                s_list[left], s_list[right] = s_list[right], s_list[left]\n                left += 1\n                right -= 1\n        return ''.join(s_list)",
+  "timestamp": "2025-08-06T01:25:44.066792",
+  "code_extracted_previous": "def reverseVowels(self, s: str) -> str:\n        vowels = set('aeiouAEIOU')\n        s_list = list(s)\n        left, right = 0, len(s) - 1\n        while left < right:\n            while left < right and s_list[left] not in vowels:\n                left += 1\n            while left < right and s_list[right] not in vowels:\n                right -= 1\n            if left < right:\n                s_list[left], s_list[right] = s_list[right], s_list[left]\n                left += 1\n                right -= 1\n        return ''.join(s_list)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.077167"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2375,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Solution:\n    def smallestNumber(self, pattern: str) -> str:\n        n = len(pattern)\n        digits = [str(i) for i in range(9, 0, -1)]\n        res = ['0'] * (n + 1)\n        increasing = True\n        for i in range(n):\n            if pattern[i] == 'I':\n                increasing = True\n            else:\n                increasing = False\n            if increasing:\n                res[i + 1] = min(res[i + 1], digits.pop())\n            else:\n                res[i] = max(res[i], digits.pop())\n        return ''.join(res)\n```\n\nefficiency: HIGH\ntime complexity: O(n + 9)\nspace complexity: O(n + 9)\nenergy implications: LOW",
+  "code": "class Solution:\n    def smallestNumber(self, pattern: str) -> str:\n        n = len(pattern)\n        digits = [str(i) for i in range(9, 0, -1)]\n        res = ['0'] * (n + 1)\n        increasing = True\n        for i in range(n):\n            if pattern[i] == 'I':\n                increasing = True\n            else:\n                increasing = False\n            if increasing:\n                res[i + 1] = min(res[i + 1], digits.pop())\n            else:\n                res[i] = max(res[i], digits.pop())\n        return ''.join(res)",
+  "timestamp": "2025-08-06T01:00:46.141924",
+  "code_extracted_previous": "class Solution:\n    def smallestNumber(self, pattern: str) -> str:\n        n = len(pattern)\n        digits = [str(i) for i in range(9, 0, -1)]\n        res = ['0'] * (n + 1)\n        increasing = True\n        for i in range(n):\n            if pattern[i] == 'I':\n                increasing = True\n            else:\n                increasing = False\n            if increasing:\n                res[i + 1] = min(res[i + 1], digits.pop())\n            else:\n                res[i] = max(res[i], digits.pop())\n        return ''.join(res)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.800521"
+}

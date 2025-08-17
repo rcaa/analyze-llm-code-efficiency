@@ -1,0 +1,15 @@
+{
+  "id": 2276,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass CountIntervals {\n    private TreeMap<Integer, Integer> map;\n    private int total;\n\n    public CountIntervals() {\n        map = new TreeMap<>();\n        total = 0;\n    }\n    \n    public void add(int left, int right) {\n        Integer floorKey = map.floorKey(right);\n        while (floorKey != null && map.get(floorKey) >= left) {\n            int l = floorKey;\n            int r = map.get(l);\n            left = Math.min(left, l);\n            right = Math.max(right, r);\n            total -= r - l + 1;\n            map.remove(l);\n            floorKey = map.floorKey(right);\n        }\n        map.put(left, right);\n        total += right - left + 1;\n    }\n    \n    public int count() {\n        return total;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log N) amortized per add, O(1) per count\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses a TreeMap to store disjoint intervals sorted by start. Each add merges overlapping/adjacent intervals in logarithmic time and updates a running total count, making count() O(1).",
+  "code": "class CountIntervals {\n    private TreeMap<Integer, Integer> map;\n    private int total;\n\n    public CountIntervals() {\n        map = new TreeMap<>();\n        total = 0;\n    }\n    \n    public void add(int left, int right) {\n        Integer floorKey = map.floorKey(right);\n        while (floorKey != null && map.get(floorKey) >= left) {\n            int l = floorKey;\n            int r = map.get(l);\n            left = Math.min(left, l);\n            right = Math.max(right, r);\n            total -= r - l + 1;\n            map.remove(l);\n            floorKey = map.floorKey(right);\n        }\n        map.put(left, right);\n        total += right - left + 1;\n    }\n    \n    public int count() {\n        return total;\n    }\n}",
+  "timestamp": "2025-08-05T14:07:10.391580",
+  "code_extracted_previous": "class CountIntervals {\n    private TreeMap<Integer, Integer> map;\n    private int total;\n\n    public CountIntervals() {\n        map = new TreeMap<>();\n        total = 0;\n    }\n    \n    public void add(int left, int right) {\n        Integer floorKey = map.floorKey(right);\n        while (floorKey != null && map.get(floorKey) >= left) {\n            int l = floorKey;\n            int r = map.get(l);\n            left = Math.min(left, l);\n            right = Math.max(right, r);\n            total -= r - l + 1;\n            map.remove(l);\n            floorKey = map.floorKey(right);\n        }\n        map.put(left, right);\n        total += right - left + 1;\n    }\n    \n    public int count() {\n        return total;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:54.929365"
+}

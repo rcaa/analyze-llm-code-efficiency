@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int largestInteger(int num) {\n        string s = to_string(num);\n        int n = s.size();\n        for (int i = 0; i < n; ++i) {\n            for (int j = i + 1; j < n; ++j) {\n                if ((s[i] - '0') % 2 == (s[j] - '0') % 2 && s[j] > s[i]) {\n                    swap(s[i], s[j]);\n                }\n            }\n        }\n        return stoi(s);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(d^2)\nspace complexity: O(d)\nenergy implications: LOW\nexplanation: Convert the number to a string, then greedily bubble-sort each parity group in descending order by swapping any two same-parity digits whenever the later digit is larger. This yields the lexicographically largest arrangement under the parity constraint.",
+  "code": "class Solution {\npublic:\n    int largestInteger(int num) {\n        string s = to_string(num);\n        int n = s.size();\n        for (int i = 0; i < n; ++i) {\n            for (int j = i + 1; j < n; ++j) {\n                if ((s[i] - '0') % 2 == (s[j] - '0') % 2 && s[j] > s[i]) {\n                    swap(s[i], s[j]);\n                }\n            }\n        }\n        return stoi(s);\n    }\n};",
+  "timestamp": "2025-08-05T16:00:12.025154",
+  "code_extracted_previous": "public:\n    int largestInteger(int num) {\n        string s = to_string(num);\n        int n = s.size();\n        for (int i = 0; i < n; ++i) {\n            for (int j = i + 1; j < n; ++j) {\n                if ((s[i] - '0') % 2 == (s[j] - '0') % 2 && s[j] > s[i]) {\n                    swap(s[i], s[j]);\n                }\n            }\n        }\n        return stoi(s);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.592188"
+}

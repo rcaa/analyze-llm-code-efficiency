@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[][] dp = new int[n][n];\n        for (int i = n - 1; i >= 0; i--) {\n            dp[i][i] = 1;\n            for (int j = i + 1; j < n; j++) {\n                dp[i][j] = dp[i + 1][j] + 1;\n                if (s.charAt(i) == s.charAt(i + 1)) {\n                    dp[i][j] = Math.min(dp[i][j], dp[i + 2][j] + 1);\n                }\n                for (int k = i + 2; k <= j; k++) {\n                    if (s.charAt(i) == s.charAt(k)) {\n                        dp[i][j] = Math.min(dp[i][j], dp[i + 1][k - 1] + dp[k][j]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n^2)\nenergy implications: MEDIUM\nexplanation: Dynamic programming is used to solve the problem by breaking it down into subproblems and storing the results in a 2D array. The main approach is to iterate over the string from right to left and fill up the dp table. The key strength is that it avoids redundant computation by storing the results of subproblems.",
+  "code": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[][] dp = new int[n][n];\n        for (int i = n - 1; i >= 0; i--) {\n            dp[i][i] = 1;\n            for (int j = i + 1; j < n; j++) {\n                dp[i][j] = dp[i + 1][j] + 1;\n                if (s.charAt(i) == s.charAt(i + 1)) {\n                    dp[i][j] = Math.min(dp[i][j], dp[i + 2][j] + 1);\n                }\n                for (int k = i + 2; k <= j; k++) {\n                    if (s.charAt(i) == s.charAt(k)) {\n                        dp[i][j] = Math.min(dp[i][j], dp[i + 1][k - 1] + dp[k][j]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}",
+  "timestamp": "2025-08-05T23:13:37.742082",
+  "code_extracted_previous": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[][] dp = new int[n][n];\n        for (int i = n - 1; i >= 0; i--) {\n            dp[i][i] = 1;\n            for (int j = i + 1; j < n; j++) {\n                dp[i][j] = dp[i + 1][j] + 1;\n                if (s.charAt(i) == s.charAt(i + 1)) {\n                    dp[i][j] = Math.min(dp[i][j], dp[i + 2][j] + 1);\n                }\n                for (int k = i + 2; k <= j; k++) {\n                    if (s.charAt(i) == s.charAt(k)) {\n                        dp[i][j] = Math.min(dp[i][j], dp[i + 1][k - 1] + dp[k][j]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:47.036421"
+}

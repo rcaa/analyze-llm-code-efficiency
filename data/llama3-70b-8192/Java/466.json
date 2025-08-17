@@ -1,0 +1,15 @@
+{
+  "id": 466,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int getMaxRepetitions(String s1, int n1, String s2, int n2) {\n        int len1 = s1.length(), len2 = s2.length();\n        int count = 0;\n        for (int i = 0; i < len1 * n1; i++) {\n            if (s1.charAt(i % len1) == s2.charAt(count % len2)) {\n                count++;\n            }\n            if (count == len2) {\n                count = 0;\n                if (i + 1 >= len1) {\n                    return (i + 1) / len1 / n2;\n                }\n            }\n        }\n        return 0;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n1 * len1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the concatenated string s1 and checks for matches with s2, incrementing a counter for each match. When the counter reaches the length of s2, it resets and checks if the current index is a multiple of the length of s1, returning the maximum repetitions if so.",
+  "code": "class Solution {\n    public int getMaxRepetitions(String s1, int n1, String s2, int n2) {\n        int len1 = s1.length(), len2 = s2.length();\n        int count = 0;\n        for (int i = 0; i < len1 * n1; i++) {\n            if (s1.charAt(i % len1) == s2.charAt(count % len2)) {\n                count++;\n            }\n            if (count == len2) {\n                count = 0;\n                if (i + 1 >= len1) {\n                    return (i + 1) / len1 / n2;\n                }\n            }\n        }\n        return 0;\n    }\n}",
+  "timestamp": "2025-08-05T16:06:32.211836",
+  "code_extracted_previous": "class Solution {\n    public int getMaxRepetitions(String s1, int n1, String s2, int n2) {\n        int len1 = s1.length(), len2 = s2.length();\n        int count = 0;\n        for (int i = 0; i < len1 * n1; i++) {\n            if (s1.charAt(i % len1) == s2.charAt(count % len2)) {\n                count++;\n            }\n            if (count == len2) {\n                count = 0;\n                if (i + 1 >= len1) {\n                    return (i + 1) / len1 / n2;\n                }\n            }\n        }\n        return 0;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.584780"
+}

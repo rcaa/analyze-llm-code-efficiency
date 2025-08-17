@@ -1,0 +1,15 @@
+{
+  "id": 2981,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def maximumLength(self, s: str) -> int:\n        n = len(s)\n        max_len = 0\n        for i in range(n):\n            for j in range(i + 1, n + 1):\n                substr = s[i:j]\n                if len(set(substr)) == 1 and s.count(substr) >= 3:\n                    max_len = max(max_len, len(substr))\n        return max_len if max_len > 0 else -1\n```\n\nefficiency: HIGH\n\ntime complexity: O(n^2)\n\nspace complexity: O(1)\n\nenergy implications: LOW\n\nexplanation: The solution uses two nested loops to generate all possible substrings of the input string. For each substring, it checks if the substring consists of only one character and if it occurs at least thrice in the string. If both conditions are met, it updates the maximum length of the special substring. The solution has a high efficiency due to the use of a set to check for uniqueness of characters in the substring and the count method to check for frequency of the substring.",
+  "code": "class Solution:\n    def maximumLength(self, s: str) -> int:\n        n = len(s)\n        max_len = 0\n        for i in range(n):\n            for j in range(i + 1, n + 1):\n                substr = s[i:j]\n                if len(set(substr)) == 1 and s.count(substr) >= 3:\n                    max_len = max(max_len, len(substr))\n        return max_len if max_len > 0 else -1",
+  "timestamp": "2025-08-05T15:10:42.201378",
+  "code_extracted_previous": "class Solution:\n    def maximumLength(self, s: str) -> int:\n        n = len(s)\n        max_len = 0\n        for i in range(n):\n            for j in range(i + 1, n + 1):\n                substr = s[i:j]\n                if len(set(substr)) == 1 and s.count(substr) >= 3:\n                    max_len = max(max_len, len(substr))\n        return max_len if max_len > 0 else -1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.020413"
+}

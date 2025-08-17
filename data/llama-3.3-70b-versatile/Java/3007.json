@@ -1,0 +1,15 @@
+{
+  "id": 3007,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public long findMaximumNumber(long k, int x) {\n        long num = 1;\n        long accumulatedPrice = 0;\n        while (true) {\n            long price = calculatePrice(num, x);\n            if (accumulatedPrice + price > k) {\n                break;\n            }\n            accumulatedPrice += price;\n            num++;\n        }\n        return num - 1;\n    }\n\n    private long calculatePrice(long num, int x) {\n        long price = 0;\n        long temp = num;\n        long multiplier = 1;\n        while (temp > 0) {\n            if ((temp & 1) == 1 && (multiplier % x) == 0) {\n                price++;\n            }\n            temp >>= 1;\n            multiplier <<= 1;\n        }\n        return price;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a while loop to iterate through numbers from 1 to num, calculating the price of each number using the calculatePrice function, which checks the set bits at positions x, 2x, 3x, etc. in the binary representation of the number. The solution returns the greatest cheap number by breaking the loop when the accumulated price exceeds k.",
+  "code": "class Solution {\n    public long findMaximumNumber(long k, int x) {\n        long num = 1;\n        long accumulatedPrice = 0;\n        while (true) {\n            long price = calculatePrice(num, x);\n            if (accumulatedPrice + price > k) {\n                break;\n            }\n            accumulatedPrice += price;\n            num++;\n        }\n        return num - 1;\n    }\n\n    private long calculatePrice(long num, int x) {\n        long price = 0;\n        long temp = num;\n        long multiplier = 1;\n        while (temp > 0) {\n            if ((temp & 1) == 1 && (multiplier % x) == 0) {\n                price++;\n            }\n            temp >>= 1;\n            multiplier <<= 1;\n        }\n        return price;\n    }\n}",
+  "timestamp": "2025-08-06T15:14:30.420882",
+  "code_extracted_previous": "class Solution {\n    public long findMaximumNumber(long k, int x) {\n        long num = 1;\n        long accumulatedPrice = 0;\n        while (true) {\n            long price = calculatePrice(num, x);\n            if (accumulatedPrice + price > k) {\n                break;\n            }\n            accumulatedPrice += price;\n            num++;\n        }\n        return num - 1;\n    }\n\n    private long calculatePrice(long num, int x) {\n        long price = 0;\n        long temp = num;\n        long multiplier = 1;\n        while (temp > 0) {\n            if ((temp & 1) == 1 && (multiplier % x) == 0) {\n                price++;\n            }\n            temp >>= 1;\n            multiplier <<= 1;\n        }\n        return price;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.086181"
+}

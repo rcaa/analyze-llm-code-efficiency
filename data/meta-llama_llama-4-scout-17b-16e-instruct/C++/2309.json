@@ -1,0 +1,15 @@
+{
+  "id": 2309,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string greatestLetter(string s) {\n        bool lower[26] = {false};\n        bool upper[26] = {false};\n        \n        for (char c : s) {\n            if (c >= 'a' && c <= 'z') {\n                lower[c - 'a'] = true;\n            } else if (c >= 'A' && c <= 'Z') {\n                upper[c - 'A'] = true;\n            }\n        }\n        \n        for (int i = 25; i >= 0; --i) {\n            if (lower[i] && upper[i]) {\n                return string(1, 'A' + i);\n            }\n        }\n        \n        return \"\";\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses two boolean arrays to track the occurrence of lowercase and uppercase letters. It then iterates through the arrays in reverse order to find the greatest letter that appears in both cases.",
+  "code": "class Solution {\npublic:\n    string greatestLetter(string s) {\n        bool lower[26] = {false};\n        bool upper[26] = {false};\n        \n        for (char c : s) {\n            if (c >= 'a' && c <= 'z') {\n                lower[c - 'a'] = true;\n            } else if (c >= 'A' && c <= 'Z') {\n                upper[c - 'A'] = true;\n            }\n        }\n        \n        for (int i = 25; i >= 0; --i) {\n            if (lower[i] && upper[i]) {\n                return string(1, 'A' + i);\n            }\n        }\n        \n        return \"\";\n    }\n};",
+  "timestamp": "2025-08-05T14:45:47.281509",
+  "code_extracted_previous": "class Solution {\npublic:\n    string greatestLetter(string s) {\n        bool lower[26] = {false};\n        bool upper[26] = {false};\n        \n        for (char c : s) {\n            if (c >= 'a' && c <= 'z') {\n                lower[c - 'a'] = true;\n            } else if (c >= 'A' && c <= 'Z') {\n                upper[c - 'A'] = true;\n            }\n        }\n        \n        for (int i = 25; i >= 0; --i) {\n            if (lower[i] && upper[i]) {\n                return string(1, 'A' + i);\n            }\n        }\n        \n        return \"\";\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.041159"
+}

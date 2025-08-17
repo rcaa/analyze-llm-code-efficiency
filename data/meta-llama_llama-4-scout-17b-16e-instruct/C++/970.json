@@ -1,0 +1,15 @@
+{
+  "id": 970,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        vector<int> result;\n        for (int i = 0; i < 20; ++i) {\n            long long xi = pow(x, i);\n            if (xi > bound) break;\n            for (int j = 0; j < 20; ++j) {\n                long long yj = pow(y, j);\n                long long sum = xi + yj;\n                if (sum > bound) break;\n                result.push_back(sum);\n            }\n        }\n        sort(result.begin(), result.end());\n        result.erase(unique(result.begin(), result.end()), result.end());\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log bound * log bound)\nspace complexity: O(log bound * log bound)\nenergy implications: LOW\nexplanation: The solution uses two nested loops to generate all possible combinations of $x^i + y^j$, stopping early when the current $x^i$ or sum exceeds the bound. It then sorts and removes duplicates from the result vector. The use of `pow` function and early termination ensures efficiency.",
+  "code": "class Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        vector<int> result;\n        for (int i = 0; i < 20; ++i) {\n            long long xi = pow(x, i);\n            if (xi > bound) break;\n            for (int j = 0; j < 20; ++j) {\n                long long yj = pow(y, j);\n                long long sum = xi + yj;\n                if (sum > bound) break;\n                result.push_back(sum);\n            }\n        }\n        sort(result.begin(), result.end());\n        result.erase(unique(result.begin(), result.end()), result.end());\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T14:57:15.413810",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        vector<int> result;\n        for (int i = 0; i < 20; ++i) {\n            long long xi = pow(x, i);\n            if (xi > bound) break;\n            for (int j = 0; j < 20; ++j) {\n                long long yj = pow(y, j);\n                long long sum = xi + yj;\n                if (sum > bound) break;\n                result.push_back(sum);\n            }\n        }\n        sort(result.begin(), result.end());\n        result.erase(unique(result.begin(), result.end()), result.end());\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.131306"
+}

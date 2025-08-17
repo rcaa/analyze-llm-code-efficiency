@@ -1,0 +1,15 @@
+{
+  "id": 3303,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minStartingIndex(self, s: str, pattern: str) -> int:\n        m, n = len(pattern), len(s)\n        diff_count = 0\n        left = 0\n        for right in range(n):\n            if s[right] != pattern[right % m]:\n                diff_count += 1\n            if right >= m:\n                if s[right - m] != pattern[(right - m) % m]:\n                    diff_count -= 1\n            if diff_count > 1:\n                continue\n            if diff_count == 0 or (right >= m - 1 and diff_count == 1):\n                return right - m + 1\n        return -1\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to track the number of different characters between the substring of `s` and `pattern`. It maintains a window of size `m` (length of `pattern`) and moves it through `s`, updating the difference count. If the difference count exceeds 1, it moves the window forward. If the difference count is 0 or 1 (and the window has reached the end of `pattern`), it returns the starting index of the current window.",
+  "code": "class Solution:\n    def minStartingIndex(self, s: str, pattern: str) -> int:\n        m, n = len(pattern), len(s)\n        diff_count = 0\n        left = 0\n        for right in range(n):\n            if s[right] != pattern[right % m]:\n                diff_count += 1\n            if right >= m:\n                if s[right - m] != pattern[(right - m) % m]:\n                    diff_count -= 1\n            if diff_count > 1:\n                continue\n            if diff_count == 0 or (right >= m - 1 and diff_count == 1):\n                return right - m + 1\n        return -1",
+  "timestamp": "2025-08-05T16:15:24.075687",
+  "code_extracted_previous": "class Solution:\n    def minStartingIndex(self, s: str, pattern: str) -> int:\n        m, n = len(pattern), len(s)\n        diff_count = 0\n        left = 0\n        for right in range(n):\n            if s[right] != pattern[right % m]:\n                diff_count += 1\n            if right >= m:\n                if s[right - m] != pattern[(right - m) % m]:\n                    diff_count -= 1\n            if diff_count > 1:\n                continue\n            if diff_count == 0 or (right >= m - 1 and diff_count == 1):\n                return right - m + 1\n        return -1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.570246"
+}

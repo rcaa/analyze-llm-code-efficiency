@@ -1,0 +1,15 @@
+{
+  "id": 2375,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public String smallestNumber(String pattern) {\n        int n = pattern.length();\n        char[] res = new char[n + 1];\n        for (int i = 0; i <= n; i++) res[i] = (char)('1' + i);\n        int i = 0;\n        while (i < n) {\n            if (pattern.charAt(i) == 'D') {\n                int j = i;\n                while (j < n && pattern.charAt(j) == 'D') j++;\n                reverse(res, i, j);\n                i = j;\n            } else {\n                i++;\n            }\n        }\n        return new String(res);\n    }\n    private void reverse(char[] a, int l, int r) {\n        while (l < r) {\n            char tmp = a[l];\n            a[l] = a[r];\n            a[r] = tmp;\n            l++; r--;\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Build the lexicographically smallest permutation 123…(n+1) then reverse every maximal block of positions that must be decreasing. This yields the smallest valid number while satisfying all constraints.",
+  "code": "class Solution {\n    public String smallestNumber(String pattern) {\n        int n = pattern.length();\n        char[] res = new char[n + 1];\n        for (int i = 0; i <= n; i++) res[i] = (char)('1' + i);\n        int i = 0;\n        while (i < n) {\n            if (pattern.charAt(i) == 'D') {\n                int j = i;\n                while (j < n && pattern.charAt(j) == 'D') j++;\n                reverse(res, i, j);\n                i = j;\n            } else {\n                i++;\n            }\n        }\n        return new String(res);\n    }\n    private void reverse(char[] a, int l, int r) {\n        while (l < r) {\n            char tmp = a[l];\n            a[l] = a[r];\n            a[r] = tmp;\n            l++; r--;\n        }\n    }\n}",
+  "timestamp": "2025-08-06T02:31:13.682173",
+  "code_extracted_previous": "class Solution {\n    public String smallestNumber(String pattern) {\n        int n = pattern.length();\n        char[] res = new char[n + 1];\n        for (int i = 0; i <= n; i++) res[i] = (char)('1' + i);\n        int i = 0;\n        while (i < n) {\n            if (pattern.charAt(i) == 'D') {\n                int j = i;\n                while (j < n && pattern.charAt(j) == 'D') j++;\n                reverse(res, i, j);\n                i = j;\n            } else {\n                i++;\n            }\n        }\n        return new String(res);\n    }\n    private void reverse(char[] a, int l, int r) {\n        while (l < r) {\n            char tmp = a[l];\n            a[l] = a[r];\n            a[r] = tmp;\n            l++; r--;\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.034529"
+}

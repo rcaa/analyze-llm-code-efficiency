@@ -1,0 +1,15 @@
+{
+  "id": 3081,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minimizeStringValue(self, s: str) -> str:\n        s = list(s)\n        for i in range(len(s)):\n            if s[i] == '?':\n                min_cost = float('inf')\n                for char in 'abcdefghijklmnopqrstuvwxyz':\n                    new_cost = self.calculate_cost(s[:i] + char + s[i+1:], s)\n                    min_cost = min(min_cost, new_cost)\n                s[i] = chr(ord('a') + min_cost)\n        return ''.join(s)\n    \n    def calculate_cost(self, s: str, t: str) -> int:\n        cost = 0\n        for i in range(len(s)):\n            if s[i] == t[i % len(t)]:\n                cost += 1\n        return cost\n```\n\nsolution: \n```python\nclass Solution:\n    def minimizeStringValue(self, s: str) -> str:\n        s = list(s)\n        for i in range(len(s)):\n            if s[i] == '?':\n                min_cost = float('inf')\n                for char in 'abcdefghijklmnopqrstuvwxyz':\n                    new_cost = self.calculate_cost(s[:i] + char + s[i+1:], s)\n                    min_cost = min(min_cost, new_cost)\n                s[i] = chr(ord('a') + min_cost)\n        return ''.join(s)\n    \n    def calculate_cost(self, s: str, t: str) -> int:\n        cost = 0\n        for i in range(len(s)):\n            if s[i] == t[i % len(t)]:\n                cost += 1\n        return cost\n```\nefficiency: HIGH\ntime complexity: O(N*26)\nspace complexity: O(1)\nenergy implications: LOW \nexplanation: The solution iterates through each '?' in the string. For each '?', it calculates the cost of replacing it with each lowercase letter. The replacement that results in the minimum cost is chosen, and the process is repeated for all '?'. The algorithm uses a fixed-size loop for calculating the cost, making it efficient.",
+  "code": "solution:",
+  "timestamp": "2025-08-05T15:11:34.991255",
+  "code_extracted_previous": "class Solution:\n    def minimizeStringValue(self, s: str) -> str:\n        s = list(s)\n        for i in range(len(s)):\n            if s[i] == '?':\n                min_cost = float('inf')\n                for char in 'abcdefghijklmnopqrstuvwxyz':\n                    new_cost = self.calculate_cost(s[:i] + char + s[i+1:], s)\n                    min_cost = min(min_cost, new_cost)\n                s[i] = chr(ord('a') + min_cost)\n        return ''.join(s)\n    \n    def calculate_cost(self, s: str, t: str) -> int:\n        cost = 0\n        for i in range(len(s)):\n            if s[i] == t[i % len(t)]:\n                cost += 1\n        return cost",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.579663"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 187,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public List<String> findRepeatedDnaSequences(String s) {\n        if (s.length() < 11) return new ArrayList<>();\n        Map<Character, Integer> map = Map.of('A',0,'C',1,'G',2,'T',3);\n        Set<Integer> seen = new HashSet<>();\n        Set<String> res = new HashSet<>();\n        int hash = 0;\n        for (int i = 0; i < 10; i++) {\n            hash = (hash << 2) | map.get(s.charAt(i));\n        }\n        seen.add(hash);\n        for (int i = 10; i < s.length(); i++) {\n            hash = ((hash << 2) | map.get(s.charAt(i))) & 0xFFFFF;\n            if (seen.contains(hash)) {\n                res.add(s.substring(i - 9, i + 1));\n            } else {\n                seen.add(hash);\n            }\n        }\n        return new ArrayList<>(res);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses rolling hash with bit-packing (2 bits per nucleotide) to scan the string once, storing 20-bit hashes in a set to detect duplicates. Constant-time hash updates and minimal memory footprint yield optimal performance.",
+  "code": "class Solution {\n    public List<String> findRepeatedDnaSequences(String s) {\n        if (s.length() < 11) return new ArrayList<>();\n        Map<Character, Integer> map = Map.of('A',0,'C',1,'G',2,'T',3);\n        Set<Integer> seen = new HashSet<>();\n        Set<String> res = new HashSet<>();\n        int hash = 0;\n        for (int i = 0; i < 10; i++) {\n            hash = (hash << 2) | map.get(s.charAt(i));\n        }\n        seen.add(hash);\n        for (int i = 10; i < s.length(); i++) {\n            hash = ((hash << 2) | map.get(s.charAt(i))) & 0xFFFFF;\n            if (seen.contains(hash)) {\n                res.add(s.substring(i - 9, i + 1));\n            } else {\n                seen.add(hash);\n            }\n        }\n        return new ArrayList<>(res);\n    }\n}",
+  "timestamp": "2025-08-06T02:30:50.931754",
+  "code_extracted_previous": "class Solution {\n    public List<String> findRepeatedDnaSequences(String s) {\n        if (s.length() < 11) return new ArrayList<>();\n        Map<Character, Integer> map = Map.of('A',0,'C',1,'G',2,'T',3);\n        Set<Integer> seen = new HashSet<>();\n        Set<String> res = new HashSet<>();\n        int hash = 0;\n        for (int i = 0; i < 10; i++) {\n            hash = (hash << 2) | map.get(s.charAt(i));\n        }\n        seen.add(hash);\n        for (int i = 10; i < s.length(); i++) {\n            hash = ((hash << 2) | map.get(s.charAt(i))) & 0xFFFFF;\n            if (seen.contains(hash)) {\n                res.add(s.substring(i - 9, i + 1));\n            } else {\n                seen.add(hash);\n            }\n        }\n        return new ArrayList<>(res);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.669121"
+}

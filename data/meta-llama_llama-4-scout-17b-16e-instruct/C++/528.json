@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    Solution(vector<int>& w) {\n        for (int i = 1; i < w.size(); ++i) {\n            w[i] += w[i - 1];\n        }\n        weights = w;\n    }\n    \n    int pickIndex() {\n        int target = rand() % weights.back() + 1;\n        int left = 0, right = weights.size() - 1;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (weights[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\nprivate:\n    vector<int> weights;\n};\n```\nefficiency: HIGH\ntime complexity: O(n + log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses prefix sum to store cumulative weights and binary search to find the index, allowing for efficient random index selection based on given weights.",
+  "code": "class Solution {\npublic:\n    Solution(vector<int>& w) {\n        for (int i = 1; i < w.size(); ++i) {\n            w[i] += w[i - 1];\n        }\n        weights = w;\n    }\n    \n    int pickIndex() {\n        int target = rand() % weights.back() + 1;\n        int left = 0, right = weights.size() - 1;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (weights[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\nprivate:\n    vector<int> weights;\n};",
+  "timestamp": "2025-08-05T12:59:46.600961",
+  "code_extracted_previous": "class Solution {\npublic:\n    Solution(vector<int>& w) {\n        for (int i = 1; i < w.size(); ++i) {\n            w[i] += w[i - 1];\n        }\n        weights = w;\n    }\n    \n    int pickIndex() {\n        int target = rand() % weights.back() + 1;\n        int left = 0, right = weights.size() - 1;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (weights[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\nprivate:\n    vector<int> weights;\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.723085"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1147,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int longestDecomposition(string text) {\n        int n = text.size();\n        int res = 0;\n        int l = 0, r = n - 1;\n        while (l <= r) {\n            int len = 1;\n            while (l + len - 1 < r - len + 1) {\n                if (text.substr(l, len) == text.substr(r - len + 1, len)) {\n                    res += 2;\n                    l += len;\n                    r -= len;\n                    break;\n                }\n                ++len;\n            }\n            if (l > r) break;\n            if (l + len - 1 >= r - len + 1) {\n                ++res;\n                break;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Greedy two-pointer scan from both ends, matching the smallest possible equal prefix/suffix pairs and counting them as 2 segments; when no more pairs can be formed the remaining middle counts as 1 segment. This maximizes k by always taking the shortest valid mirror pairs first.",
+  "code": "class Solution {\npublic:\n    int longestDecomposition(string text) {\n        int n = text.size();\n        int res = 0;\n        int l = 0, r = n - 1;\n        while (l <= r) {\n            int len = 1;\n            while (l + len - 1 < r - len + 1) {\n                if (text.substr(l, len) == text.substr(r - len + 1, len)) {\n                    res += 2;\n                    l += len;\n                    r -= len;\n                    break;\n                }\n                ++len;\n            }\n            if (l > r) break;\n            if (l + len - 1 >= r - len + 1) {\n                ++res;\n                break;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:13:46.131404",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestDecomposition(string text) {\n        int n = text.size();\n        int res = 0;\n        int l = 0, r = n - 1;\n        while (l <= r) {\n            int len = 1;\n            while (l + len - 1 < r - len + 1) {\n                if (text.substr(l, len) == text.substr(r - len + 1, len)) {\n                    res += 2;\n                    l += len;\n                    r -= len;\n                    break;\n                }\n                ++len;\n            }\n            if (l > r) break;\n            if (l + len - 1 >= r - len + 1) {\n                ++res;\n                break;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.141134"
+}

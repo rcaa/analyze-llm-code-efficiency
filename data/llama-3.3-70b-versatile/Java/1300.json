@@ -1,0 +1,15 @@
+{
+  "id": 1300,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int findBestValue(int[] arr, int target) {\n        int minDiff = Integer.MAX_VALUE;\n        int result = 0;\n        int maxVal = 0;\n        for (int num : arr) {\n            maxVal = Math.max(maxVal, num);\n        }\n        for (int i = 1; i <= maxVal; i++) {\n            int sum = 0;\n            for (int num : arr) {\n                sum += Math.min(num, i);\n            }\n            int diff = Math.abs(target - sum);\n            if (diff < minDiff) {\n                minDiff = diff;\n                result = i;\n            } else if (diff == minDiff) {\n                result = Math.min(result, i);\n            }\n        }\n        return result;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through all possible values from 1 to the maximum value in the array, calculates the sum of the array with values greater than the current value changed to the current value, and keeps track of the value that results in the sum closest to the target. In case of a tie, it returns the minimum such value.",
+  "code": "class Solution {\n    public int findBestValue(int[] arr, int target) {\n        int minDiff = Integer.MAX_VALUE;\n        int result = 0;\n        int maxVal = 0;\n        for (int num : arr) {\n            maxVal = Math.max(maxVal, num);\n        }\n        for (int i = 1; i <= maxVal; i++) {\n            int sum = 0;\n            for (int num : arr) {\n                sum += Math.min(num, i);\n            }\n            int diff = Math.abs(target - sum);\n            if (diff < minDiff) {\n                minDiff = diff;\n                result = i;\n            } else if (diff == minDiff) {\n                result = Math.min(result, i);\n            }\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-06T15:13:02.440793",
+  "code_extracted_previous": "class Solution {\n    public int findBestValue(int[] arr, int target) {\n        int minDiff = Integer.MAX_VALUE;\n        int result = 0;\n        int maxVal = 0;\n        for (int num : arr) {\n            maxVal = Math.max(maxVal, num);\n        }\n        for (int i = 1; i <= maxVal; i++) {\n            int sum = 0;\n            for (int num : arr) {\n                sum += Math.min(num, i);\n            }\n            int diff = Math.abs(target - sum);\n            if (diff < minDiff) {\n                minDiff = diff;\n                result = i;\n            } else if (diff == minDiff) {\n                result = Math.min(result, i);\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.440816"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const long long MOD = 1e9 + 7;\n        long long dp[goal + 1][n + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; ++i) {\n            for (int j = 0; j <= n; ++j) {\n                if (j == 0) {\n                    dp[i][j] = dp[i - 1][j];\n                } else {\n                    dp[i][j] = (dp[i][j - 1] + dp[i - 1][j - 1]) % MOD;\n                }\n            }\n        }\n        return dp[goal][n];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(goal * n)\nspace complexity: O(goal * n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of possible playlists. It builds a 2D table `dp` where `dp[i][j]` represents the number of playlists with `i` songs and using `j` unique songs. The base case is `dp[0][0] = 1` (an empty playlist is possible). The recurrence relation considers two cases: adding a new unique song to the playlist or not adding a new unique song. The final result is `dp[goal][n]`.\n\n\n\n",
+  "code": "class Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const long long MOD = 1e9 + 7;\n        long long dp[goal + 1][n + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; ++i) {\n            for (int j = 0; j <= n; ++j) {\n                if (j == 0) {\n                    dp[i][j] = dp[i - 1][j];\n                } else {\n                    dp[i][j] = (dp[i][j - 1] + dp[i - 1][j - 1]) % MOD;\n                }\n            }\n        }\n        return dp[goal][n];\n    }\n};",
+  "timestamp": "2025-08-05T15:18:19.222197",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const long long MOD = 1e9 + 7;\n        long long dp[goal + 1][n + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0][0] = 1;\n        for (int i = 1; i <= goal; ++i) {\n            for (int j = 0; j <= n; ++j) {\n                if (j == 0) {\n                    dp[i][j] = dp[i - 1][j];\n                } else {\n                    dp[i][j] = (dp[i][j - 1] + dp[i - 1][j - 1]) % MOD;\n                }\n            }\n        }\n        return dp[goal][n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.392746"
+}

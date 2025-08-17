@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass StockSpanner {\npublic:\n    StockSpanner() {\n        prices.push_back(INT_MAX);\n        days.push_back(0);\n    }\n    \n    int next(int price) {\n        int day = 1;\n        while (prices.back() <= price) {\n            day += days.back();\n            prices.pop_back();\n            days.pop_back();\n        }\n        prices.push_back(price);\n        days.push_back(day);\n        return day;\n    }\nprivate:\n    vector<int> prices;\n    vector<int> days;\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a stack to keep track of the prices and their corresponding days. It iterates through the stack until it finds a price greater than the current price, and then returns the total days.",
+  "code": "class StockSpanner {\npublic:\n    StockSpanner() {\n        prices.push_back(INT_MAX);\n        days.push_back(0);\n    }\n    \n    int next(int price) {\n        int day = 1;\n        while (prices.back() <= price) {\n            day += days.back();\n            prices.pop_back();\n            days.pop_back();\n        }\n        prices.push_back(price);\n        days.push_back(day);\n        return day;\n    }\nprivate:\n    vector<int> prices;\n    vector<int> days;\n};",
+  "timestamp": "2025-08-05T16:03:18.485711",
+  "code_extracted_previous": "class StockSpanner {\npublic:\n    StockSpanner() {\n        prices.push_back(INT_MAX);\n        days.push_back(0);\n    }\n    \n    int next(int price) {\n        int day = 1;\n        while (prices.back() <= price) {\n            day += days.back();\n            prices.pop_back();\n            days.pop_back();\n        }\n        prices.push_back(price);\n        days.push_back(day);\n        return day;\n    }\nprivate:\n    vector<int> prices;\n    vector<int> days;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:37.148609"
+}

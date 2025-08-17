@@ -1,0 +1,15 @@
+{
+  "id": 2135,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int wordCount(vector<string>& startWords, vector<string>& targetWords) {\n        unordered_set<string> startSet(startWords.begin(), startWords.end());\n        int res = 0;\n        for (const string& target : targetWords) {\n            for (int i = 0; i < target.size(); i++) {\n                string temp = target.substr(0, i) + target.substr(i + 1);\n                if (startSet.count(temp)) res++;\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(N * M)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: We use a set to store the startWords for efficient lookups. Then, for each targetWord, we try to remove each character and check if the resulting string is in the set. If it is, we increment the result count. This approach has a high efficiency due to the use of a set for lookups.",
+  "code": "class Solution {\npublic:\n    int wordCount(vector<string>& startWords, vector<string>& targetWords) {\n        unordered_set<string> startSet(startWords.begin(), startWords.end());\n        int res = 0;\n        for (const string& target : targetWords) {\n            for (int i = 0; i < target.size(); i++) {\n                string temp = target.substr(0, i) + target.substr(i + 1);\n                if (startSet.count(temp)) res++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:22:40.889340",
+  "code_extracted_previous": "public:\n    int wordCount(vector<string>& startWords, vector<string>& targetWords) {\n        unordered_set<string> startSet(startWords.begin(), startWords.end());\n        int res = 0;\n        for (const string& target : targetWords) {\n            for (int i = 0; i < target.size(); i++) {\n                string temp = target.substr(0, i) + target.substr(i + 1);\n                if (startSet.count(temp)) res++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.843906"
+}

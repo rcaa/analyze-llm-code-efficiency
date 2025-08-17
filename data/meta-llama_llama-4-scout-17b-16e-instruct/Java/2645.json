@@ -1,0 +1,15 @@
+{
+  "id": 2645,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int addMinimum(String word) {\n        int count = 0;\n        int aCount = 0;\n        for (char c : word.toCharArray()) {\n            if (c == 'a') {\n                aCount++;\n            } else if (c == 'b') {\n                count += Math.max(0, aCount - 1);\n                aCount = 0;\n            } else {\n                count += aCount + 1;\n            }\n        }\n        return count + Math.max(0, aCount * 2);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, maintaining a count of 'a's encountered and the total insertions needed. When 'b' or 'c' is encountered, it adjusts the counts accordingly to ensure the string can be formed by concatenating \"abc\". The final result accounts for any remaining 'a's.",
+  "code": "class Solution {\n    public int addMinimum(String word) {\n        int count = 0;\n        int aCount = 0;\n        for (char c : word.toCharArray()) {\n            if (c == 'a') {\n                aCount++;\n            } else if (c == 'b') {\n                count += Math.max(0, aCount - 1);\n                aCount = 0;\n            } else {\n                count += aCount + 1;\n            }\n        }\n        return count + Math.max(0, aCount * 2);\n    }\n}",
+  "timestamp": "2025-08-06T01:04:18.508211",
+  "code_extracted_previous": "class Solution {\n    public int addMinimum(String word) {\n        int count = 0;\n        int aCount = 0;\n        for (char c : word.toCharArray()) {\n            if (c == 'a') {\n                aCount++;\n            } else if (c == 'b') {\n                count += Math.max(0, aCount - 1);\n                aCount = 0;\n            } else {\n                count += aCount + 1;\n            }\n        }\n        return count + Math.max(0, aCount * 2);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.899231"
+}

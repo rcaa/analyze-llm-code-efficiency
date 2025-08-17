@@ -4,38 +4,38 @@ import pandas as pd
 import time
 import re
 import ast
+from collections import deque
+from typing import Tuple
 from groq import Groq, RateLimitError
 from datetime import datetime
 
 # === CONFIGURAÇÕES GLOBAIS ===
-# Caminhos
 script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, os.pardir, os.pardir))
+
 PROGRESS_FILE_PATH = os.path.join(project_root, "src/generate_llms_answers/progresso.json")
-STATUS_FILE_PATH = os.path.join(project_root, "src/generate_llms_answers/status_respostas.json")
-CSV_PATH = os.path.join(project_root, "datasets", "leetcode", "sample.csv")
+# Salvar relatório de status na mesma pasta do progresso
+STATUS_FILE_PATH = os.path.join(os.path.dirname(PROGRESS_FILE_PATH), "status_respostas.json")
+
+df_csv_path = os.path.join(project_root, "datasets", "leetcode", "sample.csv")
 OUTPUT_BASE = os.path.join(project_root, "data")
 
-# Parâmetros de Coleta
-BATCH_SIZE = 20
+# Listagem de linguagens suportadas e mapeamento para chave do starter code
 LINGUAGENS = ["C++", "Java", "Python3"]
-LANG_KEY = { "C++": "cpp", "Java": "java", "Python3": "python3" }
+LANG_KEY = {"C++": "cpp", "Java": "java", "Python3": "python3"}
+# Tempo de espera em segundos após RateLimitError antes de tentar o mesmo modelo
+BACKOFF_SECONDS = 60
 
-# === INICIALIZAÇÃO DA API ===
+# === INICIALIZAÇÃO DA API GROQ ===
 try:
-    config_path = os.path.join(project_root, "config.json")
-    with open(config_path, "r") as config_file:
-        config = json.load(config_file)
-        api_key = config["api_key"]
+    with open(os.path.join(project_root, "config.json"), "r") as cf:
+        api_key = json.load(cf)["api_key"]
     client = Groq(api_key=api_key)
-except FileNotFoundError:
-    print(f"ERRO: Arquivo de configuração 'config.json' não encontrado em {project_root}")
-    exit()
-except KeyError:
-    print("ERRO: A chave 'api_key' não foi encontrada dentro de 'config.json'")
-    exit()
+except Exception as e:
+    print(f"Erro na inicialização da API: {e}")
+    exit(1)
 
-# === PROMPTS (Sem alterações) ===
+# === DEFINIÇÃO DOS PROMPTS ===
 PROMPT_SYSTEM = (
     "You are a programming and algorithms specialist. "
     "When the user provides a problem statement and programming language, analyze and efficiently solve the problem. "
@@ -47,8 +47,7 @@ PROMPT_SYSTEM = (
     "time complexity: <BIG O notation>\n"
     "space complexity: <BIG O notation>\n"
     "energy implications: <LOW | MEDIUM | HIGH>\n"
-    "explanation: <Concise explanation of the main approach and key strengths/weaknesses. Do not include anything outside of this format.>\n\n"
-    "**Important**: Use the provided starter code **exactly as given**. Do not change the function/class signature or add any import statements. Only fill in the required logic within the starter code."
+    "explanation: <Concise explanation of the main approach and key strengths/weaknesses. Do not include anything outside of this format.>"
 )
 USER_PROMPT = (
     "How would you efficiently solve the following LeetCode problem in {language}?\n\n"
@@ -57,15 +56,17 @@ USER_PROMPT = (
     "Please **insert your solution into the starter code above without altering its structure**, and respond **only** in the prescribed format (no commentary):"
 )
 
-# === FUNÇÕES AUXILIARES (Sem alterações) ===
+# === FUNÇÕES DE PROGRESSO ===
 def carregar_progresso():
-    if not os.path.exists(PROGRESS_FILE_PATH): return 0
+    if not os.path.exists(PROGRESS_FILE_PATH):
+        return 0
     with open(PROGRESS_FILE_PATH, "r") as f:
-        return json.load(f).get("ultimo_indice_processado", 0)
+        return json.load(f).get("ultimo_task_index", 0)
 
-def salvar_progresso(indice):
+def salvar_progresso(task_index):
+    os.makedirs(os.path.dirname(PROGRESS_FILE_PATH), exist_ok=True)
     with open(PROGRESS_FILE_PATH, "w") as f:
-        json.dump({"ultimo_indice_processado": indice}, f, indent=2)
+        json.dump({"ultimo_task_index": task_index}, f, indent=2)
 
 def carregar_status_respostas():
     if os.path.exists(STATUS_FILE_PATH):
@@ -74,209 +75,136 @@ def carregar_status_respostas():
     return {}
 
 def salvar_status_respostas(status_respostas):
+    os.makedirs(os.path.dirname(STATUS_FILE_PATH), exist_ok=True)
     with open(STATUS_FILE_PATH, "w", encoding="utf-8") as f:
         json.dump(status_respostas, f, indent=2, ensure_ascii=False)
 
-def listar_modelos():
-    modelos_excluidos = ["whisper", "tts", "guard", "prompt-guard", "compound", "distil-whisper", "mistral"]
-    todos = [m.id for m in client.models.list().data]
-    return sorted({m for m in todos if not any(ex in m.lower() for ex in modelos_excluidos)})
-
+# === EXTRAÇÃO E VALIDAÇÃO DE RESPOSTA ===
 def extrair_codigo(conteudo: str) -> str:
-    parts = re.split(r'(?i)solution:', conteudo, maxsplit=1)
-    if len(parts) < 2: return ""
-    after = parts[1]
-    before_label = re.split(r'(?i)\n\s*(efficiency:|time complexity:|space complexity:|energy implications:|explanation:)', after, maxsplit=1)[0]
-    without_open = re.sub(r'```[^\n]*\n', "", before_label)
-    without_close = re.sub(r'\n```', "", without_open)
-    return without_close.strip()
-
-def compare_signature(stub_line: str, code_line: str) -> bool:
-    m1 = re.search(r'\b(\w+)\s*\(', stub_line)
-    m2 = re.search(r'\b(\w+)\s*\(', code_line)
-    if not (m1 and m2) or m1.group(1) != m2.group(1): return False
-    def tipos(line):
-        inside = line[line.find('(')+1 : line.rfind(')')]
-        parts = [p.strip() for p in inside.split(',') if p.strip()]
-        tipos_list = []
-        for p in parts:
-            tokens = p.split()
-            tipos_list.append(" ".join(tokens[:-1]) if len(tokens) > 1 else tokens[0])
-        return tipos_list
-    return tipos(stub_line) == tipos(code_line)
-
-def _encontrar_linha_assinatura(codigo: str) -> str:
-    for linha in codigo.splitlines():
-        linha_strip = linha.strip()
-        if '(' in linha and ')' in linha and not linha_strip.startswith(('#', '//', '/*', '*')):
-            return linha_strip
-    return ""
-
-def validar_resposta(conteudo: str, starter: str, language: str) -> bool:
-    conteudo_lower = conteudo.lower()
-    expected_labels = ["solution:", "efficiency:", "time complexity:", "space complexity:", "energy implications:", "explanation:"]
-    if not all(label in conteudo_lower for label in expected_labels): return False
-    codigo_gerado = extrair_codigo(conteudo)
-    if not codigo_gerado: return False
-    linha_assinatura_starter = _encontrar_linha_assinatura(starter)
-    linha_assinatura_gerada = _encontrar_linha_assinatura(codigo_gerado)
-    if not linha_assinatura_starter or not linha_assinatura_gerada: return False
-    return compare_signature(linha_assinatura_starter, linha_assinatura_gerada)
-
-def filtrar_apenas_resposta(conteudo):
-    match = re.search(r'solution:', conteudo, re.IGNORECASE)
-    return conteudo[match.start():].strip() if match else conteudo.strip()
-
-def ler_questoes_csv(path, start_index=0, batch_size=20):
-    try:
-        df = pd.read_csv(path)
-        fim_index = start_index + batch_size
-        batch_df = df.iloc[start_index:fim_index]
-        if batch_df.empty: return []
-        questions = []
-        for _, row in batch_df.iterrows():
-            try:
-                starter_dict = ast.literal_eval(row.get("starter_code", "{}"))
-            except Exception:
-                starter_dict = {}
-            questions.append({"id": row["id"], "titulo": row["titulo"], "url": row["url"], "enunciado": row["enunciado"], "starter_code": starter_dict})
-        return questions
-    except FileNotFoundError: raise
-    except Exception as e:
-        print(f"Erro ao ler ou processar o CSV: {e}")
-        return []
-
-# === LÓGICA PRINCIPAL DE PROCESSAMENTO ===
-def determinar_tarefas_de_retentativa(status_respostas, modelos, questoes_totais_df):
-    tarefas_para_retentar = []
-    mapa_questoes = {str(q["id"]): q for q in questoes_totais_df.to_dict('records')}
-    for qid, modelos_status in status_respostas.items():
-        for modelo, linguagens_status in modelos_status.items():
-            for linguagem, status in linguagens_status.items():
-                if status == "erro" and qid in mapa_questoes and modelo in modelos and linguagem in LINGUAGENS:
-                    tarefas_para_retentar.append((mapa_questoes[qid], modelo, linguagem))
-    return tarefas_para_retentar
-
-# ======================= FUNÇÃO CORRIGIDA =======================
-def processar_tarefa(questao, modelo, linguagem, status_respostas):
-    """Executa a tarefa e retorna True se a API foi chamada com sucesso, False caso contrário."""
-    pasta_modelo = modelo.replace("/", "_")
-    pasta = os.path.join(OUTPUT_BASE, pasta_modelo, linguagem)
-    os.makedirs(pasta, exist_ok=True)
-    
-    key = LANG_KEY[linguagem]
-    qid = str(questao["id"])
-    
-    # Inicializa todas as variáveis de resultado
-    status, error_message, conteudo_bruto, conteudo_formatado, codigo_extraido, tempo_resposta = None, None, "", "", "", None
-    sucesso_api = False
-
-    print(f"Executando tarefa para Questão {qid} com {modelo}/{linguagem}...")
-    
-    starter = questao["starter_code"].get(key, "")
-    
-    # CORREÇÃO: Se o starter code não for encontrado, registra um erro em vez de pular.
-    if not starter:
-        status = "erro"
-        error_message = f"Starter code para a linguagem '{linguagem}' não encontrado no CSV."
-        print(f"AVISO: {error_message}")
-        sucesso_api = True # Consideramos "sucesso" para não colocar o modelo em quarentena por um erro de dados.
+    labels_pattern = r'(?i)\n\s*(solution:|efficiency:|time complexity:|space complexity:|energy implications:|explanation:)'
+    m = re.search(r'(?i)solution:\s*```[^\n]*\n(.*?)```', conteudo, flags=re.DOTALL)
+    if m:
+        code = m.group(1).strip()
     else:
-        try:
-            start_time = time.time()
-            resposta = client.chat.completions.create(messages=[{"role": "system", "content": PROMPT_SYSTEM}, {"role": "user", "content": USER_PROMPT.format(language=linguagem, problem=questao["enunciado"], starter=starter)}], model=modelo, temperature=0)
-            tempo_resposta = time.time() - start_time
-            conteudo_bruto = resposta.choices[0].message.content
-            conteudo_formatado = filtrar_apenas_resposta(conteudo_bruto)
-            codigo_extraido = extrair_codigo(conteudo_bruto)
-            status = "ok" if validar_resposta(conteudo_bruto, starter, linguagem) else "formato_invalido"
-            sucesso_api = True
-        except RateLimitError as e:
-            status, error_message = "erro", f"RateLimitError: {e}"
-        except Exception as e:
-            status, error_message = "erro", str(e)
+        m2 = re.search(r'```[^\n]*\n(.*?)```', conteudo, flags=re.DOTALL)
+        if m2:
+            code = m2.group(1).strip()
+        else:
+            m3 = re.search(r'(?i)solution:\s*(.*)', conteudo, flags=re.DOTALL)
+            if m3:
+                after = m3.group(1)
+                code = re.split(labels_pattern, after, maxsplit=1)[0].strip()
+            else:
+                return ""
+    return re.split(labels_pattern, code, maxsplit=1)[0].strip()
 
-    # O bloco de salvamento agora é sempre executado
-    resposta_json = {
-        "id": questao["id"], "titulo": questao["titulo"], "url": questao["url"], "modelo": modelo,
-        "linguagem": linguagem, "status": status, "error_message": error_message,
-        "tempo_resposta": tempo_resposta, "resposta_bruta": conteudo_bruto,
-        "resposta_formatada": conteudo_formatado, "code": codigo_extraido,
-        "timestamp": datetime.now().isoformat()
-    }
-    
-    path_arquivo_json = os.path.join(pasta, f"{qid}.json")
-    with open(path_arquivo_json, "w", encoding="utf-8") as f:
-        json.dump(resposta_json, f, indent=2, ensure_ascii=False)
-    
-    if qid not in status_respostas: status_respostas[qid] = {}
-    if modelo not in status_respostas[qid]: status_respostas[qid][modelo] = {}
-    status_respostas[qid][modelo][linguagem] = status
+def validar_resposta(conteudo: str) -> bool:
+    labels = [
+        "solution:", "efficiency:", "time complexity:",
+        "space complexity:", "energy implications:", "explanation:"
+    ]
+    low = conteudo.lower()
+    return all(lbl in low for lbl in labels) and bool(extrair_codigo(conteudo))
+
+# === CLASSIFICAÇÃO E MOTIVO ===
+def classificar_resposta(conteudo: str) -> Tuple[str, str]:
+    labels = [
+        "solution:", "efficiency:", "time complexity:",
+        "space complexity:", "energy implications:", "explanation:"
+    ]
+    codigo = extrair_codigo(conteudo)
+    if not codigo:
+        return "invalid", "código não extraído"
+    count = sum(lbl in conteudo.lower() for lbl in labels)
+    if count == len(labels):
+        if re.search(r'^(import\s|#include\s|using\s)', codigo, flags=re.MULTILINE):
+            return "plausible", "contém import/includes"
+        return "correct", "todas as seções presentes corretamente"
+    return "plausible", f"código extraído mas apenas {count}/{len(labels)} seções presentes"
+
+# === PROCESSAMENTO DE UMA TAREFA ===
+def processar_task(q, modelo, lang, status_respostas):
+    out_dir = os.path.join(OUTPUT_BASE, modelo.replace("/","_"), lang)
+    os.makedirs(out_dir, exist_ok=True)
+    starter = q['starter_code'].get(LANG_KEY[lang], "")
+    try:
+        resp = client.chat.completions.create(
+            messages=[
+                {"role": "system", "content": PROMPT_SYSTEM},
+                {"role": "user", "content": USER_PROMPT.format(language=lang, problem=q['enunciado'], starter=starter)}
+            ],
+            model=modelo,
+            temperature=0
+        )
+        txt = resp.choices[0].message.content
+        st = "ok"
+    except RateLimitError:
+        raise
+    except Exception:
+        txt, st = "", "erro"
+    code = extrair_codigo(txt)
+    cat, motivo = classificar_resposta(txt)
+    resultado = {"id": q['id'], "modelo": modelo, "linguagem": lang,
+                 "status": st, "categoria": cat, "motivo": motivo,
+                 "resposta": txt, "code": code,
+                 "timestamp": datetime.now().isoformat()}
+    with open(os.path.join(out_dir, f"{q['id']}.json"), "w", encoding="utf-8") as f:
+        json.dump(resultado, f, indent=2, ensure_ascii=False)
+    # Atualiza relatório de status incluindo categoria e motivo
+    sr = status_respostas.setdefault(str(q['id']), {})
+    sr.setdefault(modelo, {})[lang] = {"status": st, "categoria": cat, "motivo": motivo}
     salvar_status_respostas(status_respostas)
-    
-    print(f"--> Concluído: {path_arquivo_json} com status '{status}'\n")
-    return sucesso_api
+    print(f"q={q['id']} | modelo={modelo} | lang={lang} | categoria={cat} | motivo={motivo}")
 
-# ======================= FUNÇÃO CORRIGIDA =======================
+# === LOOP PRINCIPAL COM BACKOFF POR MODELO ===
 def main():
-    """Função principal que orquestra o processo de coleta contínua."""
-    print("Iniciando serviço de coleta de dados...")
-    modelos = listar_modelos()
+    df = pd.read_csv(df_csv_path)
+    df['starter_code'] = df['starter_code'].apply(lambda s: ast.literal_eval(s) if pd.notna(s) else {})
+    modelos = [m.id for m in client.models.list().data if all(ex not in m.id.lower() for ex in ["whisper","tts","guard","prompt-guard","compound","distil-whisper","mistral", 
+                                                                                                "allam-2-7b", "gemma2-9b-it",
+            "llama-3.1-8b-instant", "llama-3.3-70b-versatile", "llama3-70b-8192", "llama3-8b-8192",
+            "meta-llama/llama-4-maverick-17b-128e-instruct",
+            "meta-llama/llama-4-scout-17b-16e-instruct",
+            "moonshotai/kimi-k2-instruct",
+            "qwen/qwen3-32b" ])]
+    total_q = len(df)
+    tasks = [(i, modelo, lang) for i in range(total_q) for modelo in modelos for lang in LINGUAGENS]
+    start_idx = carregar_progresso()
+    queue = deque(tasks[start_idx:])
+    paused_until = {}
     status_respostas = carregar_status_respostas()
-    try:
-        questoes_totais_df = pd.read_csv(CSV_PATH)
-        def parse_starter_code(code_str):
-            try:
-                if pd.isna(code_str): return {}
-                return ast.literal_eval(str(code_str))
-            except (ValueError, SyntaxError): return {}
-        questoes_totais_df['starter_code'] = questoes_totais_df['starter_code'].apply(parse_starter_code)
-    except FileNotFoundError:
-        print(f"ERRO CRÍTICO: Arquivo de questões não encontrado em {CSV_PATH}")
-        return
+    task_count = start_idx
+    print(f"Retomando tasks a partir de {start_idx+1} de {len(tasks)}")
+    rotations = 0
+    while queue:
+        now = time.time()
+        i, modelo, lang = queue[0]
+        pause_end = paused_until.get(modelo, 0)
+        if now < pause_end:
+            queue.rotate(-1)
+            rotations += 1
+            if rotations >= len(queue):
+                sleep_time = max(0, min(paused_until.values()) - now)
+                print(f"Todos modelos em backoff. Aguardando {sleep_time:.0f}s...")
+                time.sleep(sleep_time)
+                rotations = 0
+            continue
+        queue.popleft()
+        rotations = 0
+        try:
+            processar_task(df.iloc[i].to_dict(), modelo, lang, status_respostas)
+            task_count += 1
+            salvar_progresso(task_count)
+        except RateLimitError:
+            paused_until[modelo] = now + BACKOFF_SECONDS
+            print(f"Modelo {modelo} atingiu rate limit. Pausando por {BACKOFF_SECONDS}s...")
+            queue.append((i, modelo, lang))
+        except Exception as e:
+            print(f"Erro em task ({i},{modelo},{lang}): {e}")
+            task_count += 1
+            salvar_progresso(task_count)
+    print("Todas as tasks processadas.")
 
-    while True:
-        print("\n" + "="*50 + f"\nINICIANDO NOVO CICLO DE PROCESSAMENTO - {datetime.now()}\n" + "="*50)
-        
-        print("\n--- FASE 1: Verificando tarefas com erro para retentativa ---")
-        tarefas_para_retentar = determinar_tarefas_de_retentativa(status_respostas, modelos, questoes_totais_df)
-        if tarefas_para_retentar:
-            print(f"Encontradas {len(tarefas_para_retentar)} tarefas para retentar.")
-            # Laço simplificado: apenas processa a tarefa, sem quarentena.
-            for q, m, l in tarefas_para_retentar:
-                processar_tarefa(q, m, l, status_respostas)
-            print("--- FASE 1 CONCLUÍDA ---")
-        else:
-            print("Nenhuma tarefa com erro encontrada para retentativa.")
-
-        print("\n--- FASE 2: Buscando novo lote de questões para processar ---")
-        ultimo_indice = carregar_progresso()
-        novo_lote = ler_questoes_csv(CSV_PATH, start_index=ultimo_indice, batch_size=BATCH_SIZE)
-        
-        if not novo_lote:
-            print("\nNão há mais questões novas no arquivo CSV. O script continuará apenas retentando erros.")
-            # O 'break' foi removido para que o script continue rodando em modo de retentativa.
-            # Se quiser que o script pare completamente, descomente a linha abaixo.
-            # break
-        else:
-            print(f"Processando novo lote de {len(novo_lote)} questões (índices {ultimo_indice} a {ultimo_indice + len(novo_lote) - 1}).")
-            # Laços simplificados: processa cada tarefa independentemente de falhas anteriores.
-            for questao in novo_lote:
-                for modelo in modelos:
-                    for linguagem in LINGUAGENS:
-                        processar_tarefa(questao, modelo, linguagem, status_respostas)
-            
-            novo_indice = ultimo_indice + len(novo_lote)
-            salvar_progresso(novo_indice)
-            print(f"--- FASE 2 CONCLUÍDA. Progresso salvo. Próximo ciclo começará no índice {novo_indice} ---")
-            
-        print("\nAguardando 60 segundos antes do próximo ciclo...")
-        time.sleep(60)
-# === PONTO DE ENTRADA DO SCRIPT ===
-if __name__ == "__main__":
-    try:
-        modelos_disponiveis = listar_modelos()
-        print("Modelos de código disponíveis:", *modelos_disponiveis, sep="\n- ")
-        main()
-    except Exception as e:
-        print(f"\nOcorreu um erro fatal não tratado no script: {e}")
+if __name__ == '__main__':
+    print("Iniciando coleta de respostas...")
+    main()

@@ -1,0 +1,15 @@
+{
+  "id": 1553,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minDays(self, n: int) -> int:\n        memo = {0: 0, 1: 1}\n        def dfs(n):\n            if n in memo:\n                return memo[n]\n            res = 1 + min(n % 2 + dfs(n // 2), n % 3 + dfs(n // 3))\n            memo[n] = res\n            return res\n        return dfs(n)\n```\n\nefficiency: HIGH  \ntime complexity: O(log n)  \nspace complexity: O(log n)  \nenergy implications: LOW  \nexplanation: This solution uses a depth-first search (DFS) with memoization to efficiently compute the minimum number of days to eat n oranges. The key insight is to explore the possible actions (eating 1, n/2, or 2*(n/3) oranges) and choose the one that leads to the minimum number of days. Memoization is used to avoid redundant computations.",
+  "code": "def minDays(self, n: int) -> int:\n        memo = {0: 0, 1: 1}\n        def dfs(n):\n            if n in memo:\n                return memo[n]\n            res = 1 + min(n % 2 + dfs(n // 2), n % 3 + dfs(n // 3))\n            memo[n] = res\n            return res\n        return dfs(n)\n```",
+  "timestamp": "2025-08-05T14:19:51.260447",
+  "code_extracted_previous": "class Solution:\n    def minDays(self, n: int) -> int:\n        memo = {0: 0, 1: 1}\n        def dfs(n):\n            if n in memo:\n                return memo[n]\n            res = 1 + min(n % 2 + dfs(n // 2), n % 3 + dfs(n // 3))\n            memo[n] = res\n            return res\n        return dfs(n)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.574888"
+}

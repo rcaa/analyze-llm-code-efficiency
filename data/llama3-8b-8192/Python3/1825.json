@@ -1,0 +1,15 @@
+{
+  "id": 1825,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.stream = []\n        self.m = m\n        self.k = k\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n        if len(self.stream) > self.m:\n            self.stream.sort()\n            self.stream = self.stream[self.k:-self.k]\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        return sum(self.stream) // len(self.stream)\n\nefficiency: HIGH\ntime complexity: O(n log n) for addElement, O(1) for calculateMKAverage\nspace complexity: O(m)\nenergy implications: MEDIUM\nexplanation: The addElement function sorts the stream when it exceeds the size m, and then removes the smallest and largest k elements. The calculateMKAverage function calculates the average of the remaining elements. The efficiency is high because the sorting operation is done only when necessary, and the average calculation is done in constant time.",
+  "code": "```\nclass MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.stream = []\n        self.m = m\n        self.k = k\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n        if len(self.stream) > self.m:\n            self.stream.sort()\n            self.stream = self.stream[self.k:-self.k]\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        return sum(self.stream) // len(self.stream)",
+  "timestamp": "2025-08-05T14:03:46.275402",
+  "code_extracted_previous": "```\nclass MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.stream = []\n        self.m = m\n        self.k = k\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n        if len(self.stream) > self.m:\n            self.stream.sort()\n            self.stream = self.stream[self.k:-self.k]\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        return sum(self.stream) // len(self.stream)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:43.559148"
+}

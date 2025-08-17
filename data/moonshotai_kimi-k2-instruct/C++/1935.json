@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        bool broken[26] = {false};\n        for (char c : brokenLetters) broken[c - 'a'] = true;\n        \n        int res = 0, i = 0, n = text.size();\n        while (i < n) {\n            bool ok = true;\n            while (i < n && text[i] != ' ') {\n                if (broken[text[i] - 'a']) ok = false;\n                ++i;\n            }\n            res += ok;\n            ++i;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N + M) where N = text.length(), M = brokenLetters.length()\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a 26-element boolean array to mark broken letters, then scans text once, counting words that contain no broken letters. Single pass, constant extra space.",
+  "code": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        bool broken[26] = {false};\n        for (char c : brokenLetters) broken[c - 'a'] = true;\n        \n        int res = 0, i = 0, n = text.size();\n        while (i < n) {\n            bool ok = true;\n            while (i < n && text[i] != ' ') {\n                if (broken[text[i] - 'a']) ok = false;\n                ++i;\n            }\n            res += ok;\n            ++i;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T02:29:03.206977",
+  "code_extracted_previous": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        bool broken[26] = {false};\n        for (char c : brokenLetters) broken[c - 'a'] = true;\n        \n        int res = 0, i = 0, n = text.size();\n        while (i < n) {\n            bool ok = true;\n            while (i < n && text[i] != ' ') {\n                if (broken[text[i] - 'a']) ok = false;\n                ++i;\n            }\n            res += ok;\n            ++i;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.369538"
+}

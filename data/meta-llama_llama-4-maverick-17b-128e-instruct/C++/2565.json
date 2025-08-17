@@ -1,0 +1,15 @@
+{
+  "id": 2565,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int m = s.size(), n = t.size();\n        vector<int> pre(n, m), suf(n, -1);\n        int j = 0;\n        for (int i = 0; i < m && j < n; ++i) {\n            if (s[i] == t[j]) pre[j++] = i;\n        }\n        j = n - 1;\n        for (int i = m - 1; i >= 0 && j >= 0; --i) {\n            if (s[i] == t[j]) suf[j--] = i;\n        }\n        int res = n ? n : 0;\n        for (int i = 0, j = 0; i < n; ++i) {\n            if (pre[i] != m) {\n                while (j < n && (suf[j] == -1 || pre[i] >= suf[j])) ++j;\n                if (j < n) res = min(res, suf[j] - pre[i] + 1);\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N + M)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses two pointers and two arrays to track the first and last occurrence of characters in `t` within `s`, then iterates through `t` to find the minimum score by considering the range of removed characters.",
+  "code": "class Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int m = s.size(), n = t.size();\n        vector<int> pre(n, m), suf(n, -1);\n        int j = 0;\n        for (int i = 0; i < m && j < n; ++i) {\n            if (s[i] == t[j]) pre[j++] = i;\n        }\n        j = n - 1;\n        for (int i = m - 1; i >= 0 && j >= 0; --i) {\n            if (s[i] == t[j]) suf[j--] = i;\n        }\n        int res = n ? n : 0;\n        for (int i = 0, j = 0; i < n; ++i) {\n            if (pre[i] != m) {\n                while (j < n && (suf[j] == -1 || pre[i] >= suf[j])) ++j;\n                if (j < n) res = min(res, suf[j] - pre[i] + 1);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T02:27:59.111115",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minimumScore(string s, string t) {\n        int m = s.size(), n = t.size();\n        vector<int> pre(n, m), suf(n, -1);\n        int j = 0;\n        for (int i = 0; i < m && j < n; ++i) {\n            if (s[i] == t[j]) pre[j++] = i;\n        }\n        j = n - 1;\n        for (int i = m - 1; i >= 0 && j >= 0; --i) {\n            if (s[i] == t[j]) suf[j--] = i;\n        }\n        int res = n ? n : 0;\n        for (int i = 0, j = 0; i < n; ++i) {\n            if (pre[i] != m) {\n                while (j < n && (suf[j] == -1 || pre[i] >= suf[j])) ++j;\n                if (j < n) res = min(res, suf[j] - pre[i] + 1);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.300145"
+}

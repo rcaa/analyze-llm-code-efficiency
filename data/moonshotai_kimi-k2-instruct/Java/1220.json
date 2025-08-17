@@ -1,0 +1,15 @@
+{
+  "id": 1220,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int countVowelPermutation(int n) {\n        final int MOD = 1_000_000_007;\n        long a = 1, e = 1, i = 1, o = 1, u = 1;\n        for (int k = 2; k <= n; k++) {\n            long na = (e + i + u) % MOD;\n            long ne = (a + i) % MOD;\n            long ni = (e + o) % MOD;\n            long no = i % MOD;\n            long nu = (i + o) % MOD;\n            a = na;\n            e = ne;\n            i = ni;\n            o = no;\n            u = nu;\n        }\n        return (int)((a + e + i + o + u) % MOD);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses dynamic programming with constant space by tracking counts for each vowel. Each iteration computes next counts from previous counts based on transition rules, then sums the final counts.",
+  "code": "class Solution {\n    public int countVowelPermutation(int n) {\n        final int MOD = 1_000_000_007;\n        long a = 1, e = 1, i = 1, o = 1, u = 1;\n        for (int k = 2; k <= n; k++) {\n            long na = (e + i + u) % MOD;\n            long ne = (a + i) % MOD;\n            long ni = (e + o) % MOD;\n            long no = i % MOD;\n            long nu = (i + o) % MOD;\n            a = na;\n            e = ne;\n            i = ni;\n            o = no;\n            u = nu;\n        }\n        return (int)((a + e + i + o + u) % MOD);\n    }\n}",
+  "timestamp": "2025-08-05T14:17:57.976500",
+  "code_extracted_previous": "public int countVowelPermutation(int n) {\n        final int MOD = 1_000_000_007;\n        long a = 1, e = 1, i = 1, o = 1, u = 1;\n        for (int k = 2; k <= n; k++) {\n            long na = (e + i + u) % MOD;\n            long ne = (a + i) % MOD;\n            long ni = (e + o) % MOD;\n            long no = i % MOD;\n            long nu = (i + o) % MOD;\n            a = na;\n            e = ne;\n            i = ni;\n            o = no;\n            u = nu;\n        }\n        return (int)((a + e + i + o + u) % MOD);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.486615"
+}

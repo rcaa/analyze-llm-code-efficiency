@@ -1,0 +1,15 @@
+{
+  "id": 3557,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    int maxSubstrings(string word) {\n        int n = word.length();\n        if (n < 4) return 0;\n\n        int count = 0;\n        unordered_set<char> used;\n        for (int i = 0; i < n - 3; ++i) {\n            if (used.find(word[i]) != used.end()) continue;\n            for (int j = i + 3; j < n; ++j) {\n                if (word[j] == word[i]) {\n                    ++count;\n                    used.insert(word[i]);\n                    i = j; // Move i to j to avoid overlapping\n                    break;\n                }\n            }\n        }\n        return count;\n    }\n};\n```\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: MEDIUM\nexplanation: <The algorithm iterates through the string to find substrings that start and end with the same character and are at least four characters long. It avoids overlapping by moving the index forward after a valid substring is found. The main weakness is the O(n^2) time complexity, which may be inefficient for very large strings.>",
+  "code": "class Solution {\npublic:\n    int maxSubstrings(string word) {\n        int n = word.length();\n        if (n < 4) return 0;\n\n        int count = 0;\n        unordered_set<char> used;\n        for (int i = 0; i < n - 3; ++i) {\n            if (used.find(word[i]) != used.end()) continue;\n            for (int j = i + 3; j < n; ++j) {\n                if (word[j] == word[i]) {\n                    ++count;\n                    used.insert(word[i]);\n                    i = j; // Move i to j to avoid overlapping\n                    break;\n                }\n            }\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-06T03:03:21.119724",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxSubstrings(string word) {\n        int n = word.length();\n        if (n < 4) return 0;\n\n        int count = 0;\n        unordered_set<char> used;\n        for (int i = 0; i < n - 3; ++i) {\n            if (used.find(word[i]) != used.end()) continue;\n            for (int j = i + 3; j < n; ++j) {\n                if (word[j] == word[i]) {\n                    ++count;\n                    used.insert(word[i]);\n                    i = j; // Move i to j to avoid overlapping\n                    break;\n                }\n            }\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:00.587985"
+}

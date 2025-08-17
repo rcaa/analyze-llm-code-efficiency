@@ -1,0 +1,15 @@
+{
+  "id": 3129,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    private static final int MOD = (int) (1e9 + 7);\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        long[][][] dp = new long[limit + 1][zero + 1][one + 1];\n        dp[1][1][0] = 1;\n        dp[1][0][1] = 1;\n        for (int l = 2; l <= limit; l++) {\n            for (int z = 1; z <= zero; z++) {\n                for (int o = 1; o <= one; o++) {\n                    dp[l][z][o] = (dp[l - 1][z - 1][o] + dp[l - 1][z][o - 1]) % MOD;\n                }\n            }\n        }\n        long res = 0;\n        for (int l = 1; l <= limit; l++) {\n            res = (res + dp[l][zero][one]) % MOD;\n        }\n        return (int) res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(limit * zero * one)\nspace complexity: O(limit * zero * one)\nenergy implications: LOW\nexplanation: Dynamic programming approach to calculate the number of stable binary arrays by maintaining a 3D DP table to track the number of stable arrays for each limit, zero, and one counts.",
+  "code": "class Solution {\n    private static final int MOD = (int) (1e9 + 7);\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        long[][][] dp = new long[limit + 1][zero + 1][one + 1];\n        dp[1][1][0] = 1;\n        dp[1][0][1] = 1;\n        for (int l = 2; l <= limit; l++) {\n            for (int z = 1; z <= zero; z++) {\n                for (int o = 1; o <= one; o++) {\n                    dp[l][z][o] = (dp[l - 1][z - 1][o] + dp[l - 1][z][o - 1]) % MOD;\n                }\n            }\n        }\n        long res = 0;\n        for (int l = 1; l <= limit; l++) {\n            res = (res + dp[l][zero][one]) % MOD;\n        }\n        return (int) res;\n    }\n}",
+  "timestamp": "2025-08-05T14:29:39.132705",
+  "code_extracted_previous": "class Solution {\n    private static final int MOD = (int) (1e9 + 7);\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        long[][][] dp = new long[limit + 1][zero + 1][one + 1];\n        dp[1][1][0] = 1;\n        dp[1][0][1] = 1;\n        for (int l = 2; l <= limit; l++) {\n            for (int z = 1; z <= zero; z++) {\n                for (int o = 1; o <= one; o++) {\n                    dp[l][z][o] = (dp[l - 1][z - 1][o] + dp[l - 1][z][o - 1]) % MOD;\n                }\n            }\n        }\n        long res = 0;\n        for (int l = 1; l <= limit; l++) {\n            res = (res + dp[l][zero][one]) % MOD;\n        }\n        return (int) res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.127356"
+}

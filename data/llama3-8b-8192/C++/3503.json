@@ -1,0 +1,15 @@
+{
+  "id": 3503,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int longestPalindrome(string s, string t) {\n        int n = s.size(), m = t.size();\n        int dp[n + 1][m + 1];\n        memset(dp, 0, sizeof(dp));\n        int res = 0;\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j <= m; j++) {\n                if (i == 0 || j == 0) dp[i][j] = 0;\n                else if (s[i - 1] == t[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 2;\n                else dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);\n                res = max(res, dp[i][j]);\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n*m)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to build a 2D table dp where dp[i][j] represents the length of the longest palindrome that can be formed by selecting a substring of length i from s and a substring of length j from t. The final result is the maximum value in the table.",
+  "code": "class Solution {\npublic:\n    int longestPalindrome(string s, string t) {\n        int n = s.size(), m = t.size();\n        int dp[n + 1][m + 1];\n        memset(dp, 0, sizeof(dp));\n        int res = 0;\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j <= m; j++) {\n                if (i == 0 || j == 0) dp[i][j] = 0;\n                else if (s[i - 1] == t[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 2;\n                else dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);\n                res = max(res, dp[i][j]);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T18:38:52.419473",
+  "code_extracted_previous": "public:\n    int longestPalindrome(string s, string t) {\n        int n = s.size(), m = t.size();\n        int dp[n + 1][m + 1];\n        memset(dp, 0, sizeof(dp));\n        int res = 0;\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j <= m; j++) {\n                if (i == 0 || j == 0) dp[i][j] = 0;\n                else if (s[i - 1] == t[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 2;\n                else dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);\n                res = max(res, dp[i][j]);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.272953"
+}

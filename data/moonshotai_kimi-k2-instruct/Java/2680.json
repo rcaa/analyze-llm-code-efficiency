@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public long maximumOr(int[] nums, int k) {\n        int n = nums.length;\n        long[] prefix = new long[n + 1];\n        long[] suffix = new long[n + 1];\n        \n        for (int i = 0; i < n; ++i) {\n            prefix[i + 1] = prefix[i] | nums[i];\n        }\n        for (int i = n - 1; i >= 0; --i) {\n            suffix[i] = suffix[i + 1] | nums[i];\n        }\n        \n        long max = 0;\n        for (int i = 0; i < n; ++i) {\n            long val = ((long) nums[i]) << k;\n            long total = prefix[i] | val | suffix[i + 1];\n            max = Math.max(max, total);\n        }\n        return max;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Compute prefix and suffix OR arrays to isolate the effect of doubling any single element k times. For each index, the OR of the rest is prefix[i] | suffix[i+1]; OR-ing with nums[i] << k gives the maximum possible OR when all k operations are applied to that element.",
+  "code": "class Solution {\n    public long maximumOr(int[] nums, int k) {\n        int n = nums.length;\n        long[] prefix = new long[n + 1];\n        long[] suffix = new long[n + 1];\n        \n        for (int i = 0; i < n; ++i) {\n            prefix[i + 1] = prefix[i] | nums[i];\n        }\n        for (int i = n - 1; i >= 0; --i) {\n            suffix[i] = suffix[i + 1] | nums[i];\n        }\n        \n        long max = 0;\n        for (int i = 0; i < n; ++i) {\n            long val = ((long) nums[i]) << k;\n            long total = prefix[i] | val | suffix[i + 1];\n            max = Math.max(max, total);\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-05T13:34:23.613194",
+  "code_extracted_previous": "public long maximumOr(int[] nums, int k) {\n        int n = nums.length;\n        long[] prefix = new long[n + 1];\n        long[] suffix = new long[n + 1];\n        \n        for (int i = 0; i < n; ++i) {\n            prefix[i + 1] = prefix[i] | nums[i];\n        }\n        for (int i = n - 1; i >= 0; --i) {\n            suffix[i] = suffix[i + 1] | nums[i];\n        }\n        \n        long max = 0;\n        for (int i = 0; i < n; ++i) {\n            long val = ((long) nums[i]) << k;\n            long total = prefix[i] | val | suffix[i + 1];\n            max = Math.max(max, total);\n        }\n        return max;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.155243"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1011,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int shipWithinDays(vector<int>& weights, int days) {\n        int left = *max_element(weights.begin(), weights.end());\n        int right = accumulate(weights.begin(), weights.end(), 0);\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int need = 1, cur = 0;\n            for (int weight : weights) {\n                if (cur + weight > mid) {\n                    need++;\n                    cur = 0;\n                }\n                cur += weight;\n            }\n            if (need > days) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n log sum)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the minimum capacity, with the search space being the range from the maximum weight to the total weight of all packages. The key is to determine if a given capacity can ship all packages within the given days, which is done by iterating through the weights and counting the number of days needed.",
+  "code": "class Solution {\npublic:\n    int shipWithinDays(vector<int>& weights, int days) {\n        int left = *max_element(weights.begin(), weights.end());\n        int right = accumulate(weights.begin(), weights.end(), 0);\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int need = 1, cur = 0;\n            for (int weight : weights) {\n                if (cur + weight > mid) {\n                    need++;\n                    cur = 0;\n                }\n                cur += weight;\n            }\n            if (need > days) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n};",
+  "timestamp": "2025-08-05T13:17:59.687668",
+  "code_extracted_previous": "class Solution {\npublic:\n    int shipWithinDays(vector<int>& weights, int days) {\n        int left = *max_element(weights.begin(), weights.end());\n        int right = accumulate(weights.begin(), weights.end(), 0);\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int need = 1, cur = 0;\n            for (int weight : weights) {\n                if (cur + weight > mid) {\n                    need++;\n                    cur = 0;\n                }\n                cur += weight;\n            }\n            if (need > days) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.603305"
+}

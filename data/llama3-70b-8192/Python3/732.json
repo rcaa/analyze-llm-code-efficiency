@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass MyCalendarThree:\n\n    def __init__(self):\n        self.delta = {}\n\n    def book(self, startTime: int, endTime: int) -> int:\n        self.delta[startTime] = self.delta.get(startTime, 0) + 1\n        self.delta[endTime] = self.delta.get(endTime, 0) - 1\n        active, k, max_k = 0, 0, 0\n        for time in sorted(self.delta.keys()):\n            active += self.delta[time]\n            max_k = max(max_k, active)\n            k = max(k, max_k)\n        return k\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a delta array to store the frequency of start and end times, then iterates through the sorted delta array to find the maximum k-booking.",
+  "code": "class MyCalendarThree:\n\n    def __init__(self):\n        self.delta = {}\n\n    def book(self, startTime: int, endTime: int) -> int:\n        self.delta[startTime] = self.delta.get(startTime, 0) + 1\n        self.delta[endTime] = self.delta.get(endTime, 0) - 1\n        active, k, max_k = 0, 0, 0\n        for time in sorted(self.delta.keys()):\n            active += self.delta[time]\n            max_k = max(max_k, active)\n            k = max(k, max_k)\n        return k",
+  "timestamp": "2025-08-05T13:37:46.058272",
+  "code_extracted_previous": "class MyCalendarThree:\n\n    def __init__(self):\n        self.delta = {}\n\n    def book(self, startTime: int, endTime: int) -> int:\n        self.delta[startTime] = self.delta.get(startTime, 0) + 1\n        self.delta[endTime] = self.delta.get(endTime, 0) - 1\n        active, k, max_k = 0, 0, 0\n        for time in sorted(self.delta.keys()):\n            active += self.delta[time]\n            max_k = max(max_k, active)\n            k = max(k, max_k)\n        return k",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:40.031160"
+}

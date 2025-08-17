@@ -1,0 +1,15 @@
+{
+  "id": 2333,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "```python\nimport heapq\nfrom typing import List\n\nclass Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int -> int:\n        diff = [abs(a - b) for a, b in zip(nums1, nums2)]\n        total_k = k1 + k2\n        max_heap = [-d for d in diff]\n        heapq.heapify(max_heap)\n        while total_k > 0 and max_heap[0] != 0:\n            max_diff = -heapq.heappop(max_heap)\n            heapq.heappush(max_heap, -(max_diff - 1))\n            total_k -= 1\n        return sum(d ** 2 for d in [-x for x in max_heap])\n```\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The main approach is to use a max heap to store the differences between corresponding elements in the input arrays. We then iteratively reduce the largest difference until we exhaust our allowed modifications (k1 + k2). The key strength is that we prioritize reducing the largest differences, which has the greatest impact on reducing the sum of squared differences.",
+  "code": "def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int -> int:\n        diff = [abs(a - b) for a, b in zip(nums1, nums2)]\n        total_k = k1 + k2\n        max_heap = [-d for d in diff]\n        heapq.heapify(max_heap)\n        while total_k > 0 and max_heap[0] != 0:\n            max_diff = -heapq.heappop(max_heap)\n            heapq.heappush(max_heap, -(max_diff - 1))\n            total_k -= 1\n        return sum(d ** 2 for d in [-x for x in max_heap])\n```",
+  "timestamp": "2025-08-05T13:28:32.872817",
+  "code_extracted_previous": "import heapq\nfrom typing import List\n\nclass Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int -> int:\n        diff = [abs(a - b) for a, b in zip(nums1, nums2)]\n        total_k = k1 + k2\n        max_heap = [-d for d in diff]\n        heapq.heapify(max_heap)\n        while total_k > 0 and max_heap[0] != 0:\n            max_diff = -heapq.heappop(max_heap)\n            heapq.heappush(max_heap, -(max_diff - 1))\n            total_k -= 1\n        return sum(d ** 2 for d in [-x for x in max_heap])",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.866937"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2447,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int n = nums.size(), ans = 0;\n        for (int i = 0; i < n; ++i) {\n            int g = 0;\n            for (int j = i; j < n; ++j) {\n                g = gcd(g, nums[j]);\n                if (g == k) ++ans;\n                else if (g < k) break;\n            }\n        }\n        return ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2 log U)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate over every subarray start and extend rightwards while computing the running GCD. When the GCD drops below k no longer subarrays can reach k, so we break early. The gcd computation is O(log U) per step.",
+  "code": "class Solution {\npublic:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int n = nums.size(), ans = 0;\n        for (int i = 0; i < n; ++i) {\n            int g = 0;\n            for (int j = i; j < n; ++j) {\n                g = gcd(g, nums[j]);\n                if (g == k) ++ans;\n                else if (g < k) break;\n            }\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T13:32:17.322010",
+  "code_extracted_previous": "public:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int n = nums.size(), ans = 0;\n        for (int i = 0; i < n; ++i) {\n            int g = 0;\n            for (int j = i; j < n; ++j) {\n                g = gcd(g, nums[j]);\n                if (g == k) ++ans;\n                else if (g < k) break;\n            }\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.725026"
+}

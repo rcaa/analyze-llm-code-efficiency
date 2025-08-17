@@ -1,0 +1,15 @@
+{
+  "id": 925,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    bool isLongPressedName(string name, string typed) {\n        int i = 0, j = 0;\n        while (i < name.size() && j < typed.size()) {\n            if (name[i] == typed[j]) {\n                i++;\n                j++;\n            } else if (j > 0 && typed[j] == typed[j - 1]) {\n                j++;\n            } else {\n                return false;\n            }\n        }\n        return i == name.size();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through both strings simultaneously. If the characters match, both pointers advance. If the current character in `typed` is the same as the previous one, it indicates a long press, and the `typed` pointer advances. If a mismatch occurs and it's not a long press, it's not a valid name, and the function returns `false`. Finally, it checks if all characters in `name` have been matched, indicating a valid long-pressed name. \n\n\n",
+  "code": "class Solution {\npublic:\n    bool isLongPressedName(string name, string typed) {\n        int i = 0, j = 0;\n        while (i < name.size() && j < typed.size()) {\n            if (name[i] == typed[j]) {\n                i++;\n                j++;\n            } else if (j > 0 && typed[j] == typed[j - 1]) {\n                j++;\n            } else {\n                return false;\n            }\n        }\n        return i == name.size();\n    }\n};",
+  "timestamp": "2025-08-06T01:30:51.613550",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool isLongPressedName(string name, string typed) {\n        int i = 0, j = 0;\n        while (i < name.size() && j < typed.size()) {\n            if (name[i] == typed[j]) {\n                i++;\n                j++;\n            } else if (j > 0 && typed[j] == typed[j - 1]) {\n                j++;\n            } else {\n                return false;\n            }\n        }\n        return i == name.size();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.397762"
+}

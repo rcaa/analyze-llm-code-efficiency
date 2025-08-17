@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = 1, right = maxSum;\n        while (left < right) {\n            int mid = (left + right) / 2;\n            int sum = 0, prev = 0;\n            for (int i = 0; i < n; i++) {\n                sum += Math.min(mid, prev + 1);\n                prev = Math.max(0, prev + 1 - 1);\n            }\n            if (sum > maxSum) {\n                right = mid;\n            } else {\n                left = mid + 1;\n            }\n        }\n        int sum = 0, prev = 0;\n        for (int i = 0; i < n; i++) {\n            sum += Math.min(left, prev + 1);\n            prev = Math.max(0, prev + 1 - 1);\n        }\n        return left;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use binary search to find the maximum value that satisfies the conditions. We maintain a sum and a previous value, and update them accordingly in each iteration. The time complexity is O(n) due to the loop, and the space complexity is O(1) as we only use a constant amount of space.",
+  "code": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = 1, right = maxSum;\n        while (left < right) {\n            int mid = (left + right) / 2;\n            int sum = 0, prev = 0;\n            for (int i = 0; i < n; i++) {\n                sum += Math.min(mid, prev + 1);\n                prev = Math.max(0, prev + 1 - 1);\n            }\n            if (sum > maxSum) {\n                right = mid;\n            } else {\n                left = mid + 1;\n            }\n        }\n        int sum = 0, prev = 0;\n        for (int i = 0; i < n; i++) {\n            sum += Math.min(left, prev + 1);\n            prev = Math.max(0, prev + 1 - 1);\n        }\n        return left;\n    }\n}",
+  "timestamp": "2025-08-05T15:52:46.706410",
+  "code_extracted_previous": "public int maxValue(int n, int index, int maxSum) {\n        int left = 1, right = maxSum;\n        while (left < right) {\n            int mid = (left + right) / 2;\n            int sum = 0, prev = 0;\n            for (int i = 0; i < n; i++) {\n                sum += Math.min(mid, prev + 1);\n                prev = Math.max(0, prev + 1 - 1);\n            }\n            if (sum > maxSum) {\n                right = mid;\n            } else {\n                left = mid + 1;\n            }\n        }\n        int sum = 0, prev = 0;\n        for (int i = 0; i < n; i++) {\n            sum += Math.min(left, prev + 1);\n            prev = Math.max(0, prev + 1 - 1);\n        }\n        return left;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.068159"
+}

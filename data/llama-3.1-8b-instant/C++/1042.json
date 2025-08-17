@@ -1,0 +1,15 @@
+{
+  "id": 1042,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nvector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n    vector<int> answer(n, 0);\n    vector<vector<int>> graph(n + 1);\n    for (auto& path : paths) {\n        graph[path[0]].push_back(path[1]);\n        graph[path[1]].push_back(path[0]);\n    }\n    for (int i = 1; i <= n; i++) {\n        if (answer[i - 1] == 0) {\n            vector<int> used(4, 0);\n            dfs(graph, answer, i, used);\n        }\n    }\n    return answer;\n}\n\nvoid dfs(vector<vector<int>>& graph, vector<int>& answer, int node, vector<int>& used) {\n    used[answer[node - 1] - 1] = 1;\n    for (int neighbor : graph[node]) {\n        if (used[answer[neighbor - 1] - 1] == 0) {\n            dfs(graph, answer, neighbor, used);\n        }\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * (max degree of a node))\nspace complexity: O(n + m)\nenergy implications: LOW",
+  "code": "vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n    vector<int> answer(n, 0);\n    vector<vector<int>> graph(n + 1);\n    for (auto& path : paths) {\n        graph[path[0]].push_back(path[1]);\n        graph[path[1]].push_back(path[0]);\n    }\n    for (int i = 1; i <= n; i++) {\n        if (answer[i - 1] == 0) {\n            vector<int> used(4, 0);\n            dfs(graph, answer, i, used);\n        }\n    }\n    return answer;\n}\n\nvoid dfs(vector<vector<int>>& graph, vector<int>& answer, int node, vector<int>& used) {\n    used[answer[node - 1] - 1] = 1;\n    for (int neighbor : graph[node]) {\n        if (used[answer[neighbor - 1] - 1] == 0) {\n            dfs(graph, answer, neighbor, used);\n        }\n    }\n}",
+  "timestamp": "2025-08-05T14:02:13.891222",
+  "code_extracted_previous": "vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\n    vector<int> answer(n, 0);\n    vector<vector<int>> graph(n + 1);\n    for (auto& path : paths) {\n        graph[path[0]].push_back(path[1]);\n        graph[path[1]].push_back(path[0]);\n    }\n    for (int i = 1; i <= n; i++) {\n        if (answer[i - 1] == 0) {\n            vector<int> used(4, 0);\n            dfs(graph, answer, i, used);\n        }\n    }\n    return answer;\n}\n\nvoid dfs(vector<vector<int>>& graph, vector<int>& answer, int node, vector<int>& used) {\n    used[answer[node - 1] - 1] = 1;\n    for (int neighbor : graph[node]) {\n        if (used[answer[neighbor - 1] - 1] == 0) {\n            dfs(graph, answer, neighbor, used);\n        }\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:27.240649"
+}

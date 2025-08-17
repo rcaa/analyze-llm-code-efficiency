@@ -1,0 +1,15 @@
+{
+  "id": 2983,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public boolean[] canMakePalindromeQueries(String s, int[][] queries) {\n        boolean[] res = new boolean[queries.length];\n        for (int i = 0; i < queries.length; i++) {\n            int[] count1 = new int[26], count2 = new int[26];\n            for (int j = queries[i][0]; j <= queries[i][1]; j++) {\n                count1[s.charAt(j) - 'a']++;\n            }\n            for (int j = queries[i][2]; j <= queries[i][3]; j++) {\n                count2[s.charAt(j) - 'a']++;\n            }\n            int odd = 0;\n            for (int j = 0; j < 26; j++) {\n                if ((count1[j] + count2[j]) % 2 != 0) {\n                    odd++;\n                }\n            }\n            res[i] = odd <= 1;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(m * n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over each query and counts the frequency of each character in the two substrings. It then checks if the total count of each character is even, allowing at most one character to have an odd count. This determines if the string can be made a palindrome.",
+  "code": "class Solution {\n    public boolean[] canMakePalindromeQueries(String s, int[][] queries) {\n        boolean[] res = new boolean[queries.length];\n        for (int i = 0; i < queries.length; i++) {\n            int[] count1 = new int[26], count2 = new int[26];\n            for (int j = queries[i][0]; j <= queries[i][1]; j++) {\n                count1[s.charAt(j) - 'a']++;\n            }\n            for (int j = queries[i][2]; j <= queries[i][3]; j++) {\n                count2[s.charAt(j) - 'a']++;\n            }\n            int odd = 0;\n            for (int j = 0; j < 26; j++) {\n                if ((count1[j] + count2[j]) % 2 != 0) {\n                    odd++;\n                }\n            }\n            res[i] = odd <= 1;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:38:41.081846",
+  "code_extracted_previous": "class Solution {\n    public boolean[] canMakePalindromeQueries(String s, int[][] queries) {\n        boolean[] res = new boolean[queries.length];\n        for (int i = 0; i < queries.length; i++) {\n            int[] count1 = new int[26], count2 = new int[26];\n            for (int j = queries[i][0]; j <= queries[i][1]; j++) {\n                count1[s.charAt(j) - 'a']++;\n            }\n            for (int j = queries[i][2]; j <= queries[i][3]; j++) {\n                count2[s.charAt(j) - 'a']++;\n            }\n            int odd = 0;\n            for (int j = 0; j < 26; j++) {\n                if ((count1[j] + count2[j]) % 2 != 0) {\n                    odd++;\n                }\n            }\n            res[i] = odd <= 1;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.347167"
+}

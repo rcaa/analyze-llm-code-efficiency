@@ -1,0 +1,15 @@
+{
+  "id": 1297,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maxFreq(String s, int maxLetters, int minSize, int maxSize) {\n        int max = 0;\n        Map<String, Integer> map = new HashMap<>();\n        for (int i = 0; i <= s.length() - maxSize; i++) {\n            for (int j = minSize; j <= maxSize && i + j <= s.length(); j++) {\n                String substring = s.substring(i, i + j);\n                if (substring.length() == j && new HashSet<>(substring.chars().boxed().collect(Collectors.toList())).size() <= maxLetters) {\n                    max = Math.max(max, map.put(substring, map.getOrDefault(substring, 0) + 1));\n                }\n            }\n        }\n        return max;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * m * k)\nspace complexity: O(n * m)\nenergy implications: MEDIUM\nexplanation: This solution uses two nested loops to generate all substrings of the given string within the specified size range. It then checks each substring to see if it meets the conditions of having a unique character count less than or equal to maxLetters. The maximum frequency of any such substring is then updated in the map. The time complexity is O(n * m * k) where n is the length of the string, m is the maximum size, and k is the maximum number of unique characters. The space complexity is O(n * m) for storing the map of substrings and their frequencies.",
+  "code": "class Solution {\n    public int maxFreq(String s, int maxLetters, int minSize, int maxSize) {\n        int max = 0;\n        Map<String, Integer> map = new HashMap<>();\n        for (int i = 0; i <= s.length() - maxSize; i++) {\n            for (int j = minSize; j <= maxSize && i + j <= s.length(); j++) {\n                String substring = s.substring(i, i + j);\n                if (substring.length() == j && new HashSet<>(substring.chars().boxed().collect(Collectors.toList())).size() <= maxLetters) {\n                    max = Math.max(max, map.put(substring, map.getOrDefault(substring, 0) + 1));\n                }\n            }\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-05T14:59:37.997643",
+  "code_extracted_previous": "class Solution {\n    public int maxFreq(String s, int maxLetters, int minSize, int maxSize) {\n        int max = 0;\n        Map<String, Integer> map = new HashMap<>();\n        for (int i = 0; i <= s.length() - maxSize; i++) {\n            for (int j = minSize; j <= maxSize && i + j <= s.length(); j++) {\n                String substring = s.substring(i, i + j);\n                if (substring.length() == j && new HashSet<>(substring.chars().boxed().collect(Collectors.toList())).size() <= maxLetters) {\n                    max = Math.max(max, map.put(substring, map.getOrDefault(substring, 0) + 1));\n                }\n            }\n        }\n        return max;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.937929"
+}

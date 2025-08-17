@@ -1,0 +1,15 @@
+{
+  "id": 2423,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public boolean equalFrequency(String word) {\n        int[] freq = new int[26];\n        for (char c : word.toCharArray()) {\n            freq[c - 'a']++;\n        }\n        for (int i = 0; i < word.length(); i++) {\n            freq[word.charAt(i) - 'a']--;\n            boolean flag = true;\n            for (int j = 0; j < 26; j++) {\n                if (freq[j] != 0) {\n                    flag = false;\n                    break;\n                }\n            }\n            if (flag) {\n                return true;\n            }\n            freq[word.charAt(i) - 'a']++;\n        }\n        return false;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates over the word once to calculate the frequency of each letter, then iterates over the word again to check if removing each letter would make the frequency of all letters equal. It uses a constant amount of space to store the frequency array, making it efficient.",
+  "code": "class Solution {\n    public boolean equalFrequency(String word) {\n        int[] freq = new int[26];\n        for (char c : word.toCharArray()) {\n            freq[c - 'a']++;\n        }\n        for (int i = 0; i < word.length(); i++) {\n            freq[word.charAt(i) - 'a']--;\n            boolean flag = true;\n            for (int j = 0; j < 26; j++) {\n                if (freq[j] != 0) {\n                    flag = false;\n                    break;\n                }\n            }\n            if (flag) {\n                return true;\n            }\n            freq[word.charAt(i) - 'a']++;\n        }\n        return false;\n    }\n}",
+  "timestamp": "2025-08-05T14:47:06.689203",
+  "code_extracted_previous": "public boolean equalFrequency(String word) {\n        int[] freq = new int[26];\n        for (char c : word.toCharArray()) {\n            freq[c - 'a']++;\n        }\n        for (int i = 0; i < word.length(); i++) {\n            freq[word.charAt(i) - 'a']--;\n            boolean flag = true;\n            for (int j = 0; j < 26; j++) {\n                if (freq[j] != 0) {\n                    flag = false;\n                    break;\n                }\n            }\n            if (flag) {\n                return true;\n            }\n            freq[word.charAt(i) - 'a']++;\n        }\n        return false;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.401970"
+}

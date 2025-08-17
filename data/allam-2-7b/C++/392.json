@@ -1,0 +1,15 @@
+{
+  "id": 392,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```c++\nclass Solution {\npublic:\n    bool isSubsequence(string s, string t) {\n        int m = t.length();\n        int n = s.length();\n\n        vector<int> dp(m + 1, 0);\n\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j <= n; j++) {\n                if (t[i] == s[j]) {\n                    dp[i + 1] = dp[i] + 1;\n                }\n            }\n        }\n\n        return dp[n];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use dynamic programming to solve this problem. We create a 2D array (dp) with dimensions (m+1)xn, where m is the length of string t and n is the length of string s. We iterate through t and for each character, we check if it matches the current character in s. If it does, we increment the value at dp[i+1] by 1. Finally, we return the value at dp[n], which represents the number of indices in t that point to characters that are also present in s. If this value is greater than 0, then s is a subsequence of t, and we return true; otherwise, we return false. ",
+  "code": "class Solution {\npublic:\n    bool isSubsequence(string s, string t) {\n        int m = t.length();\n        int n = s.length();\n\n        vector<int> dp(m + 1, 0);\n\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j <= n; j++) {\n                if (t[i] == s[j]) {\n                    dp[i + 1] = dp[i] + 1;\n                }\n            }\n        }\n\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-06T01:26:58.207456",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool isSubsequence(string s, string t) {\n        int m = t.length();\n        int n = s.length();\n\n        vector<int> dp(m + 1, 0);\n\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j <= n; j++) {\n                if (t[i] == s[j]) {\n                    dp[i + 1] = dp[i] + 1;\n                }\n            }\n        }\n\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.917574"
+}

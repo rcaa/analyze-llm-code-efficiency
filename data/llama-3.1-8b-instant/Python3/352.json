@@ -1,0 +1,15 @@
+{
+  "id": 352,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass SummaryRanges:\n\n    def __init__(self):\n        self.intervals = []\n\n    def addNum(self, value: int) -> None:\n        if not self.intervals or self.intervals[-1][1] + 1 < value:\n            self.intervals.append([value, value])\n        else:\n            self.intervals[-1][1] = max(self.intervals[-1][1], value)\n\n    def getIntervals(self) -> List[List[int]]:\n        self.intervals = [list(interval) for interval in set(tuple(interval) for interval in self.intervals)]\n        self.intervals.sort(key=lambda x: x[0])\n        result = []\n        for interval in self.intervals:\n            if not result or result[-1][1] + 1 < interval[0]:\n                result.append(interval)\n            else:\n                result[-1][1] = max(result[-1][1], interval[1])\n        return result\n```\n\nefficiency: HIGH\ntime complexity: O(n log n) due to sorting\nspace complexity: O(n) for storing intervals\nenergy implications: LOW",
+  "code": "class SummaryRanges:\n\n    def __init__(self):\n        self.intervals = []\n\n    def addNum(self, value: int) -> None:\n        if not self.intervals or self.intervals[-1][1] + 1 < value:\n            self.intervals.append([value, value])\n        else:\n            self.intervals[-1][1] = max(self.intervals[-1][1], value)\n\n    def getIntervals(self) -> List[List[int]]:\n        self.intervals = [list(interval) for interval in set(tuple(interval) for interval in self.intervals)]\n        self.intervals.sort(key=lambda x: x[0])\n        result = []\n        for interval in self.intervals:\n            if not result or result[-1][1] + 1 < interval[0]:\n                result.append(interval)\n            else:\n                result[-1][1] = max(result[-1][1], interval[1])\n        return result",
+  "timestamp": "2025-08-05T13:37:35.229935",
+  "code_extracted_previous": "from typing import List\n\nclass SummaryRanges:\n\n    def __init__(self):\n        self.intervals = []\n\n    def addNum(self, value: int) -> None:\n        if not self.intervals or self.intervals[-1][1] + 1 < value:\n            self.intervals.append([value, value])\n        else:\n            self.intervals[-1][1] = max(self.intervals[-1][1], value)\n\n    def getIntervals(self) -> List[List[int]]:\n        self.intervals = [list(interval) for interval in set(tuple(interval) for interval in self.intervals)]\n        self.intervals.sort(key=lambda x: x[0])\n        result = []\n        for interval in self.intervals:\n            if not result or result[-1][1] + 1 < interval[0]:\n                result.append(interval)\n            else:\n                result[-1][1] = max(result[-1][1], interval[1])\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:31.188215"
+}

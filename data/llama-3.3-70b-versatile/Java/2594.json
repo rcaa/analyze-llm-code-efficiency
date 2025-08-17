@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public long repairCars(int[] ranks, int cars) {\n        long left = 0, right = (long)1e14;\n        while (left < right) {\n            long mid = left + (right - left) / 2;\n            long sum = 0;\n            for (int rank : ranks) {\n                sum += mid / (rank * rank);\n            }\n            if (sum < cars) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses binary search to find the minimum time required to repair all cars, where the search space is the possible time range and the condition is whether the total number of cars that can be repaired within the current time is greater than or equal to the total number of cars waiting.",
+  "code": "class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        long left = 0, right = (long)1e14;\n        while (left < right) {\n            long mid = left + (right - left) / 2;\n            long sum = 0;\n            for (int rank : ranks) {\n                sum += mid / (rank * rank);\n            }\n            if (sum < cars) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}",
+  "timestamp": "2025-08-06T15:14:13.478048",
+  "code_extracted_previous": "class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        long left = 0, right = (long)1e14;\n        while (left < right) {\n            long mid = left + (right - left) / 2;\n            long sum = 0;\n            for (int rank : ranks) {\n                sum += mid / (rank * rank);\n            }\n            if (sum < cars) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.979230"
+}

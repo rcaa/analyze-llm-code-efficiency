@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {\n        Arrays.sort(buses);\n        Arrays.sort(passengers);\n        int i = 0, last = -1;\n        for (int bus : buses) {\n            int cnt = 0;\n            while (i < passengers.length && passengers[i] <= bus && cnt < capacity) {\n                last = passengers[i++];\n                cnt++;\n            }\n        }\n        if (last == -1) return buses[buses.length - 1];\n        return last - (last == buses[buses.length - 1] ? 1 : 0);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sort both bus and passenger arrays, then iterate through the buses and passengers to find the latest time to catch a bus.",
+  "code": "class Solution {\n    public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {\n        Arrays.sort(buses);\n        Arrays.sort(passengers);\n        int i = 0, last = -1;\n        for (int bus : buses) {\n            int cnt = 0;\n            while (i < passengers.length && passengers[i] <= bus && cnt < capacity) {\n                last = passengers[i++];\n                cnt++;\n            }\n        }\n        if (last == -1) return buses[buses.length - 1];\n        return last - (last == buses[buses.length - 1] ? 1 : 0);\n    }\n}",
+  "timestamp": "2025-08-05T13:27:57.180340",
+  "code_extracted_previous": "class Solution {\n    public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {\n        Arrays.sort(buses);\n        Arrays.sort(passengers);\n        int i = 0, last = -1;\n        for (int bus : buses) {\n            int cnt = 0;\n            while (i < passengers.length && passengers[i] <= bus && cnt < capacity) {\n                last = passengers[i++];\n                cnt++;\n            }\n        }\n        if (last == -1) return buses[buses.length - 1];\n        return last - (last == buses[buses.length - 1] ? 1 : 0);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.141342"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> charFrequency = new HashMap<>();\n        StringBuilder result = new StringBuilder();\n\n        for (char c : s.toCharArray()) {\n            charFrequency.put(c, charFrequency.getOrDefault(c, 0) + 1);\n            result.append(c);\n        }\n\n        Collections.sort(charFrequency.entrySet(), Comparator.comparingInt(Map.Entry::getValue));\n\n        for (Map.Entry<Character, Integer> entry : charFrequency.entrySet()) {\n            result.insert(0, entry.getKey());\n        }\n\n        return result.toString();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n1. Create a HashMap to store character frequencies.\n2. Iterate through the string and update the frequency in the HashMap and append the character to the result StringBuilder.\n3. Sort the HashMap based on the values (frequency) using the Collections.sort() method.\n4. Iterate through the sorted HashMap and insert the characters at the beginning of the result StringBuilder.\n5. Return the sorted String. ",
+  "code": "class Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> charFrequency = new HashMap<>();\n        StringBuilder result = new StringBuilder();\n\n        for (char c : s.toCharArray()) {\n            charFrequency.put(c, charFrequency.getOrDefault(c, 0) + 1);\n            result.append(c);\n        }\n\n        Collections.sort(charFrequency.entrySet(), Comparator.comparingInt(Map.Entry::getValue));\n\n        for (Map.Entry<Character, Integer> entry : charFrequency.entrySet()) {\n            result.insert(0, entry.getKey());\n        }\n\n        return result.toString();\n    }\n}",
+  "timestamp": "2025-08-05T14:54:05.377531",
+  "code_extracted_previous": "class Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> charFrequency = new HashMap<>();\n        StringBuilder result = new StringBuilder();\n\n        for (char c : s.toCharArray()) {\n            charFrequency.put(c, charFrequency.getOrDefault(c, 0) + 1);\n            result.append(c);\n        }\n\n        Collections.sort(charFrequency.entrySet(), Comparator.comparingInt(Map.Entry::getValue));\n\n        for (Map.Entry<Character, Integer> entry : charFrequency.entrySet()) {\n            result.insert(0, entry.getKey());\n        }\n\n        return result.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.700593"
+}

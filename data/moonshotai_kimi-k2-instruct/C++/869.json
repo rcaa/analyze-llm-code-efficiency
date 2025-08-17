@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    bool reorderedPowerOf2(int n) {\n        string s = to_string(n);\n        sort(s.begin(), s.end());\n        for (int p = 0; p < 30; ++p) {\n            string t = to_string(1 << p);\n            sort(t.begin(), t.end());\n            if (t == s) return true;\n        }\n        return false;\n    }\n};\nefficiency: HIGH\ntime complexity: O(log n * log log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Pre-compute the digit multiset of every 2^p (0 ≤ p < 30) once, then compare the multiset of n (obtained by sorting its digits) against each. Sorting the digits of n and each 2^p dominates the cost; the number of digits is at most 10, so the constant factor is tiny.",
+  "code": "class Solution {\npublic:\n    bool reorderedPowerOf2(int n) {\n        string s = to_string(n);\n        sort(s.begin(), s.end());\n        for (int p = 0; p < 30; ++p) {\n            string t = to_string(1 << p);\n            sort(t.begin(), t.end());\n            if (t == s) return true;\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-06T02:30:19.763686",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool reorderedPowerOf2(int n) {\n        string s = to_string(n);\n        sort(s.begin(), s.end());\n        for (int p = 0; p < 30; ++p) {\n            string t = to_string(1 << p);\n            sort(t.begin(), t.end());\n            if (t == s) return true;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.330628"
+}

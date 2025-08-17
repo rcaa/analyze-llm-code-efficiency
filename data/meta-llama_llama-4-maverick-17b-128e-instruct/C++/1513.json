@@ -1,0 +1,15 @@
+{
+  "id": 1513,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int numSub(string s) {\n        long long count = 0, result = 0, mod = 1e9 + 7;\n        for (char c : s) {\n            if (c == '1') count++;\n            else {\n                result = (result + count * (count + 1) / 2) % mod;\n                count = 0;\n            }\n        }\n        result = (result + count * (count + 1) / 2) % mod;\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, maintaining a count of consecutive '1's. When a '0' is encountered or at the end, it calculates the number of substrings that can be formed with the counted '1's using the formula for the sum of an arithmetic series, n*(n+1)/2, and adds this to the result. The result is kept modulo 10^9 + 7 to prevent overflow.",
+  "code": "class Solution {\npublic:\n    int numSub(string s) {\n        long long count = 0, result = 0, mod = 1e9 + 7;\n        for (char c : s) {\n            if (c == '1') count++;\n            else {\n                result = (result + count * (count + 1) / 2) % mod;\n                count = 0;\n            }\n        }\n        result = (result + count * (count + 1) / 2) % mod;\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T15:50:46.580009",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numSub(string s) {\n        long long count = 0, result = 0, mod = 1e9 + 7;\n        for (char c : s) {\n            if (c == '1') count++;\n            else {\n                result = (result + count * (count + 1) / 2) % mod;\n                count = 0;\n            }\n        }\n        result = (result + count * (count + 1) / 2) % mod;\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.820134"
+}

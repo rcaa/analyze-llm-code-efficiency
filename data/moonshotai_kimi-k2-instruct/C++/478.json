@@ -1,0 +1,15 @@
+{
+  "id": 478,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\n    double r, xc, yc;\n    mt19937 gen;\n    uniform_real_distribution<double> dis;\npublic:\n    Solution(double radius, double x_center, double y_center) \n        : r(radius), xc(x_center), yc(y_center), gen(random_device{}()), dis(-1.0, 1.0) {}\n    \n    vector<double> randPoint() {\n        double x, y;\n        do {\n            x = dis(gen);\n            y = dis(gen);\n        } while (x * x + y * y > 1.0);\n        return {xc + r * x, yc + r * y};\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1) expected\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses polar-rejection sampling: generate uniform points in the enclosing square and reject those outside the unit circle; the accepted points are uniform in the circle. Fast constant-time expected per call, minimal memory, and low energy due to simple arithmetic and few RNG calls.",
+  "code": "class Solution {\n    double r, xc, yc;\n    mt19937 gen;\n    uniform_real_distribution<double> dis;\npublic:\n    Solution(double radius, double x_center, double y_center) \n        : r(radius), xc(x_center), yc(y_center), gen(random_device{}()), dis(-1.0, 1.0) {}\n    \n    vector<double> randPoint() {\n        double x, y;\n        do {\n            x = dis(gen);\n            y = dis(gen);\n        } while (x * x + y * y > 1.0);\n        return {xc + r * x, yc + r * y};\n    }\n};",
+  "timestamp": "2025-08-06T02:30:07.675265",
+  "code_extracted_previous": "class Solution {\n    double r, xc, yc;\n    mt19937 gen;\n    uniform_real_distribution<double> dis;\npublic:\n    Solution(double radius, double x_center, double y_center) \n        : r(radius), xc(x_center), yc(y_center), gen(random_device{}()), dis(-1.0, 1.0) {}\n    \n    vector<double> randPoint() {\n        double x, y;\n        do {\n            x = dis(gen);\n            y = dis(gen);\n        } while (x * x + y * y > 1.0);\n        return {xc + r * x, yc + r * y};\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.140493"
+}

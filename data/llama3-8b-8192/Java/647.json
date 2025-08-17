@@ -1,0 +1,15 @@
+{
+  "id": 647,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int countSubstrings(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += expandAroundCenter(s, i, i); // odd length palindrome\n            count += expandAroundCenter(s, i, i + 1); // even length palindrome\n        }\n        return count;\n    }\n\n    private int expandAroundCenter(String s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer approach to expand around the center of the palindrome. It counts the number of palindromic substrings by considering both odd and even length palindromes. The expandAroundCenter function is used to expand the palindrome from the center, and the count is incremented accordingly. The solution has a high efficiency due to the use of a single loop and the expandAroundCenter function, which has a linear time complexity.",
+  "code": "class Solution {\n    public int countSubstrings(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += expandAroundCenter(s, i, i); // odd length palindrome\n            count += expandAroundCenter(s, i, i + 1); // even length palindrome\n        }\n        return count;\n    }\n\n    private int expandAroundCenter(String s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T01:38:15.184880",
+  "code_extracted_previous": "public int countSubstrings(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            count += expandAroundCenter(s, i, i); // odd length palindrome\n            count += expandAroundCenter(s, i, i + 1); // even length palindrome\n        }\n        return count;\n    }\n\n    private int expandAroundCenter(String s, int left, int right) {\n        int count = 0;\n        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {\n            count++;\n            left--;\n            right++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.913861"
+}

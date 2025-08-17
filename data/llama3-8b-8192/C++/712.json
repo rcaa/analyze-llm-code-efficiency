@@ -1,0 +1,15 @@
+{
+  "id": 712,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int minimumDeleteSum(string s1, string s2) {\n        int sum = 0;\n        int i = 0, j = 0;\n        while (i < s1.size() || j < s2.size()) {\n            if (i < s1.size() && j < s2.size()) {\n                if (s1[i] == s2[j]) {\n                    i++;\n                    j++;\n                } else {\n                    sum += s1[i] < s2[j] ? s1[i++] : s2[j++];\n                }\n            } else if (i < s1.size()) {\n                sum += s1[i++];\n            } else {\n                sum += s2[j++];\n            }\n        }\n        return sum;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer approach to iterate through both strings. It keeps track of the sum of deleted characters and updates it accordingly. If the current characters in both strings are the same, it moves both pointers forward. If not, it adds the ASCII value of the character in the string with the smaller character to the sum and moves the corresponding pointer forward. This approach ensures that the sum of deleted characters is minimized.",
+  "code": "class Solution {\npublic:\n    int minimumDeleteSum(string s1, string s2) {\n        int sum = 0;\n        int i = 0, j = 0;\n        while (i < s1.size() || j < s2.size()) {\n            if (i < s1.size() && j < s2.size()) {\n                if (s1[i] == s2[j]) {\n                    i++;\n                    j++;\n                } else {\n                    sum += s1[i] < s2[j] ? s1[i++] : s2[j++];\n                }\n            } else if (i < s1.size()) {\n                sum += s1[i++];\n            } else {\n                sum += s2[j++];\n            }\n        }\n        return sum;\n    }\n};",
+  "timestamp": "2025-08-05T16:53:13.339176",
+  "code_extracted_previous": "public:\n    int minimumDeleteSum(string s1, string s2) {\n        int sum = 0;\n        int i = 0, j = 0;\n        while (i < s1.size() || j < s2.size()) {\n            if (i < s1.size() && j < s2.size()) {\n                if (s1[i] == s2[j]) {\n                    i++;\n                    j++;\n                } else {\n                    sum += s1[i] < s2[j] ? s1[i++] : s2[j++];\n                }\n            } else if (i < s1.size()) {\n                sum += s1[i++];\n            } else {\n                sum += s2[j++];\n            }\n        }\n        return sum;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.633343"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def numMusicPlaylists(self, n: int, goal: int, k: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0] * (n + 1) for _ in range(goal + 1)]\n        dp[0][0] = 1\n        for i in range(1, goal + 1):\n            for j in range(1, min(i + 1, n + 1)):\n                dp[i][j] = (dp[i - 1][j - 1] * (n - j + 1) + dp[i - 1][j] * max(j - k, 0)) % MOD\n        return sum(dp[goal]) % MOD\n```\nefficiency: HIGH\ntime complexity: O(goal * n)\nspace complexity: O(goal * n)\nenergy implications: LOW\nexplanation: Dynamic programming approach is used to efficiently compute the number of possible playlists by breaking down the problem into smaller subproblems and storing their results to avoid redundant computation.",
+  "code": "def numMusicPlaylists(self, n: int, goal: int, k: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0] * (n + 1) for _ in range(goal + 1)]\n        dp[0][0] = 1\n        for i in range(1, goal + 1):\n            for j in range(1, min(i + 1, n + 1)):\n                dp[i][j] = (dp[i - 1][j - 1] * (n - j + 1) + dp[i - 1][j] * max(j - k, 0)) % MOD\n        return sum(dp[goal]) % MOD\n```",
+  "timestamp": "2025-08-05T15:18:18.234335",
+  "code_extracted_previous": "class Solution:\n    def numMusicPlaylists(self, n: int, goal: int, k: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0] * (n + 1) for _ in range(goal + 1)]\n        dp[0][0] = 1\n        for i in range(1, goal + 1):\n            for j in range(1, min(i + 1, n + 1)):\n                dp[i][j] = (dp[i - 1][j - 1] * (n - j + 1) + dp[i - 1][j] * max(j - k, 0)) % MOD\n        return sum(dp[goal]) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.516956"
+}

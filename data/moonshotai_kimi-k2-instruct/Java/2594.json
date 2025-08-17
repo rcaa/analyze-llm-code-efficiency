@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        long left = 1, right = 1L * ranks[0] * cars * cars;\n        for (int r : ranks) right = Math.max(right, 1L * r * cars * cars);\n        \n        while (left < right) {\n            long mid = left + (right - left) / 2;\n            long total = 0;\n            for (int r : ranks) {\n                total += (long) Math.sqrt(mid / r);\n                if (total >= cars) break;\n            }\n            if (total >= cars) right = mid;\n            else left = mid + 1;\n        }\n        return left;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n log(max(r) * cars^2))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search on the minimum time. For each candidate time, compute how many cars each mechanic can finish (sqrt(time/rank)) and sum them. If the sum is at least cars, the time is feasible. The search space is bounded by the worst-case single-mechanic scenario.",
+  "code": "class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        long left = 1, right = 1L * ranks[0] * cars * cars;\n        for (int r : ranks) right = Math.max(right, 1L * r * cars * cars);\n        \n        while (left < right) {\n            long mid = left + (right - left) / 2;\n            long total = 0;\n            for (int r : ranks) {\n                total += (long) Math.sqrt(mid / r);\n                if (total >= cars) break;\n            }\n            if (total >= cars) right = mid;\n            else left = mid + 1;\n        }\n        return left;\n    }\n}",
+  "timestamp": "2025-08-05T13:32:59.426124",
+  "code_extracted_previous": "class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        long left = 1, right = 1L * ranks[0] * cars * cars;\n        for (int r : ranks) right = Math.max(right, 1L * r * cars * cars);\n        \n        while (left < right) {\n            long mid = left + (right - left) / 2;\n            long total = 0;\n            for (int r : ranks) {\n                total += (long) Math.sqrt(mid / r);\n                if (total >= cars) break;\n            }\n            if (total >= cars) right = mid;\n            else left = mid + 1;\n        }\n        return left;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.130133"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1540,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        vector<int> count(26, 0);\n        for (int i = 0; i < s.size(); ++i) {\n            int diff = (t[i] - s[i] + 26) % 26;\n            count[diff]++;\n        }\n        int maxMove = 0;\n        for (int i = 1; i < 26; ++i) {\n            if (count[i]) {\n                maxMove = max(maxMove, i + 26 * (count[i] - 1));\n            }\n        }\n        return maxMove <= k;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The main approach is to count the differences between characters in s and t, and then determine the maximum move required to convert s to t. It iterates through the strings once, making it efficient. The key strength is that it uses a constant amount of space to store the count of differences. \n```",
+  "code": "class Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        vector<int> count(26, 0);\n        for (int i = 0; i < s.size(); ++i) {\n            int diff = (t[i] - s[i] + 26) % 26;\n            count[diff]++;\n        }\n        int maxMove = 0;\n        for (int i = 1; i < 26; ++i) {\n            if (count[i]) {\n                maxMove = max(maxMove, i + 26 * (count[i] - 1));\n            }\n        }\n        return maxMove <= k;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The main approach is to count the differences between characters in s and t, and then determine the maximum move required to convert s to t. It iterates through the strings once, making it efficient. The key strength is that it uses a constant amount of space to store the count of differences.",
+  "timestamp": "2025-08-05T15:07:12.430505",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        vector<int> count(26, 0);\n        for (int i = 0; i < s.size(); ++i) {\n            int diff = (t[i] - s[i] + 26) % 26;\n            count[diff]++;\n        }\n        int maxMove = 0;\n        for (int i = 1; i < 26; ++i) {\n            if (count[i]) {\n                maxMove = max(maxMove, i + 26 * (count[i] - 1));\n            }\n        }\n        return maxMove <= k;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.838369"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 925,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public boolean isLongPressedName(String name, String typed) {\n        int i = 0, j = 0;\n        int n = name.length(), t = typed.length();\n        while (i < n && j < t) {\n            if (name.charAt(i) != typed.charAt(j)) return false;\n            char c = name.charAt(i);\n            int cntName = 0;\n            while (i < n && name.charAt(i) == c) {\n                i++;\n                cntName++;\n            }\n            int cntTyped = 0;\n            while (j < t && typed.charAt(j) == c) {\n                j++;\n                cntTyped++;\n            }\n            if (cntTyped < cntName) return false;\n        }\n        return i == n && j == t;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n + t)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Two-pointer scan counts consecutive runs in both strings; ensures typed has at least as many of each character as name and in the same order.",
+  "code": "class Solution {\n    public boolean isLongPressedName(String name, String typed) {\n        int i = 0, j = 0;\n        int n = name.length(), t = typed.length();\n        while (i < n && j < t) {\n            if (name.charAt(i) != typed.charAt(j)) return false;\n            char c = name.charAt(i);\n            int cntName = 0;\n            while (i < n && name.charAt(i) == c) {\n                i++;\n                cntName++;\n            }\n            int cntTyped = 0;\n            while (j < t && typed.charAt(j) == c) {\n                j++;\n                cntTyped++;\n            }\n            if (cntTyped < cntName) return false;\n        }\n        return i == n && j == t;\n    }\n}",
+  "timestamp": "2025-08-06T01:30:45.806485",
+  "code_extracted_previous": "public boolean isLongPressedName(String name, String typed) {\n        int i = 0, j = 0;\n        int n = name.length(), t = typed.length();\n        while (i < n && j < t) {\n            if (name.charAt(i) != typed.charAt(j)) return false;\n            char c = name.charAt(i);\n            int cntName = 0;\n            while (i < n && name.charAt(i) == c) {\n                i++;\n                cntName++;\n            }\n            int cntTyped = 0;\n            while (j < t && typed.charAt(j) == c) {\n                j++;\n                cntTyped++;\n            }\n            if (cntTyped < cntName) return false;\n        }\n        return i == n && j == t;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.910475"
+}

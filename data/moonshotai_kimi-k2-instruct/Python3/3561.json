@@ -1,0 +1,15 @@
+{
+  "id": 3561,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def resultingString(self, s: str) -> str:\n        st = []\n        for ch in s:\n            st.append(ch)\n            while len(st) >= 2:\n                a, b = st[-2], st[-1]\n                if (ord(a) - ord(b)) % 26 == 1 or (ord(b) - ord(a)) % 26 == 1:\n                    st.pop()\n                    st.pop()\n                else:\n                    break\n        return ''.join(st)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a stack to simulate the removals in a single left-to-right pass. Whenever the top two characters are consecutive alphabetically (circularly), they are popped. This greedy approach is optimal because any later removals cannot affect earlier pairs once processed.",
+  "code": "class Solution:\n    def resultingString(self, s: str) -> str:\n        st = []\n        for ch in s:\n            st.append(ch)\n            while len(st) >= 2:\n                a, b = st[-2], st[-1]\n                if (ord(a) - ord(b)) % 26 == 1 or (ord(b) - ord(a)) % 26 == 1:\n                    st.pop()\n                    st.pop()\n                else:\n                    break\n        return ''.join(st)",
+  "timestamp": "2025-08-06T01:08:10.364735",
+  "code_extracted_previous": "class Solution:\n    def resultingString(self, s: str) -> str:\n        st = []\n        for ch in s:\n            st.append(ch)\n            while len(st) >= 2:\n                a, b = st[-2], st[-1]\n                if (ord(a) - ord(b)) % 26 == 1 or (ord(b) - ord(a)) % 26 == 1:\n                    st.pop()\n                    st.pop()\n                else:\n                    break\n        return ''.join(st)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.123012"
+}

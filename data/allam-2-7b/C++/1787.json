@@ -1,0 +1,15 @@
+{
+  "id": 1787,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int minChanges(vector<int>& nums, int k) {\n        int result = 0;\n        for (int i = 0; i < nums.size(); i += k) {\n            int left = i, right = i + k - 1;\n            int sum = 0;\n            while (right >= left) {\n                sum ^= nums[right];\n                right--;\n            }\n            result = max(result, abs(sum));\n        }\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nThe problem requires finding the minimum number of elements to change in the array such that the XOR of all segments of size k is zero. We can solve this problem by iterating through the array in chunks of size k and updating the sum of XOR of elements in each chunk. If the sum is not zero, we update the result with the absolute difference between the current sum and zero.\n\nThe time complexity is O(n) because we iterate through the array once. The space complexity is O(1) because we only use a single variable for the sum. The energy implications are low because the algorithm only performs simple arithmetic operations and does not require any significant energy consumption. ",
+  "code": "class Solution {\npublic:\n    int minChanges(vector<int>& nums, int k) {\n        int result = 0;\n        for (int i = 0; i < nums.size(); i += k) {\n            int left = i, right = i + k - 1;\n            int sum = 0;\n            while (right >= left) {\n                sum ^= nums[right];\n                right--;\n            }\n            result = max(result, abs(sum));\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T11:50:34.549699",
+  "code_extracted_previous": "public:\n    int minChanges(vector<int>& nums, int k) {\n        int result = 0;\n        for (int i = 0; i < nums.size(); i += k) {\n            int left = i, right = i + k - 1;\n            int sum = 0;\n            while (right >= left) {\n                sum ^= nums[right];\n                right--;\n            }\n            result = max(result, abs(sum));\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.182229"
+}

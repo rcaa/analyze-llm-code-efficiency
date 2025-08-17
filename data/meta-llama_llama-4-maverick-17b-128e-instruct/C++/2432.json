@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = 0, maxId = n;\n        int prevTime = 0;\n        for (auto& log : logs) {\n            int id = log[0], time = log[1];\n            int duration = time - prevTime;\n            if (duration > maxTime || (duration == maxTime && id < maxId)) {\n                maxTime = duration;\n                maxId = id;\n            }\n            prevTime = time;\n        }\n        return maxId;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the logs once, keeping track of the maximum task duration and the corresponding employee id. It updates these values whenever it encounters a task with a longer duration or the same duration but a smaller employee id.",
+  "code": "class Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = 0, maxId = n;\n        int prevTime = 0;\n        for (auto& log : logs) {\n            int id = log[0], time = log[1];\n            int duration = time - prevTime;\n            if (duration > maxTime || (duration == maxTime && id < maxId)) {\n                maxTime = duration;\n                maxId = id;\n            }\n            prevTime = time;\n        }\n        return maxId;\n    }\n};",
+  "timestamp": "2025-08-05T12:47:49.969417",
+  "code_extracted_previous": "class Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = 0, maxId = n;\n        int prevTime = 0;\n        for (auto& log : logs) {\n            int id = log[0], time = log[1];\n            int duration = time - prevTime;\n            if (duration > maxTime || (duration == maxTime && id < maxId)) {\n                maxTime = duration;\n                maxId = id;\n            }\n            prevTime = time;\n        }\n        return maxId;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.238282"
+}

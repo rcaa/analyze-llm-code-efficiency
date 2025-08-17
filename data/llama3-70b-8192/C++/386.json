@@ -1,0 +1,15 @@
+{
+  "id": 386,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<int> lexicalOrder(int n) {\n        vector<int> res;\n        int curr = 1;\n        for (int i = 1; i <= n; i++) {\n            res.push_back(curr);\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else if (curr + 1 <= n && (curr % 10 != 9 || curr + 1 <= n / 10)) {\n                curr++;\n            } else {\n                while ((curr / 10) % 10 == 9) {\n                    curr /= 10;\n                }\n                curr = curr / 10 + 1;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a single loop to generate the lexicographical order, leveraging the properties of decimal numbers to efficiently traverse the range [1, n].",
+  "code": "class Solution {\npublic:\n    vector<int> lexicalOrder(int n) {\n        vector<int> res;\n        int curr = 1;\n        for (int i = 1; i <= n; i++) {\n            res.push_back(curr);\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else if (curr + 1 <= n && (curr % 10 != 9 || curr + 1 <= n / 10)) {\n                curr++;\n            } else {\n                while ((curr / 10) % 10 == 9) {\n                    curr /= 10;\n                }\n                curr = curr / 10 + 1;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:59:30.191351",
+  "code_extracted_previous": "public:\n    vector<int> lexicalOrder(int n) {\n        vector<int> res;\n        int curr = 1;\n        for (int i = 1; i <= n; i++) {\n            res.push_back(curr);\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else if (curr + 1 <= n && (curr % 10 != 9 || curr + 1 <= n / 10)) {\n                curr++;\n            } else {\n                while ((curr / 10) % 10 == 9) {\n                    curr /= 10;\n                }\n                curr = curr / 10 + 1;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.877990"
+}

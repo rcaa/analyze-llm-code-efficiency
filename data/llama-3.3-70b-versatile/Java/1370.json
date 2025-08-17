@@ -1,0 +1,15 @@
+{
+  "id": 1370,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public String sortString(String s) {\n        int[] count = new int[26];\n        for (char c : s.toCharArray()) {\n            count[c - 'a']++;\n        }\n        StringBuilder result = new StringBuilder();\n        while (result.length() < s.length()) {\n            for (int i = 0; i < 26; i++) {\n                if (count[i] > 0) {\n                    result.append((char) (i + 'a'));\n                    count[i]--;\n                }\n            }\n            for (int i = 25; i >= 0; i--) {\n                if (count[i] > 0) {\n                    result.append((char) (i + 'a'));\n                    count[i]--;\n                }\n            }\n        }\n        return result.toString();\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The algorithm uses a frequency count array to keep track of the characters in the string, then iteratively appends the smallest and largest characters to the result string, ensuring that all characters are removed from the string.",
+  "code": "class Solution {\n    public String sortString(String s) {\n        int[] count = new int[26];\n        for (char c : s.toCharArray()) {\n            count[c - 'a']++;\n        }\n        StringBuilder result = new StringBuilder();\n        while (result.length() < s.length()) {\n            for (int i = 0; i < 26; i++) {\n                if (count[i] > 0) {\n                    result.append((char) (i + 'a'));\n                    count[i]--;\n                }\n            }\n            for (int i = 25; i >= 0; i--) {\n                if (count[i] > 0) {\n                    result.append((char) (i + 'a'));\n                    count[i]--;\n                }\n            }\n        }\n        return result.toString();\n    }\n}",
+  "timestamp": "2025-08-06T15:13:06.017030",
+  "code_extracted_previous": "class Solution {\n    public String sortString(String s) {\n        int[] count = new int[26];\n        for (char c : s.toCharArray()) {\n            count[c - 'a']++;\n        }\n        StringBuilder result = new StringBuilder();\n        while (result.length() < s.length()) {\n            for (int i = 0; i < 26; i++) {\n                if (count[i] > 0) {\n                    result.append((char) (i + 'a'));\n                    count[i]--;\n                }\n            }\n            for (int i = 25; i >= 0; i--) {\n                if (count[i] > 0) {\n                    result.append((char) (i + 'a'));\n                    count[i]--;\n                }\n            }\n        }\n        return result.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.469585"
+}

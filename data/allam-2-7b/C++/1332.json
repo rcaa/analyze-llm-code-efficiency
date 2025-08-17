@@ -1,0 +1,15 @@
+{
+  "id": 1332,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int removePalindromeSub(string s) {\n        int steps = 0;\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j < s.length(); j++) {\n                if (s[i] == s[j] && isPalindrome(s.substr(i, j - i + 1))) {\n                    s.erase(s.begin() + i);\n                    steps++;\n                    break;\n                }\n            }\n        }\n        return steps;\n    }\n\n    bool isPalindrome(string s) {\n        int i = 0, j = s.length() - 1;\n        while (i < j) {\n            if (s[i] != s[j]) {\n                break;\n            }\n            i++;\n            j--;\n        }\n        return i == j;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n1. Iterate through the string from both ends (i and j) and compare characters. If they are not equal, break the loop.\n2. Move i and j towards the center of the string until they meet.\n3. Return true if the string is a palindrome (i.e., has the same characters from both ends).\n4. In the main function, iterate through the string and remove palindromic substrings one by one until the string becomes empty.\n5. Return the number of steps taken to remove all palindromic substrings. ",
+  "code": "class Solution {\npublic:\n    int removePalindromeSub(string s) {\n        int steps = 0;\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j < s.length(); j++) {\n                if (s[i] == s[j] && isPalindrome(s.substr(i, j - i + 1))) {\n                    s.erase(s.begin() + i);\n                    steps++;\n                    break;\n                }\n            }\n        }\n        return steps;\n    }\n\n    bool isPalindrome(string s) {\n        int i = 0, j = s.length() - 1;\n        while (i < j) {\n            if (s[i] != s[j]) {\n                break;\n            }\n            i++;\n            j--;\n        }\n        return i == j;\n    }\n};",
+  "timestamp": "2025-08-06T01:31:30.194923",
+  "code_extracted_previous": "public:\n    int removePalindromeSub(string s) {\n        int steps = 0;\n        for (int i = 0; i < s.length(); i++) {\n            for (int j = i + 1; j < s.length(); j++) {\n                if (s[i] == s[j] && isPalindrome(s.substr(i, j - i + 1))) {\n                    s.erase(s.begin() + i);\n                    steps++;\n                    break;\n                }\n            }\n        }\n        return steps;\n    }\n\n    bool isPalindrome(string s) {\n        int i = 0, j = s.length() - 1;\n        while (i < j) {\n            if (s[i] != s[j]) {\n                break;\n            }\n            i++;\n            j--;\n        }\n        return i == j;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.074956"
+}

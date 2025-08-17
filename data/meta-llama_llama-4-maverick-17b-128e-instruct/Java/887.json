@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[n + 1][k + 1];\n        int m = 0;\n        while (dp[m][k] < n) {\n            m++;\n            for (int j = 1; j <= k; j++) {\n                dp[m][j] = dp[m - 1][j - 1] + dp[m - 1][j] + 1;\n            }\n        }\n        return m;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n*k)\nspace complexity: O(n*k)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the maximum number of floors that can be checked with a given number of eggs and moves. The solution iterates over the number of moves until it can cover n floors with k eggs.\n```",
+  "code": "class Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[n + 1][k + 1];\n        int m = 0;\n        while (dp[m][k] < n) {\n            m++;\n            for (int j = 1; j <= k; j++) {\n                dp[m][j] = dp[m - 1][j - 1] + dp[m - 1][j] + 1;\n            }\n        }\n        return m;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n*k)\nspace complexity: O(n*k)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the maximum number of floors that can be checked with a given number of eggs and moves. The solution iterates over the number of moves until it can cover n floors with k eggs.",
+  "timestamp": "2025-08-05T15:17:07.624726",
+  "code_extracted_previous": "class Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[n + 1][k + 1];\n        int m = 0;\n        while (dp[m][k] < n) {\n            m++;\n            for (int j = 1; j <= k; j++) {\n                dp[m][j] = dp[m - 1][j - 1] + dp[m - 1][j] + 1;\n            }\n        }\n        return m;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:47.157429"
+}

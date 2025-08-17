@@ -1,0 +1,15 @@
+{
+  "id": 1010,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        vector<int> count(60, 0);\n        int pairs = 0;\n        for (int t : time) {\n            int remainder = t % 60;\n            pairs += count[(60 - remainder) % 60];\n            count[remainder]++;\n        }\n        return pairs;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Utilizes a frequency count array to track song durations modulo 60, efficiently counting pairs with total duration divisible by 60.",
+  "code": "class Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        vector<int> count(60, 0);\n        int pairs = 0;\n        for (int t : time) {\n            int remainder = t % 60;\n            pairs += count[(60 - remainder) % 60];\n            count[remainder]++;\n        }\n        return pairs;\n    }\n};",
+  "timestamp": "2025-08-05T13:17:00.466425",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        vector<int> count(60, 0);\n        int pairs = 0;\n        for (int t : time) {\n            int remainder = t % 60;\n            pairs += count[(60 - remainder) % 60];\n            count[remainder]++;\n        }\n        return pairs;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.550536"
+}

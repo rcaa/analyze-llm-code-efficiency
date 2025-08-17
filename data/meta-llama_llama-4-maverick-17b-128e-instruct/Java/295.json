@@ -1,0 +1,15 @@
+{
+  "id": 295,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass MedianFinder {\n\n    private final PriorityQueue<Integer> maxHeap;\n    private final PriorityQueue<Integer> minHeap;\n\n    public MedianFinder() {\n        maxHeap = new PriorityQueue<>((a, b) -> b - a);\n        minHeap = new PriorityQueue<>();\n    }\n\n    public void addNum(int num) {\n        maxHeap.offer(num);\n        minHeap.offer(maxHeap.poll());\n        if (maxHeap.size() < minHeap.size()) {\n            maxHeap.offer(minHeap.poll());\n        }\n    }\n\n    public double findMedian() {\n        return maxHeap.size() == minHeap.size() ? (maxHeap.peek() + (double) minHeap.peek()) / 2 : maxHeap.peek();\n    }\n}\n\n/**\n * Your MedianFinder object will be instantiated and called as such:\n * MedianFinder obj = new MedianFinder();\n * obj.addNum(num);\n * double param_2 = obj.findMedian();\n */\nsolution: The provided Java code in the MedianFinder class.\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The MedianFinder class uses two heaps, a max heap and a min heap, to efficiently maintain the median of a stream of numbers. The max heap stores the smaller half of the numbers, and the min heap stores the larger half. The size of the max heap is either equal to or one more than the size of the min heap, ensuring that the median is always at the top of the max heap or the average of the tops of both heaps. This approach allows for efficient addition of numbers and calculation of the median in O(log n) time.",
+  "code": "The provided Java code in the MedianFinder class.",
+  "timestamp": "2025-08-06T01:13:04.434447",
+  "code_extracted_previous": "The provided Java code in the MedianFinder class.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:46.722740"
+}

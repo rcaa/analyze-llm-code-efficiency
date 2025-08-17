@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        const int MOD = 1e9 + 7;\n        int maxPos = std::min(steps, arrLen - 1);\n        std::vector<int> dp(arrLen, 0);\n        dp[0] = 1;\n\n        for (int i = 1; i <= steps; ++i) {\n            std::vector<int> nextDp(arrLen, 0);\n            for (int pos = 0; pos <= maxPos; ++pos) {\n                nextDp[pos] = (nextDp[pos] + dp[pos]) % MOD;\n                if (pos > 0) nextDp[pos] = (nextDp[pos] + dp[pos - 1]) % MOD;\n                if (pos < maxPos) nextDp[pos] = (nextDp[pos] + dp[pos + 1]) % MOD;\n            }\n            dp = nextDp;\n        }\n\n        return dp[0];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(steps * min(steps, arrLen))\nspace complexity: O(arrLen)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to track the number of ways to be at each position after each step. It optimizes space by only maintaining the current and next state arrays. The key strength is its efficient use of space and time, making it suitable for large values of arrLen.",
+  "code": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        const int MOD = 1e9 + 7;\n        int maxPos = std::min(steps, arrLen - 1);\n        std::vector<int> dp(arrLen, 0);\n        dp[0] = 1;\n\n        for (int i = 1; i <= steps; ++i) {\n            std::vector<int> nextDp(arrLen, 0);\n            for (int pos = 0; pos <= maxPos; ++pos) {\n                nextDp[pos] = (nextDp[pos] + dp[pos]) % MOD;\n                if (pos > 0) nextDp[pos] = (nextDp[pos] + dp[pos - 1]) % MOD;\n                if (pos < maxPos) nextDp[pos] = (nextDp[pos] + dp[pos + 1]) % MOD;\n            }\n            dp = nextDp;\n        }\n\n        return dp[0];\n    }\n};",
+  "timestamp": "2025-08-06T02:37:35.717812",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        const int MOD = 1e9 + 7;\n        int maxPos = std::min(steps, arrLen - 1);\n        std::vector<int> dp(arrLen, 0);\n        dp[0] = 1;\n\n        for (int i = 1; i <= steps; ++i) {\n            std::vector<int> nextDp(arrLen, 0);\n            for (int pos = 0; pos <= maxPos; ++pos) {\n                nextDp[pos] = (nextDp[pos] + dp[pos]) % MOD;\n                if (pos > 0) nextDp[pos] = (nextDp[pos] + dp[pos - 1]) % MOD;\n                if (pos < maxPos) nextDp[pos] = (nextDp[pos] + dp[pos + 1]) % MOD;\n            }\n            dp = nextDp;\n        }\n\n        return dp[0];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:58.044686"
+}

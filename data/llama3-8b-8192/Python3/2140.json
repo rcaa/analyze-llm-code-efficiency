@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * n\n        dp[0] = questions[0][0]\n        for i in range(1, n):\n            dp[i] = max(dp[i-1], dp[max(0, i-questions[i][1]-1)] + questions[i][0])\n        return max(dp)\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We maintain a dp array where dp[i] represents the maximum points that can be earned up to question i. We iterate through the questions and for each question, we consider two options: either solve the current question or skip it. If we solve the current question, we will be unable to solve the next brainpower[i] questions, so we consider the maximum points that can be earned up to the question before the last brainpower[i] questions. If we skip the current question, we just consider the maximum points that can be earned up to the previous question. We update dp[i] with the maximum points that can be earned in these two options. Finally, we return the maximum points that can be earned in the entire exam.",
+  "code": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * n\n        dp[0] = questions[0][0]\n        for i in range(1, n):\n            dp[i] = max(dp[i-1], dp[max(0, i-questions[i][1]-1)] + questions[i][0])\n        return max(dp)",
+  "timestamp": "2025-08-05T13:25:06.162542",
+  "code_extracted_previous": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * n\n        dp[0] = questions[0][0]\n        for i in range(1, n):\n            dp[i] = max(dp[i-1], dp[max(0, i-questions[i][1]-1)] + questions[i][0])\n        return max(dp)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.702834"
+}

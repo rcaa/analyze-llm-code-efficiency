@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```\nclass Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        base = 0\n        for c, g in zip(customers, grumpy):\n            if g == 0:\n                base += c\n        \n        max_gain = 0\n        window_gain = 0\n        \n        for i in range(minutes):\n            if grumpy[i] == 1:\n                window_gain += customers[i]\n        max_gain = window_gain\n        \n        for i in range(minutes, n):\n            left = i - minutes\n            if grumpy[left] == 1:\n                window_gain -= customers[left]\n            if grumpy[i] == 1:\n                window_gain += customers[i]\n            max_gain = max(max_gain, window_gain)\n        \n        return base + max_gain\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Compute the baseline satisfied customers when the owner is naturally calm. Then slide a fixed-length window to find the maximum extra customers that can be satisfied by using the technique once.",
+  "code": "class Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        base = 0\n        for c, g in zip(customers, grumpy):\n            if g == 0:\n                base += c\n        \n        max_gain = 0\n        window_gain = 0\n        \n        for i in range(minutes):\n            if grumpy[i] == 1:\n                window_gain += customers[i]\n        max_gain = window_gain\n        \n        for i in range(minutes, n):\n            left = i - minutes\n            if grumpy[left] == 1:\n                window_gain -= customers[left]\n            if grumpy[i] == 1:\n                window_gain += customers[i]\n            max_gain = max(max_gain, window_gain)\n        \n        return base + max_gain",
+  "timestamp": "2025-08-05T13:19:36.589845",
+  "code_extracted_previous": "class Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        n = len(customers)\n        base = 0\n        for c, g in zip(customers, grumpy):\n            if g == 0:\n                base += c\n        \n        max_gain = 0\n        window_gain = 0\n        \n        for i in range(minutes):\n            if grumpy[i] == 1:\n                window_gain += customers[i]\n        max_gain = window_gain\n        \n        for i in range(minutes, n):\n            left = i - minutes\n            if grumpy[left] == 1:\n                window_gain -= customers[left]\n            if grumpy[i] == 1:\n                window_gain += customers[i]\n            max_gain = max(max_gain, window_gain)\n        \n        return base + max_gain",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:55.999119"
+}

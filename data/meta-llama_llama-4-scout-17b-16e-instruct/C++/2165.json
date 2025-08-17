@@ -1,0 +1,15 @@
+{
+  "id": 2165,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    long long smallestNumber(long long num) {\n        if (num == 0) return 0;\n\n        string str = to_string(abs(num));\n        sort(str.begin(), str.end());\n\n        if (num > 0) {\n            if (str[0] == '0') {\n                for (int i = 1; i < str.size(); i++) {\n                    if (str[i] != '0') {\n                        swap(str[0], str[i]);\n                        break;\n                    }\n                }\n            }\n            return stoll(str);\n        } else {\n            return -stoll(str);\n        }\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The approach converts the absolute value of the input number to a string, sorts the digits, and then rearranges them to minimize the value. If the number is positive and the smallest digit is '0', it swaps the first '0' with the smallest non-zero digit. Finally, it converts the string back to a long long integer and applies the original sign.",
+  "code": "class Solution {\npublic:\n    long long smallestNumber(long long num) {\n        if (num == 0) return 0;\n\n        string str = to_string(abs(num));\n        sort(str.begin(), str.end());\n\n        if (num > 0) {\n            if (str[0] == '0') {\n                for (int i = 1; i < str.size(); i++) {\n                    if (str[i] != '0') {\n                        swap(str[0], str[i]);\n                        break;\n                    }\n                }\n            }\n            return stoll(str);\n        } else {\n            return -stoll(str);\n        }\n    }\n};",
+  "timestamp": "2025-08-06T02:28:08.429055",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long smallestNumber(long long num) {\n        if (num == 0) return 0;\n\n        string str = to_string(abs(num));\n        sort(str.begin(), str.end());\n\n        if (num > 0) {\n            if (str[0] == '0') {\n                for (int i = 1; i < str.size(); i++) {\n                    if (str[i] != '0') {\n                        swap(str[0], str[i]);\n                        break;\n                    }\n                }\n            }\n            return stoll(str);\n        } else {\n            return -stoll(str);\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.981188"
+}

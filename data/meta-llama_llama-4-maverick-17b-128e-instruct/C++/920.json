@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const int MOD = 1e9 + 7;\n        vector<vector<long long>> dp(n + 1, vector<long long>(goal + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= goal; ++j) {\n                dp[i][j] = (dp[i - 1][j - 1] * (n - i + 1) + dp[i][j - 1] * max(i - k, 0)) % MOD;\n            }\n        }\n        return dp[n][goal];\n    }\n};\nefficiency: HIGH\ntime complexity: O(n*goal)\nspace complexity: O(n*goal)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently compute the number of playlists by breaking down the problem into smaller subproblems and storing their results. The key insight is that a playlist of j songs with i distinct songs can be formed by either adding a new song (dp[i-1][j-1]*(n-i+1)) or replaying an existing song (dp[i][j-1]*max(i-k,0)). The results are stored in a 2D array dp and computed iteratively. \n```",
+  "code": "class Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const int MOD = 1e9 + 7;\n        vector<vector<long long>> dp(n + 1, vector<long long>(goal + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= goal; ++j) {\n                dp[i][j] = (dp[i - 1][j - 1] * (n - i + 1) + dp[i][j - 1] * max(i - k, 0)) % MOD;\n            }\n        }\n        return dp[n][goal];\n    }\n};\nefficiency: HIGH\ntime complexity: O(n*goal)\nspace complexity: O(n*goal)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently compute the number of playlists by breaking down the problem into smaller subproblems and storing their results. The key insight is that a playlist of j songs with i distinct songs can be formed by either adding a new song (dp[i-1][j-1]*(n-i+1)) or replaying an existing song (dp[i][j-1]*max(i-k,0)). The results are stored in a 2D array dp and computed iteratively.",
+  "timestamp": "2025-08-05T15:18:16.683445",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const int MOD = 1e9 + 7;\n        vector<vector<long long>> dp(n + 1, vector<long long>(goal + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            for (int j = 1; j <= goal; ++j) {\n                dp[i][j] = (dp[i - 1][j - 1] * (n - i + 1) + dp[i][j - 1] * max(i - k, 0)) % MOD;\n            }\n        }\n        return dp[n][goal];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.902600"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int n = s.length();\n        int dp[n+1];\n\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 1;\n        }\n\n        for (int i = 1; i <= n; i++) {\n            if (s[i-1] == '1') {\n                dp[i] = 2*dp[i-1] + dp[i-2];\n            }\n        }\n\n        return dp[n];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use dynamic programming to solve this problem. We initialize an array dp with size n+1, where n is the length of the string s. We set dp[i] to 1 for all i in the range 1 to n. Then, we iterate through the string s from the last character to the first character. If the current character is '1', we calculate dp[i] as 2 * dp[i-1] + dp[i-2]. This is because a binary number less than or equal to k can be formed by adding two numbers less than or equal to k-1. Finally, we return dp[n], which represents the length of the longest subsequence that forms a binary number less than or equal to k. ",
+  "code": "class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int n = s.length();\n        int dp[n+1];\n\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 1;\n        }\n\n        for (int i = 1; i <= n; i++) {\n            if (s[i-1] == '1') {\n                dp[i] = 2*dp[i-1] + dp[i-2];\n            }\n        }\n\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-06T00:59:14.641909",
+  "code_extracted_previous": "public:\n    int longestSubsequence(string s, int k) {\n        int n = s.length();\n        int dp[n+1];\n\n        for (int i = 1; i <= n; i++) {\n            dp[i] = 1;\n        }\n\n        for (int i = 1; i <= n; i++) {\n            if (s[i-1] == '1') {\n                dp[i] = 2*dp[i-1] + dp[i-2];\n            }\n        }\n\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.373460"
+}

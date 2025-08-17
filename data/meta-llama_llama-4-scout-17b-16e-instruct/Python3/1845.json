@@ -1,0 +1,15 @@
+{
+  "id": 1845,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```python\nimport heapq\n\nclass SeatManager:\n\n    def __init__(self, n: int):\n        self.seats = list(range(1, n + 1))\n        heapq.heapify(self.seats)\n\n    def reserve(self) -> int:\n        return heapq.heappop(self.seats)\n\n    def unreserve(self, seatNumber: int) -> None:\n        heapq.heappush(self.seats, seatNumber)\n\n\n# Your SeatManager object will be instantiated and called as such:\n# obj = SeatManager(n)\n# param_1 = obj.reserve()\n# obj.unreserve(seatNumber)\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a min-heap data structure to efficiently manage the reservation state of seats. The heap allows for O(log n) time complexity for both reserve and unreserve operations, making it suitable for handling a large number of seats and requests.",
+  "code": "class SeatManager:\n\n    def __init__(self, n: int):\n        self.seats = list(range(1, n + 1))\n        heapq.heapify(self.seats)\n\n    def reserve(self) -> int:\n        return heapq.heappop(self.seats)\n\n    def unreserve(self, seatNumber: int) -> None:\n        heapq.heappush(self.seats, seatNumber)\n\n\n# Your SeatManager object will be instantiated and called as such:\n# obj = SeatManager(n)\n# param_1 = obj.reserve()\n# obj.unreserve(seatNumber)",
+  "timestamp": "2025-08-05T14:13:09.064578",
+  "code_extracted_previous": "import heapq\n\nclass SeatManager:\n\n    def __init__(self, n: int):\n        self.seats = list(range(1, n + 1))\n        heapq.heapify(self.seats)\n\n    def reserve(self) -> int:\n        return heapq.heappop(self.seats)\n\n    def unreserve(self, seatNumber: int) -> None:\n        heapq.heappush(self.seats, seatNumber)\n\n\n# Your SeatManager object will be instantiated and called as such:\n# obj = SeatManager(n)\n# param_1 = obj.reserve()\n# obj.unreserve(seatNumber)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:51.945114"
+}

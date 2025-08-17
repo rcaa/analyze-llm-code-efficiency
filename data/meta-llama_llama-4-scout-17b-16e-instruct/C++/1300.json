@@ -1,0 +1,15 @@
+{
+  "id": 1300,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int findBestValue(vector<int>& arr, int target) {\n        int left = 0, right = 1e5;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int sum = 0;\n            for (int num : arr) {\n                sum += min(num, mid);\n            }\n            if (sum < target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        int res = left;\n        int sum1 = 0, sum2 = 0;\n        for (int num : arr) {\n            sum1 += min(num, res);\n            sum2 += min(num, res - 1);\n        }\n        return abs(target - sum1) <= abs(target - sum2) ? res : res - 1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the optimal value. The search range is from 0 to 10^5. For each mid value, the sum of the array when all numbers larger than mid are changed to mid is calculated. The optimal value is the one that makes this sum closest to the target. In case of a tie, the smaller value is chosen.",
+  "code": "class Solution {\npublic:\n    int findBestValue(vector<int>& arr, int target) {\n        int left = 0, right = 1e5;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int sum = 0;\n            for (int num : arr) {\n                sum += min(num, mid);\n            }\n            if (sum < target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        int res = left;\n        int sum1 = 0, sum2 = 0;\n        for (int num : arr) {\n            sum1 += min(num, res);\n            sum2 += min(num, res - 1);\n        }\n        return abs(target - sum1) <= abs(target - sum2) ? res : res - 1;\n    }\n};",
+  "timestamp": "2025-08-05T13:20:55.871801",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findBestValue(vector<int>& arr, int target) {\n        int left = 0, right = 1e5;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int sum = 0;\n            for (int num : arr) {\n                sum += min(num, mid);\n            }\n            if (sum < target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        int res = left;\n        int sum1 = 0, sum2 = 0;\n        for (int num : arr) {\n            sum1 += min(num, res);\n            sum2 += min(num, res - 1);\n        }\n        return abs(target - sum1) <= abs(target - sum2) ? res : res - 1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.714724"
+}

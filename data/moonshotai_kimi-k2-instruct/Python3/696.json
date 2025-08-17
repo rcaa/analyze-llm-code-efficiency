@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def countBinarySubstrings(self, s: str) -> int:\n        if not s:\n            return 0\n        groups = []\n        prev = s[0]\n        cnt = 1\n        for ch in s[1:]:\n            if ch == prev:\n                cnt += 1\n            else:\n                groups.append(cnt)\n                prev = ch\n                cnt = 1\n        groups.append(cnt)\n        ans = 0\n        for i in range(1, len(groups)):\n            ans += min(groups[i-1], groups[i])\n        return ans\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Compress the string into counts of consecutive identical characters, then for each adjacent pair of counts add the minimum of the two values to the result.",
+  "code": "class Solution:\n    def countBinarySubstrings(self, s: str) -> int:\n        if not s:\n            return 0\n        groups = []\n        prev = s[0]\n        cnt = 1\n        for ch in s[1:]:\n            if ch == prev:\n                cnt += 1\n            else:\n                groups.append(cnt)\n                prev = ch\n                cnt = 1\n        groups.append(cnt)\n        ans = 0\n        for i in range(1, len(groups)):\n            ans += min(groups[i-1], groups[i])\n        return ans",
+  "timestamp": "2025-08-06T01:29:05.178960",
+  "code_extracted_previous": "def countBinarySubstrings(self, s: str) -> int:\n        if not s:\n            return 0\n        groups = []\n        prev = s[0]\n        cnt = 1\n        for ch in s[1:]:\n            if ch == prev:\n                cnt += 1\n            else:\n                groups.append(cnt)\n                prev = ch\n                cnt = 1\n        groups.append(cnt)\n        ans = 0\n        for i in range(1, len(groups)):\n            ans += min(groups[i-1], groups[i])\n        return ans",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.406829"
+}

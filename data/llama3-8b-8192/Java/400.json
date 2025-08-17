@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int findNthDigit(int n) {\n        long count = 1;\n        long digits = 1;\n        long start = 1;\n        while (n > digits * count) {\n            n -= digits * count;\n            count *= 10;\n            digits++;\n            start *= 10;\n        }\n        start += (n - 1) / digits;\n        String s = String.valueOf(start);\n        return Integer.parseInt(String.valueOf(s.charAt((n - 1) % digits)));\n    }\n}```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use a dynamic approach to calculate the number of digits and the starting number. We then convert the number to a string and return the nth digit.",
+  "code": "class Solution {\n    public int findNthDigit(int n) {\n        long count = 1;\n        long digits = 1;\n        long start = 1;\n        while (n > digits * count) {\n            n -= digits * count;\n            count *= 10;\n            digits++;\n            start *= 10;\n        }\n        start += (n - 1) / digits;\n        String s = String.valueOf(start);\n        return Integer.parseInt(String.valueOf(s.charAt((n - 1) % digits)));\n    }\n}",
+  "timestamp": "2025-08-05T15:42:00.975959",
+  "code_extracted_previous": "public int findNthDigit(int n) {\n        long count = 1;\n        long digits = 1;\n        long start = 1;\n        while (n > digits * count) {\n            n -= digits * count;\n            count *= 10;\n            digits++;\n            start *= 10;\n        }\n        start += (n - 1) / digits;\n        String s = String.valueOf(start);\n        return Integer.parseInt(String.valueOf(s.charAt((n - 1) % digits)));\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.768342"
+}

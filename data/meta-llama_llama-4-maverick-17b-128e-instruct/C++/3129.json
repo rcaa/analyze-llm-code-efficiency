@@ -1,0 +1,15 @@
+{
+  "id": 3129,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        const int MOD = 1e9 + 7;\n        int n = zero + one;\n        vector<vector<long long>> dp(n + 1, vector<long long>(2, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            if (i <= zero) dp[i][0] = (dp[i - 1][1] + (i >= limit ? dp[i - limit - 1][1] : 0)) % MOD;\n            if (i <= one) dp[i][1] = (dp[i - 1][0] + (i >= limit ? dp[i - limit - 1][0] : 0)) % MOD;\n        }\n        return (int)dp[n][1];\n    }\n};\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Utilizes dynamic programming to track the number of stable arrays ending with 0 or 1, ensuring that no subarray of length greater than 'limit' has identical elements, and returns the count modulo 10^9 + 7.\n```",
+  "code": "class Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        const int MOD = 1e9 + 7;\n        int n = zero + one;\n        vector<vector<long long>> dp(n + 1, vector<long long>(2, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            if (i <= zero) dp[i][0] = (dp[i - 1][1] + (i >= limit ? dp[i - limit - 1][1] : 0)) % MOD;\n            if (i <= one) dp[i][1] = (dp[i - 1][0] + (i >= limit ? dp[i - limit - 1][0] : 0)) % MOD;\n        }\n        return (int)dp[n][1];\n    }\n};\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Utilizes dynamic programming to track the number of stable arrays ending with 0 or 1, ensuring that no subarray of length greater than 'limit' has identical elements, and returns the count modulo 10^9 + 7.",
+  "timestamp": "2025-08-05T14:29:31.315384",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        const int MOD = 1e9 + 7;\n        int n = zero + one;\n        vector<vector<long long>> dp(n + 1, vector<long long>(2, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            if (i <= zero) dp[i][0] = (dp[i - 1][1] + (i >= limit ? dp[i - limit - 1][1] : 0)) % MOD;\n            if (i <= one) dp[i][1] = (dp[i - 1][0] + (i >= limit ? dp[i - limit - 1][0] : 0)) % MOD;\n        }\n        return (int)dp[n][1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.465872"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 146,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```java\nimport java.util.LinkedHashMap;\nimport java.util.Map;\n\nclass LRUCache {\n\n    private final int capacity;\n    private final Map<Integer, Integer> cache;\n\n    public LRUCache(int capacity) {\n        this.capacity = capacity;\n        this.cache = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {\n            @Override\n            protected boolean removeEldestEntry(Map.Entry eldest) {\n                return size() > capacity;\n            }\n        };\n    }\n    \n    public int get(int key) {\n        return cache.containsKey(key) ? cache.get(key) : -1;\n    }\n    \n    public void put(int key, int value) {\n        cache.put(key, value);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(capacity)\nenergy implications: LOW\nexplanation: This solution utilizes a LinkedHashMap to store the cache. The LinkedHashMap automatically orders the entries based on their access order, which makes it easy to implement the LRU eviction policy. The removeEldestEntry method is overridden to remove the eldest entry when the cache is full. The get and put operations have an average time complexity of O(1) because they use the containsKey and get methods of the LinkedHashMap, which have an average time complexity of O(1).",
+  "code": "class LRUCache {\n\n    private final int capacity;\n    private final Map<Integer, Integer> cache;\n\n    public LRUCache(int capacity) {\n        this.capacity = capacity;\n        this.cache = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {\n            @Override\n            protected boolean removeEldestEntry(Map.Entry eldest) {\n                return size() > capacity;\n            }\n        };\n    }\n    \n    public int get(int key) {\n        return cache.containsKey(key) ? cache.get(key) : -1;\n    }\n    \n    public void put(int key, int value) {\n        cache.put(key, value);\n    }\n}",
+  "timestamp": "2025-08-05T14:50:18.340137",
+  "code_extracted_previous": "import java.util.LinkedHashMap;\nimport java.util.Map;\n\nclass LRUCache {\n\n    private final int capacity;\n    private final Map<Integer, Integer> cache;\n\n    public LRUCache(int capacity) {\n        this.capacity = capacity;\n        this.cache = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {\n            @Override\n            protected boolean removeEldestEntry(Map.Entry eldest) {\n                return size() > capacity;\n            }\n        };\n    }\n    \n    public int get(int key) {\n        return cache.containsKey(key) ? cache.get(key) : -1;\n    }\n    \n    public void put(int key, int value) {\n        cache.put(key, value);\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:28.994134"
+}

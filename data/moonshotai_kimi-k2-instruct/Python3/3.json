@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        seen = {}\n        left = 0\n        max_len = 0\n        for right, ch in enumerate(s):\n            if ch in seen and seen[ch] >= left:\n                left = seen[ch] + 1\n            seen[ch] = right\n            max_len = max(max_len, right - left + 1)\n        return max_len\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, m)) where m is the size of the character set\nenergy implications: LOW\nexplanation: Sliding-window with a dictionary to store the last index of each character. When a duplicate is found within the current window, the left boundary jumps just past the previous occurrence, ensuring O(n) single pass.",
+  "code": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        seen = {}\n        left = 0\n        max_len = 0\n        for right, ch in enumerate(s):\n            if ch in seen and seen[ch] >= left:\n                left = seen[ch] + 1\n            seen[ch] = right\n            max_len = max(max_len, right - left + 1)\n        return max_len",
+  "timestamp": "2025-08-06T02:33:29.106794",
+  "code_extracted_previous": "def lengthOfLongestSubstring(self, s: str) -> int:\n        seen = {}\n        left = 0\n        max_len = 0\n        for right, ch in enumerate(s):\n            if ch in seen and seen[ch] >= left:\n                left = seen[ch] + 1\n            seen[ch] = right\n            max_len = max(max_len, right - left + 1)\n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.910226"
+}

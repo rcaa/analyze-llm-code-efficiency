@@ -1,0 +1,15 @@
+{
+  "id": 2937,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int findMinimumOperations(string s1, string s2, string s3) {\n        int m = s1.size(), n = s2.size(), p = s3.size();\n        int i = m - 1, j = n - 1, k = p - 1;\n        int count = 0;\n        while (i > 0 && j > 0 && k > 0) {\n            if (s1[i] == s2[j] && s2[j] == s3[k]) {\n                i--;\n                j--;\n                k--;\n            } else {\n                count++;\n                if (s1[i] != s2[j] && s1[i] != s3[k]) i--;\n                if (s2[j] != s1[i] && s2[j] != s3[k]) j--;\n                if (s3[k] != s1[i] && s3[k] != s2[j]) k--;\n            }\n        }\n        if (i == 0 && j == 0 && k == 0) return count;\n        else return -1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(m + n + p)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a three-pointer approach to compare characters from the end of each string, deleting the rightmost character from the strings that do not match, until all strings are equal or it is determined that they cannot be made equal.",
+  "code": "class Solution {\npublic:\n    int findMinimumOperations(string s1, string s2, string s3) {\n        int m = s1.size(), n = s2.size(), p = s3.size();\n        int i = m - 1, j = n - 1, k = p - 1;\n        int count = 0;\n        while (i > 0 && j > 0 && k > 0) {\n            if (s1[i] == s2[j] && s2[j] == s3[k]) {\n                i--;\n                j--;\n                k--;\n            } else {\n                count++;\n                if (s1[i] != s2[j] && s1[i] != s3[k]) i--;\n                if (s2[j] != s1[i] && s2[j] != s3[k]) j--;\n                if (s3[k] != s1[i] && s3[k] != s2[j]) k--;\n            }\n        }\n        if (i == 0 && j == 0 && k == 0) return count;\n        else return -1;\n    }\n};\n```",
+  "timestamp": "2025-08-05T23:49:21.714255",
+  "code_extracted_previous": "solution: \nclass Solution {\npublic:\n    int findMinimumOperations(string s1, string s2, string s3) {\n        int m = s1.size(), n = s2.size(), p = s3.size();\n        int i = m - 1, j = n - 1, k = p - 1;\n        int count = 0;\n        while (i > 0 && j > 0 && k > 0) {\n            if (s1[i] == s2[j] && s2[j] == s3[k]) {\n                i--;\n                j--;\n                k--;\n            } else {\n                count++;\n                if (s1[i] != s2[j] && s1[i] != s3[k]) i--;\n                if (s2[j] != s1[i] && s2[j] != s3[k]) j--;\n                if (s3[k] != s1[i] && s3[k] != s2[j]) k--;\n            }\n        }\n        if (i == 0 && j == 0 && k == 0) return count;\n        else return -1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.522146"
+}

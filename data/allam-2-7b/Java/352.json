@@ -1,0 +1,15 @@
+{
+  "id": 352,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass SummaryRanges {\n    Map<Integer, List<Integer>> intervals = new HashMap<>();\n\n    public SummaryRanges() {\n    }\n\n    public void addNum(int value) {\n        intervals.put(value, new ArrayList<>());\n    }\n\n    public int[][] getIntervals() {\n        List<int[]> result = new ArrayList<>();\n        for (Map.Entry<Integer, List<Integer>> entry : intervals.entrySet()) {\n            int start = entry.getKey();\n            List<Integer> numbers = entry.getValue();\n            result.add(new int[]{start, numbers.size() - 1});\n        }\n        return result.toArray(new int[result.size()]);\n    }\n}\n```\n\nefficiency:\n\nEfficiency: HIGH\nTime complexity: O(n)\nSpace complexity: O(n)\nEnergy implications: LOW\n\nExplanation:\n\nThe solution uses a Map to store the intervals and a List to store the numbers within each interval. The getIntervals() method iterates over the Map's entrySet() and extracts the start and end indices of each interval. It then creates an array of intervals and adds them to the result list. Finally, it returns the result list as an array. The time complexity is O(n) because the method iterates over the Map once, and the space complexity is O(n) due to storing n intervals in the result list. ",
+  "code": "class SummaryRanges {\n    Map<Integer, List<Integer>> intervals = new HashMap<>();\n\n    public SummaryRanges() {\n    }\n\n    public void addNum(int value) {\n        intervals.put(value, new ArrayList<>());\n    }\n\n    public int[][] getIntervals() {\n        List<int[]> result = new ArrayList<>();\n        for (Map.Entry<Integer, List<Integer>> entry : intervals.entrySet()) {\n            int start = entry.getKey();\n            List<Integer> numbers = entry.getValue();\n            result.add(new int[]{start, numbers.size() - 1});\n        }\n        return result.toArray(new int[result.size()]);\n    }\n}",
+  "timestamp": "2025-08-05T13:37:28.844698",
+  "code_extracted_previous": "class SummaryRanges {\n    Map<Integer, List<Integer>> intervals = new HashMap<>();\n\n    public SummaryRanges() {\n    }\n\n    public void addNum(int value) {\n        intervals.put(value, new ArrayList<>());\n    }\n\n    public int[][] getIntervals() {\n        List<int[]> result = new ArrayList<>();\n        for (Map.Entry<Integer, List<Integer>> entry : intervals.entrySet()) {\n            int start = entry.getKey();\n            List<Integer> numbers = entry.getValue();\n            result.add(new int[]{start, numbers.size() - 1});\n        }\n        return result.toArray(new int[result.size()]);\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:14.589325"
+}

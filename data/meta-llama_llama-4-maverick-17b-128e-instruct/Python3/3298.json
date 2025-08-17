@@ -1,0 +1,15 @@
+{
+  "id": 3298,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def validSubstringCount(self, word1: str, word2: str) -> int:\n        count1 = [0] * 26\n        count2 = [0] * 26\n        n, m = len(word1), len(word2)\n        for c in word2:\n            count2[ord(c) - ord('a')] += 1\n        res = 0\n        left = 0\n        for right in range(n):\n            count1[ord(word1[right]) - ord('a')] += 1\n            while left <= right and all(count1[i] >= count2[i] for i in range(26)):\n                res += n - right\n                count1[ord(word1[left]) - ord('a')] -= 1\n                left += 1\n        return res\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with two frequency count arrays to track the characters in the current window and the target prefix. It iterates over the string, expanding the window to the right and contracting it from the left when the current window contains all characters needed for the prefix, accumulating the count of valid substrings.\n```",
+  "code": "def validSubstringCount(self, word1: str, word2: str) -> int:\n        count1 = [0] * 26\n        count2 = [0] * 26\n        n, m = len(word1), len(word2)\n        for c in word2:\n            count2[ord(c) - ord('a')] += 1\n        res = 0\n        left = 0\n        for right in range(n):\n            count1[ord(word1[right]) - ord('a')] += 1\n            while left <= right and all(count1[i] >= count2[i] for i in range(26)):\n                res += n - right\n                count1[ord(word1[left]) - ord('a')] -= 1\n                left += 1\n        return res",
+  "timestamp": "2025-08-05T14:40:32.691651",
+  "code_extracted_previous": "class Solution:\n    def validSubstringCount(self, word1: str, word2: str) -> int:\n        count1 = [0] * 26\n        count2 = [0] * 26\n        n, m = len(word1), len(word2)\n        for c in word2:\n            count2[ord(c) - ord('a')] += 1\n        res = 0\n        left = 0\n        for right in range(n):\n            count1[ord(word1[right]) - ord('a')] += 1\n            while left <= right and all(count1[i] >= count2[i] for i in range(26)):\n                res += n - right\n                count1[ord(word1[left]) - ord('a')] -= 1\n                left += 1\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.130357"
+}

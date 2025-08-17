@@ -1,0 +1,15 @@
+{
+  "id": 2424,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass LUPrefix {\npublic:\n    LUPrefix(int n) : maxPrefix(0), nextVideo(1) {\n        videos = vector<bool>(n + 1, false);\n    }\n    \n    void upload(int video) {\n        videos[video] = true;\n        while (videos[nextVideo]) {\n            maxPrefix = nextVideo;\n            nextVideo++;\n        }\n    }\n    \n    int longest() {\n        return maxPrefix;\n    }\nprivate:\n    int maxPrefix;\n    int nextVideo;\n    vector<bool> videos;\n};\n```\nefficiency: HIGH\ntime complexity: O(1) for upload and longest methods\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a boolean array to track uploaded videos and two variables to keep track of the longest prefix and the next video to be uploaded. The upload method updates the boolean array and updates the longest prefix if possible. The longest method returns the current longest prefix.",
+  "code": "class LUPrefix {\npublic:\n    LUPrefix(int n) : maxPrefix(0), nextVideo(1) {\n        videos = vector<bool>(n + 1, false);\n    }\n    \n    void upload(int video) {\n        videos[video] = true;\n        while (videos[nextVideo]) {\n            maxPrefix = nextVideo;\n            nextVideo++;\n        }\n    }\n    \n    int longest() {\n        return maxPrefix;\n    }\nprivate:\n    int maxPrefix;\n    int nextVideo;\n    vector<bool> videos;\n};",
+  "timestamp": "2025-08-05T15:08:59.931060",
+  "code_extracted_previous": "class LUPrefix {\npublic:\n    LUPrefix(int n) : maxPrefix(0), nextVideo(1) {\n        videos = vector<bool>(n + 1, false);\n    }\n    \n    void upload(int video) {\n        videos[video] = true;\n        while (videos[nextVideo]) {\n            maxPrefix = nextVideo;\n            nextVideo++;\n        }\n    }\n    \n    int longest() {\n        return maxPrefix;\n    }\nprivate:\n    int maxPrefix;\n    int nextVideo;\n    vector<bool> videos;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:36.540270"
+}

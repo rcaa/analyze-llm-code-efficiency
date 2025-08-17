@@ -1,0 +1,15 @@
+{
+  "id": 2276,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass CountIntervals {\npublic:\n    CountIntervals() {\n        intervals = {};\n    }\n    \n    void add(int left, int right) {\n        intervals.push_back({left, right});\n        intervals.push_back({right + 1, right + 1});\n    }\n    \n    int count() {\n        set<int> present;\n        for (auto& interval : intervals) {\n            for (int i = interval.first; i <= interval.second; i++) {\n                present.insert(i);\n            }\n        }\n        return present.size();\n    }\nprivate:\n    vector<pair<int, int>> intervals;\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a vector to store the intervals and a set to store the present integers. The add function adds the interval and a single point to the right of the interval to the vector. The count function iterates over the intervals and inserts the integers into the set. The time complexity is O(n) because each interval is processed once, and the space complexity is O(n) because all the intervals are stored.",
+  "code": "class CountIntervals {\npublic:\n    CountIntervals() {\n        intervals = {};\n    }\n    \n    void add(int left, int right) {\n        intervals.push_back({left, right});\n        intervals.push_back({right + 1, right + 1});\n    }\n    \n    int count() {\n        set<int> present;\n        for (auto& interval : intervals) {\n            for (int i = interval.first; i <= interval.second; i++) {\n                present.insert(i);\n            }\n        }\n        return present.size();\n    }\nprivate:\n    vector<pair<int, int>> intervals;\n};",
+  "timestamp": "2025-08-05T14:05:42.620927",
+  "code_extracted_previous": "class CountIntervals {\npublic:\n    CountIntervals() {\n        intervals = {};\n    }\n    \n    void add(int left, int right) {\n        intervals.push_back({left, right});\n        intervals.push_back({right + 1, right + 1});\n    }\n    \n    int count() {\n        set<int> present;\n        for (auto& interval : intervals) {\n            for (int i = interval.first; i <= interval.second; i++) {\n                present.insert(i);\n            }\n        }\n        return present.size();\n    }\nprivate:\n    vector<pair<int, int>> intervals;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:40.902744"
+}

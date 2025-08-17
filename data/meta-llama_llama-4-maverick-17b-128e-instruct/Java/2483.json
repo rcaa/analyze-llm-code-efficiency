@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int[] prefixSum = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefixSum[i + 1] = prefixSum[i] + (customers.charAt(i) == 'Y' ? 1 : 0);\n        }\n        int minPenalty = Integer.MAX_VALUE;\n        int bestHour = -1;\n        for (int i = 0; i <= n; i++) {\n            int penalty = (prefixSum[n] - prefixSum[i]) + (i - prefixSum[i]);\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestHour = i;\n            }\n        }\n        return bestHour;\n    }\n}\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a prefix sum array to efficiently count the number of 'Y's up to each hour, then iterates through the hours to find the one with the minimum penalty, calculated as the sum of 'Y's after the hour and 'N's before the hour.\n```",
+  "code": "class Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int[] prefixSum = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefixSum[i + 1] = prefixSum[i] + (customers.charAt(i) == 'Y' ? 1 : 0);\n        }\n        int minPenalty = Integer.MAX_VALUE;\n        int bestHour = -1;\n        for (int i = 0; i <= n; i++) {\n            int penalty = (prefixSum[n] - prefixSum[i]) + (i - prefixSum[i]);\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestHour = i;\n            }\n        }\n        return bestHour;\n    }\n}\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a prefix sum array to efficiently count the number of 'Y's up to each hour, then iterates through the hours to find the one with the minimum penalty, calculated as the sum of 'Y's after the hour and 'N's before the hour.",
+  "timestamp": "2025-08-06T01:02:11.181136",
+  "code_extracted_previous": "class Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int[] prefixSum = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefixSum[i + 1] = prefixSum[i] + (customers.charAt(i) == 'Y' ? 1 : 0);\n        }\n        int minPenalty = Integer.MAX_VALUE;\n        int bestHour = -1;\n        for (int i = 0; i <= n; i++) {\n            int penalty = (prefixSum[n] - prefixSum[i]) + (i - prefixSum[i]);\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestHour = i;\n            }\n        }\n        return bestHour;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.618094"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 187,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public List<String> findRepeatedDnaSequences(String s) {\n        Set<String> seen = new HashSet<>();\n        Set<String> repeated = new HashSet<>();\n        for (int i = 0; i <= s.length() - 10; i++) {\n            String sub = s.substring(i, i + 10);\n            if (seen.add(sub)) {\n                if (s.length() - i < 10) continue;\n                if (seen.contains(s.substring(i + 10, i + 20))) repeated.add(sub);\n            }\n        }\n        return new ArrayList<>(repeated);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses two sets to keep track of the substrings we have seen and the repeated substrings. It iterates over the string, adding each 10-letter substring to the 'seen' set. If the substring is already in the 'seen' set, it checks if the next 10-letter substring is also in the 'seen' set. If it is, the current substring is added to the 'repeated' set. This approach has a high efficiency due to the use of sets for fast lookups.",
+  "code": "class Solution {\n    public List<String> findRepeatedDnaSequences(String s) {\n        Set<String> seen = new HashSet<>();\n        Set<String> repeated = new HashSet<>();\n        for (int i = 0; i <= s.length() - 10; i++) {\n            String sub = s.substring(i, i + 10);\n            if (seen.add(sub)) {\n                if (s.length() - i < 10) continue;\n                if (seen.contains(s.substring(i + 10, i + 20))) repeated.add(sub);\n            }\n        }\n        return new ArrayList<>(repeated);\n    }\n}",
+  "timestamp": "2025-08-05T14:50:54.385071",
+  "code_extracted_previous": "class Solution {\n    public List<String> findRepeatedDnaSequences(String s) {\n        Set<String> seen = new HashSet<>();\n        Set<String> repeated = new HashSet<>();\n        for (int i = 0; i <= s.length() - 10; i++) {\n            String sub = s.substring(i, i + 10);\n            if (seen.add(sub)) {\n                if (s.length() - i < 10) continue;\n                if (seen.contains(s.substring(i + 10, i + 20))) repeated.add(sub);\n            }\n        }\n        return new ArrayList<>(repeated);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.079328"
+}

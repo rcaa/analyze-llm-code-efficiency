@@ -1,0 +1,15 @@
+{
+  "id": 386,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> result = new ArrayList<>(n);\n        int curr = 1;\n        for (int i = 1; i <= n; i++) {\n            result.add(curr);\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else {\n                while (curr % 10 == 9 || curr + 1 > n) {\n                    curr /= 10;\n                }\n                curr++;\n            }\n        }\n        return result;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The algorithm iterates through the numbers from 1 to n in lexicographical order by maintaining a current number and applying rules to move to the next number in lexicographical order, either by appending a 0, or by incrementing the current number or backtracking and then incrementing.\n```",
+  "code": "class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> result = new ArrayList<>(n);\n        int curr = 1;\n        for (int i = 1; i <= n; i++) {\n            result.add(curr);\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else {\n                while (curr % 10 == 9 || curr + 1 > n) {\n                    curr /= 10;\n                }\n                curr++;\n            }\n        }\n        return result;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The algorithm iterates through the numbers from 1 to n in lexicographical order by maintaining a current number and applying rules to move to the next number in lexicographical order, either by appending a 0, or by incrementing the current number or backtracking and then incrementing.",
+  "timestamp": "2025-08-05T13:59:35.954928",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> result = new ArrayList<>(n);\n        int curr = 1;\n        for (int i = 1; i <= n; i++) {\n            result.add(curr);\n            if (curr * 10 <= n) {\n                curr *= 10;\n            } else {\n                while (curr % 10 == 9 || curr + 1 > n) {\n                    curr /= 10;\n                }\n                curr++;\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.883117"
+}

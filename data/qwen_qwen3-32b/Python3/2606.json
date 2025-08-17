@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: list[int]) -> int:\n        char_to_val = {}\n        for ch, val in zip(chars, vals):\n            char_to_val[ch] = val\n\n        max_cost = 0\n        current_cost = 0\n\n        for ch in s:\n            if ch in char_to_val:\n                current_cost += char_to_val[ch]\n            else:\n                current_cost += ord(ch) - ord('a') + 1\n            max_cost = max(max_cost, current_cost)\n            if current_cost < 0:\n                current_cost = 0\n\n        return max_cost\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The solution uses a single pass through the string to calculate the cost of each character based on the provided mappings or default alphabet positions. It keeps track of the current cost and updates the maximum cost found so far. If the current cost becomes negative, it resets to zero to avoid dragging down future substrings. This approach ensures linear time and constant space complexity.>",
+  "code": "class Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: list[int]) -> int:\n        char_to_val = {}\n        for ch, val in zip(chars, vals):\n            char_to_val[ch] = val\n\n        max_cost = 0\n        current_cost = 0\n\n        for ch in s:\n            if ch in char_to_val:\n                current_cost += char_to_val[ch]\n            else:\n                current_cost += ord(ch) - ord('a') + 1\n            max_cost = max(max_cost, current_cost)\n            if current_cost < 0:\n                current_cost = 0\n\n        return max_cost",
+  "timestamp": "2025-08-06T17:26:56.387433",
+  "code_extracted_previous": "class Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: list[int]) -> int:\n        char_to_val = {}\n        for ch, val in zip(chars, vals):\n            char_to_val[ch] = val\n\n        max_cost = 0\n        current_cost = 0\n\n        for ch in s:\n            if ch in char_to_val:\n                current_cost += char_to_val[ch]\n            else:\n                current_cost += ord(ch) - ord('a') + 1\n            max_cost = max(max_cost, current_cost)\n            if current_cost < 0:\n                current_cost = 0\n\n        return max_cost",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:05.706676"
+}

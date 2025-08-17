@@ -1,0 +1,15 @@
+{
+  "id": 1787,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int minChanges(int[] nums, int k) {\n        int n = nums.length;\n        int[] prefixXOR = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefixXOR[i + 1] = prefixXOR[i] ^ nums[i];\n        }\n        int[] count = new int[1 << 10];\n        int same = 0;\n        for (int i = k; i <= n; i++) {\n            int xor = prefixXOR[i] ^ prefixXOR[i - k];\n            if (xor == 0) {\n                same++;\n            } else {\n                count[xor]++;\n            }\n        }\n        int max = same;\n        for (int i = 0; i < (1 << 10); i++) {\n            max = Math.max(max, count[i]);\n        }\n        return n - (max + same);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution calculates prefix XOR for the array and then counts the occurrences of each XOR value for segments of size k. It finds the maximum count and adds the count of zero XOR segments. The minimum number of changes required is then calculated as the total length of the array minus the maximum count of XOR segments plus the count of zero XOR segments.",
+  "code": "class Solution {\n    public int minChanges(int[] nums, int k) {\n        int n = nums.length;\n        int[] prefixXOR = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefixXOR[i + 1] = prefixXOR[i] ^ nums[i];\n        }\n        int[] count = new int[1 << 10];\n        int same = 0;\n        for (int i = k; i <= n; i++) {\n            int xor = prefixXOR[i] ^ prefixXOR[i - k];\n            if (xor == 0) {\n                same++;\n            } else {\n                count[xor]++;\n            }\n        }\n        int max = same;\n        for (int i = 0; i < (1 << 10); i++) {\n            max = Math.max(max, count[i]);\n        }\n        return n - (max + same);\n    }\n}",
+  "timestamp": "2025-08-05T11:50:32.105697",
+  "code_extracted_previous": "class Solution {\n    public int minChanges(int[] nums, int k) {\n        int n = nums.length;\n        int[] prefixXOR = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            prefixXOR[i + 1] = prefixXOR[i] ^ nums[i];\n        }\n        int[] count = new int[1 << 10];\n        int same = 0;\n        for (int i = k; i <= n; i++) {\n            int xor = prefixXOR[i] ^ prefixXOR[i - k];\n            if (xor == 0) {\n                same++;\n            } else {\n                count[xor]++;\n            }\n        }\n        int max = same;\n        for (int i = 0; i < (1 << 10); i++) {\n            max = Math.max(max, count[i]);\n        }\n        return n - (max + same);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.518451"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charValues;\n        for (int i = 0; i < chars.size(); ++i) {\n            charValues[chars[i]] = vals[i];\n        }\n        \n        int maxCost = 0;\n        int currentCost = 0;\n        for (char c : s) {\n            int value = charValues.find(c) != charValues.end() ? charValues[c] : c - 'a' + 1;\n            currentCost = max(value, currentCost + value);\n            maxCost = max(maxCost, currentCost);\n        }\n        return maxCost;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution iterates through the string s and chars to calculate the maximum cost substring. It uses an unordered_map to store the values of characters in chars and vals. Then, it applies Kadane's algorithm to find the maximum cost substring. The time complexity is O(n + m) where n is the length of s and m is the length of chars. The space complexity is O(m) for storing the character values.",
+  "code": "class Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charValues;\n        for (int i = 0; i < chars.size(); ++i) {\n            charValues[chars[i]] = vals[i];\n        }\n        \n        int maxCost = 0;\n        int currentCost = 0;\n        for (char c : s) {\n            int value = charValues.find(c) != charValues.end() ? charValues[c] : c - 'a' + 1;\n            currentCost = max(value, currentCost + value);\n            maxCost = max(maxCost, currentCost);\n        }\n        return maxCost;\n    }\n};",
+  "timestamp": "2025-08-05T13:33:16.604138",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charValues;\n        for (int i = 0; i < chars.size(); ++i) {\n            charValues[chars[i]] = vals[i];\n        }\n        \n        int maxCost = 0;\n        int currentCost = 0;\n        for (char c : s) {\n            int value = charValues.find(c) != charValues.end() ? charValues[c] : c - 'a' + 1;\n            currentCost = max(value, currentCost + value);\n            maxCost = max(maxCost, currentCost);\n        }\n        return maxCost;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.176909"
+}

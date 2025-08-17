@@ -1,0 +1,15 @@
+{
+  "id": 523,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def checkSubarraySum(self, nums: List[int], k: int) -> bool:\n        prefix_sums = {0: -1}\n        current_sum = 0\n        for i, num in enumerate(nums):\n            current_sum = (current_sum + num) % k\n            if current_sum in prefix_sums:\n                if i - prefix_sums[current_sum] >= 2:\n                    return True\n            else:\n                prefix_sums[current_sum] = i\n        return False\n```\nsolution: ```python\nclass Solution:\n    def checkSubarraySum(self, nums: List[int], k: int) -> bool:\n        prefix_sums = {0: -1}\n        current_sum = 0\n        for i, num in enumerate(nums):\n            current_sum = (current_sum + num) % k\n            if current_sum in prefix_sums:\n                if i - prefix_sums[current_sum] >= 2:\n                    return True\n            else:\n                prefix_sums[current_sum] = i\n        return False\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: The solution utilizes a hashmap to store prefix sums and their indices. It iterates through the array, calculating the running sum modulo k. If a sum is encountered again, it checks if the difference between the current index and the previous occurrence of that sum is at least 2, indicating a subarray of length at least 2 with a sum divisible by k. This approach efficiently leverages the properties of modular arithmetic and hashmaps to achieve linear time complexity. The space complexity is bounded by the number of possible remainders modulo k, which is k.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T12:57:14.681204",
+  "code_extracted_previous": "class Solution:\n    def checkSubarraySum(self, nums: List[int], k: int) -> bool:\n        prefix_sums = {0: -1}\n        current_sum = 0\n        for i, num in enumerate(nums):\n            current_sum = (current_sum + num) % k\n            if current_sum in prefix_sums:\n                if i - prefix_sums[current_sum] >= 2:\n                    return True\n            else:\n                prefix_sums[current_sum] = i\n        return False",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.959809"
+}

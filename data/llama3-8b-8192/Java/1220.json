@@ -1,0 +1,15 @@
+{
+  "id": 1220,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int countVowelPermutation(int n) {\n        int MOD = 1000000007;\n        long[] dp = new long[5];\n        dp[0] = 1;\n        for (int i = 1; i < n; i++) {\n            long[] temp = new long[5];\n            temp[1] = dp[0];\n            temp[2] = dp[1];\n            temp[3] = dp[2];\n            temp[4] = dp[3];\n            dp[0] = temp[2];\n            dp[1] = (temp[0] + temp[2]) % MOD;\n            dp[2] = (temp[1] + temp[3]) % MOD;\n            dp[3] = temp[4];\n        }\n        long res = (dp[0] + dp[1] + dp[2] + dp[3] + dp[4]) % MOD;\n        return (int) res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently count the number of strings that can be formed under the given rules. It maintains a state array dp where dp[i] represents the number of strings that can be formed of length i. The transition from dp[i-1] to dp[i] is done based on the rules given in the problem statement. The final result is the sum of the last state array, taken modulo 10^9 + 7 to avoid overflow.",
+  "code": "class Solution {\n    public int countVowelPermutation(int n) {\n        int MOD = 1000000007;\n        long[] dp = new long[5];\n        dp[0] = 1;\n        for (int i = 1; i < n; i++) {\n            long[] temp = new long[5];\n            temp[1] = dp[0];\n            temp[2] = dp[1];\n            temp[3] = dp[2];\n            temp[4] = dp[3];\n            dp[0] = temp[2];\n            dp[1] = (temp[0] + temp[2]) % MOD;\n            dp[2] = (temp[1] + temp[3]) % MOD;\n            dp[3] = temp[4];\n        }\n        long res = (dp[0] + dp[1] + dp[2] + dp[3] + dp[4]) % MOD;\n        return (int) res;\n    }\n}",
+  "timestamp": "2025-08-05T14:17:09.179063",
+  "code_extracted_previous": "public int countVowelPermutation(int n) {\n        int MOD = 1000000007;\n        long[] dp = new long[5];\n        dp[0] = 1;\n        for (int i = 1; i < n; i++) {\n            long[] temp = new long[5];\n            temp[1] = dp[0];\n            temp[2] = dp[1];\n            temp[3] = dp[2];\n            temp[4] = dp[3];\n            dp[0] = temp[2];\n            dp[1] = (temp[0] + temp[2]) % MOD;\n            dp[2] = (temp[1] + temp[3]) % MOD;\n            dp[3] = temp[4];\n        }\n        long res = (dp[0] + dp[1] + dp[2] + dp[3] + dp[4]) % MOD;\n        return (int) res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.889566"
+}

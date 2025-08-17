@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        string res;\n        unordered_map<char, int> last;\n        for (int i = 0; i < s.size(); i++) {\n            last[s[i]] = i;\n        }\n        priority_queue<char, vector<char>, greater<char>> pq;\n        for (char c : s) {\n            if (pq.size() && pq.top() < c) {\n                res += pq.top();\n                pq.pop();\n            }\n            pq.push(c);\n            last[c]--;\n            if (last[c] == 0) {\n                last.erase(c);\n            }\n        }\n        while (!pq.empty()) {\n            res += pq.top();\n            pq.pop();\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to keep track of the characters that have not been added to the result yet, and a map to keep track of the last occurrence of each character. It iterates over the string, adding characters to the result and the priority queue as necessary, and finally adds any remaining characters in the priority queue to the result.",
+  "code": "class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        string res;\n        unordered_map<char, int> last;\n        for (int i = 0; i < s.size(); i++) {\n            last[s[i]] = i;\n        }\n        priority_queue<char, vector<char>, greater<char>> pq;\n        for (char c : s) {\n            if (pq.size() && pq.top() < c) {\n                res += pq.top();\n                pq.pop();\n            }\n            pq.push(c);\n            last[c]--;\n            if (last[c] == 0) {\n                last.erase(c);\n            }\n        }\n        while (!pq.empty()) {\n            res += pq.top();\n            pq.pop();\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:48:08.089155",
+  "code_extracted_previous": "public:\n    string smallestSubsequence(string s) {\n        string res;\n        unordered_map<char, int> last;\n        for (int i = 0; i < s.size(); i++) {\n            last[s[i]] = i;\n        }\n        priority_queue<char, vector<char>, greater<char>> pq;\n        for (char c : s) {\n            if (pq.size() && pq.top() < c) {\n                res += pq.top();\n                pq.pop();\n            }\n            pq.push(c);\n            last[c]--;\n            if (last[c] == 0) {\n                last.erase(c);\n            }\n        }\n        while (!pq.empty()) {\n            res += pq.top();\n            pq.pop();\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.374740"
+}

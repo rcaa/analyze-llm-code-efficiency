@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * n\n        for i in range(n - 1, -1, -1):\n            if i + questions[i][1] + 1 < n:\n                dp[i] = max(questions[i][0] + dp[i + questions[i][1] + 1], dp[i + 1])\n            else:\n                dp[i] = questions[i][0]\n        return dp[0]\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We start from the end of the questions array and for each question, we calculate the maximum points we can earn by either solving the question or skipping it. If we solve the question, we earn the points of the question plus the maximum points we can earn from the questions we can solve after that. If we skip the question, we just earn the maximum points we can earn from the next question. We keep track of the maximum points we can earn for each question in the dp array. The time complexity is O(n) because we only need to traverse the questions array once, and the space complexity is also O(n) because we need to store the maximum points for each question in the dp array.",
+  "code": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * n\n        for i in range(n - 1, -1, -1):\n            if i + questions[i][1] + 1 < n:\n                dp[i] = max(questions[i][0] + dp[i + questions[i][1] + 1], dp[i + 1])\n            else:\n                dp[i] = questions[i][0]\n        return dp[0]",
+  "timestamp": "2025-08-05T13:25:24.088170",
+  "code_extracted_previous": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * n\n        for i in range(n - 1, -1, -1):\n            if i + questions[i][1] + 1 < n:\n                dp[i] = max(questions[i][0] + dp[i + questions[i][1] + 1], dp[i + 1])\n            else:\n                dp[i] = questions[i][0]\n        return dp[0]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.590371"
+}

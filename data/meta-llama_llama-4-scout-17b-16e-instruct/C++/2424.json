@@ -1,0 +1,15 @@
+{
+  "id": 2424,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass LUPrefix {\npublic:\n    LUPrefix(int n) : videos(n + 1, false), maxUploaded(0) {}\n\n    void upload(int video) {\n        videos[video] = true;\n        while (maxUploaded + 1 < videos.size() && videos[++maxUploaded]);\n    }\n\n    int longest() {\n        return maxUploaded;\n    }\n\nprivate:\n    vector<bool> videos;\n    int maxUploaded;\n};\n```\nefficiency: HIGH\ntime complexity: \n- LUPrefix: O(n)\n- upload: O(1) amortized\n- longest: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a boolean vector to track uploaded videos and an integer to store the length of the longest uploaded prefix. The upload function updates the vector and increments the prefix length as necessary. The longest function simply returns the current prefix length.",
+  "code": "class LUPrefix {\npublic:\n    LUPrefix(int n) : videos(n + 1, false), maxUploaded(0) {}\n\n    void upload(int video) {\n        videos[video] = true;\n        while (maxUploaded + 1 < videos.size() && videos[++maxUploaded]);\n    }\n\n    int longest() {\n        return maxUploaded;\n    }\n\nprivate:\n    vector<bool> videos;\n    int maxUploaded;\n};",
+  "timestamp": "2025-08-05T15:09:12.622175",
+  "code_extracted_previous": "class LUPrefix {\npublic:\n    LUPrefix(int n) : videos(n + 1, false), maxUploaded(0) {}\n\n    void upload(int video) {\n        videos[video] = true;\n        while (maxUploaded + 1 < videos.size() && videos[++maxUploaded]);\n    }\n\n    int longest() {\n        return maxUploaded;\n    }\n\nprivate:\n    vector<bool> videos;\n    int maxUploaded;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:49.101311"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public long repairCars(int[] ranks, int cars) {\n        Arrays.sort(ranks);\n        long l = 1, r = (long)1e14;\n        while (l < r) {\n            long mid = l + (r - l) / 2;\n            long cnt = 0;\n            for (int rank : ranks) {\n                cnt += mid / (rank * rank);\n            }\n            if (cnt < cars) {\n                l = mid + 1;\n            } else {\n                r = mid;\n            }\n        }\n        return l;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the minimum time required to repair all cars. The search space is from 1 to 10^14. For each mid value, we calculate the total number of cars that can be repaired by all mechanics. If the total number is less than the total number of cars, we increase the mid value. Otherwise, we decrease the mid value.",
+  "code": "class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        Arrays.sort(ranks);\n        long l = 1, r = (long)1e14;\n        while (l < r) {\n            long mid = l + (r - l) / 2;\n            long cnt = 0;\n            for (int rank : ranks) {\n                cnt += mid / (rank * rank);\n            }\n            if (cnt < cars) {\n                l = mid + 1;\n            } else {\n                r = mid;\n            }\n        }\n        return l;\n    }\n}",
+  "timestamp": "2025-08-05T13:32:28.499329",
+  "code_extracted_previous": "class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        Arrays.sort(ranks);\n        long l = 1, r = (long)1e14;\n        while (l < r) {\n            long mid = l + (r - l) / 2;\n            long cnt = 0;\n            for (int rank : ranks) {\n                cnt += mid / (rank * rank);\n            }\n            if (cnt < cars) {\n                l = mid + 1;\n            } else {\n                r = mid;\n            }\n        }\n        return l;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.257841"
+}

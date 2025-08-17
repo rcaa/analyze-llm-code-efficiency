@@ -1,0 +1,15 @@
+{
+  "id": 3557,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maxSubstrings(self, word: str) -> int:\n        def backtrack(start, end, count):\n            if start >= len(word):\n                return count\n            max_count = count\n            for i in range(start + 3, len(word) + 1):\n                if word[start] == word[i - 1]:\n                    max_count = max(max_count, backtrack(i, end, count + 1))\n            return max(max_count, backtrack(start + 1, end, count))\n\n        return backtrack(0, len(word), 0)\n```\nefficiency: MEDIUM\ntime complexity: O(2^n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution uses a recursive backtracking approach to find the maximum number of non-intersecting substrings, exploring all possible substrings and keeping track of the maximum count found.",
+  "code": "def maxSubstrings(self, word: str) -> int:\n        def backtrack(start, end, count):\n            if start >= len(word):\n                return count\n            max_count = count\n            for i in range(start + 3, len(word) + 1):\n                if word[start] == word[i - 1]:\n                    max_count = max(max_count, backtrack(i, end, count + 1))\n            return max(max_count, backtrack(start + 1, end, count))\n\n        return backtrack(0, len(word), 0)\n```",
+  "timestamp": "2025-08-06T15:20:08.152706",
+  "code_extracted_previous": "class Solution:\n    def maxSubstrings(self, word: str) -> int:\n        def backtrack(start, end, count):\n            if start >= len(word):\n                return count\n            max_count = count\n            for i in range(start + 3, len(word) + 1):\n                if word[start] == word[i - 1]:\n                    max_count = max(max_count, backtrack(i, end, count + 1))\n            return max(max_count, backtrack(start + 1, end, count))\n\n        return backtrack(0, len(word), 0)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.565618"
+}

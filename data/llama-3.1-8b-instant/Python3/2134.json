@@ -1,0 +1,15 @@
+{
+  "id": 2134,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        ones = sum(nums)\n        if ones == 0: return 0\n        if ones == n: return 0\n        left = 0\n        right = ones - 1\n        swaps = 0\n        while left <= right:\n            if nums[left] == 1:\n                left += 1\n            else:\n                nums[left], nums[right] = nums[right], nums[left]\n                right -= 1\n                swaps += 1\n        return swaps\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer technique to group all 1's together. It maintains two pointers, one at the start and one at the end of the ones group. If the left pointer points to a 1, it moves to the right. If it points to a 0, it swaps the 0 with the 1 at the right pointer and moves the right pointer to the left. This process continues until all 1's are grouped together. The number of swaps is the minimum number of swaps required.",
+  "code": "class Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        ones = sum(nums)\n        if ones == 0: return 0\n        if ones == n: return 0\n        left = 0\n        right = ones - 1\n        swaps = 0\n        while left <= right:\n            if nums[left] == 1:\n                left += 1\n            else:\n                nums[left], nums[right] = nums[right], nums[left]\n                right -= 1\n                swaps += 1\n        return swaps",
+  "timestamp": "2025-08-05T13:21:42.520977",
+  "code_extracted_previous": "class Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        n = len(nums)\n        ones = sum(nums)\n        if ones == 0: return 0\n        if ones == n: return 0\n        left = 0\n        right = ones - 1\n        swaps = 0\n        while left <= right:\n            if nums[left] == 1:\n                left += 1\n            else:\n                nums[left], nums[right] = nums[right], nums[left]\n                right -= 1\n                swaps += 1\n        return swaps",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.576767"
+}

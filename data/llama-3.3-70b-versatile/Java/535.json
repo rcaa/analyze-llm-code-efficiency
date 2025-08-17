@@ -1,0 +1,15 @@
+{
+  "id": 535,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n```java\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic class Codec {\n\n    private Map<String, String> urlMap = new HashMap<>();\n    private int counter = 0;\n    private static final String BASE_URL = \"http://tinyurl.com/\";\n\n    // Encodes a URL to a shortened URL.\n    public String encode(String longUrl) {\n        String shortUrl = BASE_URL + counter++;\n        urlMap.put(shortUrl, longUrl);\n        return shortUrl;\n    }\n\n    // Decodes a shortened URL to its original URL.\n    public String decode(String shortUrl) {\n        return urlMap.get(shortUrl);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a HashMap to store the mapping between the short and long URLs, allowing for constant time complexity for both encoding and decoding operations. The counter variable ensures that each short URL is unique.",
+  "code": "public class Codec {\n\n    private Map<String, String> urlMap = new HashMap<>();\n    private int counter = 0;\n    private static final String BASE_URL = \"http://tinyurl.com/\";\n\n    // Encodes a URL to a shortened URL.\n    public String encode(String longUrl) {\n        String shortUrl = BASE_URL + counter++;\n        urlMap.put(shortUrl, longUrl);\n        return shortUrl;\n    }\n\n    // Decodes a shortened URL to its original URL.\n    public String decode(String shortUrl) {\n        return urlMap.get(shortUrl);\n    }\n}",
+  "timestamp": "2025-08-06T15:15:54.665875",
+  "code_extracted_previous": "import java.util.HashMap;\nimport java.util.Map;\n\npublic class Codec {\n\n    private Map<String, String> urlMap = new HashMap<>();\n    private int counter = 0;\n    private static final String BASE_URL = \"http://tinyurl.com/\";\n\n    // Encodes a URL to a shortened URL.\n    public String encode(String longUrl) {\n        String shortUrl = BASE_URL + counter++;\n        urlMap.put(shortUrl, longUrl);\n        return shortUrl;\n    }\n\n    // Decodes a shortened URL to its original URL.\n    public String decode(String shortUrl) {\n        return urlMap.get(shortUrl);\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.347109"
+}

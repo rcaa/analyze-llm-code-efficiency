@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int findNthDigit(int n) {\n        int len = 1;\n        long count = 9;\n        long start = 1;\n        \n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            count *= 10;\n            start *= 10;\n        }\n        \n        start += (n - 1) / len;\n        String numStr = Long.toString(start);\n        return numStr.charAt((n - 1) % len) - '0';\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Identify the digit length block containing the nth digit, then compute the exact number and digit within that number using arithmetic instead of constructing the entire sequence.",
+  "code": "class Solution {\n    public int findNthDigit(int n) {\n        int len = 1;\n        long count = 9;\n        long start = 1;\n        \n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            count *= 10;\n            start *= 10;\n        }\n        \n        start += (n - 1) / len;\n        String numStr = Long.toString(start);\n        return numStr.charAt((n - 1) % len) - '0';\n    }\n}",
+  "timestamp": "2025-08-06T02:31:58.521409",
+  "code_extracted_previous": "public int findNthDigit(int n) {\n        int len = 1;\n        long count = 9;\n        long start = 1;\n        \n        while (n > len * count) {\n            n -= len * count;\n            len++;\n            count *= 10;\n            start *= 10;\n        }\n        \n        start += (n - 1) / len;\n        String numStr = Long.toString(start);\n        return numStr.charAt((n - 1) % len) - '0';\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.505341"
+}

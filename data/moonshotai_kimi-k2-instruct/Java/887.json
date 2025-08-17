@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        for (int j = 1; j <= n; j++) dp[1][j] = j;\n        for (int i = 2; i <= k; i++) {\n            int x = 1;\n            for (int j = 1; j <= n; j++) {\n                while (x < j && dp[i][x] < dp[i - 1][j - x]) x++;\n                dp[i][j] = 1 + dp[i - 1][x - 1];\n                if (x < j) dp[i][j] = Math.min(dp[i][j], 1 + dp[i][j - x]);\n            }\n        }\n        return dp[k][n];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(k * n)\nspace complexity: O(k * n)\nenergy implications: LOW\nexplanation: Uses dynamic programming with monotonic optimization to compute the minimum drops needed. The inner loop leverages the unimodal property of the cost function to avoid binary search, achieving linear time per egg count.",
+  "code": "class Solution {\n    public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        for (int j = 1; j <= n; j++) dp[1][j] = j;\n        for (int i = 2; i <= k; i++) {\n            int x = 1;\n            for (int j = 1; j <= n; j++) {\n                while (x < j && dp[i][x] < dp[i - 1][j - x]) x++;\n                dp[i][j] = 1 + dp[i - 1][x - 1];\n                if (x < j) dp[i][j] = Math.min(dp[i][j], 1 + dp[i][j - x]);\n            }\n        }\n        return dp[k][n];\n    }\n}",
+  "timestamp": "2025-08-06T02:32:23.403262",
+  "code_extracted_previous": "public int superEggDrop(int k, int n) {\n        int[][] dp = new int[k + 1][n + 1];\n        for (int j = 1; j <= n; j++) dp[1][j] = j;\n        for (int i = 2; i <= k; i++) {\n            int x = 1;\n            for (int j = 1; j <= n; j++) {\n                while (x < j && dp[i][x] < dp[i - 1][j - x]) x++;\n                dp[i][j] = 1 + dp[i - 1][x - 1];\n                if (x < j) dp[i][j] = Math.min(dp[i][j], 1 + dp[i][j - x]);\n            }\n        }\n        return dp[k][n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.875013"
+}

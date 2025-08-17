@@ -1,0 +1,15 @@
+{
+  "id": 481,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution {\npublic:\n    int magicalString(int n) {\n        vector<int> magical(n);\n        magical[0] = 1;\n        int head = 0, tail = 2;\n        for (int i = 1; i < n; i++) {\n            if (magical[head] == 1) {\n                magical[i] = 3 - magical[i - 1];\n            } else {\n                magical[i] = magical[i - 1];\n            }\n            if (--magical[head] == 0) {\n                head++;\n            }\n            if (tail < n && magical[tail] > 0) {\n                magical[++head] = magical[tail];\n                tail++;\n            }\n        }\n        int count = 0;\n        for (int num : magical) {\n            if (num == 1) count++;\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution initializes a magical string and dynamically generates it up to the nth number. It uses two pointers, head and tail, to track the sequence and count of contiguous occurrences. Finally, it counts the number of '1's in the generated magical string.",
+  "code": "class Solution {\npublic:\n    int magicalString(int n) {\n        vector<int> magical(n);\n        magical[0] = 1;\n        int head = 0, tail = 2;\n        for (int i = 1; i < n; i++) {\n            if (magical[head] == 1) {\n                magical[i] = 3 - magical[i - 1];\n            } else {\n                magical[i] = magical[i - 1];\n            }\n            if (--magical[head] == 0) {\n                head++;\n            }\n            if (tail < n && magical[tail] > 0) {\n                magical[++head] = magical[tail];\n                tail++;\n            }\n        }\n        int count = 0;\n        for (int num : magical) {\n            if (num == 1) count++;\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-06T01:37:19.528617",
+  "code_extracted_previous": "public:\n    int magicalString(int n) {\n        vector<int> magical(n);\n        magical[0] = 1;\n        int head = 0, tail = 2;\n        for (int i = 1; i < n; i++) {\n            if (magical[head] == 1) {\n                magical[i] = 3 - magical[i - 1];\n            } else {\n                magical[i] = magical[i - 1];\n            }\n            if (--magical[head] == 0) {\n                head++;\n            }\n            if (tail < n && magical[tail] > 0) {\n                magical[++head] = magical[tail];\n                tail++;\n            }\n        }\n        int count = 0;\n        for (int num : magical) {\n            if (num == 1) count++;\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.682617"
+}

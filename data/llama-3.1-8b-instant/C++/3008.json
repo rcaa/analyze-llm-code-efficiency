@@ -1,0 +1,15 @@
+{
+  "id": 3008,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.substr(i, a.length()) == a) {\n                int j = -1;\n                for (int x = 0; x < s.length(); x++) {\n                    if (s.substr(x, b.length()) == b && abs(x - i) <= k) {\n                        j = x;\n                        break;\n                    }\n                }\n                if (j != -1) res.push_back(i);\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * m * p)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution iterates over the string s to find all occurrences of string a. For each occurrence, it checks all substrings of s to find occurrences of string b within a certain distance k. The indices of beautiful positions are stored in a vector and sorted before being returned. The time complexity is high due to the nested loops, but the space complexity is relatively low as it only stores the beautiful indices.",
+  "code": "class Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.substr(i, a.length()) == a) {\n                int j = -1;\n                for (int x = 0; x < s.length(); x++) {\n                    if (s.substr(x, b.length()) == b && abs(x - i) <= k) {\n                        j = x;\n                        break;\n                    }\n                }\n                if (j != -1) res.push_back(i);\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:22:11.303465",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.substr(i, a.length()) == a) {\n                int j = -1;\n                for (int x = 0; x < s.length(); x++) {\n                    if (s.substr(x, b.length()) == b && abs(x - i) <= k) {\n                        j = x;\n                        break;\n                    }\n                }\n                if (j != -1) res.push_back(i);\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.315812"
+}

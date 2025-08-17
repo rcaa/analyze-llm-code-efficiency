@@ -1,0 +1,15 @@
+{
+  "id": 868,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int binaryGap(int n) {\n        int maxGap = 0, prev = -1;\n        for (int i = 0; n; i++) {\n            if (n & 1) {\n                if (prev != -1) maxGap = max(maxGap, i - prev);\n                prev = i;\n            }\n            n >>= 1;\n        }\n        return maxGap;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the bits of the input number `n` from right to left. When a 1-bit is encountered, it updates the maximum gap if the previous 1-bit's position is not the first one. The position of the previous 1-bit is tracked to calculate the gap. This approach ensures a single pass through the bits, making it efficient.",
+  "code": "class Solution {\npublic:\n    int binaryGap(int n) {\n        int maxGap = 0, prev = -1;\n        for (int i = 0; n; i++) {\n            if (n & 1) {\n                if (prev != -1) maxGap = max(maxGap, i - prev);\n                prev = i;\n            }\n            n >>= 1;\n        }\n        return maxGap;\n    }\n};",
+  "timestamp": "2025-08-05T13:49:38.871916",
+  "code_extracted_previous": "class Solution {\npublic:\n    int binaryGap(int n) {\n        int maxGap = 0, prev = -1;\n        for (int i = 0; n; i++) {\n            if (n & 1) {\n                if (prev != -1) maxGap = max(maxGap, i - prev);\n                prev = i;\n            }\n            n >>= 1;\n        }\n        return maxGap;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.987964"
+}

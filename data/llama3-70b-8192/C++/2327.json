@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[1] = 1;\n        for (int i = 2; i <= n; ++i) {\n            for (int j = max(1, i - forget); j <= i - delay; ++j) {\n                dp[i] = (dp[i] + dp[j]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently calculate the number of people who know the secret at the end of day n.",
+  "code": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[1] = 1;\n        for (int i = 2; i <= n; ++i) {\n            for (int j = max(1, i - forget); j <= i - delay; ++j) {\n                dp[i] = (dp[i] + dp[j]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-05T14:26:14.043776",
+  "code_extracted_previous": "public:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[1] = 1;\n        for (int i = 2; i <= n; ++i) {\n            for (int j = max(1, i - forget); j <= i - delay; ++j) {\n                dp[i] = (dp[i] + dp[j]) % MOD;\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.502313"
+}

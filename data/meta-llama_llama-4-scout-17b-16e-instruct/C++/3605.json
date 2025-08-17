@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        int res = 0;\n        int left = 0;\n        int changes = 0;\n\n        for (int right = 0; right < n; right++) {\n            if (nums[right] < 2) changes++;\n            while (changes > maxC) {\n                if (nums[left] < 2) changes--;\n                left++;\n            }\n            if (right - left + 1 > res) {\n                int g = nums[left];\n                for (int i = left + 1; i <= right; i++) {\n                    g = gcd(g, nums[i]);\n                }\n                if (g >= 2) res = right - left + 1;\n            }\n        }\n        return res == 0 ? 0 : res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding window approach with gcd calculation to track the longest stable subarray, allowing for a limited number of modifications.",
+  "code": "class Solution {\npublic:\n    int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        int res = 0;\n        int left = 0;\n        int changes = 0;\n\n        for (int right = 0; right < n; right++) {\n            if (nums[right] < 2) changes++;\n            while (changes > maxC) {\n                if (nums[left] < 2) changes--;\n                left++;\n            }\n            if (right - left + 1 > res) {\n                int g = nums[left];\n                for (int i = left + 1; i <= right; i++) {\n                    g = gcd(g, nums[i]);\n                }\n                if (g >= 2) res = right - left + 1;\n            }\n        }\n        return res == 0 ? 0 : res;\n    }\n};",
+  "timestamp": "2025-08-05T12:23:13.061868",
+  "code_extracted_previous": "class Solution {\npublic:\n    int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n\n    int minStable(vector<int>& nums, int maxC) {\n        int n = nums.size();\n        int res = 0;\n        int left = 0;\n        int changes = 0;\n\n        for (int right = 0; right < n; right++) {\n            if (nums[right] < 2) changes++;\n            while (changes > maxC) {\n                if (nums[left] < 2) changes--;\n                left++;\n            }\n            if (right - left + 1 > res) {\n                int g = nums[left];\n                for (int i = left + 1; i <= right; i++) {\n                    g = gcd(g, nums[i]);\n                }\n                if (g >= 2) res = right - left + 1;\n            }\n        }\n        return res == 0 ? 0 : res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.582377"
+}

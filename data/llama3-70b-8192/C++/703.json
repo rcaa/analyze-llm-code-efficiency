@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) : k(k) {\n        for (int num : nums) {\n            pq.push(num);\n            if (pq.size() > k) {\n                pq.pop();\n            }\n        }\n    }\n    \n    int add(int val) {\n        pq.push(val);\n        if (pq.size() > k) {\n            pq.pop();\n        }\n        return pq.top();\n    }\n\nprivate:\n    int k;\n    priority_queue<int, vector<int>, greater<int>> pq;\n};\n```\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to maintain the kth largest element. The priority queue is a min-heap, so the top element is always the smallest. When a new element is added, it is pushed into the queue. If the queue size exceeds k, the smallest element is removed. The time complexity is O(n log k) because the priority queue operations take O(log k) time and we perform these operations n times. The space complexity is O(k) because we store at most k elements in the priority queue.",
+  "code": "class KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) : k(k) {\n        for (int num : nums) {\n            pq.push(num);\n            if (pq.size() > k) {\n                pq.pop();\n            }\n        }\n    }\n    \n    int add(int val) {\n        pq.push(val);\n        if (pq.size() > k) {\n            pq.pop();\n        }\n        return pq.top();\n    }\n\nprivate:\n    int k;\n    priority_queue<int, vector<int>, greater<int>> pq;\n};",
+  "timestamp": "2025-08-06T01:11:31.940686",
+  "code_extracted_previous": "class KthLargest {\npublic:\n    KthLargest(int k, vector<int>& nums) : k(k) {\n        for (int num : nums) {\n            pq.push(num);\n            if (pq.size() > k) {\n                pq.pop();\n            }\n        }\n    }\n    \n    int add(int val) {\n        pq.push(val);\n        if (pq.size() > k) {\n            pq.pop();\n        }\n        return pq.top();\n    }\n\nprivate:\n    int k;\n    priority_queue<int, vector<int>, greater<int>> pq;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:37.047960"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0) return n >= 1 ? 1.0 : 0.0;\n        double[] dp = new double[n + 1];\n        for (int i = k; i <= Math.min(n, k + maxPts - 1); i++) {\n            dp[i] = 1.0 / maxPts;\n        }\n        for (int i = k - 1; i >= 0; i--) {\n            double sum = 0;\n            for (int j = i + 1; j <= Math.min(i + maxPts, n); j++) {\n                sum += dp[j];\n            }\n            dp[i] = sum / maxPts;\n        }\n        double res = 0;\n        for (int i = 0; i <= n; i++) {\n            res += dp[i];\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n * maxPts)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: Dynamic programming approach calculating probabilities iteratively.",
+  "code": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0) return n >= 1 ? 1.0 : 0.0;\n        double[] dp = new double[n + 1];\n        for (int i = k; i <= Math.min(n, k + maxPts - 1); i++) {\n            dp[i] = 1.0 / maxPts;\n        }\n        for (int i = k - 1; i >= 0; i--) {\n            double sum = 0;\n            for (int j = i + 1; j <= Math.min(i + maxPts, n); j++) {\n                sum += dp[j];\n            }\n            dp[i] = sum / maxPts;\n        }\n        double res = 0;\n        for (int i = 0; i <= n; i++) {\n            res += dp[i];\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T15:45:33.066381",
+  "code_extracted_previous": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0) return n >= 1 ? 1.0 : 0.0;\n        double[] dp = new double[n + 1];\n        for (int i = k; i <= Math.min(n, k + maxPts - 1); i++) {\n            dp[i] = 1.0 / maxPts;\n        }\n        for (int i = k - 1; i >= 0; i--) {\n            double sum = 0;\n            for (int j = i + 1; j <= Math.min(i + maxPts, n); j++) {\n                sum += dp[j];\n            }\n            dp[i] = sum / maxPts;\n        }\n        double res = 0;\n        for (int i = 0; i <= n; i++) {\n            res += dp[i];\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.567029"
+}

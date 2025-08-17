@@ -1,0 +1,15 @@
+{
+  "id": 3302,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution:\n    def validSequence(self, word1: str, word2: str) -> List[int]:\n        m, n = len(word1), len(word2)\n        if m - n > 1: return []\n        diff = sum(c1 != c2 for c1, c2 in zip(word1, word2))\n        if diff > 1: return []\n        if diff == 0: return list(range(n))\n        idx = [i for i, (c1, c2) in enumerate(zip(word1, word2)) if c1 != c2]\n        if diff == 1 and idx[0] != 0 and idx[0] != n - 1:\n            return [0] + sorted(idx + [n - 1])\n        return sorted(idx)\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution first checks if the difference between the lengths of the two words is more than 1, in which case it returns an empty list. Then it counts the number of different characters between the two words. If the difference is more than 1, it returns an empty list. If the difference is 0, it returns a list of indices from 0 to n-1. If the difference is 1, it finds the indices of the different characters and returns the lexicographically smallest valid sequence of indices.",
+  "code": "class Solution:\n    def validSequence(self, word1: str, word2: str) -> List[int]:\n        m, n = len(word1), len(word2)\n        if m - n > 1: return []\n        diff = sum(c1 != c2 for c1, c2 in zip(word1, word2))\n        if diff > 1: return []\n        if diff == 0: return list(range(n))\n        idx = [i for i, (c1, c2) in enumerate(zip(word1, word2)) if c1 != c2]\n        if diff == 1 and idx[0] != 0 and idx[0] != n - 1:\n            return [0] + sorted(idx + [n - 1])\n        return sorted(idx)",
+  "timestamp": "2025-08-06T01:50:14.284806",
+  "code_extracted_previous": "def validSequence(self, word1: str, word2: str) -> List[int]:\n        m, n = len(word1), len(word2)\n        if m - n > 1: return []\n        diff = sum(c1 != c2 for c1, c2 in zip(word1, word2))\n        if diff > 1: return []\n        if diff == 0: return list(range(n))\n        idx = [i for i, (c1, c2) in enumerate(zip(word1, word2)) if c1 != c2]\n        if diff == 1 and idx[0] != 0 and idx[0] != n - 1:\n            return [0] + sorted(idx + [n - 1])\n        return sorted(idx)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.110620"
+}

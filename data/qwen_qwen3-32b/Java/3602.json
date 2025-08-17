@@ -1,0 +1,15 @@
+{
+  "id": 3602,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public String concatHex36(int n) {\n        String hex = Integer.toHexString(n * n).toUpperCase();\n        String base36 = toBase36(n * n * n);\n        return hex + base36;\n    }\n\n    private String toBase36(int num) {\n        if (num == 0) return \"0\";\n        StringBuilder result = new StringBuilder();\n        while (num > 0) {\n            int remainder = num % 36;\n            if (remainder < 10) {\n                result.insert(0, (char)('0' + remainder));\n            } else {\n                result.insert(0, (char)('A' + remainder - 10));\n            }\n            num /= 36;\n        }\n        return result.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: The solution efficiently computes the hexadecimal and base-36 representations of n² and n³, respectively. The `toBase36` method converts a number to base-36 by repeatedly dividing by 36 and mapping remainders to appropriate characters. This approach is efficient and avoids unnecessary overhead.",
+  "code": "class Solution {\n    public String concatHex36(int n) {\n        String hex = Integer.toHexString(n * n).toUpperCase();\n        String base36 = toBase36(n * n * n);\n        return hex + base36;\n    }\n\n    private String toBase36(int num) {\n        if (num == 0) return \"0\";\n        StringBuilder result = new StringBuilder();\n        while (num > 0) {\n            int remainder = num % 36;\n            if (remainder < 10) {\n                result.insert(0, (char)('0' + remainder));\n            } else {\n                result.insert(0, (char)('A' + remainder - 10));\n            }\n            num /= 36;\n        }\n        return result.toString();\n    }\n}",
+  "timestamp": "2025-08-06T11:44:20.288224",
+  "code_extracted_previous": "class Solution {\n    public String concatHex36(int n) {\n        String hex = Integer.toHexString(n * n).toUpperCase();\n        String base36 = toBase36(n * n * n);\n        return hex + base36;\n    }\n\n    private String toBase36(int num) {\n        if (num == 0) return \"0\";\n        StringBuilder result = new StringBuilder();\n        while (num > 0) {\n            int remainder = num % 36;\n            if (remainder < 10) {\n                result.insert(0, (char)('0' + remainder));\n            } else {\n                result.insert(0, (char)('A' + remainder - 10));\n            }\n            num /= 36;\n        }\n        return result.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:03.136455"
+}

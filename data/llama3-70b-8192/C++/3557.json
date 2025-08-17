@@ -1,0 +1,15 @@
+{
+  "id": 3557,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxSubstrings(string word) {\n        int n = word.size();\n        vector<int> dp(n, 1);\n        for (int i = 1; i < n; ++i) {\n            for (int j = 0; j < i; ++j) {\n                if (word[j] == word[i] && i - j >= 3) {\n                    dp[i] = max(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return *max_element(dp.begin(), dp.end());\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to store the maximum number of non-intersecting substrings ending at each position.",
+  "code": "class Solution {\npublic:\n    int maxSubstrings(string word) {\n        int n = word.size();\n        vector<int> dp(n, 1);\n        for (int i = 1; i < n; ++i) {\n            for (int j = 0; j < i; ++j) {\n                if (word[j] == word[i] && i - j >= 3) {\n                    dp[i] = max(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return *max_element(dp.begin(), dp.end());\n    }\n};",
+  "timestamp": "2025-08-05T15:13:38.000913",
+  "code_extracted_previous": "public:\n    int maxSubstrings(string word) {\n        int n = word.size();\n        vector<int> dp(n, 1);\n        for (int i = 1; i < n; ++i) {\n            for (int j = 0; j < i; ++j) {\n                if (word[j] == word[i] && i - j >= 3) {\n                    dp[i] = max(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return *max_element(dp.begin(), dp.end());\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.828594"
+}

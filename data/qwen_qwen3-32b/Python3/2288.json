@@ -1,0 +1,15 @@
+{
+  "id": 2288,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def discountPrices(self, sentence: str, discount: int) -> str:\n        words = sentence.split()\n        for i in range(len(words)):\n            word = words[i]\n            if len(word) > 1 and word[0] == '$' and word[1:].isdigit():\n                price = int(word[1:])\n                discounted = price * (100 - discount) / 100\n                words[i] = f\"${discounted:.2f}\"\n        return ' '.join(words)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution splits the sentence into words and iterates through each word to check if it is a valid price. If it is, the discount is applied and the word is updated with the new price formatted to two decimal places. The modified words are then joined back into a sentence. The main strength is its linear time complexity, while the weakness is the additional space used for the words list.",
+  "code": "class Solution:\n    def discountPrices(self, sentence: str, discount: int) -> str:\n        words = sentence.split()\n        for i in range(len(words)):\n            word = words[i]\n            if len(word) > 1 and word[0] == '$' and word[1:].isdigit():\n                price = int(word[1:])\n                discounted = price * (100 - discount) / 100\n                words[i] = f\"${discounted:.2f}\"\n        return ' '.join(words)",
+  "timestamp": "2025-08-06T00:58:56.843144",
+  "code_extracted_previous": "class Solution:\n    def discountPrices(self, sentence: str, discount: int) -> str:\n        words = sentence.split()\n        for i in range(len(words)):\n            word = words[i]\n            if len(word) > 1 and word[0] == '$' and word[1:].isdigit():\n                price = int(word[1:])\n                discounted = price * (100 - discount) / 100\n                words[i] = f\"${discounted:.2f}\"\n        return ' '.join(words)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:04.939705"
+}

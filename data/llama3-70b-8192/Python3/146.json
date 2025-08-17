@@ -1,0 +1,15 @@
+{
+  "id": 146,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass LRUCache:\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = dict()\n        self.priority = dict()\n        self.time = 0\n\n    def get(self, key: int) -> int:\n        if key not in self.cache:\n            return -1\n        self.priority[key] = self.time\n        self.time += 1\n        return self.cache[key]\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            del self.priority[key]\n        elif len(self.cache) == self.capacity:\n            lru = min(self.priority, key=self.priority.get)\n            del self.cache[lru]\n            del self.priority[lru]\n        self.cache[key] = value\n        self.priority[key] = self.time\n        self.time += 1\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(capacity)\nenergy implications: LOW\nexplanation: This solution uses a dictionary to store the cache and another dictionary to store the priority of each key. The get operation updates the priority of the key and returns the value. The put operation updates the cache and priority, and evicts the least recently used key if the cache is full.",
+  "code": "class LRUCache:\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = dict()\n        self.priority = dict()\n        self.time = 0\n\n    def get(self, key: int) -> int:\n        if key not in self.cache:\n            return -1\n        self.priority[key] = self.time\n        self.time += 1\n        return self.cache[key]\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            del self.priority[key]\n        elif len(self.cache) == self.capacity:\n            lru = min(self.priority, key=self.priority.get)\n            del self.cache[lru]\n            del self.priority[lru]\n        self.cache[key] = value\n        self.priority[key] = self.time\n        self.time += 1",
+  "timestamp": "2025-08-05T14:49:47.512490",
+  "code_extracted_previous": "class LRUCache:\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = dict()\n        self.priority = dict()\n        self.time = 0\n\n    def get(self, key: int) -> int:\n        if key not in self.cache:\n            return -1\n        self.priority[key] = self.time\n        self.time += 1\n        return self.cache[key]\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            del self.priority[key]\n        elif len(self.cache) == self.capacity:\n            lru = min(self.priority, key=self.priority.get)\n            del self.cache[lru]\n            del self.priority[lru]\n        self.cache[key] = value\n        self.priority[key] = self.time\n        self.time += 1",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:38.960181"
+}

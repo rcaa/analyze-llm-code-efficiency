@@ -1,0 +1,15 @@
+{
+  "id": 1787,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int minChanges(vector<int>& nums, int k) {\n        int n = nums.size();\n        int res = n;\n        for (int i = 0; i < (1 << n); i++) {\n            int cnt = 0;\n            for (int j = 0; j < n; j++) {\n                if ((i >> j) & 1) {\n                    cnt++;\n                }\n            }\n            int xor = 0;\n            for (int j = 0; j < n; j++) {\n                if ((i >> j) & 1) {\n                    xor ^= nums[j];\n                }\n            }\n            int cnt_k = 0;\n            for (int j = 0; j <= n - k; j++) {\n                if ((xor ^ nums[j]) == 0) {\n                    cnt_k++;\n                }\n            }\n            res = min(res, n - cnt_k);\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * 2^n)\nspace complexity: O(1)\nenergy implications: MEDIUM",
+  "code": "class Solution {\npublic:\n    int minChanges(vector<int>& nums, int k) {\n        int n = nums.size();\n        int res = n;\n        for (int i = 0; i < (1 << n); i++) {\n            int cnt = 0;\n            for (int j = 0; j < n; j++) {\n                if ((i >> j) & 1) {\n                    cnt++;\n                }\n            }\n            int xor = 0;\n            for (int j = 0; j < n; j++) {\n                if ((i >> j) & 1) {\n                    xor ^= nums[j];\n                }\n            }\n            int cnt_k = 0;\n            for (int j = 0; j <= n - k; j++) {\n                if ((xor ^ nums[j]) == 0) {\n                    cnt_k++;\n                }\n            }\n            res = min(res, n - cnt_k);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T11:50:39.137320",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minChanges(vector<int>& nums, int k) {\n        int n = nums.size();\n        int res = n;\n        for (int i = 0; i < (1 << n); i++) {\n            int cnt = 0;\n            for (int j = 0; j < n; j++) {\n                if ((i >> j) & 1) {\n                    cnt++;\n                }\n            }\n            int xor = 0;\n            for (int j = 0; j < n; j++) {\n                if ((i >> j) & 1) {\n                    xor ^= nums[j];\n                }\n            }\n            int cnt_k = 0;\n            for (int j = 0; j <= n - k; j++) {\n                if ((xor ^ nums[j]) == 0) {\n                    cnt_k++;\n                }\n            }\n            res = min(res, n - cnt_k);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.486884"
+}

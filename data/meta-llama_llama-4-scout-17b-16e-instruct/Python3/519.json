@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```python\nimport random\nfrom typing import List\n\nclass Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.total_cells = m * n\n        self.available_cells = list(range(self.total_cells))\n\n    def flip(self) -> List[int]:\n        index = random.choice(self.available_cells)\n        self.available_cells.remove(index)\n        return [index // self.n, index % self.n]\n\n    def reset(self) -> None:\n        self.available_cells = list(range(self.total_cells))\n```\n\nefficiency: HIGH\ntime complexity: \n- `__init__`: O(m*n)\n- `flip`: O(1) on average, O(n) in worst case (when removing an element from the list)\n- `reset`: O(m*n)\nspace complexity: O(m*n)\nenergy implications: LOW\nexplanation: The provided solution utilizes a list to track available cells. The `flip` method randomly selects an available cell, removes it from the list, and returns its coordinates. The `reset` method replenishes the list of available cells. This approach ensures equal likelihood for each available cell to be chosen and minimizes calls to the random function.",
+  "code": "class Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.total_cells = m * n\n        self.available_cells = list(range(self.total_cells))\n\n    def flip(self) -> List[int]:\n        index = random.choice(self.available_cells)\n        self.available_cells.remove(index)\n        return [index // self.n, index % self.n]\n\n    def reset(self) -> None:\n        self.available_cells = list(range(self.total_cells))",
+  "timestamp": "2025-08-05T14:54:47.321649",
+  "code_extracted_previous": "import random\nfrom typing import List\n\nclass Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.total_cells = m * n\n        self.available_cells = list(range(self.total_cells))\n\n    def flip(self) -> List[int]:\n        index = random.choice(self.available_cells)\n        self.available_cells.remove(index)\n        return [index // self.n, index % self.n]\n\n    def reset(self) -> None:\n        self.available_cells = list(range(self.total_cells))",
+  "starter_ok": false,
+  "starter_check_reason": "assinatura divergente: esperada '__init__(self, m, n)'",
+  "reavaliado_em": "2025-08-17T12:23:52.804047"
+}

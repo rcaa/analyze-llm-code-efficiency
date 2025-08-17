@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n```\nimport heapq\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.heap = []\n        for num in nums:\n            self.add(num)\n        heapq.heapify(self.heap)\n        while len(self.heap) > k:\n            heapq.heappop(self.heap)\n\n    def add(self, val: int) -> int:\n        heapq.heappush(self.heap, val)\n        if len(self.heap) > k:\n            heapq.heappop(self.heap)\n        return self.heap[0]\n```\nefficiency: HIGH\ntime complexity: O(log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: We use a min-heap to store the k largest elements. In the constructor, we add all the initial elements to the heap and then pop the smallest k-1 elements to ensure the heap has k elements. In the add method, we push the new element to the heap and if the heap has more than k elements, we pop the smallest one. The heap operations (push and pop) take O(log k) time, so the overall time complexity is O(log k). The space complexity is O(k) as we store k elements in the heap.",
+  "code": "class KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.heap = []\n        for num in nums:\n            self.add(num)\n        heapq.heapify(self.heap)\n        while len(self.heap) > k:\n            heapq.heappop(self.heap)\n\n    def add(self, val: int) -> int:\n        heapq.heappush(self.heap, val)\n        if len(self.heap) > k:\n            heapq.heappop(self.heap)\n        return self.heap[0]",
+  "timestamp": "2025-08-06T01:11:06.885928",
+  "code_extracted_previous": "import heapq\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.heap = []\n        for num in nums:\n            self.add(num)\n        heapq.heapify(self.heap)\n        while len(self.heap) > k:\n            heapq.heappop(self.heap)\n\n    def add(self, val: int) -> int:\n        heapq.heappush(self.heap, val)\n        if len(self.heap) > k:\n            heapq.heappop(self.heap)\n        return self.heap[0]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:44.386349"
+}

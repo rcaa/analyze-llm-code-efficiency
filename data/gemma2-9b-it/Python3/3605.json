@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        n = len(nums)\n        dp = [0] * (n + 1)\n        for i in range(1, n + 1):\n            for j in range(i):\n                if gcd(nums[j], nums[i - 1]) >= 2:\n                    dp[i] = max(dp[i], dp[j] + 1)\n        for i in range(n):\n            for j in range(maxC):\n                nums[i] = max(1, nums[i] - 1)\n                dp[i + 1] = max(dp[i + 1], dp[i] + 1)\n        return max(dp)\n\n    def gcd(self, a, b):\n        while b:\n            a, b = b, a % b\n        return a\n```\n\nsolution: \n```python\nclass Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        n = len(nums)\n        dp = [0] * (n + 1)\n        for i in range(1, n + 1):\n            for j in range(i):\n                if gcd(nums[j], nums[i - 1]) >= 2:\n                    dp[i] = max(dp[i], dp[j] + 1)\n        for i in range(n):\n            for j in range(maxC):\n                nums[i] = max(1, nums[i] - 1)\n                dp[i + 1] = max(dp[i + 1], dp[i] + 1)\n        return max(dp)\n\n    def gcd(self, a, b):\n        while b:\n            a, b = b, a % b\n        return a\n```\nefficiency: HIGH\ntime complexity: O(n^2 * maxC)\nspace complexity: O(n)\nenergy implications: LOW \nexplanation: The solution uses dynamic programming to calculate the maximum stability factor for all subarrays of `nums`. It iterates through the array, considering each element as a potential end point of a stable subarray. For each end point, it checks all previous elements to see if they form a stable subarray with the current element. The `gcd` function is used to efficiently calculate the highest common factor of two numbers. The outer loop iterates through all possible modifications (`maxC`) and updates the `dp` array accordingly.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T12:23:06.377707",
+  "code_extracted_previous": "class Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        n = len(nums)\n        dp = [0] * (n + 1)\n        for i in range(1, n + 1):\n            for j in range(i):\n                if gcd(nums[j], nums[i - 1]) >= 2:\n                    dp[i] = max(dp[i], dp[j] + 1)\n        for i in range(n):\n            for j in range(maxC):\n                nums[i] = max(1, nums[i] - 1)\n                dp[i + 1] = max(dp[i + 1], dp[i] + 1)\n        return max(dp)\n\n    def gcd(self, a, b):\n        while b:\n            a, b = b, a % b\n        return a",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.795660"
+}

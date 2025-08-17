@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef lengthOfLongestSubstring(s: str) -> int:\n    n = len(s)\n    max_length = 0\n    start = 0\n    seen = {}\n\n    for i in range(n):\n        char = s[i]\n        if char in seen and start < seen[char]:\n            start = seen[char] + 1\n        seen[char] = i + 1\n        max_length = max(max_length, i - start + 1)\n\n    return max_length\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\nThe problem requires finding the length of the longest substring without duplicate characters. We use a dictionary (seen) to keep track of the last occurrence of each character. We iterate through the string and update the start index when a duplicate character is encountered. Finally, we return the maximum length between the current substring and the previous substring. This solution has a time complexity of O(n) and a space complexity of O(n), where n is the length of the string. ",
+  "code": "def lengthOfLongestSubstring(s: str) -> int:\n    n = len(s)\n    max_length = 0\n    start = 0\n    seen = {}\n\n    for i in range(n):\n        char = s[i]\n        if char in seen and start < seen[char]:\n            start = seen[char] + 1\n        seen[char] = i + 1\n        max_length = max(max_length, i - start + 1)\n\n    return max_length",
+  "timestamp": "2025-08-05T14:49:35.062704",
+  "code_extracted_previous": "def lengthOfLongestSubstring(s: str) -> int:\n    n = len(s)\n    max_length = 0\n    start = 0\n    seen = {}\n\n    for i in range(n):\n        char = s[i]\n        if char in seen and start < seen[char]:\n            start = seen[char] + 1\n        seen[char] = i + 1\n        max_length = max(max_length, i - start + 1)\n\n    return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.800715"
+}

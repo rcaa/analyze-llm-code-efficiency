@@ -1,0 +1,15 @@
+{
+  "id": 2097,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {\n        unordered_map<int, vector<int>> graph;\n        for (auto& p : pairs) {\n            graph[p[1]].push_back(p[0]);\n        }\n        vector<vector<int>> res;\n        dfs(graph, pairs[0][1], res);\n        return res;\n    }\n    void dfs(unordered_map<int, vector<int>>& graph, int node, vector<vector<int>>& res) {\n        while (graph.count(node) && !graph[node].empty()) {\n            int next = graph[node].back();\n            graph[node].pop_back();\n            dfs(graph, next, res);\n        }\n        res.push_back({node, node});\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a graph to store the end points of each pair as nodes and their corresponding start points as edges. It then performs a depth-first search (DFS) to construct a valid arrangement of pairs.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {\n        unordered_map<int, vector<int>> graph;\n        for (auto& p : pairs) {\n            graph[p[1]].push_back(p[0]);\n        }\n        vector<vector<int>> res;\n        dfs(graph, pairs[0][1], res);\n        return res;\n    }\n    void dfs(unordered_map<int, vector<int>>& graph, int node, vector<vector<int>>& res) {\n        while (graph.count(node) && !graph[node].empty()) {\n            int next = graph[node].back();\n            graph[node].pop_back();\n            dfs(graph, next, res);\n        }\n        res.push_back({node, node});\n    }\n};",
+  "timestamp": "2025-08-05T13:56:15.550560",
+  "code_extracted_previous": "public:\n    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {\n        unordered_map<int, vector<int>> graph;\n        for (auto& p : pairs) {\n            graph[p[1]].push_back(p[0]);\n        }\n        vector<vector<int>> res;\n        dfs(graph, pairs[0][1], res);\n        return res;\n    }\n    void dfs(unordered_map<int, vector<int>>& graph, int node, vector<vector<int>>& res) {\n        while (graph.count(node) && !graph[node].empty()) {\n            int next = graph[node].back();\n            graph[node].pop_back();\n            dfs(graph, next, res);\n        }\n        res.push_back({node, node});\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.389367"
+}

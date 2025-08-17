@@ -1,0 +1,15 @@
+{
+  "id": 1387,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int getKth(int lo, int hi, int k) {\n        int[] powers = new int[hi - lo + 1];\n        for (int i = lo; i <= hi; i++) {\n            int x = i;\n            int power = 0;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                power++;\n            }\n            powers[i - lo] = power;\n        }\n        Integer[] nums = new Integer[hi - lo + 1];\n        for (int i = lo; i <= hi; i++) {\n            nums[i - lo] = i;\n        }\n        Arrays.sort(nums, (a, b) -> powers[a - lo] == powers[b - lo] ? a - b : powers[a - lo] - powers[b - lo]);\n        return nums[k - 1];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a custom comparator to sort the numbers in the range [lo, hi] based on their power values and then returns the kth element in the sorted array.",
+  "code": "class Solution {\n    public int getKth(int lo, int hi, int k) {\n        int[] powers = new int[hi - lo + 1];\n        for (int i = lo; i <= hi; i++) {\n            int x = i;\n            int power = 0;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                power++;\n            }\n            powers[i - lo] = power;\n        }\n        Integer[] nums = new Integer[hi - lo + 1];\n        for (int i = lo; i <= hi; i++) {\n            nums[i - lo] = i;\n        }\n        Arrays.sort(nums, (a, b) -> powers[a - lo] == powers[b - lo] ? a - b : powers[a - lo] - powers[b - lo]);\n        return nums[k - 1];\n    }\n}",
+  "timestamp": "2025-08-05T14:25:24.526700",
+  "code_extracted_previous": "class Solution {\n    public int getKth(int lo, int hi, int k) {\n        int[] powers = new int[hi - lo + 1];\n        for (int i = lo; i <= hi; i++) {\n            int x = i;\n            int power = 0;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                power++;\n            }\n            powers[i - lo] = power;\n        }\n        Integer[] nums = new Integer[hi - lo + 1];\n        for (int i = lo; i <= hi; i++) {\n            nums[i - lo] = i;\n        }\n        Arrays.sort(nums, (a, b) -> powers[a - lo] == powers[b - lo] ? a - b : powers[a - lo] - powers[b - lo]);\n        return nums[k - 1];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.515922"
+}

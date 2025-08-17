@@ -1,0 +1,15 @@
+{
+  "id": 2134,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int minSwaps(vector<int>& nums) {\n        int n = nums.size();\n        int ones = 0;\n        for (int x : nums) ones += x;\n        if (ones == 0 || ones == n) return 0;\n\n        vector<int> doubled = nums;\n        doubled.insert(doubled.end(), nums.begin(), nums.end());\n\n        int zeros = 0;\n        for (int i = 0; i < ones; ++i) zeros += (doubled[i] == 0);\n\n        int minSwaps = zeros;\n        for (int i = ones; i < n + ones; ++i) {\n            zeros -= (doubled[i - ones] == 0);\n            zeros += (doubled[i] == 0);\n            minSwaps = min(minSwaps, zeros);\n        }\n        return minSwaps;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Count total 1's (k). The problem reduces to finding a window of size k with the maximum number of 1's; swaps needed = k - max_1s_in_window. Treat the circular array as linear by doubling it. Use a sliding window to compute the minimum 0's in any k-length window, which equals the minimum swaps.",
+  "code": "class Solution {\npublic:\n    int minSwaps(vector<int>& nums) {\n        int n = nums.size();\n        int ones = 0;\n        for (int x : nums) ones += x;\n        if (ones == 0 || ones == n) return 0;\n\n        vector<int> doubled = nums;\n        doubled.insert(doubled.end(), nums.begin(), nums.end());\n\n        int zeros = 0;\n        for (int i = 0; i < ones; ++i) zeros += (doubled[i] == 0);\n\n        int minSwaps = zeros;\n        for (int i = ones; i < n + ones; ++i) {\n            zeros -= (doubled[i - ones] == 0);\n            zeros += (doubled[i] == 0);\n            minSwaps = min(minSwaps, zeros);\n        }\n        return minSwaps;\n    }\n};",
+  "timestamp": "2025-08-05T13:21:45.124261",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minSwaps(vector<int>& nums) {\n        int n = nums.size();\n        int ones = 0;\n        for (int x : nums) ones += x;\n        if (ones == 0 || ones == n) return 0;\n\n        vector<int> doubled = nums;\n        doubled.insert(doubled.end(), nums.begin(), nums.end());\n\n        int zeros = 0;\n        for (int i = 0; i < ones; ++i) zeros += (doubled[i] == 0);\n\n        int minSwaps = zeros;\n        for (int i = ones; i < n + ones; ++i) {\n            zeros -= (doubled[i - ones] == 0);\n            zeros += (doubled[i] == 0);\n            minSwaps = min(minSwaps, zeros);\n        }\n        return minSwaps;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.544977"
+}

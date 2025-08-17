@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n\n    def push(self, val: int) -> None:\n        count = self.freq.get(val, 0)\n        self.freq[val] = count + 1\n        self.group.setdefault(count + 1, []).append(val)\n\n    def pop(self) -> int:\n        max_count = max(self.group.keys())\n        val = self.group[max_count].pop()\n        self.freq[val] -= 1\n        if not self.group[max_count]:\n            del self.group[max_count]\n        return val\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses two dictionaries, freq and group, to keep track of the frequency and group of each element. The push operation increments the frequency and adds the element to the corresponding group. The pop operation finds the maximum frequency, removes the element from the group, and decrements the frequency. This solution has a high efficiency due to the constant time complexity of the push and pop operations, and a low energy implication due to the minimal number of operations performed.",
+  "code": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n\n    def push(self, val: int) -> None:\n        count = self.freq.get(val, 0)\n        self.freq[val] = count + 1\n        self.group.setdefault(count + 1, []).append(val)\n\n    def pop(self) -> int:\n        max_count = max(self.group.keys())\n        val = self.group[max_count].pop()\n        self.freq[val] -= 1\n        if not self.group[max_count]:\n            del self.group[max_count]\n        return val",
+  "timestamp": "2025-08-05T14:37:47.504569",
+  "code_extracted_previous": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.group = {}\n\n    def push(self, val: int) -> None:\n        count = self.freq.get(val, 0)\n        self.freq[val] = count + 1\n        self.group.setdefault(count + 1, []).append(val)\n\n    def pop(self) -> int:\n        max_count = max(self.group.keys())\n        val = self.group[max_count].pop()\n        self.freq[val] -= 1\n        if not self.group[max_count]:\n            del self.group[max_count]\n        return val",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:44.487044"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 925,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def isLongPressedName(self, name: str, typed: str) -> bool:\n        i = j = 0\n        n, m = len(name), len(typed)\n        while i < n and j < m:\n            if name[i] == typed[j]:\n                i += 1\n                j += 1\n            elif j > 0 and typed[j] == typed[j-1]:\n                j += 1\n            else:\n                return False\n        while j < m and typed[j] == typed[j-1]:\n            j += 1\n        return i == n and j == m\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Two-pointer scan compares characters in order, skipping extra repeats in typed. Handles leftover repeats at end. Linear pass uses constant memory.",
+  "code": "class Solution:\n    def isLongPressedName(self, name: str, typed: str) -> bool:\n        i = j = 0\n        n, m = len(name), len(typed)\n        while i < n and j < m:\n            if name[i] == typed[j]:\n                i += 1\n                j += 1\n            elif j > 0 and typed[j] == typed[j-1]:\n                j += 1\n            else:\n                return False\n        while j < m and typed[j] == typed[j-1]:\n            j += 1\n        return i == n and j == m",
+  "timestamp": "2025-08-06T01:30:46.565121",
+  "code_extracted_previous": "class Solution:\n    def isLongPressedName(self, name: str, typed: str) -> bool:\n        i = j = 0\n        n, m = len(name), len(typed)\n        while i < n and j < m:\n            if name[i] == typed[j]:\n                i += 1\n                j += 1\n            elif j > 0 and typed[j] == typed[j-1]:\n                j += 1\n            else:\n                return False\n        while j < m and typed[j] == typed[j-1]:\n            j += 1\n        return i == n and j == m",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.722163"
+}

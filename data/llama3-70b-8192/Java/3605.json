@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int minStable(int[] nums, int maxC) {\n        int n = nums.length;\n        int[] gcd = new int[n];\n        gcd[0] = nums[0];\n        for (int i = 1; i < n; i++) {\n            gcd[i] = gcd(gcd[i - 1], nums[i]);\n        }\n        int res = 0;\n        int cnt = 0;\n        for (int i = n - 1; i >= 0; i--) {\n            if (gcd[i] >= 2) {\n                cnt++;\n            } else {\n                cnt = 0;\n            }\n            res = Math.max(res, Math.min(cnt, maxC + 1));\n        }\n        return res;\n    }\n\n    private int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the gcd of all prefixes of the array, and then iterates from the end to find the longest stable subarray.",
+  "code": "class Solution {\n    public int minStable(int[] nums, int maxC) {\n        int n = nums.length;\n        int[] gcd = new int[n];\n        gcd[0] = nums[0];\n        for (int i = 1; i < n; i++) {\n            gcd[i] = gcd(gcd[i - 1], nums[i]);\n        }\n        int res = 0;\n        int cnt = 0;\n        for (int i = n - 1; i >= 0; i--) {\n            if (gcd[i] >= 2) {\n                cnt++;\n            } else {\n                cnt = 0;\n            }\n            res = Math.max(res, Math.min(cnt, maxC + 1));\n        }\n        return res;\n    }\n\n    private int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}",
+  "timestamp": "2025-08-05T12:22:56.344343",
+  "code_extracted_previous": "class Solution {\n    public int minStable(int[] nums, int maxC) {\n        int n = nums.length;\n        int[] gcd = new int[n];\n        gcd[0] = nums[0];\n        for (int i = 1; i < n; i++) {\n            gcd[i] = gcd(gcd[i - 1], nums[i]);\n        }\n        int res = 0;\n        int cnt = 0;\n        for (int i = n - 1; i >= 0; i--) {\n            if (gcd[i] >= 2) {\n                cnt++;\n            } else {\n                cnt = 0;\n            }\n            res = Math.max(res, Math.min(cnt, maxC + 1));\n        }\n        return res;\n    }\n\n    private int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.518144"
+}

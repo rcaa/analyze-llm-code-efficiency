@@ -1,0 +1,15 @@
+{
+  "id": 2375,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def smallestNumber(self, pattern: str) -> str:\n        n = len(pattern)\n        num = list(range(1, n + 2))\n        for i in range(n):\n            if pattern[i] == 'D':\n                j = i\n                while j >= 0 and pattern[j] == 'D':\n                    j -= 1\n                num[j + 1:i + 2] = num[j + 1:i + 2][::-1]\n        return ''.join(map(str, num))\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over the pattern once, reversing subarrays in the num list as necessary to satisfy the 'D' condition, resulting in a lexicographically smallest string.\n```",
+  "code": "def smallestNumber(self, pattern: str) -> str:\n        n = len(pattern)\n        num = list(range(1, n + 2))\n        for i in range(n):\n            if pattern[i] == 'D':\n                j = i\n                while j >= 0 and pattern[j] == 'D':\n                    j -= 1\n                num[j + 1:i + 2] = num[j + 1:i + 2][::-1]\n        return ''.join(map(str, num))",
+  "timestamp": "2025-08-06T01:00:43.255606",
+  "code_extracted_previous": "class Solution:\n    def smallestNumber(self, pattern: str) -> str:\n        n = len(pattern)\n        num = list(range(1, n + 2))\n        for i in range(n):\n            if pattern[i] == 'D':\n                j = i\n                while j >= 0 and pattern[j] == 'D':\n                    j -= 1\n                num[j + 1:i + 2] = num[j + 1:i + 2][::-1]\n        return ''.join(map(str, num))",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.885099"
+}

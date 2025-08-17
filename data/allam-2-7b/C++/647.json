@@ -1,0 +1,15 @@
+{
+  "id": 647,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    int countSubstrings(string s) {\n        int n = s.length();\n        vector<vector<int>> dp(n, vector<int>(n, 0));\n\n        for (int i = 0; i < n; i++) {\n            for (int j = i; j < n; j++) {\n                if (s[i] == s[j]) {\n                    dp[i][j] = dp[i+1][j+1] + 1;\n                }\n            }\n        }\n\n        return dp[0][n-1];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n^2)\nenergy implications: LOW\n\nExplanation:\nWe use a two-dimensional array (dp) to store the number of palindromic substrings ending at each index. We iterate through the string once to populate the dp array. Then, we return the value at the bottom-right corner (dp[0][n-1]) which represents the total number of palindromic substrings in the string. ",
+  "code": "class Solution {\npublic:\n    int countSubstrings(string s) {\n        int n = s.length();\n        vector<vector<int>> dp(n, vector<int>(n, 0));\n\n        for (int i = 0; i < n; i++) {\n            for (int j = i; j < n; j++) {\n                if (s[i] == s[j]) {\n                    dp[i][j] = dp[i+1][j+1] + 1;\n                }\n            }\n        }\n\n        return dp[0][n-1];\n    }\n};",
+  "timestamp": "2025-08-06T01:39:02.008749",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countSubstrings(string s) {\n        int n = s.length();\n        vector<vector<int>> dp(n, vector<int>(n, 0));\n\n        for (int i = 0; i < n; i++) {\n            for (int j = i; j < n; j++) {\n                if (s[i] == s[j]) {\n                    dp[i][j] = dp[i+1][j+1] + 1;\n                }\n            }\n        }\n\n        return dp[0][n-1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.082492"
+}

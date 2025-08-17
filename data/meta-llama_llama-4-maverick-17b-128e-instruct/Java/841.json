@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        boolean[] visited = new boolean[rooms.size()];\n        visited[0] = true;\n        dfs(rooms, 0, visited);\n        for (boolean visit : visited) {\n            if (!visit) return false;\n        }\n        return true;\n    }\n\n    private void dfs(List<List<Integer>> rooms, int room, boolean[] visited) {\n        for (int key : rooms.get(room)) {\n            if (!visited[key]) {\n                visited[key] = true;\n                dfs(rooms, key, visited);\n            }\n        }\n    }\n}\nefficiency: HIGH\ntime complexity: O(N + E)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses Depth-First Search (DFS) to traverse through rooms and keys, ensuring all rooms are visited if possible.\n```",
+  "code": "class Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        boolean[] visited = new boolean[rooms.size()];\n        visited[0] = true;\n        dfs(rooms, 0, visited);\n        for (boolean visit : visited) {\n            if (!visit) return false;\n        }\n        return true;\n    }\n\n    private void dfs(List<List<Integer>> rooms, int room, boolean[] visited) {\n        for (int key : rooms.get(room)) {\n            if (!visited[key]) {\n                visited[key] = true;\n                dfs(rooms, key, visited);\n            }\n        }\n    }\n}\nefficiency: HIGH\ntime complexity: O(N + E)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Uses Depth-First Search (DFS) to traverse through rooms and keys, ensuring all rooms are visited if possible.",
+  "timestamp": "2025-08-05T14:00:24.870776",
+  "code_extracted_previous": "class Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        boolean[] visited = new boolean[rooms.size()];\n        visited[0] = true;\n        dfs(rooms, 0, visited);\n        for (boolean visit : visited) {\n            if (!visit) return false;\n        }\n        return true;\n    }\n\n    private void dfs(List<List<Integer>> rooms, int room, boolean[] visited) {\n        for (int key : rooms.get(room)) {\n            if (!visited[key]) {\n                visited[key] = true;\n                dfs(rooms, key, visited);\n            }\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:47.126195"
+}

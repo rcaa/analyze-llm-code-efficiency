@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```python\nimport heapq\nfrom typing import List\n\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = []\n        for num in nums:\n            self.add(num)\n\n    def add(self, val: int) -> int:\n        if len(self.min_heap) < self.k:\n            heapq.heappush(self.min_heap, val)\n        elif val > self.min_heap[0]:\n            heapq.heappop(self.min_heap)\n            heapq.heappush(self.min_heap, val)\n        return self.min_heap[0]\n```\n\nefficiency: HIGH\ntime complexity: O(log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: The provided solution utilizes a min-heap data structure to efficiently track the kth largest element in a stream of numbers. The min-heap stores the k largest elements seen so far. When a new number is added, it is compared with the smallest element in the heap (the root). If the heap has less than k elements, the new number is added. If the heap has k elements and the new number is larger than the smallest element in the heap, the smallest element is removed and the new number is added. This ensures that the heap always contains the k largest elements seen so far. The time complexity of adding an element and retrieving the kth largest element is O(log k) due to the heap operations. The space complexity is O(k) as in the worst case, the heap will store k elements.",
+  "code": "class KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = []\n        for num in nums:\n            self.add(num)\n\n    def add(self, val: int) -> int:\n        if len(self.min_heap) < self.k:\n            heapq.heappush(self.min_heap, val)\n        elif val > self.min_heap[0]:\n            heapq.heappop(self.min_heap)\n            heapq.heappush(self.min_heap, val)\n        return self.min_heap[0]",
+  "timestamp": "2025-08-06T01:11:15.088992",
+  "code_extracted_previous": "import heapq\nfrom typing import List\n\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = []\n        for num in nums:\n            self.add(num)\n\n    def add(self, val: int) -> int:\n        if len(self.min_heap) < self.k:\n            heapq.heappush(self.min_heap, val)\n        elif val > self.min_heap[0]:\n            heapq.heappop(self.min_heap)\n            heapq.heappush(self.min_heap, val)\n        return self.min_heap[0]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:52.912134"
+}

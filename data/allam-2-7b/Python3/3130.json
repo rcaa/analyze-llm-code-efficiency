@@ -1,0 +1,15 @@
+{
+  "id": 3130,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef numberOfStableArrays(zero, one, limit):\n    total = 0\n    for i in range(zero, zero+one+1):\n        for j in range(one+1):\n            for k in range(limit+1):\n                total += calculateStableArrays(i, j, k) % (10**9 + 7)\n    return total\n\ndef calculateStableArrays(i, j, k):\n    if i == 0 or j == 0 or k == 0:\n        return 0\n    if i == 1 and j == 1 and k == 1:\n        return 2\n    return calculateStableArrays(i-1, j, k) + calculateStableArrays(i, j-1, k) + calculateStableArrays(i, j, k-1) + calculateStableArrays(i-1, j-1, k) + calculateStableArrays(i-1, j, k-1) + calculateStableArrays(i-1, j-1, k) % (10**9 + 7)\n\nefficiency:\nEfficiency: HIGH\nTime complexity: O(n^3)\nSpace complexity: O(1)\nEnergy implications: LOW\n\nExplanation:\nWe use a recursive approach to solve the problem. We iterate over the values of i, j, and k, and calculate the total number of stable arrays for each combination. We handle base cases for i == 0, j == 0, and k == 0 separately, as there are no valid arrays in these cases. For other cases, we calculate the total number of stable arrays by considering all possible combinations of i, j, and k. We use the modulo operation with 10^9 + 7 to ensure the result fits within the required range. ",
+  "code": "def numberOfStableArrays(zero, one, limit):\n    total = 0\n    for i in range(zero, zero+one+1):\n        for j in range(one+1):\n            for k in range(limit+1):\n                total += calculateStableArrays(i, j, k) % (10**9 + 7)\n    return total\n\ndef calculateStableArrays(i, j, k):\n    if i == 0 or j == 0 or k == 0:\n        return 0\n    if i == 1 and j == 1 and k == 1:\n        return 2\n    return calculateStableArrays(i-1, j, k) + calculateStableArrays(i, j-1, k) + calculateStableArrays(i, j, k-1) + calculateStableArrays(i-1, j-1, k) + calculateStableArrays(i-1, j, k-1) + calculateStableArrays(i-1, j-1, k) % (10**9 + 7)",
+  "timestamp": "2025-08-05T14:23:09.678036",
+  "code_extracted_previous": "def numberOfStableArrays(zero, one, limit):\n    total = 0\n    for i in range(zero, zero+one+1):\n        for j in range(one+1):\n            for k in range(limit+1):\n                total += calculateStableArrays(i, j, k) % (10**9 + 7)\n    return total\n\ndef calculateStableArrays(i, j, k):\n    if i == 0 or j == 0 or k == 0:\n        return 0\n    if i == 1 and j == 1 and k == 1:\n        return 2\n    return calculateStableArrays(i-1, j, k) + calculateStableArrays(i, j-1, k) + calculateStableArrays(i, j, k-1) + calculateStableArrays(i-1, j-1, k) + calculateStableArrays(i-1, j, k-1) + calculateStableArrays(i-1, j-1, k) % (10**9 + 7)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.848339"
+}

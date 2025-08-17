@@ -1,0 +1,15 @@
+{
+  "id": 1456,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```\nclass Solution:\n    def maxVowels(self, s: str, k: int) -> int:\n        vowels = {'a', 'e', 'i', 'o', 'u'}\n        max_vowels = current = sum(ch in vowels for ch in s[:k])\n        for i in range(k, len(s)):\n            current += (s[i] in vowels) - (s[i - k] in vowels)\n            if current > max_vowels:\n                max_vowels = current\n        return max_vowels\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window technique counts vowels in the first k characters, then slides the window one character at a time, adding the new character’s vowel status and removing the old one’s, keeping track of the maximum seen. This avoids recomputation and uses only constant extra space.",
+  "code": "class Solution:\n    def maxVowels(self, s: str, k: int) -> int:\n        vowels = {'a', 'e', 'i', 'o', 'u'}\n        max_vowels = current = sum(ch in vowels for ch in s[:k])\n        for i in range(k, len(s)):\n            current += (s[i] in vowels) - (s[i - k] in vowels)\n            if current > max_vowels:\n                max_vowels = current\n        return max_vowels",
+  "timestamp": "2025-08-06T00:53:23.100537",
+  "code_extracted_previous": "class Solution:\n    def maxVowels(self, s: str, k: int) -> int:\n        vowels = {'a', 'e', 'i', 'o', 'u'}\n        max_vowels = current = sum(ch in vowels for ch in s[:k])\n        for i in range(k, len(s)):\n            current += (s[i] in vowels) - (s[i - k] in vowels)\n            if current > max_vowels:\n                max_vowels = current\n        return max_vowels",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.279228"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        const int MOD = 1'000'000'007;\n        int maxPos = min(steps / 2 + 1, arrLen);\n        vector<int> dp(maxPos, 0);\n        dp[0] = 1;\n        for (int s = 1; s <= steps; ++s) {\n            vector<int> next(maxPos, 0);\n            for (int p = 0; p < maxPos; ++p) {\n                next[p] = dp[p];\n                if (p > 0) next[p] = (next[p] + dp[p - 1]) % MOD;\n                if (p + 1 < maxPos) next[p] = (next[p] + dp[p + 1]) % MOD;\n            }\n            dp = move(next);\n        }\n        return dp[0];\n    }\n};\nefficiency: HIGH\ntime complexity: O(steps * min(steps, arrLen))\nspace complexity: O(min(steps, arrLen))\nenergy implications: LOW\nexplanation: Uses dynamic programming with a rolling array to track ways to reach each position after each step. Limits the state space to positions reachable within steps/2 moves, reducing both time and memory.",
+  "code": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        const int MOD = 1'000'000'007;\n        int maxPos = min(steps / 2 + 1, arrLen);\n        vector<int> dp(maxPos, 0);\n        dp[0] = 1;\n        for (int s = 1; s <= steps; ++s) {\n            vector<int> next(maxPos, 0);\n            for (int p = 0; p < maxPos; ++p) {\n                next[p] = dp[p];\n                if (p > 0) next[p] = (next[p] + dp[p - 1]) % MOD;\n                if (p + 1 < maxPos) next[p] = (next[p] + dp[p + 1]) % MOD;\n            }\n            dp = move(next);\n        }\n        return dp[0];\n    }\n};",
+  "timestamp": "2025-08-05T14:19:29.732144",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        const int MOD = 1'000'000'007;\n        int maxPos = min(steps / 2 + 1, arrLen);\n        vector<int> dp(maxPos, 0);\n        dp[0] = 1;\n        for (int s = 1; s <= steps; ++s) {\n            vector<int> next(maxPos, 0);\n            for (int p = 0; p < maxPos; ++p) {\n                next[p] = dp[p];\n                if (p > 0) next[p] = (next[p] + dp[p - 1]) % MOD;\n                if (p + 1 < maxPos) next[p] = (next[p] + dp[p + 1]) % MOD;\n            }\n            dp = move(next);\n        }\n        return dp[0];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.175839"
+}

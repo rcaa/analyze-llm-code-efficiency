@@ -1,0 +1,15 @@
+{
+  "id": 2716,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int minimizedStringLength(string s) {\n        int n = s.size();\n        vector<int> last(n, -1);\n        for (int i = n - 1; i >= 0; --i) {\n            last[s[i] - 'a'] = i;\n        }\n        int res = n;\n        for (int i = 0; i < n; ++i) {\n            int j = last[s[i] - 'a'];\n            if (j != -1) {\n                res -= 2;\n                last[s[i] - 'a'] = -1;\n                if (j > i) {\n                    last[s[j] - 'a'] = -1;\n                }\n            }\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a single pass to find the last occurrence of each character and then iterates through the string to remove the closest occurrences of each character. The time complexity is O(n) and the space complexity is O(n) due to the use of the last array. The energy implications are low as the solution only requires a single pass through the string and does not involve any complex operations.",
+  "code": "class Solution {\npublic:\n    int minimizedStringLength(string s) {\n        int n = s.size();\n        vector<int> last(n, -1);\n        for (int i = n - 1; i >= 0; --i) {\n            last[s[i] - 'a'] = i;\n        }\n        int res = n;\n        for (int i = 0; i < n; ++i) {\n            int j = last[s[i] - 'a'];\n            if (j != -1) {\n                res -= 2;\n                last[s[i] - 'a'] = -1;\n                if (j > i) {\n                    last[s[j] - 'a'] = -1;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:47:44.399307",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minimizedStringLength(string s) {\n        int n = s.size();\n        vector<int> last(n, -1);\n        for (int i = n - 1; i >= 0; --i) {\n            last[s[i] - 'a'] = i;\n        }\n        int res = n;\n        for (int i = 0; i < n; ++i) {\n            int j = last[s[i] - 'a'];\n            if (j != -1) {\n                res -= 2;\n                last[s[i] - 'a'] = -1;\n                if (j > i) {\n                    last[s[j] - 'a'] = -1;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.226036"
+}

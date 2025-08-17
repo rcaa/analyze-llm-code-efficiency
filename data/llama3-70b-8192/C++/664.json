@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, n));\n        for (int i = 0; i < n; i++) dp[i][i] = 1;\n        for (int len = 2; len <= n; len++) {\n            for (int i = 0; i < n - len + 1; i++) {\n                int j = i + len - 1;\n                if (s[i] == s[j]) dp[i][j] = dp[i][j - 1];\n                else {\n                    dp[i][j] = len;\n                    for (int k = i; k < j; k++) {\n                        dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n^2)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to build up a table of minimum turns required to print each substring of the input string. It takes advantage of the property that if the first and last characters of a substring are the same, the minimum turns required is the same as the minimum turns required for the substring without the first and last characters.",
+  "code": "class Solution {\npublic:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, n));\n        for (int i = 0; i < n; i++) dp[i][i] = 1;\n        for (int len = 2; len <= n; len++) {\n            for (int i = 0; i < n - len + 1; i++) {\n                int j = i + len - 1;\n                if (s[i] == s[j]) dp[i][j] = dp[i][j - 1];\n                else {\n                    dp[i][j] = len;\n                    for (int k = i; k < j; k++) {\n                        dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};",
+  "timestamp": "2025-08-05T16:07:28.965648",
+  "code_extracted_previous": "public:\n    int strangePrinter(string s) {\n        int n = s.size();\n        vector<vector<int>> dp(n, vector<int>(n, n));\n        for (int i = 0; i < n; i++) dp[i][i] = 1;\n        for (int len = 2; len <= n; len++) {\n            for (int i = 0; i < n - len + 1; i++) {\n                int j = i + len - 1;\n                if (s[i] == s[j]) dp[i][j] = dp[i][j - 1];\n                else {\n                    dp[i][j] = len;\n                    for (int k = i; k < j; k++) {\n                        dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j]);\n                    }\n                }\n            }\n        }\n        return dp[0][n - 1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.014227"
+}

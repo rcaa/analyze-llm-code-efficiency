@@ -1,0 +1,15 @@
+{
+  "id": 1416,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int numberOfArrays(string s, int k) {\n        int MOD = 1e9 + 7;\n        int n = s.size();\n        long long res = 1;\n        for (int i = 0; i < n; i++) {\n            long long cur = 0;\n            for (int j = i; j < n; j++) {\n                cur = cur * 10 + (s[j] - '0');\n                if (cur > k) break;\n                res = (res * (j - i + 1)) % MOD;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use dynamic programming to count the number of possible arrays. For each prefix of the string, we calculate the number of possible arrays that can be formed using the prefix. We use a long long to store the result to avoid overflow.",
+  "code": "class Solution {\npublic:\n    int numberOfArrays(string s, int k) {\n        int MOD = 1e9 + 7;\n        int n = s.size();\n        long long res = 1;\n        for (int i = 0; i < n; i++) {\n            long long cur = 0;\n            for (int j = i; j < n; j++) {\n                cur = cur * 10 + (s[j] - '0');\n                if (cur > k) break;\n                res = (res * (j - i + 1)) % MOD;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T16:11:39.300381",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfArrays(string s, int k) {\n        int MOD = 1e9 + 7;\n        int n = s.size();\n        long long res = 1;\n        for (int i = 0; i < n; i++) {\n            long long cur = 0;\n            for (int j = i; j < n; j++) {\n                cur = cur * 10 + (s[j] - '0');\n                if (cur > k) break;\n                res = (res * (j - i + 1)) % MOD;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.600440"
+}

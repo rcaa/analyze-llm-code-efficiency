@@ -1,0 +1,15 @@
+{
+  "id": 20,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> parenthesesStack;\n        unordered_map<char, char> parenthesesMap = {{')', '('}, {'}', '{'}, {']', '['}};\n        \n        for (char c : s) {\n            if (parenthesesMap.find(c) != parenthesesMap.end()) {\n                if (parenthesesStack.empty() || parenthesesStack.top() != parenthesesMap[c]) {\n                    return false;\n                }\n                parenthesesStack.pop();\n            } else {\n                parenthesesStack.push(c);\n            }\n        }\n        \n        return parenthesesStack.empty();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a stack to track opening brackets and a hash map for bracket pairs, ensuring efficient matching and validation.",
+  "code": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> parenthesesStack;\n        unordered_map<char, char> parenthesesMap = {{')', '('}, {'}', '{'}, {']', '['}};\n        \n        for (char c : s) {\n            if (parenthesesMap.find(c) != parenthesesMap.end()) {\n                if (parenthesesStack.empty() || parenthesesStack.top() != parenthesesMap[c]) {\n                    return false;\n                }\n                parenthesesStack.pop();\n            } else {\n                parenthesesStack.push(c);\n            }\n        }\n        \n        return parenthesesStack.empty();\n    }\n};",
+  "timestamp": "2025-08-05T16:19:39.677262",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> parenthesesStack;\n        unordered_map<char, char> parenthesesMap = {{')', '('}, {'}', '{'}, {']', '['}};\n        \n        for (char c : s) {\n            if (parenthesesMap.find(c) != parenthesesMap.end()) {\n                if (parenthesesStack.empty() || parenthesesStack.top() != parenthesesMap[c]) {\n                    return false;\n                }\n                parenthesesStack.pop();\n            } else {\n                parenthesesStack.push(c);\n            }\n        }\n        \n        return parenthesesStack.empty();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.016997"
+}

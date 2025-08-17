@@ -1,0 +1,15 @@
+{
+  "id": 1456,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maxVowels(String s, int k) {\n        int maxCount = 0;\n        int currentCount = 0;\n        int left = 0;\n        String vowels = \"aeiou\";\n        \n        for (int right = 0; right < s.length(); right++) {\n            if (vowels.indexOf(s.charAt(right)) != -1) {\n                currentCount++;\n            }\n            \n            if (right - left + 1 > k) {\n                if (vowels.indexOf(s.charAt(left)) != -1) {\n                    currentCount--;\n                }\n                left++;\n            }\n            \n            maxCount = Math.max(maxCount, currentCount);\n        }\n        \n        return maxCount;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to track the maximum number of vowels within a substring of length k. It maintains a count of vowels within the current window and updates the maximum count as it slides through the string.",
+  "code": "class Solution {\n    public int maxVowels(String s, int k) {\n        int maxCount = 0;\n        int currentCount = 0;\n        int left = 0;\n        String vowels = \"aeiou\";\n        \n        for (int right = 0; right < s.length(); right++) {\n            if (vowels.indexOf(s.charAt(right)) != -1) {\n                currentCount++;\n            }\n            \n            if (right - left + 1 > k) {\n                if (vowels.indexOf(s.charAt(left)) != -1) {\n                    currentCount--;\n                }\n                left++;\n            }\n            \n            maxCount = Math.max(maxCount, currentCount);\n        }\n        \n        return maxCount;\n    }\n}",
+  "timestamp": "2025-08-06T00:53:24.600002",
+  "code_extracted_previous": "class Solution {\n    public int maxVowels(String s, int k) {\n        int maxCount = 0;\n        int currentCount = 0;\n        int left = 0;\n        String vowels = \"aeiou\";\n        \n        for (int right = 0; right < s.length(); right++) {\n            if (vowels.indexOf(s.charAt(right)) != -1) {\n                currentCount++;\n            }\n            \n            if (right - left + 1 > k) {\n                if (vowels.indexOf(s.charAt(left)) != -1) {\n                    currentCount--;\n                }\n                left++;\n            }\n            \n            maxCount = Math.max(maxCount, currentCount);\n        }\n        \n        return maxCount;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.429887"
+}

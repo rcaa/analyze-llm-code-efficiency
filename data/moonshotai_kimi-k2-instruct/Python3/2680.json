@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```\nclass Solution:\n    def maximumOr(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        prefix = [0] * n\n        suffix = [0] * n\n        \n        prefix[0] = 0\n        for i in range(1, n):\n            prefix[i] = prefix[i-1] | nums[i-1]\n        \n        suffix[-1] = 0\n        for i in range(n-2, -1, -1):\n            suffix[i] = suffix[i+1] | nums[i+1]\n        \n        max_or = 0\n        for i in range(n):\n            candidate = prefix[i] | (nums[i] << k) | suffix[i]\n            if candidate > max_or:\n                max_or = candidate\n        return max_or\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Compute prefix and suffix OR arrays to isolate the effect of doubling any single element k times. The optimal strategy is to apply all k operations to one element; the prefix and suffix arrays allow O(1) evaluation of the OR result for each candidate element, yielding the maximum possible OR in linear time.",
+  "code": "class Solution:\n    def maximumOr(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        prefix = [0] * n\n        suffix = [0] * n\n        \n        prefix[0] = 0\n        for i in range(1, n):\n            prefix[i] = prefix[i-1] | nums[i-1]\n        \n        suffix[-1] = 0\n        for i in range(n-2, -1, -1):\n            suffix[i] = suffix[i+1] | nums[i+1]\n        \n        max_or = 0\n        for i in range(n):\n            candidate = prefix[i] | (nums[i] << k) | suffix[i]\n            if candidate > max_or:\n                max_or = candidate\n        return max_or",
+  "timestamp": "2025-08-05T13:34:26.323817",
+  "code_extracted_previous": "class Solution:\n    def maximumOr(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        prefix = [0] * n\n        suffix = [0] * n\n        \n        prefix[0] = 0\n        for i in range(1, n):\n            prefix[i] = prefix[i-1] | nums[i-1]\n        \n        suffix[-1] = 0\n        for i in range(n-2, -1, -1):\n            suffix[i] = suffix[i+1] | nums[i+1]\n        \n        max_or = 0\n        for i in range(n):\n            candidate = prefix[i] | (nums[i] << k) | suffix[i]\n            if candidate > max_or:\n                max_or = candidate\n        return max_or",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.787786"
+}

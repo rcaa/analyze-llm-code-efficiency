@@ -1,0 +1,15 @@
+{
+  "id": 3557,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def maxSubstrings(self, word: str) -> int:\n        n = len(word)\n        dp = [0] * n\n        for i in range(n - 1, -1, -1):\n            if i + 3 < n and word[i] == word[i + 3]:\n                dp[i] = max(dp[i + 4] + 1, dp[i + 1])\n            else:\n                dp[i] = dp[i + 1]\n        return dp[0]\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to build up a table of maximum non-intersecting substrings for each prefix of the input string.",
+  "code": "class Solution:\n    def maxSubstrings(self, word: str) -> int:\n        n = len(word)\n        dp = [0] * n\n        for i in range(n - 1, -1, -1):\n            if i + 3 < n and word[i] == word[i + 3]:\n                dp[i] = max(dp[i + 4] + 1, dp[i + 1])\n            else:\n                dp[i] = dp[i + 1]\n        return dp[0]",
+  "timestamp": "2025-08-05T15:13:39.931556",
+  "code_extracted_previous": "class Solution:\n    def maxSubstrings(self, word: str) -> int:\n        n = len(word)\n        dp = [0] * n\n        for i in range(n - 1, -1, -1):\n            if i + 3 < n and word[i] == word[i + 3]:\n                dp[i] = max(dp[i + 4] + 1, dp[i + 1])\n            else:\n                dp[i] = dp[i + 1]\n        return dp[0]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.773898"
+}

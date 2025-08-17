@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findIntegers(int n) {\n        int[] dp = new int[31];\n        dp[0] = dp[1] = 1;\n        for (int i = 2; i <= 30; i++) {\n            dp[i] = dp[i - 1] + dp[i - 2];\n        }\n        int ans = 0, lastOne = -1;\n        for (int i = 30; i >= 0; i--) {\n            if ((n & (1 << i)) != 0) {\n                ans += dp[i];\n                if (lastOne == i - 1) break;\n                lastOne = i;\n            }\n        }\n        return ans + (n - (1 << lastOne) + 1);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to precompute the number of integers with no consecutive ones up to a certain length. It then iterates over the binary representation of the input number, adding the precomputed values to the result. The final result is adjusted by adding the number of integers from 0 to the last one before the current one.",
+  "code": "class Solution {\n    public int findIntegers(int n) {\n        int[] dp = new int[31];\n        dp[0] = dp[1] = 1;\n        for (int i = 2; i <= 30; i++) {\n            dp[i] = dp[i - 1] + dp[i - 2];\n        }\n        int ans = 0, lastOne = -1;\n        for (int i = 30; i >= 0; i--) {\n            if ((n & (1 << i)) != 0) {\n                ans += dp[i];\n                if (lastOne == i - 1) break;\n                lastOne = i;\n            }\n        }\n        return ans + (n - (1 << lastOne) + 1);\n    }\n}",
+  "timestamp": "2025-08-05T14:15:05.975392",
+  "code_extracted_previous": "class Solution {\n    public int findIntegers(int n) {\n        int[] dp = new int[31];\n        dp[0] = dp[1] = 1;\n        for (int i = 2; i <= 30; i++) {\n            dp[i] = dp[i - 1] + dp[i - 2];\n        }\n        int ans = 0, lastOne = -1;\n        for (int i = 30; i >= 0; i--) {\n            if ((n & (1 << i)) != 0) {\n                ans += dp[i];\n                if (lastOne == i - 1) break;\n                lastOne = i;\n            }\n        }\n        return ans + (n - (1 << lastOne) + 1);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.937836"
+}

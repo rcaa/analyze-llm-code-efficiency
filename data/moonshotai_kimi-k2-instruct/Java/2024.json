@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        return Math.max(longest(answerKey, k, 'T'), longest(answerKey, k, 'F'));\n    }\n    \n    private int longest(String s, int k, char target) {\n        int left = 0, max = 0;\n        for (int right = 0; right < s.length(); right++) {\n            if (s.charAt(right) != target) k--;\n            while (k < 0) {\n                if (s.charAt(left) != target) k++;\n                left++;\n            }\n            max = Math.max(max, right - left + 1);\n        }\n        return max;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window technique counts the longest substring that can be made all 'T' or all 'F' with at most k flips. Two passes (one per target) give the maximum.",
+  "code": "class Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        return Math.max(longest(answerKey, k, 'T'), longest(answerKey, k, 'F'));\n    }\n    \n    private int longest(String s, int k, char target) {\n        int left = 0, max = 0;\n        for (int right = 0; right < s.length(); right++) {\n            if (s.charAt(right) != target) k--;\n            while (k < 0) {\n                if (s.charAt(left) != target) k++;\n                left++;\n            }\n            max = Math.max(max, right - left + 1);\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-06T00:56:47.157356",
+  "code_extracted_previous": "public int maxConsecutiveAnswers(String answerKey, int k) {\n        return Math.max(longest(answerKey, k, 'T'), longest(answerKey, k, 'F'));\n    }\n    \n    private int longest(String s, int k, char target) {\n        int left = 0, max = 0;\n        for (int right = 0; right < s.length(); right++) {\n            if (s.charAt(right) != target) k--;\n            while (k < 0) {\n                if (s.charAt(left) != target) k++;\n                left++;\n            }\n            max = Math.max(max, right - left + 1);\n        }\n        return max;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.713781"
+}

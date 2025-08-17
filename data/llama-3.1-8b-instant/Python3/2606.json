@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        max_val = 0\n        curr_sum = 0\n        char_map = {char: val for char, val in zip(chars, vals)}\n        for char in s:\n            if char in char_map:\n                curr_sum += char_map[char]\n            else:\n                curr_sum += ord(char) - ord('a') + 1\n            max_val = max(max_val, curr_sum)\n            if curr_sum < 0:\n                curr_sum = 0\n        return max_val\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: This solution uses a dictionary to store the values of characters in the string `chars`. It then iterates over the string `s`, updating the current sum and the maximum value as it goes. If the current sum becomes negative, it resets it to 0. This approach has a high efficiency due to its linear time complexity and low space complexity.",
+  "code": "class Solution:\n    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        max_val = 0\n        curr_sum = 0\n        char_map = {char: val for char, val in zip(chars, vals)}\n        for char in s:\n            if char in char_map:\n                curr_sum += char_map[char]\n            else:\n                curr_sum += ord(char) - ord('a') + 1\n            max_val = max(max_val, curr_sum)\n            if curr_sum < 0:\n                curr_sum = 0\n        return max_val",
+  "timestamp": "2025-08-05T13:33:26.197069",
+  "code_extracted_previous": "def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:\n        max_val = 0\n        curr_sum = 0\n        char_map = {char: val for char, val in zip(chars, vals)}\n        for char in s:\n            if char in char_map:\n                curr_sum += char_map[char]\n            else:\n                curr_sum += ord(char) - ord('a') + 1\n            max_val = max(max_val, curr_sum)\n            if curr_sum < 0:\n                curr_sum = 0\n        return max_val",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.920242"
+}

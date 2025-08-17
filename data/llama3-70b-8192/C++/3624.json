@@ -1,0 +1,15 @@
+{
+  "id": 3624,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    vector<int> popcountDepth(vector<long long>& nums, vector<vector<long long>>& queries) {\n        vector<int> depth(1e5 + 1);\n        for (int i = 1; i <= 1e5; ++i) {\n            int x = i, d = 0;\n            while (x != 1) {\n                x = __builtin_popcount(x);\n                ++d;\n            }\n            depth[i] = d;\n        }\n        \n        vector<int> res;\n        for (auto& q : queries) {\n            if (q[0] == 1) {\n                int l = q[1], r = q[2], k = q[3], cnt = 0;\n                for (int i = l; i <= r; ++i) {\n                    cnt += depth[nums[i]] == k;\n                }\n                res.push_back(cnt);\n            } else {\n                nums[q[1]] = q[2];\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + q * m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Precompute the popcount-depth for all possible numbers from 1 to 10^5 and store them in an array. Then, for each query, iterate over the range [l, r] and count the numbers with popcount-depth equal to k.",
+  "code": "class Solution {\npublic:\n    vector<int> popcountDepth(vector<long long>& nums, vector<vector<long long>>& queries) {\n        vector<int> depth(1e5 + 1);\n        for (int i = 1; i <= 1e5; ++i) {\n            int x = i, d = 0;\n            while (x != 1) {\n                x = __builtin_popcount(x);\n                ++d;\n            }\n            depth[i] = d;\n        }\n        \n        vector<int> res;\n        for (auto& q : queries) {\n            if (q[0] == 1) {\n                int l = q[1], r = q[2], k = q[3], cnt = 0;\n                for (int i = l; i <= r; ++i) {\n                    cnt += depth[nums[i]] == k;\n                }\n                res.push_back(cnt);\n            } else {\n                nums[q[1]] = q[2];\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T12:32:45.430539",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> popcountDepth(vector<long long>& nums, vector<vector<long long>>& queries) {\n        vector<int> depth(1e5 + 1);\n        for (int i = 1; i <= 1e5; ++i) {\n            int x = i, d = 0;\n            while (x != 1) {\n                x = __builtin_popcount(x);\n                ++d;\n            }\n            depth[i] = d;\n        }\n        \n        vector<int> res;\n        for (auto& q : queries) {\n            if (q[0] == 1) {\n                int l = q[1], r = q[2], k = q[3], cnt = 0;\n                for (int i = l; i <= r; ++i) {\n                    cnt += depth[nums[i]] == k;\n                }\n                res.push_back(cnt);\n            } else {\n                nums[q[1]] = q[2];\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.862427"
+}

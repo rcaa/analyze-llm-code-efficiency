@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nimport heapq\nfrom typing import List\n\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.heap = []\n        for num in nums:\n            self.add(num)\n\n    def add(self, val: int) -> int:\n        if len(self.heap) < self.k:\n            heapq.heappush(self.heap, val)\n        elif val > self.heap[0]:\n            heapq.heappop(self.heap)\n            heapq.heappush(self.heap, val)\n        return self.heap[0]\n```\n\nefficiency: HIGH\ntime complexity: O(n log k) for initialization and O(log k) for add operation\nspace complexity: O(k)\nenergy implications: LOW",
+  "code": "class KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.heap = []\n        for num in nums:\n            self.add(num)\n\n    def add(self, val: int) -> int:\n        if len(self.heap) < self.k:\n            heapq.heappush(self.heap, val)\n        elif val > self.heap[0]:\n            heapq.heappop(self.heap)\n            heapq.heappush(self.heap, val)\n        return self.heap[0]",
+  "timestamp": "2025-08-06T01:11:37.827315",
+  "code_extracted_previous": "import heapq\nfrom typing import List\n\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.heap = []\n        for num in nums:\n            self.add(num)\n\n    def add(self, val: int) -> int:\n        if len(self.heap) < self.k:\n            heapq.heappush(self.heap, val)\n        elif val > self.heap[0]:\n            heapq.heappop(self.heap)\n            heapq.heappush(self.heap, val)\n        return self.heap[0]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:31.452819"
+}

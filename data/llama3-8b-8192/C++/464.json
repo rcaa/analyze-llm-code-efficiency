@@ -1,0 +1,15 @@
+{
+  "id": 464,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    bool canIWin(int maxChoosableInteger, int desiredTotal) {\n        if (desiredTotal <= 0) return true;\n        vector<bool> used(maxChoosableInteger + 1, false);\n        return dfs(used, 0, desiredTotal);\n    }\n    bool dfs(vector<bool>& used, int total, int desiredTotal) {\n        if (total >= desiredTotal) return true;\n        for (int i = 1; i <= maxChoosableInteger; i++) {\n            if (!used[i]) {\n                used[i] = true;\n                if (!dfs(used, total + i, desiredTotal)) {\n                    used[i] = false;\n                    return true;\n                }\n                used[i] = false;\n            }\n        }\n        return false;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(2^n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a depth-first search (DFS) to explore all possible moves. It keeps track of the used numbers to avoid reusing them. The DFS function returns true if the current total is greater than or equal to the desired total, or if it finds a move that leads to a win. The main function initializes the used array and calls the DFS function. The time complexity is exponential because in the worst case, the DFS function needs to explore all possible moves.",
+  "code": "class Solution {\npublic:\n    bool canIWin(int maxChoosableInteger, int desiredTotal) {\n        if (desiredTotal <= 0) return true;\n        vector<bool> used(maxChoosableInteger + 1, false);\n        return dfs(used, 0, desiredTotal);\n    }\n    bool dfs(vector<bool>& used, int total, int desiredTotal) {\n        if (total >= desiredTotal) return true;\n        for (int i = 1; i <= maxChoosableInteger; i++) {\n            if (!used[i]) {\n                used[i] = true;\n                if (!dfs(used, total + i, desiredTotal)) {\n                    used[i] = false;\n                    return true;\n                }\n                used[i] = false;\n            }\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T15:42:26.298845",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canIWin(int maxChoosableInteger, int desiredTotal) {\n        if (desiredTotal <= 0) return true;\n        vector<bool> used(maxChoosableInteger + 1, false);\n        return dfs(used, 0, desiredTotal);\n    }\n    bool dfs(vector<bool>& used, int total, int desiredTotal) {\n        if (total >= desiredTotal) return true;\n        for (int i = 1; i <= maxChoosableInteger; i++) {\n            if (!used[i]) {\n                used[i] = true;\n                if (!dfs(used, total + i, desiredTotal)) {\n                    used[i] = false;\n                    return true;\n                }\n                used[i] = false;\n            }\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.378574"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        def gcd(a, b):\n            while b:\n                a, b = b, a % b\n            return a\n\n        n = len(nums)\n        dp = [[0] * (maxC + 1) for _ in range(n + 1)]\n        for i in range(1, n + 1):\n            for j in range(1, min(i, maxC) + 1):\n                dp[i][j] = dp[i - 1][j]\n                for k in range(i - 1, max(0, i - 10)):\n                    if gcd(nums[k], nums[i - 1]) >= 2:\n                        dp[i][j] = max(dp[i][j], dp[k][j - 1] + 1)\n        return max(dp[n])\n```\n\nefficiency: HIGH\ntime complexity: O(n^2 * maxC)\nspace complexity: O(n * maxC)\nenergy implications: MEDIUM\nexplanation: This solution uses dynamic programming to find the maximum length of a stable subarray that can be obtained by modifying at most maxC elements. It iterates over all possible subarrays and for each subarray, it checks all possible modifications to find the maximum length of a stable subarray. The time complexity is O(n^2 * maxC) due to the nested loops, and the space complexity is O(n * maxC) for the dynamic programming table.",
+  "code": "class Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        def gcd(a, b):\n            while b:\n                a, b = b, a % b\n            return a\n\n        n = len(nums)\n        dp = [[0] * (maxC + 1) for _ in range(n + 1)]\n        for i in range(1, n + 1):\n            for j in range(1, min(i, maxC) + 1):\n                dp[i][j] = dp[i - 1][j]\n                for k in range(i - 1, max(0, i - 10)):\n                    if gcd(nums[k], nums[i - 1]) >= 2:\n                        dp[i][j] = max(dp[i][j], dp[k][j - 1] + 1)\n        return max(dp[n])",
+  "timestamp": "2025-08-05T12:23:38.389746",
+  "code_extracted_previous": "class Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        def gcd(a, b):\n            while b:\n                a, b = b, a % b\n            return a\n\n        n = len(nums)\n        dp = [[0] * (maxC + 1) for _ in range(n + 1)]\n        for i in range(1, n + 1):\n            for j in range(1, min(i, maxC) + 1):\n                dp[i][j] = dp[i - 1][j]\n                for k in range(i - 1, max(0, i - 10)):\n                    if gcd(nums[k], nums[i - 1]) >= 2:\n                        dp[i][j] = max(dp[i][j], dp[k][j - 1] + 1)\n        return max(dp[n])",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.222053"
+}

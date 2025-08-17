@@ -1,0 +1,15 @@
+{
+  "id": 264,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int nthUglyNumber(int n) {\n        int[] ugly = new int[n];\n        ugly[0] = 1;\n        int i2 = 0, i3 = 0, i5 = 0;\n        for (int i = 1; i < n; i++) {\n            int next2 = 2 * ugly[i2], next3 = 3 * ugly[i3], next5 = 5 * ugly[i5];\n            int nextUgly = Math.min(next2, Math.min(next3, next5));\n            ugly[i] = nextUgly;\n            if (nextUgly == next2) i2++;\n            if (nextUgly == next3) i3++;\n            if (nextUgly == next5) i5++;\n        }\n        return ugly[n - 1];\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses dynamic programming to generate the sequence of ugly numbers, maintaining pointers for the next multiples of 2, 3, and 5, and selecting the smallest to ensure the sequence is generated in ascending order efficiently.\n```",
+  "code": "class Solution {\n    public int nthUglyNumber(int n) {\n        int[] ugly = new int[n];\n        ugly[0] = 1;\n        int i2 = 0, i3 = 0, i5 = 0;\n        for (int i = 1; i < n; i++) {\n            int next2 = 2 * ugly[i2], next3 = 3 * ugly[i3], next5 = 5 * ugly[i5];\n            int nextUgly = Math.min(next2, Math.min(next3, next5));\n            ugly[i] = nextUgly;\n            if (nextUgly == next2) i2++;\n            if (nextUgly == next3) i3++;\n            if (nextUgly == next5) i5++;\n        }\n        return ugly[n - 1];\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses dynamic programming to generate the sequence of ugly numbers, maintaining pointers for the next multiples of 2, 3, and 5, and selecting the smallest to ensure the sequence is generated in ascending order efficiently.",
+  "timestamp": "2025-08-05T14:51:33.673895",
+  "code_extracted_previous": "class Solution {\n    public int nthUglyNumber(int n) {\n        int[] ugly = new int[n];\n        ugly[0] = 1;\n        int i2 = 0, i3 = 0, i5 = 0;\n        for (int i = 1; i < n; i++) {\n            int next2 = 2 * ugly[i2], next3 = 3 * ugly[i3], next5 = 5 * ugly[i5];\n            int nextUgly = Math.min(next2, Math.min(next3, next5));\n            ugly[i] = nextUgly;\n            if (nextUgly == next2) i2++;\n            if (nextUgly == next3) i3++;\n            if (nextUgly == next5) i5++;\n        }\n        return ugly[n - 1];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.665772"
+}

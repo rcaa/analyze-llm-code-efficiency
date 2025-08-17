@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        i = 0\n        j = 0\n        latest_time = 0\n        while i < len(buses) and j < len(passengers):\n            if passengers[j] < buses[i]:\n                j += 1\n            else:\n                boarding = min(capacity, len(passengers) - j)\n                j += boarding\n                latest_time = max(latest_time, buses[i] + boarding - 1)\n                i += 1\n        return latest_time\n```\nsolution: ```python\nbuses.sort()\npassengers.sort()\ni = 0\nj = 0\nlatest_time = 0\nwhile i < len(buses) and j < len(passengers):\n    if passengers[j] < buses[i]:\n        j += 1\n    else:\n        boarding = min(capacity, len(passengers) - j)\n        j += boarding\n        latest_time = max(latest_time, buses[i] + boarding - 1)\n        i += 1\nreturn latest_time\n```\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution sorts both the buses and passengers arrays, allowing for efficient iteration and comparison. It then uses two pointers to track the current bus and passenger indices, boarding passengers onto buses until the capacity is reached or all passengers have been boarded. The `latest_time` variable keeps track of the latest arrival time that allows a passenger to catch a bus.",
+  "code": "solution:",
+  "timestamp": "2025-08-05T13:28:04.231498",
+  "code_extracted_previous": "buses.sort()\npassengers.sort()\ni = 0\nj = 0\nlatest_time = 0\nwhile i < len(buses) and j < len(passengers):\n    if passengers[j] < buses[i]:\n        j += 1\n    else:\n        boarding = min(capacity, len(passengers) - j)\n        j += boarding\n        latest_time = max(latest_time, buses[i] + boarding - 1)\n        i += 1\nreturn latest_time",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.257523"
+}

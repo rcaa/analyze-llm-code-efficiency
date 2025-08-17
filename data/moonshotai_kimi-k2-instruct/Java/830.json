@@ -1,0 +1,15 @@
+{
+  "id": 830,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public List<List<Integer>> largeGroupPositions(String s) {\n        List<List<Integer>> res = new ArrayList<>();\n        int n = s.length();\n        if (n < 3) return res;\n        int start = 0;\n        for (int i = 1; i <= n; i++) {\n            if (i == n || s.charAt(i) != s.charAt(start)) {\n                if (i - start >= 3) {\n                    res.add(Arrays.asList(start, i - 1));\n                }\n                start = i;\n            }\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1) excluding output\nenergy implications: LOW\nexplanation: Single linear scan tracking start of each group; when group ends, check length and record interval if ≥3. Minimal extra memory and CPU usage.",
+  "code": "class Solution {\n    public List<List<Integer>> largeGroupPositions(String s) {\n        List<List<Integer>> res = new ArrayList<>();\n        int n = s.length();\n        if (n < 3) return res;\n        int start = 0;\n        for (int i = 1; i <= n; i++) {\n            if (i == n || s.charAt(i) != s.charAt(start)) {\n                if (i - start >= 3) {\n                    res.add(Arrays.asList(start, i - 1));\n                }\n                start = i;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T23:38:55.519680",
+  "code_extracted_previous": "public List<List<Integer>> largeGroupPositions(String s) {\n        List<List<Integer>> res = new ArrayList<>();\n        int n = s.length();\n        if (n < 3) return res;\n        int start = 0;\n        for (int i = 1; i <= n; i++) {\n            if (i == n || s.charAt(i) != s.charAt(start)) {\n                if (i - start >= 3) {\n                    res.add(Arrays.asList(start, i - 1));\n                }\n                start = i;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.833129"
+}

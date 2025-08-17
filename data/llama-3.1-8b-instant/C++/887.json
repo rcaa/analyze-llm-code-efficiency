@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        for (int i = 1; i <= k; i++) {\n            for (int j = 1; j <= n; j++) {\n                dp[i][j] = 1 + min(dp[i - 1][j - 1], dp[i][j - 1]);\n                if (j == 1) dp[i][j] = 1;\n                if (i == 1) dp[i][j] = j;\n            }\n        }\n        return dp[k][n];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(k * n)\nspace complexity: O(k * n)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        for (int i = 1; i <= k; i++) {\n            for (int j = 1; j <= n; j++) {\n                dp[i][j] = 1 + min(dp[i - 1][j - 1], dp[i][j - 1]);\n                if (j == 1) dp[i][j] = 1;\n                if (i == 1) dp[i][j] = j;\n            }\n        }\n        return dp[k][n];\n    }\n};",
+  "timestamp": "2025-08-05T15:17:34.636697",
+  "code_extracted_previous": "class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));\n        for (int i = 1; i <= k; i++) {\n            for (int j = 1; j <= n; j++) {\n                dp[i][j] = 1 + min(dp[i - 1][j - 1], dp[i][j - 1]);\n                if (j == 1) dp[i][j] = 1;\n                if (i == 1) dp[i][j] = j;\n            }\n        }\n        return dp[k][n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.778210"
+}

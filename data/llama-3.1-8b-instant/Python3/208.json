@@ -1,0 +1,15 @@
+{
+  "id": 208,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Trie:\n\n    def __init__(self):\n        self.root = {}\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for char in word:\n            if char not in node:\n                node[char] = {}\n            node = node[char]\n        node['#'] = {}\n\n    def search(self, word: str) -> bool:\n        node = self.root\n        for char in word:\n            if char not in node:\n                return False\n            node = node[char]\n        return '#' in node\n\n    def startsWith(self, prefix: str) -> bool:\n        node = self.root\n        for char in prefix:\n            if char not in node:\n                return False\n            node = node[char]\n        return True\n```\n\nefficiency: HIGH\ntime complexity: O(m) where m is the length of the word or prefix\nspace complexity: O(m) where m is the length of the word or prefix\nenergy implications: LOW",
+  "code": "class Trie:\n\n    def __init__(self):\n        self.root = {}\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for char in word:\n            if char not in node:\n                node[char] = {}\n            node = node[char]\n        node['#'] = {}\n\n    def search(self, word: str) -> bool:\n        node = self.root\n        for char in word:\n            if char not in node:\n                return False\n            node = node[char]\n        return '#' in node\n\n    def startsWith(self, prefix: str) -> bool:\n        node = self.root\n        for char in prefix:\n            if char not in node:\n                return False\n            node = node[char]\n        return True",
+  "timestamp": "2025-08-05T14:51:25.814163",
+  "code_extracted_previous": "class Trie:\n\n    def __init__(self):\n        self.root = {}\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for char in word:\n            if char not in node:\n                node[char] = {}\n            node = node[char]\n        node['#'] = {}\n\n    def search(self, word: str) -> bool:\n        node = self.root\n        for char in word:\n            if char not in node:\n                return False\n            node = node[char]\n        return '#' in node\n\n    def startsWith(self, prefix: str) -> bool:\n        node = self.root\n        for char in prefix:\n            if char not in node:\n                return False\n            node = node[char]\n        return True",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:30.552088"
+}

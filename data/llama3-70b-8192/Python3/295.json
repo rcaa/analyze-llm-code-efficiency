@@ -1,0 +1,15 @@
+{
+  "id": 295,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass MedianFinder:\n\n    def __init__(self):\n        self.lower = []\n        self.higher = []\n\n    def addNum(self, num: int) -> None:\n        if not self.lower or num <= -self.lower[0]:\n            heapq.heappush(self.lower, -num)\n        else:\n            heapq.heappush(self.higher, num)\n        if len(self.lower) > len(self.higher) + 1:\n            heapq.heappush(self.higher, -heapq.heappop(self.lower))\n        elif len(self.higher) > len(self.lower):\n            heapq.heappush(self.lower, -heapq.heappop(self.higher))\n\n    def findMedian(self) -> float:\n        if len(self.lower) == len(self.higher):\n            return (-self.lower[0] + self.higher[0]) / 2\n        else:\n            return -self.lower[0]\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses two heaps to maintain the balance of the lower and higher halves of the input stream, ensuring efficient insertion and median calculation.",
+  "code": "class MedianFinder:\n\n    def __init__(self):\n        self.lower = []\n        self.higher = []\n\n    def addNum(self, num: int) -> None:\n        if not self.lower or num <= -self.lower[0]:\n            heapq.heappush(self.lower, -num)\n        else:\n            heapq.heappush(self.higher, num)\n        if len(self.lower) > len(self.higher) + 1:\n            heapq.heappush(self.higher, -heapq.heappop(self.lower))\n        elif len(self.higher) > len(self.lower):\n            heapq.heappush(self.lower, -heapq.heappop(self.higher))\n\n    def findMedian(self) -> float:\n        if len(self.lower) == len(self.higher):\n            return (-self.lower[0] + self.higher[0]) / 2\n        else:\n            return -self.lower[0]",
+  "timestamp": "2025-08-06T01:13:40.349127",
+  "code_extracted_previous": "class MedianFinder:\n\n    def __init__(self):\n        self.lower = []\n        self.higher = []\n\n    def addNum(self, num: int) -> None:\n        if not self.lower or num <= -self.lower[0]:\n            heapq.heappush(self.lower, -num)\n        else:\n            heapq.heappush(self.higher, num)\n        if len(self.lower) > len(self.higher) + 1:\n            heapq.heappush(self.higher, -heapq.heappop(self.lower))\n        elif len(self.higher) > len(self.lower):\n            heapq.heappush(self.lower, -heapq.heappop(self.higher))\n\n    def findMedian(self) -> float:\n        if len(self.lower) == len(self.higher):\n            return (-self.lower[0] + self.higher[0]) / 2\n        else:\n            return -self.lower[0]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:39.432208"
+}

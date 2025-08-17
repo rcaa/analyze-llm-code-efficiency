@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int maxLength = 0;\n        int left = 0;\n        Map<Character, Integer> charIndexMap = new HashMap<>();\n        \n        for (int right = 0; right < s.length(); right++) {\n            char c = s.charAt(right);\n            if (charIndexMap.containsKey(c)) {\n                left = Math.max(left, charIndexMap.get(c) + 1);\n            }\n            charIndexMap.put(c, right);\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        \n        return maxLength;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, m))\nenergy implications: LOW\nexplanation: Sliding window approach with a HashMap to track character indices, allowing for efficient duplicate detection and substring length calculation.",
+  "code": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int maxLength = 0;\n        int left = 0;\n        Map<Character, Integer> charIndexMap = new HashMap<>();\n        \n        for (int right = 0; right < s.length(); right++) {\n            char c = s.charAt(right);\n            if (charIndexMap.containsKey(c)) {\n                left = Math.max(left, charIndexMap.get(c) + 1);\n            }\n            charIndexMap.put(c, right);\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        \n        return maxLength;\n    }\n}",
+  "timestamp": "2025-08-05T14:49:31.071800",
+  "code_extracted_previous": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int maxLength = 0;\n        int left = 0;\n        Map<Character, Integer> charIndexMap = new HashMap<>();\n        \n        for (int right = 0; right < s.length(); right++) {\n            char c = s.charAt(right);\n            if (charIndexMap.containsKey(c)) {\n                left = Math.max(left, charIndexMap.get(c) + 1);\n            }\n            charIndexMap.put(c, right);\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        \n        return maxLength;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.087098"
+}

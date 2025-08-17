@@ -1,0 +1,15 @@
+{
+  "id": 609,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = {}\n        for path in paths:\n            dir_path, *files = path.split()\n            for file in files:\n                file_name, content = file.split('(')\n                content = content[:-1]\n                if content not in content_map:\n                    content_map[content] = []\n                content_map[content].append(f\"{dir_path}/{file_name}\")\n        return [file_paths for file_paths in content_map.values() if len(file_paths) > 1]\n```\nefficiency: HIGH\ntime complexity: O(NM)\nspace complexity: O(NM)\nenergy implications: LOW\nexplanation: This solution uses a hashmap to store the file contents as keys and their corresponding file paths as values. It then iterates over the input paths, splitting each path into directory path and files, and further splitting each file into file name and content. It updates the hashmap accordingly and finally returns the groups of duplicate file paths.",
+  "code": "class Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = {}\n        for path in paths:\n            dir_path, *files = path.split()\n            for file in files:\n                file_name, content = file.split('(')\n                content = content[:-1]\n                if content not in content_map:\n                    content_map[content] = []\n                content_map[content].append(f\"{dir_path}/{file_name}\")\n        return [file_paths for file_paths in content_map.values() if len(file_paths) > 1]",
+  "timestamp": "2025-08-05T13:04:02.316150",
+  "code_extracted_previous": "class Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = {}\n        for path in paths:\n            dir_path, *files = path.split()\n            for file in files:\n                file_name, content = file.split('(')\n                content = content[:-1]\n                if content not in content_map:\n                    content_map[content] = []\n                content_map[content].append(f\"{dir_path}/{file_name}\")\n        return [file_paths for file_paths in content_map.values() if len(file_paths) > 1]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.956605"
+}

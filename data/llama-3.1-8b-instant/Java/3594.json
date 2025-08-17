@@ -1,0 +1,15 @@
+{
+  "id": 3594,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public double minTime(int n, int k, int m, int[] time, double[] mul) {\n        double[][] dp = new double[n + 1][m];\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < m; j++) {\n                dp[i][j] = Double.POSITIVE_INFINITY;\n            }\n        }\n        dp[0][0] = 0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < m; j++) {\n                for (int p = 1; p <= Math.min(i, k); p++) {\n                    double timeToCross = Math.max(time[i - p], dp[i - p][j]) * mul[j];\n                    int nextStage = (int) ((timeToCross / m) + j) % m;\n                    dp[i][j] = Math.min(dp[i][j], timeToCross + (p == i ? 0 : mul[nextStage] * time[i - p]));\n                }\n            }\n        }\n        return dp[n][0] == Double.POSITIVE_INFINITY ? -1 : dp[n][0];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * m * k)\nspace complexity: O(n * m)\nenergy implications: LOW",
+  "code": "class Solution {\n    public double minTime(int n, int k, int m, int[] time, double[] mul) {\n        double[][] dp = new double[n + 1][m];\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < m; j++) {\n                dp[i][j] = Double.POSITIVE_INFINITY;\n            }\n        }\n        dp[0][0] = 0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < m; j++) {\n                for (int p = 1; p <= Math.min(i, k); p++) {\n                    double timeToCross = Math.max(time[i - p], dp[i - p][j]) * mul[j];\n                    int nextStage = (int) ((timeToCross / m) + j) % m;\n                    dp[i][j] = Math.min(dp[i][j], timeToCross + (p == i ? 0 : mul[nextStage] * time[i - p]));\n                }\n            }\n        }\n        return dp[n][0] == Double.POSITIVE_INFINITY ? -1 : dp[n][0];\n    }\n}",
+  "timestamp": "2025-08-05T12:20:53.401228",
+  "code_extracted_previous": "class Solution {\n    public double minTime(int n, int k, int m, int[] time, double[] mul) {\n        double[][] dp = new double[n + 1][m];\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < m; j++) {\n                dp[i][j] = Double.POSITIVE_INFINITY;\n            }\n        }\n        dp[0][0] = 0;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < m; j++) {\n                for (int p = 1; p <= Math.min(i, k); p++) {\n                    double timeToCross = Math.max(time[i - p], dp[i - p][j]) * mul[j];\n                    int nextStage = (int) ((timeToCross / m) + j) % m;\n                    dp[i][j] = Math.min(dp[i][j], timeToCross + (p == i ? 0 : mul[nextStage] * time[i - p]));\n                }\n            }\n        }\n        return dp[n][0] == Double.POSITIVE_INFINITY ? -1 : dp[n][0];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.755975"
+}

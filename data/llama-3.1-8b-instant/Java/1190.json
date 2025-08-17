@@ -1,0 +1,15 @@
+{
+  "id": 1190,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String reverseParentheses(String s) {\n        Stack<Character> stack = new Stack<>();\n        StringBuilder sb = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                stack.push(c);\n            } else if (c == ')') {\n                while (stack.peek() != '(') {\n                    sb.append(stack.pop());\n                }\n                stack.pop();\n            } else if (stack.isEmpty()) {\n                sb.append(c);\n            } else {\n                stack.push(c);\n            }\n        }\n        return sb.toString();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to keep track of the characters within each pair of parentheses. When a closing parenthesis is encountered, it reverses the characters in the stack and appends them to the result string. This approach ensures that the strings within each pair of parentheses are reversed correctly, and the overall time complexity is linear.",
+  "code": "class Solution {\n    public String reverseParentheses(String s) {\n        Stack<Character> stack = new Stack<>();\n        StringBuilder sb = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                stack.push(c);\n            } else if (c == ')') {\n                while (stack.peek() != '(') {\n                    sb.append(stack.pop());\n                }\n                stack.pop();\n            } else if (stack.isEmpty()) {\n                sb.append(c);\n            } else {\n                stack.push(c);\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-06T00:50:02.330958",
+  "code_extracted_previous": "class Solution {\n    public String reverseParentheses(String s) {\n        Stack<Character> stack = new Stack<>();\n        StringBuilder sb = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                stack.push(c);\n            } else if (c == ')') {\n                while (stack.peek() != '(') {\n                    sb.append(stack.pop());\n                }\n                stack.pop();\n            } else if (stack.isEmpty()) {\n                sb.append(c);\n            } else {\n                stack.push(c);\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.910425"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row)\n        pos = [0] * n\n        for idx, val in enumerate(row):\n            pos[val] = idx\n        \n        swaps = 0\n        for i in range(0, n, 2):\n            x = row[i]\n            y = x ^ 1\n            if row[i+1] != y:\n                j = pos[y]\n                row[i+1], row[j] = row[j], row[i+1]\n                pos[row[j]] = j\n                pos[row[i+1]] = i+1\n                swaps += 1\n        return swaps\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Treat each couple as a node in a graph; the required seating forms cycles. Each cycle of length k needs k-1 swaps. The algorithm greedily fixes each seat in pairs, using a position map for O(1) lookups, achieving optimal swaps in linear time.",
+  "code": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row)\n        pos = [0] * n\n        for idx, val in enumerate(row):\n            pos[val] = idx\n        \n        swaps = 0\n        for i in range(0, n, 2):\n            x = row[i]\n            y = x ^ 1\n            if row[i+1] != y:\n                j = pos[y]\n                row[i+1], row[j] = row[j], row[i+1]\n                pos[row[j]] = j\n                pos[row[i+1]] = i+1\n                swaps += 1\n        return swaps",
+  "timestamp": "2025-08-05T14:31:11.684527",
+  "code_extracted_previous": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row)\n        pos = [0] * n\n        for idx, val in enumerate(row):\n            pos[val] = idx\n        \n        swaps = 0\n        for i in range(0, n, 2):\n            x = row[i]\n            y = x ^ 1\n            if row[i+1] != y:\n                j = pos[y]\n                row[i+1], row[j] = row[j], row[i+1]\n                pos[row[j]] = j\n                pos[row[i+1]] = i+1\n                swaps += 1\n        return swaps",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.488210"
+}

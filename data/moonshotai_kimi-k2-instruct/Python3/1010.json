@@ -1,0 +1,15 @@
+{
+  "id": 1010,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def numPairsDivisibleBy60(self, time: List[int]) -> int:\n        from collections import defaultdict\n        cnt = defaultdict(int)\n        res = 0\n        for t in time:\n            rem = t % 60\n            need = (60 - rem) % 60\n            res += cnt[need]\n            cnt[rem] += 1\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass through the list, using a fixed-size hash map (only 60 possible remainders) to count complements. Each song contributes to the result by the number of previously seen songs whose remainder pairs with the current song’s remainder to sum to 60.",
+  "code": "class Solution:\n    def numPairsDivisibleBy60(self, time: List[int]) -> int:\n        cnt = defaultdict(int)\n        res = 0\n        for t in time:\n            rem = t % 60\n            need = (60 - rem) % 60\n            res += cnt[need]\n            cnt[rem] += 1\n        return res",
+  "timestamp": "2025-08-05T13:17:28.310020",
+  "code_extracted_previous": "class Solution:\n    def numPairsDivisibleBy60(self, time: List[int]) -> int:\n        from collections import defaultdict\n        cnt = defaultdict(int)\n        res = 0\n        for t in time:\n            rem = t % 60\n            need = (60 - rem) % 60\n            res += cnt[need]\n            cnt[rem] += 1\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:55.966080"
+}

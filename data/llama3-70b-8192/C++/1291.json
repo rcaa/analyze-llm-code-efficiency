@@ -1,0 +1,15 @@
+{
+  "id": 1291,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> res;\n        for (int digits = 1; digits <= 9; ++digits) {\n            int num = 0;\n            for (int i = 0; i < digits; ++i) {\n                num = num * 10 + i + 1;\n            }\n            while (num <= high && num >= low) {\n                if (num >= low) res.push_back(num);\n                int add = 1;\n                for (int i = digits - 1; i >= 0; --i) {\n                    num += add;\n                    add *= 10;\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over possible number of digits and generates sequential digits numbers, checking if they fall within the given range. It uses a single loop to generate numbers and another to adjust the number for the next iteration. The result is then sorted before being returned.",
+  "code": "class Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> res;\n        for (int digits = 1; digits <= 9; ++digits) {\n            int num = 0;\n            for (int i = 0; i < digits; ++i) {\n                num = num * 10 + i + 1;\n            }\n            while (num <= high && num >= low) {\n                if (num >= low) res.push_back(num);\n                int add = 1;\n                for (int i = digits - 1; i >= 0; --i) {\n                    num += add;\n                    add *= 10;\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:30:22.247461",
+  "code_extracted_previous": "public:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> res;\n        for (int digits = 1; digits <= 9; ++digits) {\n            int num = 0;\n            for (int i = 0; i < digits; ++i) {\n                num = num * 10 + i + 1;\n            }\n            while (num <= high && num >= low) {\n                if (num >= low) res.push_back(num);\n                int add = 1;\n                for (int i = digits - 1; i >= 0; --i) {\n                    num += add;\n                    add *= 10;\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.120268"
+}

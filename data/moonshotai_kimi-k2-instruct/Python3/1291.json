@@ -1,0 +1,15 @@
+{
+  "id": 1291,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def sequentialDigits(self, low: int, high: int) -> List[int]:\n        from collections import deque\n        queue = deque(range(1, 10))\n        res = []\n        while queue:\n            num = queue.popleft()\n            if low <= num <= high:\n                res.append(num)\n            last = num % 10\n            if last < 9:\n                next_num = num * 10 + (last + 1)\n                if next_num <= high:\n                    queue.append(next_num)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Generates all sequential-digit numbers via BFS, pruning early when next_num exceeds high. Only ~36 valid numbers exist, so runtime and memory are constant.",
+  "code": "class Solution:\n    def sequentialDigits(self, low: int, high: int) -> List[int]:\n        queue = deque(range(1, 10))\n        res = []\n        while queue:\n            num = queue.popleft()\n            if low <= num <= high:\n                res.append(num)\n            last = num % 10\n            if last < 9:\n                next_num = num * 10 + (last + 1)\n                if next_num <= high:\n                    queue.append(next_num)\n        return res",
+  "timestamp": "2025-08-05T14:30:42.478371",
+  "code_extracted_previous": "def sequentialDigits(self, low: int, high: int) -> List[int]:\n        from collections import deque\n        queue = deque(range(1, 10))\n        res = []\n        while queue:\n            num = queue.popleft()\n            if low <= num <= high:\n                res.append(num)\n            last = num % 10\n            if last < 9:\n                next_num = num * 10 + (last + 1)\n                if next_num <= high:\n                    queue.append(next_num)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.090365"
+}

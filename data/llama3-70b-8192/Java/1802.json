@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = 1, right = maxSum;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            long sum = (long)mid * (mid + 1) / 2;\n            if (index < mid) sum += (long)(mid - index);\n            if (n - index - 1 < mid) sum += (long)(mid - (n - index - 1));\n            if (sum > maxSum) right = mid;\n            else left = mid + 1;\n        }\n        return left - 1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(maxSum))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the maximum possible value of nums[index]. The sum of the array is calculated based on the value of nums[index] and the constraints of the problem.",
+  "code": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = 1, right = maxSum;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            long sum = (long)mid * (mid + 1) / 2;\n            if (index < mid) sum += (long)(mid - index);\n            if (n - index - 1 < mid) sum += (long)(mid - (n - index - 1));\n            if (sum > maxSum) right = mid;\n            else left = mid + 1;\n        }\n        return left - 1;\n    }\n}",
+  "timestamp": "2025-08-05T15:52:49.310838",
+  "code_extracted_previous": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = 1, right = maxSum;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            long sum = (long)mid * (mid + 1) / 2;\n            if (index < mid) sum += (long)(mid - index);\n            if (n - index - 1 < mid) sum += (long)(mid - (n - index - 1));\n            if (sum > maxSum) right = mid;\n            else left = mid + 1;\n        }\n        return left - 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.640550"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (x > target) return Math.min(2, target);\n        long cur = x;\n        int count = 0;\n        while (cur < target) {\n            cur *= x;\n            count++;\n        }\n        if (cur == target) return count;\n        long pre = cur / x;\n        long diff1 = cur - target;\n        long diff2 = target - pre;\n        int res1 = count + (int) Math.ceil((double) diff1 / x);\n        int res2 = count - 1 + (int) Math.ceil((double) diff2 / x);\n        return Math.min(res1, res2);\n    }\n}\nefficiency: HIGH\ntime complexity: O(log(target)/log(x))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a greedy approach, iteratively multiplying x until it exceeds the target, then adjusting the expression to get as close to the target as possible with the least number of operations.\n```",
+  "code": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (x > target) return Math.min(2, target);\n        long cur = x;\n        int count = 0;\n        while (cur < target) {\n            cur *= x;\n            count++;\n        }\n        if (cur == target) return count;\n        long pre = cur / x;\n        long diff1 = cur - target;\n        long diff2 = target - pre;\n        int res1 = count + (int) Math.ceil((double) diff1 / x);\n        int res2 = count - 1 + (int) Math.ceil((double) diff2 / x);\n        return Math.min(res1, res2);\n    }\n}\nefficiency: HIGH\ntime complexity: O(log(target)/log(x))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a greedy approach, iteratively multiplying x until it exceeds the target, then adjusting the expression to get as close to the target as possible with the least number of operations.",
+  "timestamp": "2025-08-05T15:19:00.981894",
+  "code_extracted_previous": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (x > target) return Math.min(2, target);\n        long cur = x;\n        int count = 0;\n        while (cur < target) {\n            cur *= x;\n            count++;\n        }\n        if (cur == target) return count;\n        long pre = cur / x;\n        long diff1 = cur - target;\n        long diff2 = target - pre;\n        int res1 = count + (int) Math.ceil((double) diff1 / x);\n        int res2 = count - 1 + (int) Math.ceil((double) diff2 / x);\n        return Math.min(res1, res2);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:47.190303"
+}

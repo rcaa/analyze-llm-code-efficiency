@@ -1,0 +1,15 @@
+{
+  "id": 1291,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public List<Integer> sequentialDigits(int low, int high) {\n        List<Integer> result = new ArrayList<>();\n        int[] digits = {1,2,3,4,5,6,7,8,9};\n\n        for (int length = 1; length <= 9; length++) {\n            for (int i = 0; i + length <= 9; i++) {\n                int num = 0;\n                for (int j = i; j < i + length; j++) {\n                    num = num * 10 + digits[j];\n                }\n                if (num >= low && num <= high) {\n                    result.add(num);\n                }\n            }\n        }\n\n        Collections.sort(result);\n        return result;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The solution generates all possible sequential numbers by iterating through all possible lengths and starting digits. It checks if each generated number is within the given range and adds it to the result list. The result is then sorted. The time and space complexity are effectively constant because the number of sequential digits is limited.>",
+  "code": "class Solution {\n    public List<Integer> sequentialDigits(int low, int high) {\n        List<Integer> result = new ArrayList<>();\n        int[] digits = {1,2,3,4,5,6,7,8,9};\n\n        for (int length = 1; length <= 9; length++) {\n            for (int i = 0; i + length <= 9; i++) {\n                int num = 0;\n                for (int j = i; j < i + length; j++) {\n                    num = num * 10 + digits[j];\n                }\n                if (num >= low && num <= high) {\n                    result.add(num);\n                }\n            }\n        }\n\n        Collections.sort(result);\n        return result;\n    }\n}",
+  "timestamp": "2025-08-06T17:02:34.136428",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> sequentialDigits(int low, int high) {\n        List<Integer> result = new ArrayList<>();\n        int[] digits = {1,2,3,4,5,6,7,8,9};\n\n        for (int length = 1; length <= 9; length++) {\n            for (int i = 0; i + length <= 9; i++) {\n                int num = 0;\n                for (int j = i; j < i + length; j++) {\n                    num = num * 10 + digits[j];\n                }\n                if (num >= low && num <= high) {\n                    result.add(num);\n                }\n            }\n        }\n\n        Collections.sort(result);\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:01.594264"
+}

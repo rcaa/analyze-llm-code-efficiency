@@ -1,0 +1,15 @@
+{
+  "id": 972,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public boolean isRationalEqual(String s, String t) {\n        return Math.abs(parse(s) - parse(t)) < 1e-10;\n    }\n\n    private double parse(String s) {\n        int idx = s.indexOf('(');\n        if (idx != -1) {\n            String base = s.substring(0, idx);\n            String rep = s.substring(idx + 1, s.length() - 1);\n            int dot = base.indexOf('.');\n            int nonRepLen = (dot == -1) ? 0 : base.length() - dot - 1;\n            StringBuilder sb = new StringBuilder(base);\n            for (int i = 0; i < 20; i++) sb.append(rep);\n            return Double.parseDouble(sb.toString());\n        } else {\n            return Double.parseDouble(s);\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Convert each string to a double by expanding the repeating part enough times (20) so that the floating-point representation stabilizes; then compare with a small epsilon. This avoids exact-fraction math yet is accurate within double precision for the given constraints.",
+  "code": "class Solution {\n    public boolean isRationalEqual(String s, String t) {\n        return Math.abs(parse(s) - parse(t)) < 1e-10;\n    }\n\n    private double parse(String s) {\n        int idx = s.indexOf('(');\n        if (idx != -1) {\n            String base = s.substring(0, idx);\n            String rep = s.substring(idx + 1, s.length() - 1);\n            int dot = base.indexOf('.');\n            int nonRepLen = (dot == -1) ? 0 : base.length() - dot - 1;\n            StringBuilder sb = new StringBuilder(base);\n            for (int i = 0; i < 20; i++) sb.append(rep);\n            return Double.parseDouble(sb.toString());\n        } else {\n            return Double.parseDouble(s);\n        }\n    }\n}",
+  "timestamp": "2025-08-06T02:32:29.741353",
+  "code_extracted_previous": "public boolean isRationalEqual(String s, String t) {\n        return Math.abs(parse(s) - parse(t)) < 1e-10;\n    }\n\n    private double parse(String s) {\n        int idx = s.indexOf('(');\n        if (idx != -1) {\n            String base = s.substring(0, idx);\n            String rep = s.substring(idx + 1, s.length() - 1);\n            int dot = base.indexOf('.');\n            int nonRepLen = (dot == -1) ? 0 : base.length() - dot - 1;\n            StringBuilder sb = new StringBuilder(base);\n            for (int i = 0; i < 20; i++) sb.append(rep);\n            return Double.parseDouble(sb.toString());\n        } else {\n            return Double.parseDouble(s);\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.944769"
+}

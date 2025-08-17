@@ -1,0 +1,15 @@
+{
+  "id": 2296,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass TextEditor {\npublic:\n    TextEditor() {\n        text = \"\";\n        cursor = 0;\n    }\n    \n    void addText(string text) {\n        this->text += text;\n        cursor += text.size();\n    }\n    \n    int deleteText(int k) {\n        k = min(k, cursor);\n        cursor -= k;\n        return k;\n    }\n    \n    string cursorLeft(int k) {\n        k = min(k, cursor);\n        cursor -= k;\n        return text.substr(cursor, min(10, cursor));\n    }\n    \n    string cursorRight(int k) {\n        k = min(k, text.size() - cursor);\n        cursor += k;\n        return text.substr(cursor - k, min(10, k));\n    }\nprivate:\n    string text;\n    int cursor;\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a simple string and integer to keep track of the text and cursor position. The addText function appends the new text to the end of the current text and updates the cursor position. The deleteText function deletes the specified number of characters from the left of the cursor and updates the cursor position. The cursorLeft and cursorRight functions update the cursor position and return the last 10 characters to the left of the cursor. The solution has a constant time complexity and space complexity, making it efficient and suitable for the given constraints.",
+  "code": "class TextEditor {\npublic:\n    TextEditor() {\n        text = \"\";\n        cursor = 0;\n    }\n    \n    void addText(string text) {\n        this->text += text;\n        cursor += text.size();\n    }\n    \n    int deleteText(int k) {\n        k = min(k, cursor);\n        cursor -= k;\n        return k;\n    }\n    \n    string cursorLeft(int k) {\n        k = min(k, cursor);\n        cursor -= k;\n        return text.substr(cursor, min(10, cursor));\n    }\n    \n    string cursorRight(int k) {\n        k = min(k, text.size() - cursor);\n        cursor += k;\n        return text.substr(cursor - k, min(10, k));\n    }\nprivate:\n    string text;\n    int cursor;\n};",
+  "timestamp": "2025-08-05T15:14:31.723158",
+  "code_extracted_previous": "class TextEditor {\npublic:\n    TextEditor() {\n        text = \"\";\n        cursor = 0;\n    }\n    \n    void addText(string text) {\n        this->text += text;\n        cursor += text.size();\n    }\n    \n    int deleteText(int k) {\n        k = min(k, cursor);\n        cursor -= k;\n        return k;\n    }\n    \n    string cursorLeft(int k) {\n        k = min(k, cursor);\n        cursor -= k;\n        return text.substr(cursor, min(10, cursor));\n    }\n    \n    string cursorRight(int k) {\n        k = min(k, text.size() - cursor);\n        cursor += k;\n        return text.substr(cursor - k, min(10, k));\n    }\nprivate:\n    string text;\n    int cursor;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:40.921403"
+}

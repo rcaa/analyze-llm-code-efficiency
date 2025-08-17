@@ -1,0 +1,15 @@
+{
+  "id": 3080,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        n = len(nums)\n        answer = []\n        marked = [False] * n\n        for index, k in queries:\n            marked[index] = True\n            unmarked_count = 0\n            min_index = 0\n            for i in range(n):\n                if not marked[i] and (unmarked_count < k):\n                    min_index = i\n                    unmarked_count += 1\n            for i in range(min_index, min_index + k):\n                marked[i] = True\n            answer.append(sum(1 for x in marked if not x))\n        return answer\n```\nsolution: \n```python\nclass Solution:\n    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        n = len(nums)\n        answer = []\n        marked = [False] * n\n        for index, k in queries:\n            marked[index] = True\n            unmarked_count = 0\n            min_index = 0\n            for i in range(n):\n                if not marked[i] and (unmarked_count < k):\n                    min_index = i\n                    unmarked_count += 1\n            for i in range(min_index, min_index + k):\n                marked[i] = True\n            answer.append(sum(1 for x in marked if not x))\n        return answer\n```\nefficiency: HIGH\ntime complexity: O(m*n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through each query and marks the element at the given index. Then, it finds the k smallest unmarked elements and marks them. The sum of unmarked elements is calculated after each query and stored in the answer list. The time complexity is O(m*n) due to the nested loops in finding the k smallest unmarked elements. The space complexity is O(n) for the marked array. The energy implications are low as the algorithm performs a limited number of operations.\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T13:34:41.679643",
+  "code_extracted_previous": "class Solution:\n    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        n = len(nums)\n        answer = []\n        marked = [False] * n\n        for index, k in queries:\n            marked[index] = True\n            unmarked_count = 0\n            min_index = 0\n            for i in range(n):\n                if not marked[i] and (unmarked_count < k):\n                    min_index = i\n                    unmarked_count += 1\n            for i in range(min_index, min_index + k):\n                marked[i] = True\n            answer.append(sum(1 for x in marked if not x))\n        return answer",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.565541"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2525,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    string categorizeBox(int length, int width, int height, int mass) {\n        bool bulky = false;\n        if (length >= 10000 || width >= 10000 || height >= 10000) bulky = true;\n        else {\n            long long volume = 1LL * length * width * height;\n            if (volume >= 1000000000LL) bulky = true;\n        }\n        bool heavy = mass >= 100;\n        if (bulky && heavy) return \"Both\";\n        if (bulky) return \"Bulky\";\n        if (heavy) return \"Heavy\";\n        return \"Neither\";\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Directly checks each dimension and computes volume once; uses 64-bit multiplication to avoid overflow. Returns the correct category string based on the two boolean flags.",
+  "code": "class Solution {\npublic:\n    string categorizeBox(int length, int width, int height, int mass) {\n        bool bulky = false;\n        if (length >= 10000 || width >= 10000 || height >= 10000) bulky = true;\n        else {\n            long long volume = 1LL * length * width * height;\n            if (volume >= 1000000000LL) bulky = true;\n        }\n        bool heavy = mass >= 100;\n        if (bulky && heavy) return \"Both\";\n        if (bulky) return \"Bulky\";\n        if (heavy) return \"Heavy\";\n        return \"Neither\";\n    }\n};",
+  "timestamp": "2025-08-06T02:29:30.142076",
+  "code_extracted_previous": "public:\n    string categorizeBox(int length, int width, int height, int mass) {\n        bool bulky = false;\n        if (length >= 10000 || width >= 10000 || height >= 10000) bulky = true;\n        else {\n            long long volume = 1LL * length * width * height;\n            if (volume >= 1000000000LL) bulky = true;\n        }\n        bool heavy = mass >= 100;\n        if (bulky && heavy) return \"Both\";\n        if (bulky) return \"Bulky\";\n        if (heavy) return \"Heavy\";\n        return \"Neither\";\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.751249"
+}

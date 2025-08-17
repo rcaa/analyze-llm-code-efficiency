@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        visited[0] = true;\n        queue<int> q;\n        q.push(0);\n        while (!q.empty()) {\n            int curr = q.front();\n            q.pop();\n            for (int key : rooms[curr]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    q.push(key);\n                }\n            }\n        }\n        for (bool v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(V + E)\nspace complexity: O(V)\nenergy implications: LOW\nexplanation: The solution uses a breadth-first search (BFS) approach to traverse the rooms. It starts from room 0 and explores all reachable rooms by following the keys found in each room. The `visited` array keeps track of visited rooms to avoid cycles. BFS guarantees visiting all reachable rooms efficiently.\n\n\n\n",
+  "code": "class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        visited[0] = true;\n        queue<int> q;\n        q.push(0);\n        while (!q.empty()) {\n            int curr = q.front();\n            q.pop();\n            for (int key : rooms[curr]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    q.push(key);\n                }\n            }\n        }\n        for (bool v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-05T14:00:26.793869",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        int n = rooms.size();\n        vector<bool> visited(n, false);\n        visited[0] = true;\n        queue<int> q;\n        q.push(0);\n        while (!q.empty()) {\n            int curr = q.front();\n            q.pop();\n            for (int key : rooms[curr]) {\n                if (!visited[key]) {\n                    visited[key] = true;\n                    q.push(key);\n                }\n            }\n        }\n        for (bool v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.345167"
+}

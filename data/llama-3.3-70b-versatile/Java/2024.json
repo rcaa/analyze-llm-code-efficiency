@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int maxConsecutive = 0;\n        int n = answerKey.length();\n        for (char c : new char[] {'T', 'F'}) {\n            int left = 0, count = 0;\n            for (int right = 0; right < n; right++) {\n                if (answerKey.charAt(right) != c) {\n                    count++;\n                }\n                while (count > k) {\n                    if (answerKey.charAt(left) != c) {\n                        count--;\n                    }\n                    left++;\n                }\n                maxConsecutive = Math.max(maxConsecutive, right - left + 1);\n            }\n        }\n        return maxConsecutive;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to track the maximum consecutive answers, iterating over the string with two passes for 'T' and 'F' respectively, maintaining a count of mismatches within the window and adjusting the window boundaries accordingly.",
+  "code": "class Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int maxConsecutive = 0;\n        int n = answerKey.length();\n        for (char c : new char[] {'T', 'F'}) {\n            int left = 0, count = 0;\n            for (int right = 0; right < n; right++) {\n                if (answerKey.charAt(right) != c) {\n                    count++;\n                }\n                while (count > k) {\n                    if (answerKey.charAt(left) != c) {\n                        count--;\n                    }\n                    left++;\n                }\n                maxConsecutive = Math.max(maxConsecutive, right - left + 1);\n            }\n        }\n        return maxConsecutive;\n    }\n}",
+  "timestamp": "2025-08-06T00:57:17.872292",
+  "code_extracted_previous": "class Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int maxConsecutive = 0;\n        int n = answerKey.length();\n        for (char c : new char[] {'T', 'F'}) {\n            int left = 0, count = 0;\n            for (int right = 0; right < n; right++) {\n                if (answerKey.charAt(right) != c) {\n                    count++;\n                }\n                while (count > k) {\n                    if (answerKey.charAt(left) != c) {\n                        count--;\n                    }\n                    left++;\n                }\n                maxConsecutive = Math.max(maxConsecutive, right - left + 1);\n            }\n        }\n        return maxConsecutive;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.676766"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int count = 0;\n        while (num2) {\n            count += num2 & 1;\n            num2 >>= 1;\n        }\n        int res = 0;\n        for (int i = 0; i < 31; i++) {\n            if (count > 0 && (num1 >> i) & 1) {\n                res |= 1 << i;\n                count--;\n            }\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(log(num2))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution first counts the number of set bits in num2. Then it iterates over the bits of num1 from right to left. If the current bit of num1 is 1 and there are remaining set bits to be assigned, it sets the corresponding bit in the result and decrements the count. This approach ensures that the XOR of num1 and the result is minimal.",
+  "code": "class Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int count = 0;\n        while (num2) {\n            count += num2 & 1;\n            num2 >>= 1;\n        }\n        int res = 0;\n        for (int i = 0; i < 31; i++) {\n            if (count > 0 && (num1 >> i) & 1) {\n                res |= 1 << i;\n                count--;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:31:28.833330",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int count = 0;\n        while (num2) {\n            count += num2 & 1;\n            num2 >>= 1;\n        }\n        int res = 0;\n        for (int i = 0; i < 31; i++) {\n            if (count > 0 && (num1 >> i) & 1) {\n                res |= 1 << i;\n                count--;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.095193"
+}

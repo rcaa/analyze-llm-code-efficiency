@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        vector<int> count(1 << 5, -1);\n        count[0] = -1;\n        int mask = 0;\n        for (int i = 0; i < n; i++) {\n            if (s[i] == 'a') mask ^= 1;\n            else if (s[i] == 'e') mask ^= 2;\n            else if (s[i] == 'i') mask ^= 4;\n            else if (s[i] == 'o') mask ^= 8;\n            else if (s[i] == 'u') mask ^= 16;\n            if (count[mask] != -1) res = max(res, i - count[mask]);\n            else count[mask] = i;\n        }\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a bitmask to track the parity of each vowel in the current substring, allowing for efficient lookup and update of the longest substring seen so far.",
+  "code": "class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        vector<int> count(1 << 5, -1);\n        count[0] = -1;\n        int mask = 0;\n        for (int i = 0; i < n; i++) {\n            if (s[i] == 'a') mask ^= 1;\n            else if (s[i] == 'e') mask ^= 2;\n            else if (s[i] == 'i') mask ^= 4;\n            else if (s[i] == 'o') mask ^= 8;\n            else if (s[i] == 'u') mask ^= 16;\n            if (count[mask] != -1) res = max(res, i - count[mask]);\n            else count[mask] = i;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T08:43:26.196826",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        vector<int> count(1 << 5, -1);\n        count[0] = -1;\n        int mask = 0;\n        for (int i = 0; i < n; i++) {\n            if (s[i] == 'a') mask ^= 1;\n            else if (s[i] == 'e') mask ^= 2;\n            else if (s[i] == 'i') mask ^= 4;\n            else if (s[i] == 'o') mask ^= 8;\n            else if (s[i] == 'u') mask ^= 16;\n            if (count[mask] != -1) res = max(res, i - count[mask]);\n            else count[mask] = i;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.765417"
+}

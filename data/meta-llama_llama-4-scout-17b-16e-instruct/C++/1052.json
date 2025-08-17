@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int n = customers.size();\n        int total = 0;\n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            }\n        }\n        int max_extra = 0;\n        int window_extra = 0;\n        for (int i = 0; i < n; i++) {\n            window_extra += grumpy[i] * customers[i];\n            if (i >= minutes) {\n                window_extra -= grumpy[i - minutes] * customers[i - minutes];\n            }\n            max_extra = max(max_extra, window_extra);\n        }\n        return total + max_extra;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution calculates the total satisfied customers when the owner is not grumpy and then finds the maximum extra customers that can be satisfied by not being grumpy for a certain window of minutes.",
+  "code": "class Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int n = customers.size();\n        int total = 0;\n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            }\n        }\n        int max_extra = 0;\n        int window_extra = 0;\n        for (int i = 0; i < n; i++) {\n            window_extra += grumpy[i] * customers[i];\n            if (i >= minutes) {\n                window_extra -= grumpy[i - minutes] * customers[i - minutes];\n            }\n            max_extra = max(max_extra, window_extra);\n        }\n        return total + max_extra;\n    }\n};",
+  "timestamp": "2025-08-05T13:19:03.140949",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int n = customers.size();\n        int total = 0;\n        for (int i = 0; i < n; i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            }\n        }\n        int max_extra = 0;\n        int window_extra = 0;\n        for (int i = 0; i < n; i++) {\n            window_extra += grumpy[i] * customers[i];\n            if (i >= minutes) {\n                window_extra -= grumpy[i - minutes] * customers[i - minutes];\n            }\n            max_extra = max(max_extra, window_extra);\n        }\n        return total + max_extra;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.582660"
+}

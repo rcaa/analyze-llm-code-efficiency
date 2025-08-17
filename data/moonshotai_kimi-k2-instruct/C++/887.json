@@ -1,0 +1,15 @@
+{
+  "id": 887,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<int> dp(k + 1, 0);\n        int moves = 0;\n        while (dp[k] < n) {\n            for (int eggs = k; eggs >= 1; --eggs) {\n                dp[eggs] = dp[eggs] + dp[eggs - 1] + 1;\n            }\n            ++moves;\n        }\n        return moves;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(k log n)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Uses reverse DP to count how many floors can be covered with m moves and k eggs, avoiding the O(k n²) DP table. The inner loop updates dp[eggs] = dp[eggs] + dp[eggs-1] + 1, representing the sum of floors covered if the egg breaks or survives. The loop stops once dp[k] ≥ n, giving the minimal m.",
+  "code": "class Solution {\npublic:\n    int superEggDrop(int k, int n) {\n        vector<int> dp(k + 1, 0);\n        int moves = 0;\n        while (dp[k] < n) {\n            for (int eggs = k; eggs >= 1; --eggs) {\n                dp[eggs] = dp[eggs] + dp[eggs - 1] + 1;\n            }\n            ++moves;\n        }\n        return moves;\n    }\n};",
+  "timestamp": "2025-08-05T15:17:51.625973",
+  "code_extracted_previous": "public:\n    int superEggDrop(int k, int n) {\n        vector<int> dp(k + 1, 0);\n        int moves = 0;\n        while (dp[k] < n) {\n            for (int eggs = k; eggs >= 1; --eggs) {\n                dp[eggs] = dp[eggs] + dp[eggs - 1] + 1;\n            }\n            ++moves;\n        }\n        return moves;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.343758"
+}

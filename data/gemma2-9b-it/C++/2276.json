@@ -1,0 +1,15 @@
+{
+  "id": 2276,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass CountIntervals {\npublic:\n    CountIntervals() {\n        \n    }\n    \n    void add(int left, int right) {\n        intervals.push_back({left, right});\n    }\n    \n    int count() {\n        int count = 0;\n        for (int i = 0; i < intervals.size(); i++) {\n            for (int j = intervals[i].first; j <= intervals[i].second; j++) {\n                count++;\n            }\n        }\n        return count;\n    }\nprivate:\n    vector<pair<int, int>> intervals;\n};\n```\nsolution: \n```c++\nclass CountIntervals {\npublic:\n    CountIntervals() {\n        \n    }\n    \n    void add(int left, int right) {\n        intervals.push_back({left, right});\n    }\n    \n    int count() {\n        int count = 0;\n        for (auto& interval : intervals) {\n            count += interval.second - interval.first + 1;\n        }\n        return count;\n    }\nprivate:\n    vector<pair<int, int>> intervals;\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution utilizes a vector of pairs to store the intervals. The `count()` method iterates through the intervals and calculates the number of integers in each interval by subtracting the left endpoint from the right endpoint and adding 1. The total count is then returned. This approach has a time complexity of O(N) as it iterates through the intervals once, and a space complexity of O(N) due to the storage of the intervals. The energy implications are low as it involves basic arithmetic operations.\n",
+  "code": "class CountIntervals {\npublic:\n    CountIntervals() {\n        \n    }\n    \n    void add(int left, int right) {\n        intervals.push_back({left, right});\n    }\n    \n    int count() {\n        int count = 0;\n        for (auto& interval : intervals) {\n            count += interval.second - interval.first + 1;\n        }\n        return count;\n    }\nprivate:\n    vector<pair<int, int>> intervals;\n};",
+  "timestamp": "2025-08-05T14:06:09.615630",
+  "code_extracted_previous": "class CountIntervals {\npublic:\n    CountIntervals() {\n        \n    }\n    \n    void add(int left, int right) {\n        intervals.push_back({left, right});\n    }\n    \n    int count() {\n        int count = 0;\n        for (auto& interval : intervals) {\n            count += interval.second - interval.first + 1;\n        }\n        return count;\n    }\nprivate:\n    vector<pair<int, int>> intervals;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:23.457910"
+}

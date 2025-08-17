@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int min_penalty = INT_MAX;\n        int best_hour = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = 0;\n            for (int j = 0; j < n; j++) {\n                if (j < i && customers[j] == 'N') penalty++;\n                if (j >= i && customers[j] == 'Y') penalty++;\n            }\n            if (penalty < min_penalty) {\n                min_penalty = penalty;\n                best_hour = i;\n            }\n        }\n        return best_hour;\n    }\n};\n\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over each possible closing hour and calculates the penalty for that hour by checking each customer visit log. It keeps track of the minimum penalty and the corresponding hour, returning the earliest hour with the minimum penalty.",
+  "code": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int min_penalty = INT_MAX;\n        int best_hour = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = 0;\n            for (int j = 0; j < n; j++) {\n                if (j < i && customers[j] == 'N') penalty++;\n                if (j >= i && customers[j] == 'Y') penalty++;\n            }\n            if (penalty < min_penalty) {\n                min_penalty = penalty;\n                best_hour = i;\n            }\n        }\n        return best_hour;\n    }\n};",
+  "timestamp": "2025-08-06T01:02:51.693117",
+  "code_extracted_previous": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int min_penalty = INT_MAX;\n        int best_hour = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = 0;\n            for (int j = 0; j < n; j++) {\n                if (j < i && customers[j] == 'N') penalty++;\n                if (j >= i && customers[j] == 'Y') penalty++;\n            }\n            if (penalty < min_penalty) {\n                min_penalty = penalty;\n                best_hour = i;\n            }\n        }\n        return best_hour;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.389210"
+}

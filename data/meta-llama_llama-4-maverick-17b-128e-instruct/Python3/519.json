@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m, self.n = m, n\n        self.total = m * n\n        self.mp = {}\n        self.count = 0\n\n    def flip(self) -> List[int]:\n        import random\n        rand_idx = random.randint(0, self.total - self.count - 1)\n        idx = self.mp.get(rand_idx, rand_idx)\n        self.mp[rand_idx] = self.mp.get(self.total - self.count - 1, self.total - self.count - 1)\n        self.count += 1\n        return divmod(idx, self.n)\n\n    def reset(self) -> None:\n        self.mp = {}\n        self.count = 0\n\n\n# Your Solution object will be instantiated and called as such:\n# obj = Solution(m, n)\n# param_1 = obj.flip()\n# obj.reset()\n```\n\nsolution: \n```python\nclass Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m, self.n = m, n\n        self.total = m * n\n        self.mp = {}\n        self.count = 0\n\n    def flip(self) -> List[int]:\n        import random\n        rand_idx = random.randint(0, self.total - self.count - 1)\n        idx = self.mp.get(rand_idx, rand_idx)\n        self.mp[rand_idx] = self.mp.get(self.total - self.count - 1, self.total - self.count - 1)\n        self.count += 1\n        return divmod(idx, self.n)\n\n    def reset(self) -> None:\n        self.mp = {}\n        self.count = 0\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(m*n)\nenergy implications: LOW\nexplanation: The main approach is to use a hashmap to store the mapping of the indices. When `flip()` is called, a random index is generated and the corresponding value is returned. The hashmap is updated to maintain the mapping. The `reset()` function simply clears the hashmap and resets the count. The key strengths are the efficient use of the hashmap and the minimization of calls to the random function.",
+  "code": "solution:",
+  "timestamp": "2025-08-05T14:54:38.875418",
+  "code_extracted_previous": "class Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m, self.n = m, n\n        self.total = m * n\n        self.mp = {}\n        self.count = 0\n\n    def flip(self) -> List[int]:\n        import random\n        rand_idx = random.randint(0, self.total - self.count - 1)\n        idx = self.mp.get(rand_idx, rand_idx)\n        self.mp[rand_idx] = self.mp.get(self.total - self.count - 1, self.total - self.count - 1)\n        self.count += 1\n        return divmod(idx, self.n)\n\n    def reset(self) -> None:\n        self.mp = {}\n        self.count = 0",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.340242"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2343,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {\n        int n = nums.length;\n        int m = nums[0].length();\n        int[] answer = new int[queries.length];\n        for (int i = 0; i < queries.length; i++) {\n            int k = queries[i][0];\n            int trim = queries[i][1];\n            String[] trimmed = new String[n];\n            for (int j = 0; j < n; j++) {\n                trimmed[j] = nums[j].substring(nums[j].length() - trim);\n            }\n            Arrays.sort(trimmed);\n            answer[i] = Integer.parseInt(trimmed[k - 1]) % (int) Math.pow(10, trim);\n        }\n        return answer;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O((n + m) * log(n))\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution sorts the trimmed numbers and then finds the kth smallest number. The time complexity is O((n + m) * log(n)) due to the sorting operation. The space complexity is O(n) for storing the trimmed numbers.",
+  "code": "class Solution {\n    public int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {\n        int n = nums.length;\n        int m = nums[0].length();\n        int[] answer = new int[queries.length];\n        for (int i = 0; i < queries.length; i++) {\n            int k = queries[i][0];\n            int trim = queries[i][1];\n            String[] trimmed = new String[n];\n            for (int j = 0; j < n; j++) {\n                trimmed[j] = nums[j].substring(nums[j].length() - trim);\n            }\n            Arrays.sort(trimmed);\n            answer[i] = Integer.parseInt(trimmed[k - 1]) % (int) Math.pow(10, trim);\n        }\n        return answer;\n    }\n}",
+  "timestamp": "2025-08-05T13:29:50.176927",
+  "code_extracted_previous": "class Solution {\n    public int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {\n        int n = nums.length;\n        int m = nums[0].length();\n        int[] answer = new int[queries.length];\n        for (int i = 0; i < queries.length; i++) {\n            int k = queries[i][0];\n            int trim = queries[i][1];\n            String[] trimmed = new String[n];\n            for (int j = 0; j < n; j++) {\n                trimmed[j] = nums[j].substring(nums[j].length() - trim);\n            }\n            Arrays.sort(trimmed);\n            answer[i] = Integer.parseInt(trimmed[k - 1]) % (int) Math.pow(10, trim);\n        }\n        return answer;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.267030"
+}

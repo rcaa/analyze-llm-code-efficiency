@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        unordered_map<char, int> count;\n        int left = 0, right = 0;\n        int maxLen = 0;\n        while (right < s.size()) {\n            count[s[right]]++;\n            while (count.size() > 2 || *max_element(count.begin(), count.end()) > 2) {\n                count[s[left]]--;\n                left++;\n            }\n            maxLen = max(maxLen, right - left + 1);\n            right++;\n        }\n        return maxLen;\n    }\n};\n```\n\nsolution: \n```c++\nclass Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        unordered_map<char, int> count;\n        int left = 0, right = 0;\n        int maxLen = 0;\n        while (right < s.size()) {\n            count[s[right]]++;\n            while (count.size() > 2 || *max_element(count.begin(), count.end()) > 2) {\n                count[s[left]]--;\n                left++;\n            }\n            maxLen = max(maxLen, right - left + 1);\n            right++;\n        }\n        return maxLen;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with a hashmap to track character counts within the window. It expands the window to the right and shrinks it from the left when the window violates the at most two occurrences constraint.  The sliding window technique allows for efficient traversal of the string, resulting in linear time complexity. The hashmap's space usage is bounded by the maximum number of unique characters in the input, which is limited by the problem constraints.",
+  "code": "class Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        unordered_map<char, int> count;\n        int left = 0, right = 0;\n        int maxLen = 0;\n        while (right < s.size()) {\n            count[s[right]]++;\n            while (count.size() > 2 || *max_element(count.begin(), count.end()) > 2) {\n                count[s[left]]--;\n                left++;\n            }\n            maxLen = max(maxLen, right - left + 1);\n            right++;\n        }\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-05T14:49:05.865120",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        unordered_map<char, int> count;\n        int left = 0, right = 0;\n        int maxLen = 0;\n        while (right < s.size()) {\n            count[s[right]]++;\n            while (count.size() > 2 || *max_element(count.begin(), count.end()) > 2) {\n                count[s[left]]--;\n                left++;\n            }\n            maxLen = max(maxLen, right - left + 1);\n            right++;\n        }\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.752432"
+}

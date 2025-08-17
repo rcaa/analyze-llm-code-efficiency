@@ -1,0 +1,15 @@
+{
+  "id": 647,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int countSubstrings(string s) {\n        int n = s.size(), res = 0;\n        for (int i = 0; i < n; ++i) {\n            res += expandAroundCenter(s, i, i); // odd length palindrome\n            res += expandAroundCenter(s, i, i + 1); // even length palindrome\n        }\n        return res;\n    }\nprivate:\n    int expandAroundCenter(string s, int left, int right) {\n        int res = 0;\n        while (left >= 0 && right < s.size() && s[left] == s[right]) {\n            res++;\n            left--;\n            right++;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a two-pointer approach to expand around the center of potential palindromes, counting the number of palindromic substrings in the process.",
+  "code": "class Solution {\npublic:\n    int countSubstrings(string s) {\n        int n = s.size(), res = 0;\n        for (int i = 0; i < n; ++i) {\n            res += expandAroundCenter(s, i, i); // odd length palindrome\n            res += expandAroundCenter(s, i, i + 1); // even length palindrome\n        }\n        return res;\n    }\nprivate:\n    int expandAroundCenter(string s, int left, int right) {\n        int res = 0;\n        while (left >= 0 && right < s.size() && s[left] == s[right]) {\n            res++;\n            left--;\n            right++;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:38:45.483135",
+  "code_extracted_previous": "public:\n    int countSubstrings(string s) {\n        int n = s.size(), res = 0;\n        for (int i = 0; i < n; ++i) {\n            res += expandAroundCenter(s, i, i); // odd length palindrome\n            res += expandAroundCenter(s, i, i + 1); // even length palindrome\n        }\n        return res;\n    }\nprivate:\n    int expandAroundCenter(string s, int left, int right) {\n        int res = 0;\n        while (left >= 0 && right < s.size() && s[left] == s[right]) {\n            res++;\n            left--;\n            right++;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.001234"
+}

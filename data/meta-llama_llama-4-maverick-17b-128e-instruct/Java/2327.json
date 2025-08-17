@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        long[] dp = new long[n + 1];\n        dp[1] = 1;\n        long sum = 0;\n        long mod = (long) (1e9 + 7);\n        for (int i = 2; i <= n; i++) {\n            if (i >= forget) {\n                sum = (sum - dp[i - forget + 1] + mod) % mod;\n            }\n            if (i >= delay + 1) {\n                sum = (sum + dp[i - delay]) % mod;\n            }\n            dp[i] = sum;\n        }\n        long res = 0;\n        for (int i = n - forget + 1; i <= n; i++) {\n            res = (res + dp[i]) % mod;\n        }\n        return (int) res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to track the number of people who know the secret on each day, utilizing a prefix sum to efficiently calculate the number of people who can share the secret. It handles the constraints and edge cases effectively.\n```",
+  "code": "class Solution {\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        long[] dp = new long[n + 1];\n        dp[1] = 1;\n        long sum = 0;\n        long mod = (long) (1e9 + 7);\n        for (int i = 2; i <= n; i++) {\n            if (i >= forget) {\n                sum = (sum - dp[i - forget + 1] + mod) % mod;\n            }\n            if (i >= delay + 1) {\n                sum = (sum + dp[i - delay]) % mod;\n            }\n            dp[i] = sum;\n        }\n        long res = 0;\n        for (int i = n - forget + 1; i <= n; i++) {\n            res = (res + dp[i]) % mod;\n        }\n        return (int) res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to track the number of people who know the secret on each day, utilizing a prefix sum to efficiently calculate the number of people who can share the secret. It handles the constraints and edge cases effectively.",
+  "timestamp": "2025-08-05T14:26:19.337292",
+  "code_extracted_previous": "class Solution {\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        long[] dp = new long[n + 1];\n        dp[1] = 1;\n        long sum = 0;\n        long mod = (long) (1e9 + 7);\n        for (int i = 2; i <= n; i++) {\n            if (i >= forget) {\n                sum = (sum - dp[i - forget + 1] + mod) % mod;\n            }\n            if (i >= delay + 1) {\n                sum = (sum + dp[i - delay]) % mod;\n            }\n            dp[i] = sum;\n        }\n        long res = 0;\n        for (int i = n - forget + 1; i <= n; i++) {\n            res = (res + dp[i]) % mod;\n        }\n        return (int) res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.547645"
+}

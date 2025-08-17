@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int n = s.size();\n        int mask = 0, res = 0;\n        unordered_map<int, int> seen;\n        seen[0] = -1;\n        for (int i = 0; i < n; ++i) {\n            char c = s[i];\n            if (c == 'a') mask ^= 1;\n            else if (c == 'e') mask ^= 2;\n            else if (c == 'i') mask ^= 4;\n            else if (c == 'o') mask ^= 8;\n            else if (c == 'u') mask ^= 16;\n            if (seen.count(mask)) res = max(res, i - seen[mask]);\n            else seen[mask] = i;\n        }\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Utilizes bitmasking to track parity of vowel counts and a hashmap to store seen masks, enabling efficient lookup and update of the longest substring. \n```",
+  "code": "class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int n = s.size();\n        int mask = 0, res = 0;\n        unordered_map<int, int> seen;\n        seen[0] = -1;\n        for (int i = 0; i < n; ++i) {\n            char c = s[i];\n            if (c == 'a') mask ^= 1;\n            else if (c == 'e') mask ^= 2;\n            else if (c == 'i') mask ^= 4;\n            else if (c == 'o') mask ^= 8;\n            else if (c == 'u') mask ^= 16;\n            if (seen.count(mask)) res = max(res, i - seen[mask]);\n            else seen[mask] = i;\n        }\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Utilizes bitmasking to track parity of vowel counts and a hashmap to store seen masks, enabling efficient lookup and update of the longest substring.",
+  "timestamp": "2025-08-05T15:04:17.249937",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int n = s.size();\n        int mask = 0, res = 0;\n        unordered_map<int, int> seen;\n        seen[0] = -1;\n        for (int i = 0; i < n; ++i) {\n            char c = s[i];\n            if (c == 'a') mask ^= 1;\n            else if (c == 'e') mask ^= 2;\n            else if (c == 'i') mask ^= 4;\n            else if (c == 'o') mask ^= 8;\n            else if (c == 'u') mask ^= 16;\n            if (seen.count(mask)) res = max(res, i - seen[mask]);\n            else seen[mask] = i;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.712079"
+}

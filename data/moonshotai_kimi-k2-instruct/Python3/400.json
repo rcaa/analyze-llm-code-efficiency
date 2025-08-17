@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def findNthDigit(self, n: int) -> int:\n        length = 1\n        count = 9\n        start = 1\n        \n        while n > length * count:\n            n -= length * count\n            length += 1\n            count *= 10\n            start *= 10\n        \n        start += (n - 1) // length\n        s = str(start)\n        return int(s[(n - 1) % length])\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Identify the digit-length zone containing the nth digit, then compute the exact number and the specific digit within that number. Uses arithmetic to avoid string concatenation until the final digit extraction.",
+  "code": "class Solution:\n    def findNthDigit(self, n: int) -> int:\n        length = 1\n        count = 9\n        start = 1\n        \n        while n > length * count:\n            n -= length * count\n            length += 1\n            count *= 10\n            start *= 10\n        \n        start += (n - 1) // length\n        s = str(start)\n        return int(s[(n - 1) % length])",
+  "timestamp": "2025-08-06T02:34:12.459649",
+  "code_extracted_previous": "def findNthDigit(self, n: int) -> int:\n        length = 1\n        count = 9\n        start = 1\n        \n        while n > length * count:\n            n -= length * count\n            length += 1\n            count *= 10\n            start *= 10\n        \n        start += (n - 1) // length\n        s = str(start)\n        return int(s[(n - 1) % length])",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.177065"
+}

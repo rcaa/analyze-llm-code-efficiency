@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (x > target) return 1;\n\n        int ops = 0;\n        while (x < target) {\n            if ((target - x) % x == 0) {\n                ops += (target - x) / x;\n                return ops;\n            }\n            target += x;\n            ops++;\n        }\n        return ops + 1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(target/x))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iteratively increases the target by x until it is divisible by x. At each step, it checks if the remaining difference between target and x is divisible by x. If it is, the function returns the number of operations. Otherwise, it increments the target by x and the number of operations by 1. This greedy approach ensures the minimum number of operations.",
+  "code": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (x > target) return 1;\n\n        int ops = 0;\n        while (x < target) {\n            if ((target - x) % x == 0) {\n                ops += (target - x) / x;\n                return ops;\n            }\n            target += x;\n            ops++;\n        }\n        return ops + 1;\n    }\n}",
+  "timestamp": "2025-08-06T02:28:26.110467",
+  "code_extracted_previous": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (x > target) return 1;\n\n        int ops = 0;\n        while (x < target) {\n            if ((target - x) % x == 0) {\n                ops += (target - x) / x;\n                return ops;\n            }\n            target += x;\n            ops++;\n        }\n        return ops + 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.635950"
+}

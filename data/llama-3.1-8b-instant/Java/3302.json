@@ -1,0 +1,15 @@
+{
+  "id": 3302,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int[] validSequence(String word1, String word2) {\n        int n = word1.length(), m = word2.length();\n        int[] res = new int[m];\n        int[] idx = new int[n];\n        for (int i = 0; i < n; i++) idx[i] = i;\n        Arrays.sort(idx, (a, b) -> word1.charAt(a) == word1.charAt(b) ? a - b : word1.charAt(a) - word1.charAt(b));\n        int j = 0;\n        for (int i = 0; i < n; i++) {\n            if (word1.charAt(idx[i]) == word2.charAt(j)) {\n                res[j] = idx[i];\n                j++;\n            }\n            if (j == m) break;\n        }\n        if (j != m) return new int[0];\n        int diff = 0;\n        for (int i = 0; i < m; i++) {\n            if (word1.charAt(res[i]) != word2.charAt(i)) diff++;\n        }\n        if (diff > 1) return new int[0];\n        return res;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n log n + m)\nspace complexity: O(n + m)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int[] validSequence(String word1, String word2) {\n        int n = word1.length(), m = word2.length();\n        int[] res = new int[m];\n        int[] idx = new int[n];\n        for (int i = 0; i < n; i++) idx[i] = i;\n        Arrays.sort(idx, (a, b) -> word1.charAt(a) == word1.charAt(b) ? a - b : word1.charAt(a) - word1.charAt(b));\n        int j = 0;\n        for (int i = 0; i < n; i++) {\n            if (word1.charAt(idx[i]) == word2.charAt(j)) {\n                res[j] = idx[i];\n                j++;\n            }\n            if (j == m) break;\n        }\n        if (j != m) return new int[0];\n        int diff = 0;\n        for (int i = 0; i < m; i++) {\n            if (word1.charAt(res[i]) != word2.charAt(i)) diff++;\n        }\n        if (diff > 1) return new int[0];\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T01:50:13.597625",
+  "code_extracted_previous": "class Solution {\n    public int[] validSequence(String word1, String word2) {\n        int n = word1.length(), m = word2.length();\n        int[] res = new int[m];\n        int[] idx = new int[n];\n        for (int i = 0; i < n; i++) idx[i] = i;\n        Arrays.sort(idx, (a, b) -> word1.charAt(a) == word1.charAt(b) ? a - b : word1.charAt(a) - word1.charAt(b));\n        int j = 0;\n        for (int i = 0; i < n; i++) {\n            if (word1.charAt(idx[i]) == word2.charAt(j)) {\n                res[j] = idx[i];\n                j++;\n            }\n            if (j == m) break;\n        }\n        if (j != m) return new int[0];\n        int diff = 0;\n        for (int i = 0; i < m; i++) {\n            if (word1.charAt(res[i]) != word2.charAt(i)) diff++;\n        }\n        if (diff > 1) return new int[0];\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.522460"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2309,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    string greatestLetter(string s) {\n        int count[26] = {0};\n        for (char c : s) {\n            if (isupper(c)) {\n                count[c - 'A'] |= 1;\n            } else {\n                count[c - 'a'] |= 2;\n            }\n        }\n        for (int i = 25; i >= 0; --i) {\n            if (count[i] == 3) {\n                return string(1, 'A' + i);\n            }\n        }\n        return \"\";\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a frequency array to track the occurrence of both cases of each letter, then iterates backwards to find the greatest letter that appears in both cases.",
+  "code": "class Solution {\npublic:\n    string greatestLetter(string s) {\n        int count[26] = {0};\n        for (char c : s) {\n            if (isupper(c)) {\n                count[c - 'A'] |= 1;\n            } else {\n                count[c - 'a'] |= 2;\n            }\n        }\n        for (int i = 25; i >= 0; --i) {\n            if (count[i] == 3) {\n                return string(1, 'A' + i);\n            }\n        }\n        return \"\";\n    }\n};",
+  "timestamp": "2025-08-05T14:45:42.696026",
+  "code_extracted_previous": "class Solution {\npublic:\n    string greatestLetter(string s) {\n        int count[26] = {0};\n        for (char c : s) {\n            if (isupper(c)) {\n                count[c - 'A'] |= 1;\n            } else {\n                count[c - 'a'] |= 2;\n            }\n        }\n        for (int i = 25; i >= 0; --i) {\n            if (count[i] == 3) {\n                return string(1, 'A' + i);\n            }\n        }\n        return \"\";\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.173524"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 464,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {\n        if ((maxChoosableInteger * (maxChoosableInteger + 1)) / 2 < desiredTotal) return false;\n        int[] dp = new int[1 << maxChoosableInteger];\n        return dfs(maxChoosableInteger, desiredTotal, 0, dp);\n    }\n\n    private boolean dfs(int maxChoosableInteger, int desiredTotal, int state, int[] dp) {\n        if (dp[state] != 0) return dp[state] == 1;\n        for (int i = 1; i <= maxChoosableInteger; i++) {\n            if ((state & (1 << (i - 1))) == 0) {\n                if (desiredTotal - i >= 0 && !dfs(maxChoosableInteger, desiredTotal - i, state | (1 << (i - 1)), dp)) {\n                    dp[state] = 1;\n                    return true;\n                }\n            }\n        }\n        dp[state] = -1;\n        return false;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(2^n * n)\nspace complexity: O(2^n)\nenergy implications: MEDIUM",
+  "code": "class Solution {\n    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {\n        if ((maxChoosableInteger * (maxChoosableInteger + 1)) / 2 < desiredTotal) return false;\n        int[] dp = new int[1 << maxChoosableInteger];\n        return dfs(maxChoosableInteger, desiredTotal, 0, dp);\n    }\n\n    private boolean dfs(int maxChoosableInteger, int desiredTotal, int state, int[] dp) {\n        if (dp[state] != 0) return dp[state] == 1;\n        for (int i = 1; i <= maxChoosableInteger; i++) {\n            if ((state & (1 << (i - 1))) == 0) {\n                if (desiredTotal - i >= 0 && !dfs(maxChoosableInteger, desiredTotal - i, state | (1 << (i - 1)), dp)) {\n                    dp[state] = 1;\n                    return true;\n                }\n            }\n        }\n        dp[state] = -1;\n        return false;\n    }\n}",
+  "timestamp": "2025-08-05T15:42:52.409770",
+  "code_extracted_previous": "class Solution {\n    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {\n        if ((maxChoosableInteger * (maxChoosableInteger + 1)) / 2 < desiredTotal) return false;\n        int[] dp = new int[1 << maxChoosableInteger];\n        return dfs(maxChoosableInteger, desiredTotal, 0, dp);\n    }\n\n    private boolean dfs(int maxChoosableInteger, int desiredTotal, int state, int[] dp) {\n        if (dp[state] != 0) return dp[state] == 1;\n        for (int i = 1; i <= maxChoosableInteger; i++) {\n            if ((state & (1 << (i - 1))) == 0) {\n                if (desiredTotal - i >= 0 && !dfs(maxChoosableInteger, desiredTotal - i, state | (1 << (i - 1)), dp)) {\n                    dp[state] = 1;\n                    return true;\n                }\n            }\n        }\n        dp[state] = -1;\n        return false;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.869510"
+}

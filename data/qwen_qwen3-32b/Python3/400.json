@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def findNthDigit(self, n: int) -> int:\n        length = 1\n        count = 9\n\n        while n > length * count:\n            n -= length * count\n            length += 1\n            count *= 10\n\n        start = 10 ** (length - 1)\n        number = start + n // length\n        digit_index = n % length\n\n        return int(str(number)[digit_index])\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The algorithm efficiently narrows down the range where the nth digit lies by reducing the problem into smaller segments based on digit lengths. It calculates the exact number and digit position without iterating through all numbers up to n, making it highly efficient. The main weakness is the use of string conversion, which is minimal in cost.>",
+  "code": "class Solution:\n    def findNthDigit(self, n: int) -> int:\n        length = 1\n        count = 9\n\n        while n > length * count:\n            n -= length * count\n            length += 1\n            count *= 10\n\n        start = 10 ** (length - 1)\n        number = start + n // length\n        digit_index = n % length\n\n        return int(str(number)[digit_index])",
+  "timestamp": "2025-08-06T17:33:47.728661",
+  "code_extracted_previous": "class Solution:\n    def findNthDigit(self, n: int) -> int:\n        length = 1\n        count = 9\n\n        while n > length * count:\n            n -= length * count\n            length += 1\n            count *= 10\n\n        start = 10 ** (length - 1)\n        number = start + n // length\n        digit_index = n % length\n\n        return int(str(number)[digit_index])",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:06.250045"
+}

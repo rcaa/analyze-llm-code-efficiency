@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int minStable(int[] nums, int maxC) {\n        int n = nums.length;\n        int res = n;\n        for (int i = 0; i < n; i++) {\n            int hcf = nums[i];\n            for (int j = i; j < n; j++) {\n                hcf = gcd(hcf, nums[j]);\n                if (hcf < 2) break;\n                res = Math.min(res, j - i + 1);\n            }\n        }\n        return Math.min(res, n - maxC);\n    }\n    private int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a brute-force approach to find the longest stable subarray for each prefix of the array. It then returns the minimum of the longest stable subarray and the length of the array minus the maximum number of modifications allowed. The gcd function is used to calculate the highest common factor of two numbers.",
+  "code": "class Solution {\n    public int minStable(int[] nums, int maxC) {\n        int n = nums.length;\n        int res = n;\n        for (int i = 0; i < n; i++) {\n            int hcf = nums[i];\n            for (int j = i; j < n; j++) {\n                hcf = gcd(hcf, nums[j]);\n                if (hcf < 2) break;\n                res = Math.min(res, j - i + 1);\n            }\n        }\n        return Math.min(res, n - maxC);\n    }\n    private int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "timestamp": "2025-08-05T12:22:53.576296",
+  "code_extracted_previous": "public int minStable(int[] nums, int maxC) {\n        int n = nums.length;\n        int res = n;\n        for (int i = 0; i < n; i++) {\n            int hcf = nums[i];\n            for (int j = i; j < n; j++) {\n                hcf = gcd(hcf, nums[j]);\n                if (hcf < 2) break;\n                res = Math.min(res, j - i + 1);\n            }\n        }\n        return Math.min(res, n - maxC);\n    }\n    private int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.744125"
+}

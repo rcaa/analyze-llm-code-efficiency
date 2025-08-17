@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[1] = 1\n        total = 0\n        for i in range(2, n + 1):\n            dp[i] = total = (total + dp[i - delay] - dp[i - forget]) % MOD\n        return sum(dp[n - forget + 1:]) % MOD\n\nsolution: \nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes dynamic programming to track the number of people aware of the secret each day, efficiently calculating the total number of people aware at the end of day n.\n```",
+  "code": "def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[1] = 1\n        total = 0\n        for i in range(2, n + 1):\n            dp[i] = total = (total + dp[i - delay] - dp[i - forget]) % MOD\n        return sum(dp[n - forget + 1:]) % MOD\n\nsolution:",
+  "timestamp": "2025-08-05T14:26:20.755983",
+  "code_extracted_previous": "class Solution:\n    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[1] = 1\n        total = 0\n        for i in range(2, n + 1):\n            dp[i] = total = (total + dp[i - delay] - dp[i - forget]) % MOD\n        return sum(dp[n - forget + 1:]) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.856883"
+}

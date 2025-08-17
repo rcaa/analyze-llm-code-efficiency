@@ -1,0 +1,15 @@
+{
+  "id": 2716,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public int minimizedStringLength(String s) {\n        int n = s.length();\n        int[] lastIndex = new int[26];\n        for (int i = 0; i < n; i++) {\n            lastIndex[s.charAt(i) - 'a'] = i;\n        }\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            char c = s.charAt(i);\n            int left = lastIndex[c - 'a'];\n            if (left != -1 && left < i) {\n                sb.append(c);\n            }\n            lastIndex[c - 'a'] = i;\n        }\n        return sb.length();\n    }\n}\n```\n\nsolution: \n```java\nclass Solution {\n    public int minimizedStringLength(String s) {\n        int n = s.length();\n        int[] lastIndex = new int[26];\n        for (int i = 0; i < n; i++) {\n            lastIndex[s.charAt(i) - 'a'] = i;\n        }\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            char c = s.charAt(i);\n            int left = lastIndex[c - 'a'];\n            if (left != -1 && left < i) {\n                sb.append(c);\n            }\n            lastIndex[c - 'a'] = i;\n        }\n        return sb.length();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, keeping track of the last seen index of each character. It then builds a new string, only appending characters if their previous occurrence is to the left. This approach efficiently minimizes the string length by removing redundant occurrences.",
+  "code": "class Solution {\n    public int minimizedStringLength(String s) {\n        int n = s.length();\n        int[] lastIndex = new int[26];\n        for (int i = 0; i < n; i++) {\n            lastIndex[s.charAt(i) - 'a'] = i;\n        }\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            char c = s.charAt(i);\n            int left = lastIndex[c - 'a'];\n            if (left != -1 && left < i) {\n                sb.append(c);\n            }\n            lastIndex[c - 'a'] = i;\n        }\n        return sb.length();\n    }\n}",
+  "timestamp": "2025-08-05T14:47:36.503941",
+  "code_extracted_previous": "class Solution {\n    public int minimizedStringLength(String s) {\n        int n = s.length();\n        int[] lastIndex = new int[26];\n        for (int i = 0; i < n; i++) {\n            lastIndex[s.charAt(i) - 'a'] = i;\n        }\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            char c = s.charAt(i);\n            int left = lastIndex[c - 'a'];\n            if (left != -1 && left < i) {\n                sb.append(c);\n            }\n            lastIndex[c - 'a'] = i;\n        }\n        return sb.length();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.097802"
+}

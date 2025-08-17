@@ -1,0 +1,15 @@
+{
+  "id": 2161,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int[] pivotArray(int[] nums, int pivot) {\n        int[] result = new int[nums.length];\n        int left = 0, mid = 0, right = 0;\n        for (int num : nums) {\n            if (num < pivot) {\n                result[left++] = num;\n            } else if (num == pivot) {\n                result[mid++] = num;\n            } else {\n                result[right++] = num;\n            }\n        }\n        System.arraycopy(result, 0, nums, 0, left);\n        System.arraycopy(result, left, nums, left, mid);\n        System.arraycopy(result, left + mid, nums, left + mid, right);\n        return nums;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a single pass through the input array to separate the elements into three groups: those less than the pivot, those equal to the pivot, and those greater than the pivot. It then copies these groups into the original array, maintaining the relative order of the elements. The time complexity is O(n) because each element is processed once, and the space complexity is O(1) because only a constant amount of extra space is used.",
+  "code": "class Solution {\n    public int[] pivotArray(int[] nums, int pivot) {\n        int[] result = new int[nums.length];\n        int left = 0, mid = 0, right = 0;\n        for (int num : nums) {\n            if (num < pivot) {\n                result[left++] = num;\n            } else if (num == pivot) {\n                result[mid++] = num;\n            } else {\n                result[right++] = num;\n            }\n        }\n        System.arraycopy(result, 0, nums, 0, left);\n        System.arraycopy(result, left, nums, left, mid);\n        System.arraycopy(result, left + mid, nums, left + mid, right);\n        return nums;\n    }\n}",
+  "timestamp": "2025-08-05T13:26:12.401453",
+  "code_extracted_previous": "public int[] pivotArray(int[] nums, int pivot) {\n        int[] result = new int[nums.length];\n        int left = 0, mid = 0, right = 0;\n        for (int num : nums) {\n            if (num < pivot) {\n                result[left++] = num;\n            } else if (num == pivot) {\n                result[mid++] = num;\n            } else {\n                result[right++] = num;\n            }\n        }\n        System.arraycopy(result, 0, nums, 0, left);\n        System.arraycopy(result, left, nums, left, mid);\n        System.arraycopy(result, left + mid, nums, left + mid, right);\n        return nums;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.179117"
+}

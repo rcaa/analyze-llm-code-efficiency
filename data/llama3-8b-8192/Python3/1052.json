@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \nclass Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        total = sum(customers)\n        max_earned = 0\n        for i in range(len(customers) - minutes + 1):\n            earned = sum(customers[i:i+minutes])\n            max_earned = max(max_earned, earned)\n        return total - max_earned + min(sum(customers[i:i+minutes]) for i in range(len(customers) - minutes + 1))\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution first calculates the total number of customers. Then, it iterates over the customers array to find the maximum number of customers that can be satisfied by the bookstore owner being grumpy for a certain number of minutes. Finally, it subtracts this maximum number from the total number of customers and adds the minimum number of customers that can be satisfied by the bookstore owner being not grumpy for a certain number of minutes.",
+  "code": "class Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        total = sum(customers)\n        max_earned = 0\n        for i in range(len(customers) - minutes + 1):\n            earned = sum(customers[i:i+minutes])\n            max_earned = max(max_earned, earned)\n        return total - max_earned + min(sum(customers[i:i+minutes]) for i in range(len(customers) - minutes + 1))",
+  "timestamp": "2025-08-05T13:18:50.110284",
+  "code_extracted_previous": "class Solution:\n    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:\n        total = sum(customers)\n        max_earned = 0\n        for i in range(len(customers) - minutes + 1):\n            earned = sum(customers[i:i+minutes])\n            max_earned = max(max_earned, earned)\n        return total - max_earned + min(sum(customers[i:i+minutes]) for i in range(len(customers) - minutes + 1))",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.225505"
+}

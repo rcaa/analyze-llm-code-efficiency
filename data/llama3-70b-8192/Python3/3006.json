@@ -1,0 +1,15 @@
+{
+  "id": 3006,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        res = []\n        for i in range(len(s) - len(a) + 1):\n            if s[i:i+len(a)] == a:\n                for j in range(max(0, i-k), min(len(s)-len(b)+1, i+k+1)):\n                    if s[j:j+len(b)] == b:\n                        res.append(i)\n                        break\n        return sorted(res)\n```\nefficiency: HIGH\ntime complexity: O(n*(m1+m2))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over the string s to find indices where the substring a exists, and for each such index, it checks if there exists an index j within k distance where the substring b exists.",
+  "code": "class Solution:\n    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        res = []\n        for i in range(len(s) - len(a) + 1):\n            if s[i:i+len(a)] == a:\n                for j in range(max(0, i-k), min(len(s)-len(b)+1, i+k+1)):\n                    if s[j:j+len(b)] == b:\n                        res.append(i)\n                        break\n        return sorted(res)",
+  "timestamp": "2025-08-06T01:49:29.280020",
+  "code_extracted_previous": "class Solution:\n    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        res = []\n        for i in range(len(s) - len(a) + 1):\n            if s[i:i+len(a)] == a:\n                for j in range(max(0, i-k), min(len(s)-len(b)+1, i+k+1)):\n                    if s[j:j+len(b)] == b:\n                        res.append(i)\n                        break\n        return sorted(res)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.467112"
+}

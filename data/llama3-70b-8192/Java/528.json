@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    private int[] prefixSum;\n    private int total;\n\n    public Solution(int[] w) {\n        prefixSum = new int[w.length];\n        prefixSum[0] = w[0];\n        total = w[0];\n        for (int i = 1; i < w.length; i++) {\n            prefixSum[i] = prefixSum[i - 1] + w[i];\n            total += w[i];\n        }\n    }\n    \n    public int pickIndex() {\n        int random = (int) (Math.random() * total);\n        int left = 0, right = prefixSum.length - 1;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (prefixSum[mid] <= random) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses prefix sum array to store the cumulative sum of weights, and binary search to find the index with the given probability.",
+  "code": "class Solution {\n    private int[] prefixSum;\n    private int total;\n\n    public Solution(int[] w) {\n        prefixSum = new int[w.length];\n        prefixSum[0] = w[0];\n        total = w[0];\n        for (int i = 1; i < w.length; i++) {\n            prefixSum[i] = prefixSum[i - 1] + w[i];\n            total += w[i];\n        }\n    }\n    \n    public int pickIndex() {\n        int random = (int) (Math.random() * total);\n        int left = 0, right = prefixSum.length - 1;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (prefixSum[mid] <= random) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}",
+  "timestamp": "2025-08-05T12:59:38.799108",
+  "code_extracted_previous": "class Solution {\n    private int[] prefixSum;\n    private int total;\n\n    public Solution(int[] w) {\n        prefixSum = new int[w.length];\n        prefixSum[0] = w[0];\n        total = w[0];\n        for (int i = 1; i < w.length; i++) {\n            prefixSum[i] = prefixSum[i - 1] + w[i];\n            total += w[i];\n        }\n    }\n    \n    public int pickIndex() {\n        int random = (int) (Math.random() * total);\n        int left = 0, right = prefixSum.length - 1;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (prefixSum[mid] <= random) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.615206"
+}

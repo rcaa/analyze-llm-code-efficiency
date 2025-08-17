@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass MyCalendarThree {\n    private Map<Integer, Integer> timeline;\n\n    public MyCalendarThree() {\n        timeline = new HashMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        timeline.put(startTime, timeline.getOrDefault(startTime, 0) + 1);\n        timeline.put(endTime, timeline.getOrDefault(endTime, 0) - 1);\n        int ongoing = 0, k = 0, maxK = 0;\n        List<Integer> times = new ArrayList<>(timeline.keySet());\n        Collections.sort(times);\n        for (int time : times) {\n            ongoing += timeline.get(time);\n            maxK = Math.max(maxK, ongoing);\n        }\n        return maxK;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a timeline map to store the start and end times of events, and then iterates over the sorted times to find the maximum k-booking.",
+  "code": "class MyCalendarThree {\n    private Map<Integer, Integer> timeline;\n\n    public MyCalendarThree() {\n        timeline = new HashMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        timeline.put(startTime, timeline.getOrDefault(startTime, 0) + 1);\n        timeline.put(endTime, timeline.getOrDefault(endTime, 0) - 1);\n        int ongoing = 0, k = 0, maxK = 0;\n        List<Integer> times = new ArrayList<>(timeline.keySet());\n        Collections.sort(times);\n        for (int time : times) {\n            ongoing += timeline.get(time);\n            maxK = Math.max(maxK, ongoing);\n        }\n        return maxK;\n    }\n}",
+  "timestamp": "2025-08-05T13:37:45.089995",
+  "code_extracted_previous": "class MyCalendarThree {\n    private Map<Integer, Integer> timeline;\n\n    public MyCalendarThree() {\n        timeline = new HashMap<>();\n    }\n    \n    public int book(int startTime, int endTime) {\n        timeline.put(startTime, timeline.getOrDefault(startTime, 0) + 1);\n        timeline.put(endTime, timeline.getOrDefault(endTime, 0) - 1);\n        int ongoing = 0, k = 0, maxK = 0;\n        List<Integer> times = new ArrayList<>(timeline.keySet());\n        Collections.sort(times);\n        for (int time : times) {\n            ongoing += timeline.get(time);\n            maxK = Math.max(maxK, ongoing);\n        }\n        return maxK;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:38.697763"
+}

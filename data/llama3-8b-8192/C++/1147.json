@@ -1,0 +1,15 @@
+{
+  "id": 1147,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int longestDecomposition(string text) {\n        int n = text.size();\n        int res = 0, i = 0;\n        while (i < n) {\n            int j = i;\n            while (j < n && text[j] == text[n - 1 - j + i]) j++;\n            res = max(res, j - i + 1);\n            i = j;\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use a two-pointer approach to find the longest substring that is a palindrome. We maintain a variable `res` to store the maximum length of the palindrome substring found so far. We iterate through the string and for each character, we find the longest palindrome substring ending at that character. We update `res` if the length of the current palindrome substring is greater than the previous maximum length.",
+  "code": "class Solution {\npublic:\n    int longestDecomposition(string text) {\n        int n = text.size();\n        int res = 0, i = 0;\n        while (i < n) {\n            int j = i;\n            while (j < n && text[j] == text[n - 1 - j + i]) j++;\n            res = max(res, j - i + 1);\n            i = j;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:13:50.514863",
+  "code_extracted_previous": "public:\n    int longestDecomposition(string text) {\n        int n = text.size();\n        int res = 0, i = 0;\n        while (i < n) {\n            int j = i;\n            while (j < n && text[j] == text[n - 1 - j + i]) j++;\n            res = max(res, j - i + 1);\n            i = j;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.405005"
+}

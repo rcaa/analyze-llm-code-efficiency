@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size() / 2;\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int x = row[2 * i];\n            if ((x % 2 == 0 && row[2 * i + 1] != x + 1) || (x % 2 == 1 && row[2 * i + 1] != x - 1)) {\n                for (int j = 2 * i + 1; j < row.size(); j++) {\n                    if ((x % 2 == 0 && row[j] == x + 1) || (x % 2 == 1 && row[j] == x - 1)) {\n                        swap(row[2 * i + 1], row[j]);\n                        res++;\n                        break;\n                    }\n                }\n            }\n        }\n        return res;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over each couple and checks if they are sitting side by side. If not, it finds the correct partner and swaps them, incrementing the swap count. This approach ensures that every couple is seated side by side with the minimum number of swaps.",
+  "code": "class Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size() / 2;\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int x = row[2 * i];\n            if ((x % 2 == 0 && row[2 * i + 1] != x + 1) || (x % 2 == 1 && row[2 * i + 1] != x - 1)) {\n                for (int j = 2 * i + 1; j < row.size(); j++) {\n                    if ((x % 2 == 0 && row[j] == x + 1) || (x % 2 == 1 && row[j] == x - 1)) {\n                        swap(row[2 * i + 1], row[j]);\n                        res++;\n                        break;\n                    }\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T15:11:44.990380",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size() / 2;\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int x = row[2 * i];\n            if ((x % 2 == 0 && row[2 * i + 1] != x + 1) || (x % 2 == 1 && row[2 * i + 1] != x - 1)) {\n                for (int j = 2 * i + 1; j < row.size(); j++) {\n                    if ((x % 2 == 0 && row[j] == x + 1) || (x % 2 == 1 && row[j] == x - 1)) {\n                        swap(row[2 * i + 1], row[j]);\n                        res++;\n                        break;\n                    }\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.065906"
+}

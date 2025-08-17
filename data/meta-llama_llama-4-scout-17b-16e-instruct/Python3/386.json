@@ -1,0 +1,15 @@
+{
+  "id": 386,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def lexicalOrder(self, n: int) -> List[int]:\n        res = list(range(1, n + 1))\n        res.sort(key=lambda x: str(x))\n        return res\n```\n No, actually here is a more efficient solution:\n```python\nclass Solution:\n    def lexicalOrder(self, n: int) -> List[int]:\n        res = []\n        cur = 1\n        for _ in range(n):\n            res.append(cur)\n            if cur * 10 <= n:\n                cur *= 10\n            elif cur % 10 != 9 and cur + 1 <= n:\n                cur += 1\n            else:\n                cur //= 10\n                cur += 1\n        return res\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1) \nenergy implications: LOW \nexplanation: Iterative solution leveraging lexicographical order properties.",
+  "code": "class Solution:\n    def lexicalOrder(self, n: int) -> List[int]:\n        res = list(range(1, n + 1))\n        res.sort(key=lambda x: str(x))\n        return res",
+  "timestamp": "2025-08-05T13:59:42.290609",
+  "code_extracted_previous": "class Solution:\n    def lexicalOrder(self, n: int) -> List[int]:\n        res = list(range(1, n + 1))\n        res.sort(key=lambda x: str(x))\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.684679"
+}

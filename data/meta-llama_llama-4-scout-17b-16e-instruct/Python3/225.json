@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom collections import deque\n\nclass MyStack:\n\n    def __init__(self):\n        self.q1 = deque()\n        self.q2 = deque()\n\n    def push(self, x: int) -> None:\n        self.q2.append(x)\n        while self.q1:\n            self.q2.append(self.q1.popleft())\n        self.q1, self.q2 = self.q2, self.q1\n\n    def pop(self) -> int:\n        return self.q1.popleft()\n\n    def top(self) -> int:\n        return self.q1[0]\n\n    def empty(self) -> bool:\n        return not self.q1\n\n\n# Your MyStack object will be instantiated and called as such:\n# obj = MyStack()\n# obj.push(x)\n# param_2 = obj.pop()\n# param_3 = obj.top()\n# param_4 = obj.empty()\n```\nefficiency: HIGH\ntime complexity: \n- push: O(n)\n- pop: O(1)\n- top: O(1)\n- empty: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This implementation uses two queues to simulate a stack. The push operation moves all elements from one queue to another, effectively making the newly added element the front of the first queue, which acts as the top of the stack. The pop and top operations simply remove or return the front element of the first queue, respectively. The empty operation checks if the first queue is empty.",
+  "code": "class MyStack:\n\n    def __init__(self):\n        self.q1 = deque()\n        self.q2 = deque()\n\n    def push(self, x: int) -> None:\n        self.q2.append(x)\n        while self.q1:\n            self.q2.append(self.q1.popleft())\n        self.q1, self.q2 = self.q2, self.q1\n\n    def pop(self) -> int:\n        return self.q1.popleft()\n\n    def top(self) -> int:\n        return self.q1[0]\n\n    def empty(self) -> bool:\n        return not self.q1\n\n\n# Your MyStack object will be instantiated and called as such:\n# obj = MyStack()\n# obj.push(x)\n# param_2 = obj.pop()\n# param_3 = obj.top()\n# param_4 = obj.empty()",
+  "timestamp": "2025-08-05T16:00:37.168184",
+  "code_extracted_previous": "from collections import deque\n\nclass MyStack:\n\n    def __init__(self):\n        self.q1 = deque()\n        self.q2 = deque()\n\n    def push(self, x: int) -> None:\n        self.q2.append(x)\n        while self.q1:\n            self.q2.append(self.q1.popleft())\n        self.q1, self.q2 = self.q2, self.q1\n\n    def pop(self) -> int:\n        return self.q1.popleft()\n\n    def top(self) -> int:\n        return self.q1[0]\n\n    def empty(self) -> bool:\n        return not self.q1\n\n\n# Your MyStack object will be instantiated and called as such:\n# obj = MyStack()\n# obj.push(x)\n# param_2 = obj.pop()\n# param_3 = obj.top()\n# param_4 = obj.empty()",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:52.099285"
+}

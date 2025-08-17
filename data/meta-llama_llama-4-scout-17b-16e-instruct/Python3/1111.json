@@ -1,0 +1,15 @@
+{
+  "id": 1111,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def maxDepthAfterSplit(self, seq: str) -> List[int]:\n        A, B = 0, 0\n        res = []\n        for c in seq:\n            if c == '(':\n                if A <= B:\n                    A += 1\n                    res.append(0)\n                else:\n                    B += 1\n                    res.append(1)\n            else:\n                if A > B:\n                    A -= 1\n                    res.append(0)\n                else:\n                    B -= 1\n                    res.append(1)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the sequence once, maintaining two counters for the depth of A and B. It assigns each parenthesis to the sequence with the smaller current depth, ensuring the maximum depth of both sequences is minimized. This greedy approach guarantees an optimal solution.",
+  "code": "class Solution:\n    def maxDepthAfterSplit(self, seq: str) -> List[int]:\n        A, B = 0, 0\n        res = []\n        for c in seq:\n            if c == '(':\n                if A <= B:\n                    A += 1\n                    res.append(0)\n                else:\n                    B += 1\n                    res.append(1)\n            else:\n                if A > B:\n                    A -= 1\n                    res.append(0)\n                else:\n                    B -= 1\n                    res.append(1)\n        return res",
+  "timestamp": "2025-08-06T00:48:45.595855",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def maxDepthAfterSplit(self, seq: str) -> List[int]:\n        A, B = 0, 0\n        res = []\n        for c in seq:\n            if c == '(':\n                if A <= B:\n                    A += 1\n                    res.append(0)\n                else:\n                    B += 1\n                    res.append(1)\n            else:\n                if A > B:\n                    A -= 1\n                    res.append(0)\n                else:\n                    B -= 1\n                    res.append(1)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:51.700401"
+}

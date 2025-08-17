@@ -1,0 +1,15 @@
+{
+  "id": 1129,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nfrom collections import deque\nclass Solution:\n    def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:\n        graph = {i: [[], []] for i in range(n)}\n        for u, v in redEdges:\n            graph[u][0].append(v)\n        for u, v in blueEdges:\n            graph[u][1].append(v)\n        res = [-1] * n\n        res[0] = 0\n        q = deque([(0, 0, 0), (0, 1, 0)])\n        while q:\n            node, color, step = q.popleft()\n            for nei in graph[node][1 - color]:\n                if res[nei] == -1:\n                    res[nei] = step + 1\n                    q.append((nei, 1 - color, step + 1))\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: This solution uses a BFS approach to traverse the graph, alternating between red and blue edges. It maintains a queue of nodes to visit, along with their current color and step. It updates the result array with the shortest alternating path length for each node.",
+  "code": "class Solution:\n    def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:\n        graph = {i: [[], []] for i in range(n)}\n        for u, v in redEdges:\n            graph[u][0].append(v)\n        for u, v in blueEdges:\n            graph[u][1].append(v)\n        res = [-1] * n\n        res[0] = 0\n        q = deque([(0, 0, 0), (0, 1, 0)])\n        while q:\n            node, color, step = q.popleft()\n            for nei in graph[node][1 - color]:\n                if res[nei] == -1:\n                    res[nei] = step + 1\n                    q.append((nei, 1 - color, step + 1))\n        return res",
+  "timestamp": "2025-08-05T13:54:41.168664",
+  "code_extracted_previous": "from collections import deque\nclass Solution:\n    def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:\n        graph = {i: [[], []] for i in range(n)}\n        for u, v in redEdges:\n            graph[u][0].append(v)\n        for u, v in blueEdges:\n            graph[u][1].append(v)\n        res = [-1] * n\n        res[0] = 0\n        q = deque([(0, 0, 0), (0, 1, 0)])\n        while q:\n            node, color, step = q.popleft()\n            for nei in graph[node][1 - color]:\n                if res[nei] == -1:\n                    res[nei] = step + 1\n                    q.append((nei, 1 - color, step + 1))\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:38.845165"
+}

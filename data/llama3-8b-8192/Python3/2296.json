@@ -1,0 +1,15 @@
+{
+  "id": 2296,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass TextEditor:\n\n    def __init__(self):\n        self.text = ''\n        self.cursor = 0\n\n    def addText(self, text: str) -> None:\n        self.text += text\n        self.cursor += len(text)\n\n    def deleteText(self, k: int) -> int:\n        deleted = min(k, self.cursor)\n        self.text = self.text[deleted:]\n        self.cursor -= deleted\n        return deleted\n\n    def cursorLeft(self, k: int) -> str:\n        self.cursor = max(0, self.cursor - k)\n        return self.text[self.cursor - min(10, self.cursor):self.cursor]\n\n    def cursorRight(self, k: int) -> str:\n        self.cursor += k\n        return self.text[max(0, self.cursor - 10):self.cursor]\n```\nefficiency: HIGH\ntime complexity: O(1) for addText, deleteText, cursorLeft, cursorRight\nspace complexity: O(n) for storing the text\nenergy implications: LOW\nexplanation: The solution uses a simple string and integer to keep track of the text and cursor position. The addText method appends the new text to the end of the current text and updates the cursor position. The deleteText method deletes the specified number of characters from the left of the cursor, updating the cursor position and text accordingly. The cursorLeft and cursorRight methods update the cursor position and return the desired substring. The time complexity is O(1) for all methods, making it efficient for large inputs.",
+  "code": "class TextEditor:\n\n    def __init__(self):\n        self.text = ''\n        self.cursor = 0\n\n    def addText(self, text: str) -> None:\n        self.text += text\n        self.cursor += len(text)\n\n    def deleteText(self, k: int) -> int:\n        deleted = min(k, self.cursor)\n        self.text = self.text[deleted:]\n        self.cursor -= deleted\n        return deleted\n\n    def cursorLeft(self, k: int) -> str:\n        self.cursor = max(0, self.cursor - k)\n        return self.text[self.cursor - min(10, self.cursor):self.cursor]\n\n    def cursorRight(self, k: int) -> str:\n        self.cursor += k\n        return self.text[max(0, self.cursor - 10):self.cursor]",
+  "timestamp": "2025-08-05T15:14:33.252189",
+  "code_extracted_previous": "class TextEditor:\n\n    def __init__(self):\n        self.text = ''\n        self.cursor = 0\n\n    def addText(self, text: str) -> None:\n        self.text += text\n        self.cursor += len(text)\n\n    def deleteText(self, k: int) -> int:\n        deleted = min(k, self.cursor)\n        self.text = self.text[deleted:]\n        self.cursor -= deleted\n        return deleted\n\n    def cursorLeft(self, k: int) -> str:\n        self.cursor = max(0, self.cursor - k)\n        return self.text[self.cursor - min(10, self.cursor):self.cursor]\n\n    def cursorRight(self, k: int) -> str:\n        self.cursor += k\n        return self.text[max(0, self.cursor - 10):self.cursor]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:43.787951"
+}

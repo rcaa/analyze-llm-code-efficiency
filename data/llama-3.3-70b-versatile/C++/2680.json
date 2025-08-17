@@ -1,0 +1,15 @@
+{
+  "id": 2680,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    long long maximumOr(vector<int>& nums, int k) {\n        long long res = 0;\n        for (int num : nums) res |= num;\n        long long ans = res;\n        for (int i = 0; i < nums.size(); i++) {\n            long long cur = res;\n            int cnt = 0;\n            for (int j = 0; j < 31; j++) {\n                if (!(cur & (1LL << j)) && (nums[i] & (1LL << j))) {\n                    if (cnt >= k) break;\n                    cur |= (1LL << j);\n                    cnt++;\n                }\n            }\n            ans = max(ans, cur);\n        }\n        return ans;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n * log(m))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses bitwise operations to find the maximum possible value of the bitwise OR of the array elements after applying the operation at most k times. It iterates over each element in the array and checks if setting any of the bits in the current element would increase the result without exceeding k operations. The maximum result is updated accordingly.",
+  "code": "class Solution {\npublic:\n    long long maximumOr(vector<int>& nums, int k) {\n        long long res = 0;\n        for (int num : nums) res |= num;\n        long long ans = res;\n        for (int i = 0; i < nums.size(); i++) {\n            long long cur = res;\n            int cnt = 0;\n            for (int j = 0; j < 31; j++) {\n                if (!(cur & (1LL << j)) && (nums[i] & (1LL << j))) {\n                    if (cnt >= k) break;\n                    cur |= (1LL << j);\n                    cnt++;\n                }\n            }\n            ans = max(ans, cur);\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-06T15:10:34.219734",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long maximumOr(vector<int>& nums, int k) {\n        long long res = 0;\n        for (int num : nums) res |= num;\n        long long ans = res;\n        for (int i = 0; i < nums.size(); i++) {\n            long long cur = res;\n            int cnt = 0;\n            for (int j = 0; j < 31; j++) {\n                if (!(cur & (1LL << j)) && (nums[i] & (1LL << j))) {\n                    if (cnt >= k) break;\n                    cur |= (1LL << j);\n                    cnt++;\n                }\n            }\n            ans = max(ans, cur);\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.451493"
+}

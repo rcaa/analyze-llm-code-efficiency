@@ -1,0 +1,15 @@
+{
+  "id": 2507,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int smallestValue(int n) {\n        while (true) {\n            int sum = 0, x = n;\n            for (int p = 2; p * p <= x; ++p) {\n                while (x % p == 0) {\n                    sum += p;\n                    x /= p;\n                }\n            }\n            if (x > 1) sum += x;\n            if (sum == n) return n;\n            n = sum;\n        }\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Repeatedly factor n into its prime factors (with multiplicity) and replace n by their sum until the sum equals n, which is the fixed point and the smallest value. The loop terminates quickly because the sum of prime factors is usually much smaller than n.",
+  "code": "class Solution {\npublic:\n    int smallestValue(int n) {\n        while (true) {\n            int sum = 0, x = n;\n            for (int p = 2; p * p <= x; ++p) {\n                while (x % p == 0) {\n                    sum += p;\n                    x /= p;\n                }\n            }\n            if (x > 1) sum += x;\n            if (sum == n) return n;\n            n = sum;\n        }\n    }\n};",
+  "timestamp": "2025-08-06T02:29:29.325646",
+  "code_extracted_previous": "public:\n    int smallestValue(int n) {\n        while (true) {\n            int sum = 0, x = n;\n            for (int p = 2; p * p <= x; ++p) {\n                while (x % p == 0) {\n                    sum += p;\n                    x /= p;\n                }\n            }\n            if (x > 1) sum += x;\n            if (sum == n) return n;\n            n = sum;\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.747693"
+}

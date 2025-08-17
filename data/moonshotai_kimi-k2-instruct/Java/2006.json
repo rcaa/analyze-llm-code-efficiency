@@ -1,0 +1,15 @@
+{
+  "id": 2006,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int countKDifference(int[] nums, int k) {\n        int[] freq = new int[101];\n        int count = 0;\n        for (int num : nums) {\n            int up = num + k;\n            if (up <= 100) count += freq[up];\n            int down = num - k;\n            if (down >= 1) count += freq[down];\n            freq[num]++;\n        }\n        return count;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass through the array using a frequency array of fixed size 101 to count valid pairs on the fly. Each element contributes at most two lookups (num+k and num-k), yielding linear time and constant space.",
+  "code": "class Solution {\n    public int countKDifference(int[] nums, int k) {\n        int[] freq = new int[101];\n        int count = 0;\n        for (int num : nums) {\n            int up = num + k;\n            if (up <= 100) count += freq[up];\n            int down = num - k;\n            if (down >= 1) count += freq[down];\n            freq[num]++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T12:44:52.636463",
+  "code_extracted_previous": "public int countKDifference(int[] nums, int k) {\n        int[] freq = new int[101];\n        int count = 0;\n        for (int num : nums) {\n            int up = num + k;\n            if (up <= 100) count += freq[up];\n            int down = num - k;\n            if (down >= 1) count += freq[down];\n            freq[num]++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.705250"
+}

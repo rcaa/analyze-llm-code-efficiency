@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def hardestWorker(self, n: int, logs: List[List[int]]) -> int:\n        max_time = logs[0][1]\n        max_id = logs[0][0]\n        prev_time = 0\n        for log in logs:\n            id, time = log\n            curr_time = time - prev_time\n            if curr_time > max_time:\n                max_time = curr_time\n                max_id = id\n            elif curr_time == max_time:\n                max_id = min(max_id, id)\n            prev_time = time\n        return max_id\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the logs once, keeping track of the maximum time spent on a task and the corresponding employee id. It updates these values whenever it encounters a task with a longer duration, or when it encounters a task with the same maximum duration but a smaller employee id.",
+  "code": "def hardestWorker(self, n: int, logs: List[List[int]]) -> int:\n        max_time = logs[0][1]\n        max_id = logs[0][0]\n        prev_time = 0\n        for log in logs:\n            id, time = log\n            curr_time = time - prev_time\n            if curr_time > max_time:\n                max_time = curr_time\n                max_id = id\n            elif curr_time == max_time:\n                max_id = min(max_id, id)\n            prev_time = time\n        return max_id\n```",
+  "timestamp": "2025-08-05T12:47:51.337842",
+  "code_extracted_previous": "class Solution:\n    def hardestWorker(self, n: int, logs: List[List[int]]) -> int:\n        max_time = logs[0][1]\n        max_id = logs[0][0]\n        prev_time = 0\n        for log in logs:\n            id, time = log\n            curr_time = time - prev_time\n            if curr_time > max_time:\n                max_time = curr_time\n                max_id = id\n            elif curr_time == max_time:\n                max_id = min(max_id, id)\n            prev_time = time\n        return max_id",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.901935"
+}

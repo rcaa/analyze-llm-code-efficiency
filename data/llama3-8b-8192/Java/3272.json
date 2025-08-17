@@ -1,0 +1,15 @@
+{
+  "id": 3272,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public long countGoodIntegers(int n, int k) {\n        long res = 0;\n        for (int i = 1; i <= k; i++) {\n            for (int j = 0; j < n - 1; j++) {\n                if (i * 10 + i == k) break;\n                res += dfs(i, n - 1 - j, k);\n            }\n        }\n        return res;\n    }\n    private long dfs(int cur, int left, int k) {\n        if (left == 0) return 1;\n        long res = 0;\n        for (int i = 0; i <= 9; i++) {\n            if (i == cur % 10) continue;\n            if (cur * 10 + i % k == 0) res += dfs(i, left - 1, k);\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(k * 10^n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a depth-first search (DFS) approach to count the good integers. It first generates all possible leading digits for the good integers, and then recursively generates all possible trailing digits that make the integer k-palindromic. The time complexity is O(k * 10^n) because there are k possible leading digits and 10^n possible trailing digits. The space complexity is O(1) because only a constant amount of space is used.",
+  "code": "class Solution {\n    public long countGoodIntegers(int n, int k) {\n        long res = 0;\n        for (int i = 1; i <= k; i++) {\n            for (int j = 0; j < n - 1; j++) {\n                if (i * 10 + i == k) break;\n                res += dfs(i, n - 1 - j, k);\n            }\n        }\n        return res;\n    }\n    private long dfs(int cur, int left, int k) {\n        if (left == 0) return 1;\n        long res = 0;\n        for (int i = 0; i <= 9; i++) {\n            if (i == cur % 10) continue;\n            if (cur * 10 + i % k == 0) res += dfs(i, left - 1, k);\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:39:55.476217",
+  "code_extracted_previous": "public long countGoodIntegers(int n, int k) {\n        long res = 0;\n        for (int i = 1; i <= k; i++) {\n            for (int j = 0; j < n - 1; j++) {\n                if (i * 10 + i == k) break;\n                res += dfs(i, n - 1 - j, k);\n            }\n        }\n        return res;\n    }\n    private long dfs(int cur, int left, int k) {\n        if (left == 0) return 1;\n        long res = 0;\n        for (int i = 0; i <= 9; i++) {\n            if (i == cur % 10) continue;\n            if (cur * 10 + i % k == 0) res += dfs(i, left - 1, k);\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.635106"
+}

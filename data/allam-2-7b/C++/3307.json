@@ -1,0 +1,15 @@
+{
+  "id": 3307,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```\nclass Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        string word = \"a\";\n        int index = 0;\n\n        for (int operation : operations) {\n            if (operation == 0) {\n                word += word;\n            } else if (operation == 1) {\n                index = (word.length() + 1) * (k - index) % word.length();\n                word[index] = 'a';\n            }\n        }\n\n        return word[k - 1];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\n1. Initialize the string \"word\" to \"a\" and the index variable to 0.\n2. Iterate through the operations array.\n3. If the operation is 0, concatenate the current word with itself.\n4. If the operation is 1, calculate the index of the kth character in the string using the formula (word.length() + 1) * (k - index) % word.length() and assign the character 'a' to that index.\n5. Return the kth character from the string.\n\nThis solution efficiently solves the problem by using a single loop and a few arithmetic operations, resulting in a time complexity of O(n) and space complexity of O(1). The energy implications are low since the algorithm only performs a few operations and does not require any additional resources. ",
+  "code": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        string word = \"a\";\n        int index = 0;\n\n        for (int operation : operations) {\n            if (operation == 0) {\n                word += word;\n            } else if (operation == 1) {\n                index = (word.length() + 1) * (k - index) % word.length();\n                word[index] = 'a';\n            }\n        }\n\n        return word[k - 1];\n    }\n};",
+  "timestamp": "2025-08-05T15:23:56.206950",
+  "code_extracted_previous": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        string word = \"a\";\n        int index = 0;\n\n        for (int operation : operations) {\n            if (operation == 0) {\n                word += word;\n            } else if (operation == 1) {\n                index = (word.length() + 1) * (k - index) % word.length();\n                word[index] = 'a';\n            }\n        }\n\n        return word[k - 1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.709562"
+}

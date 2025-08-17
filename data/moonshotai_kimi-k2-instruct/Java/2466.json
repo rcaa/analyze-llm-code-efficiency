@@ -1,0 +1,15 @@
+{
+  "id": 2466,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        final int MOD = 1_000_000_007;\n        int[] dp = new int[high + 1];\n        dp[0] = 1;\n        for (int len = 1; len <= high; len++) {\n            if (len >= zero) {\n                dp[len] = (dp[len] + dp[len - zero]) % MOD;\n            }\n            if (len >= one) {\n                dp[len] = (dp[len] + dp[len - one]) % MOD;\n            }\n        }\n        long res = 0;\n        for (int len = low; len <= high; len++) {\n            res = (res + dp[len]) % MOD;\n        }\n        return (int) res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(high)\nspace complexity: O(high)\nenergy implications: LOW\nexplanation: Uses dynamic programming to count strings of every length up to high in one pass, then sums the counts in the target range. Single array of size high+1 keeps memory footprint minimal.",
+  "code": "class Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        final int MOD = 1_000_000_007;\n        int[] dp = new int[high + 1];\n        dp[0] = 1;\n        for (int len = 1; len <= high; len++) {\n            if (len >= zero) {\n                dp[len] = (dp[len] + dp[len - zero]) % MOD;\n            }\n            if (len >= one) {\n                dp[len] = (dp[len] + dp[len - one]) % MOD;\n            }\n        }\n        long res = 0;\n        for (int len = low; len <= high; len++) {\n            res = (res + dp[len]) % MOD;\n        }\n        return (int) res;\n    }\n}",
+  "timestamp": "2025-08-05T14:27:23.676633",
+  "code_extracted_previous": "class Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        final int MOD = 1_000_000_007;\n        int[] dp = new int[high + 1];\n        dp[0] = 1;\n        for (int len = 1; len <= high; len++) {\n            if (len >= zero) {\n                dp[len] = (dp[len] + dp[len - zero]) % MOD;\n            }\n            if (len >= one) {\n                dp[len] = (dp[len] + dp[len - one]) % MOD;\n            }\n        }\n        long res = 0;\n        for (int len = low; len <= high; len++) {\n            res = (res + dp[len]) % MOD;\n        }\n        return (int) res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.085953"
+}

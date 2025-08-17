@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findKthNumber(int n, int k) {\n        long cur = 1;\n        k--;\n        while (k > 0) {\n            int step = 0;\n            long next = cur * 10;\n            for (long i = cur; i <= n; i *= 10) {\n                step += Math.min(k / (int)(i / cur), n - (int)i + 1);\n            }\n            if (step == 0) break;\n            k -= step;\n            cur = next;\n        }\n        return (int)cur;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int findKthNumber(int n, int k) {\n        long cur = 1;\n        k--;\n        while (k > 0) {\n            int step = 0;\n            long next = cur * 10;\n            for (long i = cur; i <= n; i *= 10) {\n                step += Math.min(k / (int)(i / cur), n - (int)i + 1);\n            }\n            if (step == 0) break;\n            k -= step;\n            cur = next;\n        }\n        return (int)cur;\n    }\n}",
+  "timestamp": "2025-08-06T01:12:58.922958",
+  "code_extracted_previous": "class Solution {\n    public int findKthNumber(int n, int k) {\n        long cur = 1;\n        k--;\n        while (k > 0) {\n            int step = 0;\n            long next = cur * 10;\n            for (long i = cur; i <= n; i *= 10) {\n                step += Math.min(k / (int)(i / cur), n - (int)i + 1);\n            }\n            if (step == 0) break;\n            k -= step;\n            cur = next;\n        }\n        return (int)cur;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.844592"
+}

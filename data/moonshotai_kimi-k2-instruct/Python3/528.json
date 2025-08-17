@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```python\nimport bisect\nimport random\n\nclass Solution:\n\n    def __init__(self, w: List[int]):\n        self.prefix = []\n        total = 0\n        for weight in w:\n            total += weight\n            self.prefix.append(total)\n        self.total = total\n\n    def pickIndex(self) -> int:\n        target = random.randint(1, self.total)\n        return bisect.bisect_left(self.prefix, target)\n```\nefficiency: HIGH\ntime complexity: O(log N) for pickIndex, O(N) for __init__\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Build a prefix-sum array once; each pick uses binary search (bisect) to locate the random target in logarithmic time.",
+  "code": "class Solution:\n\n    def __init__(self, w: List[int]):\n        self.prefix = []\n        total = 0\n        for weight in w:\n            total += weight\n            self.prefix.append(total)\n        self.total = total\n\n    def pickIndex(self) -> int:\n        target = random.randint(1, self.total)\n        return bisect.bisect_left(self.prefix, target)",
+  "timestamp": "2025-08-05T13:00:04.708168",
+  "code_extracted_previous": "import bisect\nimport random\n\nclass Solution:\n\n    def __init__(self, w: List[int]):\n        self.prefix = []\n        total = 0\n        for weight in w:\n            total += weight\n            self.prefix.append(total)\n        self.total = total\n\n    def pickIndex(self) -> int:\n        target = random.randint(1, self.total)\n        return bisect.bisect_left(self.prefix, target)",
+  "starter_ok": false,
+  "starter_check_reason": "assinatura divergente: esperada '__init__(self, w)'",
+  "reavaliado_em": "2025-08-17T12:23:57.305707"
+}

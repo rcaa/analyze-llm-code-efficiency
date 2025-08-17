@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int cnt = 1;\n            for (int j = i + 2; j < n; j += 2) {\n                if (s[j] == s[j - 1] && s[j] == s[j - 2]) {\n                    break;\n                }\n                if (s[j] == s[j - 1]) {\n                    cnt++;\n                }\n            }\n            res = max(res, cnt);\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates over the string and for each character, it checks for adjacent pairs of the same digit. It uses a sliding window approach to efficiently check for adjacent pairs. The time complexity is O(n^2) due to the nested loops, but it is efficient in terms of space complexity as it only uses a constant amount of space.",
+  "code": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int cnt = 1;\n            for (int j = i + 2; j < n; j += 2) {\n                if (s[j] == s[j - 1] && s[j] == s[j - 2]) {\n                    break;\n                }\n                if (s[j] == s[j - 1]) {\n                    cnt++;\n                }\n            }\n            res = max(res, cnt);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:06:55.333152",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.size();\n        int res = 0;\n        for (int i = 0; i < n; i++) {\n            int cnt = 1;\n            for (int j = i + 2; j < n; j += 2) {\n                if (s[j] == s[j - 1] && s[j] == s[j - 2]) {\n                    break;\n                }\n                if (s[j] == s[j - 1]) {\n                    cnt++;\n                }\n            }\n            res = max(res, cnt);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.235147"
+}

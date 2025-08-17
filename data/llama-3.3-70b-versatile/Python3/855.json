@@ -1,0 +1,15 @@
+{
+  "id": 855,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass ExamRoom:\n\n    def __init__(self, n: int):\n        self.n = n\n        self.seats = []\n\n    def seat(self) -> int:\n        if not self.seats:\n            self.seats.append(0)\n            return 0\n        max_dist = -1\n        max_seat = -1\n        for i in range(len(self.seats) + 1):\n            if i == 0:\n                dist = self.seats[0]\n            elif i == len(self.seats):\n                dist = self.n - 1 - self.seats[-1]\n            else:\n                dist = (self.seats[i] - self.seats[i-1]) // 2\n            if dist > max_dist:\n                max_dist = dist\n                max_seat = i if i == 0 else (self.seats[i-1] + self.seats[i]) // 2 if i < len(self.seats) else self.n - 1\n        self.seats.append(max_seat)\n        self.seats.sort()\n        return max_seat\n\n    def leave(self, p: int) -> None:\n        self.seats.remove(p)\n\n\n# Your ExamRoom object will be instantiated and called as such:\n# obj = ExamRoom(n)\n# param_1 = obj.seat()\n# obj.leave(p)\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a list to keep track of occupied seats and calculates the maximum distance for each new student, ensuring efficient seat allocation and removal.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-06T15:21:00.672000",
+  "code_extracted_previous": "class ExamRoom:\n\n    def __init__(self, n: int):\n        self.n = n\n        self.seats = []\n\n    def seat(self) -> int:\n        if not self.seats:\n            self.seats.append(0)\n            return 0\n        max_dist = -1\n        max_seat = -1\n        for i in range(len(self.seats) + 1):\n            if i == 0:\n                dist = self.seats[0]\n            elif i == len(self.seats):\n                dist = self.n - 1 - self.seats[-1]\n            else:\n                dist = (self.seats[i] - self.seats[i-1]) // 2\n            if dist > max_dist:\n                max_dist = dist\n                max_seat = i if i == 0 else (self.seats[i-1] + self.seats[i]) // 2 if i < len(self.seats) else self.n - 1\n        self.seats.append(max_seat)\n        self.seats.sort()\n        return max_seat\n\n    def leave(self, p: int) -> None:\n        self.seats.remove(p)\n\n\n# Your ExamRoom object will be instantiated and called as such:\n# obj = ExamRoom(n)\n# param_1 = obj.seat()\n# obj.leave(p)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.859381"
+}

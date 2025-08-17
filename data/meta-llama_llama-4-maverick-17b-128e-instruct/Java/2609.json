@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int findTheLongestBalancedSubstring(String s) {\n        int maxLength = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int zeros = 0, ones = 0;\n            for (int j = i; j < s.length(); j++) {\n                if (s.charAt(j) == '0') {\n                    zeros++;\n                } else {\n                    ones++;\n                }\n                if (zeros == ones) {\n                    maxLength = Math.max(maxLength, ones + zeros);\n                } else if (ones > zeros) {\n                    break;\n                }\n            }\n        }\n        return maxLength;\n    }\n}\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the string, maintaining a count of zeros and ones for each substring. It updates the maximum length when a balanced substring is found and breaks when the count of ones exceeds zeros, optimizing the search.\n```",
+  "code": "class Solution {\n    public int findTheLongestBalancedSubstring(String s) {\n        int maxLength = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int zeros = 0, ones = 0;\n            for (int j = i; j < s.length(); j++) {\n                if (s.charAt(j) == '0') {\n                    zeros++;\n                } else {\n                    ones++;\n                }\n                if (zeros == ones) {\n                    maxLength = Math.max(maxLength, ones + zeros);\n                } else if (ones > zeros) {\n                    break;\n                }\n            }\n        }\n        return maxLength;\n    }\n}\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the string, maintaining a count of zeros and ones for each substring. It updates the maximum length when a balanced substring is found and breaks when the count of ones exceeds zeros, optimizing the search.",
+  "timestamp": "2025-08-05T23:42:40.955602",
+  "code_extracted_previous": "class Solution {\n    public int findTheLongestBalancedSubstring(String s) {\n        int maxLength = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int zeros = 0, ones = 0;\n            for (int j = i; j < s.length(); j++) {\n                if (s.charAt(j) == '0') {\n                    zeros++;\n                } else {\n                    ones++;\n                }\n                if (zeros == ones) {\n                    maxLength = Math.max(maxLength, ones + zeros);\n                } else if (ones > zeros) {\n                    break;\n                }\n            }\n        }\n        return maxLength;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.662365"
+}

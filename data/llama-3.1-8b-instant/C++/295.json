@@ -1,0 +1,15 @@
+{
+  "id": 295,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass MedianFinder {\nprivate:\n    priority_queue<int> maxHeap;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n\npublic:\n    MedianFinder() {\n        \n    }\n    \n    void addNum(int num) {\n        if (maxHeap.empty() || num <= maxHeap.top()) {\n            maxHeap.push(num);\n        } else {\n            minHeap.push(num);\n        }\n        \n        if (maxHeap.size() > minHeap.size() + 1) {\n            minHeap.push(maxHeap.top());\n            maxHeap.pop();\n        } else if (minHeap.size() > maxHeap.size()) {\n            maxHeap.push(minHeap.top());\n            minHeap.pop();\n        }\n    }\n    \n    double findMedian() {\n        if (maxHeap.size() == minHeap.size()) {\n            return (maxHeap.top() + minHeap.top()) / 2.0;\n        } else {\n            return (double)maxHeap.top();\n        }\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class MedianFinder {\nprivate:\n    priority_queue<int> maxHeap;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n\npublic:\n    MedianFinder() {\n        \n    }\n    \n    void addNum(int num) {\n        if (maxHeap.empty() || num <= maxHeap.top()) {\n            maxHeap.push(num);\n        } else {\n            minHeap.push(num);\n        }\n        \n        if (maxHeap.size() > minHeap.size() + 1) {\n            minHeap.push(maxHeap.top());\n            maxHeap.pop();\n        } else if (minHeap.size() > maxHeap.size()) {\n            maxHeap.push(minHeap.top());\n            minHeap.pop();\n        }\n    }\n    \n    double findMedian() {\n        if (maxHeap.size() == minHeap.size()) {\n            return (maxHeap.top() + minHeap.top()) / 2.0;\n        } else {\n            return (double)maxHeap.top();\n        }\n    }\n};",
+  "timestamp": "2025-08-06T01:13:43.620008",
+  "code_extracted_previous": "class MedianFinder {\nprivate:\n    priority_queue<int> maxHeap;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n\npublic:\n    MedianFinder() {\n        \n    }\n    \n    void addNum(int num) {\n        if (maxHeap.empty() || num <= maxHeap.top()) {\n            maxHeap.push(num);\n        } else {\n            minHeap.push(num);\n        }\n        \n        if (maxHeap.size() > minHeap.size() + 1) {\n            minHeap.push(maxHeap.top());\n            maxHeap.pop();\n        } else if (minHeap.size() > maxHeap.size()) {\n            maxHeap.push(minHeap.top());\n            minHeap.pop();\n        }\n    }\n    \n    double findMedian() {\n        if (maxHeap.size() == minHeap.size()) {\n            return (maxHeap.top() + minHeap.top()) / 2.0;\n        } else {\n            return (double)maxHeap.top();\n        }\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:28.284843"
+}

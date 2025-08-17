@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findKthNumber(int n, int k) {\n        long cur = 1;\n        k--;\n        while (k > 0) {\n            long step = 0, first = cur, last = cur + 1;\n            while (first <= n) {\n                step += Math.min(n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k < step) {\n                k--;\n                cur *= 10;\n            } else {\n                k -= step;\n                cur++;\n            }\n        }\n        return (int) cur;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(n) + log(k))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a prefix-based approach to traverse the lexicographical order, efficiently calculating the step size and updating the current number to find the kth smallest integer.",
+  "code": "class Solution {\n    public int findKthNumber(int n, int k) {\n        long cur = 1;\n        k--;\n        while (k > 0) {\n            long step = 0, first = cur, last = cur + 1;\n            while (first <= n) {\n                step += Math.min(n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k < step) {\n                k--;\n                cur *= 10;\n            } else {\n                k -= step;\n                cur++;\n            }\n        }\n        return (int) cur;\n    }\n}",
+  "timestamp": "2025-08-06T01:12:56.869180",
+  "code_extracted_previous": "class Solution {\n    public int findKthNumber(int n, int k) {\n        long cur = 1;\n        k--;\n        while (k > 0) {\n            long step = 0, first = cur, last = cur + 1;\n            while (first <= n) {\n                step += Math.min(n + 1, last) - first;\n                first *= 10;\n                last *= 10;\n            }\n            if (k < step) {\n                k--;\n                cur *= 10;\n            } else {\n                k -= step;\n                cur++;\n            }\n        }\n        return (int) cur;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.285126"
+}

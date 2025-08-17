@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int minimizeXor(int num1, int num2) {\n        int setBitsNum2 = Integer.bitCount(num2);\n        int result = 0;\n        for (int i = 30; i >= 0; i--) {\n            int mask = 1 << i;\n            if ((num1 & mask) != 0) {\n                if (setBitsNum2 > 0) {\n                    result |= mask;\n                    setBitsNum2--;\n                }\n            } else {\n                if (setBitsNum2 > 0) {\n                    result |= mask;\n                    setBitsNum2--;\n                }\n            }\n        }\n        return result;\n    }\n}\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the bits of num1 from most significant to least significant, setting the corresponding bit in the result if the bit in num1 is set or if there's a remaining set bit to be used, thus minimizing the XOR with num1 while maintaining the required number of set bits.\n```",
+  "code": "class Solution {\n    public int minimizeXor(int num1, int num2) {\n        int setBitsNum2 = Integer.bitCount(num2);\n        int result = 0;\n        for (int i = 30; i >= 0; i--) {\n            int mask = 1 << i;\n            if ((num1 & mask) != 0) {\n                if (setBitsNum2 > 0) {\n                    result |= mask;\n                    setBitsNum2--;\n                }\n            } else {\n                if (setBitsNum2 > 0) {\n                    result |= mask;\n                    setBitsNum2--;\n                }\n            }\n        }\n        return result;\n    }\n}\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the bits of num1 from most significant to least significant, setting the corresponding bit in the result if the bit in num1 is set or if there's a remaining set bit to be used, thus minimizing the XOR with num1 while maintaining the required number of set bits.",
+  "timestamp": "2025-08-05T14:31:17.271118",
+  "code_extracted_previous": "class Solution {\n    public int minimizeXor(int num1, int num2) {\n        int setBitsNum2 = Integer.bitCount(num2);\n        int result = 0;\n        for (int i = 30; i >= 0; i--) {\n            int mask = 1 << i;\n            if ((num1 & mask) != 0) {\n                if (setBitsNum2 > 0) {\n                    result |= mask;\n                    setBitsNum2--;\n                }\n            } else {\n                if (setBitsNum2 > 0) {\n                    result |= mask;\n                    setBitsNum2--;\n                }\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.589367"
+}

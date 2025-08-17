@@ -1,0 +1,15 @@
+{
+  "id": 225,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class MyStack {\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        Queue<Integer> tmp = q1;\n        q1 = q2;\n        q2 = tmp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: push O(n), pop O(1), top O(1), empty O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses two queues; always keeps the newest element at the front of q1 by reversing the order during push, making pop/top O(1).",
+  "code": "class MyStack {\n    private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        Queue<Integer> tmp = q1;\n        q1 = q2;\n        q2 = tmp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "timestamp": "2025-08-06T02:31:02.270319",
+  "code_extracted_previous": "private Queue<Integer> q1;\n    private Queue<Integer> q2;\n\n    public MyStack() {\n        q1 = new LinkedList<>();\n        q2 = new LinkedList<>();\n    }\n    \n    public void push(int x) {\n        q2.offer(x);\n        while (!q1.isEmpty()) {\n            q2.offer(q1.poll());\n        }\n        Queue<Integer> tmp = q1;\n        q1 = q2;\n        q2 = tmp;\n    }\n    \n    public int pop() {\n        return q1.poll();\n    }\n    \n    public int top() {\n        return q1.peek();\n    }\n    \n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:54.907674"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3006,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        indices_a = [i for i in range(len(s)) if s.startswith(a, i)]\n        indices_b = [i for i in range(len(s)) if s.startswith(b, i)]\n        result = []\n        j = 0\n        for i in indices_a:\n            while j < len(indices_b) and indices_b[j] < i - k:\n                j += 1\n            if j < len(indices_b) and abs(i - indices_b[j]) <= k:\n                result.append(i)\n        return result\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses list comprehensions to efficiently find indices of substrings 'a' and 'b' in string 's'. It then iterates over the indices of 'a', using a pointer 'j' to track the current index in 'indices_b' that is within the distance 'k' from the current index 'i' in 'indices_a'. If such an index is found, 'i' is added to the result list.",
+  "code": "def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        indices_a = [i for i in range(len(s)) if s.startswith(a, i)]\n        indices_b = [i for i in range(len(s)) if s.startswith(b, i)]\n        result = []\n        j = 0\n        for i in indices_a:\n            while j < len(indices_b) and indices_b[j] < i - k:\n                j += 1\n            if j < len(indices_b) and abs(i - indices_b[j]) <= k:\n                result.append(i)\n        return result\n```",
+  "timestamp": "2025-08-06T01:49:13.631418",
+  "code_extracted_previous": "class Solution:\n    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        indices_a = [i for i in range(len(s)) if s.startswith(a, i)]\n        indices_b = [i for i in range(len(s)) if s.startswith(b, i)]\n        result = []\n        j = 0\n        for i in indices_a:\n            while j < len(indices_b) and indices_b[j] < i - k:\n                j += 1\n            if j < len(indices_b) and abs(i - indices_b[j]) <= k:\n                result.append(i)\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.066075"
+}

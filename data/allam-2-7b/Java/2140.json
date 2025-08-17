@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        int[][] dp = new int[n][n];\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                dp[i][j] = Math.max(questions[i][0], questions[j][1]);\n            }\n        }\n\n        int maxPoints = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                maxPoints = Math.max(maxPoints, dp[i][j]);\n            }\n        }\n\n        return maxPoints;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n^2)\nenergy implications: LOW\n\nExplanation:\n\nWe use a dynamic programming approach to solve the problem. We create a 2D array dp to store the maximum points that can be obtained by choosing to solve or skip questions i and j. We initialize dp[i][j] to Math.max(questions[i][0], questions[j][1], which represents the maximum points between solving question i or skipping question j.\n\nWe iterate through the array to find the maximum points by comparing the maximum points from the previous iterations. The time complexity is O(n^2), where n is the number of questions. The space complexity is also O(n^2) due to the 2D array used for dynamic programming. The energy implications are low since the algorithm only requires a moderate amount of energy to solve the problem. ",
+  "code": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        int[][] dp = new int[n][n];\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                dp[i][j] = Math.max(questions[i][0], questions[j][1]);\n            }\n        }\n\n        int maxPoints = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                maxPoints = Math.max(maxPoints, dp[i][j]);\n            }\n        }\n\n        return maxPoints;\n    }\n}",
+  "timestamp": "2025-08-05T13:25:19.767696",
+  "code_extracted_previous": "public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        int[][] dp = new int[n][n];\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                dp[i][j] = Math.max(questions[i][0], questions[j][1]);\n            }\n        }\n\n        int maxPoints = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                maxPoints = Math.max(maxPoints, dp[i][j]);\n            }\n        }\n\n        return maxPoints;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.904046"
+}

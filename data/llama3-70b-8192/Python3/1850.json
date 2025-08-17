@@ -1,0 +1,15 @@
+{
+  "id": 1850,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nfrom itertools import permutations\nclass Solution:\n    def getMinSwaps(self, num: str, k: int) -> int:\n        perms = sorted(list(set(permutations(num))))\n        idx = perms.index(tuple(num))\n        target = perms[idx + k]\n        res = 0\n        for i in range(len(num)):\n            if num[i] != target[i]:\n                j = i + 1\n                while j < len(num) and num[j] != target[i]:\n                    j += 1\n                res += j - i\n                num = list(num)\n                num[i], num[j] = num[j], num[i]\n                num = ''.join(num)\n        return res\n```\nefficiency: MEDIUM\ntime complexity: O(n^2 * k)\nspace complexity: O(n * k)\nenergy implications: MEDIUM\nexplanation: This solution generates all permutations of the input string, finds the kth smallest wonderful integer, and then calculates the minimum number of adjacent digit swaps needed to reach it.",
+  "code": "class Solution:\n    def getMinSwaps(self, num: str, k: int) -> int:\n        perms = sorted(list(set(permutations(num))))\n        idx = perms.index(tuple(num))\n        target = perms[idx + k]\n        res = 0\n        for i in range(len(num)):\n            if num[i] != target[i]:\n                j = i + 1\n                while j < len(num) and num[j] != target[i]:\n                    j += 1\n                res += j - i\n                num = list(num)\n                num[i], num[j] = num[j], num[i]\n                num = ''.join(num)\n        return res",
+  "timestamp": "2025-08-06T01:43:29.370157",
+  "code_extracted_previous": "from itertools import permutations\nclass Solution:\n    def getMinSwaps(self, num: str, k: int) -> int:\n        perms = sorted(list(set(permutations(num))))\n        idx = perms.index(tuple(num))\n        target = perms[idx + k]\n        res = 0\n        for i in range(len(num)):\n            if num[i] != target[i]:\n                j = i + 1\n                while j < len(num) and num[j] != target[i]:\n                    j += 1\n                res += j - i\n                num = list(num)\n                num[i], num[j] = num[j], num[i]\n                num = ''.join(num)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.041429"
+}

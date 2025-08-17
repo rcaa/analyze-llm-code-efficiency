@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass MyCalendarThree {\npublic:\n    map<int, int> events;\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        events[startTime]++;\n        events[endTime]--;\n        int maxBooking = 0, currentBooking = 0;\n        for (auto& event : events) {\n            currentBooking += event.second;\n            maxBooking = max(maxBooking, currentBooking);\n        }\n        events.clear();\n        for (int i = startTime; i < endTime; i++) {\n            if (events.find(i) != events.end()) {\n                events[i]++;\n            } else {\n                events[i] = 1;\n            }\n        }\n        return maxBooking;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a map to track event start and end times, incrementing and decrementing counts accordingly. It iterates through the map to find the maximum booking, then clears and rebuilds the map for the next booking. This approach efficiently handles the problem's constraints and requirements.",
+  "code": "class MyCalendarThree {\npublic:\n    map<int, int> events;\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        events[startTime]++;\n        events[endTime]--;\n        int maxBooking = 0, currentBooking = 0;\n        for (auto& event : events) {\n            currentBooking += event.second;\n            maxBooking = max(maxBooking, currentBooking);\n        }\n        events.clear();\n        for (int i = startTime; i < endTime; i++) {\n            if (events.find(i) != events.end()) {\n                events[i]++;\n            } else {\n                events[i] = 1;\n            }\n        }\n        return maxBooking;\n    }\n};",
+  "timestamp": "2025-08-06T15:11:41.229199",
+  "code_extracted_previous": "class MyCalendarThree {\npublic:\n    map<int, int> events;\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        events[startTime]++;\n        events[endTime]--;\n        int maxBooking = 0, currentBooking = 0;\n        for (auto& event : events) {\n            currentBooking += event.second;\n            maxBooking = max(maxBooking, currentBooking);\n        }\n        events.clear();\n        for (int i = startTime; i < endTime; i++) {\n            if (events.find(i) != events.end()) {\n                events[i]++;\n            } else {\n                events[i] = 1;\n            }\n        }\n        return maxBooking;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:33.052791"
+}

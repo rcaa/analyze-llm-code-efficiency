@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int n = answerKey.length();\n        int res = 0;\n        int l = 0, r = 0, cntT = 0, cntF = 0;\n        while (r < n) {\n            if (answerKey.charAt(r) == 'T') cntT++;\n            else cntF++;\n            while (Math.min(cntT, cntF) > k) {\n                if (answerKey.charAt(l) == 'T') cntT--;\n                else cntF--;\n                l++;\n            }\n            res = Math.max(res, r - l + 1);\n            r++;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to find the maximum consecutive 'T's or 'F's. It maintains two counters for 'T's and 'F's and adjusts the window boundaries based on the number of changes allowed (k).",
+  "code": "class Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int n = answerKey.length();\n        int res = 0;\n        int l = 0, r = 0, cntT = 0, cntF = 0;\n        while (r < n) {\n            if (answerKey.charAt(r) == 'T') cntT++;\n            else cntF++;\n            while (Math.min(cntT, cntF) > k) {\n                if (answerKey.charAt(l) == 'T') cntT--;\n                else cntF--;\n                l++;\n            }\n            res = Math.max(res, r - l + 1);\n            r++;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T00:56:44.504401",
+  "code_extracted_previous": "class Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int n = answerKey.length();\n        int res = 0;\n        int l = 0, r = 0, cntT = 0, cntF = 0;\n        while (r < n) {\n            if (answerKey.charAt(r) == 'T') cntT++;\n            else cntF++;\n            while (Math.min(cntT, cntF) > k) {\n                if (answerKey.charAt(l) == 'T') cntT--;\n                else cntF--;\n                l++;\n            }\n            res = Math.max(res, r - l + 1);\n            r++;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.718376"
+}

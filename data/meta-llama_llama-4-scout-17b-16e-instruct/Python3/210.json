@@ -1,0 +1,15 @@
+{
+  "id": 210,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\n\nclass Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = [[] for _ in range(numCourses)]\n        indegree = [0] * numCourses\n        for x, y in prerequisites:\n            graph[y].append(x)\n            indegree[x] += 1\n        queue = [i for i in range(numCourses) if indegree[i] == 0]\n        res = []\n        while queue:\n            node = queue.pop(0)\n            res.append(node)\n            for neighbor in graph[node]:\n                indegree[neighbor] -= 1\n                if indegree[neighbor] == 0:\n                    queue.append(neighbor)\n        return res if len(res) == numCourses else []\n```\nefficiency: HIGH\ntime complexity: O(N + M)\nspace complexity: O(N + M)\nenergy implications: LOW\nexplanation: This solution uses topological sorting with Kahn's algorithm. It constructs a graph and calculates indegrees, then iteratively adds nodes with indegree 0 to the result while updating indegrees of their neighbors. If all courses can be finished, the result will contain all courses; otherwise, an empty array is returned.",
+  "code": "class Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = [[] for _ in range(numCourses)]\n        indegree = [0] * numCourses\n        for x, y in prerequisites:\n            graph[y].append(x)\n            indegree[x] += 1\n        queue = [i for i in range(numCourses) if indegree[i] == 0]\n        res = []\n        while queue:\n            node = queue.pop(0)\n            res.append(node)\n            for neighbor in graph[node]:\n                indegree[neighbor] -= 1\n                if indegree[neighbor] == 0:\n                    queue.append(neighbor)\n        return res if len(res) == numCourses else []",
+  "timestamp": "2025-08-05T13:58:27.360574",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        graph = [[] for _ in range(numCourses)]\n        indegree = [0] * numCourses\n        for x, y in prerequisites:\n            graph[y].append(x)\n            indegree[x] += 1\n        queue = [i for i in range(numCourses) if indegree[i] == 0]\n        res = []\n        while queue:\n            node = queue.pop(0)\n            res.append(node)\n            for neighbor in graph[node]:\n                indegree[neighbor] -= 1\n                if indegree[neighbor] == 0:\n                    queue.append(neighbor)\n        return res if len(res) == numCourses else []",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.041296"
+}

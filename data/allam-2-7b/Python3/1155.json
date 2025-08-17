@@ -1,0 +1,15 @@
+{
+  "id": 1155,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef numRollsToTarget(self, n: int, k: int, target: int) -> int:\n    mod = 1000000007\n    dp = [1] * (target + 1)\n    dp[0] = 0\n    for i in range(1, target + 1):\n        for j in range(1, k + 1):\n            dp[i] = (dp[i] + dp[i - j] % mod) % mod\n    return dp[target]\n\nefficiency: HIGH\ntime complexity: O(n * k)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\nWe use dynamic programming to solve the problem. Initialize a 2D array `dp` with `n` rows and `target + 1` columns. We set `dp[0]` to 0 since there are no rolls for a sum of 0. Then, for each number `i` from 1 to `target`, we iterate over `k` numbers from 1 to `k`. For each pair `(i, j)`, we calculate the number of ways to roll the dice and get a sum of `i` using the current dice (`dp[i]`) and the previous dice (`dp[i - j]`). We update `dp[i]` as the sum of `dp[i]` and `dp[i - j]` modulo `mod` (which is 1000000007 in this case). Finally, we return `dp[target]` which gives the number of ways to roll the dice and get a sum of `target`. ",
+  "code": "def numRollsToTarget(self, n: int, k: int, target: int) -> int:\n    mod = 1000000007\n    dp = [1] * (target + 1)\n    dp[0] = 0\n    for i in range(1, target + 1):\n        for j in range(1, k + 1):\n            dp[i] = (dp[i] + dp[i - j] % mod) % mod\n    return dp[target]",
+  "timestamp": "2025-08-05T14:25:05.510434",
+  "code_extracted_previous": "def numRollsToTarget(self, n: int, k: int, target: int) -> int:\n    mod = 1000000007\n    dp = [1] * (target + 1)\n    dp[0] = 0\n    for i in range(1, target + 1):\n        for j in range(1, k + 1):\n            dp[i] = (dp[i] + dp[i - j] % mod) % mod\n    return dp[target]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.102965"
+}

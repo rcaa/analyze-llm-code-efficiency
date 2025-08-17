@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    string robotWithString(string s) {\n        string t, p;\n        int minChar = 'z' + 1;\n        for (int i = s.size() - 1; i >= 0; --i) {\n            minChar = min(minChar, s[i]);\n            s[i] = minChar;\n        }\n        for (char c : s) {\n            t += c;\n            while (!t.empty() && t.back() <= s.back()) {\n                p += t.back();\n                t.pop_back();\n            }\n            s.pop_back();\n        }\n        return p;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a two-pass approach. The first pass iterates over the input string in reverse order to keep track of the minimum character seen so far. The second pass uses this information to decide when to write characters to the output string, ensuring the lexicographically smallest result.",
+  "code": "class Solution {\npublic:\n    string robotWithString(string s) {\n        string t, p;\n        int minChar = 'z' + 1;\n        for (int i = s.size() - 1; i >= 0; --i) {\n            minChar = min(minChar, s[i]);\n            s[i] = minChar;\n        }\n        for (char c : s) {\n            t += c;\n            while (!t.empty() && t.back() <= s.back()) {\n                p += t.back();\n                t.pop_back();\n            }\n            s.pop_back();\n        }\n        return p;\n    }\n};",
+  "timestamp": "2025-08-05T15:10:08.326293",
+  "code_extracted_previous": "class Solution {\npublic:\n    string robotWithString(string s) {\n        string t, p;\n        int minChar = 'z' + 1;\n        for (int i = s.size() - 1; i >= 0; --i) {\n            minChar = min(minChar, s[i]);\n            s[i] = minChar;\n        }\n        for (char c : s) {\n            t += c;\n            while (!t.empty() && t.back() <= s.back()) {\n                p += t.back();\n                t.pop_back();\n            }\n            s.pop_back();\n        }\n        return p;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.243969"
+}

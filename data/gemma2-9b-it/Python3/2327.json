@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        mod = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[delay] = 1\n        for i in range(delay + 1, n + 1):\n            dp[i] = (dp[i - 1] + dp[i - delay]) % mod\n            if i >= forget + delay:\n                dp[i] = (dp[i] - dp[i - forget]) % mod\n        return dp[n]\n```\n\nsolution: \n```python\nclass Solution:\n    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        mod = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[delay] = 1\n        for i in range(delay + 1, n + 1):\n            dp[i] = (dp[i - 1] + dp[i - delay]) % mod\n            if i >= forget + delay:\n                dp[i] = (dp[i] - dp[i - forget]) % mod\n        return dp[n]\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of people aware of the secret on each day. It iterates through the days and updates the count based on people sharing and forgetting the secret. The modulo operation ensures the result stays within the specified range.",
+  "code": "solution:",
+  "timestamp": "2025-08-05T14:26:23.602204",
+  "code_extracted_previous": "class Solution:\n    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        mod = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[delay] = 1\n        for i in range(delay + 1, n + 1):\n            dp[i] = (dp[i - 1] + dp[i - delay]) % mod\n            if i >= forget + delay:\n                dp[i] = (dp[i] - dp[i - forget]) % mod\n        return dp[n]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.249425"
+}

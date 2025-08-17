@@ -1,0 +1,15 @@
+{
+  "id": 2981,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int maximumLength(string s) {\n        int n = s.size();\n        int best = -1;\n        for (int len = n; len >= 1; --len) {\n            unordered_map<string, int> freq;\n            for (int i = 0; i + len <= n; ++i) {\n                string sub = s.substr(i, len);\n                bool ok = true;\n                for (int j = 1; j < len; ++j) {\n                    if (sub[j] != sub[0]) { ok = false; break; }\n                }\n                if (ok) freq[sub]++;\n            }\n            for (const auto& kv : freq) {\n                if (kv.second >= 3) return len;\n            }\n        }\n        return best;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n^2)\nenergy implications: LOW\nexplanation: Iterate possible lengths from largest to smallest; for each length, slide a window to extract substrings, check if they are special (all same character), and count occurrences with a hash map. Return the first length that has at least three occurrences, guaranteeing the maximum.",
+  "code": "class Solution {\npublic:\n    int maximumLength(string s) {\n        int n = s.size();\n        int best = -1;\n        for (int len = n; len >= 1; --len) {\n            unordered_map<string, int> freq;\n            for (int i = 0; i + len <= n; ++i) {\n                string sub = s.substr(i, len);\n                bool ok = true;\n                for (int j = 1; j < len; ++j) {\n                    if (sub[j] != sub[0]) { ok = false; break; }\n                }\n                if (ok) freq[sub]++;\n            }\n            for (const auto& kv : freq) {\n                if (kv.second >= 3) return len;\n            }\n        }\n        return best;\n    }\n};",
+  "timestamp": "2025-08-06T02:29:38.390065",
+  "code_extracted_previous": "public:\n    int maximumLength(string s) {\n        int n = s.size();\n        int best = -1;\n        for (int len = n; len >= 1; --len) {\n            unordered_map<string, int> freq;\n            for (int i = 0; i + len <= n; ++i) {\n                string sub = s.substr(i, len);\n                bool ok = true;\n                for (int j = 1; j < len; ++j) {\n                    if (sub[j] != sub[0]) { ok = false; break; }\n                }\n                if (ok) freq[sub]++;\n            }\n            for (const auto& kv : freq) {\n                if (kv.second >= 3) return len;\n            }\n        }\n        return best;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.855987"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int longestSemiRepetitiveSubstring(String s) {\n        int n = s.length();\n        int maxLength = 1;\n        for (int i = 1; i < n; i++) {\n            int count = 1;\n            for (int j = i; j < n; j++) {\n                if (s.charAt(j) == s.charAt(j - 1)) {\n                    count++;\n                } else {\n                    maxLength = Math.max(maxLength, count);\n                    count = 1;\n                }\n            }\n            maxLength = Math.max(maxLength, count);\n        }\n        return maxLength;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nWe iterate through the string from the second character to the last character (O(n)) and keep track of the count of consecutive identical characters. If we encounter a different character, we update the maximum length and reset the count to 1. This ensures that we only consider the longest sequence of consecutive identical characters and update the maximum length accordingly. The solution has a time complexity of O(n) since we iterate through the string once. The space complexity is O(1) as we only use a single integer variable for the count. The energy implications are low as the algorithm does not require any significant computational resources. ",
+  "code": "class Solution {\n    public int longestSemiRepetitiveSubstring(String s) {\n        int n = s.length();\n        int maxLength = 1;\n        for (int i = 1; i < n; i++) {\n            int count = 1;\n            for (int j = i; j < n; j++) {\n                if (s.charAt(j) == s.charAt(j - 1)) {\n                    count++;\n                } else {\n                    maxLength = Math.max(maxLength, count);\n                    count = 1;\n                }\n            }\n            maxLength = Math.max(maxLength, count);\n        }\n        return maxLength;\n    }\n}",
+  "timestamp": "2025-08-06T01:07:00.308136",
+  "code_extracted_previous": "class Solution {\n    public int longestSemiRepetitiveSubstring(String s) {\n        int n = s.length();\n        int maxLength = 1;\n        for (int i = 1; i < n; i++) {\n            int count = 1;\n            for (int j = i; j < n; j++) {\n                if (s.charAt(j) == s.charAt(j - 1)) {\n                    count++;\n                } else {\n                    maxLength = Math.max(maxLength, count);\n                    count = 1;\n                }\n            }\n            maxLength = Math.max(maxLength, count);\n        }\n        return maxLength;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.338233"
+}

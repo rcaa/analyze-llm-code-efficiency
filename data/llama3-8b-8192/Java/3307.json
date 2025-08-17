@@ -1,0 +1,15 @@
+{
+  "id": 3307,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\nclass Solution {\n    public char kthCharacter(long k, int[] operations) {\n        StringBuilder sb = new StringBuilder(\"a\");\n        for (int op : operations) {\n            if (op == 0) {\n                sb.append(sb.toString());\n            } else {\n                String temp = sb.toString();\n                sb.setLength(0);\n                for (char c : temp.toCharArray()) {\n                    if (c == 'z') {\n                        sb.append('a');\n                    } else {\n                        sb.append((char) (c + 1));\n                    }\n                }\n            }\n        }\n        return sb.charAt((int) (k % sb.length()));\n    }\n}\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a StringBuilder to efficiently append and modify the string. It iterates through the operations array, performing the corresponding operations on the string. The time complexity is O(n), where n is the length of the operations array, and the space complexity is also O(n) due to the use of the StringBuilder. The energy implications are low due to the efficient use of memory and the lack of complex computations.",
+  "code": "class Solution {\n    public char kthCharacter(long k, int[] operations) {\n        StringBuilder sb = new StringBuilder(\"a\");\n        for (int op : operations) {\n            if (op == 0) {\n                sb.append(sb.toString());\n            } else {\n                String temp = sb.toString();\n                sb.setLength(0);\n                for (char c : temp.toCharArray()) {\n                    if (c == 'z') {\n                        sb.append('a');\n                    } else {\n                        sb.append((char) (c + 1));\n                    }\n                }\n            }\n        }\n        return sb.charAt((int) (k % sb.length()));\n    }\n}",
+  "timestamp": "2025-08-05T15:23:44.754399",
+  "code_extracted_previous": "class Solution {\n    public char kthCharacter(long k, int[] operations) {\n        StringBuilder sb = new StringBuilder(\"a\");\n        for (int op : operations) {\n            if (op == 0) {\n                sb.append(sb.toString());\n            } else {\n                String temp = sb.toString();\n                sb.setLength(0);\n                for (char c : temp.toCharArray()) {\n                    if (c == 'z') {\n                        sb.append('a');\n                    } else {\n                        sb.append((char) (c + 1));\n                    }\n                }\n            }\n        }\n        return sb.charAt((int) (k % sb.length()));\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.652740"
+}

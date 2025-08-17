@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        long long dp[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            dp[i] = (dp[i - 1] + dp[max(0LL, i - delay)]) % MOD;\n            if (i >= forget) {\n                dp[i] = (dp[i] - dp[max(0LL, i - forget)]) % MOD;\n            }\n        }\n        return (int)dp[n];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of people aware of the secret on each day. It iterates through each day and updates the count based on the number of people who shared the secret on the previous day and the number of people who forgot it. The modulo operation ensures that the result stays within the specified range.\n",
+  "code": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        long long dp[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            dp[i] = (dp[i - 1] + dp[max(0LL, i - delay)]) % MOD;\n            if (i >= forget) {\n                dp[i] = (dp[i] - dp[max(0LL, i - forget)]) % MOD;\n            }\n        }\n        return (int)dp[n];\n    }\n};",
+  "timestamp": "2025-08-05T14:26:21.564855",
+  "code_extracted_previous": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        long long dp[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            dp[i] = (dp[i - 1] + dp[max(0LL, i - delay)]) % MOD;\n            if (i >= forget) {\n                dp[i] = (dp[i] - dp[max(0LL, i - forget)]) % MOD;\n            }\n        }\n        return (int)dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.505609"
+}

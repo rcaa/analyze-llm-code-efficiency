@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass KthLargest {\n    private PriorityQueue<Integer> minHeap;\n    private int k;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        minHeap = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    public int add(int val) {\n        minHeap.offer(val);\n        if (minHeap.size() > k) {\n            minHeap.poll();\n        }\n        return minHeap.peek();\n    }\n}\n\n/**\n * Your KthLargest object will be instantiated and called as such:\n * KthLargest obj = new KthLargest(k, nums);\n * int param_1 = obj.add(val);\n */\n```\nefficiency: HIGH\ntime complexity: O(N log K)\nspace complexity: O(K)\nenergy implications: LOW\nexplanation: The solution uses a min-heap of size k to efficiently track the kth largest element. When a new value is added, it is inserted into the heap, and if the heap size exceeds k, the smallest element is removed. The root of the heap always contains the kth largest element. This approach ensures efficient insertion and retrieval operations.",
+  "code": "class KthLargest {\n    private PriorityQueue<Integer> minHeap;\n    private int k;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        minHeap = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    public int add(int val) {\n        minHeap.offer(val);\n        if (minHeap.size() > k) {\n            minHeap.poll();\n        }\n        return minHeap.peek();\n    }\n}\n\n/**\n * Your KthLargest object will be instantiated and called as such:\n * KthLargest obj = new KthLargest(k, nums);\n * int param_1 = obj.add(val);\n */",
+  "timestamp": "2025-08-06T01:11:30.018385",
+  "code_extracted_previous": "class KthLargest {\n    private PriorityQueue<Integer> minHeap;\n    private int k;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        minHeap = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    public int add(int val) {\n        minHeap.offer(val);\n        if (minHeap.size() > k) {\n            minHeap.poll();\n        }\n        return minHeap.peek();\n    }\n}\n\n/**\n * Your KthLargest object will be instantiated and called as such:\n * KthLargest obj = new KthLargest(k, nums);\n * int param_1 = obj.add(val);\n */",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:03.475100"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> broken(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        istringstream iss(text);\n        string word;\n        while (iss >> word) {\n            bool canType = true;\n            for (char c : word) {\n                if (broken.find(c) != broken.end()) {\n                    canType = false;\n                    break;\n                }\n            }\n            if (canType) {\n                count++;\n            }\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N + M)\nspace complexity: O(M)\nenergy implications: LOW\nexplanation: This solution uses a set to store the broken letters and iterates through each word in the text, checking if any of its characters are in the set of broken letters. If not, it increments the count of typable words.",
+  "code": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> broken(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        istringstream iss(text);\n        string word;\n        while (iss >> word) {\n            bool canType = true;\n            for (char c : word) {\n                if (broken.find(c) != broken.end()) {\n                    canType = false;\n                    break;\n                }\n            }\n            if (canType) {\n                count++;\n            }\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T14:43:46.516985",
+  "code_extracted_previous": "public:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> broken(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        istringstream iss(text);\n        string word;\n        while (iss >> word) {\n            bool canType = true;\n            for (char c : word) {\n                if (broken.find(c) != broken.end()) {\n                    canType = false;\n                    break;\n                }\n            }\n            if (canType) {\n                count++;\n            }\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.329299"
+}

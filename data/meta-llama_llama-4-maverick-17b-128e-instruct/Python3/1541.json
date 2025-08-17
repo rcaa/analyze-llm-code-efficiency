@@ -1,0 +1,15 @@
+{
+  "id": 1541,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minInsertions(self, s: str) -> int:\n        insertions = 0\n        right_needed = 0\n        for char in s:\n            if char == '(':\n                if right_needed % 2 == 1:\n                    insertions += 1\n                    right_needed -= 1\n                right_needed += 2\n            else:\n                right_needed -= 1\n                if right_needed < 0:\n                    insertions += 1\n                    right_needed = -1 + 2  # effectively, right_needed = 1\n        return insertions + right_needed\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string once, maintaining a counter for the number of right parentheses needed to balance the string. It increments the insertions counter whenever it encounters an imbalance, either due to a lone ')' or an '(' without a corresponding '))'. The final result is the sum of the insertions made during the iteration and any remaining right parentheses needed.",
+  "code": "def minInsertions(self, s: str) -> int:\n        insertions = 0\n        right_needed = 0\n        for char in s:\n            if char == '(':\n                if right_needed % 2 == 1:\n                    insertions += 1\n                    right_needed -= 1\n                right_needed += 2\n            else:\n                right_needed -= 1\n                if right_needed < 0:\n                    insertions += 1\n                    right_needed = -1 + 2  # effectively, right_needed = 1\n        return insertions + right_needed\n```",
+  "timestamp": "2025-08-06T00:53:50.373478",
+  "code_extracted_previous": "class Solution:\n    def minInsertions(self, s: str) -> int:\n        insertions = 0\n        right_needed = 0\n        for char in s:\n            if char == '(':\n                if right_needed % 2 == 1:\n                    insertions += 1\n                    right_needed -= 1\n                right_needed += 2\n            else:\n                right_needed -= 1\n                if right_needed < 0:\n                    insertions += 1\n                    right_needed = -1 + 2  # effectively, right_needed = 1\n        return insertions + right_needed",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.565319"
+}

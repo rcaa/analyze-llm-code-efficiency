@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def robotWithString(self, s: str) -> str:\n        from collections import deque\n        n = len(s)\n        # Precompute suffix minima\n        suf_min = [None] * (n + 1)\n        suf_min[n] = chr(ord('z') + 1)\n        for i in range(n - 1, -1, -1):\n            suf_min[i] = min(s[i], suf_min[i + 1])\n        \n        t = []\n        p = []\n        for i in range(n):\n            t.append(s[i])\n            # While t is not empty and top <= smallest remaining char in s[i+1..]\n            while t and t[-1] <= suf_min[i + 1]:\n                p.append(t.pop())\n        # Append remaining in t\n        while t:\n            p.append(t.pop())\n        return ''.join(p)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a greedy stack approach with precomputed suffix minima to decide when to pop from t, ensuring the lexicographically smallest string is built in linear time.",
+  "code": "class Solution:\n    def robotWithString(self, s: str) -> str:\n        n = len(s)\n        # Precompute suffix minima\n        suf_min = [None] * (n + 1)\n        suf_min[n] = chr(ord('z') + 1)\n        for i in range(n - 1, -1, -1):\n            suf_min[i] = min(s[i], suf_min[i + 1])\n        \n        t = []\n        p = []\n        for i in range(n):\n            t.append(s[i])\n            # While t is not empty and top <= smallest remaining char in s[i+1..]\n            while t and t[-1] <= suf_min[i + 1]:\n                p.append(t.pop())\n        # Append remaining in t\n        while t:\n            p.append(t.pop())\n        return ''.join(p)",
+  "timestamp": "2025-08-06T02:33:16.180163",
+  "code_extracted_previous": "class Solution:\n    def robotWithString(self, s: str) -> str:\n        from collections import deque\n        n = len(s)\n        # Precompute suffix minima\n        suf_min = [None] * (n + 1)\n        suf_min[n] = chr(ord('z') + 1)\n        for i in range(n - 1, -1, -1):\n            suf_min[i] = min(s[i], suf_min[i + 1])\n        \n        t = []\n        p = []\n        for i in range(n):\n            t.append(s[i])\n            # While t is not empty and top <= smallest remaining char in s[i+1..]\n            while t and t[-1] <= suf_min[i + 1]:\n                p.append(t.pop())\n        # Append remaining in t\n        while t:\n            p.append(t.pop())\n        return ''.join(p)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.693124"
+}

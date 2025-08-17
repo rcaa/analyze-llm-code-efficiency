@@ -1,0 +1,15 @@
+{
+  "id": 3007,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        auto calc_price = [&](long long n) {\n            long long res = 0;\n            for (long long i = 1; i <= n; ++i) {\n                res += __builtin_popcountll(i * x);\n            }\n            return res;\n        };\n\n        long long left = 0, right = k * 60 + 1;\n        while (left < right) {\n            long long mid = left + (right - left + 1) / 2;\n            if (calc_price(mid) <= k) {\n                left = mid;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return left;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(k * 60) * 60 * x)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The provided solution uses binary search to efficiently find the greatest cheap number within the given constraints. It calculates the accumulated price for a given number using a lambda function `calc_price`, which counts the set bits at positions `x`, `2x`, `3x`, etc., in the binary representation of numbers from 1 to `n`. The binary search approach allows for a significant reduction in the search space, making the solution efficient for large inputs. The time complexity is dominated by the binary search and the calculation of the accumulated price, which depends on the number of bits in `x` and the maximum possible value of `k`.",
+  "code": "class Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        auto calc_price = [&](long long n) {\n            long long res = 0;\n            for (long long i = 1; i <= n; ++i) {\n                res += __builtin_popcountll(i * x);\n            }\n            return res;\n        };\n\n        long long left = 0, right = k * 60 + 1;\n        while (left < right) {\n            long long mid = left + (right - left + 1) / 2;\n            if (calc_price(mid) <= k) {\n                left = mid;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return left;\n    }\n};",
+  "timestamp": "2025-08-05T13:46:42.285949",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long findMaximumNumber(long long k, int x) {\n        auto calc_price = [&](long long n) {\n            long long res = 0;\n            for (long long i = 1; i <= n; ++i) {\n                res += __builtin_popcountll(i * x);\n            }\n            return res;\n        };\n\n        long long left = 0, right = k * 60 + 1;\n        while (left < right) {\n            long long mid = left + (right - left + 1) / 2;\n            if (calc_price(mid) <= k) {\n                left = mid;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return left;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.395964"
+}

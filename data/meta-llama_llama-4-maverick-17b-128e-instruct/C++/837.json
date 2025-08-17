@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "invalid",
+  "motivo": "código não extraído",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts) return 1.0;\n        vector<double> dp(n + 1, 0.0);\n        double p = 0.0, sum = 1.0;\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; ++i) {\n            dp[i] = sum / maxPts;\n            if (i < k) sum += dp[i];\n            if (i >= maxPts) sum -= dp[i - maxPts];\n        }\n        double ans = 0.0;\n        for (int i = k; i <= n; ++i) ans += dp[i];\n        return ans;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to store the probabilities of reaching each score from 0 to n. It maintains a running sum of probabilities within the maxPts window to efficiently compute the probability of reaching the next score. The final answer is the sum of probabilities of scores from k to n.",
+  "code": "```cpp\nclass Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts) return 1.0;\n        vector<double> dp(n + 1, 0.0);\n        double p = 0.0, sum = 1.0;\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; ++i) {\n            dp[i] = sum / maxPts;\n            if (i < k) sum += dp[i];\n            if (i >= maxPts) sum -= dp[i - maxPts];\n        }\n        double ans = 0.0;\n        for (int i = k; i <= n; ++i) ans += dp[i];\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T15:45:26.488608",
+  "code_extracted_previous": "",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.849350"
+}

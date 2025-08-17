@@ -1,0 +1,15 @@
+{
+  "id": 3008,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i <= s.length() - a.length(); i++) {\n            if (s.substr(i, a.length()) == a) {\n                for (int j = 0; j <= s.length() - b.length(); j++) {\n                    if (s.substr(j, b.length()) == b && abs(i - j) <= k) {\n                        res.push_back(i);\n                        break;\n                    }\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the string s to find beautiful indices, using two nested loops to check for the existence of substrings a and b within the given constraints. The result is then sorted and returned.",
+  "code": "class Solution {\npublic:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i <= s.length() - a.length(); i++) {\n            if (s.substr(i, a.length()) == a) {\n                for (int j = 0; j <= s.length() - b.length(); j++) {\n                    if (s.substr(j, b.length()) == b && abs(i - j) <= k) {\n                        res.push_back(i);\n                        break;\n                    }\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:22:00.774037",
+  "code_extracted_previous": "public:\n    vector<int> beautifulIndices(string s, string a, string b, int k) {\n        vector<int> res;\n        for (int i = 0; i <= s.length() - a.length(); i++) {\n            if (s.substr(i, a.length()) == a) {\n                for (int j = 0; j <= s.length() - b.length(); j++) {\n                    if (s.substr(j, b.length()) == b && abs(i - j) <= k) {\n                        res.push_back(i);\n                        break;\n                    }\n                }\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.698153"
+}

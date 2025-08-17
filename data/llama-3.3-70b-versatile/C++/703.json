@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass KthLargest {\npublic:\n    priority_queue<int, vector<int>, greater<int>> pq;\n    int k;\n    KthLargest(int k, vector<int>& nums) {\n        this->k = k;\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    int add(int val) {\n        if (pq.size() < k) {\n            pq.push(val);\n        } else if (val > pq.top()) {\n            pq.pop();\n            pq.push(val);\n        }\n        return pq.top();\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Utilizes a min-heap priority queue to efficiently track the kth largest element in the stream of test scores. The priority queue maintains the k largest elements seen so far, ensuring the kth largest element is always at the top of the queue.",
+  "code": "class KthLargest {\npublic:\n    priority_queue<int, vector<int>, greater<int>> pq;\n    int k;\n    KthLargest(int k, vector<int>& nums) {\n        this->k = k;\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    int add(int val) {\n        if (pq.size() < k) {\n            pq.push(val);\n        } else if (val > pq.top()) {\n            pq.pop();\n            pq.push(val);\n        }\n        return pq.top();\n    }\n};",
+  "timestamp": "2025-08-06T01:11:34.468041",
+  "code_extracted_previous": "class KthLargest {\npublic:\n    priority_queue<int, vector<int>, greater<int>> pq;\n    int k;\n    KthLargest(int k, vector<int>& nums) {\n        this->k = k;\n        for (int num : nums) {\n            add(num);\n        }\n    }\n    \n    int add(int val) {\n        if (pq.size() < k) {\n            pq.push(val);\n        } else if (val > pq.top()) {\n            pq.pop();\n            pq.push(val);\n        }\n        return pq.top();\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:33.035165"
+}

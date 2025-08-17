@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        vector<bool> visited(rooms.size(), false);\n        dfs(rooms, 0, visited);\n        for (bool v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\nprivate:\n    void dfs(vector<vector<int>>& rooms, int room, vector<bool>& visited) {\n        visited[room] = true;\n        for (int key : rooms[room]) {\n            if (!visited[key]) {\n                dfs(rooms, key, visited);\n            }\n        }\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses depth-first search (DFS) to traverse the graph of rooms and keys. It keeps track of visited rooms and recursively explores new rooms unlocked by found keys.",
+  "code": "class Solution {\npublic:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        vector<bool> visited(rooms.size(), false);\n        dfs(rooms, 0, visited);\n        for (bool v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\nprivate:\n    void dfs(vector<vector<int>>& rooms, int room, vector<bool>& visited) {\n        visited[room] = true;\n        for (int key : rooms[room]) {\n            if (!visited[key]) {\n                dfs(rooms, key, visited);\n            }\n        }\n    }\n};",
+  "timestamp": "2025-08-05T14:00:19.632099",
+  "code_extracted_previous": "public:\n    bool canVisitAllRooms(vector<vector<int>>& rooms) {\n        vector<bool> visited(rooms.size(), false);\n        dfs(rooms, 0, visited);\n        for (bool v : visited) {\n            if (!v) return false;\n        }\n        return true;\n    }\nprivate:\n    void dfs(vector<vector<int>>& rooms, int room, vector<bool>& visited) {\n        visited[room] = true;\n        for (int key : rooms[room]) {\n            if (!visited[key]) {\n                dfs(rooms, key, visited);\n            }\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.106703"
+}

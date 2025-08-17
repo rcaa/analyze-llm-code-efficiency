@@ -1,0 +1,15 @@
+{
+  "id": 3333,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int possibleStringCount(String word, int k) {\n        int MOD = (int)1e9 + 7;\n        int n = word.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        int cnt = 1;\n        for (int i = 1; i <= n; i++) {\n            if (i > 1 && word.charAt(i - 1) == word.charAt(i - 2)) {\n                cnt++;\n            } else {\n                cnt = 1;\n            }\n            dp[i] = (int)((dp[i - 1] * (cnt + 1)) % MOD);\n            if (i >= k) {\n                dp[i] = (int)((dp[i] - dp[i - k] + MOD) % MOD);\n            }\n        }\n        return dp[n];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently count the number of possible original strings.",
+  "code": "class Solution {\n    public int possibleStringCount(String word, int k) {\n        int MOD = (int)1e9 + 7;\n        int n = word.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        int cnt = 1;\n        for (int i = 1; i <= n; i++) {\n            if (i > 1 && word.charAt(i - 1) == word.charAt(i - 2)) {\n                cnt++;\n            } else {\n                cnt = 1;\n            }\n            dp[i] = (int)((dp[i - 1] * (cnt + 1)) % MOD);\n            if (i >= k) {\n                dp[i] = (int)((dp[i] - dp[i - k] + MOD) % MOD);\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T22:39:20.669587",
+  "code_extracted_previous": "class Solution {\n    public int possibleStringCount(String word, int k) {\n        int MOD = (int)1e9 + 7;\n        int n = word.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        int cnt = 1;\n        for (int i = 1; i <= n; i++) {\n            if (i > 1 && word.charAt(i - 1) == word.charAt(i - 2)) {\n                cnt++;\n            } else {\n                cnt = 1;\n            }\n            dp[i] = (int)((dp[i - 1] * (cnt + 1)) % MOD);\n            if (i >= k) {\n                dp[i] = (int)((dp[i] - dp[i - k] + MOD) % MOD);\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.450395"
+}

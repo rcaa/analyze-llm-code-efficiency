@@ -1,0 +1,15 @@
+{
+  "id": 1963,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int minSwaps(String s) {\n        int n = s.length();\n        int[] count = new int[2];\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) == '[') {\n                count[0]++;\n            } else if (s.charAt(i) == ']') {\n                count[1]--;\n            }\n        }\n        int swaps = 0;\n        while (count[0] != count[1]) {\n            if (count[0] > count[1]) {\n                swap(count);\n                swaps++;\n            }\n        }\n        return swaps;\n    }\n\n    public static void swap(int[] array) {\n        int temp = array[0];\n        array[0] = array[1];\n        array[1] = temp;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n1. Initialize two integer arrays to store the counts of opening and closing brackets.\n2. Iterate through the string and update the counts accordingly.\n3. Use a while loop to continue swapping the counts until they are equal.\n4. Return the number of swaps needed.\n\nThis solution has a time complexity of O(n) because we iterate through the string once. The space complexity is O(1) because we only use a single integer array to store the counts. The energy implications are low because the algorithm only performs a few operations and does not consume much energy. ",
+  "code": "class Solution {\n    public int minSwaps(String s) {\n        int n = s.length();\n        int[] count = new int[2];\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) == '[') {\n                count[0]++;\n            } else if (s.charAt(i) == ']') {\n                count[1]--;\n            }\n        }\n        int swaps = 0;\n        while (count[0] != count[1]) {\n            if (count[0] > count[1]) {\n                swap(count);\n                swaps++;\n            }\n        }\n        return swaps;\n    }\n\n    public static void swap(int[] array) {\n        int temp = array[0];\n        array[0] = array[1];\n        array[1] = temp;\n    }\n}",
+  "timestamp": "2025-08-06T01:45:15.606339",
+  "code_extracted_previous": "class Solution {\n    public int minSwaps(String s) {\n        int n = s.length();\n        int[] count = new int[2];\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) == '[') {\n                count[0]++;\n            } else if (s.charAt(i) == ']') {\n                count[1]--;\n            }\n        }\n        int swaps = 0;\n        while (count[0] != count[1]) {\n            if (count[0] > count[1]) {\n                swap(count);\n                swaps++;\n            }\n        }\n        return swaps;\n    }\n\n    public static void swap(int[] array) {\n        int temp = array[0];\n        array[0] = array[1];\n        array[1] = temp;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.799454"
+}

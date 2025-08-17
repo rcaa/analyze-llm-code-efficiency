@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass RecentCounter {\npublic:\n    RecentCounter() {\n        \n    }\n    \n    int ping(int t) {\n        requests.push_back(t);\n        while (requests.front() < t - 3000) {\n            requests.pop_front();\n        }\n        return requests.size();\n    }\nprivate:\n    std::deque<int> requests;\n};\n\n/**\n * Your RecentCounter object will be instantiated and called as such:\n * RecentCounter* obj = new RecentCounter();\n * int param_1 = obj->ping(t);\n */\n```\n\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The main approach is to use a deque to store the timestamps of the requests. The deque is used to efficiently remove the requests that are outside the time frame of 3000 milliseconds. The size of the deque is returned as the number of recent requests. The key strength is the efficient removal of old requests using the deque.",
+  "code": "class RecentCounter {\npublic:\n    RecentCounter() {\n        \n    }\n    \n    int ping(int t) {\n        requests.push_back(t);\n        while (requests.front() < t - 3000) {\n            requests.pop_front();\n        }\n        return requests.size();\n    }\nprivate:\n    std::deque<int> requests;\n};\n\n/**\n * Your RecentCounter object will be instantiated and called as such:\n * RecentCounter* obj = new RecentCounter();\n * int param_1 = obj->ping(t);\n */",
+  "timestamp": "2025-08-05T14:07:46.756153",
+  "code_extracted_previous": "class RecentCounter {\npublic:\n    RecentCounter() {\n        \n    }\n    \n    int ping(int t) {\n        requests.push_back(t);\n        while (requests.front() < t - 3000) {\n            requests.pop_front();\n        }\n        return requests.size();\n    }\nprivate:\n    std::deque<int> requests;\n};\n\n/**\n * Your RecentCounter object will be instantiated and called as such:\n * RecentCounter* obj = new RecentCounter();\n * int param_1 = obj->ping(t);\n */",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:45.918213"
+}

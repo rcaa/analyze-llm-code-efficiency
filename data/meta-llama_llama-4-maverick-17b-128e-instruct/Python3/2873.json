@@ -1,0 +1,15 @@
+{
+  "id": 2873,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maximumTripletValue(self, nums: List[int]) -> int:\n        max_val = max(nums)\n        min_val = min(nums[:2])\n        max_diff = nums[0] - min_val\n        for i in range(2, len(nums)):\n            max_diff = max(max_diff, nums[i-2] - min(min_val, nums[i-1]))\n            min_val = min(min_val, nums[i-1])\n        return max(0, max_diff * max_val)\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the list once, maintaining a running minimum and maximum difference, and finally multiplies the maximum difference with the maximum value in the list to obtain the maximum triplet value.",
+  "code": "def maximumTripletValue(self, nums: List[int]) -> int:\n        max_val = max(nums)\n        min_val = min(nums[:2])\n        max_diff = nums[0] - min_val\n        for i in range(2, len(nums)):\n            max_diff = max(max_diff, nums[i-2] - min(min_val, nums[i-1]))\n            min_val = min(min_val, nums[i-1])\n        return max(0, max_diff * max_val)\n```",
+  "timestamp": "2025-08-05T12:53:55.391498",
+  "code_extracted_previous": "class Solution:\n    def maximumTripletValue(self, nums: List[int]) -> int:\n        max_val = max(nums)\n        min_val = min(nums[:2])\n        max_diff = nums[0] - min_val\n        for i in range(2, len(nums)):\n            max_diff = max(max_diff, nums[i-2] - min(min_val, nums[i-1]))\n            min_val = min(min_val, nums[i-1])\n        return max(0, max_diff * max_val)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.030176"
+}

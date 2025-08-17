@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        int[] s1Count = new int[26];\n        for (char c : s1.toCharArray()) {\n            s1Count[c - 'a']++;\n        }\n        \n        int[] windowCount = new int[26];\n        int left = 0, right = 0;\n        while (right < s2.length()) {\n            windowCount[s2.charAt(right) - 'a']++;\n            if (right - left + 1 == s1.length()) {\n                if (Arrays.equals(s1Count, windowCount)) {\n                    return true;\n                }\n                windowCount[s2.charAt(left) - 'a']--;\n                left++;\n            }\n            right++;\n        }\n        return false;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a sliding window approach with two arrays to count character frequencies, efficiently checking for permutations of s1 within s2.",
+  "code": "class Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        int[] s1Count = new int[26];\n        for (char c : s1.toCharArray()) {\n            s1Count[c - 'a']++;\n        }\n        \n        int[] windowCount = new int[26];\n        int left = 0, right = 0;\n        while (right < s2.length()) {\n            windowCount[s2.charAt(right) - 'a']++;\n            if (right - left + 1 == s1.length()) {\n                if (Arrays.equals(s1Count, windowCount)) {\n                    return true;\n                }\n                windowCount[s2.charAt(left) - 'a']--;\n                left++;\n            }\n            right++;\n        }\n        return false;\n    }\n}",
+  "timestamp": "2025-08-05T14:55:47.567773",
+  "code_extracted_previous": "class Solution {\n    public boolean checkInclusion(String s1, String s2) {\n        int[] s1Count = new int[26];\n        for (char c : s1.toCharArray()) {\n            s1Count[c - 'a']++;\n        }\n        \n        int[] windowCount = new int[26];\n        int left = 0, right = 0;\n        while (right < s2.length()) {\n            windowCount[s2.charAt(right) - 'a']++;\n            if (right - left + 1 == s1.length()) {\n                if (Arrays.equals(s1Count, windowCount)) {\n                    return true;\n                }\n                windowCount[s2.charAt(left) - 'a']--;\n                left++;\n            }\n            right++;\n        }\n        return false;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.630303"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int minimizeXor(int num1, int num2) {\n        int setBitsInNum2 = Integer.bitCount(num2);\n        int result = 0;\n        for (int i = 30; i >= 0; i--) {\n            if ((num1 & (1 << i)) != 0 && setBitsInNum2 > 0) {\n                result |= (1 << i);\n                setBitsInNum2--;\n            }\n        }\n        for (int i = 0; i <= 30; i++) {\n            if ((num1 & (1 << i)) == 0 && setBitsInNum2 > 0) {\n                result |= (1 << i);\n                setBitsInNum2--;\n            }\n        }\n        return result;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses bitwise operations to find the integer x with the same number of set bits as num2 and the minimal XOR with num1. It iterates over the bits of num1 from most significant to least significant, setting the corresponding bits in the result if they are set in num1 and there are remaining set bits in num2. Then, it iterates over the bits of num1 from least significant to most significant, setting the corresponding bits in the result if they are not set in num1 and there are remaining set bits in num2. This approach ensures that the result has the same number of set bits as num2 and the minimal XOR with num1.",
+  "code": "class Solution {\n    public int minimizeXor(int num1, int num2) {\n        int setBitsInNum2 = Integer.bitCount(num2);\n        int result = 0;\n        for (int i = 30; i >= 0; i--) {\n            if ((num1 & (1 << i)) != 0 && setBitsInNum2 > 0) {\n                result |= (1 << i);\n                setBitsInNum2--;\n            }\n        }\n        for (int i = 0; i <= 30; i++) {\n            if ((num1 & (1 << i)) == 0 && setBitsInNum2 > 0) {\n                result |= (1 << i);\n                setBitsInNum2--;\n            }\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-06T15:14:06.848497",
+  "code_extracted_previous": "class Solution {\n    public int minimizeXor(int num1, int num2) {\n        int setBitsInNum2 = Integer.bitCount(num2);\n        int result = 0;\n        for (int i = 30; i >= 0; i--) {\n            if ((num1 & (1 << i)) != 0 && setBitsInNum2 > 0) {\n                result |= (1 << i);\n                setBitsInNum2--;\n            }\n        }\n        for (int i = 0; i <= 30; i++) {\n            if ((num1 & (1 << i)) == 0 && setBitsInNum2 > 0) {\n                result |= (1 << i);\n                setBitsInNum2--;\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.927872"
+}

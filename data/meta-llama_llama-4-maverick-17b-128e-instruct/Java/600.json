@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int findIntegers(int n) {\n        int[] f = new int[31];\n        f[0] = 1;\n        f[1] = 1;\n        for (int i = 2; i < 31; ++i) {\n            f[i] = f[i - 1] + f[i - 2];\n        }\n        int ans = 0, pre = 0;\n        for (int i = 29; i >= 0; --i) {\n            int val = 1 << i;\n            if ((n & val) != 0) {\n                ans += f[i + 1];\n                if (pre == 1) {\n                    return ans;\n                }\n                pre = 1;\n            } else {\n                pre = 0;\n            }\n        }\n        return ans + 1;\n    }\n}\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Utilizes dynamic programming to pre-calculate Fibonacci sequence values representing the count of numbers without consecutive ones for each bit position, then iterates through the bits of the given number n to calculate the total count of such numbers up to n.\n```",
+  "code": "class Solution {\n    public int findIntegers(int n) {\n        int[] f = new int[31];\n        f[0] = 1;\n        f[1] = 1;\n        for (int i = 2; i < 31; ++i) {\n            f[i] = f[i - 1] + f[i - 2];\n        }\n        int ans = 0, pre = 0;\n        for (int i = 29; i >= 0; --i) {\n            int val = 1 << i;\n            if ((n & val) != 0) {\n                ans += f[i + 1];\n                if (pre == 1) {\n                    return ans;\n                }\n                pre = 1;\n            } else {\n                pre = 0;\n            }\n        }\n        return ans + 1;\n    }\n}\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Utilizes dynamic programming to pre-calculate Fibonacci sequence values representing the count of numbers without consecutive ones for each bit position, then iterates through the bits of the given number n to calculate the total count of such numbers up to n.",
+  "timestamp": "2025-08-05T14:14:42.491623",
+  "code_extracted_previous": "class Solution {\n    public int findIntegers(int n) {\n        int[] f = new int[31];\n        f[0] = 1;\n        f[1] = 1;\n        for (int i = 2; i < 31; ++i) {\n            f[i] = f[i - 1] + f[i - 2];\n        }\n        int ans = 0, pre = 0;\n        for (int i = 29; i >= 0; --i) {\n            int val = 1 << i;\n            if ((n & val) != 0) {\n                ans += f[i + 1];\n                if (pre == 1) {\n                    return ans;\n                }\n                pre = 1;\n            } else {\n                pre = 0;\n            }\n        }\n        return ans + 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:47.004618"
+}

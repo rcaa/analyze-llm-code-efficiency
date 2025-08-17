@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        vector<int> count(10, 0);\n        for (int i = 0; i < secret.size(); i++) {\n            if (secret[i] == guess[i]) {\n                bulls++;\n            } else {\n                int s = secret[i] - '0';\n                int g = guess[i] - '0';\n                if (count[s] < 0) cows++;\n                if (count[g] > 0) cows++;\n                count[s]++;\n                count[g]--;\n            }\n        }\n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a single pass through the input strings and a fixed-size vector to count the occurrences of each digit, resulting in a linear time complexity and constant space complexity. It correctly calculates the number of bulls and cows by comparing the secret and guess strings and updating the count vector accordingly.",
+  "code": "class Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        vector<int> count(10, 0);\n        for (int i = 0; i < secret.size(); i++) {\n            if (secret[i] == guess[i]) {\n                bulls++;\n            } else {\n                int s = secret[i] - '0';\n                int g = guess[i] - '0';\n                if (count[s] < 0) cows++;\n                if (count[g] > 0) cows++;\n                count[s]++;\n                count[g]--;\n            }\n        }\n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};",
+  "timestamp": "2025-08-06T15:10:43.070439",
+  "code_extracted_previous": "class Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        vector<int> count(10, 0);\n        for (int i = 0; i < secret.size(); i++) {\n            if (secret[i] == guess[i]) {\n                bulls++;\n            } else {\n                int s = secret[i] - '0';\n                int g = guess[i] - '0';\n                if (count[s] < 0) cows++;\n                if (count[g] > 0) cows++;\n                count[s]++;\n                count[g]--;\n            }\n        }\n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.543541"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2317,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maximumXOR(self, nums: List[int]) -> int:\n        ans = 0\n        for i in range(30, -1, -1):\n            ans <<= 1\n            curr = ans | 1\n            prefixes = {num >> i for num in nums}\n            ans |= any((curr ^ p) in prefixes for p in prefixes)\n        return ans\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution iterates over the bits of the numbers from most significant to least, maintaining a running XOR result. It checks if setting the current bit to 1 would result in a valid XOR operation by verifying if the corresponding prefix exists in the set of prefixes. If so, it sets the bit to 1, effectively maximizing the XOR result.",
+  "code": "def maximumXOR(self, nums: List[int]) -> int:\n        ans = 0\n        for i in range(30, -1, -1):\n            ans <<= 1\n            curr = ans | 1\n            prefixes = {num >> i for num in nums}\n            ans |= any((curr ^ p) in prefixes for p in prefixes)\n        return ans\n```",
+  "timestamp": "2025-08-05T13:27:03.108201",
+  "code_extracted_previous": "class Solution:\n    def maximumXOR(self, nums: List[int]) -> int:\n        ans = 0\n        for i in range(30, -1, -1):\n            ans <<= 1\n            curr = ans | 1\n            prefixes = {num >> i for num in nums}\n            ans |= any((curr ^ p) in prefixes for p in prefixes)\n        return ans",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.849274"
+}

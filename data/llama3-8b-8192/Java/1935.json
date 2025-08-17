@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        Set<Character> broken = new HashSet<>();\n        for (char c : brokenLetters.toCharArray()) {\n            broken.add(c);\n        }\n        int count = 0;\n        String[] words = text.split(\" \");\n        for (String word : words) {\n            boolean canType = true;\n            for (char c : word.toCharArray()) {\n                if (broken.contains(c)) {\n                    canType = false;\n                    break;\n                }\n            }\n            if (canType) {\n                count++;\n            }\n        }\n        return count;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: This solution uses a HashSet to store the broken letters, allowing for efficient lookups. It then iterates over each word in the text, checking if any of the letters in the word are broken. If a word contains no broken letters, it is counted. The solution has a high efficiency due to the use of a HashSet and the fact that it only needs to iterate over each word once.",
+  "code": "class Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        Set<Character> broken = new HashSet<>();\n        for (char c : brokenLetters.toCharArray()) {\n            broken.add(c);\n        }\n        int count = 0;\n        String[] words = text.split(\" \");\n        for (String word : words) {\n            boolean canType = true;\n            for (char c : word.toCharArray()) {\n                if (broken.contains(c)) {\n                    canType = false;\n                    break;\n                }\n            }\n            if (canType) {\n                count++;\n            }\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T14:43:45.293886",
+  "code_extracted_previous": "public int canBeTypedWords(String text, String brokenLetters) {\n        Set<Character> broken = new HashSet<>();\n        for (char c : brokenLetters.toCharArray()) {\n            broken.add(c);\n        }\n        int count = 0;\n        String[] words = text.split(\" \");\n        for (String word : words) {\n            boolean canType = true;\n            for (char c : word.toCharArray()) {\n                if (broken.contains(c)) {\n                    canType = false;\n                    break;\n                }\n            }\n            if (canType) {\n                count++;\n            }\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.103336"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 3/6 seções presentes",
+  "resposta": "solution:\n\n```java\nclass SORTracker {\n    Map<String, Integer> nameScoreMap;\n    int count = 0;\n\n    public SORTracker() {\n        nameScoreMap = new HashMap<>();\n    }\n\n    public void add(String name, int score) {\n        if (!nameScoreMap.containsKey(name)) {\n            nameScoreMap.put(name, score);\n            count++;\n        }\n    }\n\n    public String get() {\n        if (count == 0) {\n            return null;\n        }\n        String result = nameScoreMap.values().stream()\n            .max()\n            .orElse(null);\n        return result;\n    }\n}\n```\n\nefficiency: HIGH\n\nExplanation:\n\nThe provided solution uses a HashMap to store the name and score of each location. When a new location is added, it checks if the name already exists in the HashMap, and if not, adds it with its score and increments the count. When querying the i-th best location, it returns the maximum value from the HashMap's values() stream, which ensures that the best location is always returned, and orElse(null) is used to handle the case when the system has not been queried before. The time complexity is O(n), where n is the number of locations added, and the space complexity is O(n), where n is the number of locations added. ",
+  "code": "class SORTracker {\n    Map<String, Integer> nameScoreMap;\n    int count = 0;\n\n    public SORTracker() {\n        nameScoreMap = new HashMap<>();\n    }\n\n    public void add(String name, int score) {\n        if (!nameScoreMap.containsKey(name)) {\n            nameScoreMap.put(name, score);\n            count++;\n        }\n    }\n\n    public String get() {\n        if (count == 0) {\n            return null;\n        }\n        String result = nameScoreMap.values().stream()\n            .max()\n            .orElse(null);\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T14:04:50.429980",
+  "code_extracted_previous": "class SORTracker {\n    Map<String, Integer> nameScoreMap;\n    int count = 0;\n\n    public SORTracker() {\n        nameScoreMap = new HashMap<>();\n    }\n\n    public void add(String name, int score) {\n        if (!nameScoreMap.containsKey(name)) {\n            nameScoreMap.put(name, score);\n            count++;\n        }\n    }\n\n    public String get() {\n        if (count == 0) {\n            return null;\n        }\n        String result = nameScoreMap.values().stream()\n            .max()\n            .orElse(null);\n        return result;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:13.877789"
+}

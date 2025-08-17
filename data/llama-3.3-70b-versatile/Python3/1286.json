@@ -1,0 +1,15 @@
+{
+  "id": 1286,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass CombinationIterator:\n\n    def __init__(self, characters: str, combinationLength: int):\n        self.combinations = []\n        self.index = 0\n        from itertools import combinations\n        self.combinations = [''.join(c) for c in combinations(characters, combinationLength)]\n\n    def next(self) -> str:\n        result = self.combinations[self.index]\n        self.index += 1\n        return result\n\n    def hasNext(self) -> bool:\n        return self.index < len(self.combinations)\n\n\n# Your CombinationIterator object will be instantiated and called as such:\n# obj = CombinationIterator(characters, combinationLength)\n# param_1 = obj.next()\n# param_2 = obj.hasNext()\n```\nsolution: CombinationIterator class with next and hasNext methods\nefficiency: HIGH\ntime complexity: O(1) for next and hasNext, O(2^n) for initialization\nspace complexity: O(2^n)\nenergy implications: LOW\nexplanation: The CombinationIterator class uses the itertools.combinations function to generate all combinations of the input string, then stores them in a list. The next method returns the next combination in the list, and the hasNext method checks if there are more combinations in the list. This approach is efficient because it only generates combinations once, during initialization, and then simply returns them one by one.",
+  "code": "CombinationIterator class with next and hasNext methods",
+  "timestamp": "2025-08-06T00:51:25.402687",
+  "code_extracted_previous": "class CombinationIterator:\n\n    def __init__(self, characters: str, combinationLength: int):\n        self.combinations = []\n        self.index = 0\n        from itertools import combinations\n        self.combinations = [''.join(c) for c in combinations(characters, combinationLength)]\n\n    def next(self) -> str:\n        result = self.combinations[self.index]\n        self.index += 1\n        return result\n\n    def hasNext(self) -> bool:\n        return self.index < len(self.combinations)\n\n\n# Your CombinationIterator object will be instantiated and called as such:\n# obj = CombinationIterator(characters, combinationLength)\n# param_1 = obj.next()\n# param_2 = obj.hasNext()",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.674696"
+}

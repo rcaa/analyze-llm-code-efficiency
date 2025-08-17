@@ -1,0 +1,15 @@
+{
+  "id": 753,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def crackSafe(self, n: int, k: int) -> str:\n        def dfs(node, path):\n            for i in range(k):\n                next_node = node * 10 + i\n                if next_node not in visited:\n                    visited.add(next_node)\n                    dfs(next_node, path + str(i))\n                    res.append(path + str(i))\n        res = []\n        visited = set()\n        for i in range(k ** (n - 1)):\n            dfs(0, str(i))\n        return '0' * (n - 1) + res[0]\n```\n\nefficiency: HIGH\ntime complexity: O(k^n)\nspace complexity: O(k^n)\nenergy implications: MEDIUM\nexplanation: This solution uses a depth-first search (DFS) to explore all possible combinations of digits. It keeps track of visited nodes to avoid duplicates and stores the result in a list. The time complexity is O(k^n) because there are k^n possible combinations, and the space complexity is also O(k^n) due to the recursion stack and the visited set.",
+  "code": "class Solution:\n    def crackSafe(self, n: int, k: int) -> str:\n        def dfs(node, path):\n            for i in range(k):\n                next_node = node * 10 + i\n                if next_node not in visited:\n                    visited.add(next_node)\n                    dfs(next_node, path + str(i))\n                    res.append(path + str(i))\n        res = []\n        visited = set()\n        for i in range(k ** (n - 1)):\n            dfs(0, str(i))\n        return '0' * (n - 1) + res[0]",
+  "timestamp": "2025-08-05T13:55:31.174939",
+  "code_extracted_previous": "class Solution:\n    def crackSafe(self, n: int, k: int) -> str:\n        def dfs(node, path):\n            for i in range(k):\n                next_node = node * 10 + i\n                if next_node not in visited:\n                    visited.add(next_node)\n                    dfs(next_node, path + str(i))\n                    res.append(path + str(i))\n        res = []\n        visited = set()\n        for i in range(k ** (n - 1)):\n            dfs(0, str(i))\n        return '0' * (n - 1) + res[0]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.471181"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int[] val = new int[26];\n        for (int i = 0; i < 26; i++) val[i] = i + 1;\n        for (int i = 0; i < chars.length(); i++) val[chars.charAt(i) - 'a'] = vals[i];\n        \n        int max = 0, cur = 0;\n        for (char c : s.toCharArray()) {\n            cur = Math.max(val[c - 'a'], cur + val[c - 'a']);\n            max = Math.max(max, cur);\n        }\n        return max;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Build a lookup table for character values in O(26) space. Apply Kadane’s algorithm to find the maximum substring sum in a single pass, resetting the running sum whenever it becomes negative.",
+  "code": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int[] val = new int[26];\n        for (int i = 0; i < 26; i++) val[i] = i + 1;\n        for (int i = 0; i < chars.length(); i++) val[chars.charAt(i) - 'a'] = vals[i];\n        \n        int max = 0, cur = 0;\n        for (char c : s.toCharArray()) {\n            cur = Math.max(val[c - 'a'], cur + val[c - 'a']);\n            max = Math.max(max, cur);\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-06T02:31:23.001697",
+  "code_extracted_previous": "class Solution {\n    public int maximumCostSubstring(String s, String chars, int[] vals) {\n        int[] val = new int[26];\n        for (int i = 0; i < 26; i++) val[i] = i + 1;\n        for (int i = 0; i < chars.length(); i++) val[chars.charAt(i) - 'a'] = vals[i];\n        \n        int max = 0, cur = 0;\n        for (char c : s.toCharArray()) {\n            cur = Math.max(val[c - 'a'], cur + val[c - 'a']);\n            max = Math.max(max, cur);\n        }\n        return max;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.137999"
+}

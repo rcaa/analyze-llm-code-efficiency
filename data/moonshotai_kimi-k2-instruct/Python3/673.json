@@ -1,0 +1,15 @@
+{
+  "id": 673,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def findNumberOfLIS(self, nums: List[int]) -> int:\n        if not nums:\n            return 0\n        n = len(nums)\n        length = [1] * n\n        count = [1] * n\n        max_len = 1\n        for i in range(n):\n            for j in range(i):\n                if nums[j] < nums[i]:\n                    if length[j] + 1 > length[i]:\n                        length[i] = length[j] + 1\n                        count[i] = count[j]\n                    elif length[j] + 1 == length[i]:\n                        count[i] += count[j]\n            max_len = max(max_len, length[i])\n        return sum(c for l, c in zip(length, count) if l == max_len)\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses dynamic programming to track both the length of the longest increasing subsequence ending at each index and the number of such subsequences. After processing all pairs, the counts for indices with the maximum length are summed.",
+  "code": "class Solution:\n    def findNumberOfLIS(self, nums: List[int]) -> int:\n        if not nums:\n            return 0\n        n = len(nums)\n        length = [1] * n\n        count = [1] * n\n        max_len = 1\n        for i in range(n):\n            for j in range(i):\n                if nums[j] < nums[i]:\n                    if length[j] + 1 > length[i]:\n                        length[i] = length[j] + 1\n                        count[i] = count[j]\n                    elif length[j] + 1 == length[i]:\n                        count[i] += count[j]\n            max_len = max(max_len, length[i])\n        return sum(c for l, c in zip(length, count) if l == max_len)",
+  "timestamp": "2025-08-05T13:15:00.780906",
+  "code_extracted_previous": "def findNumberOfLIS(self, nums: List[int]) -> int:\n        if not nums:\n            return 0\n        n = len(nums)\n        length = [1] * n\n        count = [1] * n\n        max_len = 1\n        for i in range(n):\n            for j in range(i):\n                if nums[j] < nums[i]:\n                    if length[j] + 1 > length[i]:\n                        length[i] = length[j] + 1\n                        count[i] = count[j]\n                    elif length[j] + 1 == length[i]:\n                        count[i] += count[j]\n            max_len = max(max_len, length[i])\n        return sum(c for l, c in zip(length, count) if l == max_len)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.380224"
+}

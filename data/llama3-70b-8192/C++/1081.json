@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    string smallestSubsequence(string s) {\n        vector<int> count(26, 0);\n        vector<bool> inRes(s.size(), false);\n        for (int i = 0; i < s.size(); i++) count[s[i] - 'a']++;\n        string res = \"\";\n        for (int i = 0; i < s.size(); i++) {\n            count[s[i] - 'a']--;\n            if (inRes[i] || res.size() && res.back() <= s[i]) continue;\n            while (res.size() && res.back() > s[i] && count[res.back() - 'a']) {\n                inRes[res.size() - 1] = false;\n                res.pop_back();\n            }\n            res += s[i];\n            inRes[i] = true;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a greedy approach to build the lexicographically smallest subsequence, iterating through the input string and adding characters to the result string while maintaining a count of remaining characters and a flag for characters already in the result.",
+  "code": "class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        vector<int> count(26, 0);\n        vector<bool> inRes(s.size(), false);\n        for (int i = 0; i < s.size(); i++) count[s[i] - 'a']++;\n        string res = \"\";\n        for (int i = 0; i < s.size(); i++) {\n            count[s[i] - 'a']--;\n            if (inRes[i] || res.size() && res.back() <= s[i]) continue;\n            while (res.size() && res.back() > s[i] && count[res.back() - 'a']) {\n                inRes[res.size() - 1] = false;\n                res.pop_back();\n            }\n            res += s[i];\n            inRes[i] = true;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:47:55.743257",
+  "code_extracted_previous": "class Solution {\npublic:\n    string smallestSubsequence(string s) {\n        vector<int> count(26, 0);\n        vector<bool> inRes(s.size(), false);\n        for (int i = 0; i < s.size(); i++) count[s[i] - 'a']++;\n        string res = \"\";\n        for (int i = 0; i < s.size(); i++) {\n            count[s[i] - 'a']--;\n            if (inRes[i] || res.size() && res.back() <= s[i]) continue;\n            while (res.size() && res.back() > s[i] && count[res.back() - 'a']) {\n                inRes[res.size() - 1] = false;\n                res.pop_back();\n            }\n            res += s[i];\n            inRes[i] = true;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:35.988142"
+}

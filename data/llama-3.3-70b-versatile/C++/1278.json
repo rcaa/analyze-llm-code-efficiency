@@ -1,0 +1,15 @@
+{
+  "id": 1278,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int palindromePartition(string s, int k) {\n        int n = s.size();\n        vector<vector<int>> dp(n + 1, vector<int>(k + 1, INT_MAX));\n        dp[0][0] = 0;\n        \n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= min(i, k); j++) {\n                for (int l = 0; l < i; l++) {\n                    int changes = 0;\n                    string substr = s.substr(l, i - l);\n                    for (int p = 0; p < substr.size() / 2; p++) {\n                        if (substr[p] != substr[substr.size() - 1 - p]) changes++;\n                    }\n                    dp[i][j] = min(dp[i][j], dp[l][j - 1] + changes);\n                }\n            }\n        }\n        return dp[n][k];\n    }\n};\nefficiency: HIGH\ntime complexity: O(n^3 * k)\nspace complexity: O(n * k)\nenergy implications: LOW\nexplanation: Dynamic programming is used to solve this problem, where dp[i][j] represents the minimum number of changes needed to divide the first i characters into j palindromic substrings. The solution iterates over all possible substrings and calculates the minimum number of changes needed to make each substring a palindrome.",
+  "code": "class Solution {\npublic:\n    int palindromePartition(string s, int k) {\n        int n = s.size();\n        vector<vector<int>> dp(n + 1, vector<int>(k + 1, INT_MAX));\n        dp[0][0] = 0;\n        \n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= min(i, k); j++) {\n                for (int l = 0; l < i; l++) {\n                    int changes = 0;\n                    string substr = s.substr(l, i - l);\n                    for (int p = 0; p < substr.size() / 2; p++) {\n                        if (substr[p] != substr[substr.size() - 1 - p]) changes++;\n                    }\n                    dp[i][j] = min(dp[i][j], dp[l][j - 1] + changes);\n                }\n            }\n        }\n        return dp[n][k];\n    }\n};",
+  "timestamp": "2025-08-05T16:11:38.633543",
+  "code_extracted_previous": "class Solution {\npublic:\n    int palindromePartition(string s, int k) {\n        int n = s.size();\n        vector<vector<int>> dp(n + 1, vector<int>(k + 1, INT_MAX));\n        dp[0][0] = 0;\n        \n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= min(i, k); j++) {\n                for (int l = 0; l < i; l++) {\n                    int changes = 0;\n                    string substr = s.substr(l, i - l);\n                    for (int p = 0; p < substr.size() / 2; p++) {\n                        if (substr[p] != substr[substr.size() - 1 - p]) changes++;\n                    }\n                    dp[i][j] = min(dp[i][j], dp[l][j - 1] + changes);\n                }\n            }\n        }\n        return dp[n][k];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.707976"
+}

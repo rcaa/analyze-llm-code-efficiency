@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int minPenalty = Integer.MAX_VALUE;\n        int bestTime = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = 0;\n            for (int j = 0; j < n; j++) {\n                if (j < i && customers.charAt(j) == 'N') penalty++;\n                if (j >= i && customers.charAt(j) == 'Y') penalty++;\n            }\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestTime = i;\n            }\n        }\n        return bestTime;\n    }\n}\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over each possible closing time and calculates the penalty for that time by checking each hour. It keeps track of the minimum penalty and the corresponding closing time, returning the earliest time with the minimum penalty.",
+  "code": "class Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int minPenalty = Integer.MAX_VALUE;\n        int bestTime = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = 0;\n            for (int j = 0; j < n; j++) {\n                if (j < i && customers.charAt(j) == 'N') penalty++;\n                if (j >= i && customers.charAt(j) == 'Y') penalty++;\n            }\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestTime = i;\n            }\n        }\n        return bestTime;\n    }\n}",
+  "timestamp": "2025-08-06T01:02:52.512612",
+  "code_extracted_previous": "class Solution {\n    public int bestClosingTime(String customers) {\n        int n = customers.length();\n        int minPenalty = Integer.MAX_VALUE;\n        int bestTime = 0;\n        for (int i = 0; i <= n; i++) {\n            int penalty = 0;\n            for (int j = 0; j < n; j++) {\n                if (j < i && customers.charAt(j) == 'N') penalty++;\n                if (j >= i && customers.charAt(j) == 'Y') penalty++;\n            }\n            if (penalty < minPenalty) {\n                minPenalty = penalty;\n                bestTime = i;\n            }\n        }\n        return bestTime;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.952114"
+}

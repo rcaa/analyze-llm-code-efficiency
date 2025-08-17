@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        n = len(answerKey)\n        res = 0\n        for c in set(answerKey):\n            left, right = 0, 0\n            for i in range(n):\n                if answerKey[i] == c:\n                    right += 1\n                else:\n                    right = 0\n                res = max(res, right)\n                if right > k:\n                    if answerKey[i - left] == c:\n                        left += 1\n                    else:\n                        break\n        return res\n```\n\nefficiency: HIGH\n\ntime complexity: O(n)\n\nspace complexity: O(1)\n\nenergy implications: LOW\n\nexplanation: We iterate over each character in the answer key, and for each character, we maintain two pointers, left and right, to track the maximum consecutive sequence of the same character. We update the result whenever we find a longer sequence. If the sequence is longer than k, we move the left pointer to the right until the sequence is no longer longer than k. This approach ensures that we consider all possible sequences and find the maximum one.",
+  "code": "class Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        n = len(answerKey)\n        res = 0\n        for c in set(answerKey):\n            left, right = 0, 0\n            for i in range(n):\n                if answerKey[i] == c:\n                    right += 1\n                else:\n                    right = 0\n                res = max(res, right)\n                if right > k:\n                    if answerKey[i - left] == c:\n                        left += 1\n                    else:\n                        break\n        return res",
+  "timestamp": "2025-08-06T00:56:57.184090",
+  "code_extracted_previous": "class Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        n = len(answerKey)\n        res = 0\n        for c in set(answerKey):\n            left, right = 0, 0\n            for i in range(n):\n                if answerKey[i] == c:\n                    right += 1\n                else:\n                    right = 0\n                res = max(res, right)\n                if right > k:\n                    if answerKey[i - left] == c:\n                        left += 1\n                    else:\n                        break\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.640076"
+}

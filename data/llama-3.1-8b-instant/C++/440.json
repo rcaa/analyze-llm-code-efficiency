@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        long long cur = 1;\n        k--;\n        while (k > 0) {\n            long long step = 0;\n            for (long long i = cur; i <= n; i *= 10) {\n                step += min(k / (i - cur), n - i + 1);\n                if (step == k) {\n                    return i;\n                }\n                cur = i;\n            }\n        }\n        return 0;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(log n + log k)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        long long cur = 1;\n        k--;\n        while (k > 0) {\n            long long step = 0;\n            for (long long i = cur; i <= n; i *= 10) {\n                step += min(k / (i - cur), n - i + 1);\n                if (step == k) {\n                    return i;\n                }\n                cur = i;\n            }\n        }\n        return 0;\n    }\n};",
+  "timestamp": "2025-08-06T01:12:58.181535",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findKthNumber(int n, int k) {\n        long long cur = 1;\n        k--;\n        while (k > 0) {\n            long long step = 0;\n            for (long long i = cur; i <= n; i *= 10) {\n                step += min(k / (i - cur), n - i + 1);\n                if (step == k) {\n                    return i;\n                }\n                cur = i;\n            }\n        }\n        return 0;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.530242"
+}

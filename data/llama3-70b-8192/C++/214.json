@@ -1,0 +1,15 @@
+{
+  "id": 214,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string shortestPalindrome(string s) {\n        string rev_s = s;\n        reverse(rev_s.begin(), rev_s.end());\n        string l = s + \"#\" + rev_s;\n        vector<int> kmp = buildKMP(l);\n        return rev_s.substr(0, rev_s.size() - kmp.back()) + s;\n    }\nprivate:\n    vector<int> buildKMP(string s) {\n        int n = s.size();\n        vector<int> kmp(n, 0);\n        int j = 0;\n        for (int i = 1; i < n; i++) {\n            while (j > 0 && s[i] != s[j]) j = kmp[j - 1];\n            if (s[i] == s[j]) j++;\n            kmp[i] = j;\n        }\n        return kmp;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses the KMP algorithm to build a lookup table for the longest proper prefix which is also a suffix, and then constructs the shortest palindrome by adding the remaining characters from the reversed string.",
+  "code": "class Solution {\npublic:\n    string shortestPalindrome(string s) {\n        string rev_s = s;\n        reverse(rev_s.begin(), rev_s.end());\n        string l = s + \"#\" + rev_s;\n        vector<int> kmp = buildKMP(l);\n        return rev_s.substr(0, rev_s.size() - kmp.back()) + s;\n    }\nprivate:\n    vector<int> buildKMP(string s) {\n        int n = s.size();\n        vector<int> kmp(n, 0);\n        int j = 0;\n        for (int i = 1; i < n; i++) {\n            while (j > 0 && s[i] != s[j]) j = kmp[j - 1];\n            if (s[i] == s[j]) j++;\n            kmp[i] = j;\n        }\n        return kmp;\n    }\n};",
+  "timestamp": "2025-08-05T16:04:18.121758",
+  "code_extracted_previous": "public:\n    string shortestPalindrome(string s) {\n        string rev_s = s;\n        reverse(rev_s.begin(), rev_s.end());\n        string l = s + \"#\" + rev_s;\n        vector<int> kmp = buildKMP(l);\n        return rev_s.substr(0, rev_s.size() - kmp.back()) + s;\n    }\nprivate:\n    vector<int> buildKMP(string s) {\n        int n = s.size();\n        vector<int> kmp(n, 0);\n        int j = 0;\n        for (int i = 1; i < n; i++) {\n            while (j > 0 && s[i] != s[j]) j = kmp[j - 1];\n            if (s[i] == s[j]) j++;\n            kmp[i] = j;\n        }\n        return kmp;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.418367"
+}

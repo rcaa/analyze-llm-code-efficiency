@@ -1,0 +1,15 @@
+{
+  "id": 3121,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int numberOfSpecialChars(string word) {\n        unordered_map<char, int> lower, upper;\n        int res = 0;\n        for (int i = 0; i < word.size(); ++i) {\n            if (islower(word[i])) lower[word[i]] = i;\n            else upper[tolower(word[i])] = i;\n        }\n        for (auto& p : lower) {\n            if (upper.count(p.first)) res += p.second < upper[p.first];\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses two unordered maps to store the first occurrence of each lowercase and uppercase letter, then iterates through the lowercase map to count the special characters.",
+  "code": "class Solution {\npublic:\n    int numberOfSpecialChars(string word) {\n        unordered_map<char, int> lower, upper;\n        int res = 0;\n        for (int i = 0; i < word.size(); ++i) {\n            if (islower(word[i])) lower[word[i]] = i;\n            else upper[tolower(word[i])] = i;\n        }\n        for (auto& p : lower) {\n            if (upper.count(p.first)) res += p.second < upper[p.first];\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:12:09.586021",
+  "code_extracted_previous": "public:\n    int numberOfSpecialChars(string word) {\n        unordered_map<char, int> lower, upper;\n        int res = 0;\n        for (int i = 0; i < word.size(); ++i) {\n            if (islower(word[i])) lower[word[i]] = i;\n            else upper[tolower(word[i])] = i;\n        }\n        for (auto& p : lower) {\n            if (upper.count(p.first)) res += p.second < upper[p.first];\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.721295"
+}

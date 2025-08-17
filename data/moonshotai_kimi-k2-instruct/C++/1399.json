@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int countLargestGroup(int n) {\n        int freq[37] = {0};\n        for (int i = 1; i <= n; ++i) {\n            int sum = 0, x = i;\n            while (x) { sum += x % 10; x /= 10; }\n            ++freq[sum];\n        }\n        int maxSize = 0, count = 0;\n        for (int s = 1; s <= 36; ++s) {\n            if (freq[s] > maxSize) { maxSize = freq[s]; count = 1; }\n            else if (freq[s] == maxSize) ++count;\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate 1..n, compute digit sums in O(log i) each, tally frequencies in a fixed-size array, then scan the 36 possible sums to find how many share the maximum frequency.",
+  "code": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        int freq[37] = {0};\n        for (int i = 1; i <= n; ++i) {\n            int sum = 0, x = i;\n            while (x) { sum += x % 10; x /= 10; }\n            ++freq[sum];\n        }\n        int maxSize = 0, count = 0;\n        for (int s = 1; s <= 36; ++s) {\n            if (freq[s] > maxSize) { maxSize = freq[s]; count = 1; }\n            else if (freq[s] == maxSize) ++count;\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-06T02:28:52.870915",
+  "code_extracted_previous": "public:\n    int countLargestGroup(int n) {\n        int freq[37] = {0};\n        for (int i = 1; i <= n; ++i) {\n            int sum = 0, x = i;\n            while (x) { sum += x % 10; x /= 10; }\n            ++freq[sum];\n        }\n        int maxSize = 0, count = 0;\n        for (int s = 1; s <= 36; ++s) {\n            if (freq[s] > maxSize) { maxSize = freq[s]; count = 1; }\n            else if (freq[s] == maxSize) ++count;\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.224085"
+}

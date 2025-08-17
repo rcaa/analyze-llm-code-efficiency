@@ -1,0 +1,15 @@
+{
+  "id": 535,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    unordered_map<string, string> map;\n    string encode(string longUrl) {\n        string key = to_string(map.size());\n        map[key] = longUrl;\n        return \"http://tinyurl.com/\" + key;\n    }\n\n    string decode(string shortUrl) {\n        size_t pos = shortUrl.find(\"http://tinyurl.com/\");\n        string key = shortUrl.substr(pos + 19);\n        return map[key];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    unordered_map<string, string> map;\n    string encode(string longUrl) {\n        string key = to_string(map.size());\n        map[key] = longUrl;\n        return \"http://tinyurl.com/\" + key;\n    }\n\n    string decode(string shortUrl) {\n        size_t pos = shortUrl.find(\"http://tinyurl.com/\");\n        string key = shortUrl.substr(pos + 19);\n        return map[key];\n    }\n};",
+  "timestamp": "2025-08-05T14:55:32.294527",
+  "code_extracted_previous": "class Solution {\npublic:\n    unordered_map<string, string> map;\n    string encode(string longUrl) {\n        string key = to_string(map.size());\n        map[key] = longUrl;\n        return \"http://tinyurl.com/\" + key;\n    }\n\n    string decode(string shortUrl) {\n        size_t pos = shortUrl.find(\"http://tinyurl.com/\");\n        string key = shortUrl.substr(pos + 19);\n        return map[key];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.604726"
+}

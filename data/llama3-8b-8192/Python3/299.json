@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = sum(1 for a, b in zip(secret, guess) if a == b)\n        cows = sum(min(secret.count(d), guess.count(d)) for d in set(guess)) - bulls\n        return f\"{bulls}A{cows}B\"\n```\n\nefficiency: HIGH\n\ntime complexity: O(n)\n\nspace complexity: O(1)\n\nenergy implications: LOW\n\nexplanation: This solution uses the zip function to count the number of bulls, and then uses a set to count the number of cows. The min function is used to ensure that the count of each digit in the secret number is not exceeded. The result is then formatted as a string and returned.",
+  "code": "class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = sum(1 for a, b in zip(secret, guess) if a == b)\n        cows = sum(min(secret.count(d), guess.count(d)) for d in set(guess)) - bulls\n        return f\"{bulls}A{cows}B\"",
+  "timestamp": "2025-08-05T14:51:56.086814",
+  "code_extracted_previous": "class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = sum(1 for a, b in zip(secret, guess) if a == b)\n        cows = sum(min(secret.count(d), guess.count(d)) for d in set(guess)) - bulls\n        return f\"{bulls}A{cows}B\"",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.026526"
+}

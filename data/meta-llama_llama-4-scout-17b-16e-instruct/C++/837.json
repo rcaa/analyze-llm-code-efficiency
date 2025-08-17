@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        if (k == 0) return 1.0;\n        if (n >= k + maxPts) return 1.0;\n\n        vector<double> dp(n + 1);\n        for (int i = k; i <= min(n, k + maxPts - 1); ++i) {\n            dp[i] = 1.0 / maxPts;\n        }\n\n        for (int i = k - 1; i >= 0; --i) {\n            double sum = 0.0;\n            for (int j = 1; j <= maxPts; ++j) {\n                sum += dp[i + j];\n            }\n            dp[i] = sum / maxPts;\n        }\n\n        double res = 0.0;\n        for (int i = 0; i <= n; ++i) {\n            res += dp[i];\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * maxPts)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: Dynamic programming approach calculates probabilities for each point value, then sums probabilities for desired range.",
+  "code": "class Solution {\npublic:\n    double new21Game(int n, int k, int maxPts) {\n        if (k == 0) return 1.0;\n        if (n >= k + maxPts) return 1.0;\n\n        vector<double> dp(n + 1);\n        for (int i = k; i <= min(n, k + maxPts - 1); ++i) {\n            dp[i] = 1.0 / maxPts;\n        }\n\n        for (int i = k - 1; i >= 0; --i) {\n            double sum = 0.0;\n            for (int j = 1; j <= maxPts; ++j) {\n                sum += dp[i + j];\n            }\n            dp[i] = sum / maxPts;\n        }\n\n        double res = 0.0;\n        for (int i = 0; i <= n; ++i) {\n            res += dp[i];\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:45:28.903558",
+  "code_extracted_previous": "public:\n    double new21Game(int n, int k, int maxPts) {\n        if (k == 0) return 1.0;\n        if (n >= k + maxPts) return 1.0;\n\n        vector<double> dp(n + 1);\n        for (int i = k; i <= min(n, k + maxPts - 1); ++i) {\n            dp[i] = 1.0 / maxPts;\n        }\n\n        for (int i = k - 1; i >= 0; --i) {\n            double sum = 0.0;\n            for (int j = 1; j <= maxPts; ++j) {\n                sum += dp[i + j];\n            }\n            dp[i] = sum / maxPts;\n        }\n\n        double res = 0.0;\n        for (int i = 0; i <= n; ++i) {\n            res += dp[i];\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.969341"
+}

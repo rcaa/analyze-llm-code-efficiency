@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class FreqStack {\n    private Map<Integer, Integer> freq;\n    private Map<Integer, Deque<Integer>> group;\n    private int maxFreq;\n\n    public FreqStack() {\n        freq = new HashMap<>();\n        group = new HashMap<>();\n        maxFreq = 0;\n    }\n    \n    public void push(int val) {\n        int f = freq.getOrDefault(val, 0) + 1;\n        freq.put(val, f);\n        if (f > maxFreq) maxFreq = f;\n        group.computeIfAbsent(f, k -> new ArrayDeque<>()).push(val);\n    }\n    \n    public int pop() {\n        int val = group.get(maxFreq).pop();\n        freq.put(val, freq.get(val) - 1);\n        if (group.get(maxFreq).isEmpty()) maxFreq--;\n        return val;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1) for both push and pop\nspace complexity: O(N) where N is the number of elements pushed\nenergy implications: LOW\nexplanation: Uses two hash maps: one to store frequencies of each value and another to store stacks of values keyed by frequency. The max frequency is tracked to allow O(1) pop of the most frequent element.",
+  "code": "class FreqStack {\n    private Map<Integer, Integer> freq;\n    private Map<Integer, Deque<Integer>> group;\n    private int maxFreq;\n\n    public FreqStack() {\n        freq = new HashMap<>();\n        group = new HashMap<>();\n        maxFreq = 0;\n    }\n    \n    public void push(int val) {\n        int f = freq.getOrDefault(val, 0) + 1;\n        freq.put(val, f);\n        if (f > maxFreq) maxFreq = f;\n        group.computeIfAbsent(f, k -> new ArrayDeque<>()).push(val);\n    }\n    \n    public int pop() {\n        int val = group.get(maxFreq).pop();\n        freq.put(val, freq.get(val) - 1);\n        if (group.get(maxFreq).isEmpty()) maxFreq--;\n        return val;\n    }\n}",
+  "timestamp": "2025-08-05T14:38:35.187538",
+  "code_extracted_previous": "private Map<Integer, Integer> freq;\n    private Map<Integer, Deque<Integer>> group;\n    private int maxFreq;\n\n    public FreqStack() {\n        freq = new HashMap<>();\n        group = new HashMap<>();\n        maxFreq = 0;\n    }\n    \n    public void push(int val) {\n        int f = freq.getOrDefault(val, 0) + 1;\n        freq.put(val, f);\n        if (f > maxFreq) maxFreq = f;\n        group.computeIfAbsent(f, k -> new ArrayDeque<>()).push(val);\n    }\n    \n    public int pop() {\n        int val = group.get(maxFreq).pop();\n        freq.put(val, freq.get(val) - 1);\n        if (group.get(maxFreq).isEmpty()) maxFreq--;\n        return val;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:55.892267"
+}

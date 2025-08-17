@@ -1,0 +1,15 @@
+{
+  "id": 1860,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    vector<int> memLeak(int memory1, int memory2) {\n        long long t = 1;\n        while (true) {\n            if (memory1 >= memory2) {\n                if (memory1 < t) break;\n                memory1 -= t;\n            } else {\n                if (memory2 < t) break;\n                memory2 -= t;\n            }\n            ++t;\n        }\n        return {(int)t, memory1, memory2};\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(sqrt(memory1 + memory2))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Simulate each second, always subtracting the current second's demand from the larger stick. The loop runs until the demand exceeds both sticks, which happens after roughly sqrt(total memory) iterations.",
+  "code": "class Solution {\npublic:\n    vector<int> memLeak(int memory1, int memory2) {\n        long long t = 1;\n        while (true) {\n            if (memory1 >= memory2) {\n                if (memory1 < t) break;\n                memory1 -= t;\n            } else {\n                if (memory2 < t) break;\n                memory2 -= t;\n            }\n            ++t;\n        }\n        return {(int)t, memory1, memory2};\n    }\n};",
+  "timestamp": "2025-08-06T02:29:01.346094",
+  "code_extracted_previous": "public:\n    vector<int> memLeak(int memory1, int memory2) {\n        long long t = 1;\n        while (true) {\n            if (memory1 >= memory2) {\n                if (memory1 < t) break;\n                memory1 -= t;\n            } else {\n                if (memory2 < t) break;\n                memory2 -= t;\n            }\n            ++t;\n        }\n        return {(int)t, memory1, memory2};\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.348351"
+}

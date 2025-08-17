@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        i, j, cnt = 0, 0, 0\n        for bus in buses:\n            cnt = 0\n            while j < len(passengers) and passengers[j] <= bus and cnt < capacity:\n                cnt += 1\n                j += 1\n            if cnt < capacity:\n                return bus\n            elif j > 0 and passengers[j-1] < bus:\n                return passengers[j-1]\n        return passengers[-1] if passengers else -1\n```\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sort both bus and passenger arrays, then iterate through the bus array, for each bus, iterate through the passenger array to find the latest time to catch the bus.",
+  "code": "class Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        i, j, cnt = 0, 0, 0\n        for bus in buses:\n            cnt = 0\n            while j < len(passengers) and passengers[j] <= bus and cnt < capacity:\n                cnt += 1\n                j += 1\n            if cnt < capacity:\n                return bus\n            elif j > 0 and passengers[j-1] < bus:\n                return passengers[j-1]\n        return passengers[-1] if passengers else -1",
+  "timestamp": "2025-08-05T13:27:58.328401",
+  "code_extracted_previous": "class Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        i, j, cnt = 0, 0, 0\n        for bus in buses:\n            cnt = 0\n            while j < len(passengers) and passengers[j] <= bus and cnt < capacity:\n                cnt += 1\n                j += 1\n            if cnt < capacity:\n                return bus\n            elif j > 0 and passengers[j-1] < bus:\n                return passengers[j-1]\n        return passengers[-1] if passengers else -1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.256902"
+}

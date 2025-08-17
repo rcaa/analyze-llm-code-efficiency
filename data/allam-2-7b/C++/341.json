@@ -1,0 +1,15 @@
+{
+  "id": 341,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```cpp\nclass NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        root = nestedList[0];\n        stack.push_back(root);\n    }\n\n    int next() {\n        if (stack.empty()) {\n            return -1;\n        }\n\n        int result = stack.back();\n        stack.pop_back();\n        return result;\n    }\n\n    bool hasNext() {\n        return !stack.empty();\n    }\n\nprivate:\n    NestedInteger root;\n    vector<NestedInteger> stack;\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nThe provided solution uses a stack data structure to traverse the nested list and retrieve the elements. The iterator starts with the first element of the nested list and pushes all the elements onto the stack. Then, it retrieves the top element from the stack and returns it as the next element. If the stack is empty, it returns -1 to indicate the end of the list. The iterator checks if there are more elements left in the list using the hasNext() method.\n\nThe iterator has a time complexity of O(n) because it only needs to pop one element from the stack at a time. The space complexity is O(n) because the iterator needs to store n elements in the stack. The iterator has low energy implications because it only performs a constant number of operations per iteration, making it energy-efficient. ",
+  "code": "class NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        root = nestedList[0];\n        stack.push_back(root);\n    }\n\n    int next() {\n        if (stack.empty()) {\n            return -1;\n        }\n\n        int result = stack.back();\n        stack.pop_back();\n        return result;\n    }\n\n    bool hasNext() {\n        return !stack.empty();\n    }\n\nprivate:\n    NestedInteger root;\n    vector<NestedInteger> stack;\n};",
+  "timestamp": "2025-08-05T16:02:01.969337",
+  "code_extracted_previous": "class NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        root = nestedList[0];\n        stack.push_back(root);\n    }\n\n    int next() {\n        if (stack.empty()) {\n            return -1;\n        }\n\n        int result = stack.back();\n        stack.pop_back();\n        return result;\n    }\n\n    bool hasNext() {\n        return !stack.empty();\n    }\n\nprivate:\n    NestedInteger root;\n    vector<NestedInteger> stack;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:12.748687"
+}

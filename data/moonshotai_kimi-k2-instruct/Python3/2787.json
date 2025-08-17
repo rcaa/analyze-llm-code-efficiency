@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def numberOfWays(self, n: int, x: int) -> int:\n        MOD = 10**9 + 7\n        # Precompute all possible bases whose x-th power <= n\n        bases = []\n        k = 1\n        while True:\n            val = k ** x\n            if val > n:\n                break\n            bases.append(val)\n            k += 1\n        \n        m = len(bases)\n        # dp[i][j] = number of ways to sum to j using first i bases\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        \n        for val in bases:\n            for j in range(n, val - 1, -1):\n                dp[j] = (dp[j] + dp[j - val]) % MOD\n        \n        return dp[n] % MOD\n```\nefficiency: HIGH\ntime complexity: O(n * sqrt[x]{n})\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming knapsack approach treating each k^x as an item. Iterate bases in increasing order and update DP array in reverse to ensure uniqueness. Efficient for n up to 300.",
+  "code": "class Solution:\n    def numberOfWays(self, n: int, x: int) -> int:\n        MOD = 10**9 + 7\n        # Precompute all possible bases whose x-th power <= n\n        bases = []\n        k = 1\n        while True:\n            val = k ** x\n            if val > n:\n                break\n            bases.append(val)\n            k += 1\n        \n        m = len(bases)\n        # dp[i][j] = number of ways to sum to j using first i bases\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        \n        for val in bases:\n            for j in range(n, val - 1, -1):\n                dp[j] = (dp[j] + dp[j - val]) % MOD\n        \n        return dp[n] % MOD",
+  "timestamp": "2025-08-05T14:28:26.279391",
+  "code_extracted_previous": "class Solution:\n    def numberOfWays(self, n: int, x: int) -> int:\n        MOD = 10**9 + 7\n        # Precompute all possible bases whose x-th power <= n\n        bases = []\n        k = 1\n        while True:\n            val = k ** x\n            if val > n:\n                break\n            bases.append(val)\n            k += 1\n        \n        m = len(bases)\n        # dp[i][j] = number of ways to sum to j using first i bases\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        \n        for val in bases:\n            for j in range(n, val - 1, -1):\n                dp[j] = (dp[j] + dp[j - val]) % MOD\n        \n        return dp[n] % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.824707"
+}

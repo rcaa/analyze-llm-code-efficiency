@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int mask = 0, ans = 0;\n        vector<int> first(32, -1);\n        first[0] = 0;\n        for (int i = 0; i < s.size(); ++i) {\n            switch (s[i]) {\n                case 'a': mask ^= 1 << 0; break;\n                case 'e': mask ^= 1 << 1; break;\n                case 'i': mask ^= 1 << 2; break;\n                case 'o': mask ^= 1 << 3; break;\n                case 'u': mask ^= 1 << 4; break;\n            }\n            if (first[mask] == -1) first[mask] = i + 1;\n            else ans = max(ans, i + 1 - first[mask]);\n        }\n        return ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a 5-bit mask to track parity of vowel counts; the first occurrence of each mask is stored so any later identical mask indicates an even-count substring. Single pass, constant memory.",
+  "code": "class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int mask = 0, ans = 0;\n        vector<int> first(32, -1);\n        first[0] = 0;\n        for (int i = 0; i < s.size(); ++i) {\n            switch (s[i]) {\n                case 'a': mask ^= 1 << 0; break;\n                case 'e': mask ^= 1 << 1; break;\n                case 'i': mask ^= 1 << 2; break;\n                case 'o': mask ^= 1 << 3; break;\n                case 'u': mask ^= 1 << 4; break;\n            }\n            if (first[mask] == -1) first[mask] = i + 1;\n            else ans = max(ans, i + 1 - first[mask]);\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T15:05:33.389669",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int mask = 0, ans = 0;\n        vector<int> first(32, -1);\n        first[0] = 0;\n        for (int i = 0; i < s.size(); ++i) {\n            switch (s[i]) {\n                case 'a': mask ^= 1 << 0; break;\n                case 'e': mask ^= 1 << 1; break;\n                case 'i': mask ^= 1 << 2; break;\n                case 'o': mask ^= 1 << 3; break;\n                case 'u': mask ^= 1 << 4; break;\n            }\n            if (first[mask] == -1) first[mask] = i + 1;\n            else ans = max(ans, i + 1 - first[mask]);\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.217003"
+}

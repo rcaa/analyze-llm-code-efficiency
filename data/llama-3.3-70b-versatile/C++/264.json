@@ -1,0 +1,15 @@
+{
+  "id": 264,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int nthUglyNumber(int n) {\n        vector<int> ugly(n);\n        ugly[0] = 1;\n        int i2 = 0, i3 = 0, i5 = 0;\n        for (int i = 1; i < n; i++) {\n            ugly[i] = min({ugly[i2] * 2, ugly[i3] * 3, ugly[i5] * 5});\n            if (ugly[i] == ugly[i2] * 2) i2++;\n            if (ugly[i] == ugly[i3] * 3) i3++;\n            if (ugly[i] == ugly[i5] * 5) i5++;\n        }\n        return ugly[n - 1];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to generate the sequence of ugly numbers, maintaining three pointers to track the next multiples of 2, 3, and 5, ensuring that each number is only generated once and in ascending order.",
+  "code": "class Solution {\npublic:\n    int nthUglyNumber(int n) {\n        vector<int> ugly(n);\n        ugly[0] = 1;\n        int i2 = 0, i3 = 0, i5 = 0;\n        for (int i = 1; i < n; i++) {\n            ugly[i] = min({ugly[i2] * 2, ugly[i3] * 3, ugly[i5] * 5});\n            if (ugly[i] == ugly[i2] * 2) i2++;\n            if (ugly[i] == ugly[i3] * 3) i3++;\n            if (ugly[i] == ugly[i5] * 5) i5++;\n        }\n        return ugly[n - 1];\n    }\n};",
+  "timestamp": "2025-08-06T15:10:31.261900",
+  "code_extracted_previous": "class Solution {\npublic:\n    int nthUglyNumber(int n) {\n        vector<int> ugly(n);\n        ugly[0] = 1;\n        int i2 = 0, i3 = 0, i5 = 0;\n        for (int i = 1; i < n; i++) {\n            ugly[i] = min({ugly[i2] * 2, ugly[i3] * 3, ugly[i5] * 5});\n            if (ugly[i] == ugly[i2] * 2) i2++;\n            if (ugly[i] == ugly[i3] * 3) i3++;\n            if (ugly[i] == ugly[i5] * 5) i5++;\n        }\n        return ugly[n - 1];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.444957"
+}

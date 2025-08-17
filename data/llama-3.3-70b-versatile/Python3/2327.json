@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[1] = 1\n        share = [0] * (n + 1)\n        for i in range(1, n + 1):\n            if i >= delay:\n                share[i] = (share[i] + dp[i - delay]) % MOD\n            if i > forget:\n                share[i] = (share[i] - dp[i - forget]) % MOD\n            dp[i] = (dp[i] + share[i]) % MOD\n        return sum(dp[max(n - forget + 1, 1): n + 1]) % MOD\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the number of people who know the secret and can share it each day, considering the delay and forget constraints.",
+  "code": "def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[1] = 1\n        share = [0] * (n + 1)\n        for i in range(1, n + 1):\n            if i >= delay:\n                share[i] = (share[i] + dp[i - delay]) % MOD\n            if i > forget:\n                share[i] = (share[i] - dp[i - forget]) % MOD\n            dp[i] = (dp[i] + share[i]) % MOD\n        return sum(dp[max(n - forget + 1, 1): n + 1]) % MOD\n```",
+  "timestamp": "2025-08-06T15:18:29.844313",
+  "code_extracted_previous": "class Solution:\n    def peopleAwareOfSecret(self, n: int, delay: int, forget: int) -> int:\n        MOD = 10**9 + 7\n        dp = [0] * (n + 1)\n        dp[1] = 1\n        share = [0] * (n + 1)\n        for i in range(1, n + 1):\n            if i >= delay:\n                share[i] = (share[i] + dp[i - delay]) % MOD\n            if i > forget:\n                share[i] = (share[i] - dp[i - forget]) % MOD\n            dp[i] = (dp[i] + share[i]) % MOD\n        return sum(dp[max(n - forget + 1, 1): n + 1]) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.177055"
+}

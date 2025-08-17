@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef smallestSubsequence(self, s: str) -> str:\n    n = len(s)\n    dp = [0] * 26\n    for i in range(n):\n        for c in s[i:]:\n            dp[ord(c) - ord('a')] += 1\n    result = ''\n    for i in range(26):\n        if dp[i] != 0:\n            result += chr(i + ord('a'))\n            dp[i] -= 1\n    return result\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(26)\nenergy implications: LOW\n\nExplanation:\nWe use a dynamic programming approach to solve this problem. We create a 26-length array (one for each ASCII value of lowercase letters) to store the number of times each character appears in the input string. Then, we iterate through the string and update the dp array accordingly. Finally, we iterate through the dp array to find the smallest subsequence by selecting characters with non-zero count and concatenating them into the result string. The time complexity is O(n), where n is the length of the input string, and the space complexity is O(26), as we only need to store 26 elements (one for each ASCII value). ",
+  "code": "def smallestSubsequence(self, s: str) -> str:\n    n = len(s)\n    dp = [0] * 26\n    for i in range(n):\n        for c in s[i:]:\n            dp[ord(c) - ord('a')] += 1\n    result = ''\n    for i in range(26):\n        if dp[i] != 0:\n            result += chr(i + ord('a'))\n            dp[i] -= 1\n    return result",
+  "timestamp": "2025-08-06T00:48:11.619184",
+  "code_extracted_previous": "def smallestSubsequence(self, s: str) -> str:\n    n = len(s)\n    dp = [0] * 26\n    for i in range(n):\n        for c in s[i:]:\n            dp[ord(c) - ord('a')] += 1\n    result = ''\n    for i in range(26):\n        if dp[i] != 0:\n            result += chr(i + ord('a'))\n            dp[i] -= 1\n    return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.071570"
+}

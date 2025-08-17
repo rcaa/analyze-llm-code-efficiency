@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    bool checkInclusion(string s1, string s2) {\n        vector<int> s1_count(26, 0);\n        for (char c : s1) s1_count[c - 'a']++;\n        \n        vector<int> s2_count(26, 0);\n        for (int i = 0; i < s2.length(); i++) {\n            s2_count[s2[i] - 'a']++;\n            if (i >= s1.length()) s2_count[s2[i - s1.length()] - 'a']--;\n            if (s1_count == s2_count) return true;\n        }\n        return false;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses two frequency arrays to count the characters in s1 and the current window of s2. It then slides the window over s2, updating the counts and checking for a match.",
+  "code": "class Solution {\npublic:\n    bool checkInclusion(string s1, string s2) {\n        vector<int> s1_count(26, 0);\n        for (char c : s1) s1_count[c - 'a']++;\n        \n        vector<int> s2_count(26, 0);\n        for (int i = 0; i < s2.length(); i++) {\n            s2_count[s2[i] - 'a']++;\n            if (i >= s1.length()) s2_count[s2[i - s1.length()] - 'a']--;\n            if (s1_count == s2_count) return true;\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T14:55:46.244885",
+  "code_extracted_previous": "public:\n    bool checkInclusion(string s1, string s2) {\n        vector<int> s1_count(26, 0);\n        for (char c : s1) s1_count[c - 'a']++;\n        \n        vector<int> s2_count(26, 0);\n        for (int i = 0; i < s2.length(); i++) {\n            s2_count[s2[i] - 'a']++;\n            if (i >= s1.length()) s2_count[s2[i - s1.length()] - 'a']--;\n            if (s1_count == s2_count) return true;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.984813"
+}

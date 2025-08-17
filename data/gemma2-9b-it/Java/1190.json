@@ -1,0 +1,15 @@
+{
+  "id": 1190,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String reverseParentheses(String s) {\n        StringBuilder sb = new StringBuilder();\n        Stack<Integer> stack = new Stack<>();\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '(') {\n                stack.push(i);\n            } else if (s.charAt(i) == ')') {\n                int start = stack.pop();\n                sb.append(new StringBuilder(s.substring(start + 1, i)).reverse());\n            } else {\n                sb.append(s.charAt(i));\n            }\n        }\n        return sb.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a stack to keep track of opening parentheses. When a closing parenthesis is encountered, the substring between the corresponding opening and closing parentheses is reversed and appended to the result.  This approach efficiently handles nested parentheses and ensures correct reversal.  The space complexity is primarily due to the stack used to store indices of opening parentheses.\n",
+  "code": "class Solution {\n    public String reverseParentheses(String s) {\n        StringBuilder sb = new StringBuilder();\n        Stack<Integer> stack = new Stack<>();\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '(') {\n                stack.push(i);\n            } else if (s.charAt(i) == ')') {\n                int start = stack.pop();\n                sb.append(new StringBuilder(s.substring(start + 1, i)).reverse());\n            } else {\n                sb.append(s.charAt(i));\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-06T00:50:08.114457",
+  "code_extracted_previous": "class Solution {\n    public String reverseParentheses(String s) {\n        StringBuilder sb = new StringBuilder();\n        Stack<Integer> stack = new Stack<>();\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '(') {\n                stack.push(i);\n            } else if (s.charAt(i) == ')') {\n                int start = stack.pop();\n                sb.append(new StringBuilder(s.substring(start + 1, i)).reverse());\n            } else {\n                sb.append(s.charAt(i));\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.521401"
+}

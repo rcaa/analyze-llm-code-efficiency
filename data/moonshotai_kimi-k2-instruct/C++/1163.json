@@ -1,0 +1,15 @@
+{
+  "id": 1163,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    string lastSubstring(string s) {\n        int n = s.size();\n        int i = 0, j = 1, k = 0;\n        while (i + k < n && j + k < n) {\n            if (s[i + k] == s[j + k]) {\n                ++k;\n                continue;\n            }\n            if (s[i + k] < s[j + k]) {\n                i = i + k + 1;\n            } else {\n                j = j + k + 1;\n            }\n            if (i == j) ++j;\n            k = 0;\n        }\n        return s.substr(min(i, j));\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Two-pointer scan that skips unnecessary comparisons by advancing the pointer whose suffix is provably worse, achieving linear time with constant extra space.",
+  "code": "class Solution {\npublic:\n    string lastSubstring(string s) {\n        int n = s.size();\n        int i = 0, j = 1, k = 0;\n        while (i + k < n && j + k < n) {\n            if (s[i + k] == s[j + k]) {\n                ++k;\n                continue;\n            }\n            if (s[i + k] < s[j + k]) {\n                i = i + k + 1;\n            } else {\n                j = j + k + 1;\n            }\n            if (i == j) ++j;\n            k = 0;\n        }\n        return s.substr(min(i, j));\n    }\n};",
+  "timestamp": "2025-08-06T01:15:03.631042",
+  "code_extracted_previous": "public:\n    string lastSubstring(string s) {\n        int n = s.size();\n        int i = 0, j = 1, k = 0;\n        while (i + k < n && j + k < n) {\n            if (s[i + k] == s[j + k]) {\n                ++k;\n                continue;\n            }\n            if (s[i + k] < s[j + k]) {\n                i = i + k + 1;\n            } else {\n                j = j + k + 1;\n            }\n            if (i == j) ++j;\n            k = 0;\n        }\n        return s.substr(min(i, j));\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.149190"
+}

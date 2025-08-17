@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def numWays(self, steps: int, arrLen: int) -> int:\n        MOD = 10**9 + 7\n        max_pos = min(steps // 2 + 1, arrLen)\n        dp_prev = [0] * max_pos\n        dp_prev[0] = 1\n        \n        for _ in range(steps):\n            dp_curr = [0] * max_pos\n            for pos in range(max_pos):\n                dp_curr[pos] = dp_prev[pos]\n                if pos - 1 >= 0:\n                    dp_curr[pos] = (dp_curr[pos] + dp_prev[pos - 1]) % MOD\n                if pos + 1 < max_pos:\n                    dp_curr[pos] = (dp_curr[pos] + dp_prev[pos + 1]) % MOD\n            dp_prev = dp_curr\n        \n        return dp_prev[0]\n```\nefficiency: HIGH\ntime complexity: O(steps * min(steps, arrLen))\nspace complexity: O(min(steps, arrLen))\nenergy implications: LOW\nexplanation: Dynamic programming with optimized state space: only positions within steps/2+1 are reachable, so array length is capped. Uses rolling arrays to reduce memory to O(min(steps, arrLen)).",
+  "code": "class Solution:\n    def numWays(self, steps: int, arrLen: int) -> int:\n        MOD = 10**9 + 7\n        max_pos = min(steps // 2 + 1, arrLen)\n        dp_prev = [0] * max_pos\n        dp_prev[0] = 1\n        \n        for _ in range(steps):\n            dp_curr = [0] * max_pos\n            for pos in range(max_pos):\n                dp_curr[pos] = dp_prev[pos]\n                if pos - 1 >= 0:\n                    dp_curr[pos] = (dp_curr[pos] + dp_prev[pos - 1]) % MOD\n                if pos + 1 < max_pos:\n                    dp_curr[pos] = (dp_curr[pos] + dp_prev[pos + 1]) % MOD\n            dp_prev = dp_curr\n        \n        return dp_prev[0]",
+  "timestamp": "2025-08-05T14:19:40.919696",
+  "code_extracted_previous": "class Solution:\n    def numWays(self, steps: int, arrLen: int) -> int:\n        MOD = 10**9 + 7\n        max_pos = min(steps // 2 + 1, arrLen)\n        dp_prev = [0] * max_pos\n        dp_prev[0] = 1\n        \n        for _ in range(steps):\n            dp_curr = [0] * max_pos\n            for pos in range(max_pos):\n                dp_curr[pos] = dp_prev[pos]\n                if pos - 1 >= 0:\n                    dp_curr[pos] = (dp_curr[pos] + dp_prev[pos - 1]) % MOD\n                if pos + 1 < max_pos:\n                    dp_curr[pos] = (dp_curr[pos] + dp_prev[pos + 1]) % MOD\n            dp_prev = dp_curr\n        \n        return dp_prev[0]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.077746"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 686,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int repeatedStringMatch(String a, String b) {\n        int n = a.length();\n        int m = b.length();\n        int count = (m + n - 1) / n;\n        String repeated = repeatString(a, count);\n        if (repeated.contains(b)) return count;\n        if (count > 1 && repeatString(a, count - 1).contains(b)) return count - 1;\n        return -1;\n    }\n\n    private String repeatString(String a, int count) {\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < count; i++) {\n            sb.append(a);\n        }\n        return sb.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(m + n)\nspace complexity: O(m + n)\nenergy implications: LOW\nexplanation: The solution works by first determining the minimum number of times string `a` needs to be repeated to potentially contain string `b`. It then checks if `b` is a substring of the repeated string. If not, it checks if `b` is a substring of the string repeated one less time. If neither condition is met, it returns -1, indicating it's impossible for `b` to be a substring of `a` after repeating it.",
+  "code": "class Solution {\n    public int repeatedStringMatch(String a, String b) {\n        int n = a.length();\n        int m = b.length();\n        int count = (m + n - 1) / n;\n        String repeated = repeatString(a, count);\n        if (repeated.contains(b)) return count;\n        if (count > 1 && repeatString(a, count - 1).contains(b)) return count - 1;\n        return -1;\n    }\n\n    private String repeatString(String a, int count) {\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < count; i++) {\n            sb.append(a);\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-05T16:51:37.528813",
+  "code_extracted_previous": "class Solution {\n    public int repeatedStringMatch(String a, String b) {\n        int n = a.length();\n        int m = b.length();\n        int count = (m + n - 1) / n;\n        String repeated = repeatString(a, count);\n        if (repeated.contains(b)) return count;\n        if (count > 1 && repeatString(a, count - 1).contains(b)) return count - 1;\n        return -1;\n    }\n\n    private String repeatString(String a, int count) {\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < count; i++) {\n            sb.append(a);\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.488316"
+}

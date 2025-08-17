@@ -1,0 +1,15 @@
+{
+  "id": 609,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public List<List<String>> findDuplicate(String[] paths) {\n        Map<String, List<String>> fileMap = new HashMap<>();\n        for (String path : paths) {\n            String[] parts = path.split(\" \");\n            String dir = parts[0];\n            for (int i = 1; i < parts.length; i++) {\n                String[] fileParts = parts[i].split(\"\\\\(|\\)\");\n                String fileName = fileParts[0];\n                String fileContent = fileParts[1];\n                fileMap.computeIfAbsent(fileContent, k -> new ArrayList<>()).add(dir + \"/\" + fileName);\n            }\n        }\n        List<List<String>> result = new ArrayList<>();\n        for (List<String> files : fileMap.values()) {\n            if (files.size() > 1) {\n                result.add(files);\n            }\n        }\n        return result;\n    }\n}\n```\n\nsolution: \nefficiency: HIGH\ntime complexity: O(N*M)\nspace complexity: O(N*M)\nenergy implications: LOW\nexplanation: The solution uses a hashmap to store file content as keys and a list of file paths with that content as values. It iterates through the input paths, extracts file names and contents, and adds each file path to the corresponding list in the hashmap. Finally, it iterates through the hashmap and adds all lists containing more than one file path to the result list. This approach leverages hashing for efficient content lookup and grouping.\n",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-05T13:04:11.033351",
+  "code_extracted_previous": "class Solution {\n    public List<List<String>> findDuplicate(String[] paths) {\n        Map<String, List<String>> fileMap = new HashMap<>();\n        for (String path : paths) {\n            String[] parts = path.split(\" \");\n            String dir = parts[0];\n            for (int i = 1; i < parts.length; i++) {\n                String[] fileParts = parts[i].split(\"\\\\(|\\)\");\n                String fileName = fileParts[0];\n                String fileContent = fileParts[1];\n                fileMap.computeIfAbsent(fileContent, k -> new ArrayList<>()).add(dir + \"/\" + fileName);\n            }\n        }\n        List<List<String>> result = new ArrayList<>();\n        for (List<String> files : fileMap.values()) {\n            if (files.size() > 1) {\n                result.add(files);\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:25.622379"
+}

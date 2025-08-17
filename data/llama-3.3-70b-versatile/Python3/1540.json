@@ -1,0 +1,15 @@
+{
+  "id": 1540,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def canConvertString(self, s: str, t: str, k: int) -> bool:\n        if len(s) != len(t):\n            return False\n        shifts = []\n        for a, b in zip(s, t):\n            shift = (ord(b) - ord(a)) % 26\n            if shift != 0:\n                shifts.append(shift)\n        shifts.sort()\n        for i, shift in enumerate(shifts):\n            if shift > i + 1:\n                return False\n            if (i + 1) + shift > k + 1:\n                return False\n        return True\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution works by calculating the shifts needed to convert each character in s to the corresponding character in t, then checking if these shifts can be performed within k moves. It uses sorting to efficiently check the feasibility of the shifts.",
+  "code": "def canConvertString(self, s: str, t: str, k: int) -> bool:\n        if len(s) != len(t):\n            return False\n        shifts = []\n        for a, b in zip(s, t):\n            shift = (ord(b) - ord(a)) % 26\n            if shift != 0:\n                shifts.append(shift)\n        shifts.sort()\n        for i, shift in enumerate(shifts):\n            if shift > i + 1:\n                return False\n            if (i + 1) + shift > k + 1:\n                return False\n        return True\n```",
+  "timestamp": "2025-08-06T15:17:16.471315",
+  "code_extracted_previous": "class Solution:\n    def canConvertString(self, s: str, t: str, k: int) -> bool:\n        if len(s) != len(t):\n            return False\n        shifts = []\n        for a, b in zip(s, t):\n            shift = (ord(b) - ord(a)) % 26\n            if shift != 0:\n                shifts.append(shift)\n        shifts.sort()\n        for i, shift in enumerate(shifts):\n            if shift > i + 1:\n                return False\n            if (i + 1) + shift > k + 1:\n                return False\n        return True",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.837750"
+}

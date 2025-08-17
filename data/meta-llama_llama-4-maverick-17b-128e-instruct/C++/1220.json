@@ -1,0 +1,15 @@
+{
+  "id": 1220,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int countVowelPermutation(int n) {\n        long long a = 1, e = 1, i = 1, o = 1, u = 1;\n        long long MOD = 1e9 + 7;\n        for (int j = 2; j <= n; j++) {\n            long long new_a = (e + i + u) % MOD;\n            long long new_e = (a + i) % MOD;\n            long long new_i = (e + o) % MOD;\n            long long new_o = i % MOD;\n            long long new_u = (i + o) % MOD;\n            a = new_a; e = new_e; i = new_i; o = new_o; u = new_u;\n        }\n        return (a + e + i + o + u) % MOD;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the count of strings ending with each vowel. The counts are iteratively updated based on the given rules, and the final result is the sum of counts modulo 10^9 + 7.",
+  "code": "class Solution {\npublic:\n    int countVowelPermutation(int n) {\n        long long a = 1, e = 1, i = 1, o = 1, u = 1;\n        long long MOD = 1e9 + 7;\n        for (int j = 2; j <= n; j++) {\n            long long new_a = (e + i + u) % MOD;\n            long long new_e = (a + i) % MOD;\n            long long new_i = (e + o) % MOD;\n            long long new_o = i % MOD;\n            long long new_u = (i + o) % MOD;\n            a = new_a; e = new_e; i = new_i; o = new_o; u = new_u;\n        }\n        return (a + e + i + o + u) % MOD;\n    }\n};",
+  "timestamp": "2025-08-05T14:17:16.654256",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countVowelPermutation(int n) {\n        long long a = 1, e = 1, i = 1, o = 1, u = 1;\n        long long MOD = 1e9 + 7;\n        for (int j = 2; j <= n; j++) {\n            long long new_a = (e + i + u) % MOD;\n            long long new_e = (a + i) % MOD;\n            long long new_i = (e + o) % MOD;\n            long long new_o = i % MOD;\n            long long new_u = (i + o) % MOD;\n            a = new_a; e = new_e; i = new_i; o = new_o; u = new_u;\n        }\n        return (a + e + i + o + u) % MOD;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.652697"
+}

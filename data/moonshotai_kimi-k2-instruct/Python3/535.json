@@ -1,0 +1,15 @@
+{
+  "id": 535,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: ```python\nimport string, random\n\nclass Codec:\n    def __init__(self):\n        self.alphabet = string.ascii_letters + string.digits\n        self.url2code = {}\n        self.code2url = {}\n        self.base = \"http://tinyurl.com/\"\n\n    def encode(self, longUrl: str) -> str:\n        if longUrl in self.url2code:\n            return self.base + self.url2code[longUrl]\n        code = ''.join(random.choice(self.alphabet) for _ in range(6))\n        while code in self.code2url:\n            code = ''.join(random.choice(self.alphabet) for _ in range(6))\n        self.url2code[longUrl] = code\n        self.code2url[code] = longUrl\n        return self.base + code\n\n    def decode(self, shortUrl: str) -> str:\n        return self.code2url[shortUrl[-6:]]\n```\nefficiency: HIGH\ntime complexity: O(1) expected for both encode and decode\nspace complexity: O(N) where N is the number of URLs stored\nenergy implications: LOW\nexplanation: Uses two hash maps for O(1) bidirectional lookup; generates a random 6-character code (62^6 ≈ 57B possibilities) to keep collision probability negligible. Constant-time operations dominate, making it energy-efficient.",
+  "code": "class Codec:\n    def __init__(self):\n        self.alphabet = string.ascii_letters + string.digits\n        self.url2code = {}\n        self.code2url = {}\n        self.base = \"http://tinyurl.com/\"\n\n    def encode(self, longUrl: str) -> str:\n        if longUrl in self.url2code:\n            return self.base + self.url2code[longUrl]\n        code = ''.join(random.choice(self.alphabet) for _ in range(6))\n        while code in self.code2url:\n            code = ''.join(random.choice(self.alphabet) for _ in range(6))\n        self.url2code[longUrl] = code\n        self.code2url[code] = longUrl\n        return self.base + code\n\n    def decode(self, shortUrl: str) -> str:\n        return self.code2url[shortUrl[-6:]]",
+  "timestamp": "2025-08-06T02:34:23.520422",
+  "code_extracted_previous": "import string, random\n\nclass Codec:\n    def __init__(self):\n        self.alphabet = string.ascii_letters + string.digits\n        self.url2code = {}\n        self.code2url = {}\n        self.base = \"http://tinyurl.com/\"\n\n    def encode(self, longUrl: str) -> str:\n        if longUrl in self.url2code:\n            return self.base + self.url2code[longUrl]\n        code = ''.join(random.choice(self.alphabet) for _ in range(6))\n        while code in self.code2url:\n            code = ''.join(random.choice(self.alphabet) for _ in range(6))\n        self.url2code[longUrl] = code\n        self.code2url[code] = longUrl\n        return self.base + code\n\n    def decode(self, shortUrl: str) -> str:\n        return self.code2url[shortUrl[-6:]]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:57.307706"
+}

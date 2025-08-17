@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def maxValue(self, n: int, index: int, maxSum: int) -> int:\n        def possible(x):\n            left, right = index, n - index - 1\n            if x <= index:\n                left_sum = (x + 1) * x // 2\n            else:\n                left_sum = (index + 1) * index // 2 + (x - index) * index\n            if x <= right:\n                right_sum = (x + 1) * x // 2\n            else:\n                right_sum = (right + 1) * right // 2 + (x - right) * right\n            return left_sum + right_sum + x <= maxSum\n\n        left, right = 1, maxSum\n        while left < right:\n            mid = (left + right + 1) // 2\n            if possible(mid):\n                left = mid\n            else:\n                right = mid - 1\n        return left\n```\nefficiency: HIGH\ntime complexity: O(log(maxSum))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the maximum possible value at the given index. The `possible` function checks if it's possible to construct an array with the given value at the index, satisfying all conditions.",
+  "code": "class Solution:\n    def maxValue(self, n: int, index: int, maxSum: int) -> int:\n        def possible(x):\n            left, right = index, n - index - 1\n            if x <= index:\n                left_sum = (x + 1) * x // 2\n            else:\n                left_sum = (index + 1) * index // 2 + (x - index) * index\n            if x <= right:\n                right_sum = (x + 1) * x // 2\n            else:\n                right_sum = (right + 1) * right // 2 + (x - right) * right\n            return left_sum + right_sum + x <= maxSum\n\n        left, right = 1, maxSum\n        while left < right:\n            mid = (left + right + 1) // 2\n            if possible(mid):\n                left = mid\n            else:\n                right = mid - 1\n        return left",
+  "timestamp": "2025-08-06T02:28:32.187149",
+  "code_extracted_previous": "class Solution:\n    def maxValue(self, n: int, index: int, maxSum: int) -> int:\n        def possible(x):\n            left, right = index, n - index - 1\n            if x <= index:\n                left_sum = (x + 1) * x // 2\n            else:\n                left_sum = (index + 1) * index // 2 + (x - index) * index\n            if x <= right:\n                right_sum = (x + 1) * x // 2\n            else:\n                right_sum = (right + 1) * right // 2 + (x - right) * right\n            return left_sum + right_sum + x <= maxSum\n\n        left, right = 1, maxSum\n        while left < right:\n            mid = (left + right + 1) // 2\n            if possible(mid):\n                left = mid\n            else:\n                right = mid - 1\n        return left",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:51.934537"
+}

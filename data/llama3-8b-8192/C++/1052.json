@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int total = 0, maxExtra = 0;\n        for (int i = 0; i < customers.size(); i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            } else {\n                maxExtra += customers[i];\n            }\n        }\n        for (int i = 0; i < customers.size() - minutes; i++) {\n            maxExtra = max(maxExtra, customers[i + minutes] + customers[i + minutes - 1] + ... + customers[i]);\n        }\n        return total + min(maxExtra, total);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution first calculates the total number of satisfied customers without using the technique and the maximum number of extra customers that can be satisfied by using the technique. Then, it calculates the maximum number of extra customers that can be satisfied by using the technique for each window of size `minutes`. Finally, it returns the total number of satisfied customers plus the minimum of the maximum extra customers and the total number of satisfied customers.",
+  "code": "class Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int total = 0, maxExtra = 0;\n        for (int i = 0; i < customers.size(); i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            } else {\n                maxExtra += customers[i];\n            }\n        }\n        for (int i = 0; i < customers.size() - minutes; i++) {\n            maxExtra = max(maxExtra, customers[i + minutes] + customers[i + minutes - 1] + ... + customers[i]);\n        }\n        return total + min(maxExtra, total);\n    }\n};",
+  "timestamp": "2025-08-05T13:18:49.178333",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int total = 0, maxExtra = 0;\n        for (int i = 0; i < customers.size(); i++) {\n            if (grumpy[i] == 0) {\n                total += customers[i];\n            } else {\n                maxExtra += customers[i];\n            }\n        }\n        for (int i = 0; i < customers.size() - minutes; i++) {\n            maxExtra = max(maxExtra, customers[i + minutes] + customers[i + minutes - 1] + ... + customers[i]);\n        }\n        return total + min(maxExtra, total);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.362005"
+}

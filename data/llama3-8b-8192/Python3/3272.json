@@ -1,0 +1,15 @@
+{
+  "id": 3272,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        MOD = 10**9 + 7\n        res = 0\n        for i in range(1, 10):\n            if k % i == 0:\n                res += self.dfs(i, n - 1, k, MOD)\n        return res\n\n    def dfs(self, cur, left, k, MOD):\n        if left == 0:\n            return 1\n        res = 0\n        for i in range(10):\n            if i != cur % 10:\n                res += self.dfs(i, left - 1, k, MOD)\n        return res % MOD\n```\n\nefficiency: HIGH\ntime complexity: O(10^n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a depth-first search (DFS) approach to count the good integers. It first generates all possible leading digits and then recursively generates all possible trailing digits. The DFS function ensures that the generated numbers are k-palindromic and do not have leading zeros. The time complexity is O(10^n) because there are 10 possible digits for each of the n digits, and the space complexity is O(1) because only a constant amount of space is used.",
+  "code": "class Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        MOD = 10**9 + 7\n        res = 0\n        for i in range(1, 10):\n            if k % i == 0:\n                res += self.dfs(i, n - 1, k, MOD)\n        return res\n\n    def dfs(self, cur, left, k, MOD):\n        if left == 0:\n            return 1\n        res = 0\n        for i in range(10):\n            if i != cur % 10:\n                res += self.dfs(i, left - 1, k, MOD)\n        return res % MOD",
+  "timestamp": "2025-08-05T14:39:56.177645",
+  "code_extracted_previous": "class Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        MOD = 10**9 + 7\n        res = 0\n        for i in range(1, 10):\n            if k % i == 0:\n                res += self.dfs(i, n - 1, k, MOD)\n        return res\n\n    def dfs(self, cur, left, k, MOD):\n        if left == 0:\n            return 1\n        res = 0\n        for i in range(10):\n            if i != cur % 10:\n                res += self.dfs(i, left - 1, k, MOD)\n        return res % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.089558"
+}

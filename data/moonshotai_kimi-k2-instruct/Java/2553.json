@@ -1,0 +1,15 @@
+{
+  "id": 2553,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int[] separateDigits(int[] nums) {\n        int totalDigits = 0;\n        for (int num : nums) {\n            totalDigits += (num == 0) ? 1 : (int) Math.log10(num) + 1;\n        }\n        int[] answer = new int[totalDigits];\n        int idx = 0;\n        for (int num : nums) {\n            String s = Integer.toString(num);\n            for (char c : s.toCharArray()) {\n                answer[idx++] = c - '0';\n            }\n        }\n        return answer;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Count total digits once, then stream each number’s characters into the output array. Uses simple string conversion for clarity and speed; avoids extra allocations beyond the result array.",
+  "code": "class Solution {\n    public int[] separateDigits(int[] nums) {\n        int totalDigits = 0;\n        for (int num : nums) {\n            totalDigits += (num == 0) ? 1 : (int) Math.log10(num) + 1;\n        }\n        int[] answer = new int[totalDigits];\n        int idx = 0;\n        for (int num : nums) {\n            String s = Integer.toString(num);\n            for (char c : s.toCharArray()) {\n                answer[idx++] = c - '0';\n            }\n        }\n        return answer;\n    }\n}",
+  "timestamp": "2025-08-05T12:51:51.781771",
+  "code_extracted_previous": "public int[] separateDigits(int[] nums) {\n        int totalDigits = 0;\n        for (int num : nums) {\n            totalDigits += (num == 0) ? 1 : (int) Math.log10(num) + 1;\n        }\n        int[] answer = new int[totalDigits];\n        int idx = 0;\n        for (int num : nums) {\n            String s = Integer.toString(num);\n            for (char c : s.toCharArray()) {\n                answer[idx++] = c - '0';\n            }\n        }\n        return answer;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.116712"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int countLargestGroup(int n) {\n        int[] freq = new int[37]; // max digit sum for 9999 is 36\n        for (int i = 1; i <= n; i++) {\n            int sum = 0, x = i;\n            while (x > 0) {\n                sum += x % 10;\n                x /= 10;\n            }\n            freq[sum]++;\n        }\n        int max = 0, count = 0;\n        for (int v : freq) {\n            if (v > max) {\n                max = v;\n                count = 1;\n            } else if (v == max) {\n                count++;\n            }\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate once through 1..n, compute digit sums in O(log n) per number, tally frequencies in a fixed-size array, then scan the array to find how many groups share the maximum frequency.",
+  "code": "class Solution {\n    public int countLargestGroup(int n) {\n        int[] freq = new int[37]; // max digit sum for 9999 is 36\n        for (int i = 1; i <= n; i++) {\n            int sum = 0, x = i;\n            while (x > 0) {\n                sum += x % 10;\n                x /= 10;\n            }\n            freq[sum]++;\n        }\n        int max = 0, count = 0;\n        for (int v : freq) {\n            if (v > max) {\n                max = v;\n                count = 1;\n            } else if (v == max) {\n                count++;\n            }\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T02:30:39.159269",
+  "code_extracted_previous": "public int countLargestGroup(int n) {\n        int[] freq = new int[37]; // max digit sum for 9999 is 36\n        for (int i = 1; i <= n; i++) {\n            int sum = 0, x = i;\n            while (x > 0) {\n                sum += x % 10;\n                x /= 10;\n            }\n            freq[sum]++;\n        }\n        int max = 0, count = 0;\n        for (int v : freq) {\n            if (v > max) {\n                max = v;\n                count = 1;\n            } else if (v == max) {\n                count++;\n            }\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.539180"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2466,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        long mod = 1000000007;\n        long dp[][] = new long[high + 1][zero + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= high; i++) {\n            for (int j = 0; j <= zero; j++) {\n                dp[i][j] = dp[i - 1][j];\n                if (j > 0) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - 1]) % mod;\n                }\n                if (i >= zero) {\n                    dp[i][j] = (dp[i][j] + dp[i - zero][j]) % mod;\n                }\n            }\n        }\n        return (int) (dp[high][zero] - dp[low - 1][zero]);\n    }\n}\n```\n\nsolution: `long mod = 1000000007; long dp[][] = new long[high + 1][zero + 1]; dp[0][0] = 1; for (int i = 1; i <= high; i++) { for (int j = 0; j <= zero; j++) { dp[i][j] = dp[i - 1][j]; if (j > 0) { dp[i][j] = (dp[i][j] + dp[i - 1][j - 1]) % mod; } if (i >= zero) { dp[i][j] = (dp[i][j] + dp[i - zero][j]) % mod; } } } return (int) (dp[high][zero] - dp[low - 1][zero]);`\nefficiency: HIGH\ntime complexity: O(high * zero)\nspace complexity: O(high * zero)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of good strings. It builds a 2D array `dp` where `dp[i][j]` represents the number of good strings of length `i` with `j` occurrences of '0'. The base case is `dp[0][0] = 1` (empty string). The recurrence relation considers adding either '0' or '1' to the previous strings, respecting the constraints on length and occurrences of '0' and '1'. The final result is obtained by subtracting the count of strings with length less than `low` from the count of strings with length `high`.\n",
+  "code": "`long mod = 1000000007; long dp[][] = new long[high + 1][zero + 1]; dp[0][0] = 1; for (int i = 1; i <= high; i++) { for (int j = 0; j <= zero; j++) { dp[i][j] = dp[i - 1][j]; if (j > 0) { dp[i][j] = (dp[i][j] + dp[i - 1][j - 1]) % mod; } if (i >= zero) { dp[i][j] = (dp[i][j] + dp[i - zero][j]) % mod; } } } return (int) (dp[high][zero] - dp[low - 1][zero]);`",
+  "timestamp": "2025-08-05T14:26:58.980495",
+  "code_extracted_previous": "class Solution {\n    public int countGoodStrings(int low, int high, int zero, int one) {\n        long mod = 1000000007;\n        long dp[][] = new long[high + 1][zero + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= high; i++) {\n            for (int j = 0; j <= zero; j++) {\n                dp[i][j] = dp[i - 1][j];\n                if (j > 0) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - 1]) % mod;\n                }\n                if (i >= zero) {\n                    dp[i][j] = (dp[i][j] + dp[i - zero][j]) % mod;\n                }\n            }\n        }\n        return (int) (dp[high][zero] - dp[low - 1][zero]);\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:25.023135"
+}

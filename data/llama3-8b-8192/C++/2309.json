@@ -1,0 +1,15 @@
+{
+  "id": 2309,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    string greatestLetter(string s) {\n        set<char> upper, lower;\n        for (char c : s) {\n            if (isupper(c)) upper.insert(c);\n            if (islower(c)) lower.insert(c);\n        }\n        for (char c = 'Z'; c >= 'A'; c--) {\n            if (upper.count(c) && lower.count((char)(c - 'A' + 'a'))) return string(1, c);\n        }\n        return \"\";\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses two sets to store the uppercase and lowercase letters in the string. It then iterates over the uppercase letters in reverse order and checks if the corresponding lowercase letter is also present in the string. If it finds a match, it returns the uppercase letter. If no match is found, it returns an empty string. The time complexity is O(n) because it scans the string twice, and the space complexity is O(n) because it stores all the unique letters in the sets.",
+  "code": "class Solution {\npublic:\n    string greatestLetter(string s) {\n        set<char> upper, lower;\n        for (char c : s) {\n            if (isupper(c)) upper.insert(c);\n            if (islower(c)) lower.insert(c);\n        }\n        for (char c = 'Z'; c >= 'A'; c--) {\n            if (upper.count(c) && lower.count((char)(c - 'A' + 'a'))) return string(1, c);\n        }\n        return \"\";\n    }\n};",
+  "timestamp": "2025-08-05T14:45:37.452795",
+  "code_extracted_previous": "class Solution {\npublic:\n    string greatestLetter(string s) {\n        set<char> upper, lower;\n        for (char c : s) {\n            if (isupper(c)) upper.insert(c);\n            if (islower(c)) lower.insert(c);\n        }\n        for (char c = 'Z'; c >= 'A'; c--) {\n            if (upper.count(c) && lower.count((char)(c - 'A' + 'a'))) return string(1, c);\n        }\n        return \"\";\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.930438"
+}

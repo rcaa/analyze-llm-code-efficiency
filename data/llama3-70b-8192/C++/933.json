@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass RecentCounter {\npublic:\n    RecentCounter() {\n        times = deque<int>();\n    }\n    \n    int ping(int t) {\n        times.push_back(t);\n        while (times.front() < t - 3000) {\n            times.pop_front();\n        }\n        return times.size();\n    }\n\nprivate:\n    deque<int> times;\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(10^4)\nenergy implications: LOW\nexplanation: Using a deque to store the request times, and maintaining a sliding window of the last 3000 milliseconds by removing old requests.",
+  "code": "class RecentCounter {\npublic:\n    RecentCounter() {\n        times = deque<int>();\n    }\n    \n    int ping(int t) {\n        times.push_back(t);\n        while (times.front() < t - 3000) {\n            times.pop_front();\n        }\n        return times.size();\n    }\n\nprivate:\n    deque<int> times;\n};",
+  "timestamp": "2025-08-05T14:07:43.896174",
+  "code_extracted_previous": "class RecentCounter {\npublic:\n    RecentCounter() {\n        times = deque<int>();\n    }\n    \n    int ping(int t) {\n        times.push_back(t);\n        while (times.front() < t - 3000) {\n            times.pop_front();\n        }\n        return times.size();\n    }\n\nprivate:\n    deque<int> times;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:37.175890"
+}

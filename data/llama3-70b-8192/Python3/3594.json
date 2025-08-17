@@ -1,0 +1,15 @@
+{
+  "id": 3594,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nfrom heapq import heappop, heappush\nclass Solution:\n    def minTime(self, n: int, k: int, m: int, time: List[int], mul: List[float]) -> float:\n        time.sort(reverse=True)\n        pq = [(time[i], i) for i in range(k)]\n        res, stage, cnt = 0, 0, k\n        while cnt < n:\n            t, idx = heappop(pq)\n            res += t * mul[stage]\n            stage = (stage + (t * mul[stage]) // 1) % m\n            if cnt + k <= n:\n                for i in range(k):\n                    heappush(pq, (time[cnt + i], cnt + i))\n                cnt += k\n            else:\n                for i in range(n - cnt):\n                    heappush(pq, (time[cnt + i], cnt + i))\n                cnt = n\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n log k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: This solution uses a priority queue to efficiently select the k strongest individuals for each trip, and updates the stage and result accordingly.",
+  "code": "class Solution:\n    def minTime(self, n: int, k: int, m: int, time: List[int], mul: List[float]) -> float:\n        time.sort(reverse=True)\n        pq = [(time[i], i) for i in range(k)]\n        res, stage, cnt = 0, 0, k\n        while cnt < n:\n            t, idx = heappop(pq)\n            res += t * mul[stage]\n            stage = (stage + (t * mul[stage]) // 1) % m\n            if cnt + k <= n:\n                for i in range(k):\n                    heappush(pq, (time[cnt + i], cnt + i))\n                cnt += k\n            else:\n                for i in range(n - cnt):\n                    heappush(pq, (time[cnt + i], cnt + i))\n                cnt = n\n        return res",
+  "timestamp": "2025-08-05T12:20:23.077241",
+  "code_extracted_previous": "from heapq import heappop, heappush\nclass Solution:\n    def minTime(self, n: int, k: int, m: int, time: List[int], mul: List[float]) -> float:\n        time.sort(reverse=True)\n        pq = [(time[i], i) for i in range(k)]\n        res, stage, cnt = 0, 0, k\n        while cnt < n:\n            t, idx = heappop(pq)\n            res += t * mul[stage]\n            stage = (stage + (t * mul[stage]) // 1) % m\n            if cnt + k <= n:\n                for i in range(k):\n                    heappush(pq, (time[cnt + i], cnt + i))\n                cnt += k\n            else:\n                for i in range(n - cnt):\n                    heappush(pq, (time[cnt + i], cnt + i))\n                cnt = n\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.790527"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            points, brain = questions[i]\n            next_pos = i + brain + 1\n            if next_pos >= n:\n                dp[i] = max(points, dp[i + 1])\n            else:\n                dp[i] = max(points + dp[next_pos], dp[i + 1])\n        return dp[0]\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming from right to left. dp[i] stores the maximum points obtainable from question i onward. For each question, choose the better of solving it (points + dp[i+brain+1]) or skipping it (dp[i+1]).",
+  "code": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            points, brain = questions[i]\n            next_pos = i + brain + 1\n            if next_pos >= n:\n                dp[i] = max(points, dp[i + 1])\n            else:\n                dp[i] = max(points + dp[next_pos], dp[i + 1])\n        return dp[0]",
+  "timestamp": "2025-08-05T13:25:34.308608",
+  "code_extracted_previous": "def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            points, brain = questions[i]\n            next_pos = i + brain + 1\n            if next_pos >= n:\n                dp[i] = max(points, dp[i + 1])\n            else:\n                dp[i] = max(points + dp[next_pos], dp[i + 1])\n        return dp[0]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.526620"
+}

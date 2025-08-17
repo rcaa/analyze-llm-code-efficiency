@@ -1,0 +1,15 @@
+{
+  "id": 1297,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        unordered_map<string, int> freq;\n        unordered_map<char, int> count;\n        int max_freq = 0, unique = 0;\n        for (int i = 0; i < s.size(); ++i) {\n            count[s[i]]++;\n            if (count[s[i]] == 1) unique++;\n            if (i >= minSize) {\n                if (count[s[i - minSize]]-- == 1) unique--;\n                if (unique <= maxLetters) {\n                    string substr = s.substr(i - minSize + 1, minSize);\n                    max_freq = max(max_freq, ++freq[substr]);\n                }\n            }\n        }\n        return max_freq;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a sliding window of size `minSize` to efficiently count the frequency of substrings and check the number of unique characters. It maintains a frequency map of substrings and a count map of characters within the current window. The maximum frequency is updated whenever a valid substring is found.",
+  "code": "class Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        unordered_map<string, int> freq;\n        unordered_map<char, int> count;\n        int max_freq = 0, unique = 0;\n        for (int i = 0; i < s.size(); ++i) {\n            count[s[i]]++;\n            if (count[s[i]] == 1) unique++;\n            if (i >= minSize) {\n                if (count[s[i - minSize]]-- == 1) unique--;\n                if (unique <= maxLetters) {\n                    string substr = s.substr(i - minSize + 1, minSize);\n                    max_freq = max(max_freq, ++freq[substr]);\n                }\n            }\n        }\n        return max_freq;\n    }\n};",
+  "timestamp": "2025-08-05T14:59:20.226675",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        unordered_map<string, int> freq;\n        unordered_map<char, int> count;\n        int max_freq = 0, unique = 0;\n        for (int i = 0; i < s.size(); ++i) {\n            count[s[i]]++;\n            if (count[s[i]] == 1) unique++;\n            if (i >= minSize) {\n                if (count[s[i - minSize]]-- == 1) unique--;\n                if (unique <= maxLetters) {\n                    string substr = s.substr(i - minSize + 1, minSize);\n                    max_freq = max(max_freq, ++freq[substr]);\n                }\n            }\n        }\n        return max_freq;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.681338"
+}

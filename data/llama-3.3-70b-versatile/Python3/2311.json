@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def longestSubsequence(self, s: str, k: int) -> int:\n        n = len(s)\n        max_len = 0\n        for mask in range(1 << n):\n            subseq = ''\n            for i in range(n):\n                if (mask & (1 << i)):\n                    subseq += s[i]\n            if subseq and int(subseq, 2) <= k:\n                max_len = max(max_len, len(subseq))\n        return max_len\n```\nefficiency: MEDIUM\ntime complexity: O(2^n * n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution uses a bitmask to generate all possible subsequences of the binary string, then checks each subsequence to see if its decimal value is less than or equal to k, updating the maximum length as needed.",
+  "code": "def longestSubsequence(self, s: str, k: int) -> int:\n        n = len(s)\n        max_len = 0\n        for mask in range(1 << n):\n            subseq = ''\n            for i in range(n):\n                if (mask & (1 << i)):\n                    subseq += s[i]\n            if subseq and int(subseq, 2) <= k:\n                max_len = max(max_len, len(subseq))\n        return max_len\n```",
+  "timestamp": "2025-08-06T01:00:22.169202",
+  "code_extracted_previous": "class Solution:\n    def longestSubsequence(self, s: str, k: int) -> int:\n        n = len(s)\n        max_len = 0\n        for mask in range(1 << n):\n            subseq = ''\n            for i in range(n):\n                if (mask & (1 << i)):\n                    subseq += s[i]\n            if subseq and int(subseq, 2) <= k:\n                max_len = max(max_len, len(subseq))\n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.160865"
+}

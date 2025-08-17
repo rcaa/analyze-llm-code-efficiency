@@ -1,0 +1,15 @@
+{
+  "id": 2006,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countKDifference(int[] nums, int k) {\n        Map<Integer, Integer> countMap = new HashMap<>();\n        int count = 0;\n        for (int num : nums) {\n            count += countMap.getOrDefault(num - k, 0) + countMap.getOrDefault(num + k, 0);\n            countMap.put(num, countMap.getOrDefault(num, 0) + 1);\n        }\n        return count;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hash map to store the frequency of each number in the array. For each number, it checks the frequency of the number k less than it and the number k greater than it, and adds the sum of these frequencies to the count. This approach has a high efficiency due to the constant time complexity of hash map operations.",
+  "code": "class Solution {\n    public int countKDifference(int[] nums, int k) {\n        Map<Integer, Integer> countMap = new HashMap<>();\n        int count = 0;\n        for (int num : nums) {\n            count += countMap.getOrDefault(num - k, 0) + countMap.getOrDefault(num + k, 0);\n            countMap.put(num, countMap.getOrDefault(num, 0) + 1);\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T12:44:49.901716",
+  "code_extracted_previous": "class Solution {\n    public int countKDifference(int[] nums, int k) {\n        Map<Integer, Integer> countMap = new HashMap<>();\n        int count = 0;\n        for (int num : nums) {\n            count += countMap.getOrDefault(num - k, 0) + countMap.getOrDefault(num + k, 0);\n            countMap.put(num, countMap.getOrDefault(num, 0) + 1);\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.116570"
+}

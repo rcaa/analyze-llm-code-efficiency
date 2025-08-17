@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass RecentCounter {\npublic:\n    RecentCounter() {\n        queue.clear();\n    }\n    \n    int ping(int t) {\n        queue.push(t);\n        while (queue.front() < t - 3000) {\n            queue.pop();\n        }\n        return queue.size();\n    }\nprivate:\n    deque<int> queue;\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution uses a deque to store the timestamps of the requests. When a new request is made, it pushes the timestamp to the back of the deque. Then it removes the timestamps that are out of the 3000ms range from the front of the deque. The size of the deque is the number of requests in the past 3000ms. The efficiency is high because the deque operations (push and pop) are O(1) amortized. The time complexity is O(n) because in the worst case, we need to remove all the elements from the deque. The space complexity is O(n) because we need to store all the timestamps. The energy implications are medium because we need to perform some operations on the deque.",
+  "code": "class RecentCounter {\npublic:\n    RecentCounter() {\n        queue.clear();\n    }\n    \n    int ping(int t) {\n        queue.push(t);\n        while (queue.front() < t - 3000) {\n            queue.pop();\n        }\n        return queue.size();\n    }\nprivate:\n    deque<int> queue;\n};",
+  "timestamp": "2025-08-06T03:16:13.376537",
+  "code_extracted_previous": "class RecentCounter {\npublic:\n    RecentCounter() {\n        queue.clear();\n    }\n    \n    int ping(int t) {\n        queue.push(t);\n        while (queue.front() < t - 3000) {\n            queue.pop();\n        }\n        return queue.size();\n    }\nprivate:\n    deque<int> queue;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:28.805577"
+}

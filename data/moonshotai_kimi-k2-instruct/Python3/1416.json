@@ -1,0 +1,15 @@
+{
+  "id": 1416,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def numberOfArrays(self, s: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = len(s)\n        dp = [0] * (n + 1)\n        dp[n] = 1\n        \n        for i in range(n - 1, -1, -1):\n            if s[i] == '0':\n                dp[i] = 0\n                continue\n            num = 0\n            ways = 0\n            for j in range(i, n):\n                num = num * 10 + int(s[j])\n                if num > k:\n                    break\n                ways = (ways + dp[j + 1]) % MOD\n            dp[i] = ways\n        \n        return dp[0]\n```\nefficiency: HIGH\ntime complexity: O(n log10(k))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses dynamic programming from right to left. dp[i] counts valid arrays for suffix s[i:]. For each i, iterate j until the number formed s[i..j] exceeds k (at most log10(k) steps). Avoids recomputation with memoization.",
+  "code": "class Solution:\n    def numberOfArrays(self, s: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = len(s)\n        dp = [0] * (n + 1)\n        dp[n] = 1\n        \n        for i in range(n - 1, -1, -1):\n            if s[i] == '0':\n                dp[i] = 0\n                continue\n            num = 0\n            ways = 0\n            for j in range(i, n):\n                num = num * 10 + int(s[j])\n                if num > k:\n                    break\n                ways = (ways + dp[j + 1]) % MOD\n            dp[i] = ways\n        \n        return dp[0]",
+  "timestamp": "2025-08-06T02:32:43.886306",
+  "code_extracted_previous": "class Solution:\n    def numberOfArrays(self, s: str, k: int) -> int:\n        MOD = 10**9 + 7\n        n = len(s)\n        dp = [0] * (n + 1)\n        dp[n] = 1\n        \n        for i in range(n - 1, -1, -1):\n            if s[i] == '0':\n                dp[i] = 0\n                continue\n            num = 0\n            ways = 0\n            for j in range(i, n):\n                num = num * 10 + int(s[j])\n                if num > k:\n                    break\n                ways = (ways + dp[j + 1]) % MOD\n            dp[i] = ways\n        \n        return dp[0]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.264617"
+}

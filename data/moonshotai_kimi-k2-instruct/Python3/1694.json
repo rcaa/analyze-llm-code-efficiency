@@ -1,0 +1,15 @@
+{
+  "id": 1694,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \nclass Solution:\n    def reformatNumber(self, number: str) -> str:\n        digits = [c for c in number if c.isdigit()]\n        n = len(digits)\n        res = []\n        i = 0\n        while i < n:\n            if n - i > 4:\n                res.append(''.join(digits[i:i+3]))\n                i += 3\n            else:\n                if n - i == 4:\n                    res.append(''.join(digits[i:i+2]))\n                    res.append(''.join(digits[i+2:i+4]))\n                elif n - i == 3:\n                    res.append(''.join(digits[i:i+3]))\n                elif n - i == 2:\n                    res.append(''.join(digits[i:i+2]))\n                break\n        return '-'.join(res)\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Filter digits in one pass, then greedily group into 3s until ≤4 remain, handling the remainder as specified. Single linear scan and list join keeps memory minimal.",
+  "code": "class Solution:\n    def reformatNumber(self, number: str) -> str:\n        digits = [c for c in number if c.isdigit()]\n        n = len(digits)\n        res = []\n        i = 0\n        while i < n:\n            if n - i > 4:\n                res.append(''.join(digits[i:i+3]))\n                i += 3\n            else:\n                if n - i == 4:\n                    res.append(''.join(digits[i:i+2]))\n                    res.append(''.join(digits[i+2:i+4]))\n                elif n - i == 3:\n                    res.append(''.join(digits[i:i+3]))\n                elif n - i == 2:\n                    res.append(''.join(digits[i:i+2]))\n                break\n        return '-'.join(res)",
+  "timestamp": "2025-08-05T23:41:34.771735",
+  "code_extracted_previous": "class Solution:\n    def reformatNumber(self, number: str) -> str:\n        digits = [c for c in number if c.isdigit()]\n        n = len(digits)\n        res = []\n        i = 0\n        while i < n:\n            if n - i > 4:\n                res.append(''.join(digits[i:i+3]))\n                i += 3\n            else:\n                if n - i == 4:\n                    res.append(''.join(digits[i:i+2]))\n                    res.append(''.join(digits[i+2:i+4]))\n                elif n - i == 3:\n                    res.append(''.join(digits[i:i+3]))\n                elif n - i == 2:\n                    res.append(''.join(digits[i:i+2]))\n                break\n        return '-'.join(res)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.341933"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3226,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    int minChanges(int n, int k) {\n        if (n == k) return 0;\n        int changes = 0;\n        for (int i = 0; i < 32; ++i) {\n            bool n_bit = (n >> i) & 1;\n            bool k_bit = (k >> i) & 1;\n            if (k_bit == 1 && n_bit == 0) return -1;\n            if (n_bit == 1 && k_bit == 0) ++changes;\n        }\n        return changes;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution compares the binary representations of `n` and `k` bit by bit. If `k` has a bit set to 1 where `n` has a 0, it is impossible to convert `n` to `k`, so we return -1. Otherwise, we count the number of 1s in `n` that need to be flipped to 0 to match `k`. This approach is efficient as it only iterates over a fixed number of bits (32).",
+  "code": "class Solution {\npublic:\n    int minChanges(int n, int k) {\n        if (n == k) return 0;\n        int changes = 0;\n        for (int i = 0; i < 32; ++i) {\n            bool n_bit = (n >> i) & 1;\n            bool k_bit = (k >> i) & 1;\n            if (k_bit == 1 && n_bit == 0) return -1;\n            if (n_bit == 1 && k_bit == 0) ++changes;\n        }\n        return changes;\n    }\n};",
+  "timestamp": "2025-08-06T03:00:09.649638",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minChanges(int n, int k) {\n        if (n == k) return 0;\n        int changes = 0;\n        for (int i = 0; i < 32; ++i) {\n            bool n_bit = (n >> i) & 1;\n            bool k_bit = (k >> i) & 1;\n            if (k_bit == 1 && n_bit == 0) return -1;\n            if (n_bit == 1 && k_bit == 0) ++changes;\n        }\n        return changes;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:00.236082"
+}

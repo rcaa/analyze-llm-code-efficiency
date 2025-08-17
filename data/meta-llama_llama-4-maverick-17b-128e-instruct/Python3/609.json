@@ -1,0 +1,15 @@
+{
+  "id": 609,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = {}\n        for path in paths:\n            directory, *files = path.split()\n            for file in files:\n                filename, content = file.split('(')\n                content = content[:-1]\n                if content not in content_map:\n                    content_map[content] = []\n                content_map[content].append(directory + '/' + filename)\n        return [files for files in content_map.values() if len(files) > 1]\n\nefficiency: HIGH\ntime complexity: O(N*M)\nspace complexity: O(N*M)\nenergy implications: LOW\nexplanation: The solution uses a hashmap to store file contents as keys and corresponding file paths as values. It iterates through the given directory info, parsing each file's content and updating the hashmap. Finally, it returns a list of file paths that have duplicate contents. The time complexity is O(N*M) where N is the number of directory info strings and M is the average number of files in a directory. The space complexity is also O(N*M) for storing the file contents and paths in the hashmap.\n```",
+  "code": "def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = {}\n        for path in paths:\n            directory, *files = path.split()\n            for file in files:\n                filename, content = file.split('(')\n                content = content[:-1]\n                if content not in content_map:\n                    content_map[content] = []\n                content_map[content].append(directory + '/' + filename)\n        return [files for files in content_map.values() if len(files) > 1]",
+  "timestamp": "2025-08-05T13:04:08.241510",
+  "code_extracted_previous": "class Solution:\n    def findDuplicate(self, paths: List[str]) -> List[List[str]]:\n        content_map = {}\n        for path in paths:\n            directory, *files = path.split()\n            for file in files:\n                filename, content = file.split('(')\n                content = content[:-1]\n                if content not in content_map:\n                    content_map[content] = []\n                content_map[content].append(directory + '/' + filename)\n        return [files for files in content_map.values() if len(files) > 1]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.377066"
+}

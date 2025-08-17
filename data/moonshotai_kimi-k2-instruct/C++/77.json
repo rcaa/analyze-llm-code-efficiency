@@ -1,0 +1,15 @@
+{
+  "id": 77,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> res;\n        vector<int> cur;\n        backtrack(1, n, k, cur, res);\n        return res;\n    }\nprivate:\n    void backtrack(int start, int n, int k, vector<int>& cur, vector<vector<int>>& res) {\n        if (cur.size() == k) {\n            res.push_back(cur);\n            return;\n        }\n        for (int i = start; i <= n - (k - cur.size()) + 1; ++i) {\n            cur.push_back(i);\n            backtrack(i + 1, n, k, cur, res);\n            cur.pop_back();\n        }\n    }\n};\nefficiency: HIGH\ntime complexity: O(C(n,k) * k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Uses depth-first backtracking with pruning to generate combinations in lexicographic order. The pruning condition i <= n - (k - cur.size()) + 1 avoids exploring branches that cannot yield enough remaining elements, cutting the search space significantly.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> res;\n        vector<int> cur;\n        backtrack(1, n, k, cur, res);\n        return res;\n    }\nprivate:\n    void backtrack(int start, int n, int k, vector<int>& cur, vector<vector<int>>& res) {\n        if (cur.size() == k) {\n            res.push_back(cur);\n            return;\n        }\n        for (int i = start; i <= n - (k - cur.size()) + 1; ++i) {\n            cur.push_back(i);\n            backtrack(i + 1, n, k, cur, res);\n            cur.pop_back();\n        }\n    }\n};",
+  "timestamp": "2025-08-05T13:35:49.116485",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> res;\n        vector<int> cur;\n        backtrack(1, n, k, cur, res);\n        return res;\n    }\nprivate:\n    void backtrack(int start, int n, int k, vector<int>& cur, vector<vector<int>>& res) {\n        if (cur.size() == k) {\n            res.push_back(cur);\n            return;\n        }\n        for (int i = start; i <= n - (k - cur.size()) + 1; ++i) {\n            cur.push_back(i);\n            backtrack(i + 1, n, k, cur, res);\n            cur.pop_back();\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.293441"
+}

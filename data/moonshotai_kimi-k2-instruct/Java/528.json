@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    private int[] prefix;\n    private int total;\n    private Random rand;\n\n    public Solution(int[] w) {\n        rand = new Random();\n        prefix = new int[w.length];\n        prefix[0] = w[0];\n        for (int i = 1; i < w.length; i++) {\n            prefix[i] = prefix[i - 1] + w[i];\n        }\n        total = prefix[w.length - 1];\n    }\n    \n    public int pickIndex() {\n        int target = rand.nextInt(total) + 1;\n        int left = 0, right = prefix.length - 1;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (prefix[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n) for pickIndex, O(n) for constructor\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Build a prefix-sum array once; each pickIndex uses binary search to locate the random target in logarithmic time, minimizing CPU cycles and energy use.",
+  "code": "class Solution {\n    private int[] prefix;\n    private int total;\n    private Random rand;\n\n    public Solution(int[] w) {\n        rand = new Random();\n        prefix = new int[w.length];\n        prefix[0] = w[0];\n        for (int i = 1; i < w.length; i++) {\n            prefix[i] = prefix[i - 1] + w[i];\n        }\n        total = prefix[w.length - 1];\n    }\n    \n    public int pickIndex() {\n        int target = rand.nextInt(total) + 1;\n        int left = 0, right = prefix.length - 1;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (prefix[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}",
+  "timestamp": "2025-08-05T13:00:03.615613",
+  "code_extracted_previous": "class Solution {\n    private int[] prefix;\n    private int total;\n    private Random rand;\n\n    public Solution(int[] w) {\n        rand = new Random();\n        prefix = new int[w.length];\n        prefix[0] = w[0];\n        for (int i = 1; i < w.length; i++) {\n            prefix[i] = prefix[i - 1] + w[i];\n        }\n        total = prefix[w.length - 1];\n    }\n    \n    public int pickIndex() {\n        int target = rand.nextInt(total) + 1;\n        int left = 0, right = prefix.length - 1;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (prefix[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.635216"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n + 1];\n        for (int i = n - 1; i >= 0; i--) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int next = Math.min(i + brainpower + 1, n);\n            dp[i] = Math.max(dp[i + 1], points + dp[next]);\n        }\n        return dp[0];\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the maximum points that can be earned from the current question onwards. The dp array is filled in reverse order, considering whether to solve or skip each question, and choosing the option that yields the maximum points.\n```",
+  "code": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n + 1];\n        for (int i = n - 1; i >= 0; i--) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int next = Math.min(i + brainpower + 1, n);\n            dp[i] = Math.max(dp[i + 1], points + dp[next]);\n        }\n        return dp[0];\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the maximum points that can be earned from the current question onwards. The dp array is filled in reverse order, considering whether to solve or skip each question, and choosing the option that yields the maximum points.",
+  "timestamp": "2025-08-05T13:25:11.579108",
+  "code_extracted_previous": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n + 1];\n        for (int i = n - 1; i >= 0; i--) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int next = Math.min(i + brainpower + 1, n);\n            dp[i] = Math.max(dp[i + 1], points + dp[next]);\n        }\n        return dp[0];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.460521"
+}

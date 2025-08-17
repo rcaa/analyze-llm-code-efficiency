@@ -1,0 +1,15 @@
+{
+  "id": 2097,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\npublic:\n    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {\n        unordered_map<int, int> mp;\n        for (auto& p : pairs) {\n            mp[p[0]] = p[1];\n        }\n        vector<vector<int>> res;\n        int cur = pairs[0][0];\n        while (mp.size()) {\n            res.push_back({cur, mp[cur]});\n            if (--mp[cur] == 0) {\n                mp.erase(cur);\n            }\n            cur = mp[cur];\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hashmap to store the pairs and then constructs the valid arrangement by iterating through the hashmap. It starts from the first pair and keeps moving to the next pair until all pairs are processed. The time complexity is O(n) where n is the number of pairs, and the space complexity is also O(n) for storing the hashmap.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {\n        unordered_map<int, int> mp;\n        for (auto& p : pairs) {\n            mp[p[0]] = p[1];\n        }\n        vector<vector<int>> res;\n        int cur = pairs[0][0];\n        while (mp.size()) {\n            res.push_back({cur, mp[cur]});\n            if (--mp[cur] == 0) {\n                mp.erase(cur);\n            }\n            cur = mp[cur];\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:56:13.607939",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {\n        unordered_map<int, int> mp;\n        for (auto& p : pairs) {\n            mp[p[0]] = p[1];\n        }\n        vector<vector<int>> res;\n        int cur = pairs[0][0];\n        while (mp.size()) {\n            res.push_back({cur, mp[cur]});\n            if (--mp[cur] == 0) {\n                mp.erase(cur);\n            }\n            cur = mp[cur];\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.823700"
+}

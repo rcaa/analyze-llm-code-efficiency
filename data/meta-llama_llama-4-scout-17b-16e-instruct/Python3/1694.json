@@ -1,0 +1,15 @@
+{
+  "id": 1694,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def reformatNumber(self, number: str) -> str:\n        digits = ''.join(c for c in number if c.isdigit())\n        n = len(digits)\n        result = []\n        while n > 4:\n            result.append(digits[:3])\n            digits = digits[3:]\n            n -= 3\n        if n == 4:\n            result.extend([digits[:2], digits[2:]])\n        elif n == 3:\n            result.append(digits)\n        else:\n            result.append(digits)\n        return '-'.join(result)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution processes the input string once to extract digits and then iteratively groups them according to the specified rules, resulting in a linear time and space complexity.",
+  "code": "class Solution:\n    def reformatNumber(self, number: str) -> str:\n        digits = ''.join(c for c in number if c.isdigit())\n        n = len(digits)\n        result = []\n        while n > 4:\n            result.append(digits[:3])\n            digits = digits[3:]\n            n -= 3\n        if n == 4:\n            result.extend([digits[:2], digits[2:]])\n        elif n == 3:\n            result.append(digits)\n        else:\n            result.append(digits)\n        return '-'.join(result)",
+  "timestamp": "2025-08-05T16:40:08.331855",
+  "code_extracted_previous": "class Solution:\n    def reformatNumber(self, number: str) -> str:\n        digits = ''.join(c for c in number if c.isdigit())\n        n = len(digits)\n        result = []\n        while n > 4:\n            result.append(digits[:3])\n            digits = digits[3:]\n            n -= 3\n        if n == 4:\n            result.extend([digits[:2], digits[2:]])\n        elif n == 3:\n            result.append(digits)\n        else:\n            result.append(digits)\n        return '-'.join(result)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:51.901062"
+}

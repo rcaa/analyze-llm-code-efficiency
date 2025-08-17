@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass RecentCounter {\n\n    private Queue<Integer> requests = new LinkedList<>();\n    public RecentCounter() {\n        \n    }\n    \n    public int ping(int t) {\n        requests.add(t);\n        while (requests.peek() < t - 3000) {\n            requests.poll();\n        }\n        return requests.size();\n    }\n}\n```\nsolution: ```java\nclass RecentCounter {\n    private Queue<Integer> requests = new LinkedList<>();\n    public RecentCounter() {\n        \n    }\n    \n    public int ping(int t) {\n        requests.add(t);\n        while (requests.peek() < t - 3000) {\n            requests.poll();\n        }\n        return requests.size();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a queue to store recent requests. When ping is called, the new request is added to the queue. The queue is then trimmed to only include requests within the last 3000 milliseconds. The size of the queue represents the number of recent requests. \n\n\n",
+  "code": "class RecentCounter {\n    private Queue<Integer> requests = new LinkedList<>();\n    public RecentCounter() {\n        \n    }\n    \n    public int ping(int t) {\n        requests.add(t);\n        while (requests.peek() < t - 3000) {\n            requests.poll();\n        }\n        return requests.size();\n    }\n}",
+  "timestamp": "2025-08-05T14:07:51.520144",
+  "code_extracted_previous": "class RecentCounter {\n    private Queue<Integer> requests = new LinkedList<>();\n    public RecentCounter() {\n        \n    }\n    \n    public int ping(int t) {\n        requests.add(t);\n        while (requests.peek() < t - 3000) {\n            requests.poll();\n        }\n        return requests.size();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:25.794267"
+}

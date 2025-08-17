@@ -1,0 +1,15 @@
+{
+  "id": 972,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def isRationalEqual(self, s: str, t: str) -> bool:\n        def convert(s):\n            if '(' not in s:\n                return float(s)\n            else:\n                integer_part, decimal_part = s.split('.')\n                non_repeating_part, repeating_part = decimal_part.split('(')\n                repeating_part = repeating_part[:-1]\n                decimal = float(integer_part + '.' + non_repeating_part)\n                repeating_decimal = float('0.' + repeating_part)\n                return decimal + repeating_decimal / (10 ** len(non_repeating_part) * (10 ** len(repeating_part) - 1))\n        \n        return convert(s) == convert(t)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution defines a helper function convert to parse the input strings and calculate the decimal representation of the rational numbers. It handles cases with and without repeating parts, and then compares the results for the two input strings.",
+  "code": "def isRationalEqual(self, s: str, t: str) -> bool:\n        def convert(s):\n            if '(' not in s:\n                return float(s)\n            else:\n                integer_part, decimal_part = s.split('.')\n                non_repeating_part, repeating_part = decimal_part.split('(')\n                repeating_part = repeating_part[:-1]\n                decimal = float(integer_part + '.' + non_repeating_part)\n                repeating_decimal = float('0.' + repeating_part)\n                return decimal + repeating_decimal / (10 ** len(non_repeating_part) * (10 ** len(repeating_part) - 1))\n        \n        return convert(s) == convert(t)\n```",
+  "timestamp": "2025-08-06T15:21:17.242353",
+  "code_extracted_previous": "class Solution:\n    def isRationalEqual(self, s: str, t: str) -> bool:\n        def convert(s):\n            if '(' not in s:\n                return float(s)\n            else:\n                integer_part, decimal_part = s.split('.')\n                non_repeating_part, repeating_part = decimal_part.split('(')\n                repeating_part = repeating_part[:-1]\n                decimal = float(integer_part + '.' + non_repeating_part)\n                repeating_decimal = float('0.' + repeating_part)\n                return decimal + repeating_decimal / (10 ** len(non_repeating_part) * (10 ** len(repeating_part) - 1))\n        \n        return convert(s) == convert(t)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.922749"
+}

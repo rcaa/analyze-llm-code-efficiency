@@ -1,0 +1,15 @@
+{
+  "id": 659,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool isPossible(vector<int>& nums) {\n        unordered_map<int, int> count, tails;\n        for (int num : nums) count[num]++;\n        \n        for (int num : nums) {\n            if (count[num] == 0) continue;\n            count[num]--;\n            \n            if (tails.find(num - 1) != tails.end() && tails[num - 1] > 0) {\n                tails[num - 1]--;\n                tails[num]++;\n            } else if (count[num + 1] > 0 && count[num + 2] > 0) {\n                count[num + 1]--;\n                count[num + 2]--;\n                tails[num + 2]++;\n            } else {\n                return false;\n            }\n        }\n        return true;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a hashmap to track the count of each number and the tails of subsequences. It iterates through the array, attempting to extend existing subsequences or start new ones. If at any point it's unable to form a valid subsequence, it returns false. Otherwise, it returns true.",
+  "code": "class Solution {\npublic:\n    bool isPossible(vector<int>& nums) {\n        unordered_map<int, int> count, tails;\n        for (int num : nums) count[num]++;\n        \n        for (int num : nums) {\n            if (count[num] == 0) continue;\n            count[num]--;\n            \n            if (tails.find(num - 1) != tails.end() && tails[num - 1] > 0) {\n                tails[num - 1]--;\n                tails[num]++;\n            } else if (count[num + 1] > 0 && count[num + 2] > 0) {\n                count[num + 1]--;\n                count[num + 2]--;\n                tails[num + 2]++;\n            } else {\n                return false;\n            }\n        }\n        return true;\n    }\n};",
+  "timestamp": "2025-08-05T13:06:51.757226",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool isPossible(vector<int>& nums) {\n        unordered_map<int, int> count, tails;\n        for (int num : nums) count[num]++;\n        \n        for (int num : nums) {\n            if (count[num] == 0) continue;\n            count[num]--;\n            \n            if (tails.find(num - 1) != tails.end() && tails[num - 1] > 0) {\n                tails[num - 1]--;\n                tails[num]++;\n            } else if (count[num + 1] > 0 && count[num + 2] > 0) {\n                count[num + 1]--;\n                count[num + 2]--;\n                tails[num + 2]++;\n            } else {\n                return false;\n            }\n        }\n        return true;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.854750"
+}

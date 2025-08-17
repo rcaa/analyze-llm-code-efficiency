@@ -1,0 +1,15 @@
+{
+  "id": 2981,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int maximumLength(string s) {\n        int n = s.size();\n        int res = -1;\n        for (int len = 1; len <= n; len++) {\n            for (int i = 0; i <= n - len; i++) {\n                string substr = s.substr(i, len);\n                if (std::set<char>(substr.begin(), substr.end()).size() == 1) {\n                    int count = 0;\n                    for (int j = 0; j <= n - len; j++) {\n                        if (s.substr(j, len) == substr) {\n                            count++;\n                        }\n                    }\n                    if (count >= 3 && len > res) {\n                        res = len;\n                    }\n                }\n            }\n        }\n        return res;\n    }\n};\nefficiency: MEDIUM\ntime complexity: O(n^3)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution uses a brute-force approach to generate all possible substrings of the input string, checks if each substring is special, and counts its occurrences in the string. If a special substring occurs at least thrice and its length is greater than the current maximum length, the maximum length is updated.",
+  "code": "class Solution {\npublic:\n    int maximumLength(string s) {\n        int n = s.size();\n        int res = -1;\n        for (int len = 1; len <= n; len++) {\n            for (int i = 0; i <= n - len; i++) {\n                string substr = s.substr(i, len);\n                if (std::set<char>(substr.begin(), substr.end()).size() == 1) {\n                    int count = 0;\n                    for (int j = 0; j <= n - len; j++) {\n                        if (s.substr(j, len) == substr) {\n                            count++;\n                        }\n                    }\n                    if (count >= 3 && len > res) {\n                        res = len;\n                    }\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T15:10:40.919279",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maximumLength(string s) {\n        int n = s.size();\n        int res = -1;\n        for (int len = 1; len <= n; len++) {\n            for (int i = 0; i <= n - len; i++) {\n                string substr = s.substr(i, len);\n                if (std::set<char>(substr.begin(), substr.end()).size() == 1) {\n                    int count = 0;\n                    for (int j = 0; j <= n - len; j++) {\n                        if (s.substr(j, len) == substr) {\n                            count++;\n                        }\n                    }\n                    if (count >= 3 && len > res) {\n                        res = len;\n                    }\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.534871"
+}

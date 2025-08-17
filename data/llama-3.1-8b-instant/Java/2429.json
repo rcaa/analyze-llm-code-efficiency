@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int minimizeXor(int num1, int num2) {\n        int count = countSetBits(num2);\n        int x = 0;\n        for (int i = count; i >= 0; i--) {\n            if (countBits(i) == i) {\n                x |= i;\n                num1 ^= i;\n            }\n        }\n        return x;\n    }\n\n    private int countSetBits(int num) {\n        int count = 0;\n        while (num != 0) {\n            count += num & 1;\n            num >>= 1;\n        }\n        return count;\n    }\n\n    private int countBits(int num) {\n        int count = 0;\n        while (num != 0) {\n            count++;\n            num &= num - 1;\n        }\n        return count;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(log(num2))\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int minimizeXor(int num1, int num2) {\n        int count = countSetBits(num2);\n        int x = 0;\n        for (int i = count; i >= 0; i--) {\n            if (countBits(i) == i) {\n                x |= i;\n                num1 ^= i;\n            }\n        }\n        return x;\n    }\n\n    private int countSetBits(int num) {\n        int count = 0;\n        while (num != 0) {\n            count += num & 1;\n            num >>= 1;\n        }\n        return count;\n    }\n\n    private int countBits(int num) {\n        int count = 0;\n        while (num != 0) {\n            count++;\n            num &= num - 1;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T14:31:30.615431",
+  "code_extracted_previous": "class Solution {\n    public int minimizeXor(int num1, int num2) {\n        int count = countSetBits(num2);\n        int x = 0;\n        for (int i = count; i >= 0; i--) {\n            if (countBits(i) == i) {\n                x |= i;\n                num1 ^= i;\n            }\n        }\n        return x;\n    }\n\n    private int countSetBits(int num) {\n        int count = 0;\n        while (num != 0) {\n            count += num & 1;\n            num >>= 1;\n        }\n        return count;\n    }\n\n    private int countBits(int num) {\n        int count = 0;\n        while (num != 0) {\n            count++;\n            num &= num - 1;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.289499"
+}

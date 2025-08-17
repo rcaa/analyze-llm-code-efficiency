@@ -1,0 +1,15 @@
+{
+  "id": 3352,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def countKReducibleNumbers(self, s: str, k: int) -> int:\n        n = int(s, 2)\n        MOD = 10**9 + 7\n        dp = [[0]*(k+1) for _ in range(n+1)]\n        dp[0][0] = 1\n        for i in range(1, n+1):\n            cnt = bin(i).count('1')\n            for j in range(k, -1, -1):\n                dp[i][j] = dp[i-1][j]\n                if j >= cnt:\n                    dp[i][j] += dp[i-1][j-cnt]\n                dp[i][j] %= MOD\n        return sum(dp[i][k] for i in range(n))\n```\nefficiency: HIGH\ntime complexity: O(nk)\nspace complexity: O(nk)\nenergy implications: LOW\nexplanation: Dynamic programming is used to count the k-reducible numbers. The dp[i][j] state represents the number of j-reducible numbers less than or equal to i.",
+  "code": "class Solution:\n    def countKReducibleNumbers(self, s: str, k: int) -> int:\n        n = int(s, 2)\n        MOD = 10**9 + 7\n        dp = [[0]*(k+1) for _ in range(n+1)]\n        dp[0][0] = 1\n        for i in range(1, n+1):\n            cnt = bin(i).count('1')\n            for j in range(k, -1, -1):\n                dp[i][j] = dp[i-1][j]\n                if j >= cnt:\n                    dp[i][j] += dp[i-1][j-cnt]\n                dp[i][j] %= MOD\n        return sum(dp[i][k] for i in range(n))",
+  "timestamp": "2025-08-05T15:26:25.465424",
+  "code_extracted_previous": "class Solution:\n    def countKReducibleNumbers(self, s: str, k: int) -> int:\n        n = int(s, 2)\n        MOD = 10**9 + 7\n        dp = [[0]*(k+1) for _ in range(n+1)]\n        dp[0][0] = 1\n        for i in range(1, n+1):\n            cnt = bin(i).count('1')\n            for j in range(k, -1, -1):\n                dp[i][j] = dp[i-1][j]\n                if j >= cnt:\n                    dp[i][j] += dp[i-1][j-cnt]\n                dp[i][j] %= MOD\n        return sum(dp[i][k] for i in range(n))",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.715893"
+}

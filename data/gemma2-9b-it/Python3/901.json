@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass StockSpanner:\n\n    def __init__(self):\n        self.prices = []\n\n    def next(self, price: int) -> int:\n        span = 1\n        i = len(self.prices) - 1\n        while i >= 0 and self.prices[i] <= price:\n            span += 1\n            i -= 1\n        self.prices.append(price)\n        return span\n```\n\nsolution: ```python\nclass StockSpanner:\n\n    def __init__(self):\n        self.prices = []\n\n    def next(self, price: int) -> int:\n        span = 1\n        i = len(self.prices) - 1\n        while i >= 0 and self.prices[i] <= price:\n            span += 1\n            i -= 1\n        self.prices.append(price)\n        return span\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a stack to keep track of the prices. For each new price, it iterates through the stack to find the largest previous price that is less than or equal to the current price. The span is then the number of elements in the stack plus one. This approach has a time complexity of O(N) because, in the worst case, we may need to iterate through all the prices in the stack. The space complexity is also O(N) because we are storing all the prices in the stack.\n\n\n\n",
+  "code": "class StockSpanner:\n\n    def __init__(self):\n        self.prices = []\n\n    def next(self, price: int) -> int:\n        span = 1\n        i = len(self.prices) - 1\n        while i >= 0 and self.prices[i] <= price:\n            span += 1\n            i -= 1\n        self.prices.append(price)\n        return span",
+  "timestamp": "2025-08-06T08:43:17.345070",
+  "code_extracted_previous": "class StockSpanner:\n\n    def __init__(self):\n        self.prices = []\n\n    def next(self, price: int) -> int:\n        span = 1\n        i = len(self.prices) - 1\n        while i >= 0 and self.prices[i] <= price:\n            span += 1\n            i -= 1\n        self.prices.append(price)\n        return span",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:27.158941"
+}

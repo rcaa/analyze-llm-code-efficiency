@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int largestInteger(int num) {\n        char[] s = Integer.toString(num).toCharArray();\n        int n = s.length;\n        for (int i = 0; i < n; ++i) {\n            for (int j = i + 1; j < n; ++j) {\n                if ((s[i] - s[j]) % 2 == 0 && s[i] < s[j]) {\n                    char tmp = s[i];\n                    s[i] = s[j];\n                    s[j] = tmp;\n                }\n            }\n        }\n        return Integer.parseInt(new String(s));\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(d^2) where d is the number of digits\nspace complexity: O(d)\nenergy implications: LOW\nexplanation: Convert the number to a char array, then greedily bubble the largest digit of the same parity to each position via adjacent swaps. The quadratic scan is fast because the digit count is capped at 10.",
+  "code": "class Solution {\n    public int largestInteger(int num) {\n        char[] s = Integer.toString(num).toCharArray();\n        int n = s.length;\n        for (int i = 0; i < n; ++i) {\n            for (int j = i + 1; j < n; ++j) {\n                if ((s[i] - s[j]) % 2 == 0 && s[i] < s[j]) {\n                    char tmp = s[i];\n                    s[i] = s[j];\n                    s[j] = tmp;\n                }\n            }\n        }\n        return Integer.parseInt(new String(s));\n    }\n}",
+  "timestamp": "2025-08-06T02:31:00.516473",
+  "code_extracted_previous": "class Solution {\n    public int largestInteger(int num) {\n        char[] s = Integer.toString(num).toCharArray();\n        int n = s.length;\n        for (int i = 0; i < n; ++i) {\n            for (int j = i + 1; j < n; ++j) {\n                if ((s[i] - s[j]) % 2 == 0 && s[i] < s[j]) {\n                    char tmp = s[i];\n                    s[i] = s[j];\n                    s[j] = tmp;\n                }\n            }\n        }\n        return Integer.parseInt(new String(s));\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.888529"
+}

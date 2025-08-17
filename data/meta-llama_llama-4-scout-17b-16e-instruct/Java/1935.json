@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        boolean[] broken = new boolean[26];\n        for (char c : brokenLetters.toCharArray()) {\n            broken[c - 'a'] = true;\n        }\n        int count = 0;\n        for (String word : text.split(\" \")) {\n            boolean valid = true;\n            for (char c : word.toCharArray()) {\n                if (broken[c - 'a']) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) count++;\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The approach involves first creating a boolean array to track broken letters, then iterating through each word in the text to check if any of its letters are broken. If a word has no broken letters, it is counted. This solution is efficient due to its linear time complexity and minimal extra space usage.",
+  "code": "class Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        boolean[] broken = new boolean[26];\n        for (char c : brokenLetters.toCharArray()) {\n            broken[c - 'a'] = true;\n        }\n        int count = 0;\n        for (String word : text.split(\" \")) {\n            boolean valid = true;\n            for (char c : word.toCharArray()) {\n                if (broken[c - 'a']) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) count++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T14:43:59.306420",
+  "code_extracted_previous": "class Solution {\n    public int canBeTypedWords(String text, String brokenLetters) {\n        boolean[] broken = new boolean[26];\n        for (char c : brokenLetters.toCharArray()) {\n            broken[c - 'a'] = true;\n        }\n        int count = 0;\n        for (String word : text.split(\" \")) {\n            boolean valid = true;\n            for (char c : word.toCharArray()) {\n                if (broken[c - 'a']) {\n                    valid = false;\n                    break;\n                }\n            }\n            if (valid) count++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.572266"
+}

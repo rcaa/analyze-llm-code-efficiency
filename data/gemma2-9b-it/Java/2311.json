@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int longestSubsequence(String s, int k) {\n        int longest = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int current = 0;\n            for (int j = i; j < s.length(); j++) {\n                current = (current << 1) | (s.charAt(j) - '0');\n                if (current > k) {\n                    break;\n                }\n                longest = Math.max(longest, j - i + 1);\n            }\n        }\n        return longest;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through all possible subsequences of the input string 's'. For each subsequence, it calculates the corresponding decimal value and checks if it's less than or equal to 'k'. The length of the longest valid subsequence is tracked and returned. While this approach is straightforward, its quadratic time complexity limits its efficiency for very long strings. \n\n\n",
+  "code": "class Solution {\n    public int longestSubsequence(String s, int k) {\n        int longest = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int current = 0;\n            for (int j = i; j < s.length(); j++) {\n                current = (current << 1) | (s.charAt(j) - '0');\n                if (current > k) {\n                    break;\n                }\n                longest = Math.max(longest, j - i + 1);\n            }\n        }\n        return longest;\n    }\n}",
+  "timestamp": "2025-08-06T00:59:17.697069",
+  "code_extracted_previous": "class Solution {\n    public int longestSubsequence(String s, int k) {\n        int longest = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int current = 0;\n            for (int j = i; j < s.length(); j++) {\n                current = (current << 1) | (s.charAt(j) - '0');\n                if (current > k) {\n                    break;\n                }\n                longest = Math.max(longest, j - i + 1);\n            }\n        }\n        return longest;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.949284"
+}

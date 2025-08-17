@@ -1,0 +1,15 @@
+{
+  "id": 146,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```python\nclass LRUCache:\n\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = dict()\n        self.order = list()\n\n    def get(self, key: int) -> int:\n        if key in self.cache:\n            value = self.cache[key]\n            self.order.remove(key)\n            self.order.append(key)\n            return value\n        return -1\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            self.order.remove(key)\n        elif len(self.cache) == self.capacity:\n            lru_key = self.order.pop(0)\n            del self.cache[lru_key]\n        self.cache[key] = value\n        self.order.append(key)\n\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(capacity)\nenergy implications: LOW\nexplanation: The solution utilizes a dictionary for O(1) lookups and a list to track the order of elements, allowing for efficient removal of the least recently used key when the cache is full.",
+  "code": "class LRUCache:\n\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = dict()\n        self.order = list()\n\n    def get(self, key: int) -> int:\n        if key in self.cache:\n            value = self.cache[key]\n            self.order.remove(key)\n            self.order.append(key)\n            return value\n        return -1\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            self.order.remove(key)\n        elif len(self.cache) == self.capacity:\n            lru_key = self.order.pop(0)\n            del self.cache[lru_key]\n        self.cache[key] = value\n        self.order.append(key)",
+  "timestamp": "2025-08-06T15:17:15.615874",
+  "code_extracted_previous": "class LRUCache:\n\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = dict()\n        self.order = list()\n\n    def get(self, key: int) -> int:\n        if key in self.cache:\n            value = self.cache[key]\n            self.order.remove(key)\n            self.order.append(key)\n            return value\n        return -1\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            self.order.remove(key)\n        elif len(self.cache) == self.capacity:\n            lru_key = self.order.pop(0)\n            del self.cache[lru_key]\n        self.cache[key] = value\n        self.order.append(key)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.819640"
+}

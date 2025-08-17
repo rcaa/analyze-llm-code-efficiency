@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        long[] dp = new long[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = (dp[i - 1] + dp[Math.max(0, i - delay)] - dp[Math.max(0, i - forget)]) % 1000000007;\n        }\n        return (int) dp[n];\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We maintain an array dp where dp[i] represents the number of people who know the secret at the end of day i. We initialize dp[0] to 1, as only one person knows the secret at the beginning. Then, for each day i from 1 to n, we calculate dp[i] as the sum of dp[i - 1] (the number of people who know the secret at the end of day i - 1) and dp[i - delay] (the number of people who know the secret at the end of day i - delay), minus dp[i - forget] (the number of people who forget the secret at the end of day i - forget). We take the result modulo 10^9 + 7 to avoid overflow. Finally, we return dp[n] as the number of people who know the secret at the end of day n.",
+  "code": "class Solution {\n    public int peopleAwareOfSecret(int n, int delay, int forget) {\n        long[] dp = new long[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = (dp[i - 1] + dp[Math.max(0, i - delay)] - dp[Math.max(0, i - forget)]) % 1000000007;\n        }\n        return (int) dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T14:26:12.512328",
+  "code_extracted_previous": "public int peopleAwareOfSecret(int n, int delay, int forget) {\n        long[] dp = new long[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = (dp[i - 1] + dp[Math.max(0, i - delay)] - dp[Math.max(0, i - forget)]) % 1000000007;\n        }\n        return (int) dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.360497"
+}

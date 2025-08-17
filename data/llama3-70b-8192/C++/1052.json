@@ -1,0 +1,15 @@
+{
+  "id": 1052,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int total = 0, maxIncrease = 0, window = 0;\n        for (int i = 0; i < customers.size(); i++) {\n            if (!grumpy[i]) total += customers[i];\n            if (i < minutes) window += grumpy[i] ? customers[i] : 0;\n            else window = window - (grumpy[i - minutes] ? customers[i - minutes] : 0) + (grumpy[i] ? customers[i] : 0);\n            maxIncrease = max(maxIncrease, window);\n        }\n        return total + maxIncrease;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to find the maximum number of customers that can be satisfied by keeping the bookstore owner not grumpy for minutes consecutive minutes.",
+  "code": "class Solution {\npublic:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int total = 0, maxIncrease = 0, window = 0;\n        for (int i = 0; i < customers.size(); i++) {\n            if (!grumpy[i]) total += customers[i];\n            if (i < minutes) window += grumpy[i] ? customers[i] : 0;\n            else window = window - (grumpy[i - minutes] ? customers[i - minutes] : 0) + (grumpy[i] ? customers[i] : 0);\n            maxIncrease = max(maxIncrease, window);\n        }\n        return total + maxIncrease;\n    }\n};",
+  "timestamp": "2025-08-05T13:18:51.100850",
+  "code_extracted_previous": "public:\n    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {\n        int total = 0, maxIncrease = 0, window = 0;\n        for (int i = 0; i < customers.size(); i++) {\n            if (!grumpy[i]) total += customers[i];\n            if (i < minutes) window += grumpy[i] ? customers[i] : 0;\n            else window = window - (grumpy[i - minutes] ? customers[i - minutes] : 0) + (grumpy[i] ? customers[i] : 0);\n            maxIncrease = max(maxIncrease, window);\n        }\n        return total + maxIncrease;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:35.977059"
+}

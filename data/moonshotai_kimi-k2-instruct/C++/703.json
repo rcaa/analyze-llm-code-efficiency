@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass KthLargest {\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n    int kth;\npublic:\n    KthLargest(int k, vector<int>& nums) {\n        kth = k;\n        for (int n : nums) {\n            minHeap.push(n);\n            if (minHeap.size() > k) minHeap.pop();\n        }\n    }\n    \n    int add(int val) {\n        minHeap.push(val);\n        if (minHeap.size() > kth) minHeap.pop();\n        return minHeap.top();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log k) per add, O(n log k) for constructor\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Maintain a min-heap of size k; the root is always the kth largest. Constructor builds the heap in O(n log k). Each add inserts and pops once, giving O(log k). Space is bounded by k, so memory footprint is small and energy-efficient.",
+  "code": "class KthLargest {\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n    int kth;\npublic:\n    KthLargest(int k, vector<int>& nums) {\n        kth = k;\n        for (int n : nums) {\n            minHeap.push(n);\n            if (minHeap.size() > k) minHeap.pop();\n        }\n    }\n    \n    int add(int val) {\n        minHeap.push(val);\n        if (minHeap.size() > kth) minHeap.pop();\n        return minHeap.top();\n    }\n};",
+  "timestamp": "2025-08-06T02:30:14.378666",
+  "code_extracted_previous": "class KthLargest {\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n    int kth;\npublic:\n    KthLargest(int k, vector<int>& nums) {\n        kth = k;\n        for (int n : nums) {\n            minHeap.push(n);\n            if (minHeap.size() > k) minHeap.pop();\n        }\n    }\n    \n    int add(int val) {\n        minHeap.push(val);\n        if (minHeap.size() > kth) minHeap.pop();\n        return minHeap.top();\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:54.259459"
+}

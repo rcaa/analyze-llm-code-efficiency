@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findKthNumber(int n, int k) {\n        int num = 1;\n        k--;\n        while (k > 0) {\n            int count = 0;\n            for (int i = num; i <= n; i++) {\n                if (String.valueOf(i).startsWith(String.valueOf(num))) {\n                    count++;\n                }\n                if (count == k) {\n                    return i;\n                }\n            }\n            num++;\n        }\n        return num;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N log N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a greedy approach to find the k-th lexicographically smallest number. It iterates through possible starting digits and counts the numbers that start with that digit. When the count reaches k, the current number is returned.  This approach is efficient because it avoids unnecessary comparisons and leverages the lexicographical order.\n",
+  "code": "class Solution {\n    public int findKthNumber(int n, int k) {\n        int num = 1;\n        k--;\n        while (k > 0) {\n            int count = 0;\n            for (int i = num; i <= n; i++) {\n                if (String.valueOf(i).startsWith(String.valueOf(num))) {\n                    count++;\n                }\n                if (count == k) {\n                    return i;\n                }\n            }\n            num++;\n        }\n        return num;\n    }\n}",
+  "timestamp": "2025-08-06T01:11:45.875512",
+  "code_extracted_previous": "class Solution {\n    public int findKthNumber(int n, int k) {\n        int num = 1;\n        k--;\n        while (k > 0) {\n            int count = 0;\n            for (int i = num; i <= n; i++) {\n                if (String.valueOf(i).startsWith(String.valueOf(num))) {\n                    count++;\n                }\n                if (count == k) {\n                    return i;\n                }\n            }\n            num++;\n        }\n        return num;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.515526"
+}

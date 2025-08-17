@@ -1,0 +1,15 @@
+{
+  "id": 481,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int magicalString(int n) {\n        if (n <= 0) return 0;\n        if (n <= 3) return 1;\n        int[] s = new int[n + 1];\n        s[0] = 1;\n        s[1] = 2;\n        s[2] = 2;\n        int idx = 2, val = 1, cnt = 1, res = 1;\n        while (idx < n) {\n            for (int i = 0; i < s[idx - 1]; i++) {\n                if (idx < n) {\n                    s[idx++] = val;\n                    if (val == 1) res++;\n                }\n            }\n            val = 3 - val;\n            cnt++;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a dynamic programming approach to generate the magical string and count the number of 1's in the first n elements. It iteratively appends the next group of 1's or 2's to the string based on the previous group's size and value.",
+  "code": "class Solution {\n    public int magicalString(int n) {\n        if (n <= 0) return 0;\n        if (n <= 3) return 1;\n        int[] s = new int[n + 1];\n        s[0] = 1;\n        s[1] = 2;\n        s[2] = 2;\n        int idx = 2, val = 1, cnt = 1, res = 1;\n        while (idx < n) {\n            for (int i = 0; i < s[idx - 1]; i++) {\n                if (idx < n) {\n                    s[idx++] = val;\n                    if (val == 1) res++;\n                }\n            }\n            val = 3 - val;\n            cnt++;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T01:38:04.046181",
+  "code_extracted_previous": "class Solution {\n    public int magicalString(int n) {\n        if (n <= 0) return 0;\n        if (n <= 3) return 1;\n        int[] s = new int[n + 1];\n        s[0] = 1;\n        s[1] = 2;\n        s[2] = 2;\n        int idx = 2, val = 1, cnt = 1, res = 1;\n        while (idx < n) {\n            for (int i = 0; i < s[idx - 1]; i++) {\n                if (idx < n) {\n                    s[idx++] = val;\n                    if (val == 1) res++;\n                }\n            }\n            val = 3 - val;\n            cnt++;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.593837"
+}

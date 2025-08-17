@@ -1,0 +1,15 @@
+{
+  "id": 2332,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        p = 0\n        taken = set(passengers)\n        for t in buses:\n            cap = capacity\n            while p < len(passengers) and passengers[p] <= t and cap > 0:\n                p += 1\n                cap -= 1\n        best = 0\n        if cap > 0:\n            best = buses[-1]\n            while best in taken:\n                best -= 1\n        else:\n            best = passengers[p - 1] - 1\n            while best in taken:\n                best -= 1\n        return best\n```\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: Sort buses and passengers. Simulate boarding passengers onto each bus in order. After the last bus, if it has spare capacity the latest possible arrival is the bus departure time (adjusted for passenger collisions). Otherwise, the latest arrival is just before the last passenger who boarded that bus (again adjusted for collisions).",
+  "code": "class Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        p = 0\n        taken = set(passengers)\n        for t in buses:\n            cap = capacity\n            while p < len(passengers) and passengers[p] <= t and cap > 0:\n                p += 1\n                cap -= 1\n        best = 0\n        if cap > 0:\n            best = buses[-1]\n            while best in taken:\n                best -= 1\n        else:\n            best = passengers[p - 1] - 1\n            while best in taken:\n                best -= 1\n        return best",
+  "timestamp": "2025-08-05T13:28:21.209206",
+  "code_extracted_previous": "class Solution:\n    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:\n        buses.sort()\n        passengers.sort()\n        p = 0\n        taken = set(passengers)\n        for t in buses:\n            cap = capacity\n            while p < len(passengers) and passengers[p] <= t and cap > 0:\n                p += 1\n                cap -= 1\n        best = 0\n        if cap > 0:\n            best = buses[-1]\n            while best in taken:\n                best -= 1\n        else:\n            best = passengers[p - 1] - 1\n            while best in taken:\n                best -= 1\n        return best",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.637535"
+}

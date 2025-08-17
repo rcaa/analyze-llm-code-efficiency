@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        int MOD = 1e9 + 7;\n        int dp[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = (dp[i - 1] + (i >= delay ? dp[i - delay - 1] : 0) + (i >= forget ? dp[i - forget - 1] : 0)) % MOD;\n        }\n        return dp[n];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We create an array dp where dp[i] represents the number of people who know the secret at the end of day i. We iterate over each day, and for each day, we calculate the number of people who know the secret by adding the number of people who knew the secret the previous day, the number of people who learned the secret from the previous day minus the delay, and the number of people who learned the secret from the previous day minus the forget. We take the result modulo 10^9 + 7 to avoid overflow.",
+  "code": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        int MOD = 1e9 + 7;\n        int dp[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = (dp[i - 1] + (i >= delay ? dp[i - delay - 1] : 0) + (i >= forget ? dp[i - forget - 1] : 0)) % MOD;\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-05T14:26:31.273183",
+  "code_extracted_previous": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        int MOD = 1e9 + 7;\n        int dp[n + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = (dp[i - 1] + (i >= delay ? dp[i - delay - 1] : 0) + (i >= forget ? dp[i - forget - 1] : 0)) % MOD;\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.037193"
+}

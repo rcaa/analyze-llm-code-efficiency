@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int m, n, total;\n    vector<int> indices;\n    Solution(int m, int n) : m(m), n(n), total(m * n) {\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                indices.push_back(i * n + j);\n            }\n        }\n    }\n    \n    vector<int> flip() {\n        int idx = rand() % total;\n        int val = indices[idx];\n        indices[idx] = indices[total - 1];\n        total--;\n        return {val / n, val % n};\n    }\n    \n    void reset() {\n        total = m * n;\n        indices.clear();\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                indices.push_back(i * n + j);\n            }\n        }\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(m * n)\nenergy implications: LOW\nexplanation: The algorithm uses a vector to store the indices of the matrix and randomly selects an index to flip. The reset function reinitializes the vector with all indices. This approach minimizes the number of calls to the random function and optimizes time and space complexity.",
+  "code": "class Solution {\npublic:\n    int m, n, total;\n    vector<int> indices;\n    Solution(int m, int n) : m(m), n(n), total(m * n) {\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                indices.push_back(i * n + j);\n            }\n        }\n    }\n    \n    vector<int> flip() {\n        int idx = rand() % total;\n        int val = indices[idx];\n        indices[idx] = indices[total - 1];\n        total--;\n        return {val / n, val % n};\n    }\n    \n    void reset() {\n        total = m * n;\n        indices.clear();\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                indices.push_back(i * n + j);\n            }\n        }\n    }\n};",
+  "timestamp": "2025-08-06T15:11:28.959020",
+  "code_extracted_previous": "class Solution {\npublic:\n    int m, n, total;\n    vector<int> indices;\n    Solution(int m, int n) : m(m), n(n), total(m * n) {\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                indices.push_back(i * n + j);\n            }\n        }\n    }\n    \n    vector<int> flip() {\n        int idx = rand() % total;\n        int val = indices[idx];\n        indices[idx] = indices[total - 1];\n        total--;\n        return {val / n, val % n};\n    }\n    \n    void reset() {\n        total = m * n;\n        indices.clear();\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                indices.push_back(i * n + j);\n            }\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.917502"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1416,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int numberOfArrays(String s, int k) {\n        int mod = (int) 1e9 + 7;\n        int n = s.length();\n        long[] dp = new long[n + 1];\n        dp[n] = 1;\n        \n        for (int i = n - 1; i >= 0; i--) {\n            if (s.charAt(i) == '0') continue;\n            for (int j = i; j < n; j++) {\n                long num = Long.parseLong(s.substring(i, j + 1));\n                if (num > k) break;\n                dp[i] = (dp[i] + dp[j + 1]) % mod;\n            }\n        }\n        return (int) dp[0];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: Dynamic programming approach with memoization to efficiently compute the number of possible arrays, iterating through the string and checking all possible substrings as numbers within the given range.",
+  "code": "class Solution {\n    public int numberOfArrays(String s, int k) {\n        int mod = (int) 1e9 + 7;\n        int n = s.length();\n        long[] dp = new long[n + 1];\n        dp[n] = 1;\n        \n        for (int i = n - 1; i >= 0; i--) {\n            if (s.charAt(i) == '0') continue;\n            for (int j = i; j < n; j++) {\n                long num = Long.parseLong(s.substring(i, j + 1));\n                if (num > k) break;\n                dp[i] = (dp[i] + dp[j + 1]) % mod;\n            }\n        }\n        return (int) dp[0];\n    }\n}",
+  "timestamp": "2025-08-05T16:13:27.176689",
+  "code_extracted_previous": "class Solution {\n    public int numberOfArrays(String s, int k) {\n        int mod = (int) 1e9 + 7;\n        int n = s.length();\n        long[] dp = new long[n + 1];\n        dp[n] = 1;\n        \n        for (int i = n - 1; i >= 0; i--) {\n            if (s.charAt(i) == '0') continue;\n            for (int j = i; j < n; j++) {\n                long num = Long.parseLong(s.substring(i, j + 1));\n                if (num > k) break;\n                dp[i] = (dp[i] + dp[j + 1]) % mod;\n            }\n        }\n        return (int) dp[0];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.412758"
+}

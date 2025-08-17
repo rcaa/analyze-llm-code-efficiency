@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int countLargestGroup(int n) {\n        int max = 0, count = 0;\n        unordered_map<int, int> groups;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            groups[sum]++;\n            max = std::max(max, groups[sum]);\n        }\n        for (auto& pair : groups) {\n            if (pair.second == max) count++;\n        }\n        return count;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hash map to store the sum of digits for each number and its frequency. It then iterates through the map to find the maximum frequency and count the number of groups with this frequency. The time complexity is O(n) because we are iterating through the numbers from 1 to n and the space complexity is also O(n) because in the worst case, we might have to store all numbers in the hash map.",
+  "code": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        int max = 0, count = 0;\n        unordered_map<int, int> groups;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            groups[sum]++;\n            max = std::max(max, groups[sum]);\n        }\n        for (auto& pair : groups) {\n            if (pair.second == max) count++;\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T14:43:17.748216",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        int max = 0, count = 0;\n        unordered_map<int, int> groups;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            groups[sum]++;\n            max = std::max(max, groups[sum]);\n        }\n        for (auto& pair : groups) {\n            if (pair.second == max) count++;\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.388044"
+}

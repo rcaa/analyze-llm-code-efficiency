@@ -1,0 +1,15 @@
+{
+  "id": 2466,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(high + 1);\n        dp[0] = 1;\n        int res = 0;\n        for (int i = 1; i <= high; i++) {\n            if (i >= zero) dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            if (i >= one) dp[i] = (dp[i] + dp[i - one]) % MOD;\n            if (i >= low) res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(high)\nspace complexity: O(high)\nenergy implications: LOW\nexplanation: Dynamic programming is used to store the number of good strings of each length, and the result is calculated by summing up the number of good strings of lengths between low and high.",
+  "code": "class Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(high + 1);\n        dp[0] = 1;\n        int res = 0;\n        for (int i = 1; i <= high; i++) {\n            if (i >= zero) dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            if (i >= one) dp[i] = (dp[i] + dp[i - one]) % MOD;\n            if (i >= low) res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T15:09:55.546003",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(high + 1);\n        dp[0] = 1;\n        int res = 0;\n        for (int i = 1; i <= high; i++) {\n            if (i >= zero) dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            if (i >= one) dp[i] = (dp[i] + dp[i - one]) % MOD;\n            if (i >= low) res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.372049"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2318,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def distinctSequences(self, n: int) -> int:\n        mod = 10**9 + 7\n        dp = [[0 for _ in range(7)] for _ in range(n + 1)]\n        dp[0][1] = 1\n        for i in range(1, n + 1):\n            for j in range(1, 7):\n                for k in range(1, 7):\n                    if gcd(j, k) == 1:\n                        dp[i][j] = (dp[i][j] + dp[i - 1][k]) % mod\n        return sum(dp[n]) % mod\n    \n    def gcd(self, a, b):\n        while b:\n            a, b = b, a % b\n        return a\n```\n\nsolution: \n```python\nclass Solution:\n    def distinctSequences(self, n: int) -> int:\n        mod = 10**9 + 7\n        dp = [[0 for _ in range(7)] for _ in range(n + 1)]\n        dp[0][1] = 1\n        for i in range(1, n + 1):\n            for j in range(1, 7):\n                for k in range(1, 7):\n                    if gcd(j, k) == 1:\n                        dp[i][j] = (dp[i][j] + dp[i - 1][k]) % mod\n        return sum(dp[n]) % mod\n    \n    def gcd(self, a, b):\n        while b:\n            a, b = b, a % b\n        return a\n```\nefficiency: HIGH\ntime complexity: O(n*6^2)\nspace complexity: O(n*6)\nenergy implications: LOW \nexplanation: The solution uses dynamic programming to store and calculate the number of distinct sequences possible for each roll count and possible dice value. It iterates through all possible combinations of adjacent dice rolls, ensuring the greatest common divisor is 1 and there's a gap of at least 2 between equal values. The modulo operation prevents integer overflow.",
+  "code": "solution:",
+  "timestamp": "2025-08-05T14:21:56.966538",
+  "code_extracted_previous": "class Solution:\n    def distinctSequences(self, n: int) -> int:\n        mod = 10**9 + 7\n        dp = [[0 for _ in range(7)] for _ in range(n + 1)]\n        dp[0][1] = 1\n        for i in range(1, n + 1):\n            for j in range(1, 7):\n                for k in range(1, 7):\n                    if gcd(j, k) == 1:\n                        dp[i][j] = (dp[i][j] + dp[i - 1][k]) % mod\n        return sum(dp[n]) % mod\n    \n    def gcd(self, a, b):\n        while b:\n            a, b = b, a % b\n        return a",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.242893"
+}

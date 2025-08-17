@@ -1,0 +1,15 @@
+{
+  "id": 7,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int reverse(int x) {\n        int rev = 0;\n        while (x != 0) {\n            int pop = x % 10;\n            x /= 10;\n            if (rev > INT_MAX / 10 || (rev == INT_MAX / 10 && pop > 7)) return 0;\n            if (rev < INT_MIN / 10 || (rev == INT_MIN / 10 && pop < -8)) return 0;\n            rev = rev * 10 + pop;\n        }\n        return rev;\n    }\n};\nefficiency: HIGH\ntime complexity: O(log10|x|)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Process digits one by one from the least-significant end, building the reversed value while checking for 32-bit overflow before each multiplication/addition. Uses only 32-bit arithmetic, no extra memory, and minimal CPU cycles per digit.",
+  "code": "class Solution {\npublic:\n    int reverse(int x) {\n        int rev = 0;\n        while (x != 0) {\n            int pop = x % 10;\n            x /= 10;\n            if (rev > INT_MAX / 10 || (rev == INT_MAX / 10 && pop > 7)) return 0;\n            if (rev < INT_MIN / 10 || (rev == INT_MIN / 10 && pop < -8)) return 0;\n            rev = rev * 10 + pop;\n        }\n        return rev;\n    }\n};",
+  "timestamp": "2025-08-05T15:37:05.847967",
+  "code_extracted_previous": "class Solution {\npublic:\n    int reverse(int x) {\n        int rev = 0;\n        while (x != 0) {\n            int pop = x % 10;\n            x /= 10;\n            if (rev > INT_MAX / 10 || (rev == INT_MAX / 10 && pop > 7)) return 0;\n            if (rev < INT_MIN / 10 || (rev == INT_MIN / 10 && pop < -8)) return 0;\n            rev = rev * 10 + pop;\n        }\n        return rev;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.255458"
+}

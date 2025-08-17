@@ -1,0 +1,15 @@
+{
+  "id": 2424,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class LUPrefix {\n    private boolean[] uploaded;\n    private int longestPrefix;\n    private int n;\n\n    public LUPrefix(int n) {\n        this.n = n;\n        this.uploaded = new boolean[n + 2];\n        this.longestPrefix = 0;\n    }\n    \n    public void upload(int video) {\n        uploaded[video] = true;\n        while (longestPrefix + 1 <= n && uploaded[longestPrefix + 1]) {\n            longestPrefix++;\n        }\n    }\n    \n    public int longest() {\n        return longestPrefix;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1) amortized per upload, O(1) per longest\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a boolean array to track uploads and a single counter that advances only when the next expected video arrives, ensuring minimal CPU cycles and memory traffic.",
+  "code": "class LUPrefix {\n    private boolean[] uploaded;\n    private int longestPrefix;\n    private int n;\n\n    public LUPrefix(int n) {\n        this.n = n;\n        this.uploaded = new boolean[n + 2];\n        this.longestPrefix = 0;\n    }\n    \n    public void upload(int video) {\n        uploaded[video] = true;\n        while (longestPrefix + 1 <= n && uploaded[longestPrefix + 1]) {\n            longestPrefix++;\n        }\n    }\n    \n    public int longest() {\n        return longestPrefix;\n    }\n}",
+  "timestamp": "2025-08-06T02:31:16.444808",
+  "code_extracted_previous": "private boolean[] uploaded;\n    private int longestPrefix;\n    private int n;\n\n    public LUPrefix(int n) {\n        this.n = n;\n        this.uploaded = new boolean[n + 2];\n        this.longestPrefix = 0;\n    }\n    \n    public void upload(int video) {\n        uploaded[video] = true;\n        while (longestPrefix + 1 <= n && uploaded[longestPrefix + 1]) {\n            longestPrefix++;\n        }\n    }\n    \n    public int longest() {\n        return longestPrefix;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:55.053634"
+}

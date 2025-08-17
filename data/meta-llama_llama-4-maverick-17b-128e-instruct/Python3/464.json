@@ -1,0 +1,15 @@
+{
+  "id": 464,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:\n        if (maxChoosableInteger * (maxChoosableInteger + 1)) // 2 < desiredTotal:\n            return False\n        self.memo = {}\n        return self.dfs((1 << (maxChoosableInteger + 1)) - 2, desiredTotal, maxChoosableInteger)\n\n    def dfs(self, mask, total, maxChoosableInteger):\n        if mask in self.memo:\n            return self.memo[mask]\n        for i in range(maxChoosableInteger, 0, -1):\n            if (mask >> i) & 1:\n                if i >= total or not self.dfs(mask ^ (1 << i), total - i, maxChoosableInteger):\n                    self.memo[mask] = True\n                    return True\n        self.memo[mask] = False\n        return False\n```\nefficiency: HIGH\ntime complexity: O(2^N)\nspace complexity: O(2^N)\nenergy implications: LOW\nexplanation: The solution uses a depth-first search (DFS) with memoization to efficiently explore the game tree, avoiding redundant computations by storing intermediate results. The key strength lies in its ability to prune branches by immediately returning when a winning move is found or when a losing position is memoized.",
+  "code": "def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:\n        if (maxChoosableInteger * (maxChoosableInteger + 1)) // 2 < desiredTotal:\n            return False\n        self.memo = {}\n        return self.dfs((1 << (maxChoosableInteger + 1)) - 2, desiredTotal, maxChoosableInteger)\n\n    def dfs(self, mask, total, maxChoosableInteger):\n        if mask in self.memo:\n            return self.memo[mask]\n        for i in range(maxChoosableInteger, 0, -1):\n            if (mask >> i) & 1:\n                if i >= total or not self.dfs(mask ^ (1 << i), total - i, maxChoosableInteger):\n                    self.memo[mask] = True\n                    return True\n        self.memo[mask] = False\n        return False\n```",
+  "timestamp": "2025-08-05T15:42:36.231312",
+  "code_extracted_previous": "class Solution:\n    def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:\n        if (maxChoosableInteger * (maxChoosableInteger + 1)) // 2 < desiredTotal:\n            return False\n        self.memo = {}\n        return self.dfs((1 << (maxChoosableInteger + 1)) - 2, desiredTotal, maxChoosableInteger)\n\n    def dfs(self, mask, total, maxChoosableInteger):\n        if mask in self.memo:\n            return self.memo[mask]\n        for i in range(maxChoosableInteger, 0, -1):\n            if (mask >> i) & 1:\n                if i >= total or not self.dfs(mask ^ (1 << i), total - i, maxChoosableInteger):\n                    self.memo[mask] = True\n                    return True\n        self.memo[mask] = False\n        return False",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.308015"
+}

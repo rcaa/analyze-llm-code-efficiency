@@ -1,0 +1,15 @@
+{
+  "id": 3455,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        def match(s, p):\n            if not p:\n                return not s\n            if p[0] == '*':\n                return match(s, p[1:]) or (s and match(s[1:], p))\n            return s and s[0] == p[0] and match(s[1:], p[1:])\n\n        min_len = float('inf')\n        for i in range(len(s)):\n            for j in range(i + 1, len(s) + 1):\n                if match(s[i:j], p):\n                    min_len = min(min_len, j - i)\n        return min_len if min_len != float('inf') else -1\n```\nefficiency: MEDIUM\ntime complexity: O(n^3)\nspace complexity: O(1)\nenergy implications: MEDIUM\nexplanation: The solution uses a recursive helper function to check if a substring of s matches the pattern p, and then iterates over all substrings of s to find the shortest matching one.",
+  "code": "def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        def match(s, p):\n            if not p:\n                return not s\n            if p[0] == '*':\n                return match(s, p[1:]) or (s and match(s[1:], p))\n            return s and s[0] == p[0] and match(s[1:], p[1:])\n\n        min_len = float('inf')\n        for i in range(len(s)):\n            for j in range(i + 1, len(s) + 1):\n                if match(s[i:j], p):\n                    min_len = min(min_len, j - i)\n        return min_len if min_len != float('inf') else -1\n```",
+  "timestamp": "2025-08-06T01:23:38.828776",
+  "code_extracted_previous": "class Solution:\n    def shortestMatchingSubstring(self, s: str, p: str) -> int:\n        def match(s, p):\n            if not p:\n                return not s\n            if p[0] == '*':\n                return match(s, p[1:]) or (s and match(s[1:], p))\n            return s and s[0] == p[0] and match(s[1:], p[1:])\n\n        min_len = float('inf')\n        for i in range(len(s)):\n            for j in range(i + 1, len(s) + 1):\n                if match(s[i:j], p):\n                    min_len = min(min_len, j - i)\n        return min_len if min_len != float('inf') else -1",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.537737"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = logs[0][1];\n        int resultId = logs[0][0];\n        int prevTime = 0;\n\n        for (int i = 1; i < logs.size(); ++i) {\n            int id = logs[i][0];\n            int currTime = logs[i][1];\n            int duration = currTime - prevTime;\n\n            if (duration > maxTime) {\n                maxTime = duration;\n                resultId = id;\n            } else if (duration == maxTime) {\n                resultId = min(resultId, id);\n            }\n\n            prevTime = currTime;\n        }\n\n        return resultId;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the logs once, calculating the duration of each task by subtracting the previous task's end time from the current task's end time. It keeps track of the maximum duration and the smallest id in case of ties. The key strengths are its linear time complexity and constant space usage, while the weakness is that it assumes logs are sorted by leaveTime, which is given in the problem constraints.",
+  "code": "class Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = logs[0][1];\n        int resultId = logs[0][0];\n        int prevTime = 0;\n\n        for (int i = 1; i < logs.size(); ++i) {\n            int id = logs[i][0];\n            int currTime = logs[i][1];\n            int duration = currTime - prevTime;\n\n            if (duration > maxTime) {\n                maxTime = duration;\n                resultId = id;\n            } else if (duration == maxTime) {\n                resultId = min(resultId, id);\n            }\n\n            prevTime = currTime;\n        }\n\n        return resultId;\n    }\n};",
+  "timestamp": "2025-08-05T12:48:16.674250",
+  "code_extracted_previous": "class Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = logs[0][1];\n        int resultId = logs[0][0];\n        int prevTime = 0;\n\n        for (int i = 1; i < logs.size(); ++i) {\n            int id = logs[i][0];\n            int currTime = logs[i][1];\n            int duration = currTime - prevTime;\n\n            if (duration > maxTime) {\n                maxTime = duration;\n                resultId = id;\n            } else if (duration == maxTime) {\n                resultId = min(resultId, id);\n            }\n\n            prevTime = currTime;\n        }\n\n        return resultId;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:59.100329"
+}

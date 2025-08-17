@@ -1,0 +1,15 @@
+{
+  "id": 2911,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int minimumChanges(String s, int k) {\n        int n = s.length();\n        int res = 0;\n        for (int i = 0; i < n; i += k) {\n            int[] cnt = new int[26];\n            for (int j = i; j < Math.min(i + k, n); j++) {\n                cnt[s.charAt(j) - 'a']++;\n            }\n            int maxCnt = 0;\n            for (int j = 0; j < 26; j++) {\n                maxCnt = Math.max(maxCnt, cnt[j]);\n            }\n            res += Math.min(i + k, n) - i - maxCnt;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string in chunks of size k, counting the frequency of each character in each chunk. It then calculates the minimum number of changes required to make each chunk a semi-palindrome by subtracting the maximum frequency from the chunk size.",
+  "code": "class Solution {\n    public int minimumChanges(String s, int k) {\n        int n = s.length();\n        int res = 0;\n        for (int i = 0; i < n; i += k) {\n            int[] cnt = new int[26];\n            for (int j = i; j < Math.min(i + k, n); j++) {\n                cnt[s.charAt(j) - 'a']++;\n            }\n            int maxCnt = 0;\n            for (int j = 0; j < 26; j++) {\n                maxCnt = Math.max(maxCnt, cnt[j]);\n            }\n            res += Math.min(i + k, n) - i - maxCnt;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T01:20:27.649868",
+  "code_extracted_previous": "class Solution {\n    public int minimumChanges(String s, int k) {\n        int n = s.length();\n        int res = 0;\n        for (int i = 0; i < n; i += k) {\n            int[] cnt = new int[26];\n            for (int j = i; j < Math.min(i + k, n); j++) {\n                cnt[s.charAt(j) - 'a']++;\n            }\n            int maxCnt = 0;\n            for (int j = 0; j < 26; j++) {\n                maxCnt = Math.max(maxCnt, cnt[j]);\n            }\n            res += Math.min(i + k, n) - i - maxCnt;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.327526"
+}

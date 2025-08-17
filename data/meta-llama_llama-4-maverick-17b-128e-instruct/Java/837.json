@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts) return 1.0;\n        double[] dp = new double[n + 1];\n        double probability = 0.0, windowSum = 1.0;\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = windowSum / maxPts;\n            if (i < k) windowSum += dp[i];\n            else probability += dp[i];\n            if (i >= maxPts) windowSum -= dp[i - maxPts];\n        }\n        return probability;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to store the probabilities of reaching each score from 0 to n. It maintains a sliding window sum to efficiently calculate the probabilities, ensuring a linear time complexity.\n```",
+  "code": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts) return 1.0;\n        double[] dp = new double[n + 1];\n        double probability = 0.0, windowSum = 1.0;\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = windowSum / maxPts;\n            if (i < k) windowSum += dp[i];\n            else probability += dp[i];\n            if (i >= maxPts) windowSum -= dp[i - maxPts];\n        }\n        return probability;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to store the probabilities of reaching each score from 0 to n. It maintains a sliding window sum to efficiently calculate the probabilities, ensuring a linear time complexity.",
+  "timestamp": "2025-08-05T15:45:27.132461",
+  "code_extracted_previous": "class Solution {\n    public double new21Game(int n, int k, int maxPts) {\n        if (k == 0 || n >= k + maxPts) return 1.0;\n        double[] dp = new double[n + 1];\n        double probability = 0.0, windowSum = 1.0;\n        dp[0] = 1.0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = windowSum / maxPts;\n            if (i < k) windowSum += dp[i];\n            else probability += dp[i];\n            if (i >= maxPts) windowSum -= dp[i - maxPts];\n        }\n        return probability;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:47.124193"
+}

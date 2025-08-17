@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        d = {v: i for i, v in enumerate(row)}\n        ans = 0\n        for i in range(n):\n            a, b = 2 * i, 2 * i + 1\n            if row[a] % 2 == 0 and row[b] == row[a] + 1 or row[b] % 2 == 1 and row[a] == row[b] - 1:\n                continue\n            if row[a] % 2 == 0:\n                target = row[a] + 1\n            else:\n                target = row[a] - 1\n            target_index = d[target]\n            row[b], row[target_index] = row[target_index], row[b]\n            d[row[b]], d[row[target_index]] = d[row[target_index]], d[row[b]]\n            ans += 1\n        return ans\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a dictionary to store the indices of each person in the row, then iterates over each couple, swapping them if they are not seated side by side, and updating the dictionary accordingly.",
+  "code": "def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        d = {v: i for i, v in enumerate(row)}\n        ans = 0\n        for i in range(n):\n            a, b = 2 * i, 2 * i + 1\n            if row[a] % 2 == 0 and row[b] == row[a] + 1 or row[b] % 2 == 1 and row[a] == row[b] - 1:\n                continue\n            if row[a] % 2 == 0:\n                target = row[a] + 1\n            else:\n                target = row[a] - 1\n            target_index = d[target]\n            row[b], row[target_index] = row[target_index], row[b]\n            d[row[b]], d[row[target_index]] = d[row[target_index]], d[row[b]]\n            ans += 1\n        return ans\n```",
+  "timestamp": "2025-08-06T15:20:56.112832",
+  "code_extracted_previous": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        d = {v: i for i, v in enumerate(row)}\n        ans = 0\n        for i in range(n):\n            a, b = 2 * i, 2 * i + 1\n            if row[a] % 2 == 0 and row[b] == row[a] + 1 or row[b] % 2 == 1 and row[a] == row[b] - 1:\n                continue\n            if row[a] % 2 == 0:\n                target = row[a] + 1\n            else:\n                target = row[a] - 1\n            target_index = d[target]\n            row[b], row[target_index] = row[target_index], row[b]\n            d[row[b]], d[row[target_index]] = d[row[target_index]], d[row[b]]\n            ans += 1\n        return ans",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.828216"
+}

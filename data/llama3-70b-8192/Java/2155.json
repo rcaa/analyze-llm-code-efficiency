@@ -1,0 +1,15 @@
+{
+  "id": 2155,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public List<Integer> maxScoreIndices(int[] nums) {\n        int n = nums.length;\n        int[] left = new int[n + 1];\n        int[] right = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            left[i + 1] = left[i] + (nums[i] == 0 ? 1 : 0);\n            right[n - i - 1] = right[n - i] + (nums[n - i - 1] == 1 ? 1 : 0);\n        }\n        int maxScore = 0;\n        List<Integer> res = new ArrayList<>();\n        for (int i = 0; i <= n; i++) {\n            int score = left[i] + right[i];\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.add(i);\n            } else if (score == maxScore) {\n                res.add(i);\n            }\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses two arrays to store the number of 0's in the left part and the number of 1's in the right part for each index. Then it iterates over the arrays to find the maximum score and the corresponding indices.",
+  "code": "class Solution {\n    public List<Integer> maxScoreIndices(int[] nums) {\n        int n = nums.length;\n        int[] left = new int[n + 1];\n        int[] right = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            left[i + 1] = left[i] + (nums[i] == 0 ? 1 : 0);\n            right[n - i - 1] = right[n - i] + (nums[n - i - 1] == 1 ? 1 : 0);\n        }\n        int maxScore = 0;\n        List<Integer> res = new ArrayList<>();\n        for (int i = 0; i <= n; i++) {\n            int score = left[i] + right[i];\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.add(i);\n            } else if (score == maxScore) {\n                res.add(i);\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:25:38.987675",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> maxScoreIndices(int[] nums) {\n        int n = nums.length;\n        int[] left = new int[n + 1];\n        int[] right = new int[n + 1];\n        for (int i = 0; i < n; i++) {\n            left[i + 1] = left[i] + (nums[i] == 0 ? 1 : 0);\n            right[n - i - 1] = right[n - i] + (nums[n - i - 1] == 1 ? 1 : 0);\n        }\n        int maxScore = 0;\n        List<Integer> res = new ArrayList<>();\n        for (int i = 0; i <= n; i++) {\n            int score = left[i] + right[i];\n            if (score > maxScore) {\n                maxScore = score;\n                res.clear();\n                res.add(i);\n            } else if (score == maxScore) {\n                res.add(i);\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.054793"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1131,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {\n        int n = arr1.size();\n        int maxVal = 0;\n        int dirs[4][3] = {{1,1,1}, {1,1,-1}, {1,-1,1}, {1,-1,-1}};\n        for (auto& d : dirs) {\n            int a = d[0], b = d[1], c = d[2];\n            int minV = a * arr1[0] + b * arr2[0] + c * 0;\n            int maxV = minV;\n            for (int i = 1; i < n; ++i) {\n                int val = a * arr1[i] + b * arr2[i] + c * i;\n                minV = min(minV, val);\n                maxV = max(maxV, val);\n            }\n            maxVal = max(maxVal, maxV - minV);\n        }\n        return maxVal;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The expression is rewritten as the maximum of eight linear forms; by considering the four sign combinations of the absolute values we reduce the problem to four independent 1-D max-min problems, each solvable in linear time.",
+  "code": "class Solution {\npublic:\n    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {\n        int n = arr1.size();\n        int maxVal = 0;\n        int dirs[4][3] = {{1,1,1}, {1,1,-1}, {1,-1,1}, {1,-1,-1}};\n        for (auto& d : dirs) {\n            int a = d[0], b = d[1], c = d[2];\n            int minV = a * arr1[0] + b * arr2[0] + c * 0;\n            int maxV = minV;\n            for (int i = 1; i < n; ++i) {\n                int val = a * arr1[i] + b * arr2[i] + c * i;\n                minV = min(minV, val);\n                maxV = max(maxV, val);\n            }\n            maxVal = max(maxVal, maxV - minV);\n        }\n        return maxVal;\n    }\n};",
+  "timestamp": "2025-08-05T13:20:08.042964",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {\n        int n = arr1.size();\n        int maxVal = 0;\n        int dirs[4][3] = {{1,1,1}, {1,1,-1}, {1,-1,1}, {1,-1,-1}};\n        for (auto& d : dirs) {\n            int a = d[0], b = d[1], c = d[2];\n            int minV = a * arr1[0] + b * arr2[0] + c * 0;\n            int maxV = minV;\n            for (int i = 1; i < n; ++i) {\n                int val = a * arr1[i] + b * arr2[i] + c * i;\n                minV = min(minV, val);\n                maxV = max(maxV, val);\n            }\n            maxVal = max(maxVal, maxV - minV);\n        }\n        return maxVal;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.131242"
+}

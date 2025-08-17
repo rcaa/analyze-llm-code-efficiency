@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass RecentCounter {\n    Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (!queue.isEmpty() && queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a queue to store the timestamps of the requests. When a new request is made, it is added to the queue and then the queue is trimmed to only include requests that are within the 3000ms time frame. The size of the queue after trimming is the number of requests that have happened in the past 3000ms. The time complexity is O(1) because the trimming operation is done in constant time, and the space complexity is O(1) because the size of the queue is bounded by the number of requests made in the past 3000ms.",
+  "code": "class RecentCounter {\n    Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (!queue.isEmpty() && queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}",
+  "timestamp": "2025-08-05T14:07:42.349702",
+  "code_extracted_previous": "class RecentCounter {\n    Queue<Integer> queue;\n\n    public RecentCounter() {\n        queue = new LinkedList<>();\n    }\n    \n    public int ping(int t) {\n        queue.offer(t);\n        while (!queue.isEmpty() && queue.peek() < t - 3000) {\n            queue.poll();\n        }\n        return queue.size();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:43.108407"
+}

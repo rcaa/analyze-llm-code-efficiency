@@ -1,0 +1,15 @@
+{
+  "id": 1456,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int n = s.size();\n        int cnt = 0, maxCnt = 0;\n        auto isVowel = [](char c) {\n            return c=='a'||c=='e'||c=='i'||c=='o'||c=='u';\n        };\n        for (int i = 0; i < n; ++i) {\n            if (isVowel(s[i])) ++cnt;\n            if (i >= k && isVowel(s[i-k])) --cnt;\n            maxCnt = max(maxCnt, cnt);\n        }\n        return maxCnt;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window technique counts vowels in the first k characters, then slides the window one character at a time, adding the new character and removing the old one from the count. Single pass, constant extra space.",
+  "code": "class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int n = s.size();\n        int cnt = 0, maxCnt = 0;\n        auto isVowel = [](char c) {\n            return c=='a'||c=='e'||c=='i'||c=='o'||c=='u';\n        };\n        for (int i = 0; i < n; ++i) {\n            if (isVowel(s[i])) ++cnt;\n            if (i >= k && isVowel(s[i-k])) --cnt;\n            maxCnt = max(maxCnt, cnt);\n        }\n        return maxCnt;\n    }\n};",
+  "timestamp": "2025-08-06T00:53:21.531534",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int n = s.size();\n        int cnt = 0, maxCnt = 0;\n        auto isVowel = [](char c) {\n            return c=='a'||c=='e'||c=='i'||c=='o'||c=='u';\n        };\n        for (int i = 0; i < n; ++i) {\n            if (isVowel(s[i])) ++cnt;\n            if (i >= k && isVowel(s[i-k])) --cnt;\n            maxCnt = max(maxCnt, cnt);\n        }\n        return maxCnt;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.243643"
+}

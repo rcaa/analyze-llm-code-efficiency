@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        final int MOD = 1000000007;\n        long[] dp = new long[goal + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            dp[i] = (i <= n ? i : n) * dp[i - 1];\n            if (i - k - 1 >= 0) {\n                dp[i] -= (i - k - 1 <= n ? i - k - 1 : n) * dp[i - k - 1];\n                dp[i] = (dp[i] + MOD) % MOD;\n            }\n        }\n        return (int) dp[goal];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(goal)\nspace complexity: O(goal)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently calculate the number of possible playlists. The dp array stores the number of playlists for each goal, and the transition is based on the number of songs that can be added at each step.",
+  "code": "class Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        final int MOD = 1000000007;\n        long[] dp = new long[goal + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            dp[i] = (i <= n ? i : n) * dp[i - 1];\n            if (i - k - 1 >= 0) {\n                dp[i] -= (i - k - 1 <= n ? i - k - 1 : n) * dp[i - k - 1];\n                dp[i] = (dp[i] + MOD) % MOD;\n            }\n        }\n        return (int) dp[goal];\n    }\n}",
+  "timestamp": "2025-08-05T15:18:14.624568",
+  "code_extracted_previous": "class Solution {\n    public int numMusicPlaylists(int n, int goal, int k) {\n        final int MOD = 1000000007;\n        long[] dp = new long[goal + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= goal; i++) {\n            dp[i] = (i <= n ? i : n) * dp[i - 1];\n            if (i - k - 1 >= 0) {\n                dp[i] -= (i - k - 1 <= n ? i - k - 1 : n) * dp[i - k - 1];\n                dp[i] = (dp[i] + MOD) % MOD;\n            }\n        }\n        return (int) dp[goal];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.765702"
+}

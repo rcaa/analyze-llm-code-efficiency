@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\nclass Solution {\n    public int findTheLongestBalancedSubstring(String s) {\n        int maxLen = 0, countZeros = 0, countOnes = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '0') {\n                countZeros++;\n                countOnes = 0;\n            } else {\n                countOnes++;\n                if (countZeros == countOnes) {\n                    maxLen = Math.max(maxLen, 2 * countOnes);\n                    countZeros = 0;\n                    countOnes = 0;\n                }\n            }\n        }\n        return maxLen;\n    }\n}\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a single pass through the string, keeping track of the count of zeroes and ones. When the count of zeroes equals the count of ones, it updates the maximum length of the balanced substring and resets the counts.",
+  "code": "class Solution {\n    public int findTheLongestBalancedSubstring(String s) {\n        int maxLen = 0, countZeros = 0, countOnes = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '0') {\n                countZeros++;\n                countOnes = 0;\n            } else {\n                countOnes++;\n                if (countZeros == countOnes) {\n                    maxLen = Math.max(maxLen, 2 * countOnes);\n                    countZeros = 0;\n                    countOnes = 0;\n                }\n            }\n        }\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-05T23:42:38.185514",
+  "code_extracted_previous": "class Solution {\n    public int findTheLongestBalancedSubstring(String s) {\n        int maxLen = 0, countZeros = 0, countOnes = 0;\n        for (int i = 0; i < s.length(); i++) {\n            if (s.charAt(i) == '0') {\n                countZeros++;\n                countOnes = 0;\n            } else {\n                countOnes++;\n                if (countZeros == countOnes) {\n                    maxLen = Math.max(maxLen, 2 * countOnes);\n                    countZeros = 0;\n                    countOnes = 0;\n                }\n            }\n        }\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.492325"
+}

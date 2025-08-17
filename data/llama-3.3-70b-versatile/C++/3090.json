@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        int left = 0, maxLen = 0;\n        unordered_map<char, int> count;\n        for (int right = 0; right < s.size(); right++) {\n            count[s[right]]++;\n            while (count[s[right]] > 2) {\n                count[s[left]]--;\n                if (count[s[left]] == 0) {\n                    count.erase(s[left]);\n                }\n                left++;\n            }\n            maxLen = max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, m))\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach with an unordered map to track character counts, ensuring at most two occurrences of each character in the current substring.",
+  "code": "class Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        int left = 0, maxLen = 0;\n        unordered_map<char, int> count;\n        for (int right = 0; right < s.size(); right++) {\n            count[s[right]]++;\n            while (count[s[right]] > 2) {\n                count[s[left]]--;\n                if (count[s[left]] == 0) {\n                    count.erase(s[left]);\n                }\n                left++;\n            }\n            maxLen = max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-06T15:10:49.727261",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        int left = 0, maxLen = 0;\n        unordered_map<char, int> count;\n        for (int right = 0; right < s.size(); right++) {\n            count[s[right]]++;\n            while (count[s[right]] > 2) {\n                count[s[left]]--;\n                if (count[s[left]] == 0) {\n                    count.erase(s[left]);\n                }\n                left++;\n            }\n            maxLen = max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.594774"
+}

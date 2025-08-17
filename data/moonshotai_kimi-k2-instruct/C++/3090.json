@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        int cnt[26] = {0};\n        int left = 0, maxLen = 0;\n        for (int right = 0; right < s.size(); ++right) {\n            int idx = s[right] - 'a';\n            ++cnt[idx];\n            while (cnt[idx] > 2) {\n                --cnt[s[left] - 'a'];\n                ++left;\n            }\n            maxLen = max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window technique keeps a fixed-size frequency array (26 counters) and expands the window until any character exceeds two occurrences, then shrinks from the left. Single pass, constant memory, minimal cache pressure.",
+  "code": "class Solution {\npublic:\n    int maximumLengthSubstring(string s) {\n        int cnt[26] = {0};\n        int left = 0, maxLen = 0;\n        for (int right = 0; right < s.size(); ++right) {\n            int idx = s[right] - 'a';\n            ++cnt[idx];\n            while (cnt[idx] > 2) {\n                --cnt[s[left] - 'a'];\n                ++left;\n            }\n            maxLen = max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-06T02:29:46.100456",
+  "code_extracted_previous": "public:\n    int maximumLengthSubstring(string s) {\n        int cnt[26] = {0};\n        int left = 0, maxLen = 0;\n        for (int right = 0; right < s.size(); ++right) {\n            int idx = s[right] - 'a';\n            ++cnt[idx];\n            while (cnt[idx] > 2) {\n                --cnt[s[left] - 'a'];\n                ++left;\n            }\n            maxLen = max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.904541"
+}

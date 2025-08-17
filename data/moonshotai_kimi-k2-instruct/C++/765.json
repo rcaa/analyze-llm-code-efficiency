@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size();\n        vector<int> pos(n);\n        for (int i = 0; i < n; ++i) pos[row[i]] = i;\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            int x = row[i];\n            int y = x ^ 1;\n            if (row[i + 1] != y) {\n                int j = pos[y];\n                swap(row[i + 1], row[j]);\n                pos[row[j]] = j;\n                pos[row[i + 1]] = i + 1;\n                ++swaps;\n            }\n        }\n        return swaps;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Track each person's seat with a position array. Iterate over seats two-by-two; if the partner of the left person is not adjacent, swap it into place. Each misplaced couple is fixed with one swap, yielding the minimum count.",
+  "code": "class Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size();\n        vector<int> pos(n);\n        for (int i = 0; i < n; ++i) pos[row[i]] = i;\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            int x = row[i];\n            int y = x ^ 1;\n            if (row[i + 1] != y) {\n                int j = pos[y];\n                swap(row[i + 1], row[j]);\n                pos[row[j]] = j;\n                pos[row[i + 1]] = i + 1;\n                ++swaps;\n            }\n        }\n        return swaps;\n    }\n};",
+  "timestamp": "2025-08-05T14:31:06.127661",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size();\n        vector<int> pos(n);\n        for (int i = 0; i < n; ++i) pos[row[i]] = i;\n        int swaps = 0;\n        for (int i = 0; i < n; i += 2) {\n            int x = row[i];\n            int y = x ^ 1;\n            if (row[i + 1] != y) {\n                int j = pos[y];\n                swap(row[i + 1], row[j]);\n                pos[row[j]] = j;\n                pos[row[i + 1]] = i + 1;\n                ++swaps;\n            }\n        }\n        return swaps;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.290197"
+}

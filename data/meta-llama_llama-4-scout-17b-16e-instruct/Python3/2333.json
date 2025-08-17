@@ -1,0 +1,15 @@
+{
+  "id": 2333,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```python\nimport heapq\nfrom typing import List\n\nclass Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        k = k1 + k2\n        diff = [(abs(x - y), i) for i, (x, y) in enumerate(zip(nums1, nums2))]\n        heapq.heapify(diff)\n        res = sum((x - y) ** 2 for x, y in zip(nums1, nums2))\n        while k and diff:\n            d, _ = heapq.heappop(diff)\n            dec = min(d, k)\n            res -= dec ** 2\n            k -= dec\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution efficiently minimizes the sum of squared differences by utilizing a priority queue (heap) to focus on the largest differences first, allowing for optimal use of the limited modification operations (`k1` and `k2`).",
+  "code": "class Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        k = k1 + k2\n        diff = [(abs(x - y), i) for i, (x, y) in enumerate(zip(nums1, nums2))]\n        heapq.heapify(diff)\n        res = sum((x - y) ** 2 for x, y in zip(nums1, nums2))\n        while k and diff:\n            d, _ = heapq.heappop(diff)\n            dec = min(d, k)\n            res -= dec ** 2\n            k -= dec\n        return res",
+  "timestamp": "2025-08-05T13:28:42.267140",
+  "code_extracted_previous": "import heapq\nfrom typing import List\n\nclass Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        k = k1 + k2\n        diff = [(abs(x - y), i) for i, (x, y) in enumerate(zip(nums1, nums2))]\n        heapq.heapify(diff)\n        res = sum((x - y) ** 2 for x, y in zip(nums1, nums2))\n        while k and diff:\n            d, _ = heapq.heappop(diff)\n            dec = min(d, k)\n            res -= dec ** 2\n            k -= dec\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.153243"
+}

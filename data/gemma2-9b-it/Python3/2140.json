@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        dp = [0] * len(questions)\n        dp[0] = questions[0][0]\n        for i in range(1, len(questions)):\n            dp[i] = max(questions[i][0] + dp[i - questions[i][1]], dp[i - 1])\n        return dp[-1]\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to store the maximum points achievable up to each question. It iterates through the questions, calculating the maximum points by either solving the current question or skipping it and considering the maximum points from the previous subproblem. \n\n\n",
+  "code": "def mostPoints(self, questions: List[List[int]]) -> int:\n        dp = [0] * len(questions)\n        dp[0] = questions[0][0]\n        for i in range(1, len(questions)):\n            dp[i] = max(questions[i][0] + dp[i - questions[i][1]], dp[i - 1])\n        return dp[-1]\n```",
+  "timestamp": "2025-08-05T13:25:15.426568",
+  "code_extracted_previous": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        dp = [0] * len(questions)\n        dp[0] = questions[0][0]\n        for i in range(1, len(questions)):\n            dp[i] = max(questions[i][0] + dp[i - questions[i][1]], dp[i - 1])\n        return dp[-1]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.153092"
+}

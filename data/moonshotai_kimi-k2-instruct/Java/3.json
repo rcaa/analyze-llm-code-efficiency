@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int[] last = new int[256];\n        for (int i = 0; i < 256; i++) last[i] = -1;\n        int left = 0, max = 0;\n        for (int right = 0; right < s.length(); right++) {\n            char c = s.charAt(right);\n            if (last[c] >= left) left = last[c] + 1;\n            last[c] = right;\n            max = Math.max(max, right - left + 1);\n        }\n        return max;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window with a fixed-size array to store the last index of each character. The window expands rightward and contracts leftward only when a duplicate is found, guaranteeing each character is processed at most twice.",
+  "code": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int[] last = new int[256];\n        for (int i = 0; i < 256; i++) last[i] = -1;\n        int left = 0, max = 0;\n        for (int right = 0; right < s.length(); right++) {\n            char c = s.charAt(right);\n            if (last[c] >= left) left = last[c] + 1;\n            last[c] = right;\n            max = Math.max(max, right - left + 1);\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-06T02:31:31.482872",
+  "code_extracted_previous": "public int lengthOfLongestSubstring(String s) {\n        int[] last = new int[256];\n        for (int i = 0; i < 256; i++) last[i] = -1;\n        int left = 0, max = 0;\n        for (int right = 0; right < s.length(); right++) {\n            char c = s.charAt(right);\n            if (last[c] >= left) left = last[c] + 1;\n            last[c] = right;\n            max = Math.max(max, right - left + 1);\n        }\n        return max;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.248237"
+}

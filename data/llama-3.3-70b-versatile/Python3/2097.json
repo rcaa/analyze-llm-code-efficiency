@@ -1,0 +1,15 @@
+{
+  "id": 2097,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nfrom collections import defaultdict, deque\nfrom typing import List\n\nclass Solution:\n    def validArrangement(self, pairs: List[List[int]]) -> List[List[int]]:\n        graph = defaultdict(list)\n        in_degree = defaultdict(int)\n        \n        for start, end in pairs:\n            graph[start].append(end)\n            in_degree[end] += 1\n        \n        for start, _ in pairs:\n            if start not in in_degree:\n                start_node = start\n                break\n        \n        result = []\n        stack = deque([start_node])\n        \n        while stack:\n            if graph[stack[-1]]:\n                stack.append(graph[stack[-1]].pop())\n            else:\n                result.append([stack.pop(), stack[-1]] if len(stack) > 1 else [stack.pop(), None])\n        \n        return result[::-1]\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a graph to model the pairs and performs a depth-first search to find a valid arrangement, ensuring that the end of each pair matches the start of the next pair.",
+  "code": "def validArrangement(self, pairs: List[List[int]]) -> List[List[int]]:\n        graph = defaultdict(list)\n        in_degree = defaultdict(int)\n        \n        for start, end in pairs:\n            graph[start].append(end)\n            in_degree[end] += 1\n        \n        for start, _ in pairs:\n            if start not in in_degree:\n                start_node = start\n                break\n        \n        result = []\n        stack = deque([start_node])\n        \n        while stack:\n            if graph[stack[-1]]:\n                stack.append(graph[stack[-1]].pop())\n            else:\n                result.append([stack.pop(), stack[-1]] if len(stack) > 1 else [stack.pop(), None])\n        \n        return result[::-1]\n```",
+  "timestamp": "2025-08-06T15:17:34.080953",
+  "code_extracted_previous": "from collections import defaultdict, deque\nfrom typing import List\n\nclass Solution:\n    def validArrangement(self, pairs: List[List[int]]) -> List[List[int]]:\n        graph = defaultdict(list)\n        in_degree = defaultdict(int)\n        \n        for start, end in pairs:\n            graph[start].append(end)\n            in_degree[end] += 1\n        \n        for start, _ in pairs:\n            if start not in in_degree:\n                start_node = start\n                break\n        \n        result = []\n        stack = deque([start_node])\n        \n        while stack:\n            if graph[stack[-1]]:\n                stack.append(graph[stack[-1]].pop())\n            else:\n                result.append([stack.pop(), stack[-1]] if len(stack) > 1 else [stack.pop(), None])\n        \n        return result[::-1]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.014513"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.matrix = [[0] * n for _ in range(m)]\n        self.count = m * n\n\n    def flip(self) -> List[int]:\n        if not self.count:\n            return []\n        i = random.randint(0, self.m - 1)\n        j = random.randint(0, self.n - 1)\n        while self.matrix[i][j] == 1:\n            i = random.randint(0, self.m - 1)\n            j = random.randint(0, self.n - 1)\n        self.matrix[i][j] = 1\n        self.count -= 1\n        return [i, j]\n\n    def reset(self) -> None:\n        self.matrix = [[0] * self.n for _ in range(self.m)]\n        self.count = self.m * self.n\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(m * n)\nenergy implications: LOW\nexplanation: This solution uses a matrix to store the binary grid and a count to keep track of the number of free cells. The flip function uses random numbers to select a cell and flips it to 1. The reset function resets the matrix to all 0s. The solution has a high efficiency as it only requires a constant time to flip or reset the matrix, and the space complexity is O(m * n) as it needs to store the matrix.",
+  "code": "class Solution:\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.matrix = [[0] * n for _ in range(m)]\n        self.count = m * n\n\n    def flip(self) -> List[int]:\n        if not self.count:\n            return []\n        i = random.randint(0, self.m - 1)\n        j = random.randint(0, self.n - 1)\n        while self.matrix[i][j] == 1:\n            i = random.randint(0, self.m - 1)\n            j = random.randint(0, self.n - 1)\n        self.matrix[i][j] = 1\n        self.count -= 1\n        return [i, j]\n\n    def reset(self) -> None:\n        self.matrix = [[0] * self.n for _ in range(self.m)]\n        self.count = self.m * self.n",
+  "timestamp": "2025-08-05T14:54:26.942907",
+  "code_extracted_previous": "class Solution:\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.matrix = [[0] * n for _ in range(m)]\n        self.count = m * n\n\n    def flip(self) -> List[int]:\n        if not self.count:\n            return []\n        i = random.randint(0, self.m - 1)\n        j = random.randint(0, self.n - 1)\n        while self.matrix[i][j] == 1:\n            i = random.randint(0, self.m - 1)\n            j = random.randint(0, self.n - 1)\n        self.matrix[i][j] = 1\n        self.count -= 1\n        return [i, j]\n\n    def reset(self) -> None:\n        self.matrix = [[0] * self.n for _ in range(self.m)]\n        self.count = self.m * self.n",
+  "starter_ok": false,
+  "starter_check_reason": "assinatura divergente: esperada '__init__(self, m, n)'",
+  "reavaliado_em": "2025-08-17T12:23:44.295719"
+}

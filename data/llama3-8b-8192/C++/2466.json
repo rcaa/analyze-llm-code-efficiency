@@ -1,0 +1,15 @@
+{
+  "id": 2466,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1e9 + 7;\n        long long res = 0;\n        for (int len = low; len <= high; ++len) {\n            res += (pow(2, len, MOD) - 1) * (pow(2, len - 1, MOD) - 1) % MOD;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(high - low)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use dynamic programming to calculate the number of good strings for each length from low to high. For each length, we calculate the number of good strings by multiplying the number of ways to choose '0's and '1's, and then take the result modulo 10^9 + 7.",
+  "code": "class Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1e9 + 7;\n        long long res = 0;\n        for (int len = low; len <= high; ++len) {\n            res += (pow(2, len, MOD) - 1) * (pow(2, len - 1, MOD) - 1) % MOD;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:26:47.788536",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1e9 + 7;\n        long long res = 0;\n        for (int len = low; len <= high; ++len) {\n            res += (pow(2, len, MOD) - 1) * (pow(2, len - 1, MOD) - 1) % MOD;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.030633"
+}

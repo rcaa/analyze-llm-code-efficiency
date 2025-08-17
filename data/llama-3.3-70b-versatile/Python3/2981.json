@@ -1,0 +1,15 @@
+{
+  "id": 2981,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maximumLength(self, s: str) -> int:\n        def check(length):\n            substrings = set()\n            for i in range(len(s) - length + 1):\n                substring = s[i:i+length]\n                if len(set(substring)) == 1:\n                    substrings.add(substring)\n            return len(substrings) >= 3\n\n        for length in range(len(s), 0, -1):\n            if check(length):\n                return length\n        return -1\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over possible lengths of substrings in descending order and checks if there are at least three special substrings of that length, returning the first such length found.",
+  "code": "def maximumLength(self, s: str) -> int:\n        def check(length):\n            substrings = set()\n            for i in range(len(s) - length + 1):\n                substring = s[i:i+length]\n                if len(set(substring)) == 1:\n                    substrings.add(substring)\n            return len(substrings) >= 3\n\n        for length in range(len(s), 0, -1):\n            if check(length):\n                return length\n        return -1\n```",
+  "timestamp": "2025-08-06T15:19:16.534453",
+  "code_extracted_previous": "class Solution:\n    def maximumLength(self, s: str) -> int:\n        def check(length):\n            substrings = set()\n            for i in range(len(s) - length + 1):\n                substring = s[i:i+length]\n                if len(set(substring)) == 1:\n                    substrings.add(substring)\n            return len(substrings) >= 3\n\n        for length in range(len(s), 0, -1):\n            if check(length):\n                return length\n        return -1",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.395203"
+}

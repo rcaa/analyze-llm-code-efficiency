@@ -1,0 +1,15 @@
+{
+  "id": 1370,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    string sortString(string s) {\n        string res;\n        sort(s.begin(), s.end());\n        while (!s.empty()) {\n            res += s.back();\n            s.pop_back();\n            string temp;\n            for (char c : s) {\n                if (c < res.back()) {\n                    temp += c;\n                }\n            }\n            s = temp;\n            temp.clear();\n            while (!s.empty() && s.back() < res.back()) {\n                res += s.back();\n                s.pop_back();\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sorting approach to efficiently reorder the string. It first sorts the string, then iteratively removes the smallest and largest characters from the remaining string, appending them to the result. This process is repeated until all characters have been removed. The solution has a high efficiency due to the use of the sort function, which has a time complexity of O(n log n).",
+  "code": "class Solution {\npublic:\n    string sortString(string s) {\n        string res;\n        sort(s.begin(), s.end());\n        while (!s.empty()) {\n            res += s.back();\n            s.pop_back();\n            string temp;\n            for (char c : s) {\n                if (c < res.back()) {\n                    temp += c;\n                }\n            }\n            s = temp;\n            temp.clear();\n            while (!s.empty() && s.back() < res.back()) {\n                res += s.back();\n                s.pop_back();\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:42:16.594745",
+  "code_extracted_previous": "public:\n    string sortString(string s) {\n        string res;\n        sort(s.begin(), s.end());\n        while (!s.empty()) {\n            res += s.back();\n            s.pop_back();\n            string temp;\n            for (char c : s) {\n                if (c < res.back()) {\n                    temp += c;\n                }\n            }\n            s = temp;\n            temp.clear();\n            while (!s.empty() && s.back() < res.back()) {\n                res += s.back();\n                s.pop_back();\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.574122"
+}

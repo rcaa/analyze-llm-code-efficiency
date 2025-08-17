@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maximumLengthSubstring(String s) {\n        int maxLen = 0;\n        int left = 0;\n        int[] charCount = new int[26];\n\n        for (int right = 0; right < s.length(); right++) {\n            charCount[s.charAt(right) - 'a']++;\n\n            while (charCount[s.charAt(right) - 'a'] > 2) {\n                charCount[s.charAt(left) - 'a']--;\n                left++;\n            }\n\n            maxLen = Math.max(maxLen, right - left + 1);\n        }\n\n        return maxLen;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach with two pointers (left and right) to track the maximum length substring. It maintains a character count array to ensure that no character appears more than twice within the current substring. When a character's count exceeds 2, it adjusts the left pointer to maintain the constraint.",
+  "code": "class Solution {\n    public int maximumLengthSubstring(String s) {\n        int maxLen = 0;\n        int left = 0;\n        int[] charCount = new int[26];\n\n        for (int right = 0; right < s.length(); right++) {\n            charCount[s.charAt(right) - 'a']++;\n\n            while (charCount[s.charAt(right) - 'a'] > 2) {\n                charCount[s.charAt(left) - 'a']--;\n                left++;\n            }\n\n            maxLen = Math.max(maxLen, right - left + 1);\n        }\n\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-05T14:49:10.296656",
+  "code_extracted_previous": "class Solution {\n    public int maximumLengthSubstring(String s) {\n        int maxLen = 0;\n        int left = 0;\n        int[] charCount = new int[26];\n\n        for (int right = 0; right < s.length(); right++) {\n            charCount[s.charAt(right) - 'a']++;\n\n            while (charCount[s.charAt(right) - 'a'] > 2) {\n                charCount[s.charAt(left) - 'a']--;\n                left++;\n            }\n\n            maxLen = Math.max(maxLen, right - left + 1);\n        }\n\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.119283"
+}

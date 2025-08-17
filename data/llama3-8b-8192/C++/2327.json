@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        long long MOD = 1e9 + 7;\n        vector<long long> dp(forget + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = max(0, i - forget); j <= i - delay; j++) {\n                dp[i % (forget + 1)] = (dp[i % (forget + 1)] + dp[j]) % MOD;\n            }\n        }\n        return dp[n % (forget + 1)];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(forget)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to keep track of the number of people who know the secret at each day. The state dp[i] represents the number of people who know the secret at day i. The transition from day j to day i is done by adding the number of people who know the secret at day j to the number of people who know the secret at day i. The result is taken modulo 10^9 + 7 to avoid overflow.",
+  "code": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        long long MOD = 1e9 + 7;\n        vector<long long> dp(forget + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = max(0, i - forget); j <= i - delay; j++) {\n                dp[i % (forget + 1)] = (dp[i % (forget + 1)] + dp[j]) % MOD;\n            }\n        }\n        return dp[n % (forget + 1)];\n    }\n};",
+  "timestamp": "2025-08-05T14:26:11.822386",
+  "code_extracted_previous": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        long long MOD = 1e9 + 7;\n        vector<long long> dp(forget + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = max(0, i - forget); j <= i - delay; j++) {\n                dp[i % (forget + 1)] = (dp[i % (forget + 1)] + dp[j]) % MOD;\n            }\n        }\n        return dp[n % (forget + 1)];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.950626"
+}

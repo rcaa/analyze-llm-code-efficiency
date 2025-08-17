@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int[] firstIndex = new int[26];\n        int[] lastIndex = new int[26];\n        boolean[] found = new boolean[26];\n        \n        for (int i = 0; i < s.length(); i++) {\n            int index = s.charAt(i) - 'a';\n            if (!found[index]) {\n                firstIndex[index] = i;\n                found[index] = true;\n            }\n            lastIndex[index] = i;\n        }\n\n        int maxLen = -1;\n        for (int i = 0; i < 26; i++) {\n            if (found[i]) {\n                maxLen = Math.max(maxLen, lastIndex[i] - firstIndex[i] - 1);\n            }\n        }\n\n        return maxLen;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution tracks the first and last occurrence of each character using two arrays. It then calculates the maximum distance between any two equal characters, excluding the characters themselves. This approach is efficient with linear time complexity and constant space.",
+  "code": "class Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int[] firstIndex = new int[26];\n        int[] lastIndex = new int[26];\n        boolean[] found = new boolean[26];\n        \n        for (int i = 0; i < s.length(); i++) {\n            int index = s.charAt(i) - 'a';\n            if (!found[index]) {\n                firstIndex[index] = i;\n                found[index] = true;\n            }\n            lastIndex[index] = i;\n        }\n\n        int maxLen = -1;\n        for (int i = 0; i < 26; i++) {\n            if (found[i]) {\n                maxLen = Math.max(maxLen, lastIndex[i] - firstIndex[i] - 1);\n            }\n        }\n\n        return maxLen;\n    }\n}",
+  "timestamp": "2025-08-06T17:04:48.966981",
+  "code_extracted_previous": "class Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int[] firstIndex = new int[26];\n        int[] lastIndex = new int[26];\n        boolean[] found = new boolean[26];\n        \n        for (int i = 0; i < s.length(); i++) {\n            int index = s.charAt(i) - 'a';\n            if (!found[index]) {\n                firstIndex[index] = i;\n                found[index] = true;\n            }\n            lastIndex[index] = i;\n        }\n\n        int maxLen = -1;\n        for (int i = 0; i < 26; i++) {\n            if (found[i]) {\n                maxLen = Math.max(maxLen, lastIndex[i] - firstIndex[i] - 1);\n            }\n        }\n\n        return maxLen;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:01.814339"
+}

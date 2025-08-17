@@ -1,0 +1,15 @@
+{
+  "id": 295,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass MedianFinder {\npublic:\n    MedianFinder() {\n        \n    }\n    \n    void addNum(int num) {\n        maxHeap.push(num);\n        minHeap.push(maxHeap.top());\n        maxHeap.pop();\n        if (maxHeap.size() < minHeap.size()) {\n            maxHeap.push(minHeap.top());\n            minHeap.pop();\n        }\n    }\n    \n    double findMedian() {\n        if (maxHeap.size() == minHeap.size()) {\n            return (maxHeap.top() + minHeap.top()) / 2.0;\n        } else {\n            return maxHeap.top();\n        }\n    }\nprivate:\n    priority_queue<int> maxHeap;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses two heaps, a max heap to store the smaller half of the numbers and a min heap to store the larger half. This allows for efficient addition of new numbers and calculation of the median.",
+  "code": "class MedianFinder {\npublic:\n    MedianFinder() {\n        \n    }\n    \n    void addNum(int num) {\n        maxHeap.push(num);\n        minHeap.push(maxHeap.top());\n        maxHeap.pop();\n        if (maxHeap.size() < minHeap.size()) {\n            maxHeap.push(minHeap.top());\n            minHeap.pop();\n        }\n    }\n    \n    double findMedian() {\n        if (maxHeap.size() == minHeap.size()) {\n            return (maxHeap.top() + minHeap.top()) / 2.0;\n        } else {\n            return maxHeap.top();\n        }\n    }\nprivate:\n    priority_queue<int> maxHeap;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n};",
+  "timestamp": "2025-08-06T01:13:38.118600",
+  "code_extracted_previous": "class MedianFinder {\npublic:\n    MedianFinder() {\n        \n    }\n    \n    void addNum(int num) {\n        maxHeap.push(num);\n        minHeap.push(maxHeap.top());\n        maxHeap.pop();\n        if (maxHeap.size() < minHeap.size()) {\n            maxHeap.push(minHeap.top());\n            minHeap.pop();\n        }\n    }\n    \n    double findMedian() {\n        if (maxHeap.size() == minHeap.size()) {\n            return (maxHeap.top() + minHeap.top()) / 2.0;\n        } else {\n            return maxHeap.top();\n        }\n    }\nprivate:\n    priority_queue<int> maxHeap;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:36.673523"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1011,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int shipWithinDays(int[] weights, int days) {\n        int left = 0, right = (int)1e5;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int cur = 0, cnt = 1;\n            for (int w : weights) {\n                cur += w;\n                if (cur > mid) {\n                    cur = w;\n                    cnt++;\n                }\n            }\n            if (cnt > days) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use a binary search approach to find the minimum capacity. We initialize the left and right pointers to 0 and 10^5 respectively. In each iteration, we calculate the mid capacity and count the number of days needed to ship all packages with this capacity. If the count is greater than the given days, we update the left pointer to mid + 1. Otherwise, we update the right pointer to mid. The process continues until left and right pointers meet, at which point the left pointer gives the minimum capacity.",
+  "code": "class Solution {\n    public int shipWithinDays(int[] weights, int days) {\n        int left = 0, right = (int)1e5;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int cur = 0, cnt = 1;\n            for (int w : weights) {\n                cur += w;\n                if (cur > mid) {\n                    cur = w;\n                    cnt++;\n                }\n            }\n            if (cnt > days) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}",
+  "timestamp": "2025-08-05T13:17:31.956780",
+  "code_extracted_previous": "public int shipWithinDays(int[] weights, int days) {\n        int left = 0, right = (int)1e5;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int cur = 0, cnt = 1;\n            for (int w : weights) {\n                cur += w;\n                if (cur > mid) {\n                    cur = w;\n                    cnt++;\n                }\n            }\n            if (cnt > days) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.794858"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass StockSpanner {\n    private Stack<int[]> stack;\n\n    public StockSpanner() {\n        stack = new Stack<>();\n    }\n\n    public int next(int price) {\n        int span = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            span += stack.pop()[1];\n        }\n        stack.push(new int[] {price, span});\n        return span;\n    }\n}\n\n/**\n * Your StockSpanner object will be instantiated and called as such:\n * StockSpanner obj = new StockSpanner();\n * int param_1 = obj.next(price);\n */\n```\n\nsolution: \n```java\nclass StockSpanner {\n    private Stack<int[]> stack;\n\n    public StockSpanner() {\n        stack = new Stack<>();\n    }\n\n    public int next(int price) {\n        int span = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            span += stack.pop()[1];\n        }\n        stack.push(new int[] {price, span});\n        return span;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(1) amortized\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a stack to store the stock prices along with their spans. It iterates through the stack, popping elements with prices less than or equal to the current price and accumulating their spans. This approach efficiently calculates the span for each new price.",
+  "code": "class StockSpanner {\n    private Stack<int[]> stack;\n\n    public StockSpanner() {\n        stack = new Stack<>();\n    }\n\n    public int next(int price) {\n        int span = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            span += stack.pop()[1];\n        }\n        stack.push(new int[] {price, span});\n        return span;\n    }\n}",
+  "timestamp": "2025-08-05T16:03:22.608917",
+  "code_extracted_previous": "class StockSpanner {\n    private Stack<int[]> stack;\n\n    public StockSpanner() {\n        stack = new Stack<>();\n    }\n\n    public int next(int price) {\n        int span = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            span += stack.pop()[1];\n        }\n        stack.push(new int[] {price, span});\n        return span;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.166964"
+}

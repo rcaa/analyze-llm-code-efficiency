@@ -1,0 +1,15 @@
+{
+  "id": 3333,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int possibleStringCount(String word, int k) {\n        int n = word.length();\n        int[] count = new int[26];\n        for (char c : word.toCharArray()) {\n            count[c - 'a']++;\n        }\n        long ans = 1;\n        for (int i = 0; i < 26; i++) {\n            int freq = count[i];\n            if (freq >= k) {\n                ans = (ans * (freq - k + 1)) % 1000000007;\n            }\n        }\n        return (int) ans;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n + 26)\nspace complexity: O(26)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int possibleStringCount(String word, int k) {\n        int n = word.length();\n        int[] count = new int[26];\n        for (char c : word.toCharArray()) {\n            count[c - 'a']++;\n        }\n        long ans = 1;\n        for (int i = 0; i < 26; i++) {\n            int freq = count[i];\n            if (freq >= k) {\n                ans = (ans * (freq - k + 1)) % 1000000007;\n            }\n        }\n        return (int) ans;\n    }\n}",
+  "timestamp": "2025-08-05T23:27:24.132879",
+  "code_extracted_previous": "class Solution {\n    public int possibleStringCount(String word, int k) {\n        int n = word.length();\n        int[] count = new int[26];\n        for (char c : word.toCharArray()) {\n            count[c - 'a']++;\n        }\n        long ans = 1;\n        for (int i = 0; i < 26; i++) {\n            int freq = count[i];\n            if (freq >= k) {\n                ans = (ans * (freq - k + 1)) % 1000000007;\n            }\n        }\n        return (int) ans;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.544211"
+}

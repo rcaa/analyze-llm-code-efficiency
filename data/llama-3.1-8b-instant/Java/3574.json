@@ -1,0 +1,15 @@
+{
+  "id": 3574,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public long maxGCDScore(int[] nums, int k) {\n        int n = nums.length;\n        long[] dp = new long[n + 1];\n        long[] gcd = new long[n + 1];\n        gcd[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            gcd[i] = nums[i - 1];\n            for (int j = i - 1; j >= 1; j--) {\n                gcd[i] = gcd(gcd[i], nums[j - 1]);\n            }\n        }\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1];\n            for (int j = 1; j <= Math.min(i, k); j++) {\n                dp[i] = Math.max(dp[i], (i - j + 1) * gcd[i]);\n            }\n        }\n        return dp[n];\n    }\n    private long gcd(long a, long b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public long maxGCDScore(int[] nums, int k) {\n        int n = nums.length;\n        long[] dp = new long[n + 1];\n        long[] gcd = new long[n + 1];\n        gcd[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            gcd[i] = nums[i - 1];\n            for (int j = i - 1; j >= 1; j--) {\n                gcd[i] = gcd(gcd[i], nums[j - 1]);\n            }\n        }\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1];\n            for (int j = 1; j <= Math.min(i, k); j++) {\n                dp[i] = Math.max(dp[i], (i - j + 1) * gcd[i]);\n            }\n        }\n        return dp[n];\n    }\n    private long gcd(long a, long b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "timestamp": "2025-08-05T12:12:22.085831",
+  "code_extracted_previous": "class Solution {\n    public long maxGCDScore(int[] nums, int k) {\n        int n = nums.length;\n        long[] dp = new long[n + 1];\n        long[] gcd = new long[n + 1];\n        gcd[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            gcd[i] = nums[i - 1];\n            for (int j = i - 1; j >= 1; j--) {\n                gcd[i] = gcd(gcd[i], nums[j - 1]);\n            }\n        }\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1];\n            for (int j = 1; j <= Math.min(i, k); j++) {\n                dp[i] = Math.max(dp[i], (i - j + 1) * gcd[i]);\n            }\n        }\n        return dp[n];\n    }\n    private long gcd(long a, long b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.751428"
+}

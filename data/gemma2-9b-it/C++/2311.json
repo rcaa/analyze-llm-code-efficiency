@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int longest = 0;\n        for (int i = 0; i < s.length(); i++) {\n            long current = 0;\n            for (int j = i; j < s.length(); j++) {\n                current = (current << 1) | (s[j] - '0');\n                if (current > k) {\n                    break;\n                }\n                longest = max(longest, j - i + 1);\n            }\n        }\n        return longest;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a nested loop to iterate through all possible subsequences of the input string. For each subsequence, it calculates the corresponding binary value and checks if it is less than or equal to the given integer k. The length of the longest subsequence found is returned. This approach has a time complexity of O(N^2) due to the nested loops, but it has a constant space complexity as it only uses a few variables. \n\n\n",
+  "code": "class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int longest = 0;\n        for (int i = 0; i < s.length(); i++) {\n            long current = 0;\n            for (int j = i; j < s.length(); j++) {\n                current = (current << 1) | (s[j] - '0');\n                if (current > k) {\n                    break;\n                }\n                longest = max(longest, j - i + 1);\n            }\n        }\n        return longest;\n    }\n};",
+  "timestamp": "2025-08-06T00:59:16.876223",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSubsequence(string s, int k) {\n        int longest = 0;\n        for (int i = 0; i < s.length(); i++) {\n            long current = 0;\n            for (int j = i; j < s.length(); j++) {\n                current = (current << 1) | (s[j] - '0');\n                if (current > k) {\n                    break;\n                }\n                longest = max(longest, j - i + 1);\n            }\n        }\n        return longest;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.486868"
+}

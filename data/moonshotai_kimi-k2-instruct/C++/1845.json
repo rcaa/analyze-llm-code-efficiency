@@ -1,0 +1,15 @@
+{
+  "id": 1845,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class SeatManager {\n    std::priority_queue<int, std::vector<int>, std::greater<int>> pq;\npublic:\n    SeatManager(int n) {\n        for (int i = 1; i <= n; ++i) pq.push(i);\n    }\n    \n    int reserve() {\n        int seat = pq.top();\n        pq.pop();\n        return seat;\n    }\n    \n    void unreserve(int seatNumber) {\n        pq.push(seatNumber);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n) per operation\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a min-heap to always return the smallest available seat in O(log n) time; unreserve simply re-inserts the seat into the heap.",
+  "code": "class SeatManager {\n    std::priority_queue<int, std::vector<int>, std::greater<int>> pq;\npublic:\n    SeatManager(int n) {\n        for (int i = 1; i <= n; ++i) pq.push(i);\n    }\n    \n    int reserve() {\n        int seat = pq.top();\n        pq.pop();\n        return seat;\n    }\n    \n    void unreserve(int seatNumber) {\n        pq.push(seatNumber);\n    }\n};",
+  "timestamp": "2025-08-05T14:13:22.263723",
+  "code_extracted_previous": "std::priority_queue<int, std::vector<int>, std::greater<int>> pq;\npublic:\n    SeatManager(int n) {\n        for (int i = 1; i <= n; ++i) pq.push(i);\n    }\n    \n    int reserve() {\n        int seat = pq.top();\n        pq.pop();\n        return seat;\n    }\n    \n    void unreserve(int seatNumber) {\n        pq.push(seatNumber);\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.341069"
+}

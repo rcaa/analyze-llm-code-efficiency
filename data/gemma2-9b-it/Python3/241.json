@@ -1,0 +1,15 @@
+{
+  "id": 241,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def diffWaysToCompute(self, expression: str) -> List[int]:\n        if expression.isdigit():\n            return [int(expression)]\n        res = []\n        for i, char in enumerate(expression):\n            if char in \"+-*\":\n                left = self.diffWaysToCompute(expression[:i])\n                right = self.diffWaysToCompute(expression[i+1:])\n                for l in left:\n                    for r in right:\n                        if char == \"+\":\n                            res.append(l + r)\n                        elif char == \"-\":\n                            res.append(l - r)\n                        else:\n                            res.append(l * r)\n        return res\n```\nsolution: ```python\nclass Solution:\n    def diffWaysToCompute(self, expression: str) -> List[int]:\n        if expression.isdigit():\n            return [int(expression)]\n        res = []\n        for i, char in enumerate(expression):\n            if char in \"+-*\":\n                left = self.diffWaysToCompute(expression[:i])\n                right = self.diffWaysToCompute(expression[i+1:])\n                for l in left:\n                    for r in right:\n                        if char == \"+\":\n                            res.append(l + r)\n                        elif char == \"-\":\n                            res.append(l - r)\n                        else:\n                            res.append(l * r)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(N^2)\nspace complexity: O(N)\nenergy implications: LOW \nexplanation: The solution uses recursion to break down the expression into smaller subproblems. It iterates through the expression, identifying operators, and recursively calculates the results for the left and right operands. The results are then combined based on the operator. This approach has a time complexity of O(N^2) due to the nested loops and a space complexity of O(N) for the recursive call stack.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-06T01:56:24.109024",
+  "code_extracted_previous": "class Solution:\n    def diffWaysToCompute(self, expression: str) -> List[int]:\n        if expression.isdigit():\n            return [int(expression)]\n        res = []\n        for i, char in enumerate(expression):\n            if char in \"+-*\":\n                left = self.diffWaysToCompute(expression[:i])\n                right = self.diffWaysToCompute(expression[i+1:])\n                for l in left:\n                    for r in right:\n                        if char == \"+\":\n                            res.append(l + r)\n                        elif char == \"-\":\n                            res.append(l - r)\n                        else:\n                            res.append(l * r)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.288806"
+}

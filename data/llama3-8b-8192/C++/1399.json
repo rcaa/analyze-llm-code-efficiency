@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int countLargestGroup(int n) {\n        unordered_map<int, int> mp;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            for (int j = i; j; j /= 10) {\n                sum += j % 10;\n            }\n            mp[sum]++;\n        }\n        int maxCount = 0;\n        int res = 0;\n        for (auto p : mp) {\n            if (p.second > maxCount) {\n                maxCount = p.second;\n                res = 1;\n            } else if (p.second == maxCount) {\n                res++;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a hashmap to store the sum of digits for each number and its frequency. Then it iterates over the hashmap to find the maximum frequency and count the number of groups with the maximum frequency.",
+  "code": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        unordered_map<int, int> mp;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            for (int j = i; j; j /= 10) {\n                sum += j % 10;\n            }\n            mp[sum]++;\n        }\n        int maxCount = 0;\n        int res = 0;\n        for (auto p : mp) {\n            if (p.second > maxCount) {\n                maxCount = p.second;\n                res = 1;\n            } else if (p.second == maxCount) {\n                res++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:42:53.817271",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        unordered_map<int, int> mp;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            for (int j = i; j; j /= 10) {\n                sum += j % 10;\n            }\n            mp[sum]++;\n        }\n        int maxCount = 0;\n        int res = 0;\n        for (auto p : mp) {\n            if (p.second > maxCount) {\n                maxCount = p.second;\n                res = 1;\n            } else if (p.second == maxCount) {\n                res++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.588734"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1269,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        int MOD = 1e9 + 7;\n        int dp[steps + 1][arrLen * 2 + 1];\n        for (int i = 0; i <= steps; i++) {\n            dp[i][arrLen] = 1;\n        }\n        for (int i = 1; i <= steps; i++) {\n            for (int j = arrLen - 1; j >= 1; j--) {\n                dp[i][j] = (dp[i - 1][j + 1] + dp[i - 1][j - 1]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = 1; i <= arrLen; i++) {\n            res = (res + dp[steps][i]) % MOD;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(steps * arrLen)\nspace complexity: O(steps * arrLen)\nenergy implications: LOW\nexplanation: This problem can be solved using dynamic programming. We maintain a 2D array dp where dp[i][j] represents the number of ways to reach index j after i steps. We initialize dp[i][arrLen] to 1 for all i, since we can always stay at the same position. Then, we fill up the dp array by considering the three possible moves (left, right, stay) at each step. Finally, we sum up the values in the last row of the dp array to get the total number of ways to stay at index 0 after steps steps.",
+  "code": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        int MOD = 1e9 + 7;\n        int dp[steps + 1][arrLen * 2 + 1];\n        for (int i = 0; i <= steps; i++) {\n            dp[i][arrLen] = 1;\n        }\n        for (int i = 1; i <= steps; i++) {\n            for (int j = arrLen - 1; j >= 1; j--) {\n                dp[i][j] = (dp[i - 1][j + 1] + dp[i - 1][j - 1]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = 1; i <= arrLen; i++) {\n            res = (res + dp[steps][i]) % MOD;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:19:02.061550",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numWays(int steps, int arrLen) {\n        int MOD = 1e9 + 7;\n        int dp[steps + 1][arrLen * 2 + 1];\n        for (int i = 0; i <= steps; i++) {\n            dp[i][arrLen] = 1;\n        }\n        for (int i = 1; i <= steps; i++) {\n            for (int j = arrLen - 1; j >= 1; j--) {\n                dp[i][j] = (dp[i - 1][j + 1] + dp[i - 1][j - 1]) % MOD;\n            }\n        }\n        int res = 0;\n        for (int i = 1; i <= arrLen; i++) {\n            res = (res + dp[steps][i]) % MOD;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.499908"
+}

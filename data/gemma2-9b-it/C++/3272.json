@@ -1,0 +1,15 @@
+{
+  "id": 3272,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass Solution {\npublic:\n    long long countGoodIntegers(int n, int k) {\n        long long count = 0;\n        for (long long i = 1; i <= 9; ++i) {\n            for (int j = 0; j < n - 1; ++j) {\n                for (long long l = 0; l <= 9; ++l) {\n                    string s = to_string(i) + string(n - 1, '0') + to_string(l);\n                    if (isKPalindrome(s, k)) {\n                        count++;\n                    }\n                }\n            }\n        }\n        return count;\n    }\n    bool isKPalindrome(string s, int k) {\n        int left = 0;\n        int right = s.size() - 1;\n        while (left < right) {\n            if (s[left] != s[right]) {\n                return false;\n            }\n            left++;\n            right--;\n        }\n        return (s % k == 0);\n    }\n};\n```\nsolution: \nefficiency: MEDIUM\ntime complexity: O(9 * n * 10)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through all possible combinations of digits for n-digit numbers, checks if each combination forms a k-palindromic number divisible by k, and increments the count accordingly.  The `isKPalindrome` function efficiently checks for both palindrome and divisibility by k.\n\n\n\n",
+  "code": "efficiency: MEDIUM",
+  "timestamp": "2025-08-05T14:40:05.927612",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long countGoodIntegers(int n, int k) {\n        long long count = 0;\n        for (long long i = 1; i <= 9; ++i) {\n            for (int j = 0; j < n - 1; ++j) {\n                for (long long l = 0; l <= 9; ++l) {\n                    string s = to_string(i) + string(n - 1, '0') + to_string(l);\n                    if (isKPalindrome(s, k)) {\n                        count++;\n                    }\n                }\n            }\n        }\n        return count;\n    }\n    bool isKPalindrome(string s, int k) {\n        int left = 0;\n        int right = s.size() - 1;\n        while (left < right) {\n            if (s[left] != s[right]) {\n                return false;\n            }\n            left++;\n            right--;\n        }\n        return (s % k == 0);\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:23.783197"
+}

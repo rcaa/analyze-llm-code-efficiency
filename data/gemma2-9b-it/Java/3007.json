@@ -1,0 +1,15 @@
+{
+  "id": 3007,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass Solution {\n    public long findMaximumNumber(long k, int x) {\n        long price = 0;\n        long num = 1;\n        while (price <= k) {\n            price = calculatePrice(num, x);\n            num++;\n        }\n        return num - 1;\n    }\n    private long calculatePrice(long num, int x) {\n        long price = 0;\n        while (num > 0) {\n            if ((num & 1) == 1) {\n                price++;\n            }\n            num >>= x;\n        }\n        return price;\n    }\n}\n```\nsolution: \n```java\nclass Solution {\n    public long findMaximumNumber(long k, int x) {\n        long price = 0;\n        long num = 1;\n        while (price <= k) {\n            price = calculatePrice(num, x);\n            num++;\n        }\n        return num - 1;\n    }\n    private long calculatePrice(long num, int x) {\n        long price = 0;\n        while (num > 0) {\n            if ((num & 1) == 1) {\n                price++;\n            }\n            num >>= x;\n        }\n        return price;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(num) * log(num/x))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through numbers, calculating the price for each using a bitwise approach. The `calculatePrice` function efficiently determines the number of set bits at positions `x`, `2x`, `3x`, etc. The outer loop continues until the accumulated price exceeds `k`, ensuring the greatest cheap number is found.\n\n\n\n",
+  "code": "class Solution {\n    public long findMaximumNumber(long k, int x) {\n        long price = 0;\n        long num = 1;\n        while (price <= k) {\n            price = calculatePrice(num, x);\n            num++;\n        }\n        return num - 1;\n    }\n    private long calculatePrice(long num, int x) {\n        long price = 0;\n        while (num > 0) {\n            if ((num & 1) == 1) {\n                price++;\n            }\n            num >>= x;\n        }\n        return price;\n    }\n}",
+  "timestamp": "2025-08-05T13:46:39.479560",
+  "code_extracted_previous": "class Solution {\n    public long findMaximumNumber(long k, int x) {\n        long price = 0;\n        long num = 1;\n        while (price <= k) {\n            price = calculatePrice(num, x);\n            num++;\n        }\n        return num - 1;\n    }\n    private long calculatePrice(long num, int x) {\n        long price = 0;\n        while (num > 0) {\n            if ((num & 1) == 1) {\n                price++;\n            }\n            num >>= x;\n        }\n        return price;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.180725"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2337,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public boolean canChange(String start, String target) {\n        int n = start.length();\n        int[] l = new int[n], r = new int[n];\n        for (int i = 0; i < n; i++) {\n            if (start.charAt(i) == 'L') l[i] = 1;\n            if (start.charAt(i) == 'R') r[i] = 1;\n        }\n        for (int i = 0; i < n; i++) {\n            if (target.charAt(i) == 'L' && r[i] > 0) return false;\n            if (target.charAt(i) == 'R' && l[i] > 0) return false;\n            if (target.charAt(i) == '_') continue;\n            if (target.charAt(i) == 'L' && l[i] == 0) return false;\n            if (target.charAt(i) == 'R' && r[i] == 0) return false;\n        }\n        return true;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses two arrays to count the number of 'L' and 'R' characters in the start string. Then it iterates over the target string and checks if the characters can be moved according to the rules. If any character cannot be moved, it returns false. If all characters can be moved, it returns true. The time complexity is O(n) and the space complexity is O(n), making it efficient.",
+  "code": "class Solution {\n    public boolean canChange(String start, String target) {\n        int n = start.length();\n        int[] l = new int[n], r = new int[n];\n        for (int i = 0; i < n; i++) {\n            if (start.charAt(i) == 'L') l[i] = 1;\n            if (start.charAt(i) == 'R') r[i] = 1;\n        }\n        for (int i = 0; i < n; i++) {\n            if (target.charAt(i) == 'L' && r[i] > 0) return false;\n            if (target.charAt(i) == 'R' && l[i] > 0) return false;\n            if (target.charAt(i) == '_') continue;\n            if (target.charAt(i) == 'L' && l[i] == 0) return false;\n            if (target.charAt(i) == 'R' && r[i] == 0) return false;\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-06T01:59:00.471688",
+  "code_extracted_previous": "public boolean canChange(String start, String target) {\n        int n = start.length();\n        int[] l = new int[n], r = new int[n];\n        for (int i = 0; i < n; i++) {\n            if (start.charAt(i) == 'L') l[i] = 1;\n            if (start.charAt(i) == 'R') r[i] = 1;\n        }\n        for (int i = 0; i < n; i++) {\n            if (target.charAt(i) == 'L' && r[i] > 0) return false;\n            if (target.charAt(i) == 'R' && l[i] > 0) return false;\n            if (target.charAt(i) == '_') continue;\n            if (target.charAt(i) == 'L' && l[i] == 0) return false;\n            if (target.charAt(i) == 'R' && r[i] == 0) return false;\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.375101"
+}

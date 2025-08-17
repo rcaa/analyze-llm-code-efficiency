@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = 0, res = 0;\n        for (int i = 1; i < logs.size(); i++) {\n            int time = logs[i][1] - logs[i-1][1];\n            if (time > maxTime) {\n                maxTime = time;\n                res = logs[i][0];\n            } else if (time == maxTime) {\n                res = min(res, logs[i][0]);\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the logs array once, keeping track of the maximum time and the employee ID that worked on the task with the longest time. If a task has the same longest time as the current maximum, it updates the result with the smaller employee ID. This approach has a linear time complexity and uses constant space, making it efficient and energy-friendly.",
+  "code": "class Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = 0, res = 0;\n        for (int i = 1; i < logs.size(); i++) {\n            int time = logs[i][1] - logs[i-1][1];\n            if (time > maxTime) {\n                maxTime = time;\n                res = logs[i][0];\n            } else if (time == maxTime) {\n                res = min(res, logs[i][0]);\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T12:47:45.153495",
+  "code_extracted_previous": "class Solution {\npublic:\n    int hardestWorker(int n, vector<vector<int>>& logs) {\n        int maxTime = 0, res = 0;\n        for (int i = 1; i < logs.size(); i++) {\n            int time = logs[i][1] - logs[i-1][1];\n            if (time > maxTime) {\n                maxTime = time;\n                res = logs[i][0];\n            } else if (time == maxTime) {\n                res = min(res, logs[i][0]);\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.016565"
+}

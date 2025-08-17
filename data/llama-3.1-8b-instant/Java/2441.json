@@ -1,0 +1,15 @@
+{
+  "id": 2441,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findMaxK(int[] nums) {\n        Map<Integer, Integer> map = new HashMap<>();\n        int max = -1;\n        for (int num : nums) {\n            if (map.containsKey(-num)) {\n                max = Math.max(max, num);\n                map.put(num, map.getOrDefault(num, 0) + 1);\n            } else {\n                map.put(num, 1);\n            }\n        }\n        return max;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a HashMap to store the frequency of each number in the array. It iterates through the array once, and for each number, it checks if its negative counterpart exists in the map. If it does, it updates the maximum value. The time complexity is O(n) because we are doing a constant amount of work for each element in the array, and the space complexity is also O(n) because in the worst case, we might need to store all elements in the map.",
+  "code": "class Solution {\n    public int findMaxK(int[] nums) {\n        Map<Integer, Integer> map = new HashMap<>();\n        int max = -1;\n        for (int num : nums) {\n            if (map.containsKey(-num)) {\n                max = Math.max(max, num);\n                map.put(num, map.getOrDefault(num, 0) + 1);\n            } else {\n                map.put(num, 1);\n            }\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-05T12:49:08.464578",
+  "code_extracted_previous": "class Solution {\n    public int findMaxK(int[] nums) {\n        Map<Integer, Integer> map = new HashMap<>();\n        int max = -1;\n        for (int num : nums) {\n            if (map.containsKey(-num)) {\n                max = Math.max(max, num);\n                map.put(num, map.getOrDefault(num, 0) + 1);\n            } else {\n                map.put(num, 1);\n            }\n        }\n        return max;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.298038"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 420,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef strongPasswordChecker(self, password: str) -> int:\n    steps = 0\n    for i in range(len(password) - 2):\n        if password[i] == password[i + 1] == password[i + 2]:\n            steps += 1\n        if len(set(password)) != len(password):\n            steps += 1\n        if len(password) < 6 or len(password) > 20:\n            steps += 1\n        if not any(c.islower() for c in password) or not any(c.isupper() for c in password) or not any(c.isdigit() for c in password):\n            steps += 1\n    return steps\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\nWe iterate through the password string once to check for the given conditions. The time complexity is O(n), where n is the length of the password. Since the space complexity is O(1) (using a small number of variables), the energy implications are low. ",
+  "code": "def strongPasswordChecker(self, password: str) -> int:\n    steps = 0\n    for i in range(len(password) - 2):\n        if password[i] == password[i + 1] == password[i + 2]:\n            steps += 1\n        if len(set(password)) != len(password):\n            steps += 1\n        if len(password) < 6 or len(password) > 20:\n            steps += 1\n        if not any(c.islower() for c in password) or not any(c.isupper() for c in password) or not any(c.isdigit() for c in password):\n            steps += 1\n    return steps",
+  "timestamp": "2025-08-05T16:06:29.962053",
+  "code_extracted_previous": "def strongPasswordChecker(self, password: str) -> int:\n    steps = 0\n    for i in range(len(password) - 2):\n        if password[i] == password[i + 1] == password[i + 2]:\n            steps += 1\n        if len(set(password)) != len(password):\n            steps += 1\n        if len(password) < 6 or len(password) > 20:\n            steps += 1\n        if not any(c.islower() for c in password) or not any(c.isupper() for c in password) or not any(c.isdigit() for c in password):\n            steps += 1\n    return steps",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.994436"
+}

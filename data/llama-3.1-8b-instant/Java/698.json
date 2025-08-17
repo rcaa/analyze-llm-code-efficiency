@@ -1,0 +1,15 @@
+{
+  "id": 698,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean canPartitionKSubsets(int[] nums, int k) {\n        int sum = 0;\n        for (int num : nums) sum += num;\n        if (sum % k != 0) return false;\n        int target = sum / k;\n        Arrays.sort(nums);\n        return dfs(nums, target, 0, k);\n    }\n\n    private boolean dfs(int[] nums, int target, int index, int k) {\n        if (k == 1) return true;\n        for (int i = index; i < nums.length; i++) {\n            if (nums[i] > target) break;\n            if (i > index && nums[i] == nums[i - 1]) continue;\n            if (nums[i] == target || dfs(nums, target - nums[i], i + 1, k - 1)) {\n                return true;\n            }\n        }\n        return false;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n * 2^n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public boolean canPartitionKSubsets(int[] nums, int k) {\n        int sum = 0;\n        for (int num : nums) sum += num;\n        if (sum % k != 0) return false;\n        int target = sum / k;\n        Arrays.sort(nums);\n        return dfs(nums, target, 0, k);\n    }\n\n    private boolean dfs(int[] nums, int target, int index, int k) {\n        if (k == 1) return true;\n        for (int i = index; i < nums.length; i++) {\n            if (nums[i] > target) break;\n            if (i > index && nums[i] == nums[i - 1]) continue;\n            if (nums[i] == target || dfs(nums, target - nums[i], i + 1, k - 1)) {\n                return true;\n            }\n        }\n        return false;\n    }\n}",
+  "timestamp": "2025-08-05T13:16:37.334793",
+  "code_extracted_previous": "class Solution {\n    public boolean canPartitionKSubsets(int[] nums, int k) {\n        int sum = 0;\n        for (int num : nums) sum += num;\n        if (sum % k != 0) return false;\n        int target = sum / k;\n        Arrays.sort(nums);\n        return dfs(nums, target, 0, k);\n    }\n\n    private boolean dfs(int[] nums, int target, int index, int k) {\n        if (k == 1) return true;\n        for (int i = index; i < nums.length; i++) {\n            if (nums[i] > target) break;\n            if (i > index && nums[i] == nums[i - 1]) continue;\n            if (nums[i] == target || dfs(nums, target - nums[i], i + 1, k - 1)) {\n                return true;\n            }\n        }\n        return false;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.988346"
+}

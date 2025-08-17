@@ -1,0 +1,15 @@
+{
+  "id": 1456,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int maxVowels = 0, currentVowels = 0;\n        unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u'};\n        \n        for (int i = 0; i < s.length(); ++i) {\n            if (vowels.count(s[i])) currentVowels++;\n            if (i >= k && vowels.count(s[i - k])) currentVowels--;\n            maxVowels = max(maxVowels, currentVowels);\n        }\n        \n        return maxVowels;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to efficiently count vowels in substrings of length k. It maintains a running count of vowels in the current window and updates it as the window slides. This avoids recalculating the number of vowels from scratch for each window, resulting in linear time complexity. The space complexity is constant as only a few variables are used.",
+  "code": "class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int maxVowels = 0, currentVowels = 0;\n        unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u'};\n        \n        for (int i = 0; i < s.length(); ++i) {\n            if (vowels.count(s[i])) currentVowels++;\n            if (i >= k && vowels.count(s[i - k])) currentVowels--;\n            maxVowels = max(maxVowels, currentVowels);\n        }\n        \n        return maxVowels;\n    }\n};",
+  "timestamp": "2025-08-06T00:53:36.856763",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxVowels(string s, int k) {\n        int maxVowels = 0, currentVowels = 0;\n        unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u'};\n        \n        for (int i = 0; i < s.length(); ++i) {\n            if (vowels.count(s[i])) currentVowels++;\n            if (i >= k && vowels.count(s[i - k])) currentVowels--;\n            maxVowels = max(maxVowels, currentVowels);\n        }\n        \n        return maxVowels;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:58.217060"
+}

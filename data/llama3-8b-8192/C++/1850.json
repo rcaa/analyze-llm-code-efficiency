@@ -1,0 +1,15 @@
+{
+  "id": 1850,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int getMinSwaps(string num, int k) {\n        int n = num.size();\n        vector<int> count(10, 0);\n        for (char c : num) {\n            count[c - '0']++;\n        }\n        int res = 0, i = 0;\n        while (k > 0) {\n            if (count[9] > 0) {\n                count[9]--;\n                k--;\n                res++;\n            } else {\n                while (i < n && count[i] == 0) i++;\n                if (i == n) break;\n                count[i]--;\n                k--;\n                res++;\n                i++;\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We first count the frequency of each digit in the given number. Then, we iterate through the digits and swap the largest available digit (9) with the smallest available digit (i) until we reach the kth smallest wonderful integer.",
+  "code": "class Solution {\npublic:\n    int getMinSwaps(string num, int k) {\n        int n = num.size();\n        vector<int> count(10, 0);\n        for (char c : num) {\n            count[c - '0']++;\n        }\n        int res = 0, i = 0;\n        while (k > 0) {\n            if (count[9] > 0) {\n                count[9]--;\n                k--;\n                res++;\n            } else {\n                while (i < n && count[i] == 0) i++;\n                if (i == n) break;\n                count[i]--;\n                k--;\n                res++;\n                i++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:43:20.584976",
+  "code_extracted_previous": "public:\n    int getMinSwaps(string num, int k) {\n        int n = num.size();\n        vector<int> count(10, 0);\n        for (char c : num) {\n            count[c - '0']++;\n        }\n        int res = 0, i = 0;\n        while (k > 0) {\n            if (count[9] > 0) {\n                count[9]--;\n                k--;\n                res++;\n            } else {\n                while (i < n && count[i] == 0) i++;\n                if (i == n) break;\n                count[i]--;\n                k--;\n                res++;\n                i++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.732140"
+}

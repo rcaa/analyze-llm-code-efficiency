@@ -1,0 +1,15 @@
+{
+  "id": 3594,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minTime(self, n: int, k: int, m: int, time: List[int], mul: List[float]) -> float:\n        time.sort()\n        total_time = 0\n        stage = 0\n        left = 0\n        while left < n:\n            group = sorted(range(left, min(left + k, n)), key=lambda i: time[i])\n            crossing_time = max(time[i] * mul[stage] for i in group)\n            total_time += crossing_time\n            stage = (stage + floor(crossing_time) % m) % m\n            if len(group) > 1:\n                return_time = time[group[-1]] * mul[stage]\n                total_time += return_time\n                stage = (stage + floor(return_time) % m) % m\n            left += len(group)\n        return total_time\n```\n\nsolution: \nefficiency: MEDIUM\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution sorts the individuals by rowing strength, then iteratively sends groups of up to k individuals across the river. It calculates the crossing time for each group, considering the current stage's speed multiplier. After each crossing, it updates the stage and handles the return trip if necessary. The sorting step dominates the time complexity.",
+  "code": "def minTime(self, n: int, k: int, m: int, time: List[int], mul: List[float]) -> float:\n        time.sort()\n        total_time = 0\n        stage = 0\n        left = 0\n        while left < n:\n            group = sorted(range(left, min(left + k, n)), key=lambda i: time[i])\n            crossing_time = max(time[i] * mul[stage] for i in group)\n            total_time += crossing_time\n            stage = (stage + floor(crossing_time) % m) % m\n            if len(group) > 1:\n                return_time = time[group[-1]] * mul[stage]\n                total_time += return_time\n                stage = (stage + floor(return_time) % m) % m\n            left += len(group)\n        return total_time\n```\n\nsolution:",
+  "timestamp": "2025-08-05T12:20:33.899642",
+  "code_extracted_previous": "class Solution:\n    def minTime(self, n: int, k: int, m: int, time: List[int], mul: List[float]) -> float:\n        time.sort()\n        total_time = 0\n        stage = 0\n        left = 0\n        while left < n:\n            group = sorted(range(left, min(left + k, n)), key=lambda i: time[i])\n            crossing_time = max(time[i] * mul[stage] for i in group)\n            total_time += crossing_time\n            stage = (stage + floor(crossing_time) % m) % m\n            if len(group) > 1:\n                return_time = time[group[-1]] * mul[stage]\n                total_time += return_time\n                stage = (stage + floor(return_time) % m) % m\n            left += len(group)\n        return total_time",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.786496"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 523,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean checkSubarraySum(int[] nums, int k) {\n        if (nums.length < 2) {\n            return false;\n        }\n        Map<Integer, Integer> remainders = new HashMap<>();\n        remainders.put(0, -1);\n        int sum = 0;\n        for (int i = 0; i < nums.length; i++) {\n            sum += nums[i];\n            int remainder = sum % k;\n            if (remainders.containsKey(remainder)) {\n                if (i - remainders.get(remainder) >= 2) {\n                    return true;\n                }\n            } else {\n                remainders.put(remainder, i);\n            }\n        }\n        return false;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution utilizes a hashmap to store remainders of subarray sums modulo k and their indices. It iterates through the array, calculating the cumulative sum and its remainder. If a remainder is encountered that has been seen before, and the difference in indices is at least 2, it indicates a good subarray, returning true. Otherwise, the remainder and its index are added to the hashmap. If no good subarray is found, false is returned.\n",
+  "code": "class Solution {\n    public boolean checkSubarraySum(int[] nums, int k) {\n        if (nums.length < 2) {\n            return false;\n        }\n        Map<Integer, Integer> remainders = new HashMap<>();\n        remainders.put(0, -1);\n        int sum = 0;\n        for (int i = 0; i < nums.length; i++) {\n            sum += nums[i];\n            int remainder = sum % k;\n            if (remainders.containsKey(remainder)) {\n                if (i - remainders.get(remainder) >= 2) {\n                    return true;\n                }\n            } else {\n                remainders.put(remainder, i);\n            }\n        }\n        return false;\n    }\n}",
+  "timestamp": "2025-08-05T12:57:13.658443",
+  "code_extracted_previous": "class Solution {\n    public boolean checkSubarraySum(int[] nums, int k) {\n        if (nums.length < 2) {\n            return false;\n        }\n        Map<Integer, Integer> remainders = new HashMap<>();\n        remainders.put(0, -1);\n        int sum = 0;\n        for (int i = 0; i < nums.length; i++) {\n            sum += nums[i];\n            int remainder = sum % k;\n            if (remainders.containsKey(remainder)) {\n                if (i - remainders.get(remainder) >= 2) {\n                    return true;\n                }\n            } else {\n                remainders.put(remainder, i);\n            }\n        }\n        return false;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.585005"
+}

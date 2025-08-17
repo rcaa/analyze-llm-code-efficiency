@@ -1,0 +1,15 @@
+{
+  "id": 1387,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> powers;\n        for (int i = lo; i <= hi; ++i) {\n            int power = 0;\n            int x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                ++power;\n            }\n            powers.emplace_back(power, i);\n        }\n        sort(powers.begin(), powers.end());\n        return powers[k - 1].second;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution calculates the power of each integer in the given range, stores them in a vector of pairs along with their original values, sorts the vector based on power and then the original value, and finally returns the kth integer.",
+  "code": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> powers;\n        for (int i = lo; i <= hi; ++i) {\n            int power = 0;\n            int x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                ++power;\n            }\n            powers.emplace_back(power, i);\n        }\n        sort(powers.begin(), powers.end());\n        return powers[k - 1].second;\n    }\n};",
+  "timestamp": "2025-08-06T02:28:05.982000",
+  "code_extracted_previous": "class Solution {\npublic:\n    int getKth(int lo, int hi, int k) {\n        vector<pair<int, int>> powers;\n        for (int i = lo; i <= hi; ++i) {\n            int power = 0;\n            int x = i;\n            while (x != 1) {\n                if (x % 2 == 0) x /= 2;\n                else x = 3 * x + 1;\n                ++power;\n            }\n            powers.emplace_back(power, i);\n        }\n        sort(powers.begin(), powers.end());\n        return powers[k - 1].second;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.749300"
+}

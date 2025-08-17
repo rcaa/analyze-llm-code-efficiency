@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> frequencyMap = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);\n        }\n        \n        PriorityQueue<Map.Entry<Character, Integer>> maxHeap = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());\n        maxHeap.addAll(frequencyMap.entrySet());\n        \n        StringBuilder result = new StringBuilder();\n        while (!maxHeap.isEmpty()) {\n            Map.Entry<Character, Integer> entry = maxHeap.poll();\n            for (int i = 0; i < entry.getValue(); i++) {\n                result.append(entry.getKey());\n            }\n        }\n        \n        return result.toString();\n    }\n}\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a HashMap to store character frequencies and a max-heap to sort characters based on frequency, then constructs the result string by appending characters in order of their frequency.",
+  "code": "class Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> frequencyMap = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);\n        }\n        \n        PriorityQueue<Map.Entry<Character, Integer>> maxHeap = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());\n        maxHeap.addAll(frequencyMap.entrySet());\n        \n        StringBuilder result = new StringBuilder();\n        while (!maxHeap.isEmpty()) {\n            Map.Entry<Character, Integer> entry = maxHeap.poll();\n            for (int i = 0; i < entry.getValue(); i++) {\n                result.append(entry.getKey());\n            }\n        }\n        \n        return result.toString();\n    }\n}",
+  "timestamp": "2025-08-06T15:15:46.098888",
+  "code_extracted_previous": "class Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> frequencyMap = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);\n        }\n        \n        PriorityQueue<Map.Entry<Character, Integer>> maxHeap = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());\n        maxHeap.addAll(frequencyMap.entrySet());\n        \n        StringBuilder result = new StringBuilder();\n        while (!maxHeap.isEmpty()) {\n            Map.Entry<Character, Integer> entry = maxHeap.poll();\n            for (int i = 0; i < entry.getValue(); i++) {\n                result.append(entry.getKey());\n            }\n        }\n        \n        return result.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.295742"
+}

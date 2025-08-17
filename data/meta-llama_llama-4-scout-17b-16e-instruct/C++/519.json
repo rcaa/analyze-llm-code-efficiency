@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    Solution(int m, int n) {\n        total = m * n;\n        cnt = total;\n    }\n    \n    vector<int> flip() {\n        int idx = rand() % cnt;\n        cnt--;\n        int i = idx / n;\n        int j = idx % n;\n        return {i, j};\n    }\n    \n    void reset() {\n        cnt = total;\n    }\n\nprivate:\n    int total;\n    int cnt;\n};\n```\nefficiency: HIGH\ntime complexity: \n- `Solution(int m, int n)`: O(1)\n- `vector<int> flip()`: O(1)\n- `void reset()`: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The provided solution utilizes a single random number generation to select an index, ensuring equal likelihood for all indices. It maintains a count of remaining zeros (`cnt`) and the total count of cells (`total`), resetting `cnt` to `total` when `reset()` is called. This approach minimizes calls to the random function and optimizes time and space complexity.",
+  "code": "class Solution {\npublic:\n    Solution(int m, int n) {\n        total = m * n;\n        cnt = total;\n    }\n    \n    vector<int> flip() {\n        int idx = rand() % cnt;\n        cnt--;\n        int i = idx / n;\n        int j = idx % n;\n        return {i, j};\n    }\n    \n    void reset() {\n        cnt = total;\n    }\n\nprivate:\n    int total;\n    int cnt;\n};",
+  "timestamp": "2025-08-05T14:54:44.331889",
+  "code_extracted_previous": "class Solution {\npublic:\n    Solution(int m, int n) {\n        total = m * n;\n        cnt = total;\n    }\n    \n    vector<int> flip() {\n        int idx = rand() % cnt;\n        cnt--;\n        int i = idx / n;\n        int j = idx % n;\n        return {i, j};\n    }\n    \n    void reset() {\n        cnt = total;\n    }\n\nprivate:\n    int total;\n    int cnt;\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.703858"
+}

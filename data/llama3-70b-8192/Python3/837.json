@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        dp = [0.0] * (n + 1)\n        s = 0\n        for i in range(k, n + 1):\n            dp[i] = s / maxPts\n            if i - maxPts - 1 >= 0:\n                s = s - dp[i - maxPts - 1] + 1\n            else:\n                s += 1\n        return sum(dp[k:])\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to calculate the probability of Alice having n or fewer points. It iterates from k to n, calculating the probability of reaching each point and updating the sum of probabilities. The final result is the sum of probabilities from k to n.",
+  "code": "class Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        dp = [0.0] * (n + 1)\n        s = 0\n        for i in range(k, n + 1):\n            dp[i] = s / maxPts\n            if i - maxPts - 1 >= 0:\n                s = s - dp[i - maxPts - 1] + 1\n            else:\n                s += 1\n        return sum(dp[k:])",
+  "timestamp": "2025-08-05T15:45:25.388159",
+  "code_extracted_previous": "class Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        dp = [0.0] * (n + 1)\n        s = 0\n        for i in range(k, n + 1):\n            dp[i] = s / maxPts\n            if i - maxPts - 1 >= 0:\n                s = s - dp[i - maxPts - 1] + 1\n            else:\n                s += 1\n        return sum(dp[k:])",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:40.107176"
+}

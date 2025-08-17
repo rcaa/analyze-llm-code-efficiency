@@ -1,0 +1,15 @@
+{
+  "id": 1624,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int[] first = new int[26];\n        java.util.Arrays.fill(first, -1);\n        int max = -1;\n        for (int i = 0; i < s.length(); i++) {\n            int c = s.charAt(i) - 'a';\n            if (first[c] == -1) {\n                first[c] = i;\n            } else {\n                max = Math.max(max, i - first[c] - 1);\n            }\n        }\n        return max;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass records first occurrence of each character; subsequent occurrences compute substring length in constant time. Uses fixed-size array for 26 letters, so space is O(1).",
+  "code": "class Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int[] first = new int[26];\n        java.util.Arrays.fill(first, -1);\n        int max = -1;\n        for (int i = 0; i < s.length(); i++) {\n            int c = s.charAt(i) - 'a';\n            if (first[c] == -1) {\n                first[c] = i;\n            } else {\n                max = Math.max(max, i - first[c] - 1);\n            }\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-06T02:30:47.024654",
+  "code_extracted_previous": "class Solution {\n    public int maxLengthBetweenEqualCharacters(String s) {\n        int[] first = new int[26];\n        java.util.Arrays.fill(first, -1);\n        int max = -1;\n        for (int i = 0; i < s.length(); i++) {\n            int c = s.charAt(i) - 'a';\n            if (first[c] == -1) {\n                first[c] = i;\n            } else {\n                max = Math.max(max, i - first[c] - 1);\n            }\n        }\n        return max;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.597074"
+}

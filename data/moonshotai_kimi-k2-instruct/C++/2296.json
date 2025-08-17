@@ -1,0 +1,15 @@
+{
+  "id": 2296,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class TextEditor {\npublic:\n    string s;\n    int pos = 0;\n\n    TextEditor() {}\n\n    void addText(string text) {\n        s.insert(pos, text);\n        pos += text.size();\n    }\n\n    int deleteText(int k) {\n        int rem = min(k, pos);\n        s.erase(pos - rem, rem);\n        pos -= rem;\n        return rem;\n    }\n\n    string cursorLeft(int k) {\n        pos = max(0, pos - k);\n        int start = max(0, pos - 10);\n        return s.substr(start, pos - start);\n    }\n\n    string cursorRight(int k) {\n        pos = min((int)s.size(), pos + k);\n        int start = max(0, pos - 10);\n        return s.substr(start, pos - start);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(k) per operation (k is length of text or parameter)\nspace complexity: O(n) where n is total characters stored\nenergy implications: LOW\nexplanation: Uses a single string and an integer cursor; each operation performs at most one string insertion/erase or substring extraction, all linear in the relevant parameter size.",
+  "code": "class TextEditor {\npublic:\n    string s;\n    int pos = 0;\n\n    TextEditor() {}\n\n    void addText(string text) {\n        s.insert(pos, text);\n        pos += text.size();\n    }\n\n    int deleteText(int k) {\n        int rem = min(k, pos);\n        s.erase(pos - rem, rem);\n        pos -= rem;\n        return rem;\n    }\n\n    string cursorLeft(int k) {\n        pos = max(0, pos - k);\n        int start = max(0, pos - 10);\n        return s.substr(start, pos - start);\n    }\n\n    string cursorRight(int k) {\n        pos = min((int)s.size(), pos + k);\n        int start = max(0, pos - 10);\n        return s.substr(start, pos - start);\n    }\n};",
+  "timestamp": "2025-08-06T02:29:17.856616",
+  "code_extracted_previous": "public:\n    string s;\n    int pos = 0;\n\n    TextEditor() {}\n\n    void addText(string text) {\n        s.insert(pos, text);\n        pos += text.size();\n    }\n\n    int deleteText(int k) {\n        int rem = min(k, pos);\n        s.erase(pos - rem, rem);\n        pos -= rem;\n        return rem;\n    }\n\n    string cursorLeft(int k) {\n        pos = max(0, pos - k);\n        int start = max(0, pos - 10);\n        return s.substr(start, pos - start);\n    }\n\n    string cursorRight(int k) {\n        pos = min((int)s.size(), pos + k);\n        int start = max(0, pos - 10);\n        return s.substr(start, pos - start);\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.628575"
+}

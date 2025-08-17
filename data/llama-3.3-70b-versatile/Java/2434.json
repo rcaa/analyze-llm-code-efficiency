@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public String robotWithString(String s) {\n        StringBuilder sb = new StringBuilder();\n        int n = s.length();\n        char[] chars = s.toCharArray();\n        int[] minRight = new int[n];\n        minRight[n - 1] = s.charAt(n - 1);\n        for (int i = n - 2; i >= 0; i--) {\n            minRight[i] = Math.min(minRight[i + 1], chars[i]);\n        }\n        StringBuilder t = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            t.append(chars[i]);\n            if (t.length() > 0 && (i == n - 1 || t.charAt(t.length() - 1) <= minRight[i + 1])) {\n                sb.append(t.charAt(t.length() - 1));\n                t.deleteCharAt(t.length() - 1);\n            }\n        }\n        return sb.toString();\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a two-pass approach, first calculating the minimum character to the right of each position, then iterating through the string and appending characters to the result string when the current character in the temporary string is less than or equal to the minimum character to the right.",
+  "code": "class Solution {\n    public String robotWithString(String s) {\n        StringBuilder sb = new StringBuilder();\n        int n = s.length();\n        char[] chars = s.toCharArray();\n        int[] minRight = new int[n];\n        minRight[n - 1] = s.charAt(n - 1);\n        for (int i = n - 2; i >= 0; i--) {\n            minRight[i] = Math.min(minRight[i + 1], chars[i]);\n        }\n        StringBuilder t = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            t.append(chars[i]);\n            if (t.length() > 0 && (i == n - 1 || t.charAt(t.length() - 1) <= minRight[i + 1])) {\n                sb.append(t.charAt(t.length() - 1));\n                t.deleteCharAt(t.length() - 1);\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-06T15:14:07.824464",
+  "code_extracted_previous": "class Solution {\n    public String robotWithString(String s) {\n        StringBuilder sb = new StringBuilder();\n        int n = s.length();\n        char[] chars = s.toCharArray();\n        int[] minRight = new int[n];\n        minRight[n - 1] = s.charAt(n - 1);\n        for (int i = n - 2; i >= 0; i--) {\n            minRight[i] = Math.min(minRight[i + 1], chars[i]);\n        }\n        StringBuilder t = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            t.append(chars[i]);\n            if (t.length() > 0 && (i == n - 1 || t.charAt(t.length() - 1) <= minRight[i + 1])) {\n                sb.append(t.charAt(t.length() - 1));\n                t.deleteCharAt(t.length() - 1);\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.933928"
+}

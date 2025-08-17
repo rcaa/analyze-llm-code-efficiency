@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        ++timeline[startTime];\n        --timeline[endTime];\n        int ongoing = 0;\n        int maxK = 0;\n        for (auto& [_, change] : timeline) {\n            ongoing += change;\n            maxK = max(maxK, ongoing);\n        }\n        return maxK;\n    }\n\nprivate:\n    map<int, int> timeline;\n};\n```\nefficiency: HIGH\ntime complexity: O(N log N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a map to track the number of events starting and ending at each time point. For each booking, it increments the start time and decrements the end time. It then iterates through the timeline to compute the maximum number of overlapping events. The key strength is its efficiency in handling up to 400 bookings with logarithmic insertion and linear traversal. The main weakness is the linear traversal for computing maxK, which could be optimized further with segment trees for large input sizes.",
+  "code": "class MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        ++timeline[startTime];\n        --timeline[endTime];\n        int ongoing = 0;\n        int maxK = 0;\n        for (auto& [_, change] : timeline) {\n            ongoing += change;\n            maxK = max(maxK, ongoing);\n        }\n        return maxK;\n    }\n\nprivate:\n    map<int, int> timeline;\n};",
+  "timestamp": "2025-08-06T15:58:35.789335",
+  "code_extracted_previous": "class MyCalendarThree {\npublic:\n    MyCalendarThree() {\n        \n    }\n    \n    int book(int startTime, int endTime) {\n        ++timeline[startTime];\n        --timeline[endTime];\n        int ongoing = 0;\n        int maxK = 0;\n        for (auto& [_, change] : timeline) {\n            ongoing += change;\n            maxK = max(maxK, ongoing);\n        }\n        return maxK;\n    }\n\nprivate:\n    map<int, int> timeline;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:24:01.122085"
+}

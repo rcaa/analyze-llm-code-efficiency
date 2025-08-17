@@ -1,0 +1,15 @@
+{
+  "id": 1010,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int numPairsDivisibleBy60(int[] time) {\n        int[] count = new int[60];\n        int res = 0;\n        for (int t : time) {\n            res += count[(60 - t % 60) % 60];\n            count[t % 60]++;\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a count array to store the frequency of each remainder when divided by 60. For each song, it increments the count of the remainder and adds the count of the remainder that would make the total duration divisible by 60. This approach has a high efficiency due to the constant time complexity and the use of a small array.",
+  "code": "class Solution {\n    public int numPairsDivisibleBy60(int[] time) {\n        int[] count = new int[60];\n        int res = 0;\n        for (int t : time) {\n            res += count[(60 - t % 60) % 60];\n            count[t % 60]++;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:16:56.987606",
+  "code_extracted_previous": "public int numPairsDivisibleBy60(int[] time) {\n        int[] count = new int[60];\n        int res = 0;\n        for (int t : time) {\n            res += count[(60 - t % 60) % 60];\n            count[t % 60]++;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.790279"
+}

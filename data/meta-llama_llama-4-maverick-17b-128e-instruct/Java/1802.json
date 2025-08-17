@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = index, right = index;\n        int sum = 1;\n        maxSum -= n;\n        int maxVal = 1;\n        while (maxSum > 0) {\n            maxVal++;\n            if (left > 0) left--;\n            if (right < n - 1) right++;\n            sum += (right - left + 1);\n            maxSum -= sum;\n        }\n        return maxSum < 0 ? maxVal - 1 : maxVal;\n    }\n}\nefficiency: HIGH\ntime complexity: O(maxSum/n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a greedy strategy, expanding outwards from the index and increasing the value until maxSum is exceeded, then returns the maximum value achieved.\n```",
+  "code": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = index, right = index;\n        int sum = 1;\n        maxSum -= n;\n        int maxVal = 1;\n        while (maxSum > 0) {\n            maxVal++;\n            if (left > 0) left--;\n            if (right < n - 1) right++;\n            sum += (right - left + 1);\n            maxSum -= sum;\n        }\n        return maxSum < 0 ? maxVal - 1 : maxVal;\n    }\n}\nefficiency: HIGH\ntime complexity: O(maxSum/n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a greedy strategy, expanding outwards from the index and increasing the value until maxSum is exceeded, then returns the maximum value achieved.",
+  "timestamp": "2025-08-05T15:52:53.640252",
+  "code_extracted_previous": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = index, right = index;\n        int sum = 1;\n        maxSum -= n;\n        int maxVal = 1;\n        while (maxSum > 0) {\n            maxVal++;\n            if (left > 0) left--;\n            if (right < n - 1) right++;\n            sum += (right - left + 1);\n            maxSum -= sum;\n        }\n        return maxSum < 0 ? maxVal - 1 : maxVal;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.336018"
+}

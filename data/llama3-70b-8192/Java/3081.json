@@ -1,0 +1,15 @@
+{
+  "id": 3081,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public String minimizeStringValue(String s) {\n        int n = s.length();\n        int[] count = new int[26];\n        StringBuilder res = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) != '?') {\n                count[s.charAt(i) - 'a']++;\n            }\n        }\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) == '?') {\n                char c = 'a';\n                while (count[c - 'a'] > 0) {\n                    c++;\n                }\n                res.append(c);\n                count[c - 'a']++;\n            } else {\n                res.append(s.charAt(i));\n            }\n        }\n        return res.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string twice, first to count the occurrences of each character, and then to replace the '?' characters with the smallest possible character that does not increase the cost.",
+  "code": "class Solution {\n    public String minimizeStringValue(String s) {\n        int n = s.length();\n        int[] count = new int[26];\n        StringBuilder res = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) != '?') {\n                count[s.charAt(i) - 'a']++;\n            }\n        }\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) == '?') {\n                char c = 'a';\n                while (count[c - 'a'] > 0) {\n                    c++;\n                }\n                res.append(c);\n                count[c - 'a']++;\n            } else {\n                res.append(s.charAt(i));\n            }\n        }\n        return res.toString();\n    }\n}",
+  "timestamp": "2025-08-05T15:11:27.199871",
+  "code_extracted_previous": "class Solution {\n    public String minimizeStringValue(String s) {\n        int n = s.length();\n        int[] count = new int[26];\n        StringBuilder res = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) != '?') {\n                count[s.charAt(i) - 'a']++;\n            }\n        }\n        for (int i = 0; i < n; i++) {\n            if (s.charAt(i) == '?') {\n                char c = 'a';\n                while (count[c - 'a'] > 0) {\n                    c++;\n                }\n                res.append(c);\n                count[c - 'a']++;\n            } else {\n                res.append(s.charAt(i));\n            }\n        }\n        return res.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.385166"
+}

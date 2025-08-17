@@ -1,0 +1,15 @@
+{
+  "id": 3130,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        const int MOD = 1e9 + 7;\n        int n = zero + one;\n        vector<vector<long long>> dp(2, vector<long long>(n + 1, 0));\n        dp[0][0] = 1;\n        dp[1][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            dp[0][i] = (dp[0][i - 1] + (i <= limit ? 0 : dp[1][i - 1] - (i - limit - 1 >= 0 ? dp[1][i - limit - 1] : 0))) % MOD;\n            dp[1][i] = (dp[1][i - 1] + (i <= limit ? 0 : dp[0][i - 1] - (i - limit - 1 >= 0 ? dp[0][i - limit - 1] : 0))) % MOD;\n        }\n        return (int)((dp[1][zero] - (zero - limit >= 0 ? dp[1][zero - limit] : 0) + MOD) % MOD);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to efficiently count the number of stable binary arrays, handling large inputs and modulo operations.",
+  "code": "class Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        const int MOD = 1e9 + 7;\n        int n = zero + one;\n        vector<vector<long long>> dp(2, vector<long long>(n + 1, 0));\n        dp[0][0] = 1;\n        dp[1][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            dp[0][i] = (dp[0][i - 1] + (i <= limit ? 0 : dp[1][i - 1] - (i - limit - 1 >= 0 ? dp[1][i - limit - 1] : 0))) % MOD;\n            dp[1][i] = (dp[1][i - 1] + (i <= limit ? 0 : dp[0][i - 1] - (i - limit - 1 >= 0 ? dp[0][i - limit - 1] : 0))) % MOD;\n        }\n        return (int)((dp[1][zero] - (zero - limit >= 0 ? dp[1][zero - limit] : 0) + MOD) % MOD);\n    }\n};",
+  "timestamp": "2025-08-05T14:22:51.877774",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfStableArrays(int zero, int one, int limit) {\n        const int MOD = 1e9 + 7;\n        int n = zero + one;\n        vector<vector<long long>> dp(2, vector<long long>(n + 1, 0));\n        dp[0][0] = 1;\n        dp[1][0] = 1;\n        for (int i = 1; i <= n; ++i) {\n            dp[0][i] = (dp[0][i - 1] + (i <= limit ? 0 : dp[1][i - 1] - (i - limit - 1 >= 0 ? dp[1][i - limit - 1] : 0))) % MOD;\n            dp[1][i] = (dp[1][i - 1] + (i <= limit ? 0 : dp[0][i - 1] - (i - limit - 1 >= 0 ? dp[0][i - limit - 1] : 0))) % MOD;\n        }\n        return (int)((dp[1][zero] - (zero - limit >= 0 ? dp[1][zero - limit] : 0) + MOD) % MOD);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.473961"
+}

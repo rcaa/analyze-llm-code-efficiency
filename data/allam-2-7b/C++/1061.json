@@ -1,0 +1,15 @@
+{
+  "id": 1061,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```c++\n#include <unordered_map>\n\nstring smallestEquivalentString(string s1, string s2, string baseStr) {\n    unordered_map<char, char> charMap;\n    for (char c1 : s1) {\n        charMap[c1] = c1;\n    }\n    for (char c2 : s2) {\n        charMap[c2] = c2;\n    }\n\n    string result = baseStr;\n    for (char c : result) {\n        if (charMap.find(c) != charMap.end()) {\n            result = result.substr(0, result.length()) + charMap[result[result.length()] + result.substr(result.length());\n        }\n    }\n\n    return result;\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\n1. Create a hash map (unordered_map) to store the equivalent characters from s1 and s2.\n2. Initialize the result string with baseStr.\n3. Iterate through the characters of the result string.\n4. For each character, check if it has an equivalent character in the hash map.\n5. If a character has an equivalent character, replace it with the equivalent character from the hash map.\n6. Continue iterating until all characters have been processed.\n7. Return the final result string.\n\nThis solution uses a hash map to store equivalent characters from s1 and s2, which has a time complexity of O(n) and space complexity of O(n), where n is the length of the strings. The energy implications are low because the algorithm only performs a constant number of operations per character in the strings. ",
+  "code": "string smallestEquivalentString(string s1, string s2, string baseStr) {\n    unordered_map<char, char> charMap;\n    for (char c1 : s1) {\n        charMap[c1] = c1;\n    }\n    for (char c2 : s2) {\n        charMap[c2] = c2;\n    }\n\n    string result = baseStr;\n    for (char c : result) {\n        if (charMap.find(c) != charMap.end()) {\n            result = result.substr(0, result.length()) + charMap[result[result.length()] + result.substr(result.length());\n        }\n    }\n\n    return result;\n}",
+  "timestamp": "2025-08-06T00:46:52.823992",
+  "code_extracted_previous": "#include <unordered_map>\n\nstring smallestEquivalentString(string s1, string s2, string baseStr) {\n    unordered_map<char, char> charMap;\n    for (char c1 : s1) {\n        charMap[c1] = c1;\n    }\n    for (char c2 : s2) {\n        charMap[c2] = c2;\n    }\n\n    string result = baseStr;\n    for (char c : result) {\n        if (charMap.find(c) != charMap.end()) {\n            result = result.substr(0, result.length()) + charMap[result[result.length()] + result.substr(result.length());\n        }\n    }\n\n    return result;\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:11.999570"
+}

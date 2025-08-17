@@ -1,0 +1,15 @@
+{
+  "id": 1300,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findBestValue(int[] arr, int target) {\n        int max = Arrays.stream(arr).max().getAsInt();\n        int min = Arrays.stream(arr).min().getAsInt();\n        int sum = Arrays.stream(arr).sum();\n        int best = min;\n        int bestDiff = Math.abs(target - sum);\n        for (int i = min; i <= max; i++) {\n            int newSum = sum - (sum / i) * i;\n            int diff = Math.abs(target - newSum);\n            if (diff < bestDiff) {\n                bestDiff = diff;\n                best = i;\n            } else if (diff == bestDiff && i < best) {\n                best = i;\n            }\n        }\n        return best;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int findBestValue(int[] arr, int target) {\n        int max = Arrays.stream(arr).max().getAsInt();\n        int min = Arrays.stream(arr).min().getAsInt();\n        int sum = Arrays.stream(arr).sum();\n        int best = min;\n        int bestDiff = Math.abs(target - sum);\n        for (int i = min; i <= max; i++) {\n            int newSum = sum - (sum / i) * i;\n            int diff = Math.abs(target - newSum);\n            if (diff < bestDiff) {\n                bestDiff = diff;\n                best = i;\n            } else if (diff == bestDiff && i < best) {\n                best = i;\n            }\n        }\n        return best;\n    }\n}",
+  "timestamp": "2025-08-05T13:21:02.925875",
+  "code_extracted_previous": "class Solution {\n    public int findBestValue(int[] arr, int target) {\n        int max = Arrays.stream(arr).max().getAsInt();\n        int min = Arrays.stream(arr).min().getAsInt();\n        int sum = Arrays.stream(arr).sum();\n        int best = min;\n        int bestDiff = Math.abs(target - sum);\n        for (int i = min; i <= max; i++) {\n            int newSum = sum - (sum / i) * i;\n            int diff = Math.abs(target - newSum);\n            if (diff < bestDiff) {\n                bestDiff = diff;\n                best = i;\n            } else if (diff == bestDiff && i < best) {\n                best = i;\n            }\n        }\n        return best;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.941475"
+}

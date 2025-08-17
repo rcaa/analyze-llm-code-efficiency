@@ -1,0 +1,15 @@
+{
+  "id": 1694,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public String reformatNumber(String number) {\n        number = number.replaceAll(\"[ -]\", \"\");\n        StringBuilder res = new StringBuilder();\n        int len = number.length();\n        int idx = 0;\n        while (len > 4) {\n            res.append(number.substring(idx, idx + 3) + \"-\");\n            idx += 3;\n            len -= 3;\n        }\n        if (len == 4) {\n            res.append(number.substring(idx, idx + 2) + \"-\" + number.substring(idx + 2));\n        } else {\n            res.append(number.substring(idx));\n        }\n        return res.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the input string, removing spaces and dashes, and then groups the digits into blocks of length 3 until there are 4 or fewer digits left. The remaining digits are grouped according to the problem's rules.",
+  "code": "class Solution {\n    public String reformatNumber(String number) {\n        number = number.replaceAll(\"[ -]\", \"\");\n        StringBuilder res = new StringBuilder();\n        int len = number.length();\n        int idx = 0;\n        while (len > 4) {\n            res.append(number.substring(idx, idx + 3) + \"-\");\n            idx += 3;\n            len -= 3;\n        }\n        if (len == 4) {\n            res.append(number.substring(idx, idx + 2) + \"-\" + number.substring(idx + 2));\n        } else {\n            res.append(number.substring(idx));\n        }\n        return res.toString();\n    }\n}",
+  "timestamp": "2025-08-05T23:41:26.624183",
+  "code_extracted_previous": "class Solution {\n    public String reformatNumber(String number) {\n        number = number.replaceAll(\"[ -]\", \"\");\n        StringBuilder res = new StringBuilder();\n        int len = number.length();\n        int idx = 0;\n        while (len > 4) {\n            res.append(number.substring(idx, idx + 3) + \"-\");\n            idx += 3;\n            len -= 3;\n        }\n        if (len == 4) {\n            res.append(number.substring(idx, idx + 2) + \"-\" + number.substring(idx + 2));\n        } else {\n            res.append(number.substring(idx));\n        }\n        return res.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.613894"
+}

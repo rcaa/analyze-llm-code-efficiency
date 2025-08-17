@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public long repairCars(int[] ranks, int cars) {\n        Arrays.sort(ranks);\n        long low = 1, high = (long) 1e18, ans = 0;\n        while (low <= high) {\n            long mid = low + (high - low) / 2;\n            long sum = 0;\n            for (int rank : ranks) {\n                sum += Math.min(mid / rank, cars);\n            }\n            if (sum >= cars) {\n                ans = mid;\n                high = mid - 1;\n            } else {\n                low = mid + 1;\n            }\n        }\n        return ans;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        Arrays.sort(ranks);\n        long low = 1, high = (long) 1e18, ans = 0;\n        while (low <= high) {\n            long mid = low + (high - low) / 2;\n            long sum = 0;\n            for (int rank : ranks) {\n                sum += Math.min(mid / rank, cars);\n            }\n            if (sum >= cars) {\n                ans = mid;\n                high = mid - 1;\n            } else {\n                low = mid + 1;\n            }\n        }\n        return ans;\n    }\n}",
+  "timestamp": "2025-08-05T13:32:52.972486",
+  "code_extracted_previous": "class Solution {\n    public long repairCars(int[] ranks, int cars) {\n        Arrays.sort(ranks);\n        long low = 1, high = (long) 1e18, ans = 0;\n        while (low <= high) {\n            long mid = low + (high - low) / 2;\n            long sum = 0;\n            for (int rank : ranks) {\n                sum += Math.min(mid / rank, cars);\n            }\n            if (sum >= cars) {\n                ans = mid;\n                high = mid - 1;\n            } else {\n                low = mid + 1;\n            }\n        }\n        return ans;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.347383"
+}

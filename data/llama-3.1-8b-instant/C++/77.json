@@ -1,0 +1,15 @@
+{
+  "id": 77,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> res;\n        vector<int> path;\n        backtrack(1, n, k, path, res);\n        return res;\n    }\n    \n    void backtrack(int start, int end, int k, vector<int>& path, vector<vector<int>>& res) {\n        if (path.size() == k) {\n            res.push_back(path);\n            return;\n        }\n        for (int i = start; i <= end; i++) {\n            path.push_back(i);\n            backtrack(i + 1, end, k, path, res);\n            path.pop_back();\n        }\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n choose k)\nspace complexity: O(n choose k)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> res;\n        vector<int> path;\n        backtrack(1, n, k, path, res);\n        return res;\n    }\n    \n    void backtrack(int start, int end, int k, vector<int>& path, vector<vector<int>>& res) {\n        if (path.size() == k) {\n            res.push_back(path);\n            return;\n        }\n        for (int i = start; i <= end; i++) {\n            path.push_back(i);\n            backtrack(i + 1, end, k, path, res);\n            path.pop_back();\n        }\n    }\n};",
+  "timestamp": "2025-08-05T13:35:43.275893",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> res;\n        vector<int> path;\n        backtrack(1, n, k, path, res);\n        return res;\n    }\n    \n    void backtrack(int start, int end, int k, vector<int>& path, vector<vector<int>>& res) {\n        if (path.size() == k) {\n            res.push_back(path);\n            return;\n        }\n        for (int i = start; i <= end; i++) {\n            path.push_back(i);\n            backtrack(i + 1, end, k, path, res);\n            path.pop_back();\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.729579"
+}

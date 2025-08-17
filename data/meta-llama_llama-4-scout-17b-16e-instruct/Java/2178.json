@@ -1,0 +1,15 @@
+{
+  "id": 2178,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> result = new ArrayList<>();\n        if (finalSum % 2 != 0) return result;\n        \n        long i = 2;\n        while (finalSum > 0) {\n            if (finalSum - i < i) break;\n            result.add(i);\n            finalSum -= i;\n            i += 2;\n        }\n        if (finalSum > 0) result.add(finalSum);\n        return result;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(sqrt(n))\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution starts by checking if the finalSum is odd. If it is, an empty list is returned. Then, it iterates through even numbers starting from 2, adding them to the result list and subtracting them from the finalSum until it can no longer do so without exceeding the current even number. If there's a remaining sum, it's added to the list. This approach ensures a maximum number of unique positive even integers.",
+  "code": "class Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> result = new ArrayList<>();\n        if (finalSum % 2 != 0) return result;\n        \n        long i = 2;\n        while (finalSum > 0) {\n            if (finalSum - i < i) break;\n            result.add(i);\n            finalSum -= i;\n            i += 2;\n        }\n        if (finalSum > 0) result.add(finalSum);\n        return result;\n    }\n}",
+  "timestamp": "2025-08-06T02:28:22.756923",
+  "code_extracted_previous": "class Solution {\n    public List<Long> maximumEvenSplit(long finalSum) {\n        List<Long> result = new ArrayList<>();\n        if (finalSum % 2 != 0) return result;\n        \n        long i = 2;\n        while (finalSum > 0) {\n            if (finalSum - i < i) break;\n            result.add(i);\n            finalSum -= i;\n            i += 2;\n        }\n        if (finalSum > 0) result.add(finalSum);\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.681328"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2333,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        n = len(nums1)\n        diff = [(a - b) ** 2 for a, b in zip(nums1, nums2)]\n        diff.sort()\n        k1, k2 = k1 + k2, k1 + k2\n        for i in range(n - 1, -1, -1):\n            if k1 >= diff[i]:\n                k1 -= diff[i]\n                diff[i] = 0\n            elif k2 >= diff[i]:\n                k2 -= diff[i]\n                diff[i] = 1\n            else:\n                break\n        return sum(d * (d + 1) // 2 for d in diff)\n```\n\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        n = len(nums1)\n        diff = [(a - b) ** 2 for a, b in zip(nums1, nums2)]\n        diff.sort()\n        k1, k2 = k1 + k2, k1 + k2\n        for i in range(n - 1, -1, -1):\n            if k1 >= diff[i]:\n                k1 -= diff[i]\n                diff[i] = 0\n            elif k2 >= diff[i]:\n                k2 -= diff[i]\n                diff[i] = 1\n            else:\n                break\n        return sum(d * (d + 1) // 2 for d in diff)",
+  "timestamp": "2025-08-05T13:29:07.905522",
+  "code_extracted_previous": "class Solution:\n    def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:\n        n = len(nums1)\n        diff = [(a - b) ** 2 for a, b in zip(nums1, nums2)]\n        diff.sort()\n        k1, k2 = k1 + k2, k1 + k2\n        for i in range(n - 1, -1, -1):\n            if k1 >= diff[i]:\n                k1 -= diff[i]\n                diff[i] = 0\n            elif k2 >= diff[i]:\n                k2 -= diff[i]\n                diff[i] = 1\n            else:\n                break\n        return sum(d * (d + 1) // 2 for d in diff)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:30.697021"
+}

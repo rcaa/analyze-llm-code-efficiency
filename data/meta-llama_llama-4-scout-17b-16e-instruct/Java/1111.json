@@ -1,0 +1,15 @@
+{
+  "id": 1111,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int[] maxDepthAfterSplit(String seq) {\n        int n = seq.length();\n        int[] ans = new int[n];\n        int a = 0, b = 0;\n        for (int i = 0; i < n; i++) {\n            if (seq.charAt(i) == '(') {\n                if (a <= b) {\n                    a++;\n                    ans[i] = 0;\n                } else {\n                    b++;\n                    ans[i] = 1;\n                }\n            } else {\n                if (a > b) {\n                    a--;\n                    ans[i] = 0;\n                } else {\n                    b--;\n                    ans[i] = 1;\n                }\n            }\n        }\n        return ans;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution works by maintaining two counters, `a` and `b`, representing the current nesting depths of subsequences A and B. When encountering an opening parenthesis, it increments the counter with the smaller value, and when encountering a closing parenthesis, it decrements the counter with the larger value. This approach ensures that the maximum depth of A and B is minimized.",
+  "code": "class Solution {\n    public int[] maxDepthAfterSplit(String seq) {\n        int n = seq.length();\n        int[] ans = new int[n];\n        int a = 0, b = 0;\n        for (int i = 0; i < n; i++) {\n            if (seq.charAt(i) == '(') {\n                if (a <= b) {\n                    a++;\n                    ans[i] = 0;\n                } else {\n                    b++;\n                    ans[i] = 1;\n                }\n            } else {\n                if (a > b) {\n                    a--;\n                    ans[i] = 0;\n                } else {\n                    b--;\n                    ans[i] = 1;\n                }\n            }\n        }\n        return ans;\n    }\n}",
+  "timestamp": "2025-08-06T00:48:44.766956",
+  "code_extracted_previous": "class Solution {\n    public int[] maxDepthAfterSplit(String seq) {\n        int n = seq.length();\n        int[] ans = new int[n];\n        int a = 0, b = 0;\n        for (int i = 0; i < n; i++) {\n            if (seq.charAt(i) == '(') {\n                if (a <= b) {\n                    a++;\n                    ans[i] = 0;\n                } else {\n                    b++;\n                    ans[i] = 1;\n                }\n            } else {\n                if (a > b) {\n                    a--;\n                    ans[i] = 0;\n                } else {\n                    b--;\n                    ans[i] = 1;\n                }\n            }\n        }\n        return ans;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.239719"
+}

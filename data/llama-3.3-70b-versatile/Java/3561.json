@@ -1,0 +1,15 @@
+{
+  "id": 3561,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public String resultingString(String s) {\n        StringBuilder stack = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            if (stack.length() > 0) {\n                char last = stack.charAt(stack.length() - 1);\n                if (Math.abs(c - last) == 1 || (c == 'a' && last == 'z') || (c == 'z' && last == 'a')) {\n                    stack.deleteCharAt(stack.length() - 1);\n                    continue;\n                }\n            }\n            stack.append(c);\n        }\n        return stack.toString();\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilize a stack to track characters, removing the top character when a consecutive pair is found, ensuring efficient iteration through the input string.",
+  "code": "class Solution {\n    public String resultingString(String s) {\n        StringBuilder stack = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            if (stack.length() > 0) {\n                char last = stack.charAt(stack.length() - 1);\n                if (Math.abs(c - last) == 1 || (c == 'a' && last == 'z') || (c == 'z' && last == 'a')) {\n                    stack.deleteCharAt(stack.length() - 1);\n                    continue;\n                }\n            }\n            stack.append(c);\n        }\n        return stack.toString();\n    }\n}",
+  "timestamp": "2025-08-06T01:09:19.873177",
+  "code_extracted_previous": "class Solution {\n    public String resultingString(String s) {\n        StringBuilder stack = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            if (stack.length() > 0) {\n                char last = stack.charAt(stack.length() - 1);\n                if (Math.abs(c - last) == 1 || (c == 'a' && last == 'z') || (c == 'z' && last == 'a')) {\n                    stack.deleteCharAt(stack.length() - 1);\n                    continue;\n                }\n            }\n            stack.append(c);\n        }\n        return stack.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.207925"
+}

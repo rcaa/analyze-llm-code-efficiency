@@ -1,0 +1,15 @@
+{
+  "id": 2071,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {\n        sort(tasks.begin(), tasks.end());\n        sort(workers.begin(), workers.end());\n        int res = 0;\n        int i = 0, j = 0;\n        while (i < tasks.size() && j < workers.size()) {\n            if (workers[j] >= tasks[i]) {\n                res++;\n                i++;\n                j++;\n            } else if (pills > 0 && workers[j] + strength >= tasks[i]) {\n                res++;\n                pills--;\n                i++;\n                j++;\n            } else {\n                j++;\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution first sorts the tasks and workers arrays. Then, it iterates through the arrays, assigning tasks to workers based on their strength. If a worker is not strong enough, it checks if there are remaining magical pills that can increase the worker's strength. If there are, it assigns the task to the worker and decreases the number of pills.",
+  "code": "class Solution {\npublic:\n    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {\n        sort(tasks.begin(), tasks.end());\n        sort(workers.begin(), workers.end());\n        int res = 0;\n        int i = 0, j = 0;\n        while (i < tasks.size() && j < workers.size()) {\n            if (workers[j] >= tasks[i]) {\n                res++;\n                i++;\n                j++;\n            } else if (pills > 0 && workers[j] + strength >= tasks[i]) {\n                res++;\n                pills--;\n                i++;\n                j++;\n            } else {\n                j++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T02:27:53.786253",
+  "code_extracted_previous": "public:\n    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {\n        sort(tasks.begin(), tasks.end());\n        sort(workers.begin(), workers.end());\n        int res = 0;\n        int i = 0, j = 0;\n        while (i < tasks.size() && j < workers.size()) {\n            if (workers[j] >= tasks[i]) {\n                res++;\n                i++;\n                j++;\n            } else if (pills > 0 && workers[j] + strength >= tasks[i]) {\n                res++;\n                pills--;\n                i++;\n                j++;\n            } else {\n                j++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.809599"
+}

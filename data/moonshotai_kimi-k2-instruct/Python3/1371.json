@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        mask = 0\n        first = {0: -1}\n        max_len = 0\n        vowel_bit = {'a': 1, 'e': 2, 'i': 4, 'o': 8, 'u': 16}\n        for i, ch in enumerate(s):\n            if ch in vowel_bit:\n                mask ^= vowel_bit[ch]\n            if mask in first:\n                max_len = max(max_len, i - first[mask])\n            else:\n                first[mask] = i\n        return max_len\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Uses a 5-bit mask to track parity of vowel counts; the first occurrence of each mask gives the earliest index where that parity state was seen, allowing O(1) updates and O(1) space.",
+  "code": "class Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        mask = 0\n        first = {0: -1}\n        max_len = 0\n        vowel_bit = {'a': 1, 'e': 2, 'i': 4, 'o': 8, 'u': 16}\n        for i, ch in enumerate(s):\n            if ch in vowel_bit:\n                mask ^= vowel_bit[ch]\n            if mask in first:\n                max_len = max(max_len, i - first[mask])\n            else:\n                first[mask] = i\n        return max_len",
+  "timestamp": "2025-08-06T02:32:41.627071",
+  "code_extracted_previous": "class Solution:\n    def findTheLongestSubstring(self, s: str) -> int:\n        mask = 0\n        first = {0: -1}\n        max_len = 0\n        vowel_bit = {'a': 1, 'e': 2, 'i': 4, 'o': 8, 'u': 16}\n        for i, ch in enumerate(s):\n            if ch in vowel_bit:\n                mask ^= vowel_bit[ch]\n            if mask in first:\n                max_len = max(max_len, i - first[mask])\n            else:\n                first[mask] = i\n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.230306"
+}

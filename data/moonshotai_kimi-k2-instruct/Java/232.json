@@ -1,0 +1,15 @@
+{
+  "id": 232,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class MyQueue {\n    private Deque<Integer> in;\n    private Deque<Integer> out;\n\n    public MyQueue() {\n        in = new ArrayDeque<>();\n        out = new ArrayDeque<>();\n    }\n    \n    public void push(int x) {\n        in.push(x);\n    }\n    \n    public int pop() {\n        shift();\n        return out.pop();\n    }\n    \n    public int peek() {\n        shift();\n        return out.peek();\n    }\n    \n    public boolean empty() {\n        return in.isEmpty() && out.isEmpty();\n    }\n    \n    private void shift() {\n        if (out.isEmpty()) {\n            while (!in.isEmpty()) {\n                out.push(in.pop());\n            }\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: Amortized O(1) per operation\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses two stacks (in and out). Elements are pushed onto 'in'. When pop/peek is called, elements are moved from 'in' to 'out' only when 'out' is empty, reversing the order to achieve FIFO. Each element is moved at most once, giving amortized O(1) time.",
+  "code": "class MyQueue {\n    private Deque<Integer> in;\n    private Deque<Integer> out;\n\n    public MyQueue() {\n        in = new ArrayDeque<>();\n        out = new ArrayDeque<>();\n    }\n    \n    public void push(int x) {\n        in.push(x);\n    }\n    \n    public int pop() {\n        shift();\n        return out.pop();\n    }\n    \n    public int peek() {\n        shift();\n        return out.peek();\n    }\n    \n    public boolean empty() {\n        return in.isEmpty() && out.isEmpty();\n    }\n    \n    private void shift() {\n        if (out.isEmpty()) {\n            while (!in.isEmpty()) {\n                out.push(in.pop());\n            }\n        }\n    }\n}",
+  "timestamp": "2025-08-06T02:31:08.448017",
+  "code_extracted_previous": "private Deque<Integer> in;\n    private Deque<Integer> out;\n\n    public MyQueue() {\n        in = new ArrayDeque<>();\n        out = new ArrayDeque<>();\n    }\n    \n    public void push(int x) {\n        in.push(x);\n    }\n    \n    public int pop() {\n        shift();\n        return out.pop();\n    }\n    \n    public int peek() {\n        shift();\n        return out.peek();\n    }\n    \n    public boolean empty() {\n        return in.isEmpty() && out.isEmpty();\n    }\n    \n    private void shift() {\n        if (out.isEmpty()) {\n            while (!in.isEmpty()) {\n                out.push(in.pop());\n            }\n        }\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:54.997703"
+}

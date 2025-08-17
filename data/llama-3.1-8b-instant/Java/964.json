@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        int ans = Integer.MAX_VALUE;\n        for (int i = 1; i <= target; i *= x) {\n            int ops = 0;\n            int mul = i;\n            int add = target - i;\n            while (mul < add) {\n                mul *= x;\n                ops++;\n            }\n            while (mul > add) {\n                mul /= x;\n                ops++;\n            }\n            ans = Math.min(ans, ops + 1);\n        }\n        return ans;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(log(target))\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        int ans = Integer.MAX_VALUE;\n        for (int i = 1; i <= target; i *= x) {\n            int ops = 0;\n            int mul = i;\n            int add = target - i;\n            while (mul < add) {\n                mul *= x;\n                ops++;\n            }\n            while (mul > add) {\n                mul /= x;\n                ops++;\n            }\n            ans = Math.min(ans, ops + 1);\n        }\n        return ans;\n    }\n}",
+  "timestamp": "2025-08-05T15:19:27.094721",
+  "code_extracted_previous": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        int ans = Integer.MAX_VALUE;\n        for (int i = 1; i <= target; i *= x) {\n            int ops = 0;\n            int mul = i;\n            int add = target - i;\n            while (mul < add) {\n                mul *= x;\n                ops++;\n            }\n            while (mul > add) {\n                mul /= x;\n                ops++;\n            }\n            ans = Math.min(ans, ops + 1);\n        }\n        return ans;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:30.111215"
+}

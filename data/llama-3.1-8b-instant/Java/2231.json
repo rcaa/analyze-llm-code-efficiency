@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int largestInteger(int num) {\n        String str = String.valueOf(num);\n        int[] parity = new int[2];\n        for (char c : str.toCharArray()) {\n            parity[(c - '0') % 2]++;\n        }\n        int res = 0;\n        for (int i = str.length() - 1; i >= 0; i--) {\n            if (parity[str.charAt(i) - '0' % 2] > 0) {\n                res = res * 10 + (str.charAt(i) - '0');\n                parity[str.charAt(i) - '0' % 2]--;\n            }\n        }\n        return res;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution works by first counting the number of odd and even digits in the input number. Then it iterates over the digits from right to left, appending the largest available digit of the same parity to the result. This approach ensures that the resulting number is the largest possible after any number of swaps.",
+  "code": "class Solution {\n    public int largestInteger(int num) {\n        String str = String.valueOf(num);\n        int[] parity = new int[2];\n        for (char c : str.toCharArray()) {\n            parity[(c - '0') % 2]++;\n        }\n        int res = 0;\n        for (int i = str.length() - 1; i >= 0; i--) {\n            if (parity[str.charAt(i) - '0' % 2] > 0) {\n                res = res * 10 + (str.charAt(i) - '0');\n                parity[str.charAt(i) - '0' % 2]--;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T16:00:09.657607",
+  "code_extracted_previous": "class Solution {\n    public int largestInteger(int num) {\n        String str = String.valueOf(num);\n        int[] parity = new int[2];\n        for (char c : str.toCharArray()) {\n            parity[(c - '0') % 2]++;\n        }\n        int res = 0;\n        for (int i = str.length() - 1; i >= 0; i--) {\n            if (parity[str.charAt(i) - '0' % 2] > 0) {\n                res = res * 10 + (str.charAt(i) - '0');\n                parity[str.charAt(i) - '0' % 2]--;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.200501"
+}

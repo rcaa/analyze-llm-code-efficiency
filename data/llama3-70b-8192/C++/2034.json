@@ -1,0 +1,15 @@
+{
+  "id": 2034,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass StockPrice {\npublic:\n    StockPrice() {\n        maxHeap = priority_queue<int>();\n        minHeap = priority_queue<int, vector<int>, greater<int>>();\n        prices = {};\n    }\n    \n    void update(int timestamp, int price) {\n        prices[timestamp] = price;\n        maxHeap.push(price);\n        minHeap.push(price);\n    }\n    \n    int current() {\n        return prices.rbegin()->second;\n    }\n    \n    int maximum() {\n        return maxHeap.top();\n    }\n    \n    int minimum() {\n        return minHeap.top();\n    }\nprivate:\n    map<int, int> prices;\n    priority_queue<int> maxHeap;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n};\n```\nefficiency: HIGH\ntime complexity: O(logn)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a map to store the latest price for each timestamp, and two heaps to keep track of the maximum and minimum prices. The update operation takes O(logn) time due to the heap operations, and the current, maximum, and minimum operations take O(1) time.",
+  "code": "class StockPrice {\npublic:\n    StockPrice() {\n        maxHeap = priority_queue<int>();\n        minHeap = priority_queue<int, vector<int>, greater<int>>();\n        prices = {};\n    }\n    \n    void update(int timestamp, int price) {\n        prices[timestamp] = price;\n        maxHeap.push(price);\n        minHeap.push(price);\n    }\n    \n    int current() {\n        return prices.rbegin()->second;\n    }\n    \n    int maximum() {\n        return maxHeap.top();\n    }\n    \n    int minimum() {\n        return minHeap.top();\n    }\nprivate:\n    map<int, int> prices;\n    priority_queue<int> maxHeap;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n};",
+  "timestamp": "2025-08-05T15:08:04.256277",
+  "code_extracted_previous": "class StockPrice {\npublic:\n    StockPrice() {\n        maxHeap = priority_queue<int>();\n        minHeap = priority_queue<int, vector<int>, greater<int>>();\n        prices = {};\n    }\n    \n    void update(int timestamp, int price) {\n        prices[timestamp] = price;\n        maxHeap.push(price);\n        minHeap.push(price);\n    }\n    \n    int current() {\n        return prices.rbegin()->second;\n    }\n    \n    int maximum() {\n        return maxHeap.top();\n    }\n    \n    int minimum() {\n        return minHeap.top();\n    }\nprivate:\n    map<int, int> prices;\n    priority_queue<int> maxHeap;\n    priority_queue<int, vector<int>, greater<int>> minHeap;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:36.357731"
+}

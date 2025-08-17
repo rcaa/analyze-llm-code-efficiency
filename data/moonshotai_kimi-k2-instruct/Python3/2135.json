@@ -1,0 +1,15 @@
+{
+  "id": 2135,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_masks = set()\n        for word in startWords:\n            mask = 0\n            for c in word:\n                mask |= 1 << (ord(c) - ord('a'))\n            start_masks.add(mask)\n        \n        count = 0\n        for word in targetWords:\n            mask = 0\n            for c in word:\n                mask |= 1 << (ord(c) - ord('a'))\n            for c in word:\n                candidate = mask ^ (1 << (ord(c) - ord('a')))\n                if candidate in start_masks:\n                    count += 1\n                    break\n        return count\n```\nefficiency: HIGH\ntime complexity: O(N*26 + M*26)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Represent each word as a 26-bit mask. Precompute masks for all startWords. For each target word, check if removing any single character yields a mask present in startWords. Uses bit operations for constant-time checks.",
+  "code": "class Solution:\n    def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_masks = set()\n        for word in startWords:\n            mask = 0\n            for c in word:\n                mask |= 1 << (ord(c) - ord('a'))\n            start_masks.add(mask)\n        \n        count = 0\n        for word in targetWords:\n            mask = 0\n            for c in word:\n                mask |= 1 << (ord(c) - ord('a'))\n            for c in word:\n                candidate = mask ^ (1 << (ord(c) - ord('a')))\n                if candidate in start_masks:\n                    count += 1\n                    break\n        return count",
+  "timestamp": "2025-08-05T13:23:30.018292",
+  "code_extracted_previous": "class Solution:\n    def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_masks = set()\n        for word in startWords:\n            mask = 0\n            for c in word:\n                mask |= 1 << (ord(c) - ord('a'))\n            start_masks.add(mask)\n        \n        count = 0\n        for word in targetWords:\n            mask = 0\n            for c in word:\n                mask |= 1 << (ord(c) - ord('a'))\n            for c in word:\n                candidate = mask ^ (1 << (ord(c) - ord('a')))\n                if candidate in start_masks:\n                    count += 1\n                    break\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.518121"
+}

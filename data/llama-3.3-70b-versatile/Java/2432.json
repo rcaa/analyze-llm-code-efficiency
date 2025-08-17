@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int hardestWorker(int n, int[][] logs) {\n        int maxTime = 0;\n        int result = Integer.MAX_VALUE;\n        int prevTime = 0;\n        for (int[] log : logs) {\n            int id = log[0];\n            int leaveTime = log[1];\n            int time = leaveTime - prevTime;\n            prevTime = leaveTime;\n            if (time > maxTime) {\n                maxTime = time;\n                result = id;\n            } else if (time == maxTime) {\n                result = Math.min(result, id);\n            }\n        }\n        return result;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the logs array, calculating the time taken for each task and updating the result if a longer task is found or if a task with the same maximum time is found with a smaller id.",
+  "code": "class Solution {\n    public int hardestWorker(int n, int[][] logs) {\n        int maxTime = 0;\n        int result = Integer.MAX_VALUE;\n        int prevTime = 0;\n        for (int[] log : logs) {\n            int id = log[0];\n            int leaveTime = log[1];\n            int time = leaveTime - prevTime;\n            prevTime = leaveTime;\n            if (time > maxTime) {\n                maxTime = time;\n                result = id;\n            } else if (time == maxTime) {\n                result = Math.min(result, id);\n            }\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T12:48:47.437847",
+  "code_extracted_previous": "class Solution {\n    public int hardestWorker(int n, int[][] logs) {\n        int maxTime = 0;\n        int result = Integer.MAX_VALUE;\n        int prevTime = 0;\n        for (int[] log : logs) {\n            int id = log[0];\n            int leaveTime = log[1];\n            int time = leaveTime - prevTime;\n            prevTime = leaveTime;\n            if (time > maxTime) {\n                maxTime = time;\n                result = id;\n            } else if (time == maxTime) {\n                result = Math.min(result, id);\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.930410"
+}

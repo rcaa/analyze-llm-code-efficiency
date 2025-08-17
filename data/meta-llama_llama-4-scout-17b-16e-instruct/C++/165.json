@@ -1,0 +1,15 @@
+{
+  "id": 165,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        int i = 0, j = 0;\n        while (i < version1.size() || j < version2.size()) {\n            int v1 = 0, v2 = 0;\n            while (i < version1.size() && version1[i] != '.') {\n                v1 = v1 * 10 + (version1[i++] - '0');\n            }\n            while (j < version2.size() && version2[j] != '.') {\n                v2 = v2 * 10 + (version2[j++] - '0');\n            }\n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n            i++; j++;\n        }\n        return 0;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(max(n, m))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through both version strings simultaneously, parsing and comparing revision values. It uses two pointers to track the current position in each string and constructs the revision values by accumulating digits until a dot or the end of the string is encountered. If a revision value in version1 is less than in version2, it returns -1; if greater, it returns 1. If all revisions are equal, it returns 0. This approach is efficient as it only requires a single pass through both strings.",
+  "code": "class Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        int i = 0, j = 0;\n        while (i < version1.size() || j < version2.size()) {\n            int v1 = 0, v2 = 0;\n            while (i < version1.size() && version1[i] != '.') {\n                v1 = v1 * 10 + (version1[i++] - '0');\n            }\n            while (j < version2.size() && version2[j] != '.') {\n                v2 = v2 * 10 + (version2[j++] - '0');\n            }\n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n            i++; j++;\n        }\n        return 0;\n    }\n};",
+  "timestamp": "2025-08-06T01:35:40.628847",
+  "code_extracted_previous": "class Solution {\npublic:\n    int compareVersion(string version1, string version2) {\n        int i = 0, j = 0;\n        while (i < version1.size() || j < version2.size()) {\n            int v1 = 0, v2 = 0;\n            while (i < version1.size() && version1[i] != '.') {\n                v1 = v1 * 10 + (version1[i++] - '0');\n            }\n            while (j < version2.size() && version2[j] != '.') {\n                v2 = v2 * 10 + (version2[j++] - '0');\n            }\n            if (v1 < v2) return -1;\n            if (v1 > v2) return 1;\n            i++; j++;\n        }\n        return 0;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.824790"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 581,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        vector<int> sortedNums = nums;\n        sort(sortedNums.begin(), sortedNums.end());\n        int start = -1, end = -1;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] != sortedNums[i]) {\n                if (start == -1) start = i;\n                end = i;\n            }\n        }\n        return end == -1 ? 0 : end - start + 1;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a sorting approach to find the unsorted subarray. It first creates a copy of the input array and sorts it. Then, it iterates through the original array and the sorted array simultaneously to find the first and last indices of the unsorted subarray. The time complexity is O(n log n) due to the sorting operation, and the space complexity is O(n) for storing the sorted array.",
+  "code": "class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        vector<int> sortedNums = nums;\n        sort(sortedNums.begin(), sortedNums.end());\n        int start = -1, end = -1;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] != sortedNums[i]) {\n                if (start == -1) start = i;\n                end = i;\n            }\n        }\n        return end == -1 ? 0 : end - start + 1;\n    }\n};",
+  "timestamp": "2025-08-05T13:01:36.369732",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findUnsortedSubarray(vector<int>& nums) {\n        vector<int> sortedNums = nums;\n        sort(sortedNums.begin(), sortedNums.end());\n        int start = -1, end = -1;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] != sortedNums[i]) {\n                if (start == -1) start = i;\n                end = i;\n            }\n        }\n        return end == -1 ? 0 : end - start + 1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.552373"
+}

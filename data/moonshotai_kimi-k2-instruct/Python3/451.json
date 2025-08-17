@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def frequencySort(self, s: str) -> str:\n        from collections import Counter\n        counts = Counter(s)\n        max_freq = max(counts.values()) if counts else 0\n        buckets = [[] for _ in range(max_freq + 1)]\n        for ch, freq in counts.items():\n            buckets[freq].append(ch)\n        res = []\n        for freq in range(max_freq, 0, -1):\n            for ch in buckets[freq]:\n                res.append(ch * freq)\n        return ''.join(res)\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Count frequencies in O(n), bucket sort characters by frequency in O(k) where k ≤ n, then build the result string in O(n). Linear time and space, minimal extra processing.",
+  "code": "class Solution:\n    def frequencySort(self, s: str) -> str:\n        counts = Counter(s)\n        max_freq = max(counts.values()) if counts else 0\n        buckets = [[] for _ in range(max_freq + 1)]\n        for ch, freq in counts.items():\n            buckets[freq].append(ch)\n        res = []\n        for freq in range(max_freq, 0, -1):\n            for ch in buckets[freq]:\n                res.append(ch * freq)\n        return ''.join(res)",
+  "timestamp": "2025-08-06T02:34:16.189910",
+  "code_extracted_previous": "def frequencySort(self, s: str) -> str:\n        from collections import Counter\n        counts = Counter(s)\n        max_freq = max(counts.values()) if counts else 0\n        buckets = [[] for _ in range(max_freq + 1)]\n        for ch, freq in counts.items():\n            buckets[freq].append(ch)\n        res = []\n        for freq in range(max_freq, 0, -1):\n            for ch in buckets[freq]:\n                res.append(ch * freq)\n        return ''.join(res)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.224006"
+}

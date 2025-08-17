@@ -1,14 +1,15 @@
 {
-  "id": "2441",
-  "titulo": "Largest Positive Integer That Exists With Its Negative",
-  "url": "https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/",
-  "llm_response": {
-    "resposta_bruta": "```cpp\nsolution:\nint findMaxK(vector<int>& nums) {\n    unordered_set<int> numSet(nums.begin(), nums.end());\n    int maxK = -1;\n    for (int num : numSet) {\n        if (num > 0 && numSet.find(-num) != numSet.end()) {\n            maxK = max(maxK, num);\n        }\n    }\n    return maxK;\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses an unordered set to store the input array, allowing for efficient lookups of negative counterparts. It then iterates over the set to find the maximum positive integer k with a corresponding negative value, returning -1 if no such integer exists.",
-    "resposta_formatada": "solution:\nint findMaxK(vector<int>& nums) {\n    unordered_set<int> numSet(nums.begin(), nums.end());\n    int maxK = -1;\n    for (int num : numSet) {\n        if (num > 0 && numSet.find(-num) != numSet.end()) {\n            maxK = max(maxK, num);\n        }\n    }\n    return maxK;\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses an unordered set to store the input array, allowing for efficient lookups of negative counterparts. It then iterates over the set to find the maximum positive integer k with a corresponding negative value, returning -1 if no such integer exists.",
-    "valid": true,
-    "tempo_resposta": 3.2279293537139893,
-    "tentativas": 1,
-    "erro": null,
-    "timestamp": "2025-06-22T19:30:57.353932"
-  }
+  "id": 20,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        for (char c : s) {\n            if (c == '(' || c == '{' || c == '[') {\n                st.push(c);\n            } else {\n                if (st.empty()) return false;\n                char top = st.top();\n                st.pop();\n                if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {\n                    return false;\n                }\n            }\n        }\n        return st.empty();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a stack to track opening brackets, ensuring correct order and matching of closing brackets.",
+  "code": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        for (char c : s) {\n            if (c == '(' || c == '{' || c == '[') {\n                st.push(c);\n            } else {\n                if (st.empty()) return false;\n                char top = st.top();\n                st.pop();\n                if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {\n                    return false;\n                }\n            }\n        }\n        return st.empty();\n    }\n};",
+  "timestamp": "2025-08-05T22:47:57.848029",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> st;\n        for (char c : s) {\n            if (c == '(' || c == '{' || c == '[') {\n                st.push(c);\n            } else {\n                if (st.empty()) return false;\n                char top = st.top();\n                st.pop();\n                if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {\n                    return false;\n                }\n            }\n        }\n        return st.empty();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.952317"
 }

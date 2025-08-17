@@ -1,0 +1,15 @@
+{
+  "id": 2048,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int nextBeautifulNumber(int n) {\n        for (int i = n + 1; ; i++) {\n            string str = to_string(i);\n            unordered_map<char, int> count;\n            for (char c : str) count[c]++;\n            bool isValid = true;\n            for (char c : str) {\n                if (count[c] != c - '0') {\n                    isValid = false;\n                    break;\n                }\n            }\n            if (isValid) return i;\n        }\n    }\n};\nefficiency: MEDIUM\ntime complexity: O(M log M)\nspace complexity: O(M)\nenergy implications: MEDIUM\nexplanation: The solution iterates through numbers greater than n, converting each to a string to count digit occurrences. It checks if the count of each digit matches its value, returning the first number that satisfies this condition.\n```",
+  "code": "class Solution {\npublic:\n    int nextBeautifulNumber(int n) {\n        for (int i = n + 1; ; i++) {\n            string str = to_string(i);\n            unordered_map<char, int> count;\n            for (char c : str) count[c]++;\n            bool isValid = true;\n            for (char c : str) {\n                if (count[c] != c - '0') {\n                    isValid = false;\n                    break;\n                }\n            }\n            if (isValid) return i;\n        }\n    }\n};\nefficiency: MEDIUM\ntime complexity: O(M log M)\nspace complexity: O(M)\nenergy implications: MEDIUM\nexplanation: The solution iterates through numbers greater than n, converting each to a string to count digit occurrences. It checks if the count of each digit matches its value, returning the first number that satisfies this condition.",
+  "timestamp": "2025-08-05T15:08:30.332469",
+  "code_extracted_previous": "class Solution {\npublic:\n    int nextBeautifulNumber(int n) {\n        for (int i = n + 1; ; i++) {\n            string str = to_string(i);\n            unordered_map<char, int> count;\n            for (char c : str) count[c]++;\n            bool isValid = true;\n            for (char c : str) {\n                if (count[c] != c - '0') {\n                    isValid = false;\n                    break;\n                }\n            }\n            if (isValid) return i;\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.042011"
+}

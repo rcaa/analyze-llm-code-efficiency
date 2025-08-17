@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37];\n        int maxCount = 0;\n        int res = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            count[sum]++;\n            if (count[sum] > maxCount) {\n                maxCount = count[sum];\n                res = 1;\n            } else if (count[sum] == maxCount) {\n                res++;\n            }\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a count array to store the frequency of each digit sum. It then iterates through the numbers from 1 to n, calculates the digit sum for each number, and updates the count array. Finally, it finds the maximum count and returns the number of groups with the maximum count.",
+  "code": "class Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[37];\n        int maxCount = 0;\n        int res = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            count[sum]++;\n            if (count[sum] > maxCount) {\n                maxCount = count[sum];\n                res = 1;\n            } else if (count[sum] == maxCount) {\n                res++;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:42:54.250206",
+  "code_extracted_previous": "public int countLargestGroup(int n) {\n        int[] count = new int[37];\n        int maxCount = 0;\n        int res = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = 0;\n            int num = i;\n            while (num > 0) {\n                sum += num % 10;\n                num /= 10;\n            }\n            count[sum]++;\n            if (count[sum] > maxCount) {\n                maxCount = count[sum];\n                res = 1;\n            } else if (count[sum] == maxCount) {\n                res++;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.961237"
+}

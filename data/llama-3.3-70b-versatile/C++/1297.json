@@ -1,0 +1,15 @@
+{
+  "id": 1297,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        int res = 0;\n        for (int size = minSize; size <= maxSize; size++) {\n            unordered_map<string, int> freq;\n            for (int i = 0; i <= s.length() - size; i++) {\n                string substr = s.substr(i, size);\n                unordered_set<char> unique_chars(substr.begin(), substr.end());\n                if (unique_chars.size() <= maxLetters) {\n                    freq[substr]++;\n                    res = max(res, freq[substr]);\n                }\n            }\n        }\n        return res;\n    }\n};\n\nefficiency: MEDIUM\ntime complexity: O(n * m)\nspace complexity: O(n * m)\nenergy implications: MEDIUM\nexplanation: The solution uses a sliding window approach to generate all substrings of the given string, then checks each substring for the number of unique characters and updates the frequency map accordingly, keeping track of the maximum frequency encountered.",
+  "code": "class Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        int res = 0;\n        for (int size = minSize; size <= maxSize; size++) {\n            unordered_map<string, int> freq;\n            for (int i = 0; i <= s.length() - size; i++) {\n                string substr = s.substr(i, size);\n                unordered_set<char> unique_chars(substr.begin(), substr.end());\n                if (unique_chars.size() <= maxLetters) {\n                    freq[substr]++;\n                    res = max(res, freq[substr]);\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T03:08:19.835722",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxFreq(string s, int maxLetters, int minSize, int maxSize) {\n        int res = 0;\n        for (int size = minSize; size <= maxSize; size++) {\n            unordered_map<string, int> freq;\n            for (int i = 0; i <= s.length() - size; i++) {\n                string substr = s.substr(i, size);\n                unordered_set<char> unique_chars(substr.begin(), substr.end());\n                if (unique_chars.size() <= maxLetters) {\n                    freq[substr]++;\n                    res = max(res, freq[substr]);\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.725172"
+}

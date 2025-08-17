@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findIntegers(self, n: int) -> int:\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        dp[1] = 2\n        for i in range(2, n + 1):\n            dp[i] = dp[i - 1] + dp[i - 2]\n            if bin(i).count(\"1\") == bin(i - 1).count(\"1\"):\n                dp[i] -= dp[i - 2]\n        return dp[n]\n```\nsolution: \n```python\nclass Solution:\n    def findIntegers(self, n: int) -> int:\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        dp[1] = 2\n        for i in range(2, n + 1):\n            dp[i] = dp[i - 1] + dp[i - 2]\n            if bin(i).count(\"1\") == bin(i - 1).count(\"1\"):\n                dp[i] -= dp[i - 2]\n        return dp[n]\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes dynamic programming to efficiently calculate the count of integers with non-consecutive ones in their binary representation. It builds a DP table `dp` where `dp[i]` stores the count of integers up to `i` satisfying the condition. The recurrence relation `dp[i] = dp[i - 1] + dp[i - 2]` captures the pattern of building valid integers from previous valid ones. The conditional subtraction `dp[i] -= dp[i - 2]` handles the case where adding a '1' to a valid integer results in consecutive ones, ensuring the count remains accurate.\n\n\n\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T14:14:47.187323",
+  "code_extracted_previous": "class Solution:\n    def findIntegers(self, n: int) -> int:\n        dp = [0] * (n + 1)\n        dp[0] = 1\n        dp[1] = 2\n        for i in range(2, n + 1):\n            dp[i] = dp[i - 1] + dp[i - 2]\n            if bin(i).count(\"1\") == bin(i - 1).count(\"1\"):\n                dp[i] -= dp[i - 2]\n        return dp[n]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.985405"
+}

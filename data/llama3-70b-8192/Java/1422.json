@@ -1,0 +1,15 @@
+{
+  "id": 1422,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int maxScore(String s) {\n        int zeros = 0, ones = 0, maxScore = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '0') zeros++;\n            else ones++;\n        }\n        int leftZeros = 0, rightOnes = ones;\n        for (int i = 0; i < s.length() - 1; i++) {\n            if (s.charAt(i) == '0') leftZeros++;\n            else rightOnes--;\n            maxScore = Math.max(maxScore, leftZeros + rightOnes);\n        }\n        return maxScore;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate through the string to count total zeros and ones. Then, iterate through the string again to calculate the score for each possible split, keeping track of the maximum score.",
+  "code": "class Solution {\n    public int maxScore(String s) {\n        int zeros = 0, ones = 0, maxScore = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '0') zeros++;\n            else ones++;\n        }\n        int leftZeros = 0, rightOnes = ones;\n        for (int i = 0; i < s.length() - 1; i++) {\n            if (s.charAt(i) == '0') leftZeros++;\n            else rightOnes--;\n            maxScore = Math.max(maxScore, leftZeros + rightOnes);\n        }\n        return maxScore;\n    }\n}",
+  "timestamp": "2025-08-05T23:40:20.713475",
+  "code_extracted_previous": "class Solution {\n    public int maxScore(String s) {\n        int zeros = 0, ones = 0, maxScore = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '0') zeros++;\n            else ones++;\n        }\n        int leftZeros = 0, rightOnes = ones;\n        for (int i = 0; i < s.length() - 1; i++) {\n            if (s.charAt(i) == '0') leftZeros++;\n            else rightOnes--;\n            maxScore = Math.max(maxScore, leftZeros + rightOnes);\n        }\n        return maxScore;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.539426"
+}

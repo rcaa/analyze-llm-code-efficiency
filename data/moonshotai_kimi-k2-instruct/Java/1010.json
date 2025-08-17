@@ -1,0 +1,15 @@
+{
+  "id": 1010,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int numPairsDivisibleBy60(int[] time) {\n        int[] rem = new int[60];\n        int count = 0;\n        for (int t : time) {\n            int r = t % 60;\n            int need = (60 - r) % 60;\n            count += rem[need];\n            rem[r]++;\n        }\n        return count;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass through the array, using a fixed-size frequency array to count remainders mod 60. For each song, the required complementary remainder is computed in constant time and the running total is updated.",
+  "code": "class Solution {\n    public int numPairsDivisibleBy60(int[] time) {\n        int[] rem = new int[60];\n        int count = 0;\n        for (int t : time) {\n            int r = t % 60;\n            int need = (60 - r) % 60;\n            count += rem[need];\n            rem[r]++;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T13:17:24.479727",
+  "code_extracted_previous": "public int numPairsDivisibleBy60(int[] time) {\n        int[] rem = new int[60];\n        int count = 0;\n        for (int t : time) {\n            int r = t % 60;\n            int need = (60 - r) % 60;\n            count += rem[need];\n            rem[r]++;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.397585"
+}

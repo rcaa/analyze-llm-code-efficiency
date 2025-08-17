@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = i;\n            for (int j = 0; j < i; j++) {\n                if (s.charAt(j) == s.charAt(i - 1)) {\n                    dp[i] = Math.min(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return dp[n];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to store the minimum number of turns required to print substrings of s. It iterates through the string, considering each character as the end of a substring and calculating the minimum turns needed based on previous substrings.  The time complexity is O(n^2) due to the nested loops, and the space complexity is O(n) for the dp array. \n\n\n",
+  "code": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = i;\n            for (int j = 0; j < i; j++) {\n                if (s.charAt(j) == s.charAt(i - 1)) {\n                    dp[i] = Math.min(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T19:55:06.586686",
+  "code_extracted_previous": "class Solution {\n    public int strangePrinter(String s) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 0;\n        for (int i = 1; i <= n; i++) {\n            dp[i] = i;\n            for (int j = 0; j < i; j++) {\n                if (s.charAt(j) == s.charAt(i - 1)) {\n                    dp[i] = Math.min(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.639502"
+}

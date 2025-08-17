@@ -1,0 +1,15 @@
+{
+  "id": 227,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int calculate(string s) {\n        int num = 0, stack = 0, sign = 1, res = 0;\n        for (char c : s) {\n            if (isdigit(c)) {\n                num = num * 10 + c - '0';\n            } else if (c == '+' || c == '-') {\n                res += sign * num;\n                num = 0;\n                sign = (c == '+') ? 1 : -1;\n            } else if (c == '*' || c == '/') {\n                if (c == '*') {\n                    num *= stack;\n                } else {\n                    num /= stack;\n                }\n            } else if (c != ' ') {\n                stack = num;\n                num = 0;\n            }\n        }\n        res += sign * num;\n        return res;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a single pass through the string, keeping track of the current number and the sign of the operation, and updating the result accordingly. It handles the '*' and '/' operations by storing the previous number in a stack variable and then performing the operation on the current number. The solution has a linear time complexity and constant space complexity, making it efficient for large inputs.",
+  "code": "class Solution {\npublic:\n    int calculate(string s) {\n        int num = 0, stack = 0, sign = 1, res = 0;\n        for (char c : s) {\n            if (isdigit(c)) {\n                num = num * 10 + c - '0';\n            } else if (c == '+' || c == '-') {\n                res += sign * num;\n                num = 0;\n                sign = (c == '+') ? 1 : -1;\n            } else if (c == '*' || c == '/') {\n                if (c == '*') {\n                    num *= stack;\n                } else {\n                    num /= stack;\n                }\n            } else if (c != ' ') {\n                stack = num;\n                num = 0;\n            }\n        }\n        res += sign * num;\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T14:17:36.797776",
+  "code_extracted_previous": "class Solution {\npublic:\n    int calculate(string s) {\n        int num = 0, stack = 0, sign = 1, res = 0;\n        for (char c : s) {\n            if (isdigit(c)) {\n                num = num * 10 + c - '0';\n            } else if (c == '+' || c == '-') {\n                res += sign * num;\n                num = 0;\n                sign = (c == '+') ? 1 : -1;\n            } else if (c == '*' || c == '/') {\n                if (c == '*') {\n                    num *= stack;\n                } else {\n                    num /= stack;\n                }\n            } else if (c != ' ') {\n                stack = num;\n                num = 0;\n            }\n        }\n        res += sign * num;\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.120491"
+}

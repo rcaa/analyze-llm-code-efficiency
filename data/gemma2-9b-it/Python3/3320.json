@@ -1,0 +1,15 @@
+{
+  "id": 3320,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def countWinningSequences(self, s: str) -> int:\n        MOD = 10**9 + 7\n        dp = [[0 for _ in range(3)] for _ in range(len(s) + 1)]\n        dp[0][0] = 1\n        for i in range(1, len(s) + 1):\n            for j in range(3):\n                for k in range(3):\n                    if (j == 0 and k == 2) or (j == 1 and k == 0) or (j == 2 and k == 1):\n                        dp[i][j] = (dp[i][j] + dp[i - 1][k]) % MOD\n        return (dp[len(s)][0] + dp[len(s)][1] + dp[len(s)][2]) % MOD\n```\nsolution: \n```python\nclass Solution:\n    def countWinningSequences(self, s: str) -> int:\n        MOD = 10**9 + 7\n        dp = [[0 for _ in range(3)] for _ in range(len(s) + 1)]\n        dp[0][0] = 1\n        for i in range(1, len(s) + 1):\n            for j in range(3):\n                for k in range(3):\n                    if (j == 0 and k == 2) or (j == 1 and k == 0) or (j == 2 and k == 1):\n                        dp[i][j] = (dp[i][j] + dp[i - 1][k]) % MOD\n        return (dp[len(s)][0] + dp[len(s)][1] + dp[len(s)][2]) % MOD\n```\nefficiency: HIGH\ntime complexity: O(n*3*3)\nspace complexity: O(n*3)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the number of winning sequences for Bob. It builds a 2D array `dp` where `dp[i][j]` represents the number of winning sequences for Bob up to round `i` if Bob's last move was `j` (0: Fire Dragon, 1: Water Serpent, 2: Earth Golem). It iterates through each round and each possible move for Bob, considering the winning conditions and updating the `dp` array accordingly. The final result is the sum of `dp[len(s)][0]`, `dp[len(s)][1]`, and `dp[len(s)][2]`, representing the number of winning sequences for each of Bob's possible last moves.\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T23:25:04.030734",
+  "code_extracted_previous": "class Solution:\n    def countWinningSequences(self, s: str) -> int:\n        MOD = 10**9 + 7\n        dp = [[0 for _ in range(3)] for _ in range(len(s) + 1)]\n        dp[0][0] = 1\n        for i in range(1, len(s) + 1):\n            for j in range(3):\n                for k in range(3):\n                    if (j == 0 and k == 2) or (j == 1 and k == 0) or (j == 2 and k == 1):\n                        dp[i][j] = (dp[i][j] + dp[i - 1][k]) % MOD\n        return (dp[len(s)][0] + dp[len(s)][1] + dp[len(s)][2]) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.690446"
+}

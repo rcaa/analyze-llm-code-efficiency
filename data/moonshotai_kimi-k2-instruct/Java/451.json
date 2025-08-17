@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public String frequencySort(String s) {\n        int[] freq = new int[128];\n        for (char c : s.toCharArray()) freq[c]++;\n        \n        int[] chars = new int[128];\n        for (int i = 0; i < 128; i++) chars[i] = i;\n        \n        java.util.Arrays.sort(chars, (a, b) -> freq[b] - freq[a]);\n        \n        StringBuilder sb = new StringBuilder(s.length());\n        for (int c : chars) {\n            int cnt = freq[c];\n            while (cnt-- > 0) sb.append((char) c);\n        }\n        return sb.toString();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n + k log k) where k = 128\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Count frequencies in one pass, sort the 128 possible ASCII characters by frequency, then build the result by repeating each character according to its frequency. Uses constant-size arrays and a single sort, making it very fast and memory-efficient.",
+  "code": "class Solution {\n    public String frequencySort(String s) {\n        int[] freq = new int[128];\n        for (char c : s.toCharArray()) freq[c]++;\n        \n        int[] chars = new int[128];\n        for (int i = 0; i < 128; i++) chars[i] = i;\n        \n        java.util.Arrays.sort(chars, (a, b) -> freq[b] - freq[a]);\n        \n        StringBuilder sb = new StringBuilder(s.length());\n        for (int c : chars) {\n            int cnt = freq[c];\n            while (cnt-- > 0) sb.append((char) c);\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-06T02:32:02.767153",
+  "code_extracted_previous": "class Solution {\n    public String frequencySort(String s) {\n        int[] freq = new int[128];\n        for (char c : s.toCharArray()) freq[c]++;\n        \n        int[] chars = new int[128];\n        for (int i = 0; i < 128; i++) chars[i] = i;\n        \n        java.util.Arrays.sort(chars, (a, b) -> freq[b] - freq[a]);\n        \n        StringBuilder sb = new StringBuilder(s.length());\n        for (int c : chars) {\n            int cnt = freq[c];\n            while (cnt-- > 0) sb.append((char) c);\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.555881"
+}

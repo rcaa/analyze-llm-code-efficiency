@@ -1,0 +1,15 @@
+{
+  "id": 1787,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int minChanges(vector<int>& nums, int k) {\n        int n = nums.size();\n        int res = n;\n        for (int mask = 0; mask < (1 << k); mask++) {\n            int cnt = 0;\n            for (int i = 0; i < n; i++) {\n                if ((nums[i] ^ (mask >> (i % k))) != 0) {\n                    cnt++;\n                }\n            }\n            res = min(res, cnt);\n        }\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n * 2^k)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a bitmask to generate all possible segment values and checks each one to find the minimum number of changes required to make the XOR of all segments equal to zero.",
+  "code": "class Solution {\npublic:\n    int minChanges(vector<int>& nums, int k) {\n        int n = nums.size();\n        int res = n;\n        for (int mask = 0; mask < (1 << k); mask++) {\n            int cnt = 0;\n            for (int i = 0; i < n; i++) {\n                if ((nums[i] ^ (mask >> (i % k))) != 0) {\n                    cnt++;\n                }\n            }\n            res = min(res, cnt);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T11:53:54.509788",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minChanges(vector<int>& nums, int k) {\n        int n = nums.size();\n        int res = n;\n        for (int mask = 0; mask < (1 << k); mask++) {\n            int cnt = 0;\n            for (int i = 0; i < n; i++) {\n                if ((nums[i] ^ (mask >> (i % k))) != 0) {\n                    cnt++;\n                }\n            }\n            res = min(res, cnt);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.889557"
+}

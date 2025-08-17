@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1];\n            if (Integer.parseInt(s.substring(0, i), 2) <= k) {\n                dp[i] = Math.max(dp[i], i);\n            }\n            for (int j = 1; j < i; j++) {\n                if (Integer.parseInt(s.substring(j, i), 2) <= k) {\n                    dp[i] = Math.max(dp[i], dp[j] + i - j);\n                }\n            }\n        }\n        return dp[n];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to build up the longest subsequence of s that makes up a binary number less than or equal to k. It iterates over the string, considering all possible subsequences and updating the maximum length accordingly.",
+  "code": "class Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1];\n            if (Integer.parseInt(s.substring(0, i), 2) <= k) {\n                dp[i] = Math.max(dp[i], i);\n            }\n            for (int j = 1; j < i; j++) {\n                if (Integer.parseInt(s.substring(j, i), 2) <= k) {\n                    dp[i] = Math.max(dp[i], dp[j] + i - j);\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-06T00:59:01.499026",
+  "code_extracted_previous": "class Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        for (int i = 1; i <= n; i++) {\n            dp[i] = dp[i - 1];\n            if (Integer.parseInt(s.substring(0, i), 2) <= k) {\n                dp[i] = Math.max(dp[i], i);\n            }\n            for (int j = 1; j < i; j++) {\n                if (Integer.parseInt(s.substring(j, i), 2) <= k) {\n                    dp[i] = Math.max(dp[i], dp[j] + i - j);\n                }\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.120540"
+}

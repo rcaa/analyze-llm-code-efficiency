@@ -1,0 +1,15 @@
+{
+  "id": 2375,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    string smallestNumber(string pattern) {\n        int n = pattern.size();\n        string res(n + 1, ' ');\n        vector<bool> used(10, false);\n        for (int i = 0; i <= n; ++i) {\n            for (char d = '1'; d <= '9'; ++d) {\n                if (used[d - '0']) continue;\n                bool ok = true;\n                for (int j = 0; j < i && ok; ++j) {\n                    if (pattern[j] == 'I' && res[j] >= d) ok = false;\n                    if (pattern[j] == 'D' && res[j] <= d) ok = false;\n                }\n                if (ok) {\n                    res[i] = d;\n                    used[d - '0'] = true;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2 * 9)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Greedy left-to-right construction: at each position pick the smallest unused digit that satisfies all constraints with previously fixed digits. Works because lexicographical order is preserved by this greedy choice.",
+  "code": "class Solution {\npublic:\n    string smallestNumber(string pattern) {\n        int n = pattern.size();\n        string res(n + 1, ' ');\n        vector<bool> used(10, false);\n        for (int i = 0; i <= n; ++i) {\n            for (char d = '1'; d <= '9'; ++d) {\n                if (used[d - '0']) continue;\n                bool ok = true;\n                for (int j = 0; j < i && ok; ++j) {\n                    if (pattern[j] == 'I' && res[j] >= d) ok = false;\n                    if (pattern[j] == 'D' && res[j] <= d) ok = false;\n                }\n                if (ok) {\n                    res[i] = d;\n                    used[d - '0'] = true;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:00:30.601050",
+  "code_extracted_previous": "class Solution {\npublic:\n    string smallestNumber(string pattern) {\n        int n = pattern.size();\n        string res(n + 1, ' ');\n        vector<bool> used(10, false);\n        for (int i = 0; i <= n; ++i) {\n            for (char d = '1'; d <= '9'; ++d) {\n                if (used[d - '0']) continue;\n                bool ok = true;\n                for (int j = 0; j < i && ok; ++j) {\n                    if (pattern[j] == 'I' && res[j] >= d) ok = false;\n                    if (pattern[j] == 'D' && res[j] <= d) ok = false;\n                }\n                if (ok) {\n                    res[i] = d;\n                    used[d - '0'] = true;\n                    break;\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.680133"
+}

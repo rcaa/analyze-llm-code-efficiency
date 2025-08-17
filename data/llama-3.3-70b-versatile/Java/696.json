@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int countBinarySubstrings(String s) {\n        int count = 0;\n        int prev = 0, curr = 1;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i - 1) == s.charAt(i)) {\n                curr++;\n            } else {\n                count += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return count + Math.min(prev, curr);\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string, counting consecutive groups of 0's and 1's, and increments the count whenever it finds a group that can be paired with a previous group of the opposite digit, with the pair having the same length.",
+  "code": "class Solution {\n    public int countBinarySubstrings(String s) {\n        int count = 0;\n        int prev = 0, curr = 1;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i - 1) == s.charAt(i)) {\n                curr++;\n            } else {\n                count += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return count + Math.min(prev, curr);\n    }\n}",
+  "timestamp": "2025-08-06T01:29:32.706762",
+  "code_extracted_previous": "class Solution {\n    public int countBinarySubstrings(String s) {\n        int count = 0;\n        int prev = 0, curr = 1;\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i - 1) == s.charAt(i)) {\n                curr++;\n            } else {\n                count += Math.min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        return count + Math.min(prev, curr);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.408122"
+}

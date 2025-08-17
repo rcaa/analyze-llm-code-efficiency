@@ -1,0 +1,15 @@
+{
+  "id": 2447,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def subarrayGCD(self, nums: List[int], k: int) -> int:\n        from math import gcd\n        n = len(nums)\n        res = 0\n        for i in range(n):\n            g = 0\n            for j in range(i, n):\n                g = gcd(g, nums[j])\n                if g == k:\n                    res += 1\n                elif g < k:\n                    break\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n^2 log M) where M is the maximum value in nums\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate over every starting index and extend the subarray to the right while maintaining the running GCD. If the GCD drops below k, further extensions cannot recover it, so we break early. This pruning keeps the average-case runtime low despite the quadratic worst-case bound.",
+  "code": "class Solution:\n    def subarrayGCD(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        res = 0\n        for i in range(n):\n            g = 0\n            for j in range(i, n):\n                g = gcd(g, nums[j])\n                if g == k:\n                    res += 1\n                elif g < k:\n                    break\n        return res",
+  "timestamp": "2025-08-05T13:32:24.304230",
+  "code_extracted_previous": "class Solution:\n    def subarrayGCD(self, nums: List[int], k: int) -> int:\n        from math import gcd\n        n = len(nums)\n        res = 0\n        for i in range(n):\n            g = 0\n            for j in range(i, n):\n                g = gcd(g, nums[j])\n                if g == k:\n                    res += 1\n                elif g < k:\n                    break\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.704700"
+}

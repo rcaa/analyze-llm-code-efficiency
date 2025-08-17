@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def bestClosingTime(self, customers: str) -> int:\n        n = len(customers)\n        penalties = [0] * (n + 1)\n        for i in range(n + 1):\n            penalty = 0\n            for j in range(n):\n                if j < i and customers[j] == 'N':\n                    penalty += 1\n                if j >= i and customers[j] == 'Y':\n                    penalty += 1\n            penalties[i] = penalty\n        min_penalty = min(penalties)\n        for i in range(n + 1):\n            if penalties[i] == min_penalty:\n                return i\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution calculates the penalty for each possible closing time and returns the earliest time with the minimum penalty. It iterates over each hour and calculates the penalty by checking if the shop is open and no customers come, or if the shop is closed and customers come. The time complexity is O(n^2) due to the nested loops, but the space complexity is O(n) as it only stores the penalties for each hour.",
+  "code": "def bestClosingTime(self, customers: str) -> int:\n        n = len(customers)\n        penalties = [0] * (n + 1)\n        for i in range(n + 1):\n            penalty = 0\n            for j in range(n):\n                if j < i and customers[j] == 'N':\n                    penalty += 1\n                if j >= i and customers[j] == 'Y':\n                    penalty += 1\n            penalties[i] = penalty\n        min_penalty = min(penalties)\n        for i in range(n + 1):\n            if penalties[i] == min_penalty:\n                return i\n```",
+  "timestamp": "2025-08-06T01:02:53.359431",
+  "code_extracted_previous": "class Solution:\n    def bestClosingTime(self, customers: str) -> int:\n        n = len(customers)\n        penalties = [0] * (n + 1)\n        for i in range(n + 1):\n            penalty = 0\n            for j in range(n):\n                if j < i and customers[j] == 'N':\n                    penalty += 1\n                if j >= i and customers[j] == 'Y':\n                    penalty += 1\n            penalties[i] = penalty\n        min_penalty = min(penalties)\n        for i in range(n + 1):\n            if penalties[i] == min_penalty:\n                return i",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.259565"
+}

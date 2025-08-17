@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findKthNumber(self, n: int, k: int) -> int:\n        def count_digits(cur, n):\n            step = 0\n            while cur <= n:\n                step += min(n + 1, cur * 10) - cur\n                cur *= 10\n            return step\n\n        cur = 1\n        k -= 1\n        while k > 0:\n            step = count_digits(cur, n)\n            if k >= step:\n                k -= step\n                cur += 1\n            else:\n                k -= 1\n                cur *= 10\n        return cur\n```\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a counting approach to find the kth lexicographically smallest integer, iterating through the digits and adjusting the count based on the current digit and the given range.",
+  "code": "def findKthNumber(self, n: int, k: int) -> int:\n        def count_digits(cur, n):\n            step = 0\n            while cur <= n:\n                step += min(n + 1, cur * 10) - cur\n                cur *= 10\n            return step\n\n        cur = 1\n        k -= 1\n        while k > 0:\n            step = count_digits(cur, n)\n            if k >= step:\n                k -= step\n                cur += 1\n            else:\n                k -= 1\n                cur *= 10\n        return cur\n```",
+  "timestamp": "2025-08-06T01:12:57.691061",
+  "code_extracted_previous": "class Solution:\n    def findKthNumber(self, n: int, k: int) -> int:\n        def count_digits(cur, n):\n            step = 0\n            while cur <= n:\n                step += min(n + 1, cur * 10) - cur\n                cur *= 10\n            return step\n\n        cur = 1\n        k -= 1\n        while k > 0:\n            step = count_digits(cur, n)\n            if k >= step:\n                k -= step\n                cur += 1\n            else:\n                k -= 1\n                cur *= 10\n        return cur",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.642136"
+}

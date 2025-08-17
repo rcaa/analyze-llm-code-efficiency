@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int maxValue(int n, int index, int maxSum) {\n        int left = 0, right = maxSum;\n        while (left < right) {\n            int mid = left + (right + 1) / 2;\n            long long sum = 0;\n            sum += (long long)(mid + (mid - min(mid - 1, index)));\n            sum += (long long)(mid + (mid - min(mid - 1, n - index - 1)));\n            sum -= 1;\n            if (sum > maxSum) {\n                right = mid - 1;\n            } else {\n                left = mid;\n            }\n        }\n        return left;\n    }\n};\nefficiency: HIGH\ntime complexity: O(log(maxSum))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the maximum possible value at the given index, ensuring the sum of the array does not exceed maxSum. The sum of the array is calculated based on the properties of arithmetic sequences.",
+  "code": "class Solution {\npublic:\n    int maxValue(int n, int index, int maxSum) {\n        int left = 0, right = maxSum;\n        while (left < right) {\n            int mid = left + (right + 1) / 2;\n            long long sum = 0;\n            sum += (long long)(mid + (mid - min(mid - 1, index)));\n            sum += (long long)(mid + (mid - min(mid - 1, n - index - 1)));\n            sum -= 1;\n            if (sum > maxSum) {\n                right = mid - 1;\n            } else {\n                left = mid;\n            }\n        }\n        return left;\n    }\n};",
+  "timestamp": "2025-08-06T08:44:18.283132",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxValue(int n, int index, int maxSum) {\n        int left = 0, right = maxSum;\n        while (left < right) {\n            int mid = left + (right + 1) / 2;\n            long long sum = 0;\n            sum += (long long)(mid + (mid - min(mid - 1, index)));\n            sum += (long long)(mid + (mid - min(mid - 1, n - index - 1)));\n            sum -= 1;\n            if (sum > maxSum) {\n                right = mid - 1;\n            } else {\n                left = mid;\n            }\n        }\n        return left;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.896129"
+}

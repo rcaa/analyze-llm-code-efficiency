@@ -1,0 +1,15 @@
+{
+  "id": 581,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findUnsortedSubarray(int[] nums) {\n        int[] sortedNums = nums.clone();\n        Arrays.sort(sortedNums);\n        int start = nums.length, end = 0;\n        for (int i = 0; i < nums.length; i++) {\n            if (nums[i] != sortedNums[i]) {\n                start = Math.min(start, i);\n                end = Math.max(end, i);\n            }\n        }\n        return end - start >= 0 ? end - start + 1 : 0;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The approach involves creating a sorted copy of the input array and then comparing it with the original array to find the first and last indices where the elements differ, indicating the subarray that needs to be sorted. The time complexity is dominated by the sorting operation.",
+  "code": "class Solution {\n    public int findUnsortedSubarray(int[] nums) {\n        int[] sortedNums = nums.clone();\n        Arrays.sort(sortedNums);\n        int start = nums.length, end = 0;\n        for (int i = 0; i < nums.length; i++) {\n            if (nums[i] != sortedNums[i]) {\n                start = Math.min(start, i);\n                end = Math.max(end, i);\n            }\n        }\n        return end - start >= 0 ? end - start + 1 : 0;\n    }\n}",
+  "timestamp": "2025-08-05T13:01:47.064588",
+  "code_extracted_previous": "class Solution {\n    public int findUnsortedSubarray(int[] nums) {\n        int[] sortedNums = nums.clone();\n        Arrays.sort(sortedNums);\n        int start = nums.length, end = 0;\n        for (int i = 0; i < nums.length; i++) {\n            if (nums[i] != sortedNums[i]) {\n                start = Math.min(start, i);\n                end = Math.max(end, i);\n            }\n        }\n        return end - start >= 0 ? end - start + 1 : 0;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.436796"
+}

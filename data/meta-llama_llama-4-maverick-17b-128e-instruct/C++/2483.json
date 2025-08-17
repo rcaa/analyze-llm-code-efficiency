@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int curPenalty = 0;\n        for (char c : customers) {\n            if (c == 'Y') curPenalty++;\n        }\n        int minPenalty = curPenalty;\n        int bestTime = n;\n        for (int i = n - 1; i >= 0; --i) {\n            if (customers[i] == 'Y') curPenalty--;\n            else curPenalty++;\n            if (curPenalty <= minPenalty) {\n                minPenalty = curPenalty;\n                bestTime = i;\n            }\n        }\n        return bestTime;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the string twice, first to count the total number of 'Y's and then to find the optimal closing hour by maintaining a running penalty count. It keeps track of the minimum penalty and the corresponding hour. This approach is efficient as it only requires a single pass through the string to count 'Y's and another pass in reverse order to find the optimal hour, resulting in a linear time complexity.",
+  "code": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int curPenalty = 0;\n        for (char c : customers) {\n            if (c == 'Y') curPenalty++;\n        }\n        int minPenalty = curPenalty;\n        int bestTime = n;\n        for (int i = n - 1; i >= 0; --i) {\n            if (customers[i] == 'Y') curPenalty--;\n            else curPenalty++;\n            if (curPenalty <= minPenalty) {\n                minPenalty = curPenalty;\n                bestTime = i;\n            }\n        }\n        return bestTime;\n    }\n};",
+  "timestamp": "2025-08-06T01:02:10.584887",
+  "code_extracted_previous": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int curPenalty = 0;\n        for (char c : customers) {\n            if (c == 'Y') curPenalty++;\n        }\n        int minPenalty = curPenalty;\n        int bestTime = n;\n        for (int i = n - 1; i >= 0; --i) {\n            if (customers[i] == 'Y') curPenalty--;\n            else curPenalty++;\n            if (curPenalty <= minPenalty) {\n                minPenalty = curPenalty;\n                bestTime = i;\n            }\n        }\n        return bestTime;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.270809"
+}

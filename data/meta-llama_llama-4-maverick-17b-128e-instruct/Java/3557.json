@@ -1,0 +1,15 @@
+{
+  "id": 3557,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int maxSubstrings(String word) {\n        int count = 0;\n        int n = word.length();\n        int lastSeenIndex[] = new int[26];\n        for (int i = 0; i < n; i++) {\n            char c = word.charAt(i);\n            int idx = c - 'a';\n            if (i - lastSeenIndex[idx] >= 4) {\n                count++;\n            }\n            lastSeenIndex[idx] = i;\n        }\n        return count;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the string once, maintaining a record of the last seen index for each character. It increments the count whenever it encounters a character that is at least 4 positions away from its last seen index, effectively counting non-intersecting substrings that start and end with the same character.\n```",
+  "code": "class Solution {\n    public int maxSubstrings(String word) {\n        int count = 0;\n        int n = word.length();\n        int lastSeenIndex[] = new int[26];\n        for (int i = 0; i < n; i++) {\n            char c = word.charAt(i);\n            int idx = c - 'a';\n            if (i - lastSeenIndex[idx] >= 4) {\n                count++;\n            }\n            lastSeenIndex[idx] = i;\n        }\n        return count;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the string once, maintaining a record of the last seen index for each character. It increments the count whenever it encounters a character that is at least 4 positions away from its last seen index, effectively counting non-intersecting substrings that start and end with the same character.",
+  "timestamp": "2025-08-05T15:13:41.653842",
+  "code_extracted_previous": "class Solution {\n    public int maxSubstrings(String word) {\n        int count = 0;\n        int n = word.length();\n        int lastSeenIndex[] = new int[26];\n        for (int i = 0; i < n; i++) {\n            char c = word.charAt(i);\n            int idx = c - 'a';\n            if (i - lastSeenIndex[idx] >= 4) {\n                count++;\n            }\n            lastSeenIndex[idx] = i;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.850485"
+}

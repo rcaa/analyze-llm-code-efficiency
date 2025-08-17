@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n);\n        for (int i = n - 1; i >= 0; --i) {\n            if (i + questions[i][1] < n) {\n                dp[i] = questions[i][0] + max(dp[i + 1], dp[i + questions[i][1] + 1]);\n            } else {\n                dp[i] = questions[i][0] + dp[i + 1];\n            }\n        }\n        return dp[0];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n);\n        for (int i = n - 1; i >= 0; --i) {\n            if (i + questions[i][1] < n) {\n                dp[i] = questions[i][0] + max(dp[i + 1], dp[i + questions[i][1] + 1]);\n            } else {\n                dp[i] = questions[i][0] + dp[i + 1];\n            }\n        }\n        return dp[0];\n    }\n};",
+  "timestamp": "2025-08-05T13:25:22.054154",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n);\n        for (int i = n - 1; i >= 0; --i) {\n            if (i + questions[i][1] < n) {\n                dp[i] = questions[i][0] + max(dp[i + 1], dp[i + questions[i][1] + 1]);\n            } else {\n                dp[i] = questions[i][0] + dp[i + 1];\n            }\n        }\n        return dp[0];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.872157"
+}

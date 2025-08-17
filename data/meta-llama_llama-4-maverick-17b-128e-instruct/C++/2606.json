@@ -1,0 +1,15 @@
+{
+  "id": 2606,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charVals;\n        for (int i = 0; i < chars.size(); ++i) {\n            charVals[chars[i]] = vals[i];\n        }\n        \n        int maxCost = 0, currentCost = 0;\n        for (char c : s) {\n            int val = charVals.count(c) ? charVals[c] : c - 'a' + 1;\n            currentCost = max(val, currentCost + val);\n            maxCost = max(maxCost, currentCost);\n        }\n        \n        return maxCost;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: Uses Kadane's algorithm to find the maximum cost substring by maintaining a running sum of the maximum cost and updating it as it iterates through the string, leveraging an unordered map to efficiently look up custom character values.",
+  "code": "class Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charVals;\n        for (int i = 0; i < chars.size(); ++i) {\n            charVals[chars[i]] = vals[i];\n        }\n        \n        int maxCost = 0, currentCost = 0;\n        for (char c : s) {\n            int val = charVals.count(c) ? charVals[c] : c - 'a' + 1;\n            currentCost = max(val, currentCost + val);\n            maxCost = max(maxCost, currentCost);\n        }\n        \n        return maxCost;\n    }\n};",
+  "timestamp": "2025-08-05T13:33:08.588414",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maximumCostSubstring(string s, string chars, vector<int>& vals) {\n        unordered_map<char, int> charVals;\n        for (int i = 0; i < chars.size(); ++i) {\n            charVals[chars[i]] = vals[i];\n        }\n        \n        int maxCost = 0, currentCost = 0;\n        for (char c : s) {\n            int val = charVals.count(c) ? charVals[c] : c - 'a' + 1;\n            currentCost = max(val, currentCost + val);\n            maxCost = max(maxCost, currentCost);\n        }\n        \n        return maxCost;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.324684"
+}

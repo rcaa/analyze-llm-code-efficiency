@@ -1,0 +1,15 @@
+{
+  "id": 3006,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        def find_substring_indices(s, sub):\n            return [i for i in range(len(s) - len(sub) + 1) if s[i:i + len(sub)] == sub]\n\n        a_indices = find_substring_indices(s, a)\n        b_indices = find_substring_indices(s, b)\n        beautiful_indices = [i for i in a_indices if any(abs(i - j) <= k for j in b_indices)]\n        return beautiful_indices\n```\nefficiency: HIGH\ntime complexity: O(n*m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses list comprehensions to efficiently find the indices of substrings a and b in string s, and then checks for each index of a if there exists an index of b within the given distance k.",
+  "code": "def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        def find_substring_indices(s, sub):\n            return [i for i in range(len(s) - len(sub) + 1) if s[i:i + len(sub)] == sub]\n\n        a_indices = find_substring_indices(s, a)\n        b_indices = find_substring_indices(s, b)\n        beautiful_indices = [i for i in a_indices if any(abs(i - j) <= k for j in b_indices)]\n        return beautiful_indices\n```",
+  "timestamp": "2025-08-06T01:49:20.439157",
+  "code_extracted_previous": "class Solution:\n    def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:\n        def find_substring_indices(s, sub):\n            return [i for i in range(len(s) - len(sub) + 1) if s[i:i + len(sub)] == sub]\n\n        a_indices = find_substring_indices(s, a)\n        b_indices = find_substring_indices(s, b)\n        beautiful_indices = [i for i in a_indices if any(abs(i - j) <= k for j in b_indices)]\n        return beautiful_indices",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.417664"
+}

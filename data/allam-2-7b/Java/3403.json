@@ -1,0 +1,15 @@
+{
+  "id": 3403,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public String answerString(String word, int numFriends) {\n        int[] freq = new int[26];\n        for (int i = 0; i < word.length(); i++) {\n            freq[word.charAt(i) - 'a']++;\n        }\n        StringBuilder result = new StringBuilder();\n        for (int i = word.length() - 1; i >= 0; i--) {\n            int index = word.charAt(i) - 'a';\n            if (--freq[index] == 0) {\n                result.append(word.charAt(i));\n            }\n        }\n        return result.reverse().toString();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\n1. Initialize a frequency array `freq` to store the frequency of each character in the word.\n2. Iterate through the word and update the frequency in the `freq` array.\n3. Iterate through the `freq` array in reverse order to find the first character with a frequency of 0.\n4. Append that character to a `StringBuilder` object `result`.\n5. Reverse the `result` object and return the reversed string.\n\nThis solution has a time complexity of O(n) because it only iterates through the word once. The space complexity is O(1) because we only use a constant amount of space for the `freq` array and the `StringBuilder` object. The energy implications are low because the algorithm is efficient and requires minimal resources. ",
+  "code": "class Solution {\n    public String answerString(String word, int numFriends) {\n        int[] freq = new int[26];\n        for (int i = 0; i < word.length(); i++) {\n            freq[word.charAt(i) - 'a']++;\n        }\n        StringBuilder result = new StringBuilder();\n        for (int i = word.length() - 1; i >= 0; i--) {\n            int index = word.charAt(i) - 'a';\n            if (--freq[index] == 0) {\n                result.append(word.charAt(i));\n            }\n        }\n        return result.reverse().toString();\n    }\n}",
+  "timestamp": "2025-08-05T18:37:48.331619",
+  "code_extracted_previous": "class Solution {\n    public String answerString(String word, int numFriends) {\n        int[] freq = new int[26];\n        for (int i = 0; i < word.length(); i++) {\n            freq[word.charAt(i) - 'a']++;\n        }\n        StringBuilder result = new StringBuilder();\n        for (int i = word.length() - 1; i >= 0; i--) {\n            int index = word.charAt(i) - 'a';\n            if (--freq[index] == 0) {\n                result.append(word.charAt(i));\n            }\n        }\n        return result.reverse().toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.537058"
+}

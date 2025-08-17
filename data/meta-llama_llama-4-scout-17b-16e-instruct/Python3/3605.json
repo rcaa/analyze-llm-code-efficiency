@@ -1,0 +1,15 @@
+{
+  "id": 3605,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom typing import List\nfrom math import gcd\nfrom functools import reduce\n\nclass Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        def find_gcd(subarray):\n            if len(subarray) == 1:\n                return subarray[0]\n            return reduce(gcd, subarray)\n\n        n = len(nums)\n        max_length = 0\n\n        left = 0\n        changes = 0\n\n        for right in range(n):\n            if nums[right] < 2:\n                changes += 1\n\n            while changes > maxC:\n                if nums[left] < 2:\n                    changes -= 1\n                left += 1\n\n            max_length = max(max_length, right - left + 1)\n\n        return max_length if max_length > 1 else 0\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to track the longest subarray that can be made stable with at most maxC modifications. It efficiently calculates the number of changes needed within the current window and adjusts the window boundaries accordingly. This approach minimizes the number of iterations through the array, ensuring high efficiency.",
+  "code": "class Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        def find_gcd(subarray):\n            if len(subarray) == 1:\n                return subarray[0]\n            return reduce(gcd, subarray)\n\n        n = len(nums)\n        max_length = 0\n\n        left = 0\n        changes = 0\n\n        for right in range(n):\n            if nums[right] < 2:\n                changes += 1\n\n            while changes > maxC:\n                if nums[left] < 2:\n                    changes -= 1\n                left += 1\n\n            max_length = max(max_length, right - left + 1)\n\n        return max_length if max_length > 1 else 0",
+  "timestamp": "2025-08-05T12:23:17.222910",
+  "code_extracted_previous": "from typing import List\nfrom math import gcd\nfrom functools import reduce\n\nclass Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        def find_gcd(subarray):\n            if len(subarray) == 1:\n                return subarray[0]\n            return reduce(gcd, subarray)\n\n        n = len(nums)\n        max_length = 0\n\n        left = 0\n        changes = 0\n\n        for right in range(n):\n            if nums[right] < 2:\n                changes += 1\n\n            while changes > maxC:\n                if nums[left] < 2:\n                    changes -= 1\n                left += 1\n\n            max_length = max(max_length, right - left + 1)\n\n        return max_length if max_length > 1 else 0",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.669571"
+}

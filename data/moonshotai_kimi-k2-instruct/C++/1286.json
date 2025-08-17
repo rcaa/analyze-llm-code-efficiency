@@ -1,0 +1,15 @@
+{
+  "id": 1286,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class CombinationIterator {\n    vector<string> combos;\n    int idx = 0;\npublic:\n    CombinationIterator(string characters, int combinationLength) {\n        string cur;\n        dfs(characters, combinationLength, 0, cur);\n    }\n    \n    void dfs(const string& s, int len, int start, string& cur) {\n        if (cur.size() == len) {\n            combos.push_back(cur);\n            return;\n        }\n        for (int i = start; i < s.size(); ++i) {\n            cur.push_back(s[i]);\n            dfs(s, len, i + 1, cur);\n            cur.pop_back();\n        }\n    }\n    \n    string next() {\n        return combos[idx++];\n    }\n    \n    bool hasNext() {\n        return idx < combos.size();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(2^n) for constructor, O(1) for next and hasNext\nspace complexity: O(C(n,k)) where C(n,k) is the number of combinations\nenergy implications: MEDIUM\nexplanation: Pre-generate all combinations via DFS once during construction; subsequent calls are O(1). Efficient for up to 15 characters and 10^4 queries.",
+  "code": "class CombinationIterator {\n    vector<string> combos;\n    int idx = 0;\npublic:\n    CombinationIterator(string characters, int combinationLength) {\n        string cur;\n        dfs(characters, combinationLength, 0, cur);\n    }\n    \n    void dfs(const string& s, int len, int start, string& cur) {\n        if (cur.size() == len) {\n            combos.push_back(cur);\n            return;\n        }\n        for (int i = start; i < s.size(); ++i) {\n            cur.push_back(s[i]);\n            dfs(s, len, i + 1, cur);\n            cur.pop_back();\n        }\n    }\n    \n    string next() {\n        return combos[idx++];\n    }\n    \n    bool hasNext() {\n        return idx < combos.size();\n    }\n};",
+  "timestamp": "2025-08-06T00:50:29.276794",
+  "code_extracted_previous": "vector<string> combos;\n    int idx = 0;\npublic:\n    CombinationIterator(string characters, int combinationLength) {\n        string cur;\n        dfs(characters, combinationLength, 0, cur);\n    }\n    \n    void dfs(const string& s, int len, int start, string& cur) {\n        if (cur.size() == len) {\n            combos.push_back(cur);\n            return;\n        }\n        for (int i = start; i < s.size(); ++i) {\n            cur.push_back(s[i]);\n            dfs(s, len, i + 1, cur);\n            cur.pop_back();\n        }\n    }\n    \n    string next() {\n        return combos[idx++];\n    }\n    \n    bool hasNext() {\n        return idx < combos.size();\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:53.183887"
+}

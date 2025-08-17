@@ -1,0 +1,15 @@
+{
+  "id": 2135,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nfrom typing import List\nfrom collections import Counter\n\nclass Solution:\n    def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_set = set(\"\".join(sorted(word)) for word in startWords)\n        count = 0\n        for target in targetWords:\n            target_sorted = \"\".join(sorted(target))\n            for char in target:\n                if \"\".join(sorted(target.replace(char, \"\"))) in start_set:\n                    count += 1\n                    break\n        return count\n```\nefficiency: HIGH\ntime complexity: O(n*m*log(m))\nspace complexity: O(n*m)\nenergy implications: LOW\nexplanation: The solution uses a set to store the sorted start words, then iterates over each target word, checking if any of its substrings (formed by removing one character) exist in the set of start words. This approach efficiently checks for the possibility of conversion.",
+  "code": "def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_set = set(\"\".join(sorted(word)) for word in startWords)\n        count = 0\n        for target in targetWords:\n            target_sorted = \"\".join(sorted(target))\n            for char in target:\n                if \"\".join(sorted(target.replace(char, \"\"))) in start_set:\n                    count += 1\n                    break\n        return count\n```",
+  "timestamp": "2025-08-06T15:17:37.334463",
+  "code_extracted_previous": "from typing import List\nfrom collections import Counter\n\nclass Solution:\n    def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:\n        start_set = set(\"\".join(sorted(word)) for word in startWords)\n        count = 0\n        for target in targetWords:\n            target_sorted = \"\".join(sorted(target))\n            for char in target:\n                if \"\".join(sorted(target.replace(char, \"\"))) in start_set:\n                    count += 1\n                    break\n        return count",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.053288"
+}

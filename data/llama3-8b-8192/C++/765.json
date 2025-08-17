@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size() / 2;\n        vector<int> couple(n);\n        for (int i = 0; i < row.size(); i += 2) {\n            couple[(row[i] - 1) / 2] = row[i];\n        }\n        int res = 0, i = 0;\n        while (i < n) {\n            if (couple[i] != couple[i + 1] - 1) {\n                int j = lower_bound(couple.begin() + i + 1, couple.end(), couple[i] + 1) - couple.begin();\n                swap(couple[i], couple[j]);\n                res++;\n            }\n            i++;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution first separates the couples into a separate array, then iterates through the array to find and swap the couples that are not side by side. The lower_bound function is used to find the position of the next couple in the array, which has a time complexity of O(log n).",
+  "code": "class Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size() / 2;\n        vector<int> couple(n);\n        for (int i = 0; i < row.size(); i += 2) {\n            couple[(row[i] - 1) / 2] = row[i];\n        }\n        int res = 0, i = 0;\n        while (i < n) {\n            if (couple[i] != couple[i + 1] - 1) {\n                int j = lower_bound(couple.begin() + i + 1, couple.end(), couple[i] + 1) - couple.begin();\n                swap(couple[i], couple[j]);\n                res++;\n            }\n            i++;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:30:44.468363",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        int n = row.size() / 2;\n        vector<int> couple(n);\n        for (int i = 0; i < row.size(); i += 2) {\n            couple[(row[i] - 1) / 2] = row[i];\n        }\n        int res = 0, i = 0;\n        while (i < n) {\n            if (couple[i] != couple[i + 1] - 1) {\n                int j = lower_bound(couple.begin() + i + 1, couple.end(), couple[i] + 1) - couple.begin();\n                swap(couple[i], couple[j]);\n                res++;\n            }\n            i++;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.667679"
+}

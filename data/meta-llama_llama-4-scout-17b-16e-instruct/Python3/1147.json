@@ -1,0 +1,15 @@
+{
+  "id": 1147,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def longestDecomposition(self, text: str) -> int:\n        n = len(text)\n        dp = [0] * (n + 1)\n        dp[0] = 0\n        for i in range(1, n + 1):\n            for j in range(i):\n                if text[j:i] == text[n - (i - j):n - (i - j) + (i - j)] and dp[j] + 1 > dp[i]:\n                    dp[i] = dp[j] + 1\n        return dp[n]\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: Dynamic programming approach to track the longest decomposition by comparing substrings from start and end.",
+  "code": "class Solution:\n    def longestDecomposition(self, text: str) -> int:\n        n = len(text)\n        dp = [0] * (n + 1)\n        dp[0] = 0\n        for i in range(1, n + 1):\n            for j in range(i):\n                if text[j:i] == text[n - (i - j):n - (i - j) + (i - j)] and dp[j] + 1 > dp[i]:\n                    dp[i] = dp[j] + 1\n        return dp[n]",
+  "timestamp": "2025-08-06T01:13:58.501094",
+  "code_extracted_previous": "class Solution:\n    def longestDecomposition(self, text: str) -> int:\n        n = len(text)\n        dp = [0] * (n + 1)\n        dp[0] = 0\n        for i in range(1, n + 1):\n            for j in range(i):\n                if text[j:i] == text[n - (i - j):n - (i - j) + (i - j)] and dp[j] + 1 > dp[i]:\n                    dp[i] = dp[j] + 1\n        return dp[n]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:51.729204"
+}

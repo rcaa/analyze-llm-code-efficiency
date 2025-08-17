@@ -1,0 +1,15 @@
+{
+  "id": 1370,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    string sortString(string s) {\n        int freq[26] = {0};\n        for (char c : s) ++freq[c - 'a'];\n        string res;\n        res.reserve(s.size());\n        while (res.size() < s.size()) {\n            for (int i = 0; i < 26; ++i) if (freq[i]) { res += 'a' + i; --freq[i]; }\n            for (int i = 25; i >= 0; --i) if (freq[i]) { res += 'a' + i; --freq[i]; }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count frequencies of each letter once. Repeatedly append letters in ascending then descending order while decrementing counts until all characters are used. Single pass per direction per cycle keeps runtime linear and memory constant.",
+  "code": "class Solution {\npublic:\n    string sortString(string s) {\n        int freq[26] = {0};\n        for (char c : s) ++freq[c - 'a'];\n        string res;\n        res.reserve(s.size());\n        while (res.size() < s.size()) {\n            for (int i = 0; i < 26; ++i) if (freq[i]) { res += 'a' + i; --freq[i]; }\n            for (int i = 25; i >= 0; --i) if (freq[i]) { res += 'a' + i; --freq[i]; }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T02:28:51.877673",
+  "code_extracted_previous": "class Solution {\npublic:\n    string sortString(string s) {\n        int freq[26] = {0};\n        for (char c : s) ++freq[c - 'a'];\n        string res;\n        res.reserve(s.size());\n        while (res.size() < s.size()) {\n            for (int i = 0; i < 26; ++i) if (freq[i]) { res += 'a' + i; --freq[i]; }\n            for (int i = 25; i >= 0; --i) if (freq[i]) { res += 'a' + i; --freq[i]; }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.214006"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3624,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def popcountDepth(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        def popcount(x):\n            return bin(x).count(\"1\")\n        \n        answer = []\n        for query in queries:\n            if query[0] == 1:\n                l, r, k = query[1], query[2], query[3]\n                count = 0\n                for i in range(l, r + 1):\n                    if popcount(nums[i]) == k:\n                        count += 1\n                answer.append(count)\n            else:\n                idx, val = query[1], query[2]\n                nums[idx] = val\n        return answer\n```\n\nsolution: \n```python\nclass Solution:\n    def popcountDepth(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        def popcount(x):\n            return bin(x).count(\"1\")\n        \n        answer = []\n        for query in queries:\n            if query[0] == 1:\n                l, r, k = query[1], query[2], query[3]\n                count = 0\n                for i in range(l, r + 1):\n                    if popcount(nums[i]) == k:\n                        count += 1\n                answer.append(count)\n            else:\n                idx, val = query[1], query[2]\n                nums[idx] = val\n        return answer\n```\nefficiency: MEDIUM\ntime complexity: O(N*Q)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through each query. For queries of type [1, l, r, k], it iterates through the nums array from index l to r, calculating the popcount for each element and counting the number of elements with a popcount equal to k. For queries of type [2, idx, val], it updates the value at the given index in the nums array. The time complexity is O(N*Q) due to the nested loops in the first type of query. The space complexity is O(1) as the solution uses a constant amount of extra space. The energy implications are low as the algorithm performs a limited number of operations.\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T12:32:57.520960",
+  "code_extracted_previous": "class Solution:\n    def popcountDepth(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        def popcount(x):\n            return bin(x).count(\"1\")\n        \n        answer = []\n        for query in queries:\n            if query[0] == 1:\n                l, r, k = query[1], query[2], query[3]\n                count = 0\n                for i in range(l, r + 1):\n                    if popcount(nums[i]) == k:\n                        count += 1\n                answer.append(count)\n            else:\n                idx, val = query[1], query[2]\n                nums[idx] = val\n        return answer",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.806245"
+}

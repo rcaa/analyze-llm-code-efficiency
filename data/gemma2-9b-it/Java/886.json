@@ -1,0 +1,15 @@
+{
+  "id": 886,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean possibleBipartition(int n, int[][] dislikes) {\n        int[] groups = new int[n + 1];\n        Arrays.fill(groups, 0);\n        for (int[] dislike : dislikes) {\n            int a = dislike[0];\n            int b = dislike[1];\n            if (groups[a] == groups[b] || groups[a] == 0 && groups[b] == 0) {\n                return false;\n            }\n            groups[a] = 1 - groups[b];\n        }\n        return true;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a graph representation with people as nodes and dislikes as edges. It assigns each person to a group (0 or 1) and checks for conflicts. If a conflict is found, it's impossible to split the people into two groups. Otherwise, it returns true. This approach is efficient as it iterates through the dislikes once and has linear space complexity.\n",
+  "code": "class Solution {\n    public boolean possibleBipartition(int n, int[][] dislikes) {\n        int[] groups = new int[n + 1];\n        Arrays.fill(groups, 0);\n        for (int[] dislike : dislikes) {\n            int a = dislike[0];\n            int b = dislike[1];\n            if (groups[a] == groups[b] || groups[a] == 0 && groups[b] == 0) {\n                return false;\n            }\n            groups[a] = 1 - groups[b];\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-05T14:01:02.352006",
+  "code_extracted_previous": "class Solution {\n    public boolean possibleBipartition(int n, int[][] dislikes) {\n        int[] groups = new int[n + 1];\n        Arrays.fill(groups, 0);\n        for (int[] dislike : dislikes) {\n            int a = dislike[0];\n            int b = dislike[1];\n            if (groups[a] == groups[b] || groups[a] == 0 && groups[b] == 0) {\n                return false;\n            }\n            groups[a] = 1 - groups[b];\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.762461"
+}

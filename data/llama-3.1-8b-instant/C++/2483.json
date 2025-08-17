@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int penalty = 0;\n        int min_penalty = INT_MAX;\n        int best_time = 0;\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j < i; j++) {\n                if (customers[j] == 'Y') penalty++;\n            }\n            for (int j = i; j < n; j++) {\n                if (customers[j] == 'N') penalty++;\n            }\n            if (penalty < min_penalty) {\n                min_penalty = penalty;\n                best_time = i;\n            }\n            penalty = 0;\n        }\n        return best_time;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: MEDIUM\nexplanation: This solution uses two nested loops to calculate the penalty for each possible closing time. It keeps track of the minimum penalty and the corresponding closing time. The time complexity is O(n^2) due to the nested loops, but the space complexity is O(1) as it only uses a constant amount of space to store the variables.",
+  "code": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int penalty = 0;\n        int min_penalty = INT_MAX;\n        int best_time = 0;\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j < i; j++) {\n                if (customers[j] == 'Y') penalty++;\n            }\n            for (int j = i; j < n; j++) {\n                if (customers[j] == 'N') penalty++;\n            }\n            if (penalty < min_penalty) {\n                min_penalty = penalty;\n                best_time = i;\n            }\n            penalty = 0;\n        }\n        return best_time;\n    }\n};",
+  "timestamp": "2025-08-06T01:02:12.422134",
+  "code_extracted_previous": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        int penalty = 0;\n        int min_penalty = INT_MAX;\n        int best_time = 0;\n        for (int i = 0; i <= n; i++) {\n            for (int j = 0; j < i; j++) {\n                if (customers[j] == 'Y') penalty++;\n            }\n            for (int j = i; j < n; j++) {\n                if (customers[j] == 'N') penalty++;\n            }\n            if (penalty < min_penalty) {\n                min_penalty = penalty;\n                best_time = i;\n            }\n            penalty = 0;\n        }\n        return best_time;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.125904"
+}

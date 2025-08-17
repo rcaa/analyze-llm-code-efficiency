@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        for i in range(len(s)):\n            zeros = 0\n            ones = 0\n            for j in range(i, len(s)):\n                if s[j] == '0':\n                    if ones > 0:\n                        break\n                    zeros += 1\n                else:\n                    ones += 1\n                if zeros == ones:\n                    max_len = max(max_len, zeros + ones)\n        return max_len\n```\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through all possible starting indices of substrings and checks for the longest balanced substring starting from each index. It breaks early if a '0' appears after a '1' in the substring, ensuring the condition of all zeroes before ones. The key strength is its simplicity and correctness for small input sizes, but its quadratic time complexity makes it inefficient for large strings.",
+  "code": "class Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        for i in range(len(s)):\n            zeros = 0\n            ones = 0\n            for j in range(i, len(s)):\n                if s[j] == '0':\n                    if ones > 0:\n                        break\n                    zeros += 1\n                else:\n                    ones += 1\n                if zeros == ones:\n                    max_len = max(max_len, zeros + ones)\n        return max_len",
+  "timestamp": "2025-08-05T23:43:05.317089",
+  "code_extracted_previous": "class Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        for i in range(len(s)):\n            zeros = 0\n            ones = 0\n            for j in range(i, len(s)):\n                if s[j] == '0':\n                    if ones > 0:\n                        break\n                    zeros += 1\n                else:\n                    ones += 1\n                if zeros == ones:\n                    max_len = max(max_len, zeros + ones)\n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:05.714760"
+}

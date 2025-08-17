@@ -1,0 +1,15 @@
+{
+  "id": 386,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> res = new ArrayList<>();\n        for (int i = 1; i <= n; i++) {\n            if (i <= 9) res.add(i);\n            else {\n                int j = i;\n                while (j > 9) j /= 10;\n                while (j > 1) {\n                    res.add(i);\n                    j--;\n                }\n            }\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the range [1, n] and adds each number to the result list. For numbers greater than 9, it calculates the smallest single-digit number that is greater than 1 and less than or equal to the current number, and adds all numbers in that range to the result list. This approach ensures that the numbers are added in lexicographical order and runs in O(n) time with O(1) extra space.",
+  "code": "class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> res = new ArrayList<>();\n        for (int i = 1; i <= n; i++) {\n            if (i <= 9) res.add(i);\n            else {\n                int j = i;\n                while (j > 9) j /= 10;\n                while (j > 1) {\n                    res.add(i);\n                    j--;\n                }\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:59:28.840868",
+  "code_extracted_previous": "public List<Integer> lexicalOrder(int n) {\n        List<Integer> res = new ArrayList<>();\n        for (int i = 1; i <= n; i++) {\n            if (i <= 9) res.add(i);\n            else {\n                int j = i;\n                while (j > 9) j /= 10;\n                while (j > 1) {\n                    res.add(i);\n                    j--;\n                }\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.758273"
+}

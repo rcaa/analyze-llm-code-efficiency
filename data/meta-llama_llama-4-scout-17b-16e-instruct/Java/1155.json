@@ -1,0 +1,15 @@
+{
+  "id": 1155,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        final int MOD = (int) (1e9 + 7);\n        int[][] dp = new int[n + 1][target + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= target; j++) {\n                for (int face = 1; face <= k; face++) {\n                    if (j - face >= 0) {\n                        dp[i][j] = (dp[i][j] + dp[i - 1][j - face]) % MOD;\n                    }\n                }\n            }\n        }\n        return dp[n][target];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n * target * k)\nspace complexity: O(n * target)\nenergy implications: MEDIUM\nexplanation: Dynamic programming approach with memoization to store intermediate results, reducing redundant calculations and optimizing performance.",
+  "code": "class Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        final int MOD = (int) (1e9 + 7);\n        int[][] dp = new int[n + 1][target + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= target; j++) {\n                for (int face = 1; face <= k; face++) {\n                    if (j - face >= 0) {\n                        dp[i][j] = (dp[i][j] + dp[i - 1][j - face]) % MOD;\n                    }\n                }\n            }\n        }\n        return dp[n][target];\n    }\n}",
+  "timestamp": "2025-08-05T14:24:56.882833",
+  "code_extracted_previous": "class Solution {\n    public int numRollsToTarget(int n, int k, int target) {\n        final int MOD = (int) (1e9 + 7);\n        int[][] dp = new int[n + 1][target + 1];\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= target; j++) {\n                for (int face = 1; face <= k; face++) {\n                    if (j - face >= 0) {\n                        dp[i][j] = (dp[i][j] + dp[i - 1][j - face]) % MOD;\n                    }\n                }\n            }\n        }\n        return dp[n][target];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.280269"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        cows = 0\n        secret_counts = [0] * 10\n        guess_counts = [0] * 10\n        \n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                secret_counts[int(s)] += 1\n                guess_counts[int(g)] += 1\n        \n        for i in range(10):\n            cows += min(secret_counts[i], guess_counts[i])\n        \n        return f\"{bulls}A{cows}B\"\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass to count bulls and populate frequency arrays for non-bull digits; second pass over 10 digits to compute cows. Uses constant extra space and linear time.",
+  "code": "class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        cows = 0\n        secret_counts = [0] * 10\n        guess_counts = [0] * 10\n        \n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                secret_counts[int(s)] += 1\n                guess_counts[int(g)] += 1\n        \n        for i in range(10):\n            cows += min(secret_counts[i], guess_counts[i])\n        \n        return f\"{bulls}A{cows}B\"",
+  "timestamp": "2025-08-06T02:33:28.428764",
+  "code_extracted_previous": "def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        cows = 0\n        secret_counts = [0] * 10\n        guess_counts = [0] * 10\n        \n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                secret_counts[int(s)] += 1\n                guess_counts[int(g)] += 1\n        \n        for i in range(10):\n            cows += min(secret_counts[i], guess_counts[i])\n        \n        return f\"{bulls}A{cows}B\"",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.904705"
+}

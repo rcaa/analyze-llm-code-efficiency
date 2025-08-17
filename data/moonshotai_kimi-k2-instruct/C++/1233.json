@@ -1,0 +1,15 @@
+{
+  "id": 1233,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<string> removeSubfolders(vector<string>& folder) {\n        sort(folder.begin(), folder.end());\n        vector<string> res;\n        for (const string& f : folder) {\n            bool isSub = false;\n            for (const string& p : res) {\n                if (f.size() > p.size() && f[p.size()] == '/' && f.substr(0, p.size()) == p) {\n                    isSub = true;\n                    break;\n                }\n            }\n            if (!isSub) res.push_back(f);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N log N + N * L)\nspace complexity: O(1) extra\nenergy implications: LOW\nexplanation: Sort the paths lexicographically so any parent folder appears before its sub-folders. Iterate through the sorted list and keep a folder only if no previously kept folder is its prefix followed by '/'. This avoids building a trie and uses only the sorted array plus a result vector.",
+  "code": "class Solution {\npublic:\n    vector<string> removeSubfolders(vector<string>& folder) {\n        sort(folder.begin(), folder.end());\n        vector<string> res;\n        for (const string& f : folder) {\n            bool isSub = false;\n            for (const string& p : res) {\n                if (f.size() > p.size() && f[p.size()] == '/' && f.substr(0, p.size()) == p) {\n                    isSub = true;\n                    break;\n                }\n            }\n            if (!isSub) res.push_back(f);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:20:35.186330",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<string> removeSubfolders(vector<string>& folder) {\n        sort(folder.begin(), folder.end());\n        vector<string> res;\n        for (const string& f : folder) {\n            bool isSub = false;\n            for (const string& p : res) {\n                if (f.size() > p.size() && f[p.size()] == '/' && f.substr(0, p.size()) == p) {\n                    isSub = true;\n                    break;\n                }\n            }\n            if (!isSub) res.push_back(f);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.167742"
+}

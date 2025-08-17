@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass StockSpanner {\npublic:\n    StockSpanner() {}\n    \n    int next(int price) {\n        int span = 1;\n        while (!st.empty() && st.top().first <= price) {\n            span += st.top().second;\n            st.pop();\n        }\n        st.push({price, span});\n        return span;\n    }\nprivate:\n    stack<pair<int, int>> st;\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The provided solution utilizes a stack to efficiently track the span of stock prices. It pops elements from the stack as long as their prices are less than or equal to the current price, adding their spans to the current span. It then pushes the current price and its span onto the stack. This approach ensures that each element is pushed and popped exactly once, resulting in linear time and space complexity.",
+  "code": "class StockSpanner {\npublic:\n    StockSpanner() {}\n    \n    int next(int price) {\n        int span = 1;\n        while (!st.empty() && st.top().first <= price) {\n            span += st.top().second;\n            st.pop();\n        }\n        st.push({price, span});\n        return span;\n    }\nprivate:\n    stack<pair<int, int>> st;\n};",
+  "timestamp": "2025-08-05T16:03:27.104664",
+  "code_extracted_previous": "class StockSpanner {\npublic:\n    StockSpanner() {}\n    \n    int next(int price) {\n        int span = 1;\n        while (!st.empty() && st.top().first <= price) {\n            span += st.top().second;\n            st.pop();\n        }\n        st.push({price, span});\n        return span;\n    }\nprivate:\n    stack<pair<int, int>> st;\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:50.044119"
+}

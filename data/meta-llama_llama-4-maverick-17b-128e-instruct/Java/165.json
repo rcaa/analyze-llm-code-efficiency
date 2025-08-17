@@ -1,0 +1,15 @@
+{
+  "id": 165,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int compareVersion(String version1, String version2) {\n        String[] v1 = version1.split(\"\\\\.\");\n        String[] v2 = version2.split(\"\\\\.\");\n        int maxLen = Math.max(v1.length, v2.length);\n        for (int i = 0; i < maxLen; i++) {\n            int rev1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;\n            int rev2 = i < v2.length ? Integer.parseInt(v2[i]) : 0;\n            if (rev1 < rev2) return -1;\n            if (rev1 > rev2) return 1;\n        }\n        return 0;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: The solution splits the version strings into arrays of revisions, then compares the revisions from left to right. It handles versions of different lengths by treating missing revisions as 0. The use of Integer.parseInt ignores leading zeros in the revisions. \n```",
+  "code": "class Solution {\n    public int compareVersion(String version1, String version2) {\n        String[] v1 = version1.split(\"\\\\.\");\n        String[] v2 = version2.split(\"\\\\.\");\n        int maxLen = Math.max(v1.length, v2.length);\n        for (int i = 0; i < maxLen; i++) {\n            int rev1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;\n            int rev2 = i < v2.length ? Integer.parseInt(v2[i]) : 0;\n            if (rev1 < rev2) return -1;\n            if (rev1 > rev2) return 1;\n        }\n        return 0;\n    }\n}\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: The solution splits the version strings into arrays of revisions, then compares the revisions from left to right. It handles versions of different lengths by treating missing revisions as 0. The use of Integer.parseInt ignores leading zeros in the revisions.",
+  "timestamp": "2025-08-06T01:35:30.194761",
+  "code_extracted_previous": "class Solution {\n    public int compareVersion(String version1, String version2) {\n        String[] v1 = version1.split(\"\\\\.\");\n        String[] v2 = version2.split(\"\\\\.\");\n        int maxLen = Math.max(v1.length, v2.length);\n        for (int i = 0; i < maxLen; i++) {\n            int rev1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;\n            int rev2 = i < v2.length ? Integer.parseInt(v2[i]) : 0;\n            if (rev1 < rev2) return -1;\n            if (rev1 > rev2) return 1;\n        }\n        return 0;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.300136"
+}

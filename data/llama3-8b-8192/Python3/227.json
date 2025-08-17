@@ -1,0 +1,15 @@
+{
+  "id": 227,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def calculate(self, s: str) -> int:\n        res, num, sign, stack = 0, 0, 1, []\n        for c in s:\n            if c.isdigit():\n                num = num * 10 + int(c)\n            elif c in '+-':\n                res += sign * num\n                num, sign = 0, 1 if c == '+' else -1\n            elif c == '(':\n                stack.append(res)\n                stack.append(sign)\n                res, sign = 0, 1\n            elif c == ')':\n                res += sign * num\n                num = 0\n                sign = stack.pop()\n                res *= stack.pop()\n        return res + sign * num\n```\n\nefficiency: HIGH\n\ntime complexity: O(n)\n\nspace complexity: O(n)\n\nenergy implications: LOW\n\nexplanation: This solution uses a stack to keep track of the intermediate results and signs. It iterates through the string, updating the current number and sign based on the current character. When it encounters a '(', it pushes the current result and sign onto the stack and resets them. When it encounters a ')', it adds the current number to the result with the sign, resets the number, and pops the sign and result from the stack. Finally, it adds the remaining number to the result with the sign and returns the result.",
+  "code": "class Solution:\n    def calculate(self, s: str) -> int:\n        res, num, sign, stack = 0, 0, 1, []\n        for c in s:\n            if c.isdigit():\n                num = num * 10 + int(c)\n            elif c in '+-':\n                res += sign * num\n                num, sign = 0, 1 if c == '+' else -1\n            elif c == '(':\n                stack.append(res)\n                stack.append(sign)\n                res, sign = 0, 1\n            elif c == ')':\n                res += sign * num\n                num = 0\n                sign = stack.pop()\n                res *= stack.pop()\n        return res + sign * num",
+  "timestamp": "2025-08-05T15:40:30.552031",
+  "code_extracted_previous": "class Solution:\n    def calculate(self, s: str) -> int:\n        res, num, sign, stack = 0, 0, 1, []\n        for c in s:\n            if c.isdigit():\n                num = num * 10 + int(c)\n            elif c in '+-':\n                res += sign * num\n                num, sign = 0, 1 if c == '+' else -1\n            elif c == '(':\n                stack.append(res)\n                stack.append(sign)\n                res, sign = 0, 1\n            elif c == ')':\n                res += sign * num\n                num = 0\n                sign = stack.pop()\n                res *= stack.pop()\n        return res + sign * num",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.766128"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2873,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public long maximumTripletValue(int[] nums) {\n        long max = 0;\n        int n = nums.length;\n        for (int i = 0; i < n - 2; i++) {\n            for (int j = i + 1; j < n - 1; j++) {\n                long diff = nums[i] - nums[j];\n                if (diff <= 0) continue;\n                for (int k = j + 1; k < n; k++) {\n                    long val = diff * nums[k];\n                    if (val > max) max = val;\n                }\n            }\n        }\n        return max;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Brute-force triple loop is acceptable because n ≤ 100. The innermost loop only executes when nums[i] > nums[j], pruning many cases.",
+  "code": "class Solution {\n    public long maximumTripletValue(int[] nums) {\n        long max = 0;\n        int n = nums.length;\n        for (int i = 0; i < n - 2; i++) {\n            for (int j = i + 1; j < n - 1; j++) {\n                long diff = nums[i] - nums[j];\n                if (diff <= 0) continue;\n                for (int k = j + 1; k < n; k++) {\n                    long val = diff * nums[k];\n                    if (val > max) max = val;\n                }\n            }\n        }\n        return max;\n    }\n}",
+  "timestamp": "2025-08-05T12:54:13.123934",
+  "code_extracted_previous": "public long maximumTripletValue(int[] nums) {\n        long max = 0;\n        int n = nums.length;\n        for (int i = 0; i < n - 2; i++) {\n            for (int j = i + 1; j < n - 1; j++) {\n                long diff = nums[i] - nums[j];\n                if (diff <= 0) continue;\n                for (int k = j + 1; k < n; k++) {\n                    long val = diff * nums[k];\n                    if (val > max) max = val;\n                }\n            }\n        }\n        return max;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.207714"
+}

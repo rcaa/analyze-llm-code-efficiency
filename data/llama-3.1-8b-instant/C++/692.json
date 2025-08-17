@@ -1,0 +1,15 @@
+{
+  "id": 692,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (string word : words) {\n            count[word]++;\n        }\n        vector<pair<string, int>> freq;\n        for (auto& it : count) {\n            freq.push_back(it);\n        }\n        sort(freq.begin(), freq.end(), [](pair<string, int>& a, pair<string, int>& b) {\n            if (a.second == b.second) {\n                return a.first < b.first;\n            }\n            return a.second > b.second;\n        });\n        vector<string> res;\n        for (int i = 0; i < k; i++) {\n            res.push_back(freq[i].first);\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n log(n))\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (string word : words) {\n            count[word]++;\n        }\n        vector<pair<string, int>> freq;\n        for (auto& it : count) {\n            freq.push_back(it);\n        }\n        sort(freq.begin(), freq.end(), [](pair<string, int>& a, pair<string, int>& b) {\n            if (a.second == b.second) {\n                return a.first < b.first;\n            }\n            return a.second > b.second;\n        });\n        vector<string> res;\n        for (int i = 0; i < k; i++) {\n            res.push_back(freq[i].first);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:15:58.414659",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<string> topKFrequent(vector<string>& words, int k) {\n        unordered_map<string, int> count;\n        for (string word : words) {\n            count[word]++;\n        }\n        vector<pair<string, int>> freq;\n        for (auto& it : count) {\n            freq.push_back(it);\n        }\n        sort(freq.begin(), freq.end(), [](pair<string, int>& a, pair<string, int>& b) {\n            if (a.second == b.second) {\n                return a.first < b.first;\n            }\n            return a.second > b.second;\n        });\n        vector<string> res;\n        for (int i = 0; i < k; i++) {\n            res.push_back(freq[i].first);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.663106"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1416,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int numberOfArrays(String s, int k) {\n        int n = s.length();\n        long[] dp = new long[n + 1];\n        dp[0] = 1;\n        long mod = 1_000_000_007;\n        for (int i = 1; i <= n; i++) {\n            long cur = 0;\n            for (int j = i - 1; j >= 0; j--) {\n                if (s.charAt(j) == '0') break;\n                int num = Integer.parseInt(s.substring(j, i));\n                if (num <= k) cur = (cur + dp[j]) % mod;\n            }\n            dp[i] = cur;\n        }\n        return (int) dp[n];\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int numberOfArrays(String s, int k) {\n        int n = s.length();\n        long[] dp = new long[n + 1];\n        dp[0] = 1;\n        long mod = 1_000_000_007;\n        for (int i = 1; i <= n; i++) {\n            long cur = 0;\n            for (int j = i - 1; j >= 0; j--) {\n                if (s.charAt(j) == '0') break;\n                int num = Integer.parseInt(s.substring(j, i));\n                if (num <= k) cur = (cur + dp[j]) % mod;\n            }\n            dp[i] = cur;\n        }\n        return (int) dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T16:14:04.863344",
+  "code_extracted_previous": "class Solution {\n    public int numberOfArrays(String s, int k) {\n        int n = s.length();\n        long[] dp = new long[n + 1];\n        dp[0] = 1;\n        long mod = 1_000_000_007;\n        for (int i = 1; i <= n; i++) {\n            long cur = 0;\n            for (int j = i - 1; j >= 0; j--) {\n                if (s.charAt(j) == '0') break;\n                int num = Integer.parseInt(s.substring(j, i));\n                if (num <= k) cur = (cur + dp[j]) % mod;\n            }\n            dp[i] = cur;\n        }\n        return (int) dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.976953"
+}

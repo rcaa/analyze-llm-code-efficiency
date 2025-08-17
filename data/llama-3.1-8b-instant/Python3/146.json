@@ -1,0 +1,15 @@
+{
+  "id": 146,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nfrom collections import OrderedDict\n\nclass LRUCache:\n\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = OrderedDict()\n\n    def get(self, key: int) -> int:\n        if key in self.cache:\n            value = self.cache.pop(key)\n            self.cache[key] = value  # move to end to mark as recently used\n            return value\n        return -1\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            self.cache.pop(key)\n        elif len(self.cache) >= self.capacity:\n            self.cache.popitem(last=False)  # remove oldest item\n        self.cache[key] = value\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(capacity)\nenergy implications: LOW\nexplanation: This solution uses an OrderedDict to efficiently implement the LRU cache. The get operation checks if the key exists, and if so, moves it to the end of the order to mark it as recently used. The put operation checks if the key exists, and if so, removes it. If the cache is full, it removes the oldest item (the first item in the order) before adding the new key-value pair. This approach ensures that the get and put operations run in O(1) average time complexity.",
+  "code": "class LRUCache:\n\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = OrderedDict()\n\n    def get(self, key: int) -> int:\n        if key in self.cache:\n            value = self.cache.pop(key)\n            self.cache[key] = value  # move to end to mark as recently used\n            return value\n        return -1\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            self.cache.pop(key)\n        elif len(self.cache) >= self.capacity:\n            self.cache.popitem(last=False)  # remove oldest item\n        self.cache[key] = value",
+  "timestamp": "2025-08-05T14:50:19.131834",
+  "code_extracted_previous": "from collections import OrderedDict\n\nclass LRUCache:\n\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = OrderedDict()\n\n    def get(self, key: int) -> int:\n        if key in self.cache:\n            value = self.cache.pop(key)\n            self.cache[key] = value  # move to end to mark as recently used\n            return value\n        return -1\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            self.cache.pop(key)\n        elif len(self.cache) >= self.capacity:\n            self.cache.popitem(last=False)  # remove oldest item\n        self.cache[key] = value",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:30.375724"
+}

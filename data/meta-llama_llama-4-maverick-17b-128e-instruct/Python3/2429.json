@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minimizeXor(self, num1: int, num2: int) -> int:\n        set_bits_num2 = bin(num2).count('1')\n        result = num1\n        for i in range(31, -1, -1):\n            if (num1 >> i) & 1:\n                if set_bits_num2 > 0:\n                    result &= ~(1 << i)\n                    set_bits_num2 -= 1\n        for i in range(32):\n            if (result >> i) & 1 == 0:\n                if set_bits_num2 > 0:\n                    result |= (1 << i)\n                    set_bits_num2 -= 1\n        return result\n```\n\nefficiency: HIGH  \ntime complexity: O(1)  \nspace complexity: O(1)  \nenergy implications: LOW  \nexplanation: The solution works by first counting the number of set bits in `num2`. It then iterates over the bits of `num1` from most significant to least significant, clearing bits in `num1` if they are set and there are remaining set bits to match `num2`. It then iterates over the bits of the result from least significant to most significant, setting bits if they are not set and there are remaining set bits to match `num2`. This approach ensures that the XOR of the result and `num1` is minimized while maintaining the same number of set bits as `num2`.",
+  "code": "def minimizeXor(self, num1: int, num2: int) -> int:\n        set_bits_num2 = bin(num2).count('1')\n        result = num1\n        for i in range(31, -1, -1):\n            if (num1 >> i) & 1:\n                if set_bits_num2 > 0:\n                    result &= ~(1 << i)\n                    set_bits_num2 -= 1\n        for i in range(32):\n            if (result >> i) & 1 == 0:\n                if set_bits_num2 > 0:\n                    result |= (1 << i)\n                    set_bits_num2 -= 1\n        return result\n```",
+  "timestamp": "2025-08-05T14:31:18.208054",
+  "code_extracted_previous": "class Solution:\n    def minimizeXor(self, num1: int, num2: int) -> int:\n        set_bits_num2 = bin(num2).count('1')\n        result = num1\n        for i in range(31, -1, -1):\n            if (num1 >> i) & 1:\n                if set_bits_num2 > 0:\n                    result &= ~(1 << i)\n                    set_bits_num2 -= 1\n        for i in range(32):\n            if (result >> i) & 1 == 0:\n                if set_bits_num2 > 0:\n                    result |= (1 << i)\n                    set_bits_num2 -= 1\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.899410"
+}

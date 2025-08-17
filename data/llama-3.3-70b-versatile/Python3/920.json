@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def numMusicPlaylists(self, n: int, goal: int, k: int) -> int:\n        MOD = 10**9 + 7\n        @lru_cache(None)\n        def dp(i, j):\n            if i == goal:\n                return int(j == n)\n            res = 0\n            if j < n:\n                res += (n - j) * dp(i + 1, j + 1)\n            if j >= k:\n                res += j * dp(i + 1, j)\n            return res % MOD\n        return dp(0, 0)\n```\nefficiency: HIGH\ntime complexity: O(n * goal)\nspace complexity: O(n * goal)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming with memoization to efficiently calculate the number of possible playlists, considering the constraints of playing each song at least once and the requirement of k other songs being played before repeating a song.",
+  "code": "def numMusicPlaylists(self, n: int, goal: int, k: int) -> int:\n        MOD = 10**9 + 7\n        @lru_cache(None)\n        def dp(i, j):\n            if i == goal:\n                return int(j == n)\n            res = 0\n            if j < n:\n                res += (n - j) * dp(i + 1, j + 1)\n            if j >= k:\n                res += j * dp(i + 1, j)\n            return res % MOD\n        return dp(0, 0)\n```",
+  "timestamp": "2025-08-06T15:21:10.205248",
+  "code_extracted_previous": "class Solution:\n    def numMusicPlaylists(self, n: int, goal: int, k: int) -> int:\n        MOD = 10**9 + 7\n        @lru_cache(None)\n        def dp(i, j):\n            if i == goal:\n                return int(j == n)\n            res = 0\n            if j < n:\n                res += (n - j) * dp(i + 1, j + 1)\n            if j >= k:\n                res += j * dp(i + 1, j)\n            return res % MOD\n        return dp(0, 0)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.894563"
+}

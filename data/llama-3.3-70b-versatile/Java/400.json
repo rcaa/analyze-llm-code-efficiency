@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int findNthDigit(int n) {\n        long length = 1;\n        long count = 9;\n        long start = 1;\n        while (n > length * count) {\n            n -= length * count;\n            length++;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / length;\n        String s = Long.toString(start);\n        return Character.getNumericValue(s.charAt((n - 1) % length));\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: The solution iterates through the sequence of numbers by length, calculating the start of each length and the count of numbers of that length, until it finds the length that contains the nth digit, then calculates the specific number and digit within that length.",
+  "code": "class Solution {\n    public int findNthDigit(int n) {\n        long length = 1;\n        long count = 9;\n        long start = 1;\n        while (n > length * count) {\n            n -= length * count;\n            length++;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / length;\n        String s = Long.toString(start);\n        return Character.getNumericValue(s.charAt((n - 1) % length));\n    }\n}",
+  "timestamp": "2025-08-06T15:15:38.757126",
+  "code_extracted_previous": "class Solution {\n    public int findNthDigit(int n) {\n        long length = 1;\n        long count = 9;\n        long start = 1;\n        while (n > length * count) {\n            n -= length * count;\n            length++;\n            count *= 10;\n            start *= 10;\n        }\n        start += (n - 1) / length;\n        String s = Long.toString(start);\n        return Character.getNumericValue(s.charAt((n - 1) % length));\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.257924"
+}

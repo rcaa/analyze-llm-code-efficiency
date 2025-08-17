@@ -1,0 +1,15 @@
+{
+  "id": 1081,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        stack = []\n        seen = set()\n        for char in s:\n            while stack and char < stack[-1] and len(seen) + (s.count(stack[-1]) - 1) >= len(set(s)):\n                seen.remove(stack.pop())\n            if char not in seen:\n                stack.append(char)\n                seen.add(char)\n        return ''.join(stack)\n```\n\nsolution: `stack = []\\nseen = set()\\nfor char in s:\\n    while stack and char < stack[-1] and len(seen) + (s.count(stack[-1]) - 1) >= len(set(s)):\\n        seen.remove(stack.pop())\\n    if char not in seen:\\n        stack.append(char)\\n        seen.add(char)\\nreturn ''.join(stack)`\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The algorithm uses a stack to build the lexicographically smallest subsequence. It iterates through the string, and for each character, it checks if it can be added to the stack without violating the lexicographical order and ensuring all distinct characters are included. If a character can be added, it is pushed onto the stack. Otherwise, characters are popped from the stack until the current character can be added.\n",
+  "code": "def smallestSubsequence(self, s: str) -> str:\n        stack = []\n        seen = set()\n        for char in s:\n            while stack and char < stack[-1] and len(seen) + (s.count(stack[-1]) - 1) >= len(set(s)):\n                seen.remove(stack.pop())\n            if char not in seen:\n                stack.append(char)\n                seen.add(char)\n        return ''.join(stack)\n```\n\nsolution: `stack = []\\nseen = set()\\nfor char in s:\\n    while stack and char < stack[-1] and len(seen) + (s.count(stack[-1]) - 1) >= len(set(s)):\\n        seen.remove(stack.pop())\\n    if char not in seen:\\n        stack.append(char)\\n        seen.add(char)\\nreturn ''.join(stack)`",
+  "timestamp": "2025-08-06T00:48:14.374343",
+  "code_extracted_previous": "class Solution:\n    def smallestSubsequence(self, s: str) -> str:\n        stack = []\n        seen = set()\n        for char in s:\n            while stack and char < stack[-1] and len(seen) + (s.count(stack[-1]) - 1) >= len(set(s)):\n                seen.remove(stack.pop())\n            if char not in seen:\n                stack.append(char)\n                seen.add(char)\n        return ''.join(stack)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:25.861454"
+}

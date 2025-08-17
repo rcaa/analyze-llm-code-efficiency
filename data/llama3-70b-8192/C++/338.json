@@ -1,0 +1,15 @@
+{
+  "id": 338,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    vector<int> countBits(int n) {\n        vector<int> ans(n + 1);\n        ans[0] = 0;\n        int powerOf2 = 1;\n        int cnt = 0;\n        for (int i = 1; i <= n; i++) {\n            if (i == powerOf2) {\n                ans[i] = 1;\n                powerOf2 *= 2;\n                cnt = 0;\n            } else {\n                ans[i] = ans[i - powerOf2 / 2 + cnt] + 1;\n                cnt++;\n            }\n        }\n        return ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to count the number of 1's in the binary representation of each number from 0 to n. It takes advantage of the fact that the count of 1's in the binary representation of a number is the same as the count of 1's in the binary representation of the number minus the highest power of 2 that is less than or equal to it, plus 1.",
+  "code": "class Solution {\npublic:\n    vector<int> countBits(int n) {\n        vector<int> ans(n + 1);\n        ans[0] = 0;\n        int powerOf2 = 1;\n        int cnt = 0;\n        for (int i = 1; i <= n; i++) {\n            if (i == powerOf2) {\n                ans[i] = 1;\n                powerOf2 *= 2;\n                cnt = 0;\n            } else {\n                ans[i] = ans[i - powerOf2 / 2 + cnt] + 1;\n                cnt++;\n            }\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T14:23:29.136252",
+  "code_extracted_previous": "public:\n    vector<int> countBits(int n) {\n        vector<int> ans(n + 1);\n        ans[0] = 0;\n        int powerOf2 = 1;\n        int cnt = 0;\n        for (int i = 1; i <= n; i++) {\n            if (i == powerOf2) {\n                ans[i] = 1;\n                powerOf2 *= 2;\n                cnt = 0;\n            } else {\n                ans[i] = ans[i - powerOf2 / 2 + cnt] + 1;\n                cnt++;\n            }\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.782299"
+}

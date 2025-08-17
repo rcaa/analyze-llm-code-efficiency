@@ -1,0 +1,15 @@
+{
+  "id": 686,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def repeatedStringMatch(self, a: str, b: str) -> int:\n        n = len(a)\n        m = len(b)\n        k = -(-m // n)  # ceiling division\n        s = a * k\n        if b in s:\n            if m % n == 0:\n                return k\n            return k + 1\n        if m % n < n - len(b):\n            return -1\n        return k + (m // n + 1)\n```\nefficiency: HIGH\ntime complexity: O(m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use ceiling division to find the minimum number of times to repeat string a. Then we check if string b is a substring of the repeated string. If it is, we return the number of times to repeat. If not, we check if the remaining characters in string b can be a substring of string a. If not, we return -1.",
+  "code": "class Solution:\n    def repeatedStringMatch(self, a: str, b: str) -> int:\n        n = len(a)\n        m = len(b)\n        k = -(-m // n)  # ceiling division\n        s = a * k\n        if b in s:\n            if m % n == 0:\n                return k\n            return k + 1\n        if m % n < n - len(b):\n            return -1\n        return k + (m // n + 1)",
+  "timestamp": "2025-08-05T23:52:20.947965",
+  "code_extracted_previous": "class Solution:\n    def repeatedStringMatch(self, a: str, b: str) -> int:\n        n = len(a)\n        m = len(b)\n        k = -(-m // n)  # ceiling division\n        s = a * k\n        if b in s:\n            if m % n == 0:\n                return k\n            return k + 1\n        if m % n < n - len(b):\n            return -1\n        return k + (m // n + 1)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.366656"
+}

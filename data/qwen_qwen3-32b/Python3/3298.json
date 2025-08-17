@@ -1,0 +1,15 @@
+{
+  "id": 3298,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nclass Solution:\n    def validSubstringCount(self, word1: str, word2: str) -> int:\n        from collections import Counter, defaultdict\n\n        len_word2 = len(word2)\n        if len_word2 > len(word1):\n            return 0\n\n        word2_count = Counter(word2)\n        window_count = defaultdict(int)\n        left = 0\n        result = 0\n\n        for right in range(len(word1)):\n            window_count[word1[right]] += 1\n\n            while all(window_count[char] >= word2_count[char] for char in word2_count):\n                result += len(word1) - right\n                window_count[word1[left]] -= 1\n                left += 1\n\n        return result\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: <The solution uses a sliding window approach to efficiently count valid substrings. It maintains a window that satisfies the condition of having enough characters to form word2 as a prefix. The algorithm ensures linear runtime by moving the window in a single pass and updating counts accordingly.>",
+  "code": "class Solution:\n    def validSubstringCount(self, word1: str, word2: str) -> int:\n\n        len_word2 = len(word2)\n        if len_word2 > len(word1):\n            return 0\n\n        word2_count = Counter(word2)\n        window_count = defaultdict(int)\n        left = 0\n        result = 0\n\n        for right in range(len(word1)):\n            window_count[word1[right]] += 1\n\n            while all(window_count[char] >= word2_count[char] for char in word2_count):\n                result += len(word1) - right\n                window_count[word1[left]] -= 1\n                left += 1\n\n        return result",
+  "timestamp": "2025-08-06T17:32:36.552170",
+  "code_extracted_previous": "class Solution:\n    def validSubstringCount(self, word1: str, word2: str) -> int:\n        from collections import Counter, defaultdict\n\n        len_word2 = len(word2)\n        if len_word2 > len(word1):\n            return 0\n\n        word2_count = Counter(word2)\n        window_count = defaultdict(int)\n        left = 0\n        result = 0\n\n        for right in range(len(word1)):\n            window_count[word1[right]] += 1\n\n            while all(window_count[char] >= word2_count[char] for char in word2_count):\n                result += len(word1) - right\n                window_count[word1[left]] -= 1\n                left += 1\n\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:24:06.037656"
+}

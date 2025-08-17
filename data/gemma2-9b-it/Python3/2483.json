@@ -1,0 +1,15 @@
+{
+  "id": 2483,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def bestClosingTime(self, customers: str) -> int:\n        n = len(customers)\n        min_penalty = float('inf')\n        best_time = 0\n        for i in range(n):\n            penalty = 0\n            for j in range(i + 1):\n                if customers[j] == 'Y' and j >= i:\n                    penalty += 1\n            for j in range(i + 1, n):\n                if customers[j] == 'N':\n                    penalty += 1\n            if penalty < min_penalty:\n                min_penalty = penalty\n                best_time = i\n        return best_time\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through each hour as a potential closing time. For each closing time, it calculates the penalty by summing the penalties for open hours with no customers and closed hours with customers. The minimum penalty and corresponding closing time are tracked.  The time complexity is O(n^2) due to the nested loops. The space complexity is O(1) as the algorithm uses a constant amount of extra space. The energy implications are low as the algorithm performs a fixed number of operations regardless of the input size. \n\n\n",
+  "code": "class Solution:\n    def bestClosingTime(self, customers: str) -> int:\n        n = len(customers)\n        min_penalty = float('inf')\n        best_time = 0\n        for i in range(n):\n            penalty = 0\n            for j in range(i + 1):\n                if customers[j] == 'Y' and j >= i:\n                    penalty += 1\n            for j in range(i + 1, n):\n                if customers[j] == 'N':\n                    penalty += 1\n            if penalty < min_penalty:\n                min_penalty = penalty\n                best_time = i\n        return best_time",
+  "timestamp": "2025-08-06T01:02:21.380245",
+  "code_extracted_previous": "class Solution:\n    def bestClosingTime(self, customers: str) -> int:\n        n = len(customers)\n        min_penalty = float('inf')\n        best_time = 0\n        for i in range(n):\n            penalty = 0\n            for j in range(i + 1):\n                if customers[j] == 'Y' and j >= i:\n                    penalty += 1\n            for j in range(i + 1, n):\n                if customers[j] == 'N':\n                    penalty += 1\n            if penalty < min_penalty:\n                min_penalty = penalty\n                best_time = i\n        return best_time",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:26.326017"
+}

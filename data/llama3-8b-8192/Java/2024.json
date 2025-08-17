@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\nclass Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int n = answerKey.length();\n        int res = 0, left = 0, count = 0;\n        for (int right = 0; right < n; right++) {\n            if (answerKey.charAt(right) == 'T') count++;\n            while (right - left + 1 > k + 1) {\n                if (answerKey.charAt(left) == 'T') count--;\n                left++;\n            }\n            res = Math.max(res, right - left + 1);\n        }\n        return res;\n    }\n}\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We use a sliding window approach to maintain a window of size k+1 and update the maximum consecutive answers found so far.",
+  "code": "class Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int n = answerKey.length();\n        int res = 0, left = 0, count = 0;\n        for (int right = 0; right < n; right++) {\n            if (answerKey.charAt(right) == 'T') count++;\n            while (right - left + 1 > k + 1) {\n                if (answerKey.charAt(left) == 'T') count--;\n                left++;\n            }\n            res = Math.max(res, right - left + 1);\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T00:56:56.452971",
+  "code_extracted_previous": "class Solution {\n    public int maxConsecutiveAnswers(String answerKey, int k) {\n        int n = answerKey.length();\n        int res = 0, left = 0, count = 0;\n        for (int right = 0; right < n; right++) {\n            if (answerKey.charAt(right) == 'T') count++;\n            while (right - left + 1 > k + 1) {\n                if (answerKey.charAt(left) == 'T') count--;\n                left++;\n            }\n            res = Math.max(res, right - left + 1);\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.124658"
+}

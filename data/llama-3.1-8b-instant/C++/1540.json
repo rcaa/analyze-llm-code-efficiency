@@ -1,0 +1,15 @@
+{
+  "id": 1540,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        int n = s.size();\n        vector<int> diff(n);\n        for (int i = 0; i < n; i++) {\n            int d = abs(s[i] - t[i]);\n            if (d > 0) {\n                diff[i] = (d - 1) % 26 + 1;\n            }\n        }\n        int maxDiff = 0;\n        for (int d : diff) maxDiff += d;\n        return maxDiff <= k;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution works by first checking if the two strings have the same length. If not, it immediately returns false. Then, it calculates the difference between each pair of characters in the two strings. The difference is the number of positions the character in s needs to be shifted to match the character in t. The total number of shifts required is the sum of these differences. If this total is less than or equal to k, it returns true; otherwise, it returns false. This solution has a time complexity of O(n) and a space complexity of O(n), where n is the length of the strings.",
+  "code": "class Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        int n = s.size();\n        vector<int> diff(n);\n        for (int i = 0; i < n; i++) {\n            int d = abs(s[i] - t[i]);\n            if (d > 0) {\n                diff[i] = (d - 1) % 26 + 1;\n            }\n        }\n        int maxDiff = 0;\n        for (int d : diff) maxDiff += d;\n        return maxDiff <= k;\n    }\n};",
+  "timestamp": "2025-08-05T15:07:58.905955",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canConvertString(string s, string t, int k) {\n        if (s.size() != t.size()) return false;\n        int n = s.size();\n        vector<int> diff(n);\n        for (int i = 0; i < n; i++) {\n            int d = abs(s[i] - t[i]);\n            if (d > 0) {\n                diff[i] = (d - 1) % 26 + 1;\n            }\n        }\n        int maxDiff = 0;\n        for (int d : diff) maxDiff += d;\n        return maxDiff <= k;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.421263"
+}

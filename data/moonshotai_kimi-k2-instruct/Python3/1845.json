@@ -1,0 +1,15 @@
+{
+  "id": 1845,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: ```python\nimport heapq\n\nclass SeatManager:\n\n    def __init__(self, n: int):\n        self.available = list(range(1, n + 1))\n        heapq.heapify(self.available)\n\n    def reserve(self) -> int:\n        return heapq.heappop(self.available)\n\n    def unreserve(self, seatNumber: int) -> None:\n        heapq.heappush(self.available, seatNumber)\n```\nefficiency: HIGH\ntime complexity: O(log n) per operation\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a min-heap to always return the smallest available seat in O(log n) time. Unreserve simply pushes the seat back into the heap, also O(log n). Initialization builds the heap in O(n) time.",
+  "code": "class SeatManager:\n\n    def __init__(self, n: int):\n        self.available = list(range(1, n + 1))\n        heapq.heapify(self.available)\n\n    def reserve(self) -> int:\n        return heapq.heappop(self.available)\n\n    def unreserve(self, seatNumber: int) -> None:\n        heapq.heappush(self.available, seatNumber)",
+  "timestamp": "2025-08-05T14:13:24.518199",
+  "code_extracted_previous": "import heapq\n\nclass SeatManager:\n\n    def __init__(self, n: int):\n        self.available = list(range(1, n + 1))\n        heapq.heapify(self.available)\n\n    def reserve(self) -> int:\n        return heapq.heappop(self.available)\n\n    def unreserve(self, seatNumber: int) -> None:\n        heapq.heappush(self.available, seatNumber)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:56.389334"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public String getHint(String secret, String guess) {\n        int bulls = 0, cows = 0;\n        int[] sCount = new int[10], gCount = new int[10];\n        for (int i = 0; i < secret.length(); i++) {\n            if (secret.charAt(i) == guess.charAt(i)) {\n                bulls++;\n            } else {\n                sCount[secret.charAt(i) - '0']++;\n                gCount[guess.charAt(i) - '0']++;\n            }\n        }\n        for (int i = 0; i < 10; i++) {\n            cows += Math.min(sCount[i], gCount[i]);\n        }\n        return bulls + \"A\" + (cows) + \"B\";\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses two arrays to count the occurrences of each digit in the secret and guess strings. It then iterates through the arrays to find the number of bulls and cows. The time complexity is O(n) where n is the length of the strings, and the space complexity is O(1) as the size of the arrays is constant.",
+  "code": "class Solution {\n    public String getHint(String secret, String guess) {\n        int bulls = 0, cows = 0;\n        int[] sCount = new int[10], gCount = new int[10];\n        for (int i = 0; i < secret.length(); i++) {\n            if (secret.charAt(i) == guess.charAt(i)) {\n                bulls++;\n            } else {\n                sCount[secret.charAt(i) - '0']++;\n                gCount[guess.charAt(i) - '0']++;\n            }\n        }\n        for (int i = 0; i < 10; i++) {\n            cows += Math.min(sCount[i], gCount[i]);\n        }\n        return bulls + \"A\" + (cows) + \"B\";\n    }\n}",
+  "timestamp": "2025-08-05T14:51:55.601683",
+  "code_extracted_previous": "public String getHint(String secret, String guess) {\n        int bulls = 0, cows = 0;\n        int[] sCount = new int[10], gCount = new int[10];\n        for (int i = 0; i < secret.length(); i++) {\n            if (secret.charAt(i) == guess.charAt(i)) {\n                bulls++;\n            } else {\n                sCount[secret.charAt(i) - '0']++;\n                gCount[guess.charAt(i) - '0']++;\n            }\n        }\n        for (int i = 0; i < 10; i++) {\n            cows += Math.min(sCount[i], gCount[i]);\n        }\n        return bulls + \"A\" + (cows) + \"B\";\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.566517"
+}

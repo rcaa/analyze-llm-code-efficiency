@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def findIntegers(self, n: int) -> int:\n        res = 0\n        for i in range(n + 1):\n            if self.no_consecutive_ones(i):\n                res += 1\n        return res\n\n    def no_consecutive_ones(self, num: int) -> bool:\n        prev_bit = None\n        while num > 0:\n            bit = num & 1\n            if prev_bit is not None and prev_bit == 1 and bit == 1:\n                return False\n            prev_bit = bit\n            num >>= 1\n        return True\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a brute-force approach to iterate over all numbers from 0 to n and checks if each number has consecutive ones in its binary representation. The helper function no_consecutive_ones() iterates over the bits of the number and checks if there are consecutive ones. The time complexity is O(n) as we are iterating over all numbers, and the space complexity is O(1) as we are using a constant amount of space.",
+  "code": "class Solution:\n    def findIntegers(self, n: int) -> int:\n        res = 0\n        for i in range(n + 1):\n            if self.no_consecutive_ones(i):\n                res += 1\n        return res\n\n    def no_consecutive_ones(self, num: int) -> bool:\n        prev_bit = None\n        while num > 0:\n            bit = num & 1\n            if prev_bit is not None and prev_bit == 1 and bit == 1:\n                return False\n            prev_bit = bit\n            num >>= 1\n        return True",
+  "timestamp": "2025-08-05T14:14:36.906120",
+  "code_extracted_previous": "class Solution:\n    def findIntegers(self, n: int) -> int:\n        res = 0\n        for i in range(n + 1):\n            if self.no_consecutive_ones(i):\n                res += 1\n        return res\n\n    def no_consecutive_ones(self, num: int) -> bool:\n        prev_bit = None\n        while num > 0:\n            bit = num & 1\n            if prev_bit is not None and prev_bit == 1 and bit == 1:\n                return False\n            prev_bit = bit\n            num >>= 1\n        return True",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:44.332381"
+}

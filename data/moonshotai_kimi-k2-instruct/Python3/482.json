@@ -1,0 +1,15 @@
+{
+  "id": 482,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \nclass Solution:\n    def licenseKeyFormatting(self, s: str, k: int) -> str:\n        chars = [c.upper() for c in s if c != '-']\n        n = len(chars)\n        if n == 0:\n            return \"\"\n        first_len = n % k or k\n        parts = [''.join(chars[:first_len])]\n        for i in range(first_len, n, k):\n            parts.append(''.join(chars[i:i+k]))\n        return '-'.join(parts)\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Strip dashes, uppercase letters, then build groups from right to left; first group length is n mod k (or k if zero). Join with dashes.",
+  "code": "class Solution:\n    def licenseKeyFormatting(self, s: str, k: int) -> str:\n        chars = [c.upper() for c in s if c != '-']\n        n = len(chars)\n        if n == 0:\n            return \"\"\n        first_len = n % k or k\n        parts = [''.join(chars[:first_len])]\n        for i in range(first_len, n, k):\n            parts.append(''.join(chars[i:i+k]))\n        return '-'.join(parts)",
+  "timestamp": "2025-08-05T23:35:04.627312",
+  "code_extracted_previous": "class Solution:\n    def licenseKeyFormatting(self, s: str, k: int) -> str:\n        chars = [c.upper() for c in s if c != '-']\n        n = len(chars)\n        if n == 0:\n            return \"\"\n        first_len = n % k or k\n        parts = [''.join(chars[:first_len])]\n        for i in range(first_len, n, k):\n            parts.append(''.join(chars[i:i+k]))\n        return '-'.join(parts)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.276986"
+}

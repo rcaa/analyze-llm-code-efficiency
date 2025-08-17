@@ -1,0 +1,15 @@
+{
+  "id": 2006,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int countKDifference(vector<int>& nums, int k) {\n        int count = 0;\n        unordered_map<int, int> freq;\n        for (int num : nums) {\n            freq[num]++;\n        }\n        for (int num : nums) {\n            if (freq.count(num - k) > 0) {\n                count += freq[num - k];\n            }\n            if (freq.count(num + k) > 0) {\n                count += freq[num + k];\n            }\n        }\n        return count / 2;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a frequency map to count the occurrences of each number in the array. Then, it iterates over the array again to count the pairs with an absolute difference of k. The frequency map is used to check if there are any numbers with a difference of k in O(1) time. The result is divided by 2 to avoid counting each pair twice.",
+  "code": "class Solution {\npublic:\n    int countKDifference(vector<int>& nums, int k) {\n        int count = 0;\n        unordered_map<int, int> freq;\n        for (int num : nums) {\n            freq[num]++;\n        }\n        for (int num : nums) {\n            if (freq.count(num - k) > 0) {\n                count += freq[num - k];\n            }\n            if (freq.count(num + k) > 0) {\n                count += freq[num + k];\n            }\n        }\n        return count / 2;\n    }\n};",
+  "timestamp": "2025-08-05T12:44:35.248700",
+  "code_extracted_previous": "public:\n    int countKDifference(vector<int>& nums, int k) {\n        int count = 0;\n        unordered_map<int, int> freq;\n        for (int num : nums) {\n            freq[num]++;\n        }\n        for (int num : nums) {\n            if (freq.count(num - k) > 0) {\n                count += freq[num - k];\n            }\n            if (freq.count(num + k) > 0) {\n                count += freq[num + k];\n            }\n        }\n        return count / 2;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:40.787777"
+}

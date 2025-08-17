@@ -1,0 +1,15 @@
+{
+  "id": 1935,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> broken(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        for (size_t i = 0; i < text.size(); ++i) {\n            bool isWordTypable = true;\n            size_t j = i;\n            while (j < text.size() && text[j] != ' ') {\n                if (broken.find(text[j]) != broken.end()) {\n                    isWordTypable = false;\n                    break;\n                }\n                ++j;\n            }\n            if (isWordTypable) ++count;\n            i = j;\n        }\n        return count;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution iterates through the input string and checks each word against the set of broken letters, resulting in a linear time complexity. It uses an unordered set to store broken letters, allowing for efficient lookups.",
+  "code": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> broken(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        for (size_t i = 0; i < text.size(); ++i) {\n            bool isWordTypable = true;\n            size_t j = i;\n            while (j < text.size() && text[j] != ' ') {\n                if (broken.find(text[j]) != broken.end()) {\n                    isWordTypable = false;\n                    break;\n                }\n                ++j;\n            }\n            if (isWordTypable) ++count;\n            i = j;\n        }\n        return count;\n    }\n};",
+  "timestamp": "2025-08-05T14:43:49.000076",
+  "code_extracted_previous": "class Solution {\npublic:\n    int canBeTypedWords(string text, string brokenLetters) {\n        unordered_set<char> broken(brokenLetters.begin(), brokenLetters.end());\n        int count = 0;\n        for (size_t i = 0; i < text.size(); ++i) {\n            bool isWordTypable = true;\n            size_t j = i;\n            while (j < text.size() && text[j] != ' ') {\n                if (broken.find(text[j]) != broken.end()) {\n                    isWordTypable = false;\n                    break;\n                }\n                ++j;\n            }\n            if (isWordTypable) ++count;\n            i = j;\n        }\n        return count;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.003932"
+}

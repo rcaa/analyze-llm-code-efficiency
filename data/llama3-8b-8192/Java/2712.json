@@ -1,0 +1,15 @@
+{
+  "id": 2712,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public long minimumCost(String s) {\n        long res = 0;\n        int ones = 0, zeros = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '0') zeros++;\n            else ones++;\n        }\n        res += Math.min(ones, zeros);\n        for (int i = 0; i < s.length() - 1; i++) {\n            if (s.charAt(i) != s.charAt(i + 1)) {\n                res += Math.min(i + 1, s.length() - i - 1);\n            }\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution first counts the number of '0's and '1's in the string. Then, it iterates through the string to find the minimum cost to make all characters equal. The minimum cost is the sum of the minimum cost to invert all characters up to the current index and the minimum cost to invert all characters from the current index to the end of the string.",
+  "code": "class Solution {\n    public long minimumCost(String s) {\n        long res = 0;\n        int ones = 0, zeros = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '0') zeros++;\n            else ones++;\n        }\n        res += Math.min(ones, zeros);\n        for (int i = 0; i < s.length() - 1; i++) {\n            if (s.charAt(i) != s.charAt(i + 1)) {\n                res += Math.min(i + 1, s.length() - i - 1);\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T01:05:47.642803",
+  "code_extracted_previous": "public long minimumCost(String s) {\n        long res = 0;\n        int ones = 0, zeros = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '0') zeros++;\n            else ones++;\n        }\n        res += Math.min(ones, zeros);\n        for (int i = 0; i < s.length() - 1; i++) {\n            if (s.charAt(i) != s.charAt(i + 1)) {\n                res += Math.min(i + 1, s.length() - i - 1);\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.509204"
+}

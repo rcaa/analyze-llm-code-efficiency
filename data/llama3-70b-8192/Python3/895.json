@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.max_freq = 0\n        self.stack = {}\n\n    def push(self, val: int) -> None:\n        if val not in self.freq:\n            self.freq[val] = 1\n        else:\n            self.freq[val] += 1\n        if self.freq[val] > self.max_freq:\n            self.max_freq = self.freq[val]\n        if self.freq[val] not in self.stack:\n            self.stack[self.freq[val]] = []\n        self.stack[self.freq[val]].append(val)\n\n    def pop(self) -> int:\n        x = self.stack[self.max_freq].pop()\n        self.freq[x] -= 1\n        if not self.stack[self.max_freq]:\n            self.max_freq -= 1\n        return x\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a frequency dictionary and a stack dictionary to efficiently push and pop elements. It keeps track of the maximum frequency and the corresponding stack to quickly retrieve the most frequent element.",
+  "code": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.max_freq = 0\n        self.stack = {}\n\n    def push(self, val: int) -> None:\n        if val not in self.freq:\n            self.freq[val] = 1\n        else:\n            self.freq[val] += 1\n        if self.freq[val] > self.max_freq:\n            self.max_freq = self.freq[val]\n        if self.freq[val] not in self.stack:\n            self.stack[self.freq[val]] = []\n        self.stack[self.freq[val]].append(val)\n\n    def pop(self) -> int:\n        x = self.stack[self.max_freq].pop()\n        self.freq[x] -= 1\n        if not self.stack[self.max_freq]:\n            self.max_freq -= 1\n        return x",
+  "timestamp": "2025-08-05T14:37:50.748395",
+  "code_extracted_previous": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.max_freq = 0\n        self.stack = {}\n\n    def push(self, val: int) -> None:\n        if val not in self.freq:\n            self.freq[val] = 1\n        else:\n            self.freq[val] += 1\n        if self.freq[val] > self.max_freq:\n            self.max_freq = self.freq[val]\n        if self.freq[val] not in self.stack:\n            self.stack[self.freq[val]] = []\n        self.stack[self.freq[val]].append(val)\n\n    def pop(self) -> int:\n        x = self.stack[self.max_freq].pop()\n        self.freq[x] -= 1\n        if not self.stack[self.max_freq]:\n            self.max_freq -= 1\n        return x",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:40.198064"
+}

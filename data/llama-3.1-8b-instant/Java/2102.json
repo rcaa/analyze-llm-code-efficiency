@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nimport java.util.*;\n\nclass SORTracker {\n\n    public SORTracker() {\n        this.locations = new TreeMap<>();\n    }\n    \n    private TreeMap<Integer, List<String>> locations;\n    \n    public void add(String name, int score) {\n        locations.computeIfAbsent(score, k -> new ArrayList<>()).add(name);\n    }\n    \n    public String get() {\n        int count = 0;\n        for (List<String> names : locations.values()) {\n            count += names.size();\n            if (count == locations.size()) {\n                return names.get(names.size() - 1);\n            }\n        }\n        return null;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n log n) where n is the number of locations\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class SORTracker {\n\n    public SORTracker() {\n        this.locations = new TreeMap<>();\n    }\n    \n    private TreeMap<Integer, List<String>> locations;\n    \n    public void add(String name, int score) {\n        locations.computeIfAbsent(score, k -> new ArrayList<>()).add(name);\n    }\n    \n    public String get() {\n        int count = 0;\n        for (List<String> names : locations.values()) {\n            count += names.size();\n            if (count == locations.size()) {\n                return names.get(names.size() - 1);\n            }\n        }\n        return null;\n    }\n}",
+  "timestamp": "2025-08-05T14:05:23.366076",
+  "code_extracted_previous": "import java.util.*;\n\nclass SORTracker {\n\n    public SORTracker() {\n        this.locations = new TreeMap<>();\n    }\n    \n    private TreeMap<Integer, List<String>> locations;\n    \n    public void add(String name, int score) {\n        locations.computeIfAbsent(score, k -> new ArrayList<>()).add(name);\n    }\n    \n    public String get() {\n        int count = 0;\n        for (List<String> names : locations.values()) {\n            count += names.size();\n            if (count == locations.size()) {\n                return names.get(names.size() - 1);\n            }\n        }\n        return null;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:29.155160"
+}

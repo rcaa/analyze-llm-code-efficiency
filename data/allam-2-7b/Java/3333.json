@@ -1,0 +1,15 @@
+{
+  "id": 3333,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int possibleStringCount(String word, int k) {\n        int count = 1;\n        int[] countMap = new int[26];\n        for (int i = 0; i < word.length(); i++) {\n            char c = word.charAt(i);\n            countMap[c - 'a'] += 1;\n        }\n        for (int i = 0; i < k; i++) {\n            count *= (1 << countMap[word.charAt(0) - 'a'];\n            for (int j = 1; j < word.length(); j++) {\n                char c = word.charAt(j);\n                count *= (1 << countMap[c - 'a'];\n            }\n        }\n        return count % (10^9 + 7);\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n\nWe use a map to store the count of each character in the word. Then, we iterate k times to calculate the total count of possible strings. In each iteration, we multiply the current count by the count of characters in the word. We use bitwise operations to efficiently calculate the count of characters in the word. The time complexity is O(n) because we iterate the word once, and the space complexity is O(n) because we use a map with n elements. ",
+  "code": "class Solution {\n    public int possibleStringCount(String word, int k) {\n        int count = 1;\n        int[] countMap = new int[26];\n        for (int i = 0; i < word.length(); i++) {\n            char c = word.charAt(i);\n            countMap[c - 'a'] += 1;\n        }\n        for (int i = 0; i < k; i++) {\n            count *= (1 << countMap[word.charAt(0) - 'a'];\n            for (int j = 1; j < word.length(); j++) {\n                char c = word.charAt(j);\n                count *= (1 << countMap[c - 'a'];\n            }\n        }\n        return count % (10^9 + 7);\n    }\n}",
+  "timestamp": "2025-08-05T16:17:29.780839",
+  "code_extracted_previous": "class Solution {\n    public int possibleStringCount(String word, int k) {\n        int count = 1;\n        int[] countMap = new int[26];\n        for (int i = 0; i < word.length(); i++) {\n            char c = word.charAt(i);\n            countMap[c - 'a'] += 1;\n        }\n        for (int i = 0; i < k; i++) {\n            count *= (1 << countMap[word.charAt(0) - 'a'];\n            for (int j = 1; j < word.length(); j++) {\n                char c = word.charAt(j);\n                count *= (1 << countMap[c - 'a'];\n            }\n        }\n        return count % (10^9 + 7);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.523099"
+}

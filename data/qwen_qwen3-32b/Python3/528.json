@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "<think>\n</think>\n\nsolution: \n```python\nimport random\nimport bisect\nfrom typing import List\n\nclass Solution:\n\n    def __init__(self, w: List[int]):\n        self.prefix_sum = []\n        current_sum = 0\n        for weight in w:\n            current_sum += weight\n            self.prefix_sum.append(current_sum)\n        self.total_sum = current_sum\n\n    def pickIndex(self) -> int:\n        target = random.randint(1, self.total_sum)\n        return bisect.bisect_left(self.prefix_sum, target)\n```\nefficiency: HIGH\ntime complexity: O(1) for __init__, O(log n) for pickIndex\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a prefix sum array to map random numbers to indices based on their weights. The pickIndex method uses binary search to efficiently find the correct index. This approach ensures logarithmic time complexity for each pickIndex call and linear space complexity for storing the prefix sums.",
+  "code": "class Solution:\n\n    def __init__(self, w: List[int]):\n        self.prefix_sum = []\n        current_sum = 0\n        for weight in w:\n            current_sum += weight\n            self.prefix_sum.append(current_sum)\n        self.total_sum = current_sum\n\n    def pickIndex(self) -> int:\n        target = random.randint(1, self.total_sum)\n        return bisect.bisect_left(self.prefix_sum, target)",
+  "timestamp": "2025-08-05T13:00:49.589671",
+  "code_extracted_previous": "import random\nimport bisect\nfrom typing import List\n\nclass Solution:\n\n    def __init__(self, w: List[int]):\n        self.prefix_sum = []\n        current_sum = 0\n        for weight in w:\n            current_sum += weight\n            self.prefix_sum.append(current_sum)\n        self.total_sum = current_sum\n\n    def pickIndex(self) -> int:\n        target = random.randint(1, self.total_sum)\n        return bisect.bisect_left(self.prefix_sum, target)",
+  "starter_ok": false,
+  "starter_check_reason": "assinatura divergente: esperada '__init__(self, w)'",
+  "reavaliado_em": "2025-08-17T12:24:06.415990"
+}

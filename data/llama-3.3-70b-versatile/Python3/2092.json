@@ -1,0 +1,15 @@
+{
+  "id": 2092,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nfrom typing import List\n\nclass Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        know_secret = {0, firstPerson}\n        meetings.sort(key=lambda x: x[2])\n        time = -1\n        for x, y, t in meetings:\n            if t != time:\n                know_secret = set(know_secret)\n                time = t\n            if x in know_secret:\n                know_secret.add(y)\n            if y in know_secret:\n                know_secret.add(x)\n        return sorted(list(know_secret))\n```\nefficiency: HIGH\ntime complexity: O(m log m + n)\nspace complexity: O(n + m)\nenergy implications: LOW\nexplanation: Sort meetings by time, then iterate through each meeting. If a person in the meeting knows the secret, add the other person to the set of people who know the secret. This approach ensures that all people who know the secret are found in a single pass through the meetings.",
+  "code": "def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        know_secret = {0, firstPerson}\n        meetings.sort(key=lambda x: x[2])\n        time = -1\n        for x, y, t in meetings:\n            if t != time:\n                know_secret = set(know_secret)\n                time = t\n            if x in know_secret:\n                know_secret.add(y)\n            if y in know_secret:\n                know_secret.add(x)\n        return sorted(list(know_secret))\n```",
+  "timestamp": "2025-08-06T15:17:33.145200",
+  "code_extracted_previous": "from typing import List\n\nclass Solution:\n    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:\n        know_secret = {0, firstPerson}\n        meetings.sort(key=lambda x: x[2])\n        time = -1\n        for x, y, t in meetings:\n            if t != time:\n                know_secret = set(know_secret)\n                time = t\n            if x in know_secret:\n                know_secret.add(y)\n            if y in know_secret:\n                know_secret.add(x)\n        return sorted(list(know_secret))",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.009393"
+}

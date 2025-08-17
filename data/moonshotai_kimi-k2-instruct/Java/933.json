@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class RecentCounter {\n    private final java.util.Deque<Integer> q = new java.util.ArrayDeque<>();\n\n    public RecentCounter() {\n    }\n    \n    public int ping(int t) {\n        q.addLast(t);\n        while (q.peekFirst() < t - 3000) {\n            q.removeFirst();\n        }\n        return q.size();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1) amortized per ping\nspace complexity: O(n) where n is the number of pings in the sliding window (≤ 3000)\nenergy implications: LOW\nexplanation: Uses a FIFO queue to store only the pings within the last 3000 ms. Each ping is added once and removed at most once, giving amortized O(1) time. Space is bounded by the 3000 ms window size.",
+  "code": "class RecentCounter {\n    private final java.util.Deque<Integer> q = new java.util.ArrayDeque<>();\n\n    public RecentCounter() {\n    }\n    \n    public int ping(int t) {\n        q.addLast(t);\n        while (q.peekFirst() < t - 3000) {\n            q.removeFirst();\n        }\n        return q.size();\n    }\n}",
+  "timestamp": "2025-08-05T14:08:47.270158",
+  "code_extracted_previous": "private final java.util.Deque<Integer> q = new java.util.ArrayDeque<>();\n\n    public RecentCounter() {\n    }\n    \n    public int ping(int t) {\n        q.addLast(t);\n        while (q.peekFirst() < t - 3000) {\n            q.removeFirst();\n        }\n        return q.size();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:55.926113"
+}

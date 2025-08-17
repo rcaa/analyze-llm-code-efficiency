@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass RecentCounter {\n\n    private Deque<Integer> queue;\n\n    public RecentCounter() {\n        queue = new ArrayDeque<>();\n    }\n    \n    public int ping(int t) {\n        queue.add(t);\n        while (!queue.isEmpty() && queue.peekFirst() < t - 3000) {\n            queue.pollFirst();\n        }\n        return queue.size();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a deque to store the timestamps of the requests. When a new request is added, it removes all the requests that are out of the time frame. This operation is done in O(n) time initially, but since the deque is updated after each request, the time complexity becomes O(1) on average. The space complexity is O(n) because in the worst case, all requests are stored in the deque.",
+  "code": "class RecentCounter {\n\n    private Deque<Integer> queue;\n\n    public RecentCounter() {\n        queue = new ArrayDeque<>();\n    }\n    \n    public int ping(int t) {\n        queue.add(t);\n        while (!queue.isEmpty() && queue.peekFirst() < t - 3000) {\n            queue.pollFirst();\n        }\n        return queue.size();\n    }\n}",
+  "timestamp": "2025-08-05T14:08:38.817468",
+  "code_extracted_previous": "class RecentCounter {\n\n    private Deque<Integer> queue;\n\n    public RecentCounter() {\n        queue = new ArrayDeque<>();\n    }\n    \n    public int ping(int t) {\n        queue.add(t);\n        while (!queue.isEmpty() && queue.peekFirst() < t - 3000) {\n            queue.pollFirst();\n        }\n        return queue.size();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:30.106197"
+}

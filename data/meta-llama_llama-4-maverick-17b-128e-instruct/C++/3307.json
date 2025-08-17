@@ -1,0 +1,15 @@
+{
+  "id": 3307,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long length = 1;\n        int shift = 0;\n        for (int i = operations.size() - 1; i >= 0; --i) {\n            if (operations[i] == 0) {\n                if (k > length) k -= length;\n                length /= 2;\n            } else {\n                shift = (shift + 1) % 26;\n                if (k > length) k -= length;\n                length /= 2;\n            }\n        }\n        return 'a' + (k - 1 + shift) % 26;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the operations in reverse order, tracking the length of the string and the shift in characters. It adjusts k accordingly to find the kth character after all operations, utilizing the properties of the given operations to efficiently compute the result.\n```",
+  "code": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long length = 1;\n        int shift = 0;\n        for (int i = operations.size() - 1; i >= 0; --i) {\n            if (operations[i] == 0) {\n                if (k > length) k -= length;\n                length /= 2;\n            } else {\n                shift = (shift + 1) % 26;\n                if (k > length) k -= length;\n                length /= 2;\n            }\n        }\n        return 'a' + (k - 1 + shift) % 26;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the operations in reverse order, tracking the length of the string and the shift in characters. It adjusts k accordingly to find the kth character after all operations, utilizing the properties of the given operations to efficiently compute the result.",
+  "timestamp": "2025-08-05T15:23:49.230971",
+  "code_extracted_previous": "class Solution {\npublic:\n    char kthCharacter(long long k, vector<int>& operations) {\n        long long length = 1;\n        int shift = 0;\n        for (int i = operations.size() - 1; i >= 0; --i) {\n            if (operations[i] == 0) {\n                if (k > length) k -= length;\n                length /= 2;\n            } else {\n                shift = (shift + 1) % 26;\n                if (k > length) k -= length;\n                length /= 2;\n            }\n        }\n        return 'a' + (k - 1 + shift) % 26;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.506213"
+}

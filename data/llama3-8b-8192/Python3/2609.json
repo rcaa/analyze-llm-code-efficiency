@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```\nclass Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        left = 0\n        zeros = 0\n        ones = 0\n        for right in range(len(s)):\n            if s[right] == '0':\n                zeros += 1\n            else:\n                ones += 1\n            while zeros != ones:\n                if s[left] == '0':\n                    zeros -= 1\n                else:\n                    ones -= 1\n                left += 1\n            max_len = max(max_len, right - left + 1)\n        return max_len\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach to find the longest balanced substring. It maintains two pointers, left and right, to represent the current window. It also keeps track of the number of zeros and ones in the current window. When the number of zeros is not equal to the number of ones, it moves the left pointer to the right until the window is balanced again. The maximum length of the balanced substring is updated accordingly.",
+  "code": "class Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        left = 0\n        zeros = 0\n        ones = 0\n        for right in range(len(s)):\n            if s[right] == '0':\n                zeros += 1\n            else:\n                ones += 1\n            while zeros != ones:\n                if s[left] == '0':\n                    zeros -= 1\n                else:\n                    ones -= 1\n                left += 1\n            max_len = max(max_len, right - left + 1)\n        return max_len",
+  "timestamp": "2025-08-05T23:42:38.740596",
+  "code_extracted_previous": "class Solution:\n    def findTheLongestBalancedSubstring(self, s: str) -> int:\n        max_len = 0\n        left = 0\n        zeros = 0\n        ones = 0\n        for right in range(len(s)):\n            if s[right] == '0':\n                zeros += 1\n            else:\n                ones += 1\n            while zeros != ones:\n                if s[left] == '0':\n                    zeros -= 1\n                else:\n                    ones -= 1\n                left += 1\n            max_len = max(max_len, right - left + 1)\n        return max_len",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:43.934119"
+}

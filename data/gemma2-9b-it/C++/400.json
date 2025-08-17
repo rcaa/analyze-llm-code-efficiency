@@ -1,0 +1,15 @@
+{
+  "id": 400,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int findNthDigit(int n) {\n        long long count = 9;\n        int digit = 1;\n        long long start = 1;\n        while (n > count * digit) {\n            n -= count * digit;\n            digit++;\n            count *= 10;\n            start *= 10;\n        }\n        long long num = start + (n - 1) / digit;\n        return to_string(num)[(n - 1) % digit] - '0';\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution utilizes a logarithmic approach to efficiently determine the nth digit. It iteratively calculates the number of digits in each range (1-9, 10-99, 100-999, etc.) and adjusts the search range accordingly. By leveraging the properties of digit counts and range boundaries, it pinpoints the target number and extracts the desired digit.\n",
+  "code": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long count = 9;\n        int digit = 1;\n        long long start = 1;\n        while (n > count * digit) {\n            n -= count * digit;\n            digit++;\n            count *= 10;\n            start *= 10;\n        }\n        long long num = start + (n - 1) / digit;\n        return to_string(num)[(n - 1) % digit] - '0';\n    }\n};",
+  "timestamp": "2025-08-06T03:07:56.182790",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findNthDigit(int n) {\n        long long count = 9;\n        int digit = 1;\n        long long start = 1;\n        while (n > count * digit) {\n            n -= count * digit;\n            digit++;\n            count *= 10;\n            start *= 10;\n        }\n        long long num = start + (n - 1) / digit;\n        return to_string(num)[(n - 1) % digit] - '0';\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.047855"
+}

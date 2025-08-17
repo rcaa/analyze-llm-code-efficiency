@@ -1,0 +1,15 @@
+{
+  "id": 341,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        flatten(nestedList);\n    }\n    \n    int next() {\n        int result = queue.front();\n        queue.pop();\n        return result;\n    }\n    \n    bool hasNext() {\n        return !queue.empty();\n    }\nprivate:\n    queue<int> queue;\n    \n    void flatten(const vector<NestedInteger> &nestedList) {\n        for (const auto &ni : nestedList) {\n            if (ni.isInteger()) {\n                queue.push(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution uses a queue to store the flattened integers and a helper function to recursively flatten the nested list, ensuring efficient iteration and minimal memory usage.",
+  "code": "class NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        flatten(nestedList);\n    }\n    \n    int next() {\n        int result = queue.front();\n        queue.pop();\n        return result;\n    }\n    \n    bool hasNext() {\n        return !queue.empty();\n    }\nprivate:\n    queue<int> queue;\n    \n    void flatten(const vector<NestedInteger> &nestedList) {\n        for (const auto &ni : nestedList) {\n            if (ni.isInteger()) {\n                queue.push(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n};",
+  "timestamp": "2025-08-06T15:11:06.163617",
+  "code_extracted_previous": "class NestedIterator {\npublic:\n    NestedIterator(vector<NestedInteger> &nestedList) {\n        flatten(nestedList);\n    }\n    \n    int next() {\n        int result = queue.front();\n        queue.pop();\n        return result;\n    }\n    \n    bool hasNext() {\n        return !queue.empty();\n    }\nprivate:\n    queue<int> queue;\n    \n    void flatten(const vector<NestedInteger> &nestedList) {\n        for (const auto &ni : nestedList) {\n            if (ni.isInteger()) {\n                queue.push(ni.getInteger());\n            } else {\n                flatten(ni.getList());\n            }\n        }\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:32.685527"
+}

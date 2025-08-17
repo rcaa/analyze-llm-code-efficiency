@@ -1,0 +1,15 @@
+{
+  "id": 1147,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public int longestDecomposition(String text) {\n        int n = text.length();\n        if (n == 0) return 0;\n        for (int l = 1; l <= n / 2; l++) {\n            if (text.substring(0, l).equals(text.substring(n - l))) {\n                return 2 + longestDecomposition(text.substring(l, n - l));\n            }\n        }\n        return 1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Greedy recursion: always peel off the shortest matching prefix/suffix pair, then recurse on the middle. This maximizes k by creating as many pairs as possible. Substring comparisons are O(n) each, but the greedy choice ensures minimal overlap and optimal splits.",
+  "code": "class Solution {\n    public int longestDecomposition(String text) {\n        int n = text.length();\n        if (n == 0) return 0;\n        for (int l = 1; l <= n / 2; l++) {\n            if (text.substring(0, l).equals(text.substring(n - l))) {\n                return 2 + longestDecomposition(text.substring(l, n - l));\n            }\n        }\n        return 1;\n    }\n}",
+  "timestamp": "2025-08-06T01:13:46.931620",
+  "code_extracted_previous": "class Solution {\n    public int longestDecomposition(String text) {\n        int n = text.length();\n        if (n == 0) return 0;\n        for (int l = 1; l <= n / 2; l++) {\n            if (text.substring(0, l).equals(text.substring(n - l))) {\n                return 2 + longestDecomposition(text.substring(l, n - l));\n            }\n        }\n        return 1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.464756"
+}

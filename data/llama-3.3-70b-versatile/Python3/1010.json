@@ -1,0 +1,15 @@
+{
+  "id": 1010,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def numPairsDivisibleBy60(self, time: List[int]) -> int:\n        count = [0] * 60\n        pairs = 0\n        for t in time:\n            remainder = t % 60\n            complement = (60 - remainder) % 60\n            pairs += count[complement]\n            count[remainder] += 1\n        return pairs\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Utilizes a frequency count array to track remainders of song durations modulo 60, then iterates through the list to find pairs with complementary remainders, ensuring efficient computation of the number of pairs with total duration divisible by 60.",
+  "code": "def numPairsDivisibleBy60(self, time: List[int]) -> int:\n        count = [0] * 60\n        pairs = 0\n        for t in time:\n            remainder = t % 60\n            complement = (60 - remainder) % 60\n            pairs += count[complement]\n            count[remainder] += 1\n        return pairs\n```",
+  "timestamp": "2025-08-05T13:17:30.867680",
+  "code_extracted_previous": "class Solution:\n    def numPairsDivisibleBy60(self, time: List[int]) -> int:\n        count = [0] * 60\n        pairs = 0\n        for t in time:\n            remainder = t % 60\n            complement = (60 - remainder) % 60\n            pairs += count[complement]\n            count[remainder] += 1\n        return pairs",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.550306"
+}

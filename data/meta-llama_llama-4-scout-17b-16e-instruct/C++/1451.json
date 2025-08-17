@@ -1,0 +1,15 @@
+{
+  "id": 1451,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string arrangeWords(string text) {\n        istringstream iss(text);\n        vector<pair<string, int>> words;\n        string word;\n        while (iss >> word) {\n            words.emplace_back(word, word.size());\n        }\n        sort(words.begin(), words.end(), [](const auto& a, const auto& b) {\n            return a.second < b.second;\n        });\n        for (auto& w : words) {\n            w.first[0] = tolower(w.first[0]);\n        }\n        words[0].first[0] = toupper(words[0].first[0]);\n        string result;\n        for (const auto& w : words) {\n            result += w.first + \" \";\n        }\n        result.pop_back();\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution works by first splitting the input string into words, then sorting them based on their lengths while preserving their original order for words of equal length. It converts all words to lowercase, capitalizes the first letter of the first word, and then joins the words back into a string.",
+  "code": "class Solution {\npublic:\n    string arrangeWords(string text) {\n        istringstream iss(text);\n        vector<pair<string, int>> words;\n        string word;\n        while (iss >> word) {\n            words.emplace_back(word, word.size());\n        }\n        sort(words.begin(), words.end(), [](const auto& a, const auto& b) {\n            return a.second < b.second;\n        });\n        for (auto& w : words) {\n            w.first[0] = tolower(w.first[0]);\n        }\n        words[0].first[0] = toupper(words[0].first[0]);\n        string result;\n        for (const auto& w : words) {\n            result += w.first + \" \";\n        }\n        result.pop_back();\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T00:52:28.117218",
+  "code_extracted_previous": "class Solution {\npublic:\n    string arrangeWords(string text) {\n        istringstream iss(text);\n        vector<pair<string, int>> words;\n        string word;\n        while (iss >> word) {\n            words.emplace_back(word, word.size());\n        }\n        sort(words.begin(), words.end(), [](const auto& a, const auto& b) {\n            return a.second < b.second;\n        });\n        for (auto& w : words) {\n            w.first[0] = tolower(w.first[0]);\n        }\n        words[0].first[0] = toupper(words[0].first[0]);\n        string result;\n        for (const auto& w : words) {\n            result += w.first + \" \";\n        }\n        result.pop_back();\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.772052"
+}

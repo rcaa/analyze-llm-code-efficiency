@@ -1,0 +1,15 @@
+{
+  "id": 2111,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int kIncreasing(vector<int>& arr, int k) {\n        int n = arr.size(), res = 0;\n        for (int g = 0; g < k; ++g) {\n            vector<int> seq;\n            for (int i = g; i < n; i += k) seq.push_back(arr[i]);\n            res += lis(seq);\n        }\n        return res;\n    }\nprivate:\n    int lis(const vector<int>& a) {\n        vector<int> tails;\n        for (int x : a) {\n            auto it = upper_bound(tails.begin(), tails.end(), x);\n            if (it == tails.end()) tails.push_back(x);\n            else *it = x;\n        }\n        return a.size() - tails.size();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log(n/k))\nspace complexity: O(n/k)\nenergy implications: LOW\nexplanation: Split the array into k independent subsequences (indices congruent mod k). For each subsequence compute the minimal changes needed to make it non-decreasing by finding the length of the longest non-decreasing subsequence (LIS) and subtracting from the subsequence length. The LIS is found with a greedy algorithm using binary search, giving optimal performance.",
+  "code": "class Solution {\npublic:\n    int kIncreasing(vector<int>& arr, int k) {\n        int n = arr.size(), res = 0;\n        for (int g = 0; g < k; ++g) {\n            vector<int> seq;\n            for (int i = g; i < n; i += k) seq.push_back(arr[i]);\n            res += lis(seq);\n        }\n        return res;\n    }\nprivate:\n    int lis(const vector<int>& a) {\n        vector<int> tails;\n        for (int x : a) {\n            auto it = upper_bound(tails.begin(), tails.end(), x);\n            if (it == tails.end()) tails.push_back(x);\n            else *it = x;\n        }\n        return a.size() - tails.size();\n    }\n};",
+  "timestamp": "2025-08-05T12:05:23.160342",
+  "code_extracted_previous": "class Solution {\npublic:\n    int kIncreasing(vector<int>& arr, int k) {\n        int n = arr.size(), res = 0;\n        for (int g = 0; g < k; ++g) {\n            vector<int> seq;\n            for (int i = g; i < n; i += k) seq.push_back(arr[i]);\n            res += lis(seq);\n        }\n        return res;\n    }\nprivate:\n    int lis(const vector<int>& a) {\n        vector<int> tails;\n        for (int x : a) {\n            auto it = upper_bound(tails.begin(), tails.end(), x);\n            if (it == tails.end()) tails.push_back(x);\n            else *it = x;\n        }\n        return a.size() - tails.size();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.538395"
+}

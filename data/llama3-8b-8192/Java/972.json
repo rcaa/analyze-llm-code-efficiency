@@ -1,0 +1,15 @@
+{
+  "id": 972,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public boolean isRationalEqual(String s, String t) {\n        s = s.replace(\".\", \"\");\n        t = t.replace(\".\", \"\");\n        s = s.replace(\"(\", \"\");\n        t = t.replace(\")\", \"\");\n        if (s.equals(t)) return true;\n        int i = s.indexOf(\"(\");\n        int j = t.indexOf(\"(\");\n        if (i == -1 && j == -1) return false;\n        if (i == -1) {\n            s = s + \"(\" + s.substring(i + 1) + \")\";\n        }\n        if (j == -1) {\n            t = t + \"(\" + t.substring(j + 1) + \")\";\n        }\n        s = s.replace(\"(\", \".\");\n        t = t.replace(\"(\", \".\");\n        return s.equals(t);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution first removes the decimal points and parentheses from the input strings. Then, it checks if the strings are equal. If not, it finds the index of the first parenthesis in each string and appends the repeating part to the non-repeating part. Finally, it replaces the parentheses with decimal points and checks if the resulting strings are equal.",
+  "code": "class Solution {\n    public boolean isRationalEqual(String s, String t) {\n        s = s.replace(\".\", \"\");\n        t = t.replace(\".\", \"\");\n        s = s.replace(\"(\", \"\");\n        t = t.replace(\")\", \"\");\n        if (s.equals(t)) return true;\n        int i = s.indexOf(\"(\");\n        int j = t.indexOf(\"(\");\n        if (i == -1 && j == -1) return false;\n        if (i == -1) {\n            s = s + \"(\" + s.substring(i + 1) + \")\";\n        }\n        if (j == -1) {\n            t = t + \"(\" + t.substring(j + 1) + \")\";\n        }\n        s = s.replace(\"(\", \".\");\n        t = t.replace(\"(\", \".\");\n        return s.equals(t);\n    }\n}",
+  "timestamp": "2025-08-05T15:19:31.238661",
+  "code_extracted_previous": "class Solution {\n    public boolean isRationalEqual(String s, String t) {\n        s = s.replace(\".\", \"\");\n        t = t.replace(\".\", \"\");\n        s = s.replace(\"(\", \"\");\n        t = t.replace(\")\", \"\");\n        if (s.equals(t)) return true;\n        int i = s.indexOf(\"(\");\n        int j = t.indexOf(\"(\");\n        if (i == -1 && j == -1) return false;\n        if (i == -1) {\n            s = s + \"(\" + s.substring(i + 1) + \")\";\n        }\n        if (j == -1) {\n            t = t + \"(\" + t.substring(j + 1) + \")\";\n        }\n        s = s.replace(\"(\", \".\");\n        t = t.replace(\"(\", \".\");\n        return s.equals(t);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:43.127032"
+}

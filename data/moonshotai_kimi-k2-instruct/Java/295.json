@@ -1,0 +1,15 @@
+{
+  "id": 295,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class MedianFinder {\n    private PriorityQueue<Integer> maxHeap; // left half (inverted)\n    private PriorityQueue<Integer> minHeap; // right half\n\n    public MedianFinder() {\n        maxHeap = new PriorityQueue<>(Collections.reverseOrder());\n        minHeap = new PriorityQueue<>();\n    }\n    \n    public void addNum(int num) {\n        maxHeap.offer(num);\n        minHeap.offer(maxHeap.poll());\n        if (minHeap.size() > maxHeap.size()) {\n            maxHeap.offer(minHeap.poll());\n        }\n    }\n    \n    public double findMedian() {\n        if (maxHeap.size() > minHeap.size()) return maxHeap.peek();\n        return (maxHeap.peek() + minHeap.peek()) / 2.0;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log N) addNum, O(1) findMedian\nspace complexity: O(N)\nenergy implications: MEDIUM\nexplanation: Uses two heaps to partition the stream into lower and upper halves; maxHeap holds the smaller half, minHeap the larger. Balancing after each insertion keeps size difference ≤1, enabling constant-time median retrieval.",
+  "code": "class MedianFinder {\n    private PriorityQueue<Integer> maxHeap; // left half (inverted)\n    private PriorityQueue<Integer> minHeap; // right half\n\n    public MedianFinder() {\n        maxHeap = new PriorityQueue<>(Collections.reverseOrder());\n        minHeap = new PriorityQueue<>();\n    }\n    \n    public void addNum(int num) {\n        maxHeap.offer(num);\n        minHeap.offer(maxHeap.poll());\n        if (minHeap.size() > maxHeap.size()) {\n            maxHeap.offer(minHeap.poll());\n        }\n    }\n    \n    public double findMedian() {\n        if (maxHeap.size() > minHeap.size()) return maxHeap.peek();\n        return (maxHeap.peek() + minHeap.peek()) / 2.0;\n    }\n}",
+  "timestamp": "2025-08-06T01:13:01.381153",
+  "code_extracted_previous": "private PriorityQueue<Integer> maxHeap; // left half (inverted)\n    private PriorityQueue<Integer> minHeap; // right half\n\n    public MedianFinder() {\n        maxHeap = new PriorityQueue<>(Collections.reverseOrder());\n        minHeap = new PriorityQueue<>();\n    }\n    \n    public void addNum(int num) {\n        maxHeap.offer(num);\n        minHeap.offer(maxHeap.poll());\n        if (minHeap.size() > maxHeap.size()) {\n            maxHeap.offer(minHeap.poll());\n        }\n    }\n    \n    public double findMedian() {\n        if (maxHeap.size() > minHeap.size()) return maxHeap.peek();\n        return (maxHeap.peek() + minHeap.peek()) / 2.0;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:55.225708"
+}

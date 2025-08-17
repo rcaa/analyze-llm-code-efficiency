@@ -1,0 +1,15 @@
+{
+  "id": 5,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    string longestPalindrome(string s) {\n        int n = s.size();\n        int start = 0, maxLen = 1;\n        for (int i = 0; i < n; ++i) {\n            int l = i, r = i;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 > maxLen) {\n                    start = l;\n                    maxLen = r - l + 1;\n                }\n                --l;\n                ++r;\n            }\n            l = i;\n            r = i + 1;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 > maxLen) {\n                    start = l;\n                    maxLen = r - l + 1;\n                }\n                --l;\n                ++r;\n            }\n        }\n        return s.substr(start, maxLen);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Expands around the center to find the longest palindromic substring, handling both odd and even length palindromes efficiently.",
+  "code": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        int n = s.size();\n        int start = 0, maxLen = 1;\n        for (int i = 0; i < n; ++i) {\n            int l = i, r = i;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 > maxLen) {\n                    start = l;\n                    maxLen = r - l + 1;\n                }\n                --l;\n                ++r;\n            }\n            l = i;\n            r = i + 1;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 > maxLen) {\n                    start = l;\n                    maxLen = r - l + 1;\n                }\n                --l;\n                ++r;\n            }\n        }\n        return s.substr(start, maxLen);\n    }\n};",
+  "timestamp": "2025-08-06T01:33:36.816995",
+  "code_extracted_previous": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        int n = s.size();\n        int start = 0, maxLen = 1;\n        for (int i = 0; i < n; ++i) {\n            int l = i, r = i;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 > maxLen) {\n                    start = l;\n                    maxLen = r - l + 1;\n                }\n                --l;\n                ++r;\n            }\n            l = i;\n            r = i + 1;\n            while (l >= 0 && r < n && s[l] == s[r]) {\n                if (r - l + 1 > maxLen) {\n                    start = l;\n                    maxLen = r - l + 1;\n                }\n                --l;\n                ++r;\n            }\n        }\n        return s.substr(start, maxLen);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.693795"
+}

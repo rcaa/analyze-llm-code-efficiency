@@ -1,0 +1,15 @@
+{
+  "id": 970,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        Set<Integer> set = new HashSet<>();\n        for (long a = 1; a <= bound; a *= x) {\n            for (long b = 1; a + b <= bound; b *= y) {\n                set.add((int) (a + b));\n                if (y == 1) break;\n            }\n            if (x == 1) break;\n        }\n        return new ArrayList<>(set);\n    }\n}\nefficiency: HIGH\ntime complexity: O(log(bound))\nspace complexity: O(log(bound))\nenergy implications: LOW\nexplanation: Utilize two nested loops to generate all possible powerful integers, storing them in a set to ensure uniqueness, and then convert the set to a list for the final result.",
+  "code": "class Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        Set<Integer> set = new HashSet<>();\n        for (long a = 1; a <= bound; a *= x) {\n            for (long b = 1; a + b <= bound; b *= y) {\n                set.add((int) (a + b));\n                if (y == 1) break;\n            }\n            if (x == 1) break;\n        }\n        return new ArrayList<>(set);\n    }\n}",
+  "timestamp": "2025-08-06T15:16:30.436335",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> powerfulIntegers(int x, int y, int bound) {\n        Set<Integer> set = new HashSet<>();\n        for (long a = 1; a <= bound; a *= x) {\n            for (long b = 1; a + b <= bound; b *= y) {\n                set.add((int) (a + b));\n                if (y == 1) break;\n            }\n            if (x == 1) break;\n        }\n        return new ArrayList<>(set);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.533693"
+}

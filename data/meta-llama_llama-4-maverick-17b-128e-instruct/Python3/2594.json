@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "```python\nimport heapq\nfrom typing import List\n\nclass Solution:\n    def repairCars(self, ranks: List[int], cars: int) -> int:\n        pq = []\n        for r in ranks:\n            heapq.heappush(pq, (r, 1))\n        \n        while cars > 0:\n            time, n = heapq.heappop(pq)\n            cars -= 1\n            heapq.heappush(pq, (time * (n+1)**2 // n**2, n+1))\n        \n        max_time = 0\n        for time, _ in pq:\n            max_time = max(max_time, time)\n        \n        return max_time\n```\nefficiency: HIGH\ntime complexity: O(cars * log(len(ranks)))\nspace complexity: O(len(ranks))\nenergy implications: MEDIUM\nexplanation: This solution uses a priority queue to keep track of the mechanics and the time they will take to repair the next car. It iteratively assigns cars to the mechanic who will take the least time to repair the next car, updating the priority queue accordingly. The maximum time taken by any mechanic is then returned as the result.",
+  "code": "def repairCars(self, ranks: List[int], cars: int) -> int:\n        pq = []\n        for r in ranks:\n            heapq.heappush(pq, (r, 1))\n        \n        while cars > 0:\n            time, n = heapq.heappop(pq)\n            cars -= 1\n            heapq.heappush(pq, (time * (n+1)**2 // n**2, n+1))\n        \n        max_time = 0\n        for time, _ in pq:\n            max_time = max(max_time, time)\n        \n        return max_time\n```",
+  "timestamp": "2025-08-05T13:32:32.711062",
+  "code_extracted_previous": "import heapq\nfrom typing import List\n\nclass Solution:\n    def repairCars(self, ranks: List[int], cars: int) -> int:\n        pq = []\n        for r in ranks:\n            heapq.heappush(pq, (r, 1))\n        \n        while cars > 0:\n            time, n = heapq.heappop(pq)\n            cars -= 1\n            heapq.heappush(pq, (time * (n+1)**2 // n**2, n+1))\n        \n        max_time = 0\n        for time, _ in pq:\n            max_time = max(max_time, time)\n        \n        return max_time",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.957041"
+}

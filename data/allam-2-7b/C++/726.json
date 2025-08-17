@@ -1,0 +1,15 @@
+{
+  "id": 726,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution:\n\n```c++\n#include <unordered_map>\n#include <string>\n#include <vector>\n\nclass Solution {\npublic:\n    std::string countOfAtoms(std::string formula) {\n        std::unordered_map<char, int> countMap;\n        std::vector<std::string> atoms;\n\n        for (char c : formula) {\n            if (isalpha(c)) {\n                atoms.push_back(c);\n            } else {\n                int count = stoi(std::string(1, c));\n                countMap[c] += count;\n            }\n        }\n\n        std::string result;\n        for (const auto& atom : atoms) {\n            result += atom + \" \" + to_string(countMap[atom] + 1);\n        }\n\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n1. Create a map to store the count of each atom.\n2. Create a vector to store the atoms found in the formula.\n3. Iterate through the formula and update the countMap and atoms vector accordingly.\n4. Iterate through atoms vector and build the result string.\n5. Return the result string.\n\nNote: The time complexity is O(n) because we iterate through the formula once. The space complexity is O(n) because we use a map and a vector with a maximum size of n. ",
+  "code": "class Solution {\npublic:\n    std::string countOfAtoms(std::string formula) {\n        std::unordered_map<char, int> countMap;\n        std::vector<std::string> atoms;\n\n        for (char c : formula) {\n            if (isalpha(c)) {\n                atoms.push_back(c);\n            } else {\n                int count = stoi(std::string(1, c));\n                countMap[c] += count;\n            }\n        }\n\n        std::string result;\n        for (const auto& atom : atoms) {\n            result += atom + \" \" + to_string(countMap[atom] + 1);\n        }\n\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T14:35:40.894505",
+  "code_extracted_previous": "#include <unordered_map>\n#include <string>\n#include <vector>\n\nclass Solution {\npublic:\n    std::string countOfAtoms(std::string formula) {\n        std::unordered_map<char, int> countMap;\n        std::vector<std::string> atoms;\n\n        for (char c : formula) {\n            if (isalpha(c)) {\n                atoms.push_back(c);\n            } else {\n                int count = stoi(std::string(1, c));\n                countMap[c] += count;\n            }\n        }\n\n        std::string result;\n        for (const auto& atom : atoms) {\n            result += atom + \" \" + to_string(countMap[atom] + 1);\n        }\n\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.165849"
+}

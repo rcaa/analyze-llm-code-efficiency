@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    bool reorderedPowerOf2(int n) {\n        string s = to_string(n);\n        sort(s.begin(), s.end());\n        do {\n            if (s[0] != '0' && (s.size() == 1 || (s.size() > 1 && s[0] != '1'))) {\n                long long num = stoll(s);\n                if ((num & (num - 1)) == 0) return true;\n            }\n        } while (next_permutation(s.begin(), s.end()));\n        return false;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(k \\* log(n))\nspace complexity: O(log(n))\nenergy implications: LOW\nexplanation: The solution uses permutation generation to try all possible reorderings of the digits, and checks each one to see if it's a power of two.",
+  "code": "class Solution {\npublic:\n    bool reorderedPowerOf2(int n) {\n        string s = to_string(n);\n        sort(s.begin(), s.end());\n        do {\n            if (s[0] != '0' && (s.size() == 1 || (s.size() > 1 && s[0] != '1'))) {\n                long long num = stoll(s);\n                if ((num & (num - 1)) == 0) return true;\n            }\n        } while (next_permutation(s.begin(), s.end()));\n        return false;\n    }\n};",
+  "timestamp": "2025-08-05T14:56:10.163524",
+  "code_extracted_previous": "public:\n    bool reorderedPowerOf2(int n) {\n        string s = to_string(n);\n        sort(s.begin(), s.end());\n        do {\n            if (s[0] != '0' && (s.size() == 1 || (s.size() > 1 && s[0] != '1'))) {\n                long long num = stoll(s);\n                if ((num & (num - 1)) == 0) return true;\n            }\n        } while (next_permutation(s.begin(), s.end()));\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.127894"
+}

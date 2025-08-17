@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int n = s.length();\n        Set<Character> set = new HashSet<>();\n        int ans = 0, i = 0, j = 0;\n        while (i < n && j < n) {\n            if (!set.contains(s.charAt(j))){\n                set.add(s.charAt(j++));\n                ans = Math.max(ans, j - i);\n            } else {\n                set.remove(s.charAt(i++));\n            }\n        }\n        return ans;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(min(n, m))\nenergy implications: LOW\nexplanation: This solution uses a sliding window approach with a set to keep track of unique characters in the current substring. It iterates through the string, adding characters to the set and updating the maximum length of the substring without duplicates.",
+  "code": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        int n = s.length();\n        Set<Character> set = new HashSet<>();\n        int ans = 0, i = 0, j = 0;\n        while (i < n && j < n) {\n            if (!set.contains(s.charAt(j))){\n                set.add(s.charAt(j++));\n                ans = Math.max(ans, j - i);\n            } else {\n                set.remove(s.charAt(i++));\n            }\n        }\n        return ans;\n    }\n}",
+  "timestamp": "2025-08-05T14:49:18.236623",
+  "code_extracted_previous": "public int lengthOfLongestSubstring(String s) {\n        int n = s.length();\n        Set<Character> set = new HashSet<>();\n        int ans = 0, i = 0, j = 0;\n        while (i < n && j < n) {\n            if (!set.contains(s.charAt(j))){\n                set.add(s.charAt(j++));\n                ans = Math.max(ans, j - i);\n            } else {\n                set.remove(s.charAt(i++));\n            }\n        }\n        return ans;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.572055"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 664,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def strangePrinter(self, s: str) -> int:\n        n = len(s)\n        s = ''.join([a for i, a in enumerate(s) if i == 0 or a != s[i-1]])\n        n = len(s)\n        memo = {}\n        \n        def dp(i, j):\n            if (i, j) in memo:\n                return memo[(i, j)]\n            if i > j:\n                return 0\n            if i == j:\n                return 1\n            res = dp(i + 1, j) + 1\n            for k in range(i + 1, j + 1):\n                if s[k] == s[i]:\n                    res = min(res, dp(i, k - 1) + dp(k, j))\n            memo[(i, j)] = res\n            return res\n        \n        return dp(0, n - 1)\n```\nefficiency: HIGH\ntime complexity: O(n^3)\nspace complexity: O(n^2)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to find the minimum number of turns required to print the string, considering all possible splits of the string and minimizing the number of turns for each split.",
+  "code": "def strangePrinter(self, s: str) -> int:\n        n = len(s)\n        s = ''.join([a for i, a in enumerate(s) if i == 0 or a != s[i-1]])\n        n = len(s)\n        memo = {}\n        \n        def dp(i, j):\n            if (i, j) in memo:\n                return memo[(i, j)]\n            if i > j:\n                return 0\n            if i == j:\n                return 1\n            res = dp(i + 1, j) + 1\n            for k in range(i + 1, j + 1):\n                if s[k] == s[i]:\n                    res = min(res, dp(i, k - 1) + dp(k, j))\n            memo[(i, j)] = res\n            return res\n        \n        return dp(0, n - 1)\n```",
+  "timestamp": "2025-08-06T15:20:44.263069",
+  "code_extracted_previous": "class Solution:\n    def strangePrinter(self, s: str) -> int:\n        n = len(s)\n        s = ''.join([a for i, a in enumerate(s) if i == 0 or a != s[i-1]])\n        n = len(s)\n        memo = {}\n        \n        def dp(i, j):\n            if (i, j) in memo:\n                return memo[(i, j)]\n            if i > j:\n                return 0\n            if i == j:\n                return 1\n            res = dp(i + 1, j) + 1\n            for k in range(i + 1, j + 1):\n                if s[k] == s[i]:\n                    res = min(res, dp(i, k - 1) + dp(k, j))\n            memo[(i, j)] = res\n            return res\n        \n        return dp(0, n - 1)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.757718"
+}

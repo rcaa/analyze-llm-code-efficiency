@@ -1,0 +1,15 @@
+{
+  "id": 3352,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int countKReducibleNumbers(string s, int k) {\n        const int MOD = 1e9 + 7;\n        int n = s.size();\n        int target = 0;\n        for (char c : s) target = (target << 1) + (c - '0');\n        vector<int> dp(k + 1, 0);\n        dp[0] = 1;\n        int res = 0;\n        for (int i = 1; i < target; ++i) {\n            int cnt = __builtin_popcount(i);\n            for (int j = k; j > 0; --j) {\n                dp[j] = (dp[j] + dp[j - 1] * (cnt == i)) % MOD;\n            }\n            if (cnt == i) dp[0] = (dp[0] + 1) % MOD;\n            if (i < target && dp[k]) res = (res + 1) % MOD;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * 2^k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Dynamic programming approach with memoization to efficiently count k-reducible numbers.",
+  "code": "class Solution {\npublic:\n    int countKReducibleNumbers(string s, int k) {\n        const int MOD = 1e9 + 7;\n        int n = s.size();\n        int target = 0;\n        for (char c : s) target = (target << 1) + (c - '0');\n        vector<int> dp(k + 1, 0);\n        dp[0] = 1;\n        int res = 0;\n        for (int i = 1; i < target; ++i) {\n            int cnt = __builtin_popcount(i);\n            for (int j = k; j > 0; --j) {\n                dp[j] = (dp[j] + dp[j - 1] * (cnt == i)) % MOD;\n            }\n            if (cnt == i) dp[0] = (dp[0] + 1) % MOD;\n            if (i < target && dp[k]) res = (res + 1) % MOD;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:26:35.680421",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countKReducibleNumbers(string s, int k) {\n        const int MOD = 1e9 + 7;\n        int n = s.size();\n        int target = 0;\n        for (char c : s) target = (target << 1) + (c - '0');\n        vector<int> dp(k + 1, 0);\n        dp[0] = 1;\n        int res = 0;\n        for (int i = 1; i < target; ++i) {\n            int cnt = __builtin_popcount(i);\n            for (int j = k; j > 0; --j) {\n                dp[j] = (dp[j] + dp[j - 1] * (cnt == i)) % MOD;\n            }\n            if (cnt == i) dp[0] = (dp[0] + 1) % MOD;\n            if (i < target && dp[k]) res = (res + 1) % MOD;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.502301"
+}

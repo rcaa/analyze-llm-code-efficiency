@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string robotWithString(string s) {\n        string t;\n        string ans;\n        for (char c : s) {\n            t += c;\n            t.push_back(c);\n            sort(t.begin(), t.end());\n            while (!t.empty() && t[0] <= c) {\n                ans += t[0];\n                t.erase(t.begin());\n            }\n        }\n        return ans;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution uses a greedy approach, maintaining a sorted string t that represents the characters that can be appended to the result string. It iterates over the input string s, appending each character to t and sorting t. If the first character of t is less than or equal to the current character in s, it appends the first character of t to the result string and removes it from t. This approach ensures that the result string is lexicographically smallest. However, the time complexity is O(n^2) due to the sorting operation inside the loop, which may not be efficient for large inputs.",
+  "code": "class Solution {\npublic:\n    string robotWithString(string s) {\n        string t;\n        string ans;\n        for (char c : s) {\n            t += c;\n            t.push_back(c);\n            sort(t.begin(), t.end());\n            while (!t.empty() && t[0] <= c) {\n                ans += t[0];\n                t.erase(t.begin());\n            }\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T15:10:37.027704",
+  "code_extracted_previous": "class Solution {\npublic:\n    string robotWithString(string s) {\n        string t;\n        string ans;\n        for (char c : s) {\n            t += c;\n            t.push_back(c);\n            sort(t.begin(), t.end());\n            while (!t.empty() && t[0] <= c) {\n                ans += t[0];\n                t.erase(t.begin());\n            }\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.102777"
+}

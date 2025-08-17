@@ -1,0 +1,15 @@
+{
+  "id": 1291,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> res;\n        for (int len = 2; len <= 9; ++len) {\n            for (int start = 1; start + len - 1 <= 9; ++start) {\n                int num = 0;\n                for (int i = 0; i < len; ++i) num = num * 10 + (start + i);\n                if (num >= low && num <= high) res.push_back(num);\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Generate every possible sequential-digit number once (only 36 exist) by varying length and starting digit, then filter by range. No dynamic memory beyond the output vector.",
+  "code": "class Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> res;\n        for (int len = 2; len <= 9; ++len) {\n            for (int start = 1; start + len - 1 <= 9; ++start) {\n                int num = 0;\n                for (int i = 0; i < len; ++i) num = num * 10 + (start + i);\n                if (num >= low && num <= high) res.push_back(num);\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:30:40.651457",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> res;\n        for (int len = 2; len <= 9; ++len) {\n            for (int start = 1; start + len - 1 <= 9; ++start) {\n                int num = 0;\n                for (int i = 0; i < len; ++i) num = num * 10 + (start + i);\n                if (num >= low && num <= high) res.push_back(num);\n            }\n        }\n        sort(res.begin(), res.end());\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.185885"
+}

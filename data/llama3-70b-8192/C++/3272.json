@@ -1,0 +1,15 @@
+{
+  "id": 3272,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    long long countGoodIntegers(int n, int k) {\n        vector<int> cnt(10, 0);\n        for (int i = (1 << (n - 1)); i < (1 << n); i++) {\n            string s = to_string(i);\n            sort(s.begin(), s.end());\n            do {\n                int x = stoi(s);\n                if (x % k == 0) cnt[x % 10]++;\n            } while (next_permutation(s.begin(), s.end()));\n        }\n        long long res = 0;\n        for (int i = 0; i < 10; i++) {\n            res += (long long)cnt[i] * cnt[i];\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(10^n * n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a frequency count array to store the occurrences of each digit in the good integers, and then calculates the total count of good integers by summing the products of the counts of each digit and its corresponding digit in the reversed number.",
+  "code": "class Solution {\npublic:\n    long long countGoodIntegers(int n, int k) {\n        vector<int> cnt(10, 0);\n        for (int i = (1 << (n - 1)); i < (1 << n); i++) {\n            string s = to_string(i);\n            sort(s.begin(), s.end());\n            do {\n                int x = stoi(s);\n                if (x % k == 0) cnt[x % 10]++;\n            } while (next_permutation(s.begin(), s.end()));\n        }\n        long long res = 0;\n        for (int i = 0; i < 10; i++) {\n            res += (long long)cnt[i] * cnt[i];\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:39:57.241431",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long countGoodIntegers(int n, int k) {\n        vector<int> cnt(10, 0);\n        for (int i = (1 << (n - 1)); i < (1 << n); i++) {\n            string s = to_string(i);\n            sort(s.begin(), s.end());\n            do {\n                int x = stoi(s);\n                if (x % k == 0) cnt[x % 10]++;\n            } while (next_permutation(s.begin(), s.end()));\n        }\n        long long res = 0;\n        for (int i = 0; i < 10; i++) {\n            res += (long long)cnt[i] * cnt[i];\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.743929"
+}

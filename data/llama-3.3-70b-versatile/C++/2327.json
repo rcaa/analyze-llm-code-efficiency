@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[1] = 1;\n        int share = 0;\n        for (int i = 2; i <= n; i++) {\n            if (i >= delay + 1) {\n                share = (share + dp[i - delay]) % MOD;\n            }\n            if (i >= forget + 1) {\n                share = (share - dp[i - forget] + MOD) % MOD;\n            }\n            dp[i] = (dp[i] + share) % MOD;\n        }\n        int ans = 0;\n        for (int i = max(1, n - forget + 1); i <= n; i++) {\n            ans = (ans + dp[i]) % MOD;\n        }\n        return ans;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to track the number of people who know the secret at each day, considering the delay and forget constraints to calculate the total number of people aware of the secret at the end of day n.",
+  "code": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[1] = 1;\n        int share = 0;\n        for (int i = 2; i <= n; i++) {\n            if (i >= delay + 1) {\n                share = (share + dp[i - delay]) % MOD;\n            }\n            if (i >= forget + 1) {\n                share = (share - dp[i - forget] + MOD) % MOD;\n            }\n            dp[i] = (dp[i] + share) % MOD;\n        }\n        int ans = 0;\n        for (int i = max(1, n - forget + 1); i <= n; i++) {\n            ans = (ans + dp[i]) % MOD;\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-06T15:09:42.123249",
+  "code_extracted_previous": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const int MOD = 1e9 + 7;\n        vector<int> dp(n + 1);\n        dp[1] = 1;\n        int share = 0;\n        for (int i = 2; i <= n; i++) {\n            if (i >= delay + 1) {\n                share = (share + dp[i - delay]) % MOD;\n            }\n            if (i >= forget + 1) {\n                share = (share - dp[i - forget] + MOD) % MOD;\n            }\n            dp[i] = (dp[i] + share) % MOD;\n        }\n        int ans = 0;\n        for (int i = max(1, n - forget + 1); i <= n; i++) {\n            ans = (ans + dp[i]) % MOD;\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.258107"
+}

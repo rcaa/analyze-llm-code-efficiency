@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int minimizeXor(int num1, int num2) {\n        int k = Integer.bitCount(num2);\n        int x = 0;\n        for (int i = 31; i >= 0 && k > 0; --i) {\n            if ((num1 & (1 << i)) != 0) {\n                x |= (1 << i);\n                --k;\n            }\n        }\n        for (int i = 0; i < 32 && k > 0; ++i) {\n            if ((x & (1 << i)) == 0) {\n                x |= (1 << i);\n                --k;\n            }\n        }\n        return x;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count set bits in num2 (k). Build x by first taking the k highest set bits of num1 (minimizing XOR), then fill remaining bits from the least-significant zeros if k exceeds the number of set bits in num1.",
+  "code": "class Solution {\n    public int minimizeXor(int num1, int num2) {\n        int k = Integer.bitCount(num2);\n        int x = 0;\n        for (int i = 31; i >= 0 && k > 0; --i) {\n            if ((num1 & (1 << i)) != 0) {\n                x |= (1 << i);\n                --k;\n            }\n        }\n        for (int i = 0; i < 32 && k > 0; ++i) {\n            if ((x & (1 << i)) == 0) {\n                x |= (1 << i);\n                --k;\n            }\n        }\n        return x;\n    }\n}",
+  "timestamp": "2025-08-05T14:31:39.230723",
+  "code_extracted_previous": "public int minimizeXor(int num1, int num2) {\n        int k = Integer.bitCount(num2);\n        int x = 0;\n        for (int i = 31; i >= 0 && k > 0; --i) {\n            if ((num1 & (1 << i)) != 0) {\n                x |= (1 << i);\n                --k;\n            }\n        }\n        for (int i = 0; i < 32 && k > 0; ++i) {\n            if ((x & (1 << i)) == 0) {\n                x |= (1 << i);\n                --k;\n            }\n        }\n        return x;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.059165"
+}

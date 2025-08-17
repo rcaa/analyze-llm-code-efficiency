@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def hardestWorker(self, n: int, logs: List[List[int]]) -> int:\n        max_time = -1\n        best_id = n\n        prev = 0\n        for emp_id, end in logs:\n            duration = end - prev\n            if duration > max_time:\n                max_time = duration\n                best_id = emp_id\n            elif duration == max_time:\n                if emp_id < best_id:\n                    best_id = emp_id\n            prev = end\n        return best_id\n```\nefficiency: HIGH\ntime complexity: O(L) where L = len(logs)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Single pass through logs, tracking longest task duration and smallest employee id in case of ties. Constant extra space and minimal CPU usage.",
+  "code": "class Solution:\n    def hardestWorker(self, n: int, logs: List[List[int]]) -> int:\n        max_time = -1\n        best_id = n\n        prev = 0\n        for emp_id, end in logs:\n            duration = end - prev\n            if duration > max_time:\n                max_time = duration\n                best_id = emp_id\n            elif duration == max_time:\n                if emp_id < best_id:\n                    best_id = emp_id\n            prev = end\n        return best_id",
+  "timestamp": "2025-08-05T12:48:15.446565",
+  "code_extracted_previous": "class Solution:\n    def hardestWorker(self, n: int, logs: List[List[int]]) -> int:\n        max_time = -1\n        best_id = n\n        prev = 0\n        for emp_id, end in logs:\n            duration = end - prev\n            if duration > max_time:\n                max_time = duration\n                best_id = emp_id\n            elif duration == max_time:\n                if emp_id < best_id:\n                    best_id = emp_id\n            prev = end\n        return best_id",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.690578"
+}

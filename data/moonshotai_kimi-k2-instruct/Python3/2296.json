@@ -1,0 +1,15 @@
+{
+  "id": 2296,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class TextEditor:\n    def __init__(self):\n        self.left = []\n        self.right = []\n\n    def addText(self, text: str) -> None:\n        self.left.extend(text)\n\n    def deleteText(self, k: int) -> int:\n        removed = min(k, len(self.left))\n        for _ in range(removed):\n            self.left.pop()\n        return removed\n\n    def cursorLeft(self, k: int) -> str:\n        move = min(k, len(self.left))\n        for _ in range(move):\n            self.right.append(self.left.pop())\n        return ''.join(self.left[-10:])\n\n    def cursorRight(self, k: int) -> str:\n        move = min(k, len(self.right))\n        for _ in range(move):\n            self.left.append(self.right.pop())\n        return ''.join(self.left[-10:])\n```\nefficiency: HIGH\ntime complexity: O(k) per call\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses two stacks (left and right of cursor) to achieve O(k) per operation. All operations are local to the cursor, avoiding O(n) string copies.",
+  "code": "class TextEditor:\n    def __init__(self):\n        self.left = []\n        self.right = []\n\n    def addText(self, text: str) -> None:\n        self.left.extend(text)\n\n    def deleteText(self, k: int) -> int:\n        removed = min(k, len(self.left))\n        for _ in range(removed):\n            self.left.pop()\n        return removed\n\n    def cursorLeft(self, k: int) -> str:\n        move = min(k, len(self.left))\n        for _ in range(move):\n            self.right.append(self.left.pop())\n        return ''.join(self.left[-10:])\n\n    def cursorRight(self, k: int) -> str:\n        move = min(k, len(self.right))\n        for _ in range(move):\n            self.left.append(self.right.pop())\n        return ''.join(self.left[-10:])",
+  "timestamp": "2025-08-06T02:33:08.098822",
+  "code_extracted_previous": "def __init__(self):\n        self.left = []\n        self.right = []\n\n    def addText(self, text: str) -> None:\n        self.left.extend(text)\n\n    def deleteText(self, k: int) -> int:\n        removed = min(k, len(self.left))\n        for _ in range(removed):\n            self.left.pop()\n        return removed\n\n    def cursorLeft(self, k: int) -> str:\n        move = min(k, len(self.left))\n        for _ in range(move):\n            self.right.append(self.left.pop())\n        return ''.join(self.left[-10:])\n\n    def cursorRight(self, k: int) -> str:\n        move = min(k, len(self.right))\n        for _ in range(move):\n            self.left.append(self.right.pop())\n        return ''.join(self.left[-10:])",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:56.602861"
+}

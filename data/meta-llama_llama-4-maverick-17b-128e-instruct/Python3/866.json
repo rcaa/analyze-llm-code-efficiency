@@ -1,0 +1,15 @@
+{
+  "id": 866,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def primePalindrome(self, n: int) -> int:\n        def is_prime(num: int) -> bool:\n            if num < 2 or num % 2 == 0:\n                return num == 2\n            i = 3\n            while i * i <= num:\n                if num % i == 0:\n                    return False\n                i += 2\n            return True\n\n        if n <= 2:\n            return 2\n        if n % 2 == 0:\n            n += 1\n\n        while True:\n            if str(n) == str(n)[::-1] and is_prime(n):\n                return n\n            n += 2\n            if 10**7 < n < 10**8:\n                n = 10**8 + 1\n```\nefficiency: HIGH\ntime complexity: O(N*sqrt(N)) where N is the input number n, in the worst case we might need to check all numbers up to the next prime palindrome.\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution starts by checking if a number is prime, then checks numbers starting from n (if n is odd) or n+1 (if n is even) in steps of 2 to find the next prime palindrome. It skips a large range of non-palindromes when crossing from 10^7 to 10^8.",
+  "code": "def primePalindrome(self, n: int) -> int:\n        def is_prime(num: int) -> bool:\n            if num < 2 or num % 2 == 0:\n                return num == 2\n            i = 3\n            while i * i <= num:\n                if num % i == 0:\n                    return False\n                i += 2\n            return True\n\n        if n <= 2:\n            return 2\n        if n % 2 == 0:\n            n += 1\n\n        while True:\n            if str(n) == str(n)[::-1] and is_prime(n):\n                return n\n            n += 2\n            if 10**7 < n < 10**8:\n                n = 10**8 + 1\n```",
+  "timestamp": "2025-08-05T15:46:49.376124",
+  "code_extracted_previous": "class Solution:\n    def primePalindrome(self, n: int) -> int:\n        def is_prime(num: int) -> bool:\n            if num < 2 or num % 2 == 0:\n                return num == 2\n            i = 3\n            while i * i <= num:\n                if num % i == 0:\n                    return False\n                i += 2\n            return True\n\n        if n <= 2:\n            return 2\n        if n % 2 == 0:\n            n += 1\n\n        while True:\n            if str(n) == str(n)[::-1] and is_prime(n):\n                return n\n            n += 2\n            if 10**7 < n < 10**8:\n                n = 10**8 + 1",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.483649"
+}

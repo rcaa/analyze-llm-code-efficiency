@@ -1,0 +1,15 @@
+{
+  "id": 3298,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    long long validSubstringCount(string word1, string word2) {\n        int m = word1.size(), n = word2.size();\n        long long res = 0;\n        int count[26] = {0}, match = 0;\n        for (int i = 0; i < n - 1; i++) {\n            count[word1[i] - 'a']++;\n        }\n        int left = 0;\n        for (int right = 0; right < m; right++) {\n            count[word1[right] - 'a']++;\n            if (word1[right] == word2[right % n]) match++;\n            while (match == n) {\n                res += m - right;\n                count[word1[left] - 'a']--;\n                if (word1[left] == word2[left % n]) match--;\n                left++;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding window approach with frequency counting.",
+  "code": "class Solution {\npublic:\n    long long validSubstringCount(string word1, string word2) {\n        int m = word1.size(), n = word2.size();\n        long long res = 0;\n        int count[26] = {0}, match = 0;\n        for (int i = 0; i < n - 1; i++) {\n            count[word1[i] - 'a']++;\n        }\n        int left = 0;\n        for (int right = 0; right < m; right++) {\n            count[word1[right] - 'a']++;\n            if (word1[right] == word2[right % n]) match++;\n            while (match == n) {\n                res += m - right;\n                count[word1[left] - 'a']--;\n                if (word1[left] == word2[left % n]) match--;\n                left++;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:40:37.005818",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long validSubstringCount(string word1, string word2) {\n        int m = word1.size(), n = word2.size();\n        long long res = 0;\n        int count[26] = {0}, match = 0;\n        for (int i = 0; i < n - 1; i++) {\n            count[word1[i] - 'a']++;\n        }\n        int left = 0;\n        for (int right = 0; right < m; right++) {\n            count[word1[right] - 'a']++;\n            if (word1[right] == word2[right % n]) match++;\n            while (match == n) {\n                res += m - right;\n                count[word1[left] - 'a']--;\n                if (word1[left] == word2[left % n]) match--;\n                left++;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.459445"
+}

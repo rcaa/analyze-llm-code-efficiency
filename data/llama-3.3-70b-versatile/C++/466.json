@@ -1,0 +1,15 @@
+{
+  "id": 466,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int m = s2.size();\n        vector<int> dp(m + 1, 0);\n        for (int i = 1; i <= m; i++) {\n            int count = 0;\n            int j = 0;\n            for (int k = 0; k < n1 * s1.size(); k++) {\n                if (s1[k % s1.size()] == s2[(i - 1) % m]) {\n                    if ((i - 1) % m == m - 1) {\n                        count++;\n                    }\n                }\n            }\n            dp[i] = count;\n        }\n        return dp[m] / n2;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n1 * s1.size() * m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to calculate the maximum number of repetitions of s2 that can be obtained from s1. It iterates over each character in s2 and calculates the maximum number of times s2 can be repeated in s1. The result is then divided by n2 to get the final answer.",
+  "code": "class Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int m = s2.size();\n        vector<int> dp(m + 1, 0);\n        for (int i = 1; i <= m; i++) {\n            int count = 0;\n            int j = 0;\n            for (int k = 0; k < n1 * s1.size(); k++) {\n                if (s1[k % s1.size()] == s2[(i - 1) % m]) {\n                    if ((i - 1) % m == m - 1) {\n                        count++;\n                    }\n                }\n            }\n            dp[i] = count;\n        }\n        return dp[m] / n2;\n    }\n};",
+  "timestamp": "2025-08-06T15:11:25.242706",
+  "code_extracted_previous": "class Solution {\npublic:\n    int getMaxRepetitions(string s1, int n1, string s2, int n2) {\n        int m = s2.size();\n        vector<int> dp(m + 1, 0);\n        for (int i = 1; i <= m; i++) {\n            int count = 0;\n            int j = 0;\n            for (int k = 0; k < n1 * s1.size(); k++) {\n                if (s1[k % s1.size()] == s2[(i - 1) % m]) {\n                    if ((i - 1) % m == m - 1) {\n                        count++;\n                    }\n                }\n            }\n            dp[i] = count;\n        }\n        return dp[m] / n2;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.881357"
+}

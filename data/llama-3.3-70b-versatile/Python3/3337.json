@@ -1,0 +1,15 @@
+{
+  "id": 3337,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:\n        MOD = 10**9 + 7\n        dp = [1] * 26\n        for _ in range(t):\n            new_dp = [0] * 26\n            for i in range(26):\n                new_dp[(i + nums[i]) % 26] += dp[i]\n            dp = new_dp\n        return sum(dp[ord(c) - ord('a')] for c in s) % MOD\n```\nefficiency: HIGH\ntime complexity: O(26t)\nspace complexity: O(26)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to calculate the length of the resulting string after t transformations, where dp[i] represents the number of times the character 'a' + i appears in the string after t transformations. The final length is calculated by summing up the counts of each character in the original string.",
+  "code": "def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:\n        MOD = 10**9 + 7\n        dp = [1] * 26\n        for _ in range(t):\n            new_dp = [0] * 26\n            for i in range(26):\n                new_dp[(i + nums[i]) % 26] += dp[i]\n            dp = new_dp\n        return sum(dp[ord(c) - ord('a')] for c in s) % MOD\n```",
+  "timestamp": "2025-08-06T15:19:59.091682",
+  "code_extracted_previous": "class Solution:\n    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:\n        MOD = 10**9 + 7\n        dp = [1] * 26\n        for _ in range(t):\n            new_dp = [0] * 26\n            for i in range(26):\n                new_dp[(i + nums[i]) % 26] += dp[i]\n            dp = new_dp\n        return sum(dp[ord(c) - ord('a')] for c in s) % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.506813"
+}

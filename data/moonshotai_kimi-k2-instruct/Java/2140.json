@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n + 1];\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0], brainpower = questions[i][1];\n            int next = Math.min(i + brainpower + 1, n);\n            dp[i] = Math.max(dp[i + 1], points + dp[next]);\n        }\n        return dp[0];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Bottom-up DP scans the array once from right to left, storing the best score reachable from each index. Each state only depends on later states, so the recurrence is O(1) per index.",
+  "code": "class Solution {\n    public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n + 1];\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0], brainpower = questions[i][1];\n            int next = Math.min(i + brainpower + 1, n);\n            dp[i] = Math.max(dp[i + 1], points + dp[next]);\n        }\n        return dp[0];\n    }\n}",
+  "timestamp": "2025-08-05T13:25:32.906737",
+  "code_extracted_previous": "public long mostPoints(int[][] questions) {\n        int n = questions.length;\n        long[] dp = new long[n + 1];\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0], brainpower = questions[i][1];\n            int next = Math.min(i + brainpower + 1, n);\n            dp[i] = Math.max(dp[i + 1], points + dp[next]);\n        }\n        return dp[0];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.803279"
+}

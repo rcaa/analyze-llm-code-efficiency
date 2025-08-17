@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        count_s = {}\n        count_g = {}\n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                count_s[s] = count_s.get(s, 0) + 1\n                count_g[g] = count_g.get(g, 0) + 1\n        cows = sum(min(count_s.get(d, 0), count_g.get(d, 0)) for d in count_s.keys() & count_g.keys())\n        return f\"{bulls}A{cows}B\"\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the secret and guess strings once, maintaining counts of non-bull digits in both. It then calculates cows by finding the minimum count for each shared digit. This approach efficiently handles duplicate digits and provides the required hint.",
+  "code": "def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        count_s = {}\n        count_g = {}\n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                count_s[s] = count_s.get(s, 0) + 1\n                count_g[g] = count_g.get(g, 0) + 1\n        cows = sum(min(count_s.get(d, 0), count_g.get(d, 0)) for d in count_s.keys() & count_g.keys())\n        return f\"{bulls}A{cows}B\"\n```",
+  "timestamp": "2025-08-05T14:52:03.420645",
+  "code_extracted_previous": "class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        count_s = {}\n        count_g = {}\n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                count_s[s] = count_s.get(s, 0) + 1\n                count_g[g] = count_g.get(g, 0) + 1\n        cows = sum(min(count_s.get(d, 0), count_g.get(d, 0)) for d in count_s.keys() & count_g.keys())\n        return f\"{bulls}A{cows}B\"",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.054989"
+}

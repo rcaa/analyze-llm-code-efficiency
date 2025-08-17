@@ -1,0 +1,15 @@
+{
+  "id": 2434,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    string robotWithString(string s) {\n        int n = s.size();\n        vector<int> sufMin(n + 1, 26);\n        for (int i = n - 1; i >= 0; --i) {\n            sufMin[i] = min(s[i] - 'a', sufMin[i + 1]);\n        }\n        string t, res;\n        int i = 0;\n        while (i < n || !t.empty()) {\n            if (t.empty()) {\n                t.push_back(s[i++]);\n            } else {\n                char c = t.back();\n                if (i < n && sufMin[i] < (c - 'a')) {\n                    t.push_back(s[i++]);\n                } else {\n                    res.push_back(c);\n                    t.pop_back();\n                }\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Pre-compute the suffix minima to know the smallest character still in s. Use a stack (string t) to simulate the robot's hand. Whenever the top of t is the smallest remaining character (or tied), pop it to the result; otherwise push the next character from s. This greedy strategy yields the lexicographically smallest string in linear time.",
+  "code": "class Solution {\npublic:\n    string robotWithString(string s) {\n        int n = s.size();\n        vector<int> sufMin(n + 1, 26);\n        for (int i = n - 1; i >= 0; --i) {\n            sufMin[i] = min(s[i] - 'a', sufMin[i + 1]);\n        }\n        string t, res;\n        int i = 0;\n        while (i < n || !t.empty()) {\n            if (t.empty()) {\n                t.push_back(s[i++]);\n            } else {\n                char c = t.back();\n                if (i < n && sufMin[i] < (c - 'a')) {\n                    t.push_back(s[i++]);\n                } else {\n                    res.push_back(c);\n                    t.pop_back();\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T02:29:26.748504",
+  "code_extracted_previous": "class Solution {\npublic:\n    string robotWithString(string s) {\n        int n = s.size();\n        vector<int> sufMin(n + 1, 26);\n        for (int i = n - 1; i >= 0; --i) {\n            sufMin[i] = min(s[i] - 'a', sufMin[i + 1]);\n        }\n        string t, res;\n        int i = 0;\n        while (i < n || !t.empty()) {\n            if (t.empty()) {\n                t.push_back(s[i++]);\n            } else {\n                char c = t.back();\n                if (i < n && sufMin[i] < (c - 'a')) {\n                    t.push_back(s[i++]);\n                } else {\n                    res.push_back(c);\n                    t.pop_back();\n                }\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.707848"
+}

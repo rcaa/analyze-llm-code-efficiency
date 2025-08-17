@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int maxValue(int n, int index, int maxSum) {\n        int left = index, right = n - index;\n        int leftMax = index + 1, rightMax = n - index;\n        int leftSum = index + 1, rightSum = n - index;\n        while (leftSum + rightSum <= maxSum) {\n            leftMax = std::min(leftMax + 1, (maxSum - leftSum) / (left + 1) + 1);\n            rightMax = std::min(rightMax + 1, (maxSum - rightSum) / (right + 1) + 1);\n            leftSum += leftMax;\n            rightSum += rightMax;\n            left = leftMax - 1;\n            right = rightMax - 1;\n        }\n        return std::max(leftMax, rightMax);\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a binary search-like approach to find the maximum value at the given index. It maintains two pointers, left and right, to track the maximum possible values on the left and right sides of the given index. It iteratively updates these values and the corresponding sums until it finds the maximum value that satisfies the conditions. The time complexity is O(n) because in the worst case, it needs to update the left and right pointers n times. The space complexity is O(1) because it only uses a constant amount of space to store the pointers and sums.",
+  "code": "class Solution {\npublic:\n    int maxValue(int n, int index, int maxSum) {\n        int left = index, right = n - index;\n        int leftMax = index + 1, rightMax = n - index;\n        int leftSum = index + 1, rightSum = n - index;\n        while (leftSum + rightSum <= maxSum) {\n            leftMax = std::min(leftMax + 1, (maxSum - leftSum) / (left + 1) + 1);\n            rightMax = std::min(rightMax + 1, (maxSum - rightSum) / (right + 1) + 1);\n            leftSum += leftMax;\n            rightSum += rightMax;\n            left = leftMax - 1;\n            right = rightMax - 1;\n        }\n        return std::max(leftMax, rightMax);\n    }\n};",
+  "timestamp": "2025-08-05T15:54:11.463275",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxValue(int n, int index, int maxSum) {\n        int left = index, right = n - index;\n        int leftMax = index + 1, rightMax = n - index;\n        int leftSum = index + 1, rightSum = n - index;\n        while (leftSum + rightSum <= maxSum) {\n            leftMax = std::min(leftMax + 1, (maxSum - leftSum) / (left + 1) + 1);\n            rightMax = std::min(rightMax + 1, (maxSum - rightSum) / (right + 1) + 1);\n            leftSum += leftMax;\n            rightSum += rightMax;\n            left = leftMax - 1;\n            right = rightMax - 1;\n        }\n        return std::max(leftMax, rightMax);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.497985"
+}

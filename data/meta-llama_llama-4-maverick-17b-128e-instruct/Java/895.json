@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nclass FreqStack {\n    private Map<Integer, Integer> freq;\n    private Map<Integer, Stack<Integer>> group;\n    private int maxfreq;\n\n    public FreqStack() {\n        freq = new HashMap<>();\n        group = new HashMap<>();\n        maxfreq = 0;\n    }\n\n    public void push(int val) {\n        int f = freq.getOrDefault(val, 0) + 1;\n        freq.put(val, f);\n        if (f > maxfreq) {\n            maxfreq = f;\n        }\n        group.computeIfAbsent(f, z -> new Stack<>()).push(val);\n    }\n\n    public int pop() {\n        int x = group.get(maxfreq).pop();\n        freq.put(x, freq.get(x) - 1);\n        if (group.get(maxfreq).isEmpty()) {\n            maxfreq--;\n        }\n        return x;\n    }\n}\n\nsolution: The provided Java code implements the FreqStack class.\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: The solution utilizes two HashMaps to track the frequency of elements and group elements by frequency, ensuring efficient push and pop operations with an average time complexity of O(1).\n```",
+  "code": "The provided Java code implements the FreqStack class.",
+  "timestamp": "2025-08-05T14:37:53.826038",
+  "code_extracted_previous": "class FreqStack {\n    private Map<Integer, Integer> freq;\n    private Map<Integer, Stack<Integer>> group;\n    private int maxfreq;\n\n    public FreqStack() {\n        freq = new HashMap<>();\n        group = new HashMap<>();\n        maxfreq = 0;\n    }\n\n    public void push(int val) {\n        int f = freq.getOrDefault(val, 0) + 1;\n        freq.put(val, f);\n        if (f > maxfreq) {\n            maxfreq = f;\n        }\n        group.computeIfAbsent(f, z -> new Stack<>()).push(val);\n    }\n\n    public int pop() {\n        int x = group.get(maxfreq).pop();\n        freq.put(x, freq.get(x) - 1);\n        if (group.get(maxfreq).isEmpty()) {\n            maxfreq--;\n        }\n        return x;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.163966"
+}

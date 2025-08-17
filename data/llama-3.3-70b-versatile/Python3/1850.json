@@ -1,0 +1,15 @@
+{
+  "id": 1850,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def getMinSwaps(self, num: str, k: int) -> int:\n        from itertools import permutations\n        from collections import deque\n        perms = sorted([int(''.join(p)) for p in permutations(num)])\n        target = sorted([p for p in perms if p > int(num)])[k-1]\n        target = str(target)\n        num = list(num)\n        res = 0\n        for i in range(len(num)):\n            if num[i] != target[i]:\n                for j in range(i+1, len(num)):\n                    if num[j] == target[i]:\n                        res += j - i\n                        num[i:j+1] = [num[j]] + num[i:j]\n                        break\n        return res\n```\nefficiency: MEDIUM\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution generates all permutations of the input number, sorts them, and finds the kth smallest wonderful integer. It then uses a two-pointer approach to find the minimum number of adjacent digit swaps needed to reach the target number.",
+  "code": "def getMinSwaps(self, num: str, k: int) -> int:\n        perms = sorted([int(''.join(p)) for p in permutations(num)])\n        target = sorted([p for p in perms if p > int(num)])[k-1]\n        target = str(target)\n        num = list(num)\n        res = 0\n        for i in range(len(num)):\n            if num[i] != target[i]:\n                for j in range(i+1, len(num)):\n                    if num[j] == target[i]:\n                        res += j - i\n                        num[i:j+1] = [num[j]] + num[i:j]\n                        break\n        return res\n```",
+  "timestamp": "2025-08-06T01:43:19.970964",
+  "code_extracted_previous": "class Solution:\n    def getMinSwaps(self, num: str, k: int) -> int:\n        from itertools import permutations\n        from collections import deque\n        perms = sorted([int(''.join(p)) for p in permutations(num)])\n        target = sorted([p for p in perms if p > int(num)])[k-1]\n        target = str(target)\n        num = list(num)\n        res = 0\n        for i in range(len(num)):\n            if num[i] != target[i]:\n                for j in range(i+1, len(num)):\n                    if num[j] == target[i]:\n                        res += j - i\n                        num[i:j+1] = [num[j]] + num[i:j]\n                        break\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.925233"
+}

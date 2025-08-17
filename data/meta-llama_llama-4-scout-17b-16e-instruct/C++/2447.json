@@ -1,0 +1,15 @@
+{
+  "id": 2447,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.size(); ++i) {\n            int gcd = nums[i];\n            if (gcd == k) ++count;\n            for (int j = i + 1; j < nums.size(); ++j) {\n                gcd = gcdHelper(gcd, nums[j]);\n                if (gcd == k) ++count;\n                if (gcd < k) break;\n            }\n        }\n        return count;\n    }\n    \n    int gcdHelper(int a, int b) {\n        if (b == 0) return a;\n        return gcdHelper(b, a % b);\n    }\n};\n```\nefficiency: MEDIUM\ntime complexity: O(n^2 * log m)\nspace complexity: O(1)\nenergy implications: MEDIUM\nexplanation: The solution iterates through all possible subarrays, calculating their GCD using the Euclidean algorithm. It counts subarrays with a GCD equal to k. The approach is straightforward but not optimal for large inputs due to its quadratic complexity.",
+  "code": "class Solution {\npublic:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.size(); ++i) {\n            int gcd = nums[i];\n            if (gcd == k) ++count;\n            for (int j = i + 1; j < nums.size(); ++j) {\n                gcd = gcdHelper(gcd, nums[j]);\n                if (gcd == k) ++count;\n                if (gcd < k) break;\n            }\n        }\n        return count;\n    }\n    \n    int gcdHelper(int a, int b) {\n        if (b == 0) return a;\n        return gcdHelper(b, a % b);\n    }\n};",
+  "timestamp": "2025-08-05T13:31:46.183466",
+  "code_extracted_previous": "class Solution {\npublic:\n    int subarrayGCD(vector<int>& nums, int k) {\n        int count = 0;\n        for (int i = 0; i < nums.size(); ++i) {\n            int gcd = nums[i];\n            if (gcd == k) ++count;\n            for (int j = i + 1; j < nums.size(); ++j) {\n                gcd = gcdHelper(gcd, nums[j]);\n                if (gcd == k) ++count;\n                if (gcd < k) break;\n            }\n        }\n        return count;\n    }\n    \n    int gcdHelper(int a, int b) {\n        if (b == 0) return a;\n        return gcdHelper(b, a % b);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.118066"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2135,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int wordCount(vector<string>& startWords, vector<string>& targetWords) {\n        unordered_set<int> startMasks;\n        for (const string& s : startWords) {\n            int mask = 0;\n            for (char c : s) mask |= 1 << (c - 'a');\n            startMasks.insert(mask);\n        }\n        int ans = 0;\n        for (const string& t : targetWords) {\n            int mask = 0;\n            for (char c : t) mask |= 1 << (c - 'a');\n            for (char c : t) {\n                int prev = mask ^ (1 << (c - 'a'));\n                if (startMasks.count(prev)) {\n                    ++ans;\n                    break;\n                }\n            }\n        }\n        return ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N*26 + M*26)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Represent each string as a 26-bit mask. Store all startWords masks in a hash set. For each targetWord, check if removing any single character yields a mask present in the set. This avoids sorting and uses constant-time lookups.",
+  "code": "class Solution {\npublic:\n    int wordCount(vector<string>& startWords, vector<string>& targetWords) {\n        unordered_set<int> startMasks;\n        for (const string& s : startWords) {\n            int mask = 0;\n            for (char c : s) mask |= 1 << (c - 'a');\n            startMasks.insert(mask);\n        }\n        int ans = 0;\n        for (const string& t : targetWords) {\n            int mask = 0;\n            for (char c : t) mask |= 1 << (c - 'a');\n            for (char c : t) {\n                int prev = mask ^ (1 << (c - 'a'));\n                if (startMasks.count(prev)) {\n                    ++ans;\n                    break;\n                }\n            }\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T13:23:21.149412",
+  "code_extracted_previous": "class Solution {\npublic:\n    int wordCount(vector<string>& startWords, vector<string>& targetWords) {\n        unordered_set<int> startMasks;\n        for (const string& s : startWords) {\n            int mask = 0;\n            for (char c : s) mask |= 1 << (c - 'a');\n            startMasks.insert(mask);\n        }\n        int ans = 0;\n        for (const string& t : targetWords) {\n            int mask = 0;\n            for (char c : t) mask |= 1 << (c - 'a');\n            for (char c : t) {\n                int prev = mask ^ (1 << (c - 'a'));\n                if (startMasks.count(prev)) {\n                    ++ans;\n                    break;\n                }\n            }\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.551506"
+}

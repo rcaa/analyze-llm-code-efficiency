@@ -1,0 +1,15 @@
+{
+  "id": 2696,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int minLength(string s) {\n        int res = s.size();\n        for (int i = 0; i < s.size() - 1; i++) {\n            if (s.substr(i, 2) == \"AB\" || s.substr(i, 2) == \"CD\") {\n                res = min(res, minLength(s.substr(0, i) + s.substr(i + 2)));\n            }\n        }\n        return res;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(2^n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution uses a recursive approach to remove all occurrences of \"AB\" and \"CD\" substrings from the input string. It keeps track of the minimum length of the resulting string and updates it accordingly. The time complexity is exponential due to the recursive nature of the solution, but it is efficient for small input sizes.",
+  "code": "class Solution {\npublic:\n    int minLength(string s) {\n        int res = s.size();\n        for (int i = 0; i < s.size() - 1; i++) {\n            if (s.substr(i, 2) == \"AB\" || s.substr(i, 2) == \"CD\") {\n                res = min(res, minLength(s.substr(0, i) + s.substr(i + 2)));\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T16:43:48.130536",
+  "code_extracted_previous": "public:\n    int minLength(string s) {\n        int res = s.size();\n        for (int i = 0; i < s.size() - 1; i++) {\n            if (s.substr(i, 2) == \"AB\" || s.substr(i, 2) == \"CD\") {\n                res = min(res, minLength(s.substr(0, i) + s.substr(i + 2)));\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.092200"
+}

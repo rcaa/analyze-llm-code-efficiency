@@ -1,0 +1,15 @@
+{
+  "id": 187,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```java\nimport java.util.*;\n\nclass Solution {\n    public List<String> findRepeatedDnaSequences(String s) {\n        if (s.length() <= 10) {\n            return new ArrayList<>();\n        }\n\n        Map<String, Integer> countMap = new HashMap<>();\n        List<String> result = new ArrayList<>();\n\n        for (int i = 0; i <= s.length() - 10; i++) {\n            String substring = s.substring(i, i + 10);\n            countMap.put(substring, countMap.getOrDefault(substring, 0) + 1);\n        }\n\n        for (Map.Entry<String, Integer> entry : countMap.entrySet()) {\n            if (entry.getValue() > 1) {\n                result.add(entry.getKey());\n            }\n        }\n\n        return result;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to generate all substrings of length 10 and a HashMap to count their occurrences. It then iterates over the map to find substrings with a count greater than 1.",
+  "code": "class Solution {\n    public List<String> findRepeatedDnaSequences(String s) {\n        if (s.length() <= 10) {\n            return new ArrayList<>();\n        }\n\n        Map<String, Integer> countMap = new HashMap<>();\n        List<String> result = new ArrayList<>();\n\n        for (int i = 0; i <= s.length() - 10; i++) {\n            String substring = s.substring(i, i + 10);\n            countMap.put(substring, countMap.getOrDefault(substring, 0) + 1);\n        }\n\n        for (Map.Entry<String, Integer> entry : countMap.entrySet()) {\n            if (entry.getValue() > 1) {\n                result.add(entry.getKey());\n            }\n        }\n\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T14:50:38.231167",
+  "code_extracted_previous": "import java.util.*;\n\nclass Solution {\n    public List<String> findRepeatedDnaSequences(String s) {\n        if (s.length() <= 10) {\n            return new ArrayList<>();\n        }\n\n        Map<String, Integer> countMap = new HashMap<>();\n        List<String> result = new ArrayList<>();\n\n        for (int i = 0; i <= s.length() - 10; i++) {\n            String substring = s.substring(i, i + 10);\n            countMap.put(substring, countMap.getOrDefault(substring, 0) + 1);\n        }\n\n        for (Map.Entry<String, Integer> entry : countMap.entrySet()) {\n            if (entry.getValue() > 1) {\n                result.add(entry.getKey());\n            }\n        }\n\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.553527"
+}

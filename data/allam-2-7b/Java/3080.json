@@ -1,0 +1,15 @@
+{
+  "id": 3080,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public long[] unmarkedSumArray(int[] nums, int[][] queries) {\n        int[] result = new int[queries.length];\n        int sum = 0;\n        for (int i = 0; i < queries.length; i++) {\n            int index = queries[i][0];\n            int count = queries[i][1];\n            for (int j = index; j < nums.length; j++) {\n                if (nums[j] != sum) {\n                    sum += nums[j];\n                }\n            }\n            result[i] = sum;\n            sum = 0;\n        }\n        return result;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nWe iterate through the queries array to process each query. For each query, we iterate through the array nums to find the sum of the elements that are not equal to the current sum. We update the sum accordingly and store the result in the result array. After processing all queries, we return the result array.\n\nThis solution has a time complexity of O(n) because we only iterate through the nums array once for each query. The space complexity is O(1) because we only use a single array to store the result. The energy implications are low because the algorithm only performs a constant number of operations for each query. ",
+  "code": "class Solution {\n    public long[] unmarkedSumArray(int[] nums, int[][] queries) {\n        int[] result = new int[queries.length];\n        int sum = 0;\n        for (int i = 0; i < queries.length; i++) {\n            int index = queries[i][0];\n            int count = queries[i][1];\n            for (int j = index; j < nums.length; j++) {\n                if (nums[j] != sum) {\n                    sum += nums[j];\n                }\n            }\n            result[i] = sum;\n            sum = 0;\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-05T13:34:47.883056",
+  "code_extracted_previous": "class Solution {\n    public long[] unmarkedSumArray(int[] nums, int[][] queries) {\n        int[] result = new int[queries.length];\n        int sum = 0;\n        for (int i = 0; i < queries.length; i++) {\n            int index = queries[i][0];\n            int count = queries[i][1];\n            for (int j = index; j < nums.length; j++) {\n                if (nums[j] != sum) {\n                    sum += nums[j];\n                }\n            }\n            result[i] = sum;\n            sum = 0;\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.436187"
+}

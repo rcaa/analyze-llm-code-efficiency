@@ -1,0 +1,15 @@
+{
+  "id": 466,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int getMaxRepetitions(String s1, int n1, String s2, int n2) {\n        int m = s2.length(), cnt = 0;\n        int[] dp = new int[m + 1];\n        for (int i = 0; i < n1; i++) {\n            for (int j = 0; j < s1.length(); j++) {\n                if (s1.charAt(j) == s2.charAt(cnt % m)) {\n                    cnt++;\n                    if (cnt % m == 0) {\n                        dp[(cnt / m) % (m + 1)] = i + 1;\n                    }\n                }\n            }\n        }\n        return dp[n2] / n1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n1 * m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to track the maximum number of repetitions of s2 that can be obtained from s1. It iterates over s1 and checks for matches with s2, updating the dp array accordingly. The final result is calculated by dividing the maximum number of repetitions by n1.",
+  "code": "class Solution {\n    public int getMaxRepetitions(String s1, int n1, String s2, int n2) {\n        int m = s2.length(), cnt = 0;\n        int[] dp = new int[m + 1];\n        for (int i = 0; i < n1; i++) {\n            for (int j = 0; j < s1.length(); j++) {\n                if (s1.charAt(j) == s2.charAt(cnt % m)) {\n                    cnt++;\n                    if (cnt % m == 0) {\n                        dp[(cnt / m) % (m + 1)] = i + 1;\n                    }\n                }\n            }\n        }\n        return dp[n2] / n1;\n    }\n}",
+  "timestamp": "2025-08-06T15:15:50.828880",
+  "code_extracted_previous": "class Solution {\n    public int getMaxRepetitions(String s1, int n1, String s2, int n2) {\n        int m = s2.length(), cnt = 0;\n        int[] dp = new int[m + 1];\n        for (int i = 0; i < n1; i++) {\n            for (int j = 0; j < s1.length(); j++) {\n                if (s1.charAt(j) == s2.charAt(cnt % m)) {\n                    cnt++;\n                    if (cnt % m == 0) {\n                        dp[(cnt / m) % (m + 1)] = i + 1;\n                    }\n                }\n            }\n        }\n        return dp[n2] / n1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.307804"
+}

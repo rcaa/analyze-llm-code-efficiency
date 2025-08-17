@@ -1,0 +1,15 @@
+{
+  "id": 920,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const int MOD = 1e9 + 7;\n        vector<vector<long long>> dp(n + 1, vector<long long>(goal + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= goal; j++) {\n                dp[i][j] = (dp[i - 1][j - 1] * i) % MOD;\n                if (j > k) {\n                    dp[i][j] = (dp[i][j] + dp[i][j - 1] * (i - k)) % MOD;\n                }\n            }\n        }\n        return dp[n][goal];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * goal)\nspace complexity: O(n * goal)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently calculate the number of possible playlists. The dp[i][j] state represents the number of playlists with i songs and j total songs played. The transition is calculated based on whether the current song is new or repeated.",
+  "code": "class Solution {\npublic:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const int MOD = 1e9 + 7;\n        vector<vector<long long>> dp(n + 1, vector<long long>(goal + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= goal; j++) {\n                dp[i][j] = (dp[i - 1][j - 1] * i) % MOD;\n                if (j > k) {\n                    dp[i][j] = (dp[i][j] + dp[i][j - 1] * (i - k)) % MOD;\n                }\n            }\n        }\n        return dp[n][goal];\n    }\n};",
+  "timestamp": "2025-08-05T15:18:13.531732",
+  "code_extracted_previous": "public:\n    int numMusicPlaylists(int n, int goal, int k) {\n        const int MOD = 1e9 + 7;\n        vector<vector<long long>> dp(n + 1, vector<long long>(goal + 1, 0));\n        dp[0][0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= goal; j++) {\n                dp[i][j] = (dp[i - 1][j - 1] * i) % MOD;\n                if (j > k) {\n                    dp[i][j] = (dp[i][j] + dp[i][j - 1] * (i - k)) % MOD;\n                }\n            }\n        }\n        return dp[n][goal];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:37.158195"
+}

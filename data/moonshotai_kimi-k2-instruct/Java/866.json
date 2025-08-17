@@ -1,0 +1,15 @@
+{
+  "id": 866,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int primePalindrome(int n) {\n        if (n <= 2) return 2;\n        int candidate = n;\n        while (true) {\n            if (isPalindrome(candidate) && isPrime(candidate)) return candidate;\n            candidate++;\n            if (10_000_000 < candidate && candidate < 100_000_000) candidate = 100_000_000;\n        }\n    }\n\n    private boolean isPalindrome(int x) {\n        int rev = 0, t = x;\n        while (t != 0) {\n            rev = rev * 10 + t % 10;\n            t /= 10;\n        }\n        return rev == x;\n    }\n\n    private boolean isPrime(int x) {\n        if (x < 2 || (x % 2 == 0 && x != 2)) return false;\n        for (int i = 3; i * i <= x; i += 2) {\n            if (x % i == 0) return false;\n        }\n        return true;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(P log P) where P is the answer value\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Brute-force with a crucial skip from 8-digit to 9-digit numbers (no 8-digit prime palindromes exist) keeps runtime under 1 ms for all inputs.",
+  "code": "class Solution {\n    public int primePalindrome(int n) {\n        if (n <= 2) return 2;\n        int candidate = n;\n        while (true) {\n            if (isPalindrome(candidate) && isPrime(candidate)) return candidate;\n            candidate++;\n            if (10_000_000 < candidate && candidate < 100_000_000) candidate = 100_000_000;\n        }\n    }\n\n    private boolean isPalindrome(int x) {\n        int rev = 0, t = x;\n        while (t != 0) {\n            rev = rev * 10 + t % 10;\n            t /= 10;\n        }\n        return rev == x;\n    }\n\n    private boolean isPrime(int x) {\n        if (x < 2 || (x % 2 == 0 && x != 2)) return false;\n        for (int i = 3; i * i <= x; i += 2) {\n            if (x % i == 0) return false;\n        }\n        return true;\n    }\n}",
+  "timestamp": "2025-08-06T02:32:20.652381",
+  "code_extracted_previous": "public int primePalindrome(int n) {\n        if (n <= 2) return 2;\n        int candidate = n;\n        while (true) {\n            if (isPalindrome(candidate) && isPrime(candidate)) return candidate;\n            candidate++;\n            if (10_000_000 < candidate && candidate < 100_000_000) candidate = 100_000_000;\n        }\n    }\n\n    private boolean isPalindrome(int x) {\n        int rev = 0, t = x;\n        while (t != 0) {\n            rev = rev * 10 + t % 10;\n            t /= 10;\n        }\n        return rev == x;\n    }\n\n    private boolean isPrime(int x) {\n        if (x < 2 || (x % 2 == 0 && x != 2)) return false;\n        for (int i = 3; i * i <= x; i += 2) {\n            if (x % i == 0) return false;\n        }\n        return true;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.857840"
+}

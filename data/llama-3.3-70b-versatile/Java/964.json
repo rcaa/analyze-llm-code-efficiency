@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        int ans = 0;\n        while (target > 0) {\n            if (target % x == 0) {\n                ans += target / x - 1;\n                target = 1;\n            } else if (target < x) {\n                break;\n            } else {\n                int p = target / x;\n                if (p * x - target < target - (p - 1) * x) {\n                    ans += p;\n                    target = target - p * x;\n                } else {\n                    ans += p - 1;\n                    target = (p - 1) * x - target;\n                }\n            }\n        }\n        return ans + target;\n    }\n}\nefficiency: HIGH\ntime complexity: O(log(target))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a greedy approach to minimize the number of operations by repeatedly dividing the target by x and adjusting the remainder to minimize the number of operations required.",
+  "code": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        int ans = 0;\n        while (target > 0) {\n            if (target % x == 0) {\n                ans += target / x - 1;\n                target = 1;\n            } else if (target < x) {\n                break;\n            } else {\n                int p = target / x;\n                if (p * x - target < target - (p - 1) * x) {\n                    ans += p;\n                    target = target - p * x;\n                } else {\n                    ans += p - 1;\n                    target = (p - 1) * x - target;\n                }\n            }\n        }\n        return ans + target;\n    }\n}",
+  "timestamp": "2025-08-06T15:16:28.360568",
+  "code_extracted_previous": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        int ans = 0;\n        while (target > 0) {\n            if (target % x == 0) {\n                ans += target / x - 1;\n                target = 1;\n            } else if (target < x) {\n                break;\n            } else {\n                int p = target / x;\n                if (p * x - target < target - (p - 1) * x) {\n                    ans += p;\n                    target = target - p * x;\n                } else {\n                    ans += p - 1;\n                    target = (p - 1) * x - target;\n                }\n            }\n        }\n        return ans + target;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.529162"
+}

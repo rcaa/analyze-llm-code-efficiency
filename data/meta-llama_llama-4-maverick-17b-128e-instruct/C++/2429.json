@@ -1,0 +1,15 @@
+{
+  "id": 2429,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int setBits = __builtin_popcount(num2);\n        int result = 0;\n        for (int i = 30; i >= 0; --i) {\n            if ((num1 >> i) & 1) {\n                if (setBits > 0) {\n                    result |= (1 << i);\n                    --setBits;\n                }\n            } else if (setBits > 0) {\n                result |= (1 << i);\n                --setBits;\n            }\n        }\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses the `__builtin_popcount` function to count the number of set bits in `num2`, then iterates over the bits of `num1` from most significant to least significant, setting the corresponding bit in the result if it is set in `num1` and there are remaining set bits to be used, or if it is not set in `num1` and there are remaining set bits. This approach minimizes the XOR of the result and `num1`.",
+  "code": "class Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int setBits = __builtin_popcount(num2);\n        int result = 0;\n        for (int i = 30; i >= 0; --i) {\n            if ((num1 >> i) & 1) {\n                if (setBits > 0) {\n                    result |= (1 << i);\n                    --setBits;\n                }\n            } else if (setBits > 0) {\n                result |= (1 << i);\n                --setBits;\n            }\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T14:31:16.486931",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minimizeXor(int num1, int num2) {\n        int setBits = __builtin_popcount(num2);\n        int result = 0;\n        for (int i = 30; i >= 0; --i) {\n            if ((num1 >> i) & 1) {\n                if (setBits > 0) {\n                    result |= (1 << i);\n                    --setBits;\n                }\n            } else if (setBits > 0) {\n                result |= (1 << i);\n                --setBits;\n            }\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.236022"
+}

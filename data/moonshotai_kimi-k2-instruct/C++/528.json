@@ -1,0 +1,15 @@
+{
+  "id": 528,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\n    vector<int> prefix;\npublic:\n    Solution(vector<int>& w) {\n        prefix.reserve(w.size());\n        int sum = 0;\n        for (int weight : w) {\n            sum += weight;\n            prefix.push_back(sum);\n        }\n    }\n    \n    int pickIndex() {\n        int total = prefix.back();\n        int target = rand() % total;\n        return upper_bound(prefix.begin(), prefix.end(), target) - prefix.begin();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log N) per pickIndex, O(N) for constructor\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Prefix-sum array converts weights into cumulative ranges; binary search (via upper_bound) maps a uniform random number to the correct index in logarithmic time. Constructor is linear, pickIndex is logarithmic, both optimal for the constraints.",
+  "code": "class Solution {\n    vector<int> prefix;\npublic:\n    Solution(vector<int>& w) {\n        prefix.reserve(w.size());\n        int sum = 0;\n        for (int weight : w) {\n            sum += weight;\n            prefix.push_back(sum);\n        }\n    }\n    \n    int pickIndex() {\n        int total = prefix.back();\n        int target = rand() % total;\n        return upper_bound(prefix.begin(), prefix.end(), target) - prefix.begin();\n    }\n};",
+  "timestamp": "2025-08-05T13:00:01.327055",
+  "code_extracted_previous": "class Solution {\n    vector<int> prefix;\npublic:\n    Solution(vector<int>& w) {\n        prefix.reserve(w.size());\n        int sum = 0;\n        for (int weight : w) {\n            sum += weight;\n            prefix.push_back(sum);\n        }\n    }\n    \n    int pickIndex() {\n        int total = prefix.back();\n        int target = rand() % total;\n        return upper_bound(prefix.begin(), prefix.end(), target) - prefix.begin();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.173641"
+}

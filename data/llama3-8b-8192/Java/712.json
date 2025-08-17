@@ -1,0 +1,15 @@
+{
+  "id": 712,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int minimumDeleteSum(String s1, String s2) {\n        int sum = 0;\n        int i = 0, j = 0;\n        while (i < s1.length() || j < s2.length()) {\n            if (i < s1.length() && j < s2.length()) {\n                if (s1.charAt(i) == s2.charAt(j)) {\n                    i++;\n                    j++;\n                } else {\n                    sum += s1.charAt(i) < s2.charAt(j) ? s1.charAt(i++) : s2.charAt(j++);\n                }\n            } else if (i < s1.length()) {\n                sum += s1.charAt(i++);\n            } else {\n                sum += s2.charAt(j++);\n            }\n        }\n        return sum;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a two-pointer approach to iterate through both strings simultaneously. It keeps track of the sum of deleted characters and updates it accordingly. If the current characters in both strings are the same, it moves both pointers forward. If they are different, it adds the ASCII value of the character in the string with the smaller character to the sum and moves the corresponding pointer forward. This approach ensures that the sum of deleted characters is minimized.",
+  "code": "class Solution {\n    public int minimumDeleteSum(String s1, String s2) {\n        int sum = 0;\n        int i = 0, j = 0;\n        while (i < s1.length() || j < s2.length()) {\n            if (i < s1.length() && j < s2.length()) {\n                if (s1.charAt(i) == s2.charAt(j)) {\n                    i++;\n                    j++;\n                } else {\n                    sum += s1.charAt(i) < s2.charAt(j) ? s1.charAt(i++) : s2.charAt(j++);\n                }\n            } else if (i < s1.length()) {\n                sum += s1.charAt(i++);\n            } else {\n                sum += s2.charAt(j++);\n            }\n        }\n        return sum;\n    }\n}",
+  "timestamp": "2025-08-05T23:54:50.743320",
+  "code_extracted_previous": "class Solution {\n    public int minimumDeleteSum(String s1, String s2) {\n        int sum = 0;\n        int i = 0, j = 0;\n        while (i < s1.length() || j < s2.length()) {\n            if (i < s1.length() && j < s2.length()) {\n                if (s1.charAt(i) == s2.charAt(j)) {\n                    i++;\n                    j++;\n                } else {\n                    sum += s1.charAt(i) < s2.charAt(j) ? s1.charAt(i++) : s2.charAt(j++);\n                }\n            } else if (i < s1.length()) {\n                sum += s1.charAt(i++);\n            } else {\n                sum += s2.charAt(j++);\n            }\n        }\n        return sum;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.984030"
+}

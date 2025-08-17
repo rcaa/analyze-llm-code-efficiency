@@ -1,0 +1,15 @@
+{
+  "id": 3226,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int minChanges(int n, int k) {\n        if (n == k) return 0;\n        String ns = Integer.toBinaryString(n);\n        String ks = Integer.toBinaryString(k);\n        int count = 0;\n        for (int i = 0; i < Math.max(ns.length(), ks.length()); i++) {\n            if (i >= ns.length()) {\n                if (ks.charAt(i - ns.length()) == '1') count++;\n            } else if (i >= ks.length()) {\n                if (ns.charAt(i - ks.length()) == '1') count++;\n            } else {\n                if (ns.charAt(i) != ks.charAt(i)) count++;\n            }\n        }\n        return count;\n    }\n}\n```\n\nefficiency: HIGH\n\ntime complexity: O(max(log(n), log(k)))\n\nspace complexity: O(1)\n\nenergy implications: LOW",
+  "code": "class Solution {\n    public int minChanges(int n, int k) {\n        if (n == k) return 0;\n        String ns = Integer.toBinaryString(n);\n        String ks = Integer.toBinaryString(k);\n        int count = 0;\n        for (int i = 0; i < Math.max(ns.length(), ks.length()); i++) {\n            if (i >= ns.length()) {\n                if (ks.charAt(i - ns.length()) == '1') count++;\n            } else if (i >= ks.length()) {\n                if (ns.charAt(i - ks.length()) == '1') count++;\n            } else {\n                if (ns.charAt(i) != ks.charAt(i)) count++;\n            }\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T13:52:29.241767",
+  "code_extracted_previous": "class Solution {\n    public int minChanges(int n, int k) {\n        if (n == k) return 0;\n        String ns = Integer.toBinaryString(n);\n        String ks = Integer.toBinaryString(k);\n        int count = 0;\n        for (int i = 0; i < Math.max(ns.length(), ks.length()); i++) {\n            if (i >= ns.length()) {\n                if (ks.charAt(i - ns.length()) == '1') count++;\n            } else if (i >= ks.length()) {\n                if (ns.charAt(i - ks.length()) == '1') count++;\n            } else {\n                if (ns.charAt(i) != ks.charAt(i)) count++;\n            }\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.494759"
+}

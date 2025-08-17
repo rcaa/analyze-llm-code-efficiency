@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int max_len = 0, count = 0, zeros = 0;\n        for (char c : s) {\n            if (c == '0') {\n                zeros++;\n            } else {\n                count++;\n                if (count < zeros) {\n                    max_len = max(max_len, zeros + count);\n                } else {\n                    max_len = max(max_len, count + zeros);\n                }\n            }\n        }\n        return max_len;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the string once, keeping track of the count of ones and the count of zeros. It updates the maximum length of the balanced substring whenever it finds a pair of zeros and ones that can be balanced. This approach has a high efficiency due to its linear time complexity and constant space complexity.",
+  "code": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int max_len = 0, count = 0, zeros = 0;\n        for (char c : s) {\n            if (c == '0') {\n                zeros++;\n            } else {\n                count++;\n                if (count < zeros) {\n                    max_len = max(max_len, zeros + count);\n                } else {\n                    max_len = max(max_len, count + zeros);\n                }\n            }\n        }\n        return max_len;\n    }\n};",
+  "timestamp": "2025-08-05T16:43:02.862779",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int max_len = 0, count = 0, zeros = 0;\n        for (char c : s) {\n            if (c == '0') {\n                zeros++;\n            } else {\n                count++;\n                if (count < zeros) {\n                    max_len = max(max_len, zeros + count);\n                } else {\n                    max_len = max(max_len, count + zeros);\n                }\n            }\n        }\n        return max_len;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.178642"
+}

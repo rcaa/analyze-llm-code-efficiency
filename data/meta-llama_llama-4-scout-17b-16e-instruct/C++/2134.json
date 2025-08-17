@@ -1,0 +1,15 @@
+{
+  "id": 2134,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int minSwaps(vector<int>& nums) {\n        int n = nums.size();\n        int ones = 0;\n        for (int num : nums) {\n            if (num == 1) ones++;\n        }\n        \n        if (ones == 0) return 0;\n        \n        int window_ones = 0;\n        for (int i = 0; i < ones; i++) {\n            if (nums[i] == 1) window_ones++;\n        }\n        \n        int min_swaps = ones - window_ones;\n        for (int i = ones; i < n + ones; i++) {\n            if (i < n && nums[i] == 1) window_ones++;\n            if (i >= n && nums[i - n] == 1) window_ones--;\n            min_swaps = min(min_swaps, ones - window_ones);\n        }\n        \n        return min_swaps;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to track the number of ones within a window of size equal to the total number of ones in the array. It iterates through the array in a circular manner to consider all possible groupings of ones, updating the minimum swaps required.",
+  "code": "class Solution {\npublic:\n    int minSwaps(vector<int>& nums) {\n        int n = nums.size();\n        int ones = 0;\n        for (int num : nums) {\n            if (num == 1) ones++;\n        }\n        \n        if (ones == 0) return 0;\n        \n        int window_ones = 0;\n        for (int i = 0; i < ones; i++) {\n            if (nums[i] == 1) window_ones++;\n        }\n        \n        int min_swaps = ones - window_ones;\n        for (int i = ones; i < n + ones; i++) {\n            if (i < n && nums[i] == 1) window_ones++;\n            if (i >= n && nums[i - n] == 1) window_ones--;\n            min_swaps = min(min_swaps, ones - window_ones);\n        }\n        \n        return min_swaps;\n    }\n};",
+  "timestamp": "2025-08-05T13:21:31.093548",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minSwaps(vector<int>& nums) {\n        int n = nums.size();\n        int ones = 0;\n        for (int num : nums) {\n            if (num == 1) ones++;\n        }\n        \n        if (ones == 0) return 0;\n        \n        int window_ones = 0;\n        for (int i = 0; i < ones; i++) {\n            if (nums[i] == 1) window_ones++;\n        }\n        \n        int min_swaps = ones - window_ones;\n        for (int i = ones; i < n + ones; i++) {\n            if (i < n && nums[i] == 1) window_ones++;\n            if (i >= n && nums[i - n] == 1) window_ones--;\n            min_swaps = min(min_swaps, ones - window_ones);\n        }\n        \n        return min_swaps;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.958538"
+}

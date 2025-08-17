@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String getHint(String secret, String guess) {\n        int[] secretCounts = new int[10];\n        int[] guessCounts = new int[10];\n        int bulls = 0;\n        \n        for (int i = 0; i < secret.length(); i++) {\n            if (secret.charAt(i) == guess.charAt(i)) {\n                bulls++;\n            } else {\n                secretCounts[secret.charAt(i) - '0']++;\n                guessCounts[guess.charAt(i) - '0']++;\n            }\n        }\n        \n        int cows = 0;\n        for (int i = 0; i < 10; i++) {\n            cows += Math.min(secretCounts[i], guessCounts[i]);\n        }\n        \n        return bulls + \"A\" + cows + \"B\";\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the secret and guess strings once to count the bulls and the occurrences of each digit. Then it calculates the cows by finding the minimum count for each digit in both strings. This approach ensures efficiency and accuracy in determining the hint for the guess.",
+  "code": "class Solution {\n    public String getHint(String secret, String guess) {\n        int[] secretCounts = new int[10];\n        int[] guessCounts = new int[10];\n        int bulls = 0;\n        \n        for (int i = 0; i < secret.length(); i++) {\n            if (secret.charAt(i) == guess.charAt(i)) {\n                bulls++;\n            } else {\n                secretCounts[secret.charAt(i) - '0']++;\n                guessCounts[guess.charAt(i) - '0']++;\n            }\n        }\n        \n        int cows = 0;\n        for (int i = 0; i < 10; i++) {\n            cows += Math.min(secretCounts[i], guessCounts[i]);\n        }\n        \n        return bulls + \"A\" + cows + \"B\";\n    }\n}",
+  "timestamp": "2025-08-05T14:52:09.291950",
+  "code_extracted_previous": "class Solution {\n    public String getHint(String secret, String guess) {\n        int[] secretCounts = new int[10];\n        int[] guessCounts = new int[10];\n        int bulls = 0;\n        \n        for (int i = 0; i < secret.length(); i++) {\n            if (secret.charAt(i) == guess.charAt(i)) {\n                bulls++;\n            } else {\n                secretCounts[secret.charAt(i) - '0']++;\n                guessCounts[guess.charAt(i) - '0']++;\n            }\n        }\n        \n        int cows = 0;\n        for (int i = 0; i < 10; i++) {\n            cows += Math.min(secretCounts[i], guessCounts[i]);\n        }\n        \n        return bulls + \"A\" + cows + \"B\";\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.080567"
+}

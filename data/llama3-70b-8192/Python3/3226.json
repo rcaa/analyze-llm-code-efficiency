@@ -1,0 +1,15 @@
+{
+  "id": 3226,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution:\n    def minChanges(self, n: int, k: int) -> int:\n        bin_n, bin_k = bin(n)[2:], bin(k)[2:]\n        max_len = max(len(bin_n), len(bin_k))\n        bin_n, bin_k = bin_n.zfill(max_len), bin_k.zfill(max_len)\n        changes = 0\n        for i in range(max_len):\n            if bin_n[i] != bin_k[i] and bin_n[i] == '1':\n                changes += 1\n        return changes if all(c == '0' for c in bin_n) or all(c == '0' for c in bin_k) else -1\n```\nefficiency: HIGH\ntime complexity: O(log(n) + log(k))\nspace complexity: O(log(n) + log(k))\nenergy implications: LOW\nexplanation: This solution uses binary representation of numbers and counts the number of bits that need to be changed in n to make it equal to k. It returns -1 if it's impossible to make n equal to k.",
+  "code": "class Solution:\n    def minChanges(self, n: int, k: int) -> int:\n        bin_n, bin_k = bin(n)[2:], bin(k)[2:]\n        max_len = max(len(bin_n), len(bin_k))\n        bin_n, bin_k = bin_n.zfill(max_len), bin_k.zfill(max_len)\n        changes = 0\n        for i in range(max_len):\n            if bin_n[i] != bin_k[i] and bin_n[i] == '1':\n                changes += 1\n        return changes if all(c == '0' for c in bin_n) or all(c == '0' for c in bin_k) else -1",
+  "timestamp": "2025-08-05T13:52:01.467865",
+  "code_extracted_previous": "class Solution:\n    def minChanges(self, n: int, k: int) -> int:\n        bin_n, bin_k = bin(n)[2:], bin(k)[2:]\n        max_len = max(len(bin_n), len(bin_k))\n        bin_n, bin_k = bin_n.zfill(max_len), bin_k.zfill(max_len)\n        changes = 0\n        for i in range(max_len):\n            if bin_n[i] != bin_k[i] and bin_n[i] == '1':\n                changes += 1\n        return changes if all(c == '0' for c in bin_n) or all(c == '0' for c in bin_k) else -1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:39.627800"
+}

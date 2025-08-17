@@ -1,0 +1,15 @@
+{
+  "id": 1291,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> result;\n        string digits = \"123456789\";\n        int low_len = to_string(low).size();\n        int high_len = to_string(high).size();\n\n        for (int len = low_len; len <= high_len; len++) {\n            for (int start = 0; start <= 9 - len; start++) {\n                int num = stoi(digits.substr(start, len));\n                if (num >= low && num <= high) {\n                    result.push_back(num);\n                }\n            }\n        }\n        sort(result.begin(), result.end());\n        return result;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Generates all possible numbers with sequential digits within the given length range, checks if they fall within the specified range, and returns a sorted list of valid numbers.\n```",
+  "code": "class Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> result;\n        string digits = \"123456789\";\n        int low_len = to_string(low).size();\n        int high_len = to_string(high).size();\n\n        for (int len = low_len; len <= high_len; len++) {\n            for (int start = 0; start <= 9 - len; start++) {\n                int num = stoi(digits.substr(start, len));\n                if (num >= low && num <= high) {\n                    result.push_back(num);\n                }\n            }\n        }\n        sort(result.begin(), result.end());\n        return result;\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Generates all possible numbers with sequential digits within the given length range, checks if they fall within the specified range, and returns a sorted list of valid numbers.",
+  "timestamp": "2025-08-05T14:30:24.755067",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> sequentialDigits(int low, int high) {\n        vector<int> result;\n        string digits = \"123456789\";\n        int low_len = to_string(low).size();\n        int high_len = to_string(high).size();\n\n        for (int len = low_len; len <= high_len; len++) {\n            for (int start = 0; start <= 9 - len; start++) {\n                int num = stoi(digits.substr(start, len));\n                if (num >= low && num <= high) {\n                    result.push_back(num);\n                }\n            }\n        }\n        sort(result.begin(), result.end());\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.676788"
+}

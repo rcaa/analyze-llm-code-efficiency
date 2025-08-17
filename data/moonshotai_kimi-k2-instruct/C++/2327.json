@@ -1,0 +1,15 @@
+{
+  "id": 2327,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const long long MOD = 1'000'000'007;\n        vector<long long> dp(n + 1, 0);\n        dp[1] = 1;\n        for (int day = 2; day <= n; ++day) {\n            long long share = 0;\n            for (int prev = day - forget + 1; prev <= day - delay; ++prev) {\n                if (prev >= 1) {\n                    share = (share + dp[prev]) % MOD;\n                }\n            }\n            dp[day] = share;\n        }\n        long long res = 0;\n        for (int day = n - forget + 1; day <= n; ++day) {\n            if (day >= 1) {\n                res = (res + dp[day]) % MOD;\n            }\n        }\n        return static_cast<int>(res);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n * forget)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a dynamic-programming array dp[day] to count new people who learn the secret on each day. For each day, the number of new people equals the sum of all people who are still active (not forgotten) and have waited at least delay days. The final answer is the sum of dp over the last forget days.",
+  "code": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const long long MOD = 1'000'000'007;\n        vector<long long> dp(n + 1, 0);\n        dp[1] = 1;\n        for (int day = 2; day <= n; ++day) {\n            long long share = 0;\n            for (int prev = day - forget + 1; prev <= day - delay; ++prev) {\n                if (prev >= 1) {\n                    share = (share + dp[prev]) % MOD;\n                }\n            }\n            dp[day] = share;\n        }\n        long long res = 0;\n        for (int day = n - forget + 1; day <= n; ++day) {\n            if (day >= 1) {\n                res = (res + dp[day]) % MOD;\n            }\n        }\n        return static_cast<int>(res);\n    }\n};",
+  "timestamp": "2025-08-05T14:26:37.206443",
+  "code_extracted_previous": "class Solution {\npublic:\n    int peopleAwareOfSecret(int n, int delay, int forget) {\n        const long long MOD = 1'000'000'007;\n        vector<long long> dp(n + 1, 0);\n        dp[1] = 1;\n        for (int day = 2; day <= n; ++day) {\n            long long share = 0;\n            for (int prev = day - forget + 1; prev <= day - delay; ++prev) {\n                if (prev >= 1) {\n                    share = (share + dp[prev]) % MOD;\n                }\n            }\n            dp[day] = share;\n        }\n        long long res = 0;\n        for (int day = n - forget + 1; day <= n; ++day) {\n            if (day >= 1) {\n                res = (res + dp[day]) % MOD;\n            }\n        }\n        return static_cast<int>(res);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.653123"
+}

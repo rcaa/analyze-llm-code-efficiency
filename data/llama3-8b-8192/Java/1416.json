@@ -1,0 +1,15 @@
+{
+  "id": 1416,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int numberOfArrays(String s, int k) {\n        int MOD = 1000000007;\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 0; i < n; i++) {\n            int cur = s.charAt(i) - '0';\n            for (int j = Math.max(0, i - 1); j >= 0; j--) {\n                if (cur <= k) {\n                    dp[i + 1] = (dp[i + 1] + dp[j]) % MOD;\n                }\n                cur = cur * 10 + (s.charAt(j + 1) - '0');\n            }\n        }\n        return dp[n];\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to count the number of possible arrays. It iterates over the string and for each character, it tries to extend the current array with all possible numbers from the previous arrays. The time complexity is O(n^2) because for each character, it iterates over the previous characters. The space complexity is O(n) for the dynamic programming array.",
+  "code": "class Solution {\n    public int numberOfArrays(String s, int k) {\n        int MOD = 1000000007;\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 0; i < n; i++) {\n            int cur = s.charAt(i) - '0';\n            for (int j = Math.max(0, i - 1); j >= 0; j--) {\n                if (cur <= k) {\n                    dp[i + 1] = (dp[i + 1] + dp[j]) % MOD;\n                }\n                cur = cur * 10 + (s.charAt(j + 1) - '0');\n            }\n        }\n        return dp[n];\n    }\n}",
+  "timestamp": "2025-08-05T16:12:27.430334",
+  "code_extracted_previous": "class Solution {\n    public int numberOfArrays(String s, int k) {\n        int MOD = 1000000007;\n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1;\n        for (int i = 0; i < n; i++) {\n            int cur = s.charAt(i) - '0';\n            for (int j = Math.max(0, i - 1); j >= 0; j--) {\n                if (cur <= k) {\n                    dp[i + 1] = (dp[i + 1] + dp[j]) % MOD;\n                }\n                cur = cur * 10 + (s.charAt(j + 1) - '0');\n            }\n        }\n        return dp[n];\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:41.969333"
+}

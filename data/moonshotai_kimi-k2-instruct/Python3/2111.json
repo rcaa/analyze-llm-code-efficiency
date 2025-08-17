@@ -1,0 +1,15 @@
+{
+  "id": 2111,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```\nfrom bisect import bisect_right\nclass Solution:\n    def kIncreasing(self, arr: List[int], k: int) -> int:\n        n = len(arr)\n        res = 0\n        for r in range(k):\n            seq = arr[r:n:k]\n            tails = []\n            for val in seq:\n                idx = bisect_right(tails, val)\n                if idx == len(tails):\n                    tails.append(val)\n                else:\n                    tails[idx] = val\n            res += len(seq) - len(tails)\n        return res\n```\nefficiency: HIGH\ntime complexity: O(n log(n/k))\nspace complexity: O(n/k)\nenergy implications: LOW\nexplanation: Split the array into k independent subsequences (indices congruent mod k). For each subsequence compute the minimal replacements to make it non-decreasing by finding the length of the longest non-decreasing subsequence (LIS variant) via patience sorting. The answer is the total elements minus the total LIS lengths.",
+  "code": "class Solution:\n    def kIncreasing(self, arr: List[int], k: int) -> int:\n        n = len(arr)\n        res = 0\n        for r in range(k):\n            seq = arr[r:n:k]\n            tails = []\n            for val in seq:\n                idx = bisect_right(tails, val)\n                if idx == len(tails):\n                    tails.append(val)\n                else:\n                    tails[idx] = val\n            res += len(seq) - len(tails)\n        return res",
+  "timestamp": "2025-08-05T12:05:32.350980",
+  "code_extracted_previous": "from bisect import bisect_right\nclass Solution:\n    def kIncreasing(self, arr: List[int], k: int) -> int:\n        n = len(arr)\n        res = 0\n        for r in range(k):\n            seq = arr[r:n:k]\n            tails = []\n            for val in seq:\n                idx = bisect_right(tails, val)\n                if idx == len(tails):\n                    tails.append(val)\n                else:\n                    tails[idx] = val\n            res += len(seq) - len(tails)\n        return res",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.511522"
+}

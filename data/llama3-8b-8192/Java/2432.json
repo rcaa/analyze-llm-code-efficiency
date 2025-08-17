@@ -1,0 +1,15 @@
+{
+  "id": 2432,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int hardestWorker(int n, int[][] logs) {\n        int maxTime = 0;\n        int res = 0;\n        for (int i = 0; i < logs.length; i++) {\n            if (i == 0) {\n                maxTime = logs[i][1];\n            } else {\n                maxTime = Math.max(maxTime, logs[i][1] - logs[i - 1][1]);\n            }\n            if (logs[i][1] - logs[i - 1][1] > maxTime) {\n                maxTime = logs[i][1] - logs[i - 1][1];\n                res = logs[i][0];\n            }\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through the logs array once, keeping track of the maximum time and the employee who worked on the task with that time. It uses a simple comparison to update the maximum time and the result. The time complexity is O(n) because it iterates through the array once, and the space complexity is O(1) because it only uses a constant amount of space to store the maximum time and the result.",
+  "code": "class Solution {\n    public int hardestWorker(int n, int[][] logs) {\n        int maxTime = 0;\n        int res = 0;\n        for (int i = 0; i < logs.length; i++) {\n            if (i == 0) {\n                maxTime = logs[i][1];\n            } else {\n                maxTime = Math.max(maxTime, logs[i][1] - logs[i - 1][1]);\n            }\n            if (logs[i][1] - logs[i - 1][1] > maxTime) {\n                maxTime = logs[i][1] - logs[i - 1][1];\n                res = logs[i][0];\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T12:47:45.878039",
+  "code_extracted_previous": "public int hardestWorker(int n, int[][] logs) {\n        int maxTime = 0;\n        int res = 0;\n        for (int i = 0; i < logs.length; i++) {\n            if (i == 0) {\n                maxTime = logs[i][1];\n            } else {\n                maxTime = Math.max(maxTime, logs[i][1] - logs[i - 1][1]);\n            }\n            if (logs[i][1] - logs[i - 1][1] > maxTime) {\n                maxTime = logs[i][1] - logs[i - 1][1];\n                res = logs[i][0];\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.414785"
+}

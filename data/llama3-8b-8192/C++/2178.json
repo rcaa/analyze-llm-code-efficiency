@@ -1,0 +1,15 @@
+{
+  "id": 2178,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nvector<long long> maximumEvenSplit(long long finalSum) {\n    if (finalSum % 2 != 0) return {};\n    long long sum = 0, count = 0;\n    for (long long i = 2; i <= finalSum; i += 2) {\n        if (sum + i > finalSum) break;\n        sum += i;\n        count++;\n    }\n    vector<long long> res;\n    for (long long i = 2; i <= finalSum; i += 2) {\n        if (sum <= finalSum) {\n            res.push_back(i);\n            sum -= i;\n        } else break;\n    }\n    return res;\n}\n```\nefficiency: HIGH\ntime complexity: O(sqrt(finalSum))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through even numbers starting from 2, adding each number to a running sum until the sum exceeds the finalSum. It then constructs the result list by subtracting each added number from the sum until the sum becomes less than or equal to the finalSum. This approach ensures that the maximum number of unique positive even integers are included in the result.",
+  "code": "vector<long long> maximumEvenSplit(long long finalSum) {\n    if (finalSum % 2 != 0) return {};\n    long long sum = 0, count = 0;\n    for (long long i = 2; i <= finalSum; i += 2) {\n        if (sum + i > finalSum) break;\n        sum += i;\n        count++;\n    }\n    vector<long long> res;\n    for (long long i = 2; i <= finalSum; i += 2) {\n        if (sum <= finalSum) {\n            res.push_back(i);\n            sum -= i;\n        } else break;\n    }\n    return res;\n}",
+  "timestamp": "2025-08-05T15:56:35.018129",
+  "code_extracted_previous": "vector<long long> maximumEvenSplit(long long finalSum) {\n    if (finalSum % 2 != 0) return {};\n    long long sum = 0, count = 0;\n    for (long long i = 2; i <= finalSum; i += 2) {\n        if (sum + i > finalSum) break;\n        sum += i;\n        count++;\n    }\n    vector<long long> res;\n    for (long long i = 2; i <= finalSum; i += 2) {\n        if (sum <= finalSum) {\n            res.push_back(i);\n            sum -= i;\n        } else break;\n    }\n    return res;\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:40.867228"
+}

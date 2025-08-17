@@ -1,0 +1,15 @@
+{
+  "id": 600,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def findIntegers(self, n: int) -> int:\n        s = bin(n)[2:]\n        k = len(s)\n        # dp[i][last] = count of valid i-bit numbers ending with last (0 or 1)\n        # Precompute Fibonacci numbers for 0..k bits\n        fib = [0]*(k+2)\n        fib[0] = 1\n        fib[1] = 2\n        for i in range(2, k+1):\n            fib[i] = fib[i-1] + fib[i-2]\n        res = 0\n        for i in range(k):\n            if s[i] == '1':\n                res += fib[k-1-i]\n                # Check if previous bit is also 1 -> consecutive ones\n                if i > 0 and s[i-1] == '1':\n                    return res\n        # If we reach here, n itself is valid\n        return res + 1\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: Uses digit-DP with Fibonacci precomputation to count valid numbers ≤ n without consecutive 1s. Iterates over bits once, leveraging the fact that counts of valid numbers of length L are Fibonacci numbers. Early exits on detecting consecutive 1s.",
+  "code": "class Solution:\n    def findIntegers(self, n: int) -> int:\n        s = bin(n)[2:]\n        k = len(s)\n        # dp[i][last] = count of valid i-bit numbers ending with last (0 or 1)\n        # Precompute Fibonacci numbers for 0..k bits\n        fib = [0]*(k+2)\n        fib[0] = 1\n        fib[1] = 2\n        for i in range(2, k+1):\n            fib[i] = fib[i-1] + fib[i-2]\n        res = 0\n        for i in range(k):\n            if s[i] == '1':\n                res += fib[k-1-i]\n                # Check if previous bit is also 1 -> consecutive ones\n                if i > 0 and s[i-1] == '1':\n                    return res\n        # If we reach here, n itself is valid\n        return res + 1",
+  "timestamp": "2025-08-05T14:16:11.799016",
+  "code_extracted_previous": "class Solution:\n    def findIntegers(self, n: int) -> int:\n        s = bin(n)[2:]\n        k = len(s)\n        # dp[i][last] = count of valid i-bit numbers ending with last (0 or 1)\n        # Precompute Fibonacci numbers for 0..k bits\n        fib = [0]*(k+2)\n        fib[0] = 1\n        fib[1] = 2\n        for i in range(2, k+1):\n            fib[i] = fib[i-1] + fib[i-2]\n        res = 0\n        for i in range(k):\n            if s[i] == '1':\n                res += fib[k-1-i]\n                # Check if previous bit is also 1 -> consecutive ones\n                if i > 0 and s[i-1] == '1':\n                    return res\n        # If we reach here, n itself is valid\n        return res + 1",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:57.335797"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1163,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        int maxIndex = 0;\n        for (int i = 1; i < n; i++) {\n            if (s.charAt(i) > s.charAt(maxIndex)) {\n                maxIndex = i;\n            } else if (s.charAt(i) == s.charAt(maxIndex)) {\n                int j = maxIndex;\n                while (j < n && i + j - maxIndex < n && s.charAt(i + j - maxIndex) == s.charAt(j)) {\n                    j++;\n                }\n                if (i + j - maxIndex > maxIndex) {\n                    maxIndex = i;\n                }\n            }\n        }\n        return s.substring(maxIndex);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterates through string to find lexicographically maximum substring by comparing characters and updating maxIndex.",
+  "code": "class Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        int maxIndex = 0;\n        for (int i = 1; i < n; i++) {\n            if (s.charAt(i) > s.charAt(maxIndex)) {\n                maxIndex = i;\n            } else if (s.charAt(i) == s.charAt(maxIndex)) {\n                int j = maxIndex;\n                while (j < n && i + j - maxIndex < n && s.charAt(i + j - maxIndex) == s.charAt(j)) {\n                    j++;\n                }\n                if (i + j - maxIndex > maxIndex) {\n                    maxIndex = i;\n                }\n            }\n        }\n        return s.substring(maxIndex);\n    }\n}",
+  "timestamp": "2025-08-06T01:15:15.757333",
+  "code_extracted_previous": "class Solution {\n    public String lastSubstring(String s) {\n        int n = s.length();\n        int maxIndex = 0;\n        for (int i = 1; i < n; i++) {\n            if (s.charAt(i) > s.charAt(maxIndex)) {\n                maxIndex = i;\n            } else if (s.charAt(i) == s.charAt(maxIndex)) {\n                int j = maxIndex;\n                while (j < n && i + j - maxIndex < n && s.charAt(i + j - maxIndex) == s.charAt(j)) {\n                    j++;\n                }\n                if (i + j - maxIndex > maxIndex) {\n                    maxIndex = i;\n                }\n            }\n        }\n        return s.substring(maxIndex);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.290364"
+}

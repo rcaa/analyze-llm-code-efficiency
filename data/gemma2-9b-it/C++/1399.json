@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    int countLargestGroup(int n) {\n        vector<int> sum(10, 0);\n        for (int i = 1; i <= n; ++i) {\n            int s = 0;\n            int num = i;\n            while (num > 0) {\n                s += num % 10;\n                num /= 10;\n            }\n            sum[s]++;\n        }\n        int max_size = 0;\n        for (int i = 0; i < 10; ++i) {\n            max_size = max(max_size, sum[i]);\n        }\n        return count(sum.begin(), sum.end(), max_size);\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through numbers 1 to n, calculates the sum of digits for each number, and stores the count of numbers with the same digit sum in an array. It then finds the maximum count and returns the number of occurrences of that maximum count.  The algorithm's efficiency stems from using a fixed-size array to store digit sums, avoiding the need for dynamic memory allocation and hash tables.\n",
+  "code": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        vector<int> sum(10, 0);\n        for (int i = 1; i <= n; ++i) {\n            int s = 0;\n            int num = i;\n            while (num > 0) {\n                s += num % 10;\n                num /= 10;\n            }\n            sum[s]++;\n        }\n        int max_size = 0;\n        for (int i = 0; i < 10; ++i) {\n            max_size = max(max_size, sum[i]);\n        }\n        return count(sum.begin(), sum.end(), max_size);\n    }\n};",
+  "timestamp": "2025-08-05T14:43:02.381815",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countLargestGroup(int n) {\n        vector<int> sum(10, 0);\n        for (int i = 1; i <= n; ++i) {\n            int s = 0;\n            int num = i;\n            while (num > 0) {\n                s += num % 10;\n                num /= 10;\n            }\n            sum[s]++;\n        }\n        int max_size = 0;\n        for (int i = 0; i < 10; ++i) {\n            max_size = max(max_size, sum[i]);\n        }\n        return count(sum.begin(), sum.end(), max_size);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:23.225812"
+}

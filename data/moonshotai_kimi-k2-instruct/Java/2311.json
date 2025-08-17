@@ -1,0 +1,15 @@
+{
+  "id": 2311,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int zeros = 0;\n        for (char c : s.toCharArray()) if (c == '0') zeros++;\n        \n        long val = 0;\n        int len = 0;\n        for (int i = n - 1; i >= 0; --i) {\n            if (s.charAt(i) == '0') {\n                len++;\n            } else {\n                if (len < 30 && (val | (1L << len)) <= k) {\n                    val |= 1L << len;\n                    len++;\n                }\n            }\n        }\n        return Math.max(len, zeros);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Greedy right-to-left scan keeps the smallest possible value by placing 1s in the lowest bit positions; any 0 is always safe and taken. The 30-bit check prevents overflow of long.",
+  "code": "class Solution {\n    public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int zeros = 0;\n        for (char c : s.toCharArray()) if (c == '0') zeros++;\n        \n        long val = 0;\n        int len = 0;\n        for (int i = n - 1; i >= 0; --i) {\n            if (s.charAt(i) == '0') {\n                len++;\n            } else {\n                if (len < 30 && (val | (1L << len)) <= k) {\n                    val |= 1L << len;\n                    len++;\n                }\n            }\n        }\n        return Math.max(len, zeros);\n    }\n}",
+  "timestamp": "2025-08-06T00:59:04.474216",
+  "code_extracted_previous": "public int longestSubsequence(String s, int k) {\n        int n = s.length();\n        int zeros = 0;\n        for (char c : s.toCharArray()) if (c == '0') zeros++;\n        \n        long val = 0;\n        int len = 0;\n        for (int i = n - 1; i >= 0; --i) {\n            if (s.charAt(i) == '0') {\n                len++;\n            } else {\n                if (len < 30 && (val | (1L << len)) <= k) {\n                    val |= 1L << len;\n                    len++;\n                }\n            }\n        }\n        return Math.max(len, zeros);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.986111"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2825,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool canMakeSubsequence(string str1, string str2) {\n        int n = str1.size(), m = str2.size();\n        int last[26] = {0};\n        for (int i = 0; i < m; i++) {\n            last[str2[i] - 'a'] = i;\n        }\n        int prev = -1;\n        for (int i = 0; i < n; i++) {\n            if (str1[i] != str2[prev + 1]) {\n                if (last[str1[i] - 'a'] != 0 && last[str1[i] - 'a'] != prev + 1) {\n                    prev = last[str1[i] - 'a'];\n                } else {\n                    return false;\n                }\n            } else {\n                prev++;\n            }\n            if (prev == m - 1) {\n                return true;\n            }\n        }\n        return false;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(m)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    bool canMakeSubsequence(string str1, string str2) {\n        int n = str1.size(), m = str2.size();\n        int last[26] = {0};\n        for (int i = 0; i < m; i++) {\n            last[str2[i] - 'a'] = i;\n        }\n        int prev = -1;\n        for (int i = 0; i < n; i++) {\n            if (str1[i] != str2[prev + 1]) {\n                if (last[str1[i] - 'a'] != 0 && last[str1[i] - 'a'] != prev + 1) {\n                    prev = last[str1[i] - 'a'];\n                } else {\n                    return false;\n                }\n            } else {\n                prev++;\n            }\n            if (prev == m - 1) {\n                return true;\n            }\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-06T01:47:17.511263",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canMakeSubsequence(string str1, string str2) {\n        int n = str1.size(), m = str2.size();\n        int last[26] = {0};\n        for (int i = 0; i < m; i++) {\n            last[str2[i] - 'a'] = i;\n        }\n        int prev = -1;\n        for (int i = 0; i < n; i++) {\n            if (str1[i] != str2[prev + 1]) {\n                if (last[str1[i] - 'a'] != 0 && last[str1[i] - 'a'] != prev + 1) {\n                    prev = last[str1[i] - 'a'];\n                } else {\n                    return false;\n                }\n            } else {\n                prev++;\n            }\n            if (prev == m - 1) {\n                return true;\n            }\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.260644"
+}

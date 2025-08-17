@@ -1,0 +1,15 @@
+{
+  "id": 1160,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        int charCount[26] = {0};\n        for (char c : chars) {\n            charCount[c - 'a']++;\n        }\n        int totalLength = 0;\n        for (string word : words) {\n            int wordCount[26] = {0};\n            bool isGood = true;\n            for (char c : word) {\n                wordCount[c - 'a']++;\n                if (wordCount[c - 'a'] > charCount[c - 'a']) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                totalLength += word.size();\n            }\n        }\n        return totalLength;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N*M)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over each word and character, using a frequency count array to check if a word can be formed from the given characters, resulting in a linear time complexity. The space complexity is constant as the size of the frequency count array is fixed.",
+  "code": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        int charCount[26] = {0};\n        for (char c : chars) {\n            charCount[c - 'a']++;\n        }\n        int totalLength = 0;\n        for (string word : words) {\n            int wordCount[26] = {0};\n            bool isGood = true;\n            for (char c : word) {\n                wordCount[c - 'a']++;\n                if (wordCount[c - 'a'] > charCount[c - 'a']) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                totalLength += word.size();\n            }\n        }\n        return totalLength;\n    }\n};",
+  "timestamp": "2025-08-05T12:38:14.676409",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        int charCount[26] = {0};\n        for (char c : chars) {\n            charCount[c - 'a']++;\n        }\n        int totalLength = 0;\n        for (string word : words) {\n            int wordCount[26] = {0};\n            bool isGood = true;\n            for (char c : word) {\n                wordCount[c - 'a']++;\n                if (wordCount[c - 'a'] > charCount[c - 'a']) {\n                    isGood = false;\n                    break;\n                }\n            }\n            if (isGood) {\n                totalLength += word.size();\n            }\n        }\n        return totalLength;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:44.636111"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass FreqStack {\n    Map<Integer, Integer> freq;\n    Map<Integer, Stack<Integer>> group;\n    int maxFreq;\n\n    public FreqStack() {\n        freq = new HashMap<>();\n        group = new HashMap<>();\n        maxFreq = 0;\n    }\n    \n    public void push(int val) {\n        int f = freq.getOrDefault(val, 0) + 1;\n        freq.put(val, f);\n        if (!group.containsKey(f)) {\n            group.put(f, new Stack<>());\n        }\n        group.get(f).push(val);\n        maxFreq = Math.max(maxFreq, f);\n    }\n    \n    public int pop() {\n        int val = group.get(maxFreq).pop();\n        freq.put(val, freq.get(val) - 1);\n        if (group.get(maxFreq).isEmpty()) {\n            maxFreq--;\n        }\n        return val;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses two maps, one to store the frequency of each element and another to group elements by their frequency. The push operation updates the frequency and groups the elements accordingly. The pop operation removes the top element from the group with the highest frequency.",
+  "code": "class FreqStack {\n    Map<Integer, Integer> freq;\n    Map<Integer, Stack<Integer>> group;\n    int maxFreq;\n\n    public FreqStack() {\n        freq = new HashMap<>();\n        group = new HashMap<>();\n        maxFreq = 0;\n    }\n    \n    public void push(int val) {\n        int f = freq.getOrDefault(val, 0) + 1;\n        freq.put(val, f);\n        if (!group.containsKey(f)) {\n            group.put(f, new Stack<>());\n        }\n        group.get(f).push(val);\n        maxFreq = Math.max(maxFreq, f);\n    }\n    \n    public int pop() {\n        int val = group.get(maxFreq).pop();\n        freq.put(val, freq.get(val) - 1);\n        if (group.get(maxFreq).isEmpty()) {\n            maxFreq--;\n        }\n        return val;\n    }\n}",
+  "timestamp": "2025-08-05T14:37:49.672239",
+  "code_extracted_previous": "class FreqStack {\n    Map<Integer, Integer> freq;\n    Map<Integer, Stack<Integer>> group;\n    int maxFreq;\n\n    public FreqStack() {\n        freq = new HashMap<>();\n        group = new HashMap<>();\n        maxFreq = 0;\n    }\n    \n    public void push(int val) {\n        int f = freq.getOrDefault(val, 0) + 1;\n        freq.put(val, f);\n        if (!group.containsKey(f)) {\n            group.put(f, new Stack<>());\n        }\n        group.get(f).push(val);\n        maxFreq = Math.max(maxFreq, f);\n    }\n    \n    public int pop() {\n        int val = group.get(maxFreq).pop();\n        freq.put(val, freq.get(val) - 1);\n        if (group.get(maxFreq).isEmpty()) {\n            maxFreq--;\n        }\n        return val;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:38.758140"
+}

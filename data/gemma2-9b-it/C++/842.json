@@ -1,0 +1,15 @@
+{
+  "id": 842,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```c++\nclass Solution {\npublic:\n    vector<int> splitIntoFibonacci(string num) {\n        vector<int> res;\n        long long prev = 0, curr = 0;\n        for (int i = 0; i < num.size(); ++i) {\n            curr = curr * 10 + (num[i] - '0');\n            if (curr > INT_MAX) return {};\n            if (i > 0 && prev == 0) {\n                res.push_back(curr);\n                prev = curr;\n                curr = 0;\n            } else if (curr == prev + res.back()) {\n                res.push_back(curr);\n                prev = curr;\n                curr = 0;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The algorithm iterates through the digits of the input string, building a Fibonacci-like sequence. It maintains two variables, `prev` and `curr`, representing the previous and current numbers in the sequence. If the current number is valid (fits in an integer and satisfies the Fibonacci condition), it is added to the result vector.\n\n\n\n",
+  "code": "class Solution {\npublic:\n    vector<int> splitIntoFibonacci(string num) {\n        vector<int> res;\n        long long prev = 0, curr = 0;\n        for (int i = 0; i < num.size(); ++i) {\n            curr = curr * 10 + (num[i] - '0');\n            if (curr > INT_MAX) return {};\n            if (i > 0 && prev == 0) {\n                res.push_back(curr);\n                prev = curr;\n                curr = 0;\n            } else if (curr == prev + res.back()) {\n                res.push_back(curr);\n                prev = curr;\n                curr = 0;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T23:56:14.405107",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> splitIntoFibonacci(string num) {\n        vector<int> res;\n        long long prev = 0, curr = 0;\n        for (int i = 0; i < num.size(); ++i) {\n            curr = curr * 10 + (num[i] - '0');\n            if (curr > INT_MAX) return {};\n            if (i > 0 && prev == 0) {\n                res.push_back(curr);\n                prev = curr;\n                curr = 0;\n            } else if (curr == prev + res.back()) {\n                res.push_back(curr);\n                prev = curr;\n                curr = 0;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.349184"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 657,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public boolean judgeCircle(String moves) {\n        int[][] map = new int[2][2];\n        map[0][0] = map[1][1] = 0; // Initialize the bottom-right corner to 0\n\n        String[] directions = moves.split(\" \");\n        int x = 0, y = 0;\n\n        for (String direction : directions) {\n            if (direction.equals(\"U\")) {\n                y++;\n            } else if (direction.equals(\"D\")) {\n                y--;\n            } else if (direction.equals(\"L\")) {\n                x--;\n            } else {\n                x++;\n            }\n            map[x][y]++;\n        }\n\n        return map[0][0] == 0 && map[1][1] == 0;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nWe use a 2x2 matrix to keep track of the robot's position after each move. We iterate through the given directions and update the matrix accordingly. After all moves, we check if both bottom-left and top-right cells of the matrix are 0, indicating that the robot has returned to the origin (0, 0). ",
+  "code": "class Solution {\n    public boolean judgeCircle(String moves) {\n        int[][] map = new int[2][2];\n        map[0][0] = map[1][1] = 0; // Initialize the bottom-right corner to 0\n\n        String[] directions = moves.split(\" \");\n        int x = 0, y = 0;\n\n        for (String direction : directions) {\n            if (direction.equals(\"U\")) {\n                y++;\n            } else if (direction.equals(\"D\")) {\n                y--;\n            } else if (direction.equals(\"L\")) {\n                x--;\n            } else {\n                x++;\n            }\n            map[x][y]++;\n        }\n\n        return map[0][0] == 0 && map[1][1] == 0;\n    }\n}",
+  "timestamp": "2025-08-05T16:35:05.350819",
+  "code_extracted_previous": "class Solution {\n    public boolean judgeCircle(String moves) {\n        int[][] map = new int[2][2];\n        map[0][0] = map[1][1] = 0; // Initialize the bottom-right corner to 0\n\n        String[] directions = moves.split(\" \");\n        int x = 0, y = 0;\n\n        for (String direction : directions) {\n            if (direction.equals(\"U\")) {\n                y++;\n            } else if (direction.equals(\"D\")) {\n                y--;\n            } else if (direction.equals(\"L\")) {\n                x--;\n            } else {\n                x++;\n            }\n            map[x][y]++;\n        }\n\n        return map[0][0] == 0 && map[1][1] == 0;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.820792"
+}

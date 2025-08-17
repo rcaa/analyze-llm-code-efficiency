@@ -1,0 +1,15 @@
+{
+  "id": 2071,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public int maxTaskAssign(int[] tasks, int[] workers, int pills, int strength) {\n        Arrays.sort(tasks);\n        Arrays.sort(workers);\n        int res = 0;\n        int i = tasks.length - 1, j = workers.length - 1;\n        while (i >= 0 && j >= 0) {\n            if (workers[j] >= tasks[i]) {\n                res++;\n                i--;\n                j--;\n            } else if (pills > 0 && workers[j] + strength >= tasks[i]) {\n                res++;\n                pills--;\n                i--;\n                j--;\n            } else {\n                j--;\n            }\n        }\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: We sort the tasks and workers arrays to efficiently find the maximum number of tasks that can be completed. We then iterate through the arrays, assigning tasks to workers based on their strength. If a worker is not strong enough, we check if we have pills to give them a boost. If we do, we assign the task and decrement the pill count.",
+  "code": "class Solution {\n    public int maxTaskAssign(int[] tasks, int[] workers, int pills, int strength) {\n        Arrays.sort(tasks);\n        Arrays.sort(workers);\n        int res = 0;\n        int i = tasks.length - 1, j = workers.length - 1;\n        while (i >= 0 && j >= 0) {\n            if (workers[j] >= tasks[i]) {\n                res++;\n                i--;\n                j--;\n            } else if (pills > 0 && workers[j] + strength >= tasks[i]) {\n                res++;\n                pills--;\n                i--;\n                j--;\n            } else {\n                j--;\n            }\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T02:27:55.014139",
+  "code_extracted_previous": "public int maxTaskAssign(int[] tasks, int[] workers, int pills, int strength) {\n        Arrays.sort(tasks);\n        Arrays.sort(workers);\n        int res = 0;\n        int i = tasks.length - 1, j = workers.length - 1;\n        while (i >= 0 && j >= 0) {\n            if (workers[j] >= tasks[i]) {\n                res++;\n                i--;\n                j--;\n            } else if (pills > 0 && workers[j] + strength >= tasks[i]) {\n                res++;\n                pills--;\n                i--;\n                j--;\n            } else {\n                j--;\n            }\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.135426"
+}

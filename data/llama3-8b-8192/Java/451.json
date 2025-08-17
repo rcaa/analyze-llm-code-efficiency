@@ -1,0 +1,15 @@
+{
+  "id": 451,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> map = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            map.put(c, map.getOrDefault(c, 0) + 1);\n        }\n        List<Character> list = new ArrayList<>(map.keySet());\n        list.sort((a, b) -> map.get(b).compareTo(map.get(a)));\n        StringBuilder sb = new StringBuilder();\n        for (char c : list) {\n            int count = map.get(c);\n            while (count-- > 0) {\n                sb.append(c);\n            }\n        }\n        return sb.toString();\n    }\n}```\nefficiency: HIGH\ntime complexity: O(N log N)\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: This solution first counts the frequency of each character using a HashMap. Then, it sorts the characters based on their frequencies in descending order. Finally, it constructs the result string by appending each character to a StringBuilder as many times as its frequency.",
+  "code": "class Solution {\n    public String frequencySort(String s) {\n        Map<Character, Integer> map = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            map.put(c, map.getOrDefault(c, 0) + 1);\n        }\n        List<Character> list = new ArrayList<>(map.keySet());\n        list.sort((a, b) -> map.get(b).compareTo(map.get(a)));\n        StringBuilder sb = new StringBuilder();\n        for (char c : list) {\n            int count = map.get(c);\n            while (count-- > 0) {\n                sb.append(c);\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-05T14:53:45.952417",
+  "code_extracted_previous": "public String frequencySort(String s) {\n        Map<Character, Integer> map = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            map.put(c, map.getOrDefault(c, 0) + 1);\n        }\n        List<Character> list = new ArrayList<>(map.keySet());\n        list.sort((a, b) -> map.get(b).compareTo(map.get(a)));\n        StringBuilder sb = new StringBuilder();\n        for (char c : list) {\n            int count = map.get(c);\n            while (count-- > 0) {\n                sb.append(c);\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.798070"
+}

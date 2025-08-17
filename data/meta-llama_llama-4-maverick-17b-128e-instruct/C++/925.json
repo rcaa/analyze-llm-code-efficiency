@@ -1,0 +1,15 @@
+{
+  "id": 925,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    bool isLongPressedName(string name, string typed) {\n        int i = 0, j = 0;\n        while (j < typed.size()) {\n            if (i < name.size() && name[i] == typed[j]) {\n                i++;\n                j++;\n            } else if (j > 0 && typed[j] == typed[j - 1]) {\n                j++;\n            } else {\n                return false;\n            }\n        }\n        return i == name.size();\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(max(n, m))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Two pointers are used to traverse 'name' and 'typed'. If characters match, both pointers move forward. If not, 'typed' pointer moves forward if the current character is the same as the previous one, indicating a long press. If 'name' is fully traversed and 'typed' has no unmatched characters, the function returns true.",
+  "code": "class Solution {\npublic:\n    bool isLongPressedName(string name, string typed) {\n        int i = 0, j = 0;\n        while (j < typed.size()) {\n            if (i < name.size() && name[i] == typed[j]) {\n                i++;\n                j++;\n            } else if (j > 0 && typed[j] == typed[j - 1]) {\n                j++;\n            } else {\n                return false;\n            }\n        }\n        return i == name.size();\n    }\n};",
+  "timestamp": "2025-08-06T01:30:47.214669",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool isLongPressedName(string name, string typed) {\n        int i = 0, j = 0;\n        while (j < typed.size()) {\n            if (i < name.size() && name[i] == typed[j]) {\n                i++;\n                j++;\n            } else if (j > 0 && typed[j] == typed[j - 1]) {\n                j++;\n            } else {\n                return false;\n            }\n        }\n        return i == name.size();\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.910674"
+}

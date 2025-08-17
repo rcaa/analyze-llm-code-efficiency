@@ -1,0 +1,15 @@
+{
+  "id": 837,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        if k == 0:\n            return 1.0\n        dp = [0.0] * (n + 1)\n        for i in range(k, min(n + 1, k + maxPts + 1)):\n            dp[i] = 1.0 / maxPts\n        for i in range(k - 1, -1, -1):\n            s = sum(dp[min(i + maxPts, n) + 1: min(i, n) + 1:-1]) \n            dp[i] = s / maxPts\n        return dp[0]\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming approach calculating probabilities iteratively.",
+  "code": "class Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        if k == 0:\n            return 1.0\n        dp = [0.0] * (n + 1)\n        for i in range(k, min(n + 1, k + maxPts + 1)):\n            dp[i] = 1.0 / maxPts\n        for i in range(k - 1, -1, -1):\n            s = sum(dp[min(i + maxPts, n) + 1: min(i, n) + 1:-1]) \n            dp[i] = s / maxPts\n        return dp[0]",
+  "timestamp": "2025-08-05T15:45:42.006626",
+  "code_extracted_previous": "class Solution:\n    def new21Game(self, n: int, k: int, maxPts: int) -> float:\n        if k == 0:\n            return 1.0\n        dp = [0.0] * (n + 1)\n        for i in range(k, min(n + 1, k + maxPts + 1)):\n            dp[i] = 1.0 / maxPts\n        for i in range(k - 1, -1, -1):\n            s = sum(dp[min(i + maxPts, n) + 1: min(i, n) + 1:-1]) \n            dp[i] = s / maxPts\n        return dp[0]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.971112"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3403,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    string answerString(string word, int numFriends) {\n        string ans = word;\n        for (int i = word.length() - 1; i >= numFriends; --i) {\n            for (int j = 0; j <= i - numFriends; ++j) {\n                string left = word.substr(0, j + 1);\n                string right = word.substr(j + 1, i - j);\n                if (left > ans) ans = left;\n                if (right > ans) ans = right;\n            }\n        }\n        return ans;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2 * m)\nspace complexity: O(m)\nenergy implications: MEDIUM\nexplanation: This solution uses a brute-force approach to generate all possible splits of the word and find the lexicographically largest string. It has a high time complexity due to the nested loops, but it is efficient in terms of space complexity as it only uses a constant amount of space to store the current answer and the temporary strings.",
+  "code": "class Solution {\npublic:\n    string answerString(string word, int numFriends) {\n        string ans = word;\n        for (int i = word.length() - 1; i >= numFriends; --i) {\n            for (int j = 0; j <= i - numFriends; ++j) {\n                string left = word.substr(0, j + 1);\n                string right = word.substr(j + 1, i - j);\n                if (left > ans) ans = left;\n                if (right > ans) ans = right;\n            }\n        }\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T18:38:01.253668",
+  "code_extracted_previous": "class Solution {\npublic:\n    string answerString(string word, int numFriends) {\n        string ans = word;\n        for (int i = word.length() - 1; i >= numFriends; --i) {\n            for (int j = 0; j <= i - numFriends; ++j) {\n                string left = word.substr(0, j + 1);\n                string right = word.substr(j + 1, i - j);\n                if (left > ans) ans = left;\n                if (right > ans) ans = right;\n            }\n        }\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.403532"
+}

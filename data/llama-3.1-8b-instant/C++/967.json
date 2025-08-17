@@ -1,0 +1,15 @@
+{
+  "id": 967,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<int> numsSameConsecDiff(int n, int k) {\n        vector<int> res;\n        for (int i = 1; i < pow(10, n); i++) {\n            if (isValid(i, n, k)) {\n                res.push_back(i);\n            }\n        }\n        return res;\n    }\n    \n    bool isValid(int num, int n, int k) {\n        int count = 0;\n        while (num > 0) {\n            int digit = num % 10;\n            if (count > 0 && abs(digit - (num / 10) % 10) != k) {\n                return false;\n            }\n            count++;\n            num /= 10;\n        }\n        return count == n;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(10^n)\nspace complexity: O(10^n)\nenergy implications: MEDIUM\nexplanation: This solution uses a brute-force approach to generate all possible numbers of length n and checks if they satisfy the given condition. The isValid function checks if the difference between every two consecutive digits is k. The time complexity is O(10^n) because we are generating all possible numbers of length n. The space complexity is also O(10^n) because we are storing all valid numbers in the result vector.",
+  "code": "class Solution {\npublic:\n    vector<int> numsSameConsecDiff(int n, int k) {\n        vector<int> res;\n        for (int i = 1; i < pow(10, n); i++) {\n            if (isValid(i, n, k)) {\n                res.push_back(i);\n            }\n        }\n        return res;\n    }\n    \n    bool isValid(int num, int n, int k) {\n        int count = 0;\n        while (num > 0) {\n            int digit = num % 10;\n            if (count > 0 && abs(digit - (num / 10) % 10) != k) {\n                return false;\n            }\n            count++;\n            num /= 10;\n        }\n        return count == n;\n    }\n};",
+  "timestamp": "2025-08-05T13:36:48.175425",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> numsSameConsecDiff(int n, int k) {\n        vector<int> res;\n        for (int i = 1; i < pow(10, n); i++) {\n            if (isValid(i, n, k)) {\n                res.push_back(i);\n            }\n        }\n        return res;\n    }\n    \n    bool isValid(int num, int n, int k) {\n        int count = 0;\n        while (num > 0) {\n            int digit = num % 10;\n            if (count > 0 && abs(digit - (num / 10) % 10) != k) {\n                return false;\n            }\n            count++;\n            num /= 10;\n        }\n        return count == n;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.810576"
+}

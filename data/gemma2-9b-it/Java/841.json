@@ -1,0 +1,15 @@
+{
+  "id": 841,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        Set<Integer> visited = new HashSet<>();\n        visited.add(0);\n        Queue<Integer> queue = new LinkedList<>();\n        queue.addAll(rooms.get(0));\n        while (!queue.isEmpty()) {\n            int room = queue.poll();\n            if (!visited.contains(room)) {\n                visited.add(room);\n                queue.addAll(rooms.get(room));\n            }\n        }\n        return visited.size() == rooms.size();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(V + E)\nspace complexity: O(V)\nenergy implications: LOW\nexplanation: The solution uses a breadth-first search (BFS) approach to explore the rooms. It starts from room 0 and iteratively visits all reachable rooms. The `visited` set keeps track of visited rooms to avoid cycles, and the `queue` stores rooms to be explored. The algorithm's efficiency stems from its systematic exploration and the use of a queue for BFS, ensuring all reachable rooms are visited. The time complexity is O(V + E), where V is the number of rooms and E is the number of keys, as each room and key is visited at most once. The space complexity is O(V) due to the `visited` set storing visited rooms. Energy implications are low as the algorithm performs a fixed number of operations.\n",
+  "code": "class Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        Set<Integer> visited = new HashSet<>();\n        visited.add(0);\n        Queue<Integer> queue = new LinkedList<>();\n        queue.addAll(rooms.get(0));\n        while (!queue.isEmpty()) {\n            int room = queue.poll();\n            if (!visited.contains(room)) {\n                visited.add(room);\n                queue.addAll(rooms.get(room));\n            }\n        }\n        return visited.size() == rooms.size();\n    }\n}",
+  "timestamp": "2025-08-05T14:00:27.763981",
+  "code_extracted_previous": "class Solution {\n    public boolean canVisitAllRooms(List<List<Integer>> rooms) {\n        Set<Integer> visited = new HashSet<>();\n        visited.add(0);\n        Queue<Integer> queue = new LinkedList<>();\n        queue.addAll(rooms.get(0));\n        while (!queue.isEmpty()) {\n            int room = queue.poll();\n            if (!visited.contains(room)) {\n                visited.add(room);\n                queue.addAll(rooms.get(room));\n            }\n        }\n        return visited.size() == rooms.size();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.732539"
+}

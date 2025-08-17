@@ -1,0 +1,15 @@
+{
+  "id": 1900,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    vector<int> earliestAndLatest(int n, int firstPlayer, int secondPlayer) {\n        int earliest = 1, latest = 1;\n        while (firstPlayer != secondPlayer) {\n            if (firstPlayer > secondPlayer) {\n                swap(firstPlayer, secondPlayer);\n            }\n            int mid = (firstPlayer + secondPlayer) / 2;\n            if (firstPlayer < mid && secondPlayer > mid) {\n                earliest++;\n                latest++;\n            } else if (firstPlayer < mid) {\n                firstPlayer = mid;\n                latest++;\n            } else {\n                secondPlayer = mid;\n                earliest++;\n            }\n        }\n        return {earliest, latest};\n    }\n};\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through the tournament rounds, updating the earliest and latest possible round numbers based on the positions of the two players. It uses a simple iterative approach to calculate the round numbers, resulting in high efficiency and low energy implications.",
+  "code": "class Solution {\npublic:\n    vector<int> earliestAndLatest(int n, int firstPlayer, int secondPlayer) {\n        int earliest = 1, latest = 1;\n        while (firstPlayer != secondPlayer) {\n            if (firstPlayer > secondPlayer) {\n                swap(firstPlayer, secondPlayer);\n            }\n            int mid = (firstPlayer + secondPlayer) / 2;\n            if (firstPlayer < mid && secondPlayer > mid) {\n                earliest++;\n                latest++;\n            } else if (firstPlayer < mid) {\n                firstPlayer = mid;\n                latest++;\n            } else {\n                secondPlayer = mid;\n                earliest++;\n            }\n        }\n        return {earliest, latest};\n    }\n};",
+  "timestamp": "2025-08-06T08:45:12.799612",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> earliestAndLatest(int n, int firstPlayer, int secondPlayer) {\n        int earliest = 1, latest = 1;\n        while (firstPlayer != secondPlayer) {\n            if (firstPlayer > secondPlayer) {\n                swap(firstPlayer, secondPlayer);\n            }\n            int mid = (firstPlayer + secondPlayer) / 2;\n            if (firstPlayer < mid && secondPlayer > mid) {\n                earliest++;\n                latest++;\n            } else if (firstPlayer < mid) {\n                firstPlayer = mid;\n                latest++;\n            } else {\n                secondPlayer = mid;\n                earliest++;\n            }\n        }\n        return {earliest, latest};\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:31.928618"
+}

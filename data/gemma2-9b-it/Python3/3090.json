@@ -1,0 +1,15 @@
+{
+  "id": 3090,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maximumLengthSubstring(self, s: str) -> int:\n        max_length = 0\n        char_counts = {}\n        left = 0\n        for right in range(len(s)):\n            char_counts[s[right]] = char_counts.get(s[right], 0) + 1\n            while len(char_counts) > 2:\n                char_counts[s[left]] -= 1\n                if char_counts[s[left]] == 0:\n                    del char_counts[s[left]]\n                left += 1\n            max_length = max(max_length, right - left + 1)\n        return max_length\n```\n\nsolution: \n```python\nclass Solution:\n    def maximumLengthSubstring(self, s: str) -> int:\n        max_length = 0\n        char_counts = {}\n        left = 0\n        for right in range(len(s)):\n            char_counts[s[right]] = char_counts.get(s[right], 0) + 1\n            while len(char_counts) > 2:\n                char_counts[s[left]] -= 1\n                if char_counts[s[left]] == 0:\n                    del char_counts[s[left]]\n                left += 1\n            max_length = max(max_length, right - left + 1)\n        return max_length\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with a dictionary to track character counts within the window. It iterates through the string, expanding the window to the right and shrinking it from the left when the number of unique characters exceeds two. The maximum length is updated accordingly.",
+  "code": "solution:",
+  "timestamp": "2025-08-05T14:49:08.196078",
+  "code_extracted_previous": "class Solution:\n    def maximumLengthSubstring(self, s: str) -> int:\n        max_length = 0\n        char_counts = {}\n        left = 0\n        for right in range(len(s)):\n            char_counts[s[right]] = char_counts.get(s[right], 0) + 1\n            while len(char_counts) > 2:\n                char_counts[s[left]] -= 1\n                if char_counts[s[left]] == 0:\n                    del char_counts[s[left]]\n                left += 1\n            max_length = max(max_length, right - left + 1)\n        return max_length",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.596899"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 753,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public String crackSafe(int n, int k) {\n        int target = (int) Math.pow(k, n);\n        boolean[] visited = new boolean[target];\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            sb.append('0');\n        }\n        int start = 0;\n        for (int i = 0; i < target; i++) {\n            for (int j = 0; j < k; j++) {\n                int t = (start * 10 + j) % target;\n                if (!visited[t]) {\n                    visited[t] = true;\n                    start = t;\n                    sb.append(j);\n                    break;\n                }\n            }\n        }\n        return sb.toString();\n    }\n}\nefficiency: HIGH\ntime complexity: O(k^n)\nspace complexity: O(k^n)\nenergy implications: MEDIUM\nexplanation: The solution uses a depth-first search (DFS) approach to generate a De Bruijn sequence, which is a sequence that contains every possible substring of length n exactly once. This ensures that the safe will unlock at some point when entering the sequence. The use of a boolean array to keep track of visited states allows for efficient exploration of the sequence space.",
+  "code": "class Solution {\n    public String crackSafe(int n, int k) {\n        int target = (int) Math.pow(k, n);\n        boolean[] visited = new boolean[target];\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            sb.append('0');\n        }\n        int start = 0;\n        for (int i = 0; i < target; i++) {\n            for (int j = 0; j < k; j++) {\n                int t = (start * 10 + j) % target;\n                if (!visited[t]) {\n                    visited[t] = true;\n                    start = t;\n                    sb.append(j);\n                    break;\n                }\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "timestamp": "2025-08-06T15:16:07.982355",
+  "code_extracted_previous": "class Solution {\n    public String crackSafe(int n, int k) {\n        int target = (int) Math.pow(k, n);\n        boolean[] visited = new boolean[target];\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < n; i++) {\n            sb.append('0');\n        }\n        int start = 0;\n        for (int i = 0; i < target; i++) {\n            for (int j = 0; j < k; j++) {\n                int t = (start * 10 + j) % target;\n                if (!visited[t]) {\n                    visited[t] = true;\n                    start = t;\n                    sb.append(j);\n                    break;\n                }\n            }\n        }\n        return sb.toString();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:34.439541"
+}

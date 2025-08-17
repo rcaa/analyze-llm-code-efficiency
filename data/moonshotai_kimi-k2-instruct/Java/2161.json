@@ -1,0 +1,15 @@
+{
+  "id": 2161,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int[] pivotArray(int[] nums, int pivot) {\n        int n = nums.length;\n        int[] res = new int[n];\n        int less = 0, greater = 0;\n        for (int num : nums) {\n            if (num < pivot) less++;\n            else if (num > pivot) greater++;\n        }\n        int equal = n - less - greater;\n        int i = 0, j = less + equal;\n        for (int num : nums) {\n            if (num < pivot) res[i++] = num;\n            else if (num > pivot) res[j++] = num;\n        }\n        while (equal-- > 0) res[i++] = pivot;\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Single pass to count elements, second pass to place them in order; stable partitioning without extra data structures.",
+  "code": "class Solution {\n    public int[] pivotArray(int[] nums, int pivot) {\n        int n = nums.length;\n        int[] res = new int[n];\n        int less = 0, greater = 0;\n        for (int num : nums) {\n            if (num < pivot) less++;\n            else if (num > pivot) greater++;\n        }\n        int equal = n - less - greater;\n        int i = 0, j = less + equal;\n        for (int num : nums) {\n            if (num < pivot) res[i++] = num;\n            else if (num > pivot) res[j++] = num;\n        }\n        while (equal-- > 0) res[i++] = pivot;\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T13:26:54.455784",
+  "code_extracted_previous": "public int[] pivotArray(int[] nums, int pivot) {\n        int n = nums.length;\n        int[] res = new int[n];\n        int less = 0, greater = 0;\n        for (int num : nums) {\n            if (num < pivot) less++;\n            else if (num > pivot) greater++;\n        }\n        int equal = n - less - greater;\n        int i = 0, j = less + equal;\n        for (int num : nums) {\n            if (num < pivot) res[i++] = num;\n            else if (num > pivot) res[j++] = num;\n        }\n        while (equal-- > 0) res[i++] = pivot;\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.819375"
+}

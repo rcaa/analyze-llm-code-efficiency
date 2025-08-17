@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1, 0);\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int next = min(i + brainpower + 1, n);\n            dp[i] = max(dp[i + 1], points + dp[next]);\n        }\n        return dp[0];\n    }\n};\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Bottom-up DP scans once from right to left, storing the best score reachable from each index. Each state chooses either skip (carry dp[i+1]) or solve (add points and jump past brainpower questions). Uses O(n) memory; can be reduced to O(1) with rolling variables but kept for clarity.",
+  "code": "class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1, 0);\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int next = min(i + brainpower + 1, n);\n            dp[i] = max(dp[i + 1], points + dp[next]);\n        }\n        return dp[0];\n    }\n};",
+  "timestamp": "2025-08-06T02:29:08.038311",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1, 0);\n        for (int i = n - 1; i >= 0; --i) {\n            int points = questions[i][0];\n            int brainpower = questions[i][1];\n            int next = min(i + brainpower + 1, n);\n            dp[i] = max(dp[i + 1], points + dp[next]);\n        }\n        return dp[0];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.558049"
+}

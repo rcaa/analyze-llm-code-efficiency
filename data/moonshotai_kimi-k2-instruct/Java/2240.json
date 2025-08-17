@@ -1,0 +1,15 @@
+{
+  "id": 2240,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long ways = 0;\n        if (cost1 == 0 && cost2 == 0) return 1;\n        if (cost1 == 0) {\n            ways = (long) total / cost2 + 1;\n            return ways;\n        }\n        if (cost2 == 0) {\n            ways = (long) total / cost1 + 1;\n            return ways;\n        }\n        int maxPens = total / cost1;\n        for (int pens = 0; pens <= maxPens; pens++) {\n            int remaining = total - pens * cost1;\n            if (remaining < 0) break;\n            ways += remaining / cost2 + 1;\n        }\n        return ways;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(total / cost1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Iterate over every possible count of pens (0 to total/cost1). For each count, compute how many pencils can be bought with the remaining money (remaining/cost2 + 1). Sum these counts. Handles edge cases where either cost is zero.",
+  "code": "class Solution {\n    public long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long ways = 0;\n        if (cost1 == 0 && cost2 == 0) return 1;\n        if (cost1 == 0) {\n            ways = (long) total / cost2 + 1;\n            return ways;\n        }\n        if (cost2 == 0) {\n            ways = (long) total / cost1 + 1;\n            return ways;\n        }\n        int maxPens = total / cost1;\n        for (int pens = 0; pens <= maxPens; pens++) {\n            int remaining = total - pens * cost1;\n            if (remaining < 0) break;\n            ways += remaining / cost2 + 1;\n        }\n        return ways;\n    }\n}",
+  "timestamp": "2025-08-06T02:31:01.405757",
+  "code_extracted_previous": "public long waysToBuyPensPencils(int total, int cost1, int cost2) {\n        long ways = 0;\n        if (cost1 == 0 && cost2 == 0) return 1;\n        if (cost1 == 0) {\n            ways = (long) total / cost2 + 1;\n            return ways;\n        }\n        if (cost2 == 0) {\n            ways = (long) total / cost1 + 1;\n            return ways;\n        }\n        int maxPens = total / cost1;\n        for (int pens = 0; pens <= maxPens; pens++) {\n            int remaining = total - pens * cost1;\n            if (remaining < 0) break;\n            ways += remaining / cost2 + 1;\n        }\n        return ways;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.892052"
+}

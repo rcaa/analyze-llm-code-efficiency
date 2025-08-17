@@ -1,0 +1,15 @@
+{
+  "id": 1155,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```python\nclass Solution:\n    def numRollsToTarget(self, n: int, k: int, target: int) -> int:\n        MOD = 10**9 + 7\n        if target < n or target > n * k:\n            return 0\n        dp = [0] * (target + 1)\n        dp[0] = 1\n        for dice in range(1, n + 1):\n            new_dp = [0] * (target + 1)\n            for s in range(dice, min(target, dice * k) + 1):\n                ways = 0\n                for face in range(1, k + 1):\n                    if s - face >= 0:\n                        ways = (ways + dp[s - face]) % MOD\n                new_dp[s] = ways\n            dp = new_dp\n        return dp[target] % MOD\n```\nefficiency: HIGH\ntime complexity: O(n * target * k)\nspace complexity: O(target)\nenergy implications: LOW\nexplanation: Uses a 1-D rolling DP array to count ways to reach each sum with exactly i dice, iterating only over reachable sums and faces, avoiding full 2-D storage and pruning impossible ranges early.",
+  "code": "class Solution:\n    def numRollsToTarget(self, n: int, k: int, target: int) -> int:\n        MOD = 10**9 + 7\n        if target < n or target > n * k:\n            return 0\n        dp = [0] * (target + 1)\n        dp[0] = 1\n        for dice in range(1, n + 1):\n            new_dp = [0] * (target + 1)\n            for s in range(dice, min(target, dice * k) + 1):\n                ways = 0\n                for face in range(1, k + 1):\n                    if s - face >= 0:\n                        ways = (ways + dp[s - face]) % MOD\n                new_dp[s] = ways\n            dp = new_dp\n        return dp[target] % MOD",
+  "timestamp": "2025-08-05T14:25:20.046010",
+  "code_extracted_previous": "class Solution:\n    def numRollsToTarget(self, n: int, k: int, target: int) -> int:\n        MOD = 10**9 + 7\n        if target < n or target > n * k:\n            return 0\n        dp = [0] * (target + 1)\n        dp[0] = 1\n        for dice in range(1, n + 1):\n            new_dp = [0] * (target + 1)\n            for s in range(dice, min(target, dice * k) + 1):\n                ways = 0\n                for face in range(1, k + 1):\n                    if s - face >= 0:\n                        ways = (ways + dp[s - face]) % MOD\n                new_dp[s] = ways\n            dp = new_dp\n        return dp[target] % MOD",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.041162"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    bool checkInclusion(string s1, string s2) {\n        if (s1.length() > s2.length()) return false;\n\n        vector<int> countS1(26, 0);\n        vector<int> countS2(26, 0);\n\n        for (int i = 0; i < s1.length(); ++i) {\n            countS1[s1[i] - 'a']++;\n            countS2[s2[i] - 'a']++;\n        }\n\n        if (countS1 == countS2) return true;\n\n        for (int i = s1.length(); i < s2.length(); ++i) {\n            countS2[s2[i - s1.length()] - 'a']--;\n            countS2[s2[i] - 'a']++;\n\n            if (countS1 == countS2) return true;\n        }\n\n        return false;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach with fixed window size equal to the length of s1. It maintains two count arrays for the characters in s1 and the current window in s2. By updating the count arrays as the window slides, it efficiently checks for a permutation match in constant time per step. The key strength is its linear time complexity and constant space usage.",
+  "code": "class Solution {\npublic:\n    bool checkInclusion(string s1, string s2) {\n        if (s1.length() > s2.length()) return false;\n\n        vector<int> countS1(26, 0);\n        vector<int> countS2(26, 0);\n\n        for (int i = 0; i < s1.length(); ++i) {\n            countS1[s1[i] - 'a']++;\n            countS2[s2[i] - 'a']++;\n        }\n\n        if (countS1 == countS2) return true;\n\n        for (int i = s1.length(); i < s2.length(); ++i) {\n            countS2[s2[i - s1.length()] - 'a']--;\n            countS2[s2[i] - 'a']++;\n\n            if (countS1 == countS2) return true;\n        }\n\n        return false;\n    }\n};",
+  "timestamp": "2025-08-06T15:56:12.757885",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool checkInclusion(string s1, string s2) {\n        if (s1.length() > s2.length()) return false;\n\n        vector<int> countS1(26, 0);\n        vector<int> countS2(26, 0);\n\n        for (int i = 0; i < s1.length(); ++i) {\n            countS1[s1[i] - 'a']++;\n            countS2[s2[i] - 'a']++;\n        }\n\n        if (countS1 == countS2) return true;\n\n        for (int i = s1.length(); i < s2.length(); ++i) {\n            countS2[s2[i - s1.length()] - 'a']--;\n            countS2[s2[i] - 'a']++;\n\n            if (countS1 == countS2) return true;\n        }\n\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:00.929218"
+}

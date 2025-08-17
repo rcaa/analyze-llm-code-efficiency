@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution:\nclass StockSpanner {\npublic:\n    stack<pair<int, int>> st;\n    StockSpanner() {\n        \n    }\n    \n    int next(int price) {\n        int span = 1;\n        while (!st.empty() && st.top().first <= price) {\n            span += st.top().second;\n            st.pop();\n        }\n        st.push({price, span});\n        return span;\n    }\n};\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Utilizes a stack to track the stock prices and their corresponding spans, allowing for efficient calculation of the span for each new price by popping elements from the stack until a price greater than the current price is found.",
+  "code": "class StockSpanner {\npublic:\n    stack<pair<int, int>> st;\n    StockSpanner() {\n        \n    }\n    \n    int next(int price) {\n        int span = 1;\n        while (!st.empty() && st.top().first <= price) {\n            span += st.top().second;\n            st.pop();\n        }\n        st.push({price, span});\n        return span;\n    }\n};",
+  "timestamp": "2025-08-06T15:11:54.565497",
+  "code_extracted_previous": "class StockSpanner {\npublic:\n    stack<pair<int, int>> st;\n    StockSpanner() {\n        \n    }\n    \n    int next(int price) {\n        int span = 1;\n        while (!st.empty() && st.top().first <= price) {\n            span += st.top().second;\n            st.pop();\n        }\n        st.push({price, span});\n        return span;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:33.134901"
+}

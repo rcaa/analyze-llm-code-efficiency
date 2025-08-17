@@ -1,0 +1,15 @@
+{
+  "id": 2446,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    bool haveConflict(vector<string>& event1, vector<string>& event2) {\n        string start1 = event1[0], end1 = event1[1];\n        string start2 = event2[0], end2 = event2[1];\n        \n        int start1h = stoi(start1.substr(0, 2)), start1m = stoi(start1.substr(3));\n        int end1h = stoi(end1.substr(0, 2)), end1m = stoi(end1.substr(3));\n        int start2h = stoi(start2.substr(0, 2)), start2m = stoi(start2.substr(3));\n        int end2h = stoi(end2.substr(0, 2)), end2m = stoi(end2.substr(3));\n        \n        return (start1h < end2h || (start1h == end2h && start1m <= end2m)) && \n               (start2h < end1h || (start2h == end1h && start2m <= end1m));\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution directly compares the start and end times of the two events, taking into account the possibility of equal hours but different minutes. It has a constant time complexity and space complexity, making it efficient for this problem.",
+  "code": "class Solution {\npublic:\n    bool haveConflict(vector<string>& event1, vector<string>& event2) {\n        string start1 = event1[0], end1 = event1[1];\n        string start2 = event2[0], end2 = event2[1];\n        \n        int start1h = stoi(start1.substr(0, 2)), start1m = stoi(start1.substr(3));\n        int end1h = stoi(end1.substr(0, 2)), end1m = stoi(end1.substr(3));\n        int start2h = stoi(start2.substr(0, 2)), start2m = stoi(start2.substr(3));\n        int end2h = stoi(end2.substr(0, 2)), end2m = stoi(end2.substr(3));\n        \n        return (start1h < end2h || (start1h == end2h && start1m <= end2m)) && \n               (start2h < end1h || (start2h == end1h && start2m <= end1m));\n    }\n};",
+  "timestamp": "2025-08-05T12:50:25.648445",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool haveConflict(vector<string>& event1, vector<string>& event2) {\n        string start1 = event1[0], end1 = event1[1];\n        string start2 = event2[0], end2 = event2[1];\n        \n        int start1h = stoi(start1.substr(0, 2)), start1m = stoi(start1.substr(3));\n        int end1h = stoi(end1.substr(0, 2)), end1m = stoi(end1.substr(3));\n        int start2h = stoi(start2.substr(0, 2)), start2m = stoi(start2.substr(3));\n        int end2h = stoi(end2.substr(0, 2)), end2m = stoi(end2.substr(3));\n        \n        return (start1h < end2h || (start1h == end2h && start1m <= end2m)) && \n               (start2h < end1h || (start2h == end1h && start2m <= end1m));\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.110350"
+}

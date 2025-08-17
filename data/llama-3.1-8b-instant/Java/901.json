@@ -1,0 +1,15 @@
+{
+  "id": 901,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass StockSpanner {\n\n    public StockSpanner() {\n        \n    }\n    \n    Stack<int[]> stack = new Stack<>();\n    \n    public int next(int price) {\n        int count = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            count += stack.pop()[1];\n        }\n        stack.push(new int[] {price, count});\n        return count;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to keep track of the prices and their corresponding counts. It iterates through the prices from left to right, and for each price, it checks if the top of the stack has a price less than or equal to the current price. If it does, it adds the count of the top of the stack to the current count and pops the top of the stack. This way, it keeps track of the maximum number of consecutive days for which the stock price was less than or equal to the price of that day. The time complexity is O(n) because each price is pushed and popped from the stack once, and the space complexity is also O(n) because in the worst case, the stack will contain all the prices.",
+  "code": "class StockSpanner {\n\n    public StockSpanner() {\n        \n    }\n    \n    Stack<int[]> stack = new Stack<>();\n    \n    public int next(int price) {\n        int count = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            count += stack.pop()[1];\n        }\n        stack.push(new int[] {price, count});\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T01:57:41.514187",
+  "code_extracted_previous": "class StockSpanner {\n\n    public StockSpanner() {\n        \n    }\n    \n    Stack<int[]> stack = new Stack<>();\n    \n    public int next(int price) {\n        int count = 1;\n        while (!stack.isEmpty() && stack.peek()[0] <= price) {\n            count += stack.pop()[1];\n        }\n        stack.push(new int[] {price, count});\n        return count;\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:30.090607"
+}

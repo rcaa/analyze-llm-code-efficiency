@@ -1,0 +1,15 @@
+{
+  "id": 2424,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class LUPrefix:\n    def __init__(self, n: int):\n        self.n = n\n        self.uploaded = [False] * (n + 2)\n        self.longest_prefix = 0\n\n    def upload(self, video: int) -> None:\n        self.uploaded[video] = True\n        while self.longest_prefix + 1 <= self.n and self.uploaded[self.longest_prefix + 1]:\n            self.longest_prefix += 1\n\n    def longest(self) -> int:\n        return self.longest_prefix\n```\nefficiency: HIGH\ntime complexity: O(1) amortized for upload, O(1) for longest\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses a boolean array to track uploaded videos and a single integer to cache the current longest prefix. Each upload marks the video and then advances the prefix only when the next expected video is present, ensuring each video is processed at most once.",
+  "code": "class LUPrefix:\n    def __init__(self, n: int):\n        self.n = n\n        self.uploaded = [False] * (n + 2)\n        self.longest_prefix = 0\n\n    def upload(self, video: int) -> None:\n        self.uploaded[video] = True\n        while self.longest_prefix + 1 <= self.n and self.uploaded[self.longest_prefix + 1]:\n            self.longest_prefix += 1\n\n    def longest(self) -> int:\n        return self.longest_prefix",
+  "timestamp": "2025-08-05T15:10:02.727453",
+  "code_extracted_previous": "def __init__(self, n: int):\n        self.n = n\n        self.uploaded = [False] * (n + 2)\n        self.longest_prefix = 0\n\n    def upload(self, video: int) -> None:\n        self.uploaded[video] = True\n        while self.longest_prefix + 1 <= self.n and self.uploaded[self.longest_prefix + 1]:\n            self.longest_prefix += 1\n\n    def longest(self) -> int:\n        return self.longest_prefix",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:56.682096"
+}

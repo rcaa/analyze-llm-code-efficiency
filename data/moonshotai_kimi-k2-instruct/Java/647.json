@@ -1,0 +1,15 @@
+{
+  "id": 647,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\n    public int countSubstrings(String s) {\n        int n = s.length(), count = 0;\n        for (int center = 0; center < 2 * n - 1; center++) {\n            int left = center / 2;\n            int right = left + center % 2;\n            while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) {\n                count++;\n                left--;\n                right++;\n            }\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Expand around every possible center (2n-1 centers) and count palindromes by expanding outward while characters match. Avoids extra memory and achieves optimal quadratic time for this problem.",
+  "code": "class Solution {\n    public int countSubstrings(String s) {\n        int n = s.length(), count = 0;\n        for (int center = 0; center < 2 * n - 1; center++) {\n            int left = center / 2;\n            int right = left + center % 2;\n            while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) {\n                count++;\n                left--;\n                right++;\n            }\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-06T01:38:11.204961",
+  "code_extracted_previous": "public int countSubstrings(String s) {\n        int n = s.length(), count = 0;\n        for (int center = 0; center < 2 * n - 1; center++) {\n            int left = center / 2;\n            int right = left + center % 2;\n            while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) {\n                count++;\n                left--;\n                right++;\n            }\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:55.685159"
+}

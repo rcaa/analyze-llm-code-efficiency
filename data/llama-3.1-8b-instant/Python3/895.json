@@ -1,0 +1,15 @@
+{
+  "id": 895,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.max_freq = 0\n        self.stack = []\n\n    def push(self, val: int) -> None:\n        freq = self.freq.get(val, 0) + 1\n        self.freq[val] = freq\n        if freq > self.max_freq:\n            self.max_freq = freq\n        self.stack.append((freq, val))\n\n    def pop(self) -> int:\n        freq, val = self.stack.pop()\n        self.freq[val] -= 1\n        if not self.freq[val]:\n            del self.freq[val]\n        return val\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(N)\nenergy implications: LOW",
+  "code": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.max_freq = 0\n        self.stack = []\n\n    def push(self, val: int) -> None:\n        freq = self.freq.get(val, 0) + 1\n        self.freq[val] = freq\n        if freq > self.max_freq:\n            self.max_freq = freq\n        self.stack.append((freq, val))\n\n    def pop(self) -> int:\n        freq, val = self.stack.pop()\n        self.freq[val] -= 1\n        if not self.freq[val]:\n            del self.freq[val]\n        return val",
+  "timestamp": "2025-08-05T14:38:27.416946",
+  "code_extracted_previous": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}\n        self.max_freq = 0\n        self.stack = []\n\n    def push(self, val: int) -> None:\n        freq = self.freq.get(val, 0) + 1\n        self.freq[val] = freq\n        if freq > self.max_freq:\n            self.max_freq = freq\n        self.stack.append((freq, val))\n\n    def pop(self) -> int:\n        freq, val = self.stack.pop()\n        self.freq[val] -= 1\n        if not self.freq[val]:\n            del self.freq[val]\n        return val",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:31.540341"
+}

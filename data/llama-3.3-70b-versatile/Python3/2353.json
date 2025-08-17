@@ -1,0 +1,15 @@
+{
+  "id": 2353,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "```python\nfrom typing import List\nimport heapq\n\nclass FoodRatings:\n\n    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):\n        self.foods = {food: (rating, cuisine) for food, rating, cuisine in zip(foods, ratings, cuisines)}\n        self.cuisines = {cuisine: [] for cuisine in cuisines}\n        for food, (rating, cuisine) in self.foods.items():\n            heapq.heappush(self.cuisines[cuisine], (-rating, food))\n\n    def changeRating(self, food: str, newRating: int) -> None:\n        rating, cuisine = self.foods[food]\n        self.cuisines[cuisine].remove((-rating, food))\n        heapq.heapify(self.cuisines[cuisine])\n        self.foods[food] = (newRating, cuisine)\n        heapq.heappush(self.cuisines[cuisine], (-newRating, food))\n\n    def highestRated(self, cuisine: str) -> str:\n        return self.cuisines[cuisine][0][1]\n\n\n# Your FoodRatings object will be instantiated and called as such:\n# obj = FoodRatings(foods, cuisines, ratings)\n# obj.changeRating(food,newRating)\n# param_2 = obj.highestRated(cuisine)\n```\nsolution: \nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a dictionary to store food items and their corresponding ratings and cuisines, and another dictionary to store cuisines and their corresponding food items in a heap. The heap allows for efficient retrieval of the highest-rated food item for a given cuisine. The changeRating method updates the rating of a food item and re-heapifies the cuisine's heap to maintain the highest-rated food item at the top.",
+  "code": "efficiency: HIGH",
+  "timestamp": "2025-08-06T15:18:35.076699",
+  "code_extracted_previous": "from typing import List\nimport heapq\n\nclass FoodRatings:\n\n    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):\n        self.foods = {food: (rating, cuisine) for food, rating, cuisine in zip(foods, ratings, cuisines)}\n        self.cuisines = {cuisine: [] for cuisine in cuisines}\n        for food, (rating, cuisine) in self.foods.items():\n            heapq.heappush(self.cuisines[cuisine], (-rating, food))\n\n    def changeRating(self, food: str, newRating: int) -> None:\n        rating, cuisine = self.foods[food]\n        self.cuisines[cuisine].remove((-rating, food))\n        heapq.heapify(self.cuisines[cuisine])\n        self.foods[food] = (newRating, cuisine)\n        heapq.heappush(self.cuisines[cuisine], (-newRating, food))\n\n    def highestRated(self, cuisine: str) -> str:\n        return self.cuisines[cuisine][0][1]\n\n\n# Your FoodRatings object will be instantiated and called as such:\n# obj = FoodRatings(foods, cuisines, ratings)\n# obj.changeRating(food,newRating)\n# param_2 = obj.highestRated(cuisine)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.203037"
+}

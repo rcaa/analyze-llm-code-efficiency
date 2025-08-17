@@ -1,0 +1,15 @@
+{
+  "id": 3272,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        def dfs(n, k, prefix, count):\n            if n == 0:\n                return count\n            if len(prefix) >= k and prefix == prefix[::-1]:\n                return dfs(n-1, k, '', 0)\n            count += n\n            for i in range(1, 10):\n                dfs(n-1, k, prefix + str(i), count)\n            return count\n\n        return dfs(n, k, '', 0)\n```\n\nefficiency: HIGH\ntime complexity: O(9^n)\nspace complexity: O(n)\nenergy implications: MEDIUM",
+  "code": "class Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        def dfs(n, k, prefix, count):\n            if n == 0:\n                return count\n            if len(prefix) >= k and prefix == prefix[::-1]:\n                return dfs(n-1, k, '', 0)\n            count += n\n            for i in range(1, 10):\n                dfs(n-1, k, prefix + str(i), count)\n            return count\n\n        return dfs(n, k, '', 0)",
+  "timestamp": "2025-08-05T14:40:23.171781",
+  "code_extracted_previous": "class Solution:\n    def countGoodIntegers(self, n: int, k: int) -> int:\n        def dfs(n, k, prefix, count):\n            if n == 0:\n                return count\n            if len(prefix) >= k and prefix == prefix[::-1]:\n                return dfs(n-1, k, '', 0)\n            count += n\n            for i in range(1, 10):\n                dfs(n-1, k, prefix + str(i), count)\n            return count\n\n        return dfs(n, k, '', 0)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.105067"
+}

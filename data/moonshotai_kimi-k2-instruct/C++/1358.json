@@ -1,0 +1,15 @@
+{
+  "id": 1358,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int n = s.size();\n        int cnt[3] = {0, 0, 0};\n        int left = 0, res = 0;\n        for (int right = 0; right < n; ++right) {\n            cnt[s[right] - 'a']++;\n            while (cnt[0] && cnt[1] && cnt[2]) {\n                res += n - right;\n                cnt[s[left] - 'a']--;\n                ++left;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window counts occurrences of a, b, c. Once all three are present, every extension to the right forms a valid substring, so add n-right to the answer and shrink the left boundary to find the next window.",
+  "code": "class Solution {\npublic:\n    int numberOfSubstrings(string s) {\n        int n = s.size();\n        int cnt[3] = {0, 0, 0};\n        int left = 0, res = 0;\n        for (int right = 0; right < n; ++right) {\n            cnt[s[right] - 'a']++;\n            while (cnt[0] && cnt[1] && cnt[2]) {\n                res += n - right;\n                cnt[s[left] - 'a']--;\n                ++left;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T02:28:50.923803",
+  "code_extracted_previous": "public:\n    int numberOfSubstrings(string s) {\n        int n = s.size();\n        int cnt[3] = {0, 0, 0};\n        int left = 0, res = 0;\n        for (int right = 0; right < n; ++right) {\n            cnt[s[right] - 'a']++;\n            while (cnt[0] && cnt[1] && cnt[2]) {\n                res += n - right;\n                cnt[s[left] - 'a']--;\n                ++left;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.209451"
+}

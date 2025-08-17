@@ -1,0 +1,15 @@
+{
+  "id": 712,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minimumDeleteSum(self, s1: str, s2: str) -> int:\n        m, n = len(s1), len(s2)\n        dp = [[0] * (n + 1) for _ in range(m + 1)]\n        \n        for i in range(m + 1):\n            dp[i][0] = sum(ord(c) for c in s1[:i])\n        for j in range(n + 1):\n            dp[0][j] = sum(ord(c) for c in s2[:j])\n        \n        for i in range(1, m + 1):\n            for j in range(1, n + 1):\n                if s1[i - 1] == s2[j - 1]:\n                    dp[i][j] = dp[i - 1][j - 1]\n                else:\n                    dp[i][j] = min(dp[i - 1][j] + ord(s1[i - 1]), dp[i][j - 1] + ord(s2[j - 1]))\n        \n        return dp[m][n]\n```\n\nefficiency: HIGH\ntime complexity: O(m * n)\nspace complexity: O(m * n)\nenergy implications: LOW",
+  "code": "class Solution:\n    def minimumDeleteSum(self, s1: str, s2: str) -> int:\n        m, n = len(s1), len(s2)\n        dp = [[0] * (n + 1) for _ in range(m + 1)]\n        \n        for i in range(m + 1):\n            dp[i][0] = sum(ord(c) for c in s1[:i])\n        for j in range(n + 1):\n            dp[0][j] = sum(ord(c) for c in s2[:j])\n        \n        for i in range(1, m + 1):\n            for j in range(1, n + 1):\n                if s1[i - 1] == s2[j - 1]:\n                    dp[i][j] = dp[i - 1][j - 1]\n                else:\n                    dp[i][j] = min(dp[i - 1][j] + ord(s1[i - 1]), dp[i][j - 1] + ord(s2[j - 1]))\n        \n        return dp[m][n]",
+  "timestamp": "2025-08-05T23:54:58.268712",
+  "code_extracted_previous": "class Solution:\n    def minimumDeleteSum(self, s1: str, s2: str) -> int:\n        m, n = len(s1), len(s2)\n        dp = [[0] * (n + 1) for _ in range(m + 1)]\n        \n        for i in range(m + 1):\n            dp[i][0] = sum(ord(c) for c in s1[:i])\n        for j in range(n + 1):\n            dp[0][j] = sum(ord(c) for c in s2[:j])\n        \n        for i in range(1, m + 1):\n            for j in range(1, n + 1):\n                if s1[i - 1] == s2[j - 1]:\n                    dp[i][j] = dp[i - 1][j - 1]\n                else:\n                    dp[i][j] = min(dp[i - 1][j] + ord(s1[i - 1]), dp[i][j - 1] + ord(s2[j - 1]))\n        \n        return dp[m][n]",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:31.458630"
+}

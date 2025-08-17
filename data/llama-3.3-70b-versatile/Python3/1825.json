@@ -1,0 +1,15 @@
+{
+  "id": 1825,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.m = m\n        self.k = k\n        self.stream = []\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        last_m = sorted(self.stream[-self.m:])\n        trimmed = last_m[self.k:-self.k]\n        return sum(trimmed) // len(trimmed)\n\n\n# Your MKAverage object will be instantiated and called as such:\n# obj = MKAverage(m, k)\n# obj.addElement(num)\n# param_2 = obj.calculateMKAverage()\n```\nsolution: \nefficiency: MEDIUM\ntime complexity: O(m log m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution utilizes a list to store the stream of integers and calculates the MKAverage by sorting the last m elements, removing the smallest and largest k elements, and then calculating the average of the remaining elements. The time complexity is dominated by the sorting operation, which has a time complexity of O(m log m). The space complexity is O(m) due to the storage of the stream. The energy implications are low as the solution only involves basic arithmetic and sorting operations.",
+  "code": "efficiency: MEDIUM",
+  "timestamp": "2025-08-06T15:17:22.060837",
+  "code_extracted_previous": "class MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.m = m\n        self.k = k\n        self.stream = []\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        last_m = sorted(self.stream[-self.m:])\n        trimmed = last_m[self.k:-self.k]\n        return sum(trimmed) // len(trimmed)\n\n\n# Your MKAverage object will be instantiated and called as such:\n# obj = MKAverage(m, k)\n# obj.addElement(num)\n# param_2 = obj.calculateMKAverage()",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:34.916131"
+}

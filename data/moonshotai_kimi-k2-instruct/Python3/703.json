@@ -1,0 +1,15 @@
+{
+  "id": 703,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: ```python\nimport heapq\n\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = []\n        for num in nums:\n            if len(self.min_heap) < k:\n                heapq.heappush(self.min_heap, num)\n            else:\n                if num > self.min_heap[0]:\n                    heapq.heappop(self.min_heap)\n                    heapq.heappush(self.min_heap, num)\n\n    def add(self, val: int) -> int:\n        if len(self.min_heap) < self.k:\n            heapq.heappush(self.min_heap, val)\n        else:\n            if val > self.min_heap[0]:\n                heapq.heappop(self.min_heap)\n                heapq.heappush(self.min_heap, val)\n        return self.min_heap[0]\n```\n\nefficiency: HIGH\ntime complexity: O(n log k) for initialization, O(log k) per add\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: Uses a min-heap of size k to keep the k largest elements; the smallest of these is the kth largest overall. Each add operation is a heap push/pop, giving logarithmic time.",
+  "code": "class KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = []\n        for num in nums:\n            if len(self.min_heap) < k:\n                heapq.heappush(self.min_heap, num)\n            else:\n                if num > self.min_heap[0]:\n                    heapq.heappop(self.min_heap)\n                    heapq.heappush(self.min_heap, num)\n\n    def add(self, val: int) -> int:\n        if len(self.min_heap) < self.k:\n            heapq.heappush(self.min_heap, val)\n        else:\n            if val > self.min_heap[0]:\n                heapq.heappop(self.min_heap)\n                heapq.heappush(self.min_heap, val)\n        return self.min_heap[0]",
+  "timestamp": "2025-08-06T02:34:28.535286",
+  "code_extracted_previous": "import heapq\n\nclass KthLargest:\n\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.min_heap = []\n        for num in nums:\n            if len(self.min_heap) < k:\n                heapq.heappush(self.min_heap, num)\n            else:\n                if num > self.min_heap[0]:\n                    heapq.heappop(self.min_heap)\n                    heapq.heappush(self.min_heap, num)\n\n    def add(self, val: int) -> int:\n        if len(self.min_heap) < self.k:\n            heapq.heappush(self.min_heap, val)\n        else:\n            if val > self.min_heap[0]:\n                heapq.heappop(self.min_heap)\n                heapq.heappush(self.min_heap, val)\n        return self.min_heap[0]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:57.420479"
+}

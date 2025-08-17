@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```cpp\nclass Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int prev = 0, curr = 1, ans = 0;\n        for (int i = 1; i < s.size(); ++i) {\n            if (s[i] == s[i-1]) {\n                ++curr;\n            } else {\n                ans += min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        ans += min(prev, curr);\n        return ans;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Count consecutive runs of 0s and 1s; each valid substring is formed at the boundary between two runs, and the number of such substrings is the minimum of the lengths of the two runs.",
+  "code": "class Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int prev = 0, curr = 1, ans = 0;\n        for (int i = 1; i < s.size(); ++i) {\n            if (s[i] == s[i-1]) {\n                ++curr;\n            } else {\n                ans += min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        ans += min(prev, curr);\n        return ans;\n    }\n};",
+  "timestamp": "2025-08-06T01:29:03.575937",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countBinarySubstrings(string s) {\n        int prev = 0, curr = 1, ans = 0;\n        for (int i = 1; i < s.size(); ++i) {\n            if (s[i] == s[i-1]) {\n                ++curr;\n            } else {\n                ans += min(prev, curr);\n                prev = curr;\n                curr = 1;\n            }\n        }\n        ans += min(prev, curr);\n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.246370"
+}

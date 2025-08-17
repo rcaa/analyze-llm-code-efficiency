@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        long long left = 1, right = 1LL * *min_element(ranks.begin(), ranks.end()) * cars * cars;\n        while (left < right) {\n            long long mid = left + (right - left) / 2;\n            long long total = 0;\n            for (int r : ranks) {\n                total += static_cast<long long>(sqrt(mid / r));\n                if (total >= cars) break;\n            }\n            if (total >= cars) right = mid;\n            else left = mid + 1;\n        }\n        return left;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log(max_time))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search on the minimum time. For each candidate time, compute how many cars each mechanic can repair (sqrt(time/rank)) and sum them. The search space is bounded by the slowest mechanic repairing all cars alone.",
+  "code": "class Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        long long left = 1, right = 1LL * *min_element(ranks.begin(), ranks.end()) * cars * cars;\n        while (left < right) {\n            long long mid = left + (right - left) / 2;\n            long long total = 0;\n            for (int r : ranks) {\n                total += static_cast<long long>(sqrt(mid / r));\n                if (total >= cars) break;\n            }\n            if (total >= cars) right = mid;\n            else left = mid + 1;\n        }\n        return left;\n    }\n};",
+  "timestamp": "2025-08-05T13:32:57.317271",
+  "code_extracted_previous": "public:\n    long long repairCars(vector<int>& ranks, int cars) {\n        long long left = 1, right = 1LL * *min_element(ranks.begin(), ranks.end()) * cars * cars;\n        while (left < right) {\n            long long mid = left + (right - left) / 2;\n            long long total = 0;\n            for (int r : ranks) {\n                total += static_cast<long long>(sqrt(mid / r));\n                if (total >= cars) break;\n            }\n            if (total >= cars) right = mid;\n            else left = mid + 1;\n        }\n        return left;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.780389"
+}

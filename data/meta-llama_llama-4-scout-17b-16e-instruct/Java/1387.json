@@ -1,0 +1,15 @@
+{
+  "id": 1387,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int getKth(int lo, int hi, int k) {\n        int[][] powers = new int[hi - lo + 1][2];\n        for (int i = 0; i <= hi - lo; i++) {\n            powers[i][0] = getPower(lo + i);\n            powers[i][1] = lo + i;\n        }\n        Arrays.sort(powers, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);\n        return powers[k - 1][1];\n    }\n\n    private int getPower(int x) {\n        int power = 0;\n        while (x != 1) {\n            if (x % 2 == 0) {\n                x /= 2;\n            } else {\n                x = 3 * x + 1;\n            }\n            power++;\n        }\n        return power;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution calculates the power of each number in the given range, stores them along with their original values, and sorts them based on power and then value. It returns the kth element in the sorted array. The getPower function calculates the power of a number using the given transformation rules.",
+  "code": "class Solution {\n    public int getKth(int lo, int hi, int k) {\n        int[][] powers = new int[hi - lo + 1][2];\n        for (int i = 0; i <= hi - lo; i++) {\n            powers[i][0] = getPower(lo + i);\n            powers[i][1] = lo + i;\n        }\n        Arrays.sort(powers, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);\n        return powers[k - 1][1];\n    }\n\n    private int getPower(int x) {\n        int power = 0;\n        while (x != 1) {\n            if (x % 2 == 0) {\n                x /= 2;\n            } else {\n                x = 3 * x + 1;\n            }\n            power++;\n        }\n        return power;\n    }\n}",
+  "timestamp": "2025-08-05T14:25:46.676357",
+  "code_extracted_previous": "class Solution {\n    public int getKth(int lo, int hi, int k) {\n        int[][] powers = new int[hi - lo + 1][2];\n        for (int i = 0; i <= hi - lo; i++) {\n            powers[i][0] = getPower(lo + i);\n            powers[i][1] = lo + i;\n        }\n        Arrays.sort(powers, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);\n        return powers[k - 1][1];\n    }\n\n    private int getPower(int x) {\n        int power = 0;\n        while (x != 1) {\n            if (x % 2 == 0) {\n                x /= 2;\n            } else {\n                x = 3 * x + 1;\n            }\n            power++;\n        }\n        return power;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.394104"
+}

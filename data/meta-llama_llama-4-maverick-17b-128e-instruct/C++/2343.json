@@ -1,0 +1,15 @@
+{
+  "id": 2343,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {\n        int n = nums.size(), m = nums[0].size();\n        vector<vector<pair<string, int>>> buckets(m + 1);\n        \n        for (int i = 0; i < n; ++i) {\n            for (int j = 1; j <= m; ++j) {\n                buckets[j].emplace_back(nums[i].substr(m - j), i);\n            }\n        }\n        \n        for (auto& b : buckets) {\n            sort(b.begin(), b.end());\n        }\n        \n        vector<int> ans;\n        for (auto& q : queries) {\n            int k = q[0], trim = q[1];\n            ans.push_back(buckets[trim][k - 1].second);\n        }\n        \n        return ans;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n*m + q)\nspace complexity: O(n*m)\nenergy implications: LOW\nexplanation: The solution uses Radix Sort to pre-sort the numbers based on their trimmed versions. It creates buckets for each possible trim length, sorts the numbers within each bucket, and then answers queries by directly accessing the sorted buckets. This approach is efficient because it avoids redundant sorting for each query.",
+  "code": "class Solution {\npublic:\n    vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {\n        int n = nums.size(), m = nums[0].size();\n        vector<vector<pair<string, int>>> buckets(m + 1);\n        \n        for (int i = 0; i < n; ++i) {\n            for (int j = 1; j <= m; ++j) {\n                buckets[j].emplace_back(nums[i].substr(m - j), i);\n            }\n        }\n        \n        for (auto& b : buckets) {\n            sort(b.begin(), b.end());\n        }\n        \n        vector<int> ans;\n        for (auto& q : queries) {\n            int k = q[0], trim = q[1];\n            ans.push_back(buckets[trim][k - 1].second);\n        }\n        \n        return ans;\n    }\n};",
+  "timestamp": "2025-08-05T13:29:34.980263",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {\n        int n = nums.size(), m = nums[0].size();\n        vector<vector<pair<string, int>>> buckets(m + 1);\n        \n        for (int i = 0; i < n; ++i) {\n            for (int j = 1; j <= m; ++j) {\n                buckets[j].emplace_back(nums[i].substr(m - j), i);\n            }\n        }\n        \n        for (auto& b : buckets) {\n            sort(b.begin(), b.end());\n        }\n        \n        vector<int> ans;\n        for (auto& q : queries) {\n            int k = q[0], trim = q[1];\n            ans.push_back(buckets[trim][k - 1].second);\n        }\n        \n        return ans;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.208592"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nsolution: \nclass Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * n\n        for i in range(n):\n            points, brainpower = questions[i]\n            dp[i] = points\n            for j in range(i):\n                if i - j > brainpower:\n                    dp[i] = max(dp[i], dp[j] + points)\n        return max(dp)\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming is used to track the maximum points that can be earned up to each question, considering whether to solve or skip each question based on the brainpower constraint.\n```",
+  "code": "class Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * n\n        for i in range(n):\n            points, brainpower = questions[i]\n            dp[i] = points\n            for j in range(i):\n                if i - j > brainpower:\n                    dp[i] = max(dp[i], dp[j] + points)\n        return max(dp)",
+  "timestamp": "2025-08-06T15:17:38.528230",
+  "code_extracted_previous": "solution: \nclass Solution:\n    def mostPoints(self, questions: List[List[int]]) -> int:\n        n = len(questions)\n        dp = [0] * n\n        for i in range(n):\n            points, brainpower = questions[i]\n            dp[i] = points\n            for j in range(i):\n                if i - j > brainpower:\n                    dp[i] = max(dp[i], dp[j] + points)\n        return max(dp)",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:35.062889"
+}

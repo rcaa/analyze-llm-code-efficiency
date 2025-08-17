@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        cows = 0\n        secret_count = {}\n        guess_count = {}\n        \n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                secret_count[s] = secret_count.get(s, 0) + 1\n                guess_count[g] = guess_count.get(g, 0) + 1\n        \n        for key in secret_count:\n            if key in guess_count:\n                cows += min(secret_count[key], guess_count[key])\n        \n        return f\"{bulls}A{cows}B\"\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the secret and guess strings simultaneously, counting bulls and storing the counts of digits in separate dictionaries. It then iterates through one of the dictionaries to count the cows. This approach efficiently calculates the bulls and cows in a single pass through the strings.",
+  "code": "class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        cows = 0\n        secret_count = {}\n        guess_count = {}\n        \n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                secret_count[s] = secret_count.get(s, 0) + 1\n                guess_count[g] = guess_count.get(g, 0) + 1\n        \n        for key in secret_count:\n            if key in guess_count:\n                cows += min(secret_count[key], guess_count[key])\n        \n        return f\"{bulls}A{cows}B\"",
+  "timestamp": "2025-08-05T14:52:10.243295",
+  "code_extracted_previous": "def getHint(self, secret: str, guess: str) -> str:\n        bulls = 0\n        cows = 0\n        secret_count = {}\n        guess_count = {}\n        \n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                secret_count[s] = secret_count.get(s, 0) + 1\n                guess_count[g] = guess_count.get(g, 0) + 1\n        \n        for key in secret_count:\n            if key in guess_count:\n                cows += min(secret_count[key], guess_count[key])\n        \n        return f\"{bulls}A{cows}B\"",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.464960"
+}

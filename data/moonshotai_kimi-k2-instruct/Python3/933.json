@@ -1,0 +1,15 @@
+{
+  "id": 933,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class RecentCounter:\n    def __init__(self):\n        self.q = []\n\n    def ping(self, t: int) -> int:\n        self.q.append(t)\n        while self.q[0] < t - 3000:\n            self.q.pop(0)\n        return len(self.q)\n```\nefficiency: HIGH\ntime complexity: O(1) amortized per ping\nspace complexity: O(n) where n is the number of pings in the sliding window\nenergy implications: LOW\nexplanation: Uses a simple queue to store ping times. Each ping is appended, then old entries outside the 3000 ms window are removed from the front. Amortized O(1) because each element is enqueued and dequeued at most once.",
+  "code": "class RecentCounter:\n    def __init__(self):\n        self.q = []\n\n    def ping(self, t: int) -> int:\n        self.q.append(t)\n        while self.q[0] < t - 3000:\n            self.q.pop(0)\n        return len(self.q)",
+  "timestamp": "2025-08-05T14:08:49.774307",
+  "code_extracted_previous": "def __init__(self):\n        self.q = []\n\n    def ping(self, t: int) -> int:\n        self.q.append(t)\n        while self.q[0] < t - 3000:\n            self.q.pop(0)\n        return len(self.q)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:57.735117"
+}

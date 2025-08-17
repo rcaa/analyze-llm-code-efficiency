@@ -1,0 +1,15 @@
+{
+  "id": 1297,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        count = {}\n        for i in range(len(s) - minSize + 1):\n            substr = s[i:i + minSize]\n            if len(set(substr)) <= maxLetters:\n                count[substr] = count.get(substr, 0) + 1\n        return max(count.values(), default=0)\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates over the string once, using a sliding window of size `minSize` to generate substrings. It counts the occurrences of substrings with unique characters less than or equal to `maxLetters`. The maximum count is then returned. This approach is efficient as it avoids unnecessary iterations and uses a hashmap to store counts.",
+  "code": "def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        count = {}\n        for i in range(len(s) - minSize + 1):\n            substr = s[i:i + minSize]\n            if len(set(substr)) <= maxLetters:\n                count[substr] = count.get(substr, 0) + 1\n        return max(count.values(), default=0)\n```",
+  "timestamp": "2025-08-05T14:59:24.454983",
+  "code_extracted_previous": "class Solution:\n    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:\n        count = {}\n        for i in range(len(s) - minSize + 1):\n            substr = s[i:i + minSize]\n            if len(set(substr)) <= maxLetters:\n                count[substr] = count.get(substr, 0) + 1\n        return max(count.values(), default=0)",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:47.469374"
+}

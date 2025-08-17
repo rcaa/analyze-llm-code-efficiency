@@ -1,0 +1,15 @@
+{
+  "id": 1825,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.stream = []\n        self.m = m\n        self.k = k\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        else:\n            container = sorted(self.stream[-self.m:])\n            container = container[k: -k]\n            return int(sum(container) / len(container))\n```\nsolution: ```python\nclass MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.stream = []\n        self.m = m\n        self.k = k\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        else:\n            container = sorted(self.stream[-self.m:])\n            container = container[k: -k]\n            return int(sum(container) / len(container))\n```\nefficiency: HIGH\ntime complexity: O(m log m)\nspace complexity: O(m)\nenergy implications: LOW\nexplanation: The solution utilizes a sorted container to efficiently remove the smallest and largest k elements. Sorting has a time complexity of O(m log m), while the rest of the operations are O(k).  The space complexity is O(m) due to storing the last m elements.\n\n\n\n",
+  "code": "class MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.stream = []\n        self.m = m\n        self.k = k\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        else:\n            container = sorted(self.stream[-self.m:])\n            container = container[k: -k]\n            return int(sum(container) / len(container))",
+  "timestamp": "2025-08-05T14:04:01.356296",
+  "code_extracted_previous": "class MKAverage:\n\n    def __init__(self, m: int, k: int):\n        self.stream = []\n        self.m = m\n        self.k = k\n\n    def addElement(self, num: int) -> None:\n        self.stream.append(num)\n\n    def calculateMKAverage(self) -> int:\n        if len(self.stream) < self.m:\n            return -1\n        else:\n            container = sorted(self.stream[-self.m:])\n            container = container[k: -k]\n            return int(sum(container) / len(container))",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.046465"
+}

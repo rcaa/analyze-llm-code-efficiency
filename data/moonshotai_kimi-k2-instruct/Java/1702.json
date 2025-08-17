@@ -1,0 +1,15 @@
+{
+  "id": 1702,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```java\nclass Solution {\n    public String maximumBinaryString(String binary) {\n        int n = binary.length();\n        if (n < 2) return binary;\n        char[] s = binary.toCharArray();\n        int zeros = 0, firstZero = -1;\n        for (int i = 0; i < n; ++i) {\n            if (s[i] == '0') {\n                if (firstZero == -1) firstZero = i;\n                zeros++;\n            }\n        }\n        if (zeros < 2) return binary;\n        int pos = firstZero + zeros - 1;\n        Arrays.fill(s, '1');\n        if (pos < n) s[pos] = '0';\n        return new String(s);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Count zeros and locate the first zero; the optimal string has all ones except for a single zero at position (firstZero + zeros - 1). This single pass plus array fill yields the lexicographically largest binary string.",
+  "code": "class Solution {\n    public String maximumBinaryString(String binary) {\n        int n = binary.length();\n        if (n < 2) return binary;\n        char[] s = binary.toCharArray();\n        int zeros = 0, firstZero = -1;\n        for (int i = 0; i < n; ++i) {\n            if (s[i] == '0') {\n                if (firstZero == -1) firstZero = i;\n                zeros++;\n            }\n        }\n        if (zeros < 2) return binary;\n        int pos = firstZero + zeros - 1;\n        Arrays.fill(s, '1');\n        if (pos < n) s[pos] = '0';\n        return new String(s);\n    }\n}",
+  "timestamp": "2025-08-06T00:55:30.206189",
+  "code_extracted_previous": "class Solution {\n    public String maximumBinaryString(String binary) {\n        int n = binary.length();\n        if (n < 2) return binary;\n        char[] s = binary.toCharArray();\n        int zeros = 0, firstZero = -1;\n        for (int i = 0; i < n; ++i) {\n            if (s[i] == '0') {\n                if (firstZero == -1) firstZero = i;\n                zeros++;\n            }\n        }\n        if (zeros < 2) return binary;\n        int pos = firstZero + zeros - 1;\n        Arrays.fill(s, '1');\n        if (pos < n) s[pos] = '0';\n        return new String(s);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.616709"
+}

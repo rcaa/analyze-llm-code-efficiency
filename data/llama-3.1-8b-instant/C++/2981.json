@@ -1,0 +1,15 @@
+{
+  "id": 2981,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int maximumLength(string s) {\n        int n = s.size();\n        int max_len = 0;\n        for (int i = 0; i < n; i++) {\n            unordered_map<char, int> freq;\n            for (int j = i; j < n; j++) {\n                freq[s[j]]++;\n                if (freq.size() == 1 && freq[s[j]] >= 3) {\n                    max_len = max(max_len, j - i + 1);\n                }\n            }\n        }\n        return max_len > 0 ? max_len : -1;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: This solution uses a sliding window approach with a frequency map to efficiently track the frequency of characters within the current window. It iterates over the string, expanding the window to the right and updating the frequency map. If a window contains a single character that occurs at least thrice, it updates the maximum length. The solution has a high efficiency due to its use of a frequency map and a sliding window approach, but it has a quadratic time complexity due to the nested loops.",
+  "code": "class Solution {\npublic:\n    int maximumLength(string s) {\n        int n = s.size();\n        int max_len = 0;\n        for (int i = 0; i < n; i++) {\n            unordered_map<char, int> freq;\n            for (int j = i; j < n; j++) {\n                freq[s[j]]++;\n                if (freq.size() == 1 && freq[s[j]] >= 3) {\n                    max_len = max(max_len, j - i + 1);\n                }\n            }\n        }\n        return max_len > 0 ? max_len : -1;\n    }\n};",
+  "timestamp": "2025-08-05T15:11:21.642636",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maximumLength(string s) {\n        int n = s.size();\n        int max_len = 0;\n        for (int i = 0; i < n; i++) {\n            unordered_map<char, int> freq;\n            for (int j = i; j < n; j++) {\n                freq[s[j]]++;\n                if (freq.size() == 1 && freq[s[j]] >= 3) {\n                    max_len = max(max_len, j - i + 1);\n                }\n            }\n        }\n        return max_len > 0 ? max_len : -1;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.288006"
+}

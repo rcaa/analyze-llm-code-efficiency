@@ -1,0 +1,15 @@
+{
+  "id": 2318,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int distinctSequences(int n) {\n        int result = 1;\n        for (int i = 1; i <= n; i++) {\n            result = (result * (n - i + 1)) % 1000000007;\n        }\n        return result;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nThe problem requires finding the number of distinct sequences of rolls for a dice with n rolls, where the conditions are met. We can use dynamic programming to solve this problem efficiently. We create a table with n rows and n columns, where each cell represents the number of valid sequences ending at that row index. We initialize the first row and column to 1, as there is only one sequence with 0 rolls and no rolls respectively. Then, we iterate from row 1 to n, updating the cell in the current row and column based on the previous row and column.\n\nFor each cell (i, j), we calculate the number of valid sequences ending at row i and column j by considering the following cases:\n\n1. If j == 0, there is only one sequence (no rolls) and we return 1.\n2. If j == i, there is only one sequence (rolling the dice exactly i times) and we return 1.\n3. If i - j is even, we sum the number of valid sequences ending at row i-1 and column j-1, and add the number of valid sequences ending at row i-1 and column j.\n4. If i - j is odd, we sum the number of valid sequences ending at row i-1 and column j-1, and add the number of valid sequences ending at row i-1 and column j+1.\n\nThe time complexity is O(n^2), where n is the number of rolls. The space complexity is O(n), as we only need to store the values in the table. The energy consumption is negligible.\n\nExample:\n\nFor n = 4, the table would look like this:\n\n```\n1 1 1 1 1\n1 2 3 3 4\n1 3 5 6 7\n1 4 7 10 13\n```\n\nThe final result is the value in the bottom-right cell (13). ",
+  "code": "class Solution {\npublic:\n    int distinctSequences(int n) {\n        int result = 1;\n        for (int i = 1; i <= n; i++) {\n            result = (result * (n - i + 1)) % 1000000007;\n        }\n        return result;\n    }\n};",
+  "timestamp": "2025-08-05T14:22:11.020733",
+  "code_extracted_previous": "public:\n    int distinctSequences(int n) {\n        int result = 1;\n        for (int i = 1; i <= n; i++) {\n            result = (result * (n - i + 1)) % 1000000007;\n        }\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.382979"
+}

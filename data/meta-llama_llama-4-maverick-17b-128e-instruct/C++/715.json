@@ -1,0 +1,15 @@
+{
+  "id": 715,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nclass RangeModule {\npublic:\n    RangeModule() {\n        \n    }\n    \n    void addRange(int left, int right) {\n        auto it = ranges.lower_bound(left);\n        if (it != ranges.begin()) {\n            --it;\n            if (it->second >= left) {\n                left = it->first;\n                right = max(right, it->second);\n                it = ranges.erase(it);\n            } else {\n                ++it;\n            }\n        }\n        while (it != ranges.end() && it->first <= right) {\n            right = max(right, it->second);\n            it = ranges.erase(it);\n        }\n        ranges[left] = right;\n    }\n    \n    bool queryRange(int left, int right) {\n        auto it = ranges.upper_bound(left);\n        if (it == ranges.begin() || (--it)->second < right) {\n            return false;\n        }\n        return true;\n    }\n    \n    void removeRange(int left, int right) {\n        auto it = ranges.lower_bound(left);\n        if (it != ranges.begin()) {\n            --it;\n            if (it->second > left) {\n                int originalRight = it->second;\n                it->second = left;\n                if (originalRight > right) {\n                    ranges[right] = originalRight;\n                }\n                ++it;\n            } else {\n                ++it;\n            }\n        }\n        while (it != ranges.end() && it->first < right) {\n            if (it->second > right) {\n                ranges[right] = it->second;\n            }\n            it = ranges.erase(it);\n        }\n    }\nprivate:\n    map<int, int> ranges;\n};\n\n/**\n * Your RangeModule object will be instantiated and called as such:\n * RangeModule* obj = new RangeModule();\n * obj->addRange(left,right);\n * bool param_2 = obj->queryRange(left,right);\n * obj->removeRange(left,right);\n */\nsolution: The provided C++ code.\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a `map` to store non-overlapping ranges. The `addRange`, `queryRange`, and `removeRange` operations are implemented using this data structure, ensuring efficient range tracking and querying. The `map` allows for logarithmic time complexity for these operations.",
+  "code": "The provided C++ code.",
+  "timestamp": "2025-08-05T14:02:38.831493",
+  "code_extracted_previous": "The provided C++ code.",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:45.805912"
+}

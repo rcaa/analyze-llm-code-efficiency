@@ -1,0 +1,15 @@
+{
+  "id": 1147,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int longestDecomposition(string text) {\n        int n = text.size();\n        int res = 1;\n        for (int i = 1; i <= n / 2; ++i) {\n            if (text.substr(0, i) == text.substr(n - i)) {\n                res = max(res, 2 + longestDecomposition(text.substr(i, n - 2 * i)));\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(n)\nenergy implications: MEDIUM\nexplanation: The solution uses a recursive approach with memoization to find the longest decomposition of the string into palindromic substrings. It checks all possible prefixes of the string and compares them with the corresponding suffix. If they match, it recursively finds the longest decomposition of the remaining substring.",
+  "code": "class Solution {\npublic:\n    int longestDecomposition(string text) {\n        int n = text.size();\n        int res = 1;\n        for (int i = 1; i <= n / 2; ++i) {\n            if (text.substr(0, i) == text.substr(n - i)) {\n                res = max(res, 2 + longestDecomposition(text.substr(i, n - 2 * i)));\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T01:13:57.121067",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestDecomposition(string text) {\n        int n = text.size();\n        int res = 1;\n        for (int i = 1; i <= n / 2; ++i) {\n            if (text.substr(0, i) == text.substr(n - i)) {\n                res = max(res, 2 + longestDecomposition(text.substr(i, n - 2 * i)));\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.622987"
+}

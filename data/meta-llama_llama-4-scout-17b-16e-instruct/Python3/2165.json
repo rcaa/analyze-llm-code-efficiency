@@ -1,0 +1,15 @@
+{
+  "id": 2165,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def smallestNumber(self, num: int) -> int:\n        if num == 0:\n            return 0\n        \n        sign = -1 if num < 0 else 1\n        num_str = str(abs(num))\n        digits = sorted(list(num_str))\n        \n        if digits[0] == '0':\n            non_zero_idx = next((i for i, x in enumerate(digits) if x != '0'), None)\n            if non_zero_idx is not None:\n                digits[0], digits[non_zero_idx] = digits[non_zero_idx], digits[0]\n        \n        return sign * int(''.join(digits))\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The approach involves first determining the sign of the input number and then sorting its digits. If the smallest digit is '0', it is swapped with the first non-zero digit to avoid leading zeros. Finally, the rearranged digits are joined and converted back to an integer with the original sign.",
+  "code": "class Solution:\n    def smallestNumber(self, num: int) -> int:\n        if num == 0:\n            return 0\n        \n        sign = -1 if num < 0 else 1\n        num_str = str(abs(num))\n        digits = sorted(list(num_str))\n        \n        if digits[0] == '0':\n            non_zero_idx = next((i for i, x in enumerate(digits) if x != '0'), None)\n            if non_zero_idx is not None:\n                digits[0], digits[non_zero_idx] = digits[non_zero_idx], digits[0]\n        \n        return sign * int(''.join(digits))",
+  "timestamp": "2025-08-05T15:56:17.011897",
+  "code_extracted_previous": "class Solution:\n    def smallestNumber(self, num: int) -> int:\n        if num == 0:\n            return 0\n        \n        sign = -1 if num < 0 else 1\n        num_str = str(abs(num))\n        digits = sorted(list(num_str))\n        \n        if digits[0] == '0':\n            non_zero_idx = next((i for i, x in enumerate(digits) if x != '0'), None)\n            if non_zero_idx is not None:\n                digits[0], digits[non_zero_idx] = digits[non_zero_idx], digits[0]\n        \n        return sign * int(''.join(digits))",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:52.070541"
+}

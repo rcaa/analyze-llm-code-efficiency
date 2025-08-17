@@ -1,0 +1,15 @@
+{
+  "id": 77,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```cpp\nclass Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> result;\n        vector<int> combination;\n        \n        function<void(int, int)> backtrack = [&](int start, int remaining) {\n            if (remaining == 0) {\n                result.push_back(combination);\n                return;\n            }\n            for (int i = start; i <= n; ++i) {\n                combination.push_back(i);\n                backtrack(i + 1, remaining - 1);\n                combination.pop_back();\n            }\n        };\n        \n        backtrack(1, k);\n        return result;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(C(n, k) * k)\nspace complexity: O(k)\nenergy implications: LOW\nexplanation: The solution uses backtracking to generate all combinations of k numbers from 1 to n. It recursively builds combinations by selecting numbers from the range and backtracks when the required size is reached. The time complexity is proportional to the number of combinations multiplied by the cost of copying each combination, and the space complexity is linear with respect to the size of each combination.",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> result;\n        vector<int> combination;\n        \n        function<void(int, int)> backtrack = [&](int start, int remaining) {\n            if (remaining == 0) {\n                result.push_back(combination);\n                return;\n            }\n            for (int i = start; i <= n; ++i) {\n                combination.push_back(i);\n                backtrack(i + 1, remaining - 1);\n                combination.pop_back();\n            }\n        };\n        \n        backtrack(1, k);\n        return result;\n    }\n};",
+  "timestamp": "2025-08-06T15:59:46.607148",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> result;\n        vector<int> combination;\n        \n        function<void(int, int)> backtrack = [&](int start, int remaining) {\n            if (remaining == 0) {\n                result.push_back(combination);\n                return;\n            }\n            for (int i = start; i <= n; ++i) {\n                combination.push_back(i);\n                backtrack(i + 1, remaining - 1);\n                combination.pop_back();\n            }\n        };\n        \n        backtrack(1, k);\n        return result;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:01.161215"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1399,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[40];\n        int maxCount = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = sumDigits(i);\n            count[sum]++;\n            maxCount = Math.max(maxCount, count[sum]);\n        }\n        int result = 0;\n        for (int c : count) {\n            if (c == maxCount) {\n                result++;\n            }\n        }\n        return result;\n    }\n    private int sumDigits(int num) {\n        int sum = 0;\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        return sum;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a hashmap to store the count of numbers with the same sum of digits. It iterates through the numbers from 1 to n, calculates the sum of digits for each number, and increments the count in the hashmap. The maximum count is tracked, and the number of groups with the maximum count is returned.\n",
+  "code": "class Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[40];\n        int maxCount = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = sumDigits(i);\n            count[sum]++;\n            maxCount = Math.max(maxCount, count[sum]);\n        }\n        int result = 0;\n        for (int c : count) {\n            if (c == maxCount) {\n                result++;\n            }\n        }\n        return result;\n    }\n    private int sumDigits(int num) {\n        int sum = 0;\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        return sum;\n    }\n}",
+  "timestamp": "2025-08-05T14:43:03.198653",
+  "code_extracted_previous": "class Solution {\n    public int countLargestGroup(int n) {\n        int[] count = new int[40];\n        int maxCount = 0;\n        for (int i = 1; i <= n; i++) {\n            int sum = sumDigits(i);\n            count[sum]++;\n            maxCount = Math.max(maxCount, count[sum]);\n        }\n        int result = 0;\n        for (int c : count) {\n            if (c == maxCount) {\n                result++;\n            }\n        }\n        return result;\n    }\n    private int sumDigits(int num) {\n        int sum = 0;\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        return sum;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.605232"
+}

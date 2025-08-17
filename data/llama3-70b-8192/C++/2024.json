@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        int n = answerKey.size();\n        int res = 0, cntT = 0, cntF = 0;\n        int l = 0;\n        for (int r = 0; r < n; r++) {\n            if (answerKey[r] == 'T') cntT++;\n            else cntF++;\n            while (cntT > k && cntF > k) {\n                if (answerKey[l] == 'T') cntT--;\n                else cntF--;\n                l++;\n            }\n            res = max(res, r - l + 1);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Use a sliding window approach to keep track of the maximum consecutive 'T's or 'F's.",
+  "code": "class Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        int n = answerKey.size();\n        int res = 0, cntT = 0, cntF = 0;\n        int l = 0;\n        for (int r = 0; r < n; r++) {\n            if (answerKey[r] == 'T') cntT++;\n            else cntF++;\n            while (cntT > k && cntF > k) {\n                if (answerKey[l] == 'T') cntT--;\n                else cntF--;\n                l++;\n            }\n            res = max(res, r - l + 1);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T00:56:43.557578",
+  "code_extracted_previous": "public:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        int n = answerKey.size();\n        int res = 0, cntT = 0, cntF = 0;\n        int l = 0;\n        for (int r = 0; r < n; r++) {\n            if (answerKey[r] == 'T') cntT++;\n            else cntF++;\n            while (cntT > k && cntF > k) {\n                if (answerKey[l] == 'T') cntT--;\n                else cntF--;\n                l++;\n            }\n            res = max(res, r - l + 1);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.355744"
+}

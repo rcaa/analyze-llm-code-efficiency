@@ -1,0 +1,15 @@
+{
+  "id": 3129,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        long MOD = 1_000_000_007;\n        long[][] dp = new long[limit + 1][one + 1];\n        for (int i = 1; i <= limit; i++) {\n            for (int j = 1; j <= one; j++) {\n                for (int k = 1; k <= Math.min(i, j); k++) {\n                    dp[i][j] = (dp[i][j] + dp[i - k][j - k]) % MOD;\n                }\n                if (i > 1) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n                }\n            }\n        }\n        long res = 0;\n        for (int i = 1; i <= limit; i++) {\n            res = (res + dp[i][one]) % MOD;\n        }\n        return (int) res;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(limit * one)\nspace complexity: O(limit * one)\nenergy implications: LOW",
+  "code": "class Solution {\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        long MOD = 1_000_000_007;\n        long[][] dp = new long[limit + 1][one + 1];\n        for (int i = 1; i <= limit; i++) {\n            for (int j = 1; j <= one; j++) {\n                for (int k = 1; k <= Math.min(i, j); k++) {\n                    dp[i][j] = (dp[i][j] + dp[i - k][j - k]) % MOD;\n                }\n                if (i > 1) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n                }\n            }\n        }\n        long res = 0;\n        for (int i = 1; i <= limit; i++) {\n            res = (res + dp[i][one]) % MOD;\n        }\n        return (int) res;\n    }\n}",
+  "timestamp": "2025-08-05T14:29:47.988504",
+  "code_extracted_previous": "class Solution {\n    public int numberOfStableArrays(int zero, int one, int limit) {\n        long MOD = 1_000_000_007;\n        long[][] dp = new long[limit + 1][one + 1];\n        for (int i = 1; i <= limit; i++) {\n            for (int j = 1; j <= one; j++) {\n                for (int k = 1; k <= Math.min(i, j); k++) {\n                    dp[i][j] = (dp[i][j] + dp[i - k][j - k]) % MOD;\n                }\n                if (i > 1) {\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;\n                }\n            }\n        }\n        long res = 0;\n        for (int i = 1; i <= limit; i++) {\n            res = (res + dp[i][one]) % MOD;\n        }\n        return (int) res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.481330"
+}

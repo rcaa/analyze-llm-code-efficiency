@@ -1,0 +1,15 @@
+{
+  "id": 2998,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int minimumOperationsToMakeEqual(int x, int y) {\n        if (x == y) return 0;\n        if (x > y) {\n            int res1 = x - y;\n            int res2 = 0;\n            int tx = x;\n            while (tx % 5 != 0 && tx % 11 != 0) {\n                tx--;\n                res2++;\n            }\n            while (tx > y) {\n                if (tx % 11 == 0) tx /= 11;\n                else if (tx % 5 == 0) tx /= 5;\n                res2++;\n            }\n            res2 += abs(tx - y);\n            return min(res1, res2);\n        } else {\n            return abs(x - y);\n        }\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(log(max(x, y)))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a greedy approach to find the minimum number of operations. When `x` is greater than `y`, it considers two cases: directly decrementing `x` to `y`, or reducing `x` by dividing it by 5 or 11 and then adjusting. When `x` is less than `y`, it simply increments `x` to `y`. This approach ensures the minimum number of operations by exploring the most efficient paths first.",
+  "code": "class Solution {\npublic:\n    int minimumOperationsToMakeEqual(int x, int y) {\n        if (x == y) return 0;\n        if (x > y) {\n            int res1 = x - y;\n            int res2 = 0;\n            int tx = x;\n            while (tx % 5 != 0 && tx % 11 != 0) {\n                tx--;\n                res2++;\n            }\n            while (tx > y) {\n                if (tx % 11 == 0) tx /= 11;\n                else if (tx % 5 == 0) tx /= 5;\n                res2++;\n            }\n            res2 += abs(tx - y);\n            return min(res1, res2);\n        } else {\n            return abs(x - y);\n        }\n    }\n};",
+  "timestamp": "2025-08-05T14:28:40.351992",
+  "code_extracted_previous": "class Solution {\npublic:\n    int minimumOperationsToMakeEqual(int x, int y) {\n        if (x == y) return 0;\n        if (x > y) {\n            int res1 = x - y;\n            int res2 = 0;\n            int tx = x;\n            while (tx % 5 != 0 && tx % 11 != 0) {\n                tx--;\n                res2++;\n            }\n            while (tx > y) {\n                if (tx % 11 == 0) tx /= 11;\n                else if (tx % 5 == 0) tx /= 5;\n                res2++;\n            }\n            res2 += abs(tx - y);\n            return min(res1, res2);\n        } else {\n            return abs(x - y);\n        }\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:49.377798"
+}

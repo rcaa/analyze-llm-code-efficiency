@@ -1,0 +1,15 @@
+{
+  "id": 1011,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    int shipWithinDays(vector<int>& weights, int days) {\n        int left = 0, right = 0;\n        for (int w : weights) {\n            left = max(left, w);\n            right += w;\n        }\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int need = 1, cur = 0;\n            for (int w : weights) {\n                if (cur + w > mid) {\n                    need++;\n                    cur = 0;\n                }\n                cur += w;\n            }\n            if (need <= days) right = mid;\n            else left = mid + 1;\n        }\n        return left;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log S)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search on the capacity between the largest single weight and the total sum. For each candidate capacity, a linear scan counts required days. The search converges to the minimal feasible capacity.",
+  "code": "class Solution {\npublic:\n    int shipWithinDays(vector<int>& weights, int days) {\n        int left = 0, right = 0;\n        for (int w : weights) {\n            left = max(left, w);\n            right += w;\n        }\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int need = 1, cur = 0;\n            for (int w : weights) {\n                if (cur + w > mid) {\n                    need++;\n                    cur = 0;\n                }\n                cur += w;\n            }\n            if (need <= days) right = mid;\n            else left = mid + 1;\n        }\n        return left;\n    }\n};",
+  "timestamp": "2025-08-05T13:17:50.791428",
+  "code_extracted_previous": "public:\n    int shipWithinDays(vector<int>& weights, int days) {\n        int left = 0, right = 0;\n        for (int w : weights) {\n            left = max(left, w);\n            right += w;\n        }\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            int need = 1, cur = 0;\n            for (int w : weights) {\n                if (cur + w > mid) {\n                    need++;\n                    cur = 0;\n                }\n                cur += w;\n            }\n            if (need <= days) right = mid;\n            else left = mid + 1;\n        }\n        return left;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:53.083060"
+}

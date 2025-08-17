@@ -1,0 +1,15 @@
+{
+  "id": 2343,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {\n        vector<int> answer;\n        for (auto& query : queries) {\n            int k = query[0], trim = query[1];\n            vector<string> trimmed;\n            for (const auto& num : nums) {\n                trimmed.push_back(num.substr(num.size() - trim));\n            }\n            sort(trimmed.begin(), trimmed.end());\n            answer.push_back(lower_bound(trimmed.begin(), trimmed.end(), trimmed[k - 1]) - trimmed.begin());\n        }\n        return answer;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * m * log(m))\nspace complexity: O(n * m)\nenergy implications: MEDIUM\nexplanation: This solution uses a sorting approach to efficiently find the kth smallest trimmed number. It first trims each number in the input array to the specified length, then sorts the trimmed numbers. Finally, it uses the lower_bound function to find the index of the kth smallest trimmed number. The time complexity is O(n * m * log(m)) due to the sorting operation, where n is the number of input numbers and m is the maximum length of a number. The space complexity is O(n * m) for storing the trimmed numbers.",
+  "code": "class Solution {\npublic:\n    vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {\n        vector<int> answer;\n        for (auto& query : queries) {\n            int k = query[0], trim = query[1];\n            vector<string> trimmed;\n            for (const auto& num : nums) {\n                trimmed.push_back(num.substr(num.size() - trim));\n            }\n            sort(trimmed.begin(), trimmed.end());\n            answer.push_back(lower_bound(trimmed.begin(), trimmed.end(), trimmed[k - 1]) - trimmed.begin());\n        }\n        return answer;\n    }\n};",
+  "timestamp": "2025-08-05T13:29:49.443150",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {\n        vector<int> answer;\n        for (auto& query : queries) {\n            int k = query[0], trim = query[1];\n            vector<string> trimmed;\n            for (const auto& num : nums) {\n                trimmed.push_back(num.substr(num.size() - trim));\n            }\n            sort(trimmed.begin(), trimmed.end());\n            answer.push_back(lower_bound(trimmed.begin(), trimmed.end(), trimmed[k - 1]) - trimmed.begin());\n        }\n        return answer;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.057841"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1799,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```java\nsolution: \nclass Solution {\n    public int maxScore(int[] nums) {\n        int n = nums.length / 2;\n        int[] dp = new int[1 << n];\n        for (int mask = 1; mask < (1 << n); mask++) {\n            int i = Integer.numberOfTrailingZeros(mask);\n            for (int j = i + 1; j < n; j++) {\n                if ((mask & (1 << j)) != 0) {\n                    int prevMask = mask ^ (1 << i) ^ (1 << j);\n                    dp[mask] = Math.max(dp[mask], dp[prevMask] + (i + 1) * gcd(nums[i], nums[j]));\n                }\n            }\n        }\n        return dp[(1 << n) - 1];\n\n    }\n    public int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}\nefficiency: HIGH\ntime complexity: O(2^n * n^2)\nspace complexity: O(2^n)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming and bit masking to efficiently explore all possible pairs of numbers and calculate the maximum score. The gcd function is used to calculate the greatest common divisor of two numbers. The time complexity is exponential due to the recursive nature of the dynamic programming approach, but it is still efficient for small inputs.",
+  "code": "class Solution {\n    public int maxScore(int[] nums) {\n        int n = nums.length / 2;\n        int[] dp = new int[1 << n];\n        for (int mask = 1; mask < (1 << n); mask++) {\n            int i = Integer.numberOfTrailingZeros(mask);\n            for (int j = i + 1; j < n; j++) {\n                if ((mask & (1 << j)) != 0) {\n                    int prevMask = mask ^ (1 << i) ^ (1 << j);\n                    dp[mask] = Math.max(dp[mask], dp[prevMask] + (i + 1) * gcd(nums[i], nums[j]));\n                }\n            }\n        }\n        return dp[(1 << n) - 1];\n\n    }\n    public int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}",
+  "timestamp": "2025-08-05T11:56:40.123717",
+  "code_extracted_previous": "class Solution {\n    public int maxScore(int[] nums) {\n        int n = nums.length / 2;\n        int[] dp = new int[1 << n];\n        for (int mask = 1; mask < (1 << n); mask++) {\n            int i = Integer.numberOfTrailingZeros(mask);\n            for (int j = i + 1; j < n; j++) {\n                if ((mask & (1 << j)) != 0) {\n                    int prevMask = mask ^ (1 << i) ^ (1 << j);\n                    dp[mask] = Math.max(dp[mask], dp[prevMask] + (i + 1) * gcd(nums[i], nums[j]));\n                }\n            }\n        }\n        return dp[(1 << n) - 1];\n\n    }\n    public int gcd(int a, int b) {\n        if (b == 0) return a;\n        return gcd(b, a % b);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.594217"
+}

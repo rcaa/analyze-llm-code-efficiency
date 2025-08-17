@@ -1,0 +1,15 @@
+{
+  "id": 868,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\n    public int binaryGap(int n) {\n        int maxGap = 0;\n        int countZero = 0;\n        while (n != 0) {\n            int lastZeroIndex = countZero;\n            countZero++;\n            n >>= 1;\n            maxGap = Math.max(maxGap, n - countZero);\n        }\n        return maxGap;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nThe problem requires finding the maximum gap between two adjacent 1's in the binary representation of a number. We can solve this problem using bit manipulation and a single loop.\n\n1. Initialize `maxGap` and `countZero` variables.\n2. Iterate while `n` is not zero.\n3. In each iteration, update `lastZeroIndex` to store the index of the last zero encountered, increment `countZero`, and update `n` by shifting its bits to the right.\n4. Update `maxGap` with the maximum value between the current `n` and `n - countZero`.\n5. Return `maxGap` after the loop ends.\n\nThis solution has a time complexity of O(log(n)) due to the iterative approach using bit manipulation. The space complexity is O(1) since we only use a constant amount of space for `maxGap` and `countZero` variables. The energy implications are low because the algorithm only performs bit operations and does not involve any intensive computations. ",
+  "code": "class Solution {\n    public int binaryGap(int n) {\n        int maxGap = 0;\n        int countZero = 0;\n        while (n != 0) {\n            int lastZeroIndex = countZero;\n            countZero++;\n            n >>= 1;\n            maxGap = Math.max(maxGap, n - countZero);\n        }\n        return maxGap;\n    }\n}",
+  "timestamp": "2025-08-05T13:49:49.856582",
+  "code_extracted_previous": "public int binaryGap(int n) {\n        int maxGap = 0;\n        int countZero = 0;\n        while (n != 0) {\n            int lastZeroIndex = countZero;\n            countZero++;\n            n >>= 1;\n            maxGap = Math.max(maxGap, n - countZero);\n        }\n        return maxGap;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:14.955620"
+}

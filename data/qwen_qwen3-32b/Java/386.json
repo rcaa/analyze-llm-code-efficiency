@@ -1,0 +1,15 @@
+{
+  "id": 386,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> result = new ArrayList<>();\n        int num = 1;\n        for (int i = 0; i < n; i++) {\n            result.add(num);\n            if (num * 10 <= n) {\n                num *= 10;\n            } else {\n                while (num % 10 == 9 || num == n) {\n                    num /= 10;\n                }\n                num += 1;\n            }\n        }\n        return result;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a depth-first approach to generate numbers in lexicographical order. It starts from 1 and tries to multiply by 10 to go deeper in the lexicographical sequence. If it exceeds n, it backtracks by dividing by 10 until it can increment the number. This approach ensures O(n) time and O(1) space.",
+  "code": "class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> result = new ArrayList<>();\n        int num = 1;\n        for (int i = 0; i < n; i++) {\n            result.add(num);\n            if (num * 10 <= n) {\n                num *= 10;\n            } else {\n                while (num % 10 == 9 || num == n) {\n                    num /= 10;\n                }\n                num += 1;\n            }\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-06T12:23:03.663013",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> result = new ArrayList<>();\n        int num = 1;\n        for (int i = 0; i < n; i++) {\n            result.add(num);\n            if (num * 10 <= n) {\n                num *= 10;\n            } else {\n                while (num % 10 == 9 || num == n) {\n                    num /= 10;\n                }\n                num += 1;\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:03.166913"
+}

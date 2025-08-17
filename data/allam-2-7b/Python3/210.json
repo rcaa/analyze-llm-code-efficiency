@@ -1,0 +1,15 @@
+{
+  "id": 210,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution:\ndef findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n    courses = sorted(set(prerequisites), key=lambda x: x[1])\n    courses.reverse()\n    result = []\n    for course in courses:\n        result.append(course[0])\n        for next_course in courses:\n            if next_course[0] > course[0]:\n                break\n            result.append(next_course[0])\n    return result\n\nefficiency: HIGH\ntime complexity: O(n.log(n))\nspace complexity: O(n)\nenergy implications: LOW ",
+  "code": "def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n    courses = sorted(set(prerequisites), key=lambda x: x[1])\n    courses.reverse()\n    result = []\n    for course in courses:\n        result.append(course[0])\n        for next_course in courses:\n            if next_course[0] > course[0]:\n                break\n            result.append(next_course[0])\n    return result",
+  "timestamp": "2025-08-05T13:58:29.612585",
+  "code_extracted_previous": "def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n    courses = sorted(set(prerequisites), key=lambda x: x[1])\n    courses.reverse()\n    result = []\n    for course in courses:\n        result.append(course[0])\n        for next_course in courses:\n            if next_course[0] > course[0]:\n                break\n            result.append(next_course[0])\n    return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.493260"
+}

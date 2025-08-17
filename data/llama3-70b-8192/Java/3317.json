@@ -1,0 +1,15 @@
+{
+  "id": 3317,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```java\nclass Solution {\n    public int numberOfWays(int n, int x, int y) {\n        final int MOD = (int)1e9 + 7;\n        int[] dp = new int[x + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            int[] ndp = new int[x + 1];\n            for (int j = 1; j <= x; j++) {\n                for (int k = 1; k <= y; k++) {\n                    ndp[j] = (ndp[j] + dp[j - 1]) % MOD;\n                }\n            }\n            dp = ndp;\n        }\n        int res = 0;\n        for (int i = 1; i <= x; i++) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(nxy)\nspace complexity: O(x)\nenergy implications: LOW\nexplanation: This solution uses dynamic programming to efficiently calculate the number of possible ways the event can take place. It iterates over each performer and each stage, and for each stage, it calculates the number of ways to assign the performers to that stage. The result is then accumulated modulo 10^9 + 7 to prevent overflow.",
+  "code": "class Solution {\n    public int numberOfWays(int n, int x, int y) {\n        final int MOD = (int)1e9 + 7;\n        int[] dp = new int[x + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            int[] ndp = new int[x + 1];\n            for (int j = 1; j <= x; j++) {\n                for (int k = 1; k <= y; k++) {\n                    ndp[j] = (ndp[j] + dp[j - 1]) % MOD;\n                }\n            }\n            dp = ndp;\n        }\n        int res = 0;\n        for (int i = 1; i <= x; i++) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T15:24:04.557002",
+  "code_extracted_previous": "class Solution {\n    public int numberOfWays(int n, int x, int y) {\n        final int MOD = (int)1e9 + 7;\n        int[] dp = new int[x + 1];\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            int[] ndp = new int[x + 1];\n            for (int j = 1; j <= x; j++) {\n                for (int k = 1; k <= y; k++) {\n                    ndp[j] = (ndp[j] + dp[j - 1]) % MOD;\n                }\n            }\n            dp = ndp;\n        }\n        int res = 0;\n        for (int i = 1; i <= x; i++) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.441114"
+}

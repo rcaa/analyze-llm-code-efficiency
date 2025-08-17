@@ -1,0 +1,15 @@
+{
+  "id": 1900,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nvector<int> earliestAndLatest(int n, int firstPlayer, int secondPlayer) {\n    int earliest = 1, latest = 1;\n    for (int i = 2; i <= n; i++) {\n        if (i % 2 == 1) {\n            if (firstPlayer <= i && secondPlayer >= n - i + 1) {\n                earliest = i;\n            }\n            if (firstPlayer >= i && secondPlayer <= n - i + 1) {\n                latest = i;\n            }\n        } else {\n            if (firstPlayer <= i / 2 && secondPlayer >= n - i / 2 + 1) {\n                earliest = i;\n            }\n            if (firstPlayer >= i / 2 && secondPlayer <= n - i / 2 + 1) {\n                latest = i;\n            }\n        }\n    }\n    return {earliest, latest};\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution iterates through each round of the tournament, checking if the firstPlayer and secondPlayer can compete in that round. It keeps track of the earliest and latest round in which they can compete. The time complexity is O(n) because it iterates through each round, and the space complexity is O(1) because it only uses a constant amount of space.",
+  "code": "vector<int> earliestAndLatest(int n, int firstPlayer, int secondPlayer) {\n    int earliest = 1, latest = 1;\n    for (int i = 2; i <= n; i++) {\n        if (i % 2 == 1) {\n            if (firstPlayer <= i && secondPlayer >= n - i + 1) {\n                earliest = i;\n            }\n            if (firstPlayer >= i && secondPlayer <= n - i + 1) {\n                latest = i;\n            }\n        } else {\n            if (firstPlayer <= i / 2 && secondPlayer >= n - i / 2 + 1) {\n                earliest = i;\n            }\n            if (firstPlayer >= i / 2 && secondPlayer <= n - i / 2 + 1) {\n                latest = i;\n            }\n        }\n    }\n    return {earliest, latest};\n}",
+  "timestamp": "2025-08-05T14:20:56.380795",
+  "code_extracted_previous": "vector<int> earliestAndLatest(int n, int firstPlayer, int secondPlayer) {\n    int earliest = 1, latest = 1;\n    for (int i = 2; i <= n; i++) {\n        if (i % 2 == 1) {\n            if (firstPlayer <= i && secondPlayer >= n - i + 1) {\n                earliest = i;\n            }\n            if (firstPlayer >= i && secondPlayer <= n - i + 1) {\n                latest = i;\n            }\n        } else {\n            if (firstPlayer <= i / 2 && secondPlayer >= n - i / 2 + 1) {\n                earliest = i;\n            }\n            if (firstPlayer >= i / 2 && secondPlayer <= n - i / 2 + 1) {\n                latest = i;\n            }\n        }\n    }\n    return {earliest, latest};\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:40.750347"
+}

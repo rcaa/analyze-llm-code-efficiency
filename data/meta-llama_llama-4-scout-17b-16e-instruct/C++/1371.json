@@ -1,0 +1,15 @@
+{
+  "id": 1371,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int maxLen = 0;\n        int vowelState = 0;\n        unordered_map<int, int> seen;\n\n        seen[0] = -1;\n\n        for (int i = 0; i < s.size(); ++i) {\n            switch (s[i]) {\n                case 'a': vowelState ^= 1 << 0; break;\n                case 'e': vowelState ^= 1 << 1; break;\n                case 'i': vowelState ^= 1 << 2; break;\n                case 'o': vowelState ^= 1 << 3; break;\n                case 'u': vowelState ^= 1 << 4; break;\n            }\n\n            if (seen.find(vowelState) == seen.end()) {\n                seen[vowelState] = i;\n            } else {\n                maxLen = max(maxLen, i - seen[vowelState]);\n            }\n        }\n\n        return maxLen;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a bitwise approach to track the state of vowels (even or odd counts) and a sliding window technique with an unordered_map to efficiently find the longest substring.",
+  "code": "class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int maxLen = 0;\n        int vowelState = 0;\n        unordered_map<int, int> seen;\n\n        seen[0] = -1;\n\n        for (int i = 0; i < s.size(); ++i) {\n            switch (s[i]) {\n                case 'a': vowelState ^= 1 << 0; break;\n                case 'e': vowelState ^= 1 << 1; break;\n                case 'i': vowelState ^= 1 << 2; break;\n                case 'o': vowelState ^= 1 << 3; break;\n                case 'u': vowelState ^= 1 << 4; break;\n            }\n\n            if (seen.find(vowelState) == seen.end()) {\n                seen[vowelState] = i;\n            } else {\n                maxLen = max(maxLen, i - seen[vowelState]);\n            }\n        }\n\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-06T02:28:05.155023",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findTheLongestSubstring(string s) {\n        int maxLen = 0;\n        int vowelState = 0;\n        unordered_map<int, int> seen;\n\n        seen[0] = -1;\n\n        for (int i = 0; i < s.size(); ++i) {\n            switch (s[i]) {\n                case 'a': vowelState ^= 1 << 0; break;\n                case 'e': vowelState ^= 1 << 1; break;\n                case 'i': vowelState ^= 1 << 2; break;\n                case 'o': vowelState ^= 1 << 3; break;\n                case 'u': vowelState ^= 1 << 4; break;\n            }\n\n            if (seen.find(vowelState) == seen.end()) {\n                seen[vowelState] = i;\n            } else {\n                maxLen = max(maxLen, i - seen[vowelState]);\n            }\n        }\n\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.745770"
+}

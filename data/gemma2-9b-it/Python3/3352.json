@@ -1,0 +1,15 @@
+{
+  "id": 3352,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def countKReducibleNumbers(self, s: str, k: int) -> int:\n        n = int(s, 2)\n        count = 0\n        for i in range(1, n):\n            num_set_bits = bin(i).count(\"1\")\n            if self.isKReducible(i, k):\n                count += 1\n        return count % (10**9 + 7)\n    \n    def isKReducible(self, num, k):\n        while k > 0 and num != 1:\n            num_set_bits = bin(num).count(\"1\")\n            num = num_set_bits\n            k -= 1\n        return num == 1\n```\n\nsolution: ```python\nclass Solution:\n    def countKReducibleNumbers(self, s: str, k: int) -> int:\n        n = int(s, 2)\n        count = 0\n        for i in range(1, n):\n            num_set_bits = bin(i).count(\"1\")\n            if self.isKReducible(i, k):\n                count += 1\n        return count % (10**9 + 7)\n    \n    def isKReducible(self, num, k):\n        while k > 0 and num != 1:\n            num_set_bits = bin(num).count(\"1\")\n            num = num_set_bits\n            k -= 1\n        return num == 1\n```\nefficiency: HIGH\ntime complexity: O(n*log(n))\nspace complexity: O(1)\nenergy implications: LOW \nexplanation: The solution iterates through all numbers less than n and checks if each number is k-reducible using a helper function. The helper function repeatedly counts the set bits in a number until it reaches 1 or k operations are performed. This approach is efficient as it avoids redundant calculations and has a relatively low space complexity.",
+  "code": "solution:",
+  "timestamp": "2025-08-06T01:56:58.000491",
+  "code_extracted_previous": "class Solution:\n    def countKReducibleNumbers(self, s: str, k: int) -> int:\n        n = int(s, 2)\n        count = 0\n        for i in range(1, n):\n            num_set_bits = bin(i).count(\"1\")\n            if self.isKReducible(i, k):\n                count += 1\n        return count % (10**9 + 7)\n    \n    def isKReducible(self, num, k):\n        while k > 0 and num != 1:\n            num_set_bits = bin(num).count(\"1\")\n            num = num_set_bits\n            k -= 1\n        return num == 1",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.703086"
+}

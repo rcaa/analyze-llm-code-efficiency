@@ -1,0 +1,15 @@
+{
+  "id": 2609,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int maxLen = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int zeros = 0, ones = 0;\n            for (int j = i; j < s.length(); j++) {\n                if (s[j] == '0') zeros++;\n                else ones++;\n                if (zeros == ones) maxLen = max(maxLen, (j - i + 1));\n                if (ones > zeros) break;\n            }\n        }\n        return maxLen;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n^2)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates over the string, maintaining a count of zeros and ones in the current substring. It updates the maximum length whenever a balanced substring is found and breaks the inner loop when the count of ones exceeds zeros, ensuring efficiency.",
+  "code": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int maxLen = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int zeros = 0, ones = 0;\n            for (int j = i; j < s.length(); j++) {\n                if (s[j] == '0') zeros++;\n                else ones++;\n                if (zeros == ones) maxLen = max(maxLen, (j - i + 1));\n                if (ones > zeros) break;\n            }\n        }\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-05T16:41:44.820009",
+  "code_extracted_previous": "class Solution {\npublic:\n    int findTheLongestBalancedSubstring(string s) {\n        int maxLen = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int zeros = 0, ones = 0;\n            for (int j = i; j < s.length(); j++) {\n                if (s[j] == '0') zeros++;\n                else ones++;\n                if (zeros == ones) maxLen = max(maxLen, (j - i + 1));\n                if (ones > zeros) break;\n            }\n        }\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.330217"
+}

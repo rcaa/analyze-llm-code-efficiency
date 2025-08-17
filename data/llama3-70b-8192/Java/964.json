@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (target == 1) return 1;\n        int res = 0, t = target;\n        while (t % x == 0) {\n            res++;\n            t /= x;\n        }\n        if (t == 1) return res;\n        int add = res + 2, mul = res;\n        for (int i = 2; i * i <= target; i++) {\n            if (target % i == 0) {\n                int cnt = 0;\n                while (target % i == 0) {\n                    target /= i;\n                    cnt++;\n                }\n                add += cnt;\n                mul += cnt;\n            }\n        }\n        if (target > 1) {\n            add += 2;\n            mul += 1;\n        }\n        return Math.min(add, mul);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(sqrt(target))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a combination of division and multiplication to minimize the number of operations. It first calculates the number of divisions needed to reach the target, then tries to find a smaller number of operations by multiplying and adding the remaining value.",
+  "code": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (target == 1) return 1;\n        int res = 0, t = target;\n        while (t % x == 0) {\n            res++;\n            t /= x;\n        }\n        if (t == 1) return res;\n        int add = res + 2, mul = res;\n        for (int i = 2; i * i <= target; i++) {\n            if (target % i == 0) {\n                int cnt = 0;\n                while (target % i == 0) {\n                    target /= i;\n                    cnt++;\n                }\n                add += cnt;\n                mul += cnt;\n            }\n        }\n        if (target > 1) {\n            add += 2;\n            mul += 1;\n        }\n        return Math.min(add, mul);\n    }\n}",
+  "timestamp": "2025-08-05T15:18:57.725929",
+  "code_extracted_previous": "class Solution {\n    public int leastOpsExpressTarget(int x, int target) {\n        if (x == target) return 0;\n        if (target == 1) return 1;\n        int res = 0, t = target;\n        while (t % x == 0) {\n            res++;\n            t /= x;\n        }\n        if (t == 1) return res;\n        int add = res + 2, mul = res;\n        for (int i = 2; i * i <= target; i++) {\n            if (target % i == 0) {\n                int cnt = 0;\n                while (target % i == 0) {\n                    target /= i;\n                    cnt++;\n                }\n                add += cnt;\n                mul += cnt;\n            }\n        }\n        if (target > 1) {\n            add += 2;\n            mul += 1;\n        }\n        return Math.min(add, mul);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.782297"
+}

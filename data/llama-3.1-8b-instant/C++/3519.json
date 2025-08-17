@@ -1,0 +1,15 @@
+{
+  "id": 3519,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int countNumbers(string l, string r, int b) {\n        long long res = 0, mod = 1e9 + 7;\n        for (int i = l.length() - 1; i >= 0; i--) {\n            int max_digit = r[i] - '0';\n            int min_digit = l[i] - '0';\n            for (int j = min_digit; j <= max_digit; j++) {\n                if (j == 0 && i == 0) break;\n                long long cur = 1;\n                for (int k = 0; k < i; k++) {\n                    cur = cur * b;\n                }\n                if (j == 0) cur = 1;\n                else cur = cur * j;\n                res = (res + cur) % mod;\n            }\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * m)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int countNumbers(string l, string r, int b) {\n        long long res = 0, mod = 1e9 + 7;\n        for (int i = l.length() - 1; i >= 0; i--) {\n            int max_digit = r[i] - '0';\n            int min_digit = l[i] - '0';\n            for (int j = min_digit; j <= max_digit; j++) {\n                if (j == 0 && i == 0) break;\n                long long cur = 1;\n                for (int k = 0; k < i; k++) {\n                    cur = cur * b;\n                }\n                if (j == 0) cur = 1;\n                else cur = cur * j;\n                res = (res + cur) % mod;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T15:27:47.045118",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countNumbers(string l, string r, int b) {\n        long long res = 0, mod = 1e9 + 7;\n        for (int i = l.length() - 1; i >= 0; i--) {\n            int max_digit = r[i] - '0';\n            int min_digit = l[i] - '0';\n            for (int j = min_digit; j <= max_digit; j++) {\n                if (j == 0 && i == 0) break;\n                long long cur = 1;\n                for (int k = 0; k < i; k++) {\n                    cur = cur * b;\n                }\n                if (j == 0) cur = 1;\n                else cur = cur * j;\n                res = (res + cur) % mod;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.440239"
+}

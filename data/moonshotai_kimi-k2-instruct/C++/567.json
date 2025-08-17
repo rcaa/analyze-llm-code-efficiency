@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```class Solution {\npublic:\n    bool checkInclusion(string s1, string s2) {\n        int n = s1.size(), m = s2.size();\n        if (n > m) return false;\n        vector<int> cnt1(26, 0), cnt2(26, 0);\n        for (int i = 0; i < n; ++i) {\n            cnt1[s1[i] - 'a']++;\n            cnt2[s2[i] - 'a']++;\n        }\n        if (cnt1 == cnt2) return true;\n        for (int i = n; i < m; ++i) {\n            cnt2[s2[i] - 'a']++;\n            cnt2[s2[i - n] - 'a']--;\n            if (cnt1 == cnt2) return true;\n        }\n        return false;\n    }\n};```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Sliding-window frequency comparison using fixed-size arrays; each window update is O(26) which is O(1).",
+  "code": "class Solution {\npublic:\n    bool checkInclusion(string s1, string s2) {\n        int n = s1.size(), m = s2.size();\n        if (n > m) return false;\n        vector<int> cnt1(26, 0), cnt2(26, 0);\n        for (int i = 0; i < n; ++i) {\n            cnt1[s1[i] - 'a']++;\n            cnt2[s2[i] - 'a']++;\n        }\n        if (cnt1 == cnt2) return true;\n        for (int i = n; i < m; ++i) {\n            cnt2[s2[i] - 'a']++;\n            cnt2[s2[i - n] - 'a']--;\n            if (cnt1 == cnt2) return true;\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-06T02:30:10.690884",
+  "code_extracted_previous": "public:\n    bool checkInclusion(string s1, string s2) {\n        int n = s1.size(), m = s2.size();\n        if (n > m) return false;\n        vector<int> cnt1(26, 0), cnt2(26, 0);\n        for (int i = 0; i < n; ++i) {\n            cnt1[s1[i] - 'a']++;\n            cnt2[s2[i] - 'a']++;\n        }\n        if (cnt1 == cnt2) return true;\n        for (int i = n; i < m; ++i) {\n            cnt2[s2[i] - 'a']++;\n            cnt2[s2[i - n] - 'a']--;\n            if (cnt1 == cnt2) return true;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:54.189267"
+}

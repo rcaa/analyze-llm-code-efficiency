@@ -1,0 +1,15 @@
+{
+  "id": 3352,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int countKReducibleNumbers(String s, int k) {\n        int n = Integer.parseInt(s, 2);\n        Boolean[][] dp = new Boolean[n + 1][k + 1];\n        return count(n, k, dp);\n    }\n\n    private int count(int x, int k, Boolean[][] dp) {\n        if (x == 1) return 1;\n        if (k == 0) return 0;\n        if (dp[x][k] != null) return dp[x][k];\n\n        int setBits = Integer.bitCount(x);\n        int res = count(setBits, k - 1, dp);\n        for (int i = 1; i < x; i++) {\n            if (Integer.bitCount(i) == setBits) {\n                res = (res + count(i, k, dp)) % MOD;\n            }\n        }\n        dp[x][k] = res;\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n log n * k)\nspace complexity: O(n * k)\nenergy implications: MEDIUM\nexplanation: The solution uses dynamic programming with memoization to efficiently count k-reducible numbers. It calculates the number of set bits in each number and uses this information to reduce the problem size. The use of memoization avoids redundant calculations and optimizes performance.",
+  "code": "class Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int countKReducibleNumbers(String s, int k) {\n        int n = Integer.parseInt(s, 2);\n        Boolean[][] dp = new Boolean[n + 1][k + 1];\n        return count(n, k, dp);\n    }\n\n    private int count(int x, int k, Boolean[][] dp) {\n        if (x == 1) return 1;\n        if (k == 0) return 0;\n        if (dp[x][k] != null) return dp[x][k];\n\n        int setBits = Integer.bitCount(x);\n        int res = count(setBits, k - 1, dp);\n        for (int i = 1; i < x; i++) {\n            if (Integer.bitCount(i) == setBits) {\n                res = (res + count(i, k, dp)) % MOD;\n            }\n        }\n        dp[x][k] = res;\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T15:26:39.349742",
+  "code_extracted_previous": "class Solution {\n    private static final int MOD = (int) 1e9 + 7;\n    public int countKReducibleNumbers(String s, int k) {\n        int n = Integer.parseInt(s, 2);\n        Boolean[][] dp = new Boolean[n + 1][k + 1];\n        return count(n, k, dp);\n    }\n\n    private int count(int x, int k, Boolean[][] dp) {\n        if (x == 1) return 1;\n        if (k == 0) return 0;\n        if (dp[x][k] != null) return dp[x][k];\n\n        int setBits = Integer.bitCount(x);\n        int res = count(setBits, k - 1, dp);\n        for (int i = 1; i < x; i++) {\n            if (Integer.bitCount(i) == setBits) {\n                res = (res + count(i, k, dp)) % MOD;\n            }\n        }\n        dp[x][k] = res;\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.176763"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 732,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass MyCalendarThree {\npublic:\n    std::map<int, int> events;\n    int maxK;\n    \n    MyCalendarThree() {\n        maxK = 0;\n    }\n    \n    int book(int startTime, int endTime) {\n        events[startTime]++;\n        events[endTime]--;\n        int k = 0;\n        int currentK = 0;\n        for (auto& event : events) {\n            currentK += event.second;\n            maxK = std::max(maxK, currentK);\n        }\n        return maxK;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a map to store the events and their frequencies. It iterates over the map to update the maximum k-booking. The time complexity is O(n) where n is the number of events, and the space complexity is also O(n) for storing the events. The energy implications are low because the solution only requires a single pass over the events.",
+  "code": "class MyCalendarThree {\npublic:\n    std::map<int, int> events;\n    int maxK;\n    \n    MyCalendarThree() {\n        maxK = 0;\n    }\n    \n    int book(int startTime, int endTime) {\n        events[startTime]++;\n        events[endTime]--;\n        int k = 0;\n        int currentK = 0;\n        for (auto& event : events) {\n            currentK += event.second;\n            maxK = std::max(maxK, currentK);\n        }\n        return maxK;\n    }\n};",
+  "timestamp": "2025-08-05T13:38:07.477350",
+  "code_extracted_previous": "class MyCalendarThree {\npublic:\n    std::map<int, int> events;\n    int maxK;\n    \n    MyCalendarThree() {\n        maxK = 0;\n    }\n    \n    int book(int startTime, int endTime) {\n        events[startTime]++;\n        events[endTime]--;\n        int k = 0;\n        int currentK = 0;\n        for (auto& event : events) {\n            currentK += event.second;\n            maxK = std::max(maxK, currentK);\n        }\n        return maxK;\n    }\n};",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:28.713805"
+}

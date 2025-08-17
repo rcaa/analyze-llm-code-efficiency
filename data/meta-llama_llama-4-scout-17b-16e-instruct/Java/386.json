@@ -1,0 +1,15 @@
+{
+  "id": 386,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> res = new ArrayList<>();\n        for (int i = 1; i <= 9; i++) dfs(i, n, res);\n        return res;\n    }\n    private void dfs(int cur, int n, List<Integer> res) {\n        if (cur > n) return;\n        res.add(cur);\n        for (int i = 0; i <= 9; i++) dfs(cur * 10 + i, n, res);\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1) \nenergy implications: LOW\nexplanation: The solution uses a depth-first search (DFS) approach to generate numbers in lexicographical order. It starts with numbers 1 through 9 and then explores their multiples by appending digits 0-9. This ensures that numbers are added to the result list in the correct order. The algorithm runs in O(n) time and uses O(1) extra space, excluding the space needed for the output list.",
+  "code": "class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> res = new ArrayList<>();\n        for (int i = 1; i <= 9; i++) dfs(i, n, res);\n        return res;\n    }\n    private void dfs(int cur, int n, List<Integer> res) {\n        if (cur > n) return;\n        res.add(cur);\n        for (int i = 0; i <= 9; i++) dfs(cur * 10 + i, n, res);\n    }\n}",
+  "timestamp": "2025-08-05T13:59:41.423881",
+  "code_extracted_previous": "class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        List<Integer> res = new ArrayList<>();\n        for (int i = 1; i <= 9; i++) dfs(i, n, res);\n        return res;\n    }\n    private void dfs(int cur, int n, List<Integer> res) {\n        if (cur > n) return;\n        res.add(cur);\n        for (int i = 0; i <= 9; i++) dfs(cur * 10 + i, n, res);\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.263089"
+}

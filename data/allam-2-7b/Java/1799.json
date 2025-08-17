@@ -1,0 +1,15 @@
+{
+  "id": 1799,
+  "modelo": "allam-2-7b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```java\nclass Solution {\n    public int maxScore(int[] nums) {\n        int n = nums.length / 2;\n        int[] gcd = new int[n];\n        int result = 0;\n\n        for (int i = 0; i < n; i++) {\n            gcd[i] = gcd(nums[2*i], nums[2*i+1]);\n        }\n\n        for (int i = 0; i < n; i++) {\n            result += nums[2*i] * gcd[i];\n        }\n\n        return result;\n    }\n\n    public int gcd(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\n\nExplanation:\n1. Calculate the number of elements in the array (n) and create an array of gcd values (gcd) of size n.\n2. Iterate through the array to calculate the product of nums[2*i] and gcd[i] for each index i, and add the results to the result variable.\n3. Return the final result.\n4. Implement the Euclidean algorithm to calculate the greatest common divisor (gcd) of two numbers using recursion.\n\nNote: The time complexity is O(n) because we iterate through the array once. The space complexity is O(n) because we use an array of size n to store the gcd values. The energy implications are low because the algorithm does not require any additional energy consumption. ",
+  "code": "class Solution {\n    public int maxScore(int[] nums) {\n        int n = nums.length / 2;\n        int[] gcd = new int[n];\n        int result = 0;\n\n        for (int i = 0; i < n; i++) {\n            gcd[i] = gcd(nums[2*i], nums[2*i+1]);\n        }\n\n        for (int i = 0; i < n; i++) {\n            result += nums[2*i] * gcd[i];\n        }\n\n        return result;\n    }\n\n    public int gcd(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n}",
+  "timestamp": "2025-08-05T11:54:20.636280",
+  "code_extracted_previous": "class Solution {\n    public int maxScore(int[] nums) {\n        int n = nums.length / 2;\n        int[] gcd = new int[n];\n        int result = 0;\n\n        for (int i = 0; i < n; i++) {\n            gcd[i] = gcd(nums[2*i], nums[2*i+1]);\n        }\n\n        for (int i = 0; i < n; i++) {\n            result += nums[2*i] * gcd[i];\n        }\n\n        return result;\n    }\n\n    public int gcd(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.684153"
+}

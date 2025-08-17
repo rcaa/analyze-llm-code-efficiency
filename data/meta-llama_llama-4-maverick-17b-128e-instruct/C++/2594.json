@@ -1,0 +1,15 @@
+{
+  "id": 2594,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        long long left = 0, right = 1e14;\n        while (left < right) {\n            long long mid = left + (right - left) / 2;\n            long long count = 0;\n            for (int r : ranks) {\n                count += sqrt(mid / r);\n            }\n            if (count >= cars) {\n                right = mid;\n            } else {\n                left = mid + 1;\n            }\n        }\n        return left;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the minimum time. For each mid time, we calculate the total number of cars that can be repaired by all mechanics. If the total count is greater than or equal to the number of cars, we update the right boundary to mid; otherwise, we update the left boundary to mid + 1.",
+  "code": "class Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        long long left = 0, right = 1e14;\n        while (left < right) {\n            long long mid = left + (right - left) / 2;\n            long long count = 0;\n            for (int r : ranks) {\n                count += sqrt(mid / r);\n            }\n            if (count >= cars) {\n                right = mid;\n            } else {\n                left = mid + 1;\n            }\n        }\n        return left;\n    }\n};",
+  "timestamp": "2025-08-05T13:32:30.619840",
+  "code_extracted_previous": "class Solution {\npublic:\n    long long repairCars(vector<int>& ranks, int cars) {\n        long long left = 0, right = 1e14;\n        while (left < right) {\n            long long mid = left + (right - left) / 2;\n            long long count = 0;\n            for (int r : ranks) {\n                count += sqrt(mid / r);\n            }\n            if (count >= cars) {\n                right = mid;\n            } else {\n                left = mid + 1;\n            }\n        }\n        return left;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.314666"
+}

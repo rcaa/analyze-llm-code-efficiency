@@ -1,0 +1,15 @@
+{
+  "id": 2024,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        return max(maxConsecutive(answerKey, k, 'T'), maxConsecutive(answerKey, k, 'F'));\n    }\n    \n    int maxConsecutive(string& answerKey, int k, char target) {\n        int left = 0, maxLen = 0, count = 0;\n        for (int right = 0; right < answerKey.size(); ++right) {\n            count += (answerKey[right] != target);\n            while (count > k) {\n                count -= (answerKey[left] != target);\n                left++;\n            }\n            maxLen = max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to track the maximum consecutive length of a given character ('T' or 'F') that can be achieved with at most k changes. It maintains a count of characters that need to be changed within the current window and adjusts the window boundaries as necessary. This approach efficiently computes the maximum consecutive length in a single pass through the string.",
+  "code": "class Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        return max(maxConsecutive(answerKey, k, 'T'), maxConsecutive(answerKey, k, 'F'));\n    }\n    \n    int maxConsecutive(string& answerKey, int k, char target) {\n        int left = 0, maxLen = 0, count = 0;\n        for (int right = 0; right < answerKey.size(); ++right) {\n            count += (answerKey[right] != target);\n            while (count > k) {\n                count -= (answerKey[left] != target);\n                left++;\n            }\n            maxLen = max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n};",
+  "timestamp": "2025-08-06T00:56:49.052862",
+  "code_extracted_previous": "class Solution {\npublic:\n    int maxConsecutiveAnswers(string answerKey, int k) {\n        return max(maxConsecutive(answerKey, k, 'T'), maxConsecutive(answerKey, k, 'F'));\n    }\n    \n    int maxConsecutive(string& answerKey, int k, char target) {\n        int left = 0, maxLen = 0, count = 0;\n        for (int right = 0; right < answerKey.size(); ++right) {\n            count += (answerKey[right] != target);\n            while (count > k) {\n                count -= (answerKey[left] != target);\n                left++;\n            }\n            maxLen = max(maxLen, right - left + 1);\n        }\n        return maxLen;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.917675"
+}

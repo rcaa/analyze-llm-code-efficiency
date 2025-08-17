@@ -1,0 +1,15 @@
+{
+  "id": 440,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def findKthNumber(self, n: int, k: int) -> int:\n        cur = 1\n        k -= 1\n        while k > 0:\n            step = self._count_steps(n, cur, cur + 1)\n            if k >= step:\n                k -= step\n                cur += 1\n            else:\n                k -= 1\n                cur *= 10\n        return cur\n\n    def _count_steps(self, n, n1, n2):\n        steps = 0\n        while n1 <= n:\n            steps += min(n + 1, n2) - n1\n            n1 *= 10\n            n2 *= 10\n        return steps\n```\n\nefficiency: HIGH  \ntime complexity: O(log(n) + log(k))  \nspace complexity: O(1)  \nenergy implications: LOW  \nexplanation: The solution uses a Trie-like traversal to efficiently find the kth lexicographically smallest number by counting the steps between the current number and the next number in lexicographical order.",
+  "code": "def findKthNumber(self, n: int, k: int) -> int:\n        cur = 1\n        k -= 1\n        while k > 0:\n            step = self._count_steps(n, cur, cur + 1)\n            if k >= step:\n                k -= step\n                cur += 1\n            else:\n                k -= 1\n                cur *= 10\n        return cur\n\n    def _count_steps(self, n, n1, n2):\n        steps = 0\n        while n1 <= n:\n            steps += min(n + 1, n2) - n1\n            n1 *= 10\n            n2 *= 10\n        return steps\n```",
+  "timestamp": "2025-08-06T01:11:42.648602",
+  "code_extracted_previous": "class Solution:\n    def findKthNumber(self, n: int, k: int) -> int:\n        cur = 1\n        k -= 1\n        while k > 0:\n            step = self._count_steps(n, cur, cur + 1)\n            if k >= step:\n                k -= step\n                cur += 1\n            else:\n                k -= 1\n                cur *= 10\n        return cur\n\n    def _count_steps(self, n, n1, n2):\n        steps = 0\n        while n1 <= n:\n            steps += min(n + 1, n2) - n1\n            n1 *= 10\n            n2 *= 10\n        return steps",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.289388"
+}

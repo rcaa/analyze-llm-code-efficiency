@@ -1,0 +1,15 @@
+{
+  "id": 299,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        unordered_map<char, int> secretCount, guessCount;\n        \n        for (int i = 0; i < secret.size(); i++) {\n            if (secret[i] == guess[i]) {\n                bulls++;\n            } else {\n                secretCount[secret[i]]++;\n                guessCount[guess[i]]++;\n            }\n        }\n        \n        for (auto& pair : guessCount) {\n            if (secretCount.find(pair.first) != secretCount.end()) {\n                cows += min(pair.second, secretCount[pair.first]);\n            }\n        }\n        \n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Uses two hash maps to count the non-bull digits in the secret and guess strings, then calculates the number of cows by finding the minimum count of each digit in both maps. This approach efficiently handles duplicate digits and has a linear time complexity.",
+  "code": "class Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        unordered_map<char, int> secretCount, guessCount;\n        \n        for (int i = 0; i < secret.size(); i++) {\n            if (secret[i] == guess[i]) {\n                bulls++;\n            } else {\n                secretCount[secret[i]]++;\n                guessCount[guess[i]]++;\n            }\n        }\n        \n        for (auto& pair : guessCount) {\n            if (secretCount.find(pair.first) != secretCount.end()) {\n                cows += min(pair.second, secretCount[pair.first]);\n            }\n        }\n        \n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};",
+  "timestamp": "2025-08-05T14:52:00.874361",
+  "code_extracted_previous": "class Solution {\npublic:\n    string getHint(string secret, string guess) {\n        int bulls = 0, cows = 0;\n        unordered_map<char, int> secretCount, guessCount;\n        \n        for (int i = 0; i < secret.size(); i++) {\n            if (secret[i] == guess[i]) {\n                bulls++;\n            } else {\n                secretCount[secret[i]]++;\n                guessCount[guess[i]]++;\n            }\n        }\n        \n        for (auto& pair : guessCount) {\n            if (secretCount.find(pair.first) != secretCount.end()) {\n                cows += min(pair.second, secretCount[pair.first]);\n            }\n        }\n        \n        return to_string(bulls) + \"A\" + to_string(cows) + \"B\";\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.406767"
+}

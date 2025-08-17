@@ -1,0 +1,15 @@
+{
+  "id": 765,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        pos = {x: i for i, x in enumerate(row)}\n        swaps = 0\n        for i in range(0, len(row), 2):\n            j = row[i] ^ 1\n            if row[i + 1] != j:\n                swaps += 1\n                k = pos[j]\n                pos[row[i + 1]] = k\n                row[k] = row[i + 1]\n                row[i + 1] = j\n        return swaps\n```\n\nefficiency: HIGH  \ntime complexity: O(N)  \nspace complexity: O(N)  \nenergy implications: LOW  \nexplanation: The solution uses a hash map to store the positions of the people, allowing for efficient lookups and swaps. It iterates through the row, swapping people as needed to ensure that couples are seated together, and counts the number of swaps.",
+  "code": "def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        pos = {x: i for i, x in enumerate(row)}\n        swaps = 0\n        for i in range(0, len(row), 2):\n            j = row[i] ^ 1\n            if row[i + 1] != j:\n                swaps += 1\n                k = pos[j]\n                pos[row[i + 1]] = k\n                row[k] = row[i + 1]\n                row[i + 1] = j\n        return swaps\n```",
+  "timestamp": "2025-08-05T14:30:51.935381",
+  "code_extracted_previous": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        n = len(row) // 2\n        pos = {x: i for i, x in enumerate(row)}\n        swaps = 0\n        for i in range(0, len(row), 2):\n            j = row[i] ^ 1\n            if row[i + 1] != j:\n                swaps += 1\n                k = pos[j]\n                pos[row[i + 1]] = k\n                row[k] = row[i + 1]\n                row[i + 1] = j\n        return swaps",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.455828"
+}

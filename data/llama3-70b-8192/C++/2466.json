@@ -1,0 +1,15 @@
+{
+  "id": 2466,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1e9 + 7;\n        int dp[high + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0] = 1;\n        for (int i = 1; i <= high; i++) {\n            if (i - zero >= 0) dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            if (i - one >= 0) dp[i] = (dp[i] + dp[i - one]) % MOD;\n        }\n        int res = 0;\n        for (int i = low; i <= high; i++) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(high)\nspace complexity: O(high)\nenergy implications: LOW\nexplanation: Dynamic programming is used to efficiently count the number of good strings.",
+  "code": "class Solution {\npublic:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1e9 + 7;\n        int dp[high + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0] = 1;\n        for (int i = 1; i <= high; i++) {\n            if (i - zero >= 0) dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            if (i - one >= 0) dp[i] = (dp[i] + dp[i - one]) % MOD;\n        }\n        int res = 0;\n        for (int i = low; i <= high; i++) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T14:26:49.947809",
+  "code_extracted_previous": "public:\n    int countGoodStrings(int low, int high, int zero, int one) {\n        const int MOD = 1e9 + 7;\n        int dp[high + 1];\n        memset(dp, 0, sizeof(dp));\n        dp[0] = 1;\n        for (int i = 1; i <= high; i++) {\n            if (i - zero >= 0) dp[i] = (dp[i] + dp[i - zero]) % MOD;\n            if (i - one >= 0) dp[i] = (dp[i] + dp[i - one]) % MOD;\n        }\n        int res = 0;\n        for (int i = low; i <= high; i++) {\n            res = (res + dp[i]) % MOD;\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.564289"
+}

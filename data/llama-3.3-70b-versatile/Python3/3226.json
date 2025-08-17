@@ -1,0 +1,15 @@
+{
+  "id": 3226,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```python\nclass Solution:\n    def minChanges(self, n: int, k: int) -> int:\n        if n == k:\n            return 0\n        bin_n = bin(n)[2:]\n        bin_k = bin(k)[2:]\n        max_len = max(len(bin_n), len(bin_k))\n        bin_n = bin_n.zfill(max_len)\n        bin_k = bin_k.zfill(max_len)\n        changes = 0\n        for i in range(max_len):\n            if bin_n[i] == '1' and bin_k[i] == '0':\n                changes += 1\n            elif bin_n[i] == '0' and bin_k[i] == '1':\n                return -1\n        return changes\n```\nefficiency: HIGH\ntime complexity: O(log n)\nspace complexity: O(log n)\nenergy implications: LOW\nexplanation: The solution uses bitwise operations to compare the binary representations of n and k, counting the number of changes needed to make n equal to k by flipping bits from 1 to 0 in n. If a bit in k is 1 where the corresponding bit in n is 0, it returns -1 as it's impossible to make n equal to k.",
+  "code": "class Solution:\n    def minChanges(self, n: int, k: int) -> int:\n        if n == k:\n            return 0\n        bin_n = bin(n)[2:]\n        bin_k = bin(k)[2:]\n        max_len = max(len(bin_n), len(bin_k))\n        bin_n = bin_n.zfill(max_len)\n        bin_k = bin_k.zfill(max_len)\n        changes = 0\n        for i in range(max_len):\n            if bin_n[i] == '1' and bin_k[i] == '0':\n                changes += 1\n            elif bin_n[i] == '0' and bin_k[i] == '1':\n                return -1\n        return changes",
+  "timestamp": "2025-08-06T15:19:37.212474",
+  "code_extracted_previous": "class Solution:\n    def minChanges(self, n: int, k: int) -> int:\n        if n == k:\n            return 0\n        bin_n = bin(n)[2:]\n        bin_k = bin(k)[2:]\n        max_len = max(len(bin_n), len(bin_k))\n        bin_n = bin_n.zfill(max_len)\n        bin_k = bin_k.zfill(max_len)\n        changes = 0\n        for i in range(max_len):\n            if bin_n[i] == '1' and bin_k[i] == '0':\n                changes += 1\n            elif bin_n[i] == '0' and bin_k[i] == '1':\n                return -1\n        return changes",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:35.466798"
+}

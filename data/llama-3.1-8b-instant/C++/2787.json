@@ -1,0 +1,15 @@
+{
+  "id": 2787,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= i; j++) {\n                if (j * pow(j, x) <= i) {\n                    dp[i] = (dp[i] + dp[i - j * pow(j, x)]) % 1000000007;\n                }\n            }\n        }\n        return dp[n];\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * sqrt(n))\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= i; j++) {\n                if (j * pow(j, x) <= i) {\n                    dp[i] = (dp[i] + dp[i - j * pow(j, x)]) % 1000000007;\n                }\n            }\n        }\n        return dp[n];\n    }\n};",
+  "timestamp": "2025-08-05T14:28:18.853116",
+  "code_extracted_previous": "class Solution {\npublic:\n    int numberOfWays(int n, int x) {\n        vector<int> dp(n + 1, 0);\n        dp[0] = 1;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= i; j++) {\n                if (j * pow(j, x) <= i) {\n                    dp[i] = (dp[i] + dp[i - j * pow(j, x)]) % 1000000007;\n                }\n            }\n        }\n        return dp[n];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:28.251292"
+}

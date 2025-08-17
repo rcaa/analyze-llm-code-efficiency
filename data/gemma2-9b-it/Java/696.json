@@ -1,0 +1,15 @@
+{
+  "id": 696,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int countBinarySubstrings(String s) {\n        int[] counts = new int[2];\n        int prevCount = 0;\n        int result = 0;\n        for (char c : s.toCharArray()) {\n            counts[c - '0']++;\n            result += Math.min(counts[0], counts[1]);\n            if (counts[0] == prevCount) {\n                counts[0] = 0;\n                prevCount = counts[1];\n            } else {\n                counts[1] = 0;\n                prevCount = counts[0];\n            }\n        }\n        return result;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution utilizes a sliding window approach to efficiently count the valid substrings. It maintains a count of consecutive '0's and '1's, and the result is updated by taking the minimum count between the two. This approach avoids redundant calculations and ensures a linear time complexity.\n",
+  "code": "class Solution {\n    public int countBinarySubstrings(String s) {\n        int[] counts = new int[2];\n        int prevCount = 0;\n        int result = 0;\n        for (char c : s.toCharArray()) {\n            counts[c - '0']++;\n            result += Math.min(counts[0], counts[1]);\n            if (counts[0] == prevCount) {\n                counts[0] = 0;\n                prevCount = counts[1];\n            } else {\n                counts[1] = 0;\n                prevCount = counts[0];\n            }\n        }\n        return result;\n    }\n}",
+  "timestamp": "2025-08-06T01:29:12.293922",
+  "code_extracted_previous": "class Solution {\n    public int countBinarySubstrings(String s) {\n        int[] counts = new int[2];\n        int prevCount = 0;\n        int result = 0;\n        for (char c : s.toCharArray()) {\n            counts[c - '0']++;\n            result += Math.min(counts[0], counts[1]);\n            if (counts[0] == prevCount) {\n                counts[0] = 0;\n                prevCount = counts[1];\n            } else {\n                counts[1] = 0;\n                prevCount = counts[0];\n            }\n        }\n        return result;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:25.662184"
+}

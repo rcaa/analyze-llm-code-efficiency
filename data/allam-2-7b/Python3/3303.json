@@ -1,0 +1,15 @@
+{
+  "id": 3303,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution:\ndef minStartingIndex(s: str, pattern: str) -> int:\n    n = len(s)\n    m = len(pattern)\n    dp = [[None]*(n+1) for _ in range(m+1)]\n    for i in range(m+1):\n        for j in range(n+1):\n            if pattern[i] == s[j]:\n                dp[i][j] = j\n            else:\n                dp[i][j] = min(dp[i-1][j], dp[i-1][j+1], dp[i][j-1], dp[i][j+1])\n    return dp[m][n]\n\nefficiency: HIGH\ntime complexity: O(m*n)\nspace complexity: O(m)\nenergy implications: LOW ",
+  "code": "def minStartingIndex(s: str, pattern: str) -> int:\n    n = len(s)\n    m = len(pattern)\n    dp = [[None]*(n+1) for _ in range(m+1)]\n    for i in range(m+1):\n        for j in range(n+1):\n            if pattern[i] == s[j]:\n                dp[i][j] = j\n            else:\n                dp[i][j] = min(dp[i-1][j], dp[i-1][j+1], dp[i][j-1], dp[i][j+1])\n    return dp[m][n]",
+  "timestamp": "2025-08-05T16:15:26.367857",
+  "code_extracted_previous": "def minStartingIndex(s: str, pattern: str) -> int:\n    n = len(s)\n    m = len(pattern)\n    dp = [[None]*(n+1) for _ in range(m+1)]\n    for i in range(m+1):\n        for j in range(n+1):\n            if pattern[i] == s[j]:\n                dp[i][j] = j\n            else:\n                dp[i][j] = min(dp[i-1][j], dp[i-1][j+1], dp[i][j-1], dp[i][j+1])\n    return dp[m][n]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.876565"
+}

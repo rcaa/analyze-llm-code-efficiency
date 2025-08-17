@@ -1,0 +1,15 @@
+{
+  "id": 207,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: ```\nfrom collections import deque\nclass Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        graph = [[] for _ in range(numCourses)]\n        indeg = [0] * numCourses\n        for a, b in prerequisites:\n            graph[b].append(a)\n            indeg[a] += 1\n        q = deque([i for i in range(numCourses) if indeg[i] == 0])\n        taken = 0\n        while q:\n            node = q.popleft()\n            taken += 1\n            for nxt in graph[node]:\n                indeg[nxt] -= 1\n                if indeg[nxt] == 0:\n                    q.append(nxt)\n        return taken == numCourses\n```\nefficiency: HIGH\ntime complexity: O(V + E)\nspace complexity: O(V + E)\nenergy implications: LOW\nexplanation: Topological sort via Kahn’s BFS algorithm detects cycles in the directed graph of courses. If all nodes are processed (taken == numCourses) no cycle exists and all courses can be finished; otherwise a cycle blocks completion.",
+  "code": "class Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        graph = [[] for _ in range(numCourses)]\n        indeg = [0] * numCourses\n        for a, b in prerequisites:\n            graph[b].append(a)\n            indeg[a] += 1\n        q = deque([i for i in range(numCourses) if indeg[i] == 0])\n        taken = 0\n        while q:\n            node = q.popleft()\n            taken += 1\n            for nxt in graph[node]:\n                indeg[nxt] -= 1\n                if indeg[nxt] == 0:\n                    q.append(nxt)\n        return taken == numCourses",
+  "timestamp": "2025-08-05T13:58:02.024294",
+  "code_extracted_previous": "from collections import deque\nclass Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        graph = [[] for _ in range(numCourses)]\n        indeg = [0] * numCourses\n        for a, b in prerequisites:\n            graph[b].append(a)\n            indeg[a] += 1\n        q = deque([i for i in range(numCourses) if indeg[i] == 0])\n        taken = 0\n        while q:\n            node = q.popleft()\n            taken += 1\n            for nxt in graph[node]:\n                indeg[nxt] -= 1\n                if indeg[nxt] == 0:\n                    q.append(nxt)\n        return taken == numCourses",
+  "starter_ok": false,
+  "starter_check_reason": "não consegui ler assinatura do starter",
+  "reavaliado_em": "2025-08-17T12:23:56.474632"
+}

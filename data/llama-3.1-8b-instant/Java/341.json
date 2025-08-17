@@ -1,0 +1,15 @@
+{
+  "id": 341,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```java\nimport java.util.Iterator;\nimport java.util.List;\nimport java.util.Stack;\n\npublic class NestedIterator implements Iterator<Integer> {\n\n    private Stack<NestedInteger> stack;\n\n    public NestedIterator(List<NestedInteger> nestedList) {\n        stack = new Stack<>();\n        for (NestedInteger ni : nestedList) {\n            if (ni.isInteger()) {\n                stack.push(ni);\n            } else {\n                stack.addAll(ni.getList());\n            }\n        }\n    }\n\n    @Override\n    public Integer next() {\n        return stack.pop().getInteger();\n    }\n\n    @Override\n    public boolean hasNext() {\n        return !stack.isEmpty();\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: This solution uses a stack to flatten the nested list. It iterates over the input list once to push all integers and nested lists onto the stack. Then, it pops elements from the stack in the next() method and checks if the stack is empty in the hasNext() method. This approach has a high efficiency because it only requires a single pass over the input list and uses a stack to store the elements, which allows for efficient popping and checking of the top element.",
+  "code": "public class NestedIterator implements Iterator<Integer> {\n\n    private Stack<NestedInteger> stack;\n\n    public NestedIterator(List<NestedInteger> nestedList) {\n        stack = new Stack<>();\n        for (NestedInteger ni : nestedList) {\n            if (ni.isInteger()) {\n                stack.push(ni);\n            } else {\n                stack.addAll(ni.getList());\n            }\n        }\n    }\n\n    @Override\n    public Integer next() {\n        return stack.pop().getInteger();\n    }\n\n    @Override\n    public boolean hasNext() {\n        return !stack.isEmpty();\n    }\n}",
+  "timestamp": "2025-08-06T01:57:36.301011",
+  "code_extracted_previous": "import java.util.Iterator;\nimport java.util.List;\nimport java.util.Stack;\n\npublic class NestedIterator implements Iterator<Integer> {\n\n    private Stack<NestedInteger> stack;\n\n    public NestedIterator(List<NestedInteger> nestedList) {\n        stack = new Stack<>();\n        for (NestedInteger ni : nestedList) {\n            if (ni.isInteger()) {\n                stack.push(ni);\n            } else {\n                stack.addAll(ni.getList());\n            }\n        }\n    }\n\n    @Override\n    public Integer next() {\n        return stack.pop().getInteger();\n    }\n\n    @Override\n    public boolean hasNext() {\n        return !stack.isEmpty();\n    }\n}",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:29.580645"
+}

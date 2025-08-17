@@ -1,0 +1,15 @@
+{
+  "id": 3226,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```python\ndef minChanges(self, n: int, k: int) -> int:\n    if n < 0 or k < 0:\n        return -1\n    if n == k:\n        return 0\n    count = 0\n    for i in range(32):  # consider all bits of n and k\n        if n & (1 << i) != 0 and k & (1 << i) != 0:\n            count += 1\n    return count\n```\n\nefficiency: MEDIUM\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\nThe solution iterates over all bits of n and k using a for loop with 32 iterations (since there are 32 bits in a 32-bit integer). For each bit, it checks if both n and k have the corresponding bit set. If they do not match, it increments the count. Finally, it returns the count. This approach has a time complexity of O(log(n)) due to the bitwise operations, which are efficient for bit manipulation. The space complexity is O(1) because the solution uses a constant amount of space. The energy implications are low because the solution only performs bitwise operations, which are energy-efficient. ",
+  "code": "def minChanges(self, n: int, k: int) -> int:\n    if n < 0 or k < 0:\n        return -1\n    if n == k:\n        return 0\n    count = 0\n    for i in range(32):  # consider all bits of n and k\n        if n & (1 << i) != 0 and k & (1 << i) != 0:\n            count += 1\n    return count",
+  "timestamp": "2025-08-05T13:52:13.260906",
+  "code_extracted_previous": "def minChanges(self, n: int, k: int) -> int:\n    if n < 0 or k < 0:\n        return -1\n    if n == k:\n        return 0\n    count = 0\n    for i in range(32):  # consider all bits of n and k\n        if n & (1 << i) != 0 and k & (1 << i) != 0:\n            count += 1\n    return count",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.856901"
+}

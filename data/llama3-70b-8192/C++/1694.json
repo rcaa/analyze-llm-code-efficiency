@@ -1,0 +1,15 @@
+{
+  "id": 1694,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```cpp\nclass Solution {\npublic:\n    string reformatNumber(string number) {\n        string digits;\n        for (char c : number) {\n            if (isdigit(c)) digits += c;\n        }\n        string res;\n        int n = digits.size();\n        int i = 0;\n        while (n > 4) {\n            res += digits.substr(i, 3) + \"-\";\n            i += 3;\n            n -= 3;\n        }\n        if (n == 4) {\n            res += digits.substr(i, 2) + \"-\" + digits.substr(i + 2, 2);\n        } else if (n == 3) {\n            res += digits.substr(i, 3);\n        } else {\n            res += digits.substr(i, 2);\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution iterates through the input string to extract digits, then formats them according to the problem's rules.",
+  "code": "class Solution {\npublic:\n    string reformatNumber(string number) {\n        string digits;\n        for (char c : number) {\n            if (isdigit(c)) digits += c;\n        }\n        string res;\n        int n = digits.size();\n        int i = 0;\n        while (n > 4) {\n            res += digits.substr(i, 3) + \"-\";\n            i += 3;\n            n -= 3;\n        }\n        if (n == 4) {\n            res += digits.substr(i, 2) + \"-\" + digits.substr(i + 2, 2);\n        } else if (n == 3) {\n            res += digits.substr(i, 3);\n        } else {\n            res += digits.substr(i, 2);\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T16:39:31.766104",
+  "code_extracted_previous": "class Solution {\npublic:\n    string reformatNumber(string number) {\n        string digits;\n        for (char c : number) {\n            if (isdigit(c)) digits += c;\n        }\n        string res;\n        int n = digits.size();\n        int i = 0;\n        while (n > 4) {\n            res += digits.substr(i, 3) + \"-\";\n            i += 3;\n            n -= 3;\n        }\n        if (n == 4) {\n            res += digits.substr(i, 2) + \"-\" + digits.substr(i + 2, 2);\n        } else if (n == 3) {\n            res += digits.substr(i, 3);\n        } else {\n            res += digits.substr(i, 2);\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.265806"
+}

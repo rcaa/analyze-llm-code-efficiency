@@ -1,0 +1,15 @@
+{
+  "id": 869,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public boolean reorderedPowerOf2(int n) {\n        int[] countN = countDigits(n);\n        for (int i = 0; i < 32; i++) {\n            if (Arrays.equals(countN, countDigits(1 << i))) {\n                return true;\n            }\n        }\n        return false;\n    }\n\n    private int[] countDigits(int n) {\n        int[] count = new int[10];\n        while (n > 0) {\n            count[n % 10]++;\n            n /= 10;\n        }\n        return count;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(n) + log(2^32))\ntime complexity: O(32 + log(n)) \nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution counts the frequency of each digit in the given number `n` and in each power of 2 up to 2^31. It checks if the counts match for any power of 2, indicating that `n` can be reordered into a power of 2.",
+  "code": "class Solution {\n    public boolean reorderedPowerOf2(int n) {\n        int[] countN = countDigits(n);\n        for (int i = 0; i < 32; i++) {\n            if (Arrays.equals(countN, countDigits(1 << i))) {\n                return true;\n            }\n        }\n        return false;\n    }\n\n    private int[] countDigits(int n) {\n        int[] count = new int[10];\n        while (n > 0) {\n            count[n % 10]++;\n            n /= 10;\n        }\n        return count;\n    }\n}",
+  "timestamp": "2025-08-05T14:56:22.485988",
+  "code_extracted_previous": "class Solution {\n    public boolean reorderedPowerOf2(int n) {\n        int[] countN = countDigits(n);\n        for (int i = 0; i < 32; i++) {\n            if (Arrays.equals(countN, countDigits(1 << i))) {\n                return true;\n            }\n        }\n        return false;\n    }\n\n    private int[] countDigits(int n) {\n        int[] count = new int[10];\n        while (n > 0) {\n            count[n % 10]++;\n            n /= 10;\n        }\n        return count;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:47.147357"
+}

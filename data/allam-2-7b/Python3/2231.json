@@ -1,0 +1,15 @@
+{
+  "id": 2231,
+  "modelo": "allam-2-7b",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\ndef largestInteger(self, num: int) -> int:\n    swaps = [0] * 10\n    for i in range(10):\n        swaps[i] = num % 2\n        num //= 2\n    largest = num\n    for i in range(10):\n        if swaps[i] != 0:\n            largest = max(largest, num)\n            num = num ^ (1 << i)\n    return largest\n\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n1. Initialize a list of swaps to keep track of the parity swaps applied.\n2. Iterate through the digits of the number and set the swaps list accordingly.\n3. Initialize the largest possible number and the current number.\n4. Iterate through the swaps list and update the largest number if a swap is applied.\n5. Apply the swaps by XORing the number with the corresponding bitmask.\n6. Return the largest possible number. ",
+  "code": "def largestInteger(self, num: int) -> int:\n    swaps = [0] * 10\n    for i in range(10):\n        swaps[i] = num % 2\n        num //= 2\n    largest = num\n    for i in range(10):\n        if swaps[i] != 0:\n            largest = max(largest, num)\n            num = num ^ (1 << i)\n    return largest",
+  "timestamp": "2025-08-05T16:00:07.933534",
+  "code_extracted_previous": "def largestInteger(self, num: int) -> int:\n    swaps = [0] * 10\n    for i in range(10):\n        swaps[i] = num % 2\n        num //= 2\n    largest = num\n    for i in range(10):\n        if swaps[i] != 0:\n            largest = max(largest, num)\n            num = num ^ (1 << i)\n    return largest",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:15.552500"
+}

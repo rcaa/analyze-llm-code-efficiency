@@ -1,0 +1,15 @@
+{
+  "id": 925,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public boolean isLongPressedName(String name, String typed) {\n        int i = 0;\n        for (int j = 0; j < typed.length(); j++) {\n            if (i < name.length() && name.charAt(i) == typed.charAt(j)) {\n                i++;\n            } else if (j == 0 || typed.charAt(j) != typed.charAt(j - 1)) {\n                return false;\n            }\n        }\n        return i == name.length();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a two-pointer technique to compare characters in the `name` and `typed` strings. It iterates through `typed`, matching characters with `name` when possible and allowing for repeated characters when they match the previous character in `typed`. If a mismatch occurs that cannot be explained by a long press, it immediately returns `false`. If all characters in `name` are matched by the end, it returns `true`.",
+  "code": "class Solution {\n    public boolean isLongPressedName(String name, String typed) {\n        int i = 0;\n        for (int j = 0; j < typed.length(); j++) {\n            if (i < name.length() && name.charAt(i) == typed.charAt(j)) {\n                i++;\n            } else if (j == 0 || typed.charAt(j) != typed.charAt(j - 1)) {\n                return false;\n            }\n        }\n        return i == name.length();\n    }\n}",
+  "timestamp": "2025-08-06T01:30:57.357328",
+  "code_extracted_previous": "class Solution {\n    public boolean isLongPressedName(String name, String typed) {\n        int i = 0;\n        for (int j = 0; j < typed.length(); j++) {\n            if (i < name.length() && name.charAt(i) == typed.charAt(j)) {\n                i++;\n            } else if (j == 0 || typed.charAt(j) != typed.charAt(j - 1)) {\n                return false;\n            }\n        }\n        return i == name.length();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:51.624878"
+}

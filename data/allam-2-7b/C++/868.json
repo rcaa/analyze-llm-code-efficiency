@@ -1,0 +1,15 @@
+{
+  "id": 868,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```class Solution {\npublic:\n    int binaryGap(int n) {\n        int count = 0;\n        int gap = 0;\n        while (n != 0) {\n            if (n & 1) {\n                gap++;\n            }\n            n >>= 1;\n            count++;\n        }\n        return max(count - gap, 0);\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(log(n))\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\nThe problem requires finding the longest gap between consecutive 1's in the binary representation of a number. We can solve this problem using bit manipulation and a simple loop.\n\n1. Initialize two variables: count to keep track of the number of 1's and gap to keep track of the longest gap.\n2. Use a while loop to iterate until n becomes 0.\n3. Inside the loop, check if the least significant bit of n is 1 (indicating a 1 in the binary representation). If it is, increment the gap variable.\n4. Shift the bits of n to the right by one position (to remove the least significant bit).\n5. Increment the count variable.\n6. Repeat steps 3-5 until n becomes 0.\n7. Return the maximum value between count - gap and 0 (to handle the case when there are no consecutive 1's in the binary representation of n).\n\nThis solution has a time complexity of O(log(n)) due to the while loop and bit manipulation operations. The space complexity is O(1) since we only use a constant amount of space for the two variables count and gap. The energy implications are low since the algorithm only performs bit operations and does not require any additional resources. ",
+  "code": "class Solution {\npublic:\n    int binaryGap(int n) {\n        int count = 0;\n        int gap = 0;\n        while (n != 0) {\n            if (n & 1) {\n                gap++;\n            }\n            n >>= 1;\n            count++;\n        }\n        return max(count - gap, 0);\n    }\n};",
+  "timestamp": "2025-08-05T13:49:49.150980",
+  "code_extracted_previous": "public:\n    int binaryGap(int n) {\n        int count = 0;\n        int gap = 0;\n        while (n != 0) {\n            if (n & 1) {\n                gap++;\n            }\n            n >>= 1;\n            count++;\n        }\n        return max(count - gap, 0);\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:13.269356"
+}

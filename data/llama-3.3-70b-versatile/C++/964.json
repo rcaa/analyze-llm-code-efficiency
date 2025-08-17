@@ -1,0 +1,15 @@
+{
+  "id": 964,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        int res = 0;\n        while (target > 0) {\n            if (target % x == 0) {\n                res += target / x - 1;\n                target = 1;\n            } else if (target > x) {\n                int p = target / x;\n                if (p * x - target < target - (p - 1) * x) {\n                    res += p;\n                    target = target - p * x;\n                } else {\n                    res += p - 1;\n                    target = (p - 1) * x - target;\n                }\n            } else {\n                res += target - 1;\n                target = 1;\n            }\n        }\n        return res;\n    }\n};\nefficiency: HIGH\ntime complexity: O(log(target))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a greedy approach to minimize the number of operations by repeatedly dividing the target by x and adjusting the remainder to minimize the number of operations required.",
+  "code": "class Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        int res = 0;\n        while (target > 0) {\n            if (target % x == 0) {\n                res += target / x - 1;\n                target = 1;\n            } else if (target > x) {\n                int p = target / x;\n                if (p * x - target < target - (p - 1) * x) {\n                    res += p;\n                    target = target - p * x;\n                } else {\n                    res += p - 1;\n                    target = (p - 1) * x - target;\n                }\n            } else {\n                res += target - 1;\n                target = 1;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-06T15:11:58.594435",
+  "code_extracted_previous": "class Solution {\npublic:\n    int leastOpsExpressTarget(int x, int target) {\n        int res = 0;\n        while (target > 0) {\n            if (target % x == 0) {\n                res += target / x - 1;\n                target = 1;\n            } else if (target > x) {\n                int p = target / x;\n                if (p * x - target < target - (p - 1) * x) {\n                    res += p;\n                    target = target - p * x;\n                } else {\n                    res += p - 1;\n                    target = (p - 1) * x - target;\n                }\n            } else {\n                res += target - 1;\n                target = 1;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.160594"
+}

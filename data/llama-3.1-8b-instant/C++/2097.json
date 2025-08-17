@@ -1,0 +1,15 @@
+{
+  "id": 2097,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {\n        int n = pairs.size();\n        vector<vector<int>> res(n);\n        vector<int> indeg(n, 0);\n        vector<int> outdeg(n, 0);\n        \n        for (auto& p : pairs) {\n            indeg[p[1]]++;\n            outdeg[p[0]]++;\n        }\n        \n        queue<int> q;\n        for (int i = 0; i < n; i++) {\n            if (indeg[i] == 0) q.push(i);\n        }\n        \n        while (!q.empty()) {\n            int u = q.front(); q.pop();\n            res.back() = {pairs[u][0], pairs[u][1]};\n            res.back().swap(res.back());\n            if (--outdeg[u] == 0) q.push(u);\n            if (--indeg[pairs[u][1]] == 0) q.push(pairs[u][1]);\n        }\n        \n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {\n        int n = pairs.size();\n        vector<vector<int>> res(n);\n        vector<int> indeg(n, 0);\n        vector<int> outdeg(n, 0);\n        \n        for (auto& p : pairs) {\n            indeg[p[1]]++;\n            outdeg[p[0]]++;\n        }\n        \n        queue<int> q;\n        for (int i = 0; i < n; i++) {\n            if (indeg[i] == 0) q.push(i);\n        }\n        \n        while (!q.empty()) {\n            int u = q.front(); q.pop();\n            res.back() = {pairs[u][0], pairs[u][1]};\n            res.back().swap(res.back());\n            if (--outdeg[u] == 0) q.push(u);\n            if (--indeg[pairs[u][1]] == 0) q.push(pairs[u][1]);\n        }\n        \n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:56:55.624147",
+  "code_extracted_previous": "class Solution {\npublic:\n    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {\n        int n = pairs.size();\n        vector<vector<int>> res(n);\n        vector<int> indeg(n, 0);\n        vector<int> outdeg(n, 0);\n        \n        for (auto& p : pairs) {\n            indeg[p[1]]++;\n            outdeg[p[0]]++;\n        }\n        \n        queue<int> q;\n        for (int i = 0; i < n; i++) {\n            if (indeg[i] == 0) q.push(i);\n        }\n        \n        while (!q.empty()) {\n            int u = q.front(); q.pop();\n            res.back() = {pairs[u][0], pairs[u][1]};\n            res.back().swap(res.back());\n            if (--outdeg[u] == 0) q.push(u);\n            if (--indeg[pairs[u][1]] == 0) q.push(pairs[u][1]);\n        }\n        \n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.743171"
+}

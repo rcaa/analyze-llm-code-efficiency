@@ -1,0 +1,15 @@
+{
+  "id": 2730,
+  "modelo": "allam-2-7b",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n\n```c++\nclass Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.length();\n        int max_len = 1;\n        for (int i = 1; i < n; i++) {\n            int count[10] = {0};\n            for (int j = 0; j < n; j++) {\n                if (s[j] == s[j + 1]) {\n                    count[s[j]]++;\n                } else {\n                    count[s[j]]--;\n                }\n            }\n            for (int k = 0; k < 10; k++) {\n                max_len = max(max_len, count[k]);\n            }\n        }\n        return max_len;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\n\nExplanation:\n\n1. Initialize a 10-element array `count` to store the count of each digit.\n2. Iterate through the string `s` from the second character to the last character (excluding the first character) and update the count of each digit based on its adjacent characters.\n3. Iterate through the `count` array to find the maximum count and update `max_len` accordingly.\n4. Return the maximum length of the longest semi-repetitive substring.\n\nThis solution has a time complexity of O(n) because it iterates through the string once. The space complexity is O(1) because we only use a single array `count` with a fixed size of 10. The energy implications are low because the algorithm only performs simple operations and does not consume significant energy. ",
+  "code": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.length();\n        int max_len = 1;\n        for (int i = 1; i < n; i++) {\n            int count[10] = {0};\n            for (int j = 0; j < n; j++) {\n                if (s[j] == s[j + 1]) {\n                    count[s[j]]++;\n                } else {\n                    count[s[j]]--;\n                }\n            }\n            for (int k = 0; k < 10; k++) {\n                max_len = max(max_len, count[k]);\n            }\n        }\n        return max_len;\n    }\n};",
+  "timestamp": "2025-08-06T01:06:59.420186",
+  "code_extracted_previous": "class Solution {\npublic:\n    int longestSemiRepetitiveSubstring(string s) {\n        int n = s.length();\n        int max_len = 1;\n        for (int i = 1; i < n; i++) {\n            int count[10] = {0};\n            for (int j = 0; j < n; j++) {\n                if (s[j] == s[j + 1]) {\n                    count[s[j]]++;\n                } else {\n                    count[s[j]]--;\n                }\n            }\n            for (int k = 0; k < 10; k++) {\n                max_len = max(max_len, count[k]);\n            }\n        }\n        return max_len;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:12.554717"
+}

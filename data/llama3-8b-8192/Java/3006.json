@@ -1,0 +1,15 @@
+{
+  "id": 3006,
+  "modelo": "llama3-8b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\n    public List<Integer> beautifulIndices(String s, String a, String b, int k) {\n        List<Integer> res = new ArrayList<>();\n        for (int i = 0; i <= s.length() - a.length(); i++) {\n            if (s.substring(i, i + a.length()).equals(a)) {\n                for (int j = 0; j <= s.length() - b.length(); j++) {\n                    if (s.substring(j, j + b.length()).equals(b) && Math.abs(i - j) <= k) {\n                        res.add(i);\n                        break;\n                    }\n                }\n            }\n        }\n        Collections.sort(res);\n        return res;\n    }\n}```\nefficiency: HIGH\ntime complexity: O(s.length() * (a.length() + b.length()))\nspace complexity: O(s.length() * (a.length() + b.length()))\nenergy implications: LOW\nexplanation: This solution uses two nested loops to iterate over the string and check for the conditions. The outer loop checks for the presence of string a, and the inner loop checks for the presence of string b and the distance between the two indices. The result is stored in a list and sorted at the end.",
+  "code": "class Solution {\n    public List<Integer> beautifulIndices(String s, String a, String b, int k) {\n        List<Integer> res = new ArrayList<>();\n        for (int i = 0; i <= s.length() - a.length(); i++) {\n            if (s.substring(i, i + a.length()).equals(a)) {\n                for (int j = 0; j <= s.length() - b.length(); j++) {\n                    if (s.substring(j, j + b.length()).equals(b) && Math.abs(i - j) <= k) {\n                        res.add(i);\n                        break;\n                    }\n                }\n            }\n        }\n        Collections.sort(res);\n        return res;\n    }\n}",
+  "timestamp": "2025-08-06T01:49:22.128800",
+  "code_extracted_previous": "public List<Integer> beautifulIndices(String s, String a, String b, int k) {\n        List<Integer> res = new ArrayList<>();\n        for (int i = 0; i <= s.length() - a.length(); i++) {\n            if (s.substring(i, i + a.length()).equals(a)) {\n                for (int j = 0; j <= s.length() - b.length(); j++) {\n                    if (s.substring(j, j + b.length()).equals(b) && Math.abs(i - j) <= k) {\n                        res.add(i);\n                        break;\n                    }\n                }\n            }\n        }\n        Collections.sort(res);\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:42.579148"
+}

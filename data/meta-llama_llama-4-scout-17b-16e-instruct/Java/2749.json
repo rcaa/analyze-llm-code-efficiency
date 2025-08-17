@@ -1,0 +1,15 @@
+{
+  "id": 2749,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int makeTheIntegerZero(int num1, int num2) {\n        if (num2 >= 0) {\n            if (num1 % num2 == 0) {\n                return num1 / num2;\n            } else {\n                return -1;\n            }\n        } else {\n            int operations = 0;\n            while (num1 > 0) {\n                if (num1 < 60) {\n                    if (num1 >= -num2) {\n                        operations++;\n                        return operations;\n                    } else {\n                        return -1;\n                    }\n                }\n                num1 -= (1 << 60) + num2;\n                operations++;\n            }\n            return operations;\n        }\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The provided solution efficiently handles two cases based on the sign of `num2`. If `num2` is non-negative, it directly checks divisibility. If `num2` is negative, it iteratively subtracts the maximum possible value.",
+  "code": "class Solution {\n    public int makeTheIntegerZero(int num1, int num2) {\n        if (num2 >= 0) {\n            if (num1 % num2 == 0) {\n                return num1 / num2;\n            } else {\n                return -1;\n            }\n        } else {\n            int operations = 0;\n            while (num1 > 0) {\n                if (num1 < 60) {\n                    if (num1 >= -num2) {\n                        operations++;\n                        return operations;\n                    } else {\n                        return -1;\n                    }\n                }\n                num1 -= (1 << 60) + num2;\n                operations++;\n            }\n            return operations;\n        }\n    }\n}",
+  "timestamp": "2025-08-05T13:54:03.985553",
+  "code_extracted_previous": "class Solution {\n    public int makeTheIntegerZero(int num1, int num2) {\n        if (num2 >= 0) {\n            if (num1 % num2 == 0) {\n                return num1 / num2;\n            } else {\n                return -1;\n            }\n        } else {\n            int operations = 0;\n            while (num1 > 0) {\n                if (num1 < 60) {\n                    if (num1 >= -num2) {\n                        operations++;\n                        return operations;\n                    } else {\n                        return -1;\n                    }\n                }\n                num1 -= (1 << 60) + num2;\n                operations++;\n            }\n            return operations;\n        }\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.929466"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2135,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int wordCount(vector<string>& startWords, vector<string>& targetWords) {\n        unordered_map<string, int> start;\n        for (string& s : startWords) {\n            sort(s.begin(), s.end());\n            start[s]++;\n        }\n        int res = 0;\n        for (string& t : targetWords) {\n            for (char c = 'a'; c <= 'z'; c++) {\n                string temp = t;\n                temp += c;\n                sort(temp.begin(), temp.end());\n                if (start.count(temp)) res++;\n                break;\n            }\n        }\n        return res;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(N*M*logM + K*L*logL)\nspace complexity: O(N*M)\nenergy implications: LOW\nexplanation: The solution uses a hashmap to store the sorted strings of startWords and then iterates over targetWords, appending each lowercase letter and sorting the resulting string to check if it exists in the hashmap.",
+  "code": "class Solution {\npublic:\n    int wordCount(vector<string>& startWords, vector<string>& targetWords) {\n        unordered_map<string, int> start;\n        for (string& s : startWords) {\n            sort(s.begin(), s.end());\n            start[s]++;\n        }\n        int res = 0;\n        for (string& t : targetWords) {\n            for (char c = 'a'; c <= 'z'; c++) {\n                string temp = t;\n                temp += c;\n                sort(temp.begin(), temp.end());\n                if (start.count(temp)) res++;\n                break;\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T13:22:43.659940",
+  "code_extracted_previous": "public:\n    int wordCount(vector<string>& startWords, vector<string>& targetWords) {\n        unordered_map<string, int> start;\n        for (string& s : startWords) {\n            sort(s.begin(), s.end());\n            start[s]++;\n        }\n        int res = 0;\n        for (string& t : targetWords) {\n            for (char c = 'a'; c <= 'z'; c++) {\n                string temp = t;\n                temp += c;\n                sort(temp.begin(), temp.end());\n                if (start.count(temp)) res++;\n                break;\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:36.413370"
+}

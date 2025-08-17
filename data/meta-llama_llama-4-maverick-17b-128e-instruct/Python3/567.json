@@ -1,0 +1,15 @@
+{
+  "id": 567,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def checkInclusion(self, s1: str, s2: str) -> bool:\n        if len(s1) > len(s2):\n            return False\n        \n        s1_count = {}\n        s2_count = {}\n        \n        for i in range(len(s1)):\n            s1_count[s1[i]] = s1_count.get(s1[i], 0) + 1\n            s2_count[s2[i]] = s2_count.get(s2[i], 0) + 1\n        \n        for i in range(len(s1), len(s2)):\n            if s1_count == s2_count:\n                return True\n            \n            s2_count[s2[i]] = s2_count.get(s2[i], 0) + 1\n            s2_count[s2[i - len(s1)]] -= 1\n            \n            if s2_count[s2[i - len(s1)]] == 0:\n                del s2_count[s2[i - len(s1)]]\n        \n        return s1_count == s2_count\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to compare the character counts of s1 and the current substring of s2. It maintains two dictionaries to store the character counts, and updates the count of s2's substring as it slides the window. The comparison of the two dictionaries is done in O(1) time because the number of unique characters is limited to 26 lowercase English letters.",
+  "code": "def checkInclusion(self, s1: str, s2: str) -> bool:\n        if len(s1) > len(s2):\n            return False\n        \n        s1_count = {}\n        s2_count = {}\n        \n        for i in range(len(s1)):\n            s1_count[s1[i]] = s1_count.get(s1[i], 0) + 1\n            s2_count[s2[i]] = s2_count.get(s2[i], 0) + 1\n        \n        for i in range(len(s1), len(s2)):\n            if s1_count == s2_count:\n                return True\n            \n            s2_count[s2[i]] = s2_count.get(s2[i], 0) + 1\n            s2_count[s2[i - len(s1)]] -= 1\n            \n            if s2_count[s2[i - len(s1)]] == 0:\n                del s2_count[s2[i - len(s1)]]\n        \n        return s1_count == s2_count\n```",
+  "timestamp": "2025-08-05T14:55:53.486934",
+  "code_extracted_previous": "class Solution:\n    def checkInclusion(self, s1: str, s2: str) -> bool:\n        if len(s1) > len(s2):\n            return False\n        \n        s1_count = {}\n        s2_count = {}\n        \n        for i in range(len(s1)):\n            s1_count[s1[i]] = s1_count.get(s1[i], 0) + 1\n            s2_count[s2[i]] = s2_count.get(s2[i], 0) + 1\n        \n        for i in range(len(s1), len(s2)):\n            if s1_count == s2_count:\n                return True\n            \n            s2_count[s2[i]] = s2_count.get(s2[i], 0) + 1\n            s2_count[s2[i - len(s1)]] -= 1\n            \n            if s2_count[s2[i - len(s1)]] == 0:\n                del s2_count[s2[i - len(s1)]]\n        \n        return s1_count == s2_count",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:48.367970"
+}

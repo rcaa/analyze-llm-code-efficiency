@@ -1,0 +1,15 @@
+{
+  "id": 1131,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int maxAbsValExpr(int[] arr1, int[] arr2) {\n        int n = arr1.length;\n        int maxVal = Integer.MIN_VALUE;\n        for (int p = -1; p <= 1; p++) {\n            for (int q = -1; q <= 1; q++) {\n                int min = Integer.MAX_VALUE;\n                int max = Integer.MIN_VALUE;\n                for (int i = 0; i < n; i++) {\n                    int val = p * arr1[i] + q * arr2[i] + i;\n                    min = Math.min(min, val);\n                    max = Math.max(max, val);\n                }\n                maxVal = Math.max(maxVal, max - min);\n            }\n        }\n        return maxVal;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution iterates through all possible combinations of signs for the array elements and calculates the maximum difference between the minimum and maximum values for each combination. This approach leverages the fact that the absolute value expression can be represented as a linear function with varying slopes and intercepts. By considering all possible sign combinations, we ensure that we capture the maximum possible difference.\n",
+  "code": "class Solution {\n    public int maxAbsValExpr(int[] arr1, int[] arr2) {\n        int n = arr1.length;\n        int maxVal = Integer.MIN_VALUE;\n        for (int p = -1; p <= 1; p++) {\n            for (int q = -1; q <= 1; q++) {\n                int min = Integer.MAX_VALUE;\n                int max = Integer.MIN_VALUE;\n                for (int i = 0; i < n; i++) {\n                    int val = p * arr1[i] + q * arr2[i] + i;\n                    min = Math.min(min, val);\n                    max = Math.max(max, val);\n                }\n                maxVal = Math.max(maxVal, max - min);\n            }\n        }\n        return maxVal;\n    }\n}",
+  "timestamp": "2025-08-05T13:19:49.841744",
+  "code_extracted_previous": "class Solution {\n    public int maxAbsValExpr(int[] arr1, int[] arr2) {\n        int n = arr1.length;\n        int maxVal = Integer.MIN_VALUE;\n        for (int p = -1; p <= 1; p++) {\n            for (int q = -1; q <= 1; q++) {\n                int min = Integer.MAX_VALUE;\n                int max = Integer.MIN_VALUE;\n                for (int i = 0; i < n; i++) {\n                    int val = p * arr1[i] + q * arr2[i] + i;\n                    min = Math.min(min, val);\n                    max = Math.max(max, val);\n                }\n                maxVal = Math.max(maxVal, max - min);\n            }\n        }\n        return maxVal;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:24.490329"
+}

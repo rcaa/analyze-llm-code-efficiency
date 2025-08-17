@@ -1,0 +1,15 @@
+{
+  "id": 1015,
+  "modelo": "qwen/qwen3-32b",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "<think>\n</think>\n\nsolution: \n```java\nclass Solution {\n    public int smallestRepunitDivByK(int k) {\n        if (k % 2 == 0 || k % 5 == 0) return -1;\n        int remainder = 0;\n        for (int length = 1; length <= k; length++) {\n            remainder = (remainder * 10 + 1) % k;\n            if (remainder == 0) return length;\n        }\n        return -1;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(k)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution leverages modular arithmetic to avoid constructing large numbers directly. It iteratively builds the remainder of numbers composed of only 1s modulo k. If a remainder of 0 is found, the length is returned. If k is divisible by 2 or 5, it is impossible to find such an n, so we return -1 immediately.",
+  "code": "class Solution {\n    public int smallestRepunitDivByK(int k) {\n        if (k % 2 == 0 || k % 5 == 0) return -1;\n        int remainder = 0;\n        for (int length = 1; length <= k; length++) {\n            remainder = (remainder * 10 + 1) % k;\n            if (remainder == 0) return length;\n        }\n        return -1;\n    }\n}",
+  "timestamp": "2025-08-06T16:03:58.077576",
+  "code_extracted_previous": "class Solution {\n    public int smallestRepunitDivByK(int k) {\n        if (k % 2 == 0 || k % 5 == 0) return -1;\n        int remainder = 0;\n        for (int length = 1; length <= k; length++) {\n            remainder = (remainder * 10 + 1) % k;\n            if (remainder == 0) return length;\n        }\n        return -1;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:24:01.411888"
+}

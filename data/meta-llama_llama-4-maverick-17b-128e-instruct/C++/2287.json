@@ -1,0 +1,15 @@
+{
+  "id": 2287,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```cpp\nclass Solution {\npublic:\n    int rearrangeCharacters(string s, string target) {\n        vector<int> s_count(26, 0);\n        vector<int> target_count(26, 0);\n        \n        for (char c : s) {\n            s_count[c - 'a']++;\n        }\n        \n        for (char c : target) {\n            target_count[c - 'a']++;\n        }\n        \n        int max_copies = INT_MAX;\n        for (int i = 0; i < 26; i++) {\n            if (target_count[i] > 0) {\n                max_copies = min(max_copies, s_count[i] / target_count[i]);\n            }\n        }\n        \n        return max_copies;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n + m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution counts the frequency of characters in both strings using two separate arrays, then calculates the maximum number of copies of the target string that can be formed by dividing the count of each character in s by the count in target and taking the minimum of these ratios.",
+  "code": "class Solution {\npublic:\n    int rearrangeCharacters(string s, string target) {\n        vector<int> s_count(26, 0);\n        vector<int> target_count(26, 0);\n        \n        for (char c : s) {\n            s_count[c - 'a']++;\n        }\n        \n        for (char c : target) {\n            target_count[c - 'a']++;\n        }\n        \n        int max_copies = INT_MAX;\n        for (int i = 0; i < 26; i++) {\n            if (target_count[i] > 0) {\n                max_copies = min(max_copies, s_count[i] / target_count[i]);\n            }\n        }\n        \n        return max_copies;\n    }\n};",
+  "timestamp": "2025-08-05T14:44:58.204597",
+  "code_extracted_previous": "class Solution {\npublic:\n    int rearrangeCharacters(string s, string target) {\n        vector<int> s_count(26, 0);\n        vector<int> target_count(26, 0);\n        \n        for (char c : s) {\n            s_count[c - 'a']++;\n        }\n        \n        for (char c : target) {\n            target_count[c - 'a']++;\n        }\n        \n        int max_copies = INT_MAX;\n        for (int i = 0; i < 26; i++) {\n            if (target_count[i] > 0) {\n                max_copies = min(max_copies, s_count[i] / target_count[i]);\n            }\n        }\n        \n        return max_copies;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:45.160131"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 3298,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```\nclass Solution {\n    public long validSubstringCount(String word1, String word2) {\n        int n = word1.length(), m = word2.length();\n        long res = 0;\n        int[] cnt1 = new int[26], cnt2 = new int[26];\n        for (int i = 0; i < m; i++) cnt2[word2.charAt(i) - 'a']++;\n        for (int i = 0; i < n; i++) {\n            cnt1[word1.charAt(i) - 'a']++;\n            if (i >= m) cnt1[word1.charAt(i - m) - 'a']--;\n            boolean ok = true;\n            for (int j = 0; j < 26; j++) if (cnt1[j] < cnt2[j]) ok = false;\n            if (ok) res += n - i;\n        }\n        return res;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses a sliding window approach to count the valid substrings. It maintains two frequency arrays for the characters in word1 and word2, and slides the window of size m over word1, updating the frequency arrays and checking if the current window is valid.",
+  "code": "class Solution {\n    public long validSubstringCount(String word1, String word2) {\n        int n = word1.length(), m = word2.length();\n        long res = 0;\n        int[] cnt1 = new int[26], cnt2 = new int[26];\n        for (int i = 0; i < m; i++) cnt2[word2.charAt(i) - 'a']++;\n        for (int i = 0; i < n; i++) {\n            cnt1[word1.charAt(i) - 'a']++;\n            if (i >= m) cnt1[word1.charAt(i - m) - 'a']--;\n            boolean ok = true;\n            for (int j = 0; j < 26; j++) if (cnt1[j] < cnt2[j]) ok = false;\n            if (ok) res += n - i;\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:40:27.114189",
+  "code_extracted_previous": "class Solution {\n    public long validSubstringCount(String word1, String word2) {\n        int n = word1.length(), m = word2.length();\n        long res = 0;\n        int[] cnt1 = new int[26], cnt2 = new int[26];\n        for (int i = 0; i < m; i++) cnt2[word2.charAt(i) - 'a']++;\n        for (int i = 0; i < n; i++) {\n            cnt1[word1.charAt(i) - 'a']++;\n            if (i >= m) cnt1[word1.charAt(i - m) - 'a']--;\n            boolean ok = true;\n            for (int j = 0; j < 26; j++) if (cnt1[j] < cnt2[j]) ok = false;\n            if (ok) res += n - i;\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:38.428046"
+}

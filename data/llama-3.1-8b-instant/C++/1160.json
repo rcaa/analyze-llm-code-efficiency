@@ -1,0 +1,15 @@
+{
+  "id": 1160,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "solution: \n```cpp\nclass Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        int charsCount[26] = {0};\n        for (char c : chars) {\n            charsCount[c - 'a']++;\n        }\n        int res = 0;\n        for (string word : words) {\n            int wordCount[26] = {0};\n            bool isValid = true;\n            for (char c : word) {\n                if (wordCount[c - 'a']++ > charsCount[c - 'a']) {\n                    isValid = false;\n                    break;\n                }\n            }\n            if (isValid) {\n                res += word.size();\n            }\n        }\n        return res;\n    }\n};\n```\n\nefficiency: HIGH\ntime complexity: O(n * m)\nspace complexity: O(1)\nenergy implications: LOW",
+  "code": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        int charsCount[26] = {0};\n        for (char c : chars) {\n            charsCount[c - 'a']++;\n        }\n        int res = 0;\n        for (string word : words) {\n            int wordCount[26] = {0};\n            bool isValid = true;\n            for (char c : word) {\n                if (wordCount[c - 'a']++ > charsCount[c - 'a']) {\n                    isValid = false;\n                    break;\n                }\n            }\n            if (isValid) {\n                res += word.size();\n            }\n        }\n        return res;\n    }\n};",
+  "timestamp": "2025-08-05T12:38:39.234443",
+  "code_extracted_previous": "class Solution {\npublic:\n    int countCharacters(vector<string>& words, string chars) {\n        int charsCount[26] = {0};\n        for (char c : chars) {\n            charsCount[c - 'a']++;\n        }\n        int res = 0;\n        for (string word : words) {\n            int wordCount[26] = {0};\n            bool isValid = true;\n            for (char c : word) {\n                if (wordCount[c - 'a']++ > charsCount[c - 'a']) {\n                    isValid = false;\n                    break;\n                }\n            }\n            if (isValid) {\n                res += word.size();\n            }\n        }\n        return res;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:27.289541"
+}

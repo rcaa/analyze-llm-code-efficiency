@@ -1,0 +1,15 @@
+{
+  "id": 2825,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```cpp\nsolution: \nclass Solution {\npublic:\n    bool canMakeSubsequence(string str1, string str2) {\n        int m = str1.size(), n = str2.size();\n        for (int i = 0; i < (1 << m); i++) {\n            string temp = str1;\n            for (int j = 0; j < m; j++) {\n                if ((i >> j) & 1) {\n                    if (temp[j] == 'z') temp[j] = 'a';\n                    else temp[j]++;\n                }\n            }\n            int p1 = 0, p2 = 0;\n            while (p1 < m && p2 < n) {\n                if (temp[p1] == str2[p2]) p2++;\n                p1++;\n            }\n            if (p2 == n) return true;\n        }\n        return false;\n    }\n};\nefficiency: MEDIUM\ntime complexity: O(2^n * m)\nspace complexity: O(m)\nenergy implications: MEDIUM\nexplanation: The solution uses a bitmask to generate all possible subsets of indices in str1 and checks if str2 can be a subsequence of str1 after incrementing the characters at the selected indices. The time complexity is exponential due to the bitmask generation, but it is necessary to consider all possible subsets. The space complexity is linear as we need to store the temporary string. The energy implications are medium due to the use of bit manipulation and string operations.",
+  "code": "class Solution {\npublic:\n    bool canMakeSubsequence(string str1, string str2) {\n        int m = str1.size(), n = str2.size();\n        for (int i = 0; i < (1 << m); i++) {\n            string temp = str1;\n            for (int j = 0; j < m; j++) {\n                if ((i >> j) & 1) {\n                    if (temp[j] == 'z') temp[j] = 'a';\n                    else temp[j]++;\n                }\n            }\n            int p1 = 0, p2 = 0;\n            while (p1 < m && p2 < n) {\n                if (temp[p1] == str2[p2]) p2++;\n                p1++;\n            }\n            if (p2 == n) return true;\n        }\n        return false;\n    }\n};",
+  "timestamp": "2025-08-06T01:47:24.676319",
+  "code_extracted_previous": "class Solution {\npublic:\n    bool canMakeSubsequence(string str1, string str2) {\n        int m = str1.size(), n = str2.size();\n        for (int i = 0; i < (1 << m); i++) {\n            string temp = str1;\n            for (int j = 0; j < m; j++) {\n                if ((i >> j) & 1) {\n                    if (temp[j] == 'z') temp[j] = 'a';\n                    else temp[j]++;\n                }\n            }\n            int p1 = 0, p2 = 0;\n            while (p1 < m && p2 < n) {\n                if (temp[p1] == str2[p2]) p2++;\n                p1++;\n            }\n            if (p2 == n) return true;\n        }\n        return false;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:32.510571"
+}

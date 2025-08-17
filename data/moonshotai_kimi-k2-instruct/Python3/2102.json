@@ -1,0 +1,15 @@
+{
+  "id": 2102,
+  "modelo": "moonshotai/kimi-k2-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: ```python\nimport bisect\n\nclass SORTracker:\n\n    def __init__(self):\n        self.locations = []\n        self.query_index = 0\n\n    def add(self, name: str, score: int) -> None:\n        bisect.insort(self.locations, (-score, name))\n\n    def get(self) -> str:\n        result = self.locations[self.query_index][1]\n        self.query_index += 1\n        return result\n```\nefficiency: HIGH\ntime complexity: O(log N) for add, O(1) for get\nspace complexity: O(N)\nenergy implications: LOW\nexplanation: Maintain a list kept in sorted order by (-score, name) via bisect.insort. Each add costs O(log N) to find the insertion point. Each get simply returns the element at the current query index and increments it, giving O(1) time.",
+  "code": "class SORTracker:\n\n    def __init__(self):\n        self.locations = []\n        self.query_index = 0\n\n    def add(self, name: str, score: int) -> None:\n        bisect.insort(self.locations, (-score, name))\n\n    def get(self) -> str:\n        result = self.locations[self.query_index][1]\n        self.query_index += 1\n        return result",
+  "timestamp": "2025-08-05T14:05:41.524983",
+  "code_extracted_previous": "import bisect\n\nclass SORTracker:\n\n    def __init__(self):\n        self.locations = []\n        self.query_index = 0\n\n    def add(self, name: str, score: int) -> None:\n        bisect.insort(self.locations, (-score, name))\n\n    def get(self) -> str:\n        result = self.locations[self.query_index][1]\n        self.query_index += 1\n        return result",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:56.506711"
+}

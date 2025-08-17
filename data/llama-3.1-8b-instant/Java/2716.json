@@ -1,0 +1,15 @@
+{
+  "id": 2716,
+  "modelo": "llama-3.1-8b-instant",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int minimizedStringLength(String s) {\n        int n = s.length();\n        int[] last = new int[26];\n        Arrays.fill(last, n);\n        for (int i = n - 1; i >= 0; i--) {\n            last[s.charAt(i) - 'a'] = i;\n        }\n        int res = n;\n        for (int i = 0; i < n; i++) {\n            int left = last[s.charAt(i) - 'a'];\n            if (left == n) continue;\n            res = Math.min(res, n - (left + (n - i - 1) - (left - i)));\n        }\n        return res;\n    }\n}\n```\n\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: This solution uses a single array to store the last occurrence of each character in the string. It then iterates over the string, for each character, it calculates the minimum length of the string after deleting the closest occurrences of the character to the left and right. The time complexity is O(n) and the space complexity is O(1) as we only use a constant amount of space.",
+  "code": "class Solution {\n    public int minimizedStringLength(String s) {\n        int n = s.length();\n        int[] last = new int[26];\n        Arrays.fill(last, n);\n        for (int i = n - 1; i >= 0; i--) {\n            last[s.charAt(i) - 'a'] = i;\n        }\n        int res = n;\n        for (int i = 0; i < n; i++) {\n            int left = last[s.charAt(i) - 'a'];\n            if (left == n) continue;\n            res = Math.min(res, n - (left + (n - i - 1) - (left - i)));\n        }\n        return res;\n    }\n}",
+  "timestamp": "2025-08-05T14:47:45.652014",
+  "code_extracted_previous": "class Solution {\n    public int minimizedStringLength(String s) {\n        int n = s.length();\n        int[] last = new int[26];\n        Arrays.fill(last, n);\n        for (int i = n - 1; i >= 0; i--) {\n            last[s.charAt(i) - 'a'] = i;\n        }\n        int res = n;\n        for (int i = 0; i < n; i++) {\n            int left = last[s.charAt(i) - 'a'];\n            if (left == n) continue;\n            res = Math.min(res, n - (left + (n - i - 1) - (left - i)));\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:29.377100"
+}

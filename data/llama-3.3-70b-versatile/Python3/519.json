@@ -1,0 +1,15 @@
+{
+  "id": 519,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.total = m * n\n        self.used = set()\n\n    def flip(self) -> List[int]:\n        import random\n        x = random.randint(0, self.total - 1)\n        while x in self.used:\n            x = random.randint(0, self.total - 1)\n        self.used.add(x)\n        return [x // self.n, x % self.n]\n\n    def reset(self) -> None:\n        self.used = set()\n\n\n# Your Solution object will be instantiated and called as such:\n# obj = Solution(m, n)\n# param_1 = obj.flip()\n# obj.reset()\n```\nsolution: \nefficiency: MEDIUM\ntime complexity: O(m*n)\nspace complexity: O(m*n)\nenergy implications: LOW\nexplanation: The algorithm uses a set to keep track of used indices, ensuring that each index is equally likely to be returned. The flip function generates a random index and checks if it's used, regenerating if necessary. The reset function clears the used set.",
+  "code": "def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.total = m * n\n        self.used = set()\n\n    def flip(self) -> List[int]:\n        x = random.randint(0, self.total - 1)\n        while x in self.used:\n            x = random.randint(0, self.total - 1)\n        self.used.add(x)\n        return [x // self.n, x % self.n]\n\n    def reset(self) -> None:\n        self.used = set()\n\n\n# Your Solution object will be instantiated and called as such:\n# obj = Solution(m, n)\n# param_1 = obj.flip()\n# obj.reset()\n```\nsolution:",
+  "timestamp": "2025-08-06T15:20:38.575537",
+  "code_extracted_previous": "class Solution:\n\n    def __init__(self, m: int, n: int):\n        self.m = m\n        self.n = n\n        self.total = m * n\n        self.used = set()\n\n    def flip(self) -> List[int]:\n        import random\n        x = random.randint(0, self.total - 1)\n        while x in self.used:\n            x = random.randint(0, self.total - 1)\n        self.used.add(x)\n        return [x // self.n, x % self.n]\n\n    def reset(self) -> None:\n        self.used = set()\n\n\n# Your Solution object will be instantiated and called as such:\n# obj = Solution(m, n)\n# param_1 = obj.flip()\n# obj.reset()",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:35.690425"
+}

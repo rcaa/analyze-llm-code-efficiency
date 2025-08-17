@@ -1,0 +1,15 @@
+{
+  "id": 2466,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```python\nclass Solution:\n    def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0 for _ in range(high + 1)] for _ in range(low + 1)]\n        dp[0][0] = 1\n        for i in range(1, low + 1):\n            for j in range(high + 1):\n                dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % MOD\n                if j >= zero:\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - zero]) % MOD\n                if j >= one:\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - one]) % MOD\n        return dp[low][high]\n```\n\nsolution: \n```python\nclass Solution:\n    def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0 for _ in range(high + 1)] for _ in range(low + 1)]\n        dp[0][0] = 1\n        for i in range(1, low + 1):\n            for j in range(high + 1):\n                dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % MOD\n                if j >= zero:\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - zero]) % MOD\n                if j >= one:\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - one]) % MOD\n        return dp[low][high]\n```\nefficiency: HIGH\ntime complexity: O(low * high)\nspace complexity: O(low * high)\nenergy implications: LOW\nexplanation: The solution uses dynamic programming to store and reuse the number of good strings for subproblems. It iterates through possible string lengths (low to high) and character counts (0 to high), building up the count of good strings based on previous subproblems.  The modulo operation prevents integer overflow.\n",
+  "code": "solution:",
+  "timestamp": "2025-08-05T14:27:00.309980",
+  "code_extracted_previous": "class Solution:\n    def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:\n        MOD = 10**9 + 7\n        dp = [[0 for _ in range(high + 1)] for _ in range(low + 1)]\n        dp[0][0] = 1\n        for i in range(1, low + 1):\n            for j in range(high + 1):\n                dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % MOD\n                if j >= zero:\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - zero]) % MOD\n                if j >= one:\n                    dp[i][j] = (dp[i][j] + dp[i - 1][j - one]) % MOD\n        return dp[low][high]",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:26.317961"
+}

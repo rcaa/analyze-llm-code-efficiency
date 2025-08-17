@@ -1,0 +1,15 @@
+{
+  "id": 1802,
+  "modelo": "llama-3.3-70b-versatile",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = 1, right = maxSum;\n        while (left < right) {\n            int mid = (left + right + 1) / 2;\n            long sum = (long) (mid + Math.max(0, mid - index - 1)) + (long) (mid + Math.max(0, mid - (n - index - 1)));\n            if (sum <= maxSum) {\n                left = mid;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return left;\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(log(maxSum))\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: The solution uses binary search to find the maximum possible value at the given index, ensuring the sum of the array does not exceed maxSum while maintaining the required conditions.",
+  "code": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = 1, right = maxSum;\n        while (left < right) {\n            int mid = (left + right + 1) / 2;\n            long sum = (long) (mid + Math.max(0, mid - index - 1)) + (long) (mid + Math.max(0, mid - (n - index - 1)));\n            if (sum <= maxSum) {\n                left = mid;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return left;\n    }\n}",
+  "timestamp": "2025-08-06T15:13:17.210636",
+  "code_extracted_previous": "class Solution {\n    public int maxValue(int n, int index, int maxSum) {\n        int left = 1, right = maxSum;\n        while (left < right) {\n            int mid = (left + right + 1) / 2;\n            long sum = (long) (mid + Math.max(0, mid - index - 1)) + (long) (mid + Math.max(0, mid - (n - index - 1)));\n            if (sum <= maxSum) {\n                left = mid;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return left;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:33.597213"
+}

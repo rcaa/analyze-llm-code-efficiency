@@ -1,0 +1,15 @@
+{
+  "id": 2140,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1);\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i] = max(dp[i + 1], questions[i][0] + (i + questions[i][1] + 1 < n ? dp[i + questions[i][1] + 1] : 0));\n        }\n        return dp[0];\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Dynamic programming approach solving the problem in a bottom-up manner. Stores maximum points that can be earned from each question to the end, then iterates backwards to find the optimal solution.",
+  "code": "class Solution {\npublic:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1);\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i] = max(dp[i + 1], questions[i][0] + (i + questions[i][1] + 1 < n ? dp[i + questions[i][1] + 1] : 0));\n        }\n        return dp[0];\n    }\n};",
+  "timestamp": "2025-08-05T13:25:16.506725",
+  "code_extracted_previous": "public:\n    long long mostPoints(vector<vector<int>>& questions) {\n        int n = questions.size();\n        vector<long long> dp(n + 1);\n        for (int i = n - 1; i >= 0; --i) {\n            dp[i] = max(dp[i + 1], questions[i][0] + (i + questions[i][1] + 1 < n ? dp[i + questions[i][1] + 1] : 0));\n        }\n        return dp[0];\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:48.972098"
+}

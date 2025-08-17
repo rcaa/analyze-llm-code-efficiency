@@ -1,0 +1,15 @@
+{
+  "id": 3272,
+  "modelo": "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "código extraído mas apenas 5/6 seções presentes",
+  "resposta": "```java\nclass Solution {\n    public long countGoodIntegers(int n, int k) {\n        long res = 0;\n        int[] cnt = new int[10];\n        cnt[0] = 1;\n        for (int i = 1; i <= 9; i++) {\n            cnt[i] = (i % k == 0) ? 1 : 0;\n        }\n        for (int i = 1; i < n; i++) {\n            int[] next = new int[10];\n            for (int j = 0; j < 10; j++) {\n                for (int l = 0; l < 10; l++) {\n                    next[(j + l) % 10] += cnt[j];\n                }\n            }\n            cnt = next;\n        }\n        for (int i = 1; i < 10; i++) {\n            res += cnt[(k - i) % 10];\n        }\n        return res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Utilizes dynamic programming to count the number of good integers by tracking the count of digits that can form a k-palindromic number, iterating through each digit position. \n```",
+  "code": "class Solution {\n    public long countGoodIntegers(int n, int k) {\n        long res = 0;\n        int[] cnt = new int[10];\n        cnt[0] = 1;\n        for (int i = 1; i <= 9; i++) {\n            cnt[i] = (i % k == 0) ? 1 : 0;\n        }\n        for (int i = 1; i < n; i++) {\n            int[] next = new int[10];\n            for (int j = 0; j < 10; j++) {\n                for (int l = 0; l < 10; l++) {\n                    next[(j + l) % 10] += cnt[j];\n                }\n            }\n            cnt = next;\n        }\n        for (int i = 1; i < 10; i++) {\n            res += cnt[(k - i) % 10];\n        }\n        return res;\n    }\n}\nefficiency: HIGH\ntime complexity: O(N)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Utilizes dynamic programming to count the number of good integers by tracking the count of digits that can form a k-palindromic number, iterating through each digit position.",
+  "timestamp": "2025-08-05T14:40:02.221694",
+  "code_extracted_previous": "class Solution {\n    public long countGoodIntegers(int n, int k) {\n        long res = 0;\n        int[] cnt = new int[10];\n        cnt[0] = 1;\n        for (int i = 1; i <= 9; i++) {\n            cnt[i] = (i % k == 0) ? 1 : 0;\n        }\n        for (int i = 1; i < n; i++) {\n            int[] next = new int[10];\n            for (int j = 0; j < 10; j++) {\n                for (int l = 0; l < 10; l++) {\n                    next[(j + l) % 10] += cnt[j];\n                }\n            }\n            cnt = next;\n        }\n        for (int i = 1; i < 10; i++) {\n            res += cnt[(k - i) % 10];\n        }\n        return res;\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:46.789464"
+}

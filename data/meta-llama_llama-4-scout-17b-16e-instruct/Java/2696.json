@@ -1,0 +1,15 @@
+{
+  "id": 2696,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Java",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution: \n```java\nclass Solution {\n    public int minLength(String s) {\n        StringBuilder stack = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            if (stack.length() > 1 && \n                ((stack.charAt(stack.length() - 2) == 'A' && c == 'B') || \n                 (stack.charAt(stack.length() - 2) == 'C' && c == 'D'))) {\n                stack.delete(stack.length() - 2, stack.length());\n            } else {\n                stack.append(c);\n            }\n        }\n        return stack.length();\n    }\n}\n```\nefficiency: HIGH\ntime complexity: O(n)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: Using a stack to track characters, we efficiently remove \"AB\" or \"CD\" substrings in a single pass through the string.",
+  "code": "class Solution {\n    public int minLength(String s) {\n        StringBuilder stack = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            if (stack.length() > 1 && \n                ((stack.charAt(stack.length() - 2) == 'A' && c == 'B') || \n                 (stack.charAt(stack.length() - 2) == 'C' && c == 'D'))) {\n                stack.delete(stack.length() - 2, stack.length());\n            } else {\n                stack.append(c);\n            }\n        }\n        return stack.length();\n    }\n}",
+  "timestamp": "2025-08-05T16:43:52.608779",
+  "code_extracted_previous": "class Solution {\n    public int minLength(String s) {\n        StringBuilder stack = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            if (stack.length() > 1 && \n                ((stack.charAt(stack.length() - 2) == 'A' && c == 'B') || \n                 (stack.charAt(stack.length() - 2) == 'C' && c == 'D'))) {\n                stack.delete(stack.length() - 2, stack.length());\n            } else {\n                stack.append(c);\n            }\n        }\n        return stack.length();\n    }\n}",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:50.907826"
+}

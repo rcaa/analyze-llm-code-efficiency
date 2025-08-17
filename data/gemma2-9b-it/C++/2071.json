@@ -1,0 +1,15 @@
+{
+  "id": 2071,
+  "modelo": "gemma2-9b-it",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "```c++\nclass Solution {\npublic:\n    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {\n        sort(tasks.begin(), tasks.end());\n        sort(workers.begin(), workers.end());\n        int taskCount = 0;\n        int workerIndex = 0;\n        for (int i = 0; i < tasks.size(); i++) {\n            if (workerIndex < workers.size() && workers[workerIndex] >= tasks[i]) {\n                taskCount++;\n                workerIndex++;\n            } else if (pills > 0) {\n                workers[workerIndex] += strength;\n                taskCount++;\n                pills--;\n                workerIndex++;\n            }\n        }\n        return taskCount;\n    }\n};\n```\n\nsolution: ```c++\nsort(tasks.begin(), tasks.end());\nsort(workers.begin(), workers.end());\nint taskCount = 0;\nint workerIndex = 0;\nfor (int i = 0; i < tasks.size(); i++) {\n    if (workerIndex < workers.size() && workers[workerIndex] >= tasks[i]) {\n        taskCount++;\n        workerIndex++;\n    } else if (pills > 0) {\n        workers[workerIndex] += strength;\n        taskCount++;\n        pills--;\n        workerIndex++;\n    }\n}\nreturn taskCount;\n```\nefficiency: HIGH\ntime complexity: O(n log n + m log m)\nspace complexity: O(1)\nenergy implications: LOW \nexplanation: The solution first sorts both the tasks and workers arrays. Then, it iterates through the tasks, attempting to assign each task to the next available worker who meets the strength requirement. If no suitable worker is found and pills remain, a worker is given a pill to increase their strength, allowing them to complete the task. This approach efficiently utilizes sorting to quickly find suitable workers and pills, maximizing task completion.",
+  "code": "sort(tasks.begin(), tasks.end());\nsort(workers.begin(), workers.end());\nint taskCount = 0;\nint workerIndex = 0;\nfor (int i = 0; i < tasks.size(); i++) {\n    if (workerIndex < workers.size() && workers[workerIndex] >= tasks[i]) {\n        taskCount++;\n        workerIndex++;\n    } else if (pills > 0) {\n        workers[workerIndex] += strength;\n        taskCount++;\n        pills--;\n        workerIndex++;\n    }\n}\nreturn taskCount;",
+  "timestamp": "2025-08-05T12:00:53.677952",
+  "code_extracted_previous": "sort(tasks.begin(), tasks.end());\nsort(workers.begin(), workers.end());\nint taskCount = 0;\nint workerIndex = 0;\nfor (int i = 0; i < tasks.size(); i++) {\n    if (workerIndex < workers.size() && workers[workerIndex] >= tasks[i]) {\n        taskCount++;\n        workerIndex++;\n    } else if (pills > 0) {\n        workers[workerIndex] += strength;\n        taskCount++;\n        pills--;\n        workerIndex++;\n    }\n}\nreturn taskCount;",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:23.378252"
+}

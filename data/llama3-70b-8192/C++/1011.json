@@ -1,0 +1,15 @@
+{
+  "id": 1011,
+  "modelo": "llama3-70b-8192",
+  "linguagem": "C++",
+  "status": "ok",
+  "categoria": "correct",
+  "motivo": "todas as seções presentes corretamente",
+  "resposta": "solution:\n```class Solution {\npublic:\n    int shipWithinDays(vector<int>& weights, int days) {\n        int left = *max_element(weights.begin(), weights.end()), right = accumulate(weights.begin(), weights.end(), 0);\n        while (left < right) {\n            int mid = left + (right - left) / 2, need = 1, cur = 0;\n            for (int w : weights) {\n                if (cur + w > mid) {\n                    need++;\n                    cur = 0;\n                }\n                cur += w;\n            }\n            if (need > days) left = mid + 1;\n            else right = mid;\n        }\n        return left;\n    }\n};\n```\nefficiency: HIGH\ntime complexity: O(n log m)\nspace complexity: O(1)\nenergy implications: LOW\nexplanation: Binary search is used to find the minimum capacity. The search range is from the maximum weight to the total weight. For each mid, we calculate the number of days needed. If it's more than the given days, we increase the left boundary; otherwise, we decrease the right boundary.",
+  "code": "class Solution {\npublic:\n    int shipWithinDays(vector<int>& weights, int days) {\n        int left = *max_element(weights.begin(), weights.end()), right = accumulate(weights.begin(), weights.end(), 0);\n        while (left < right) {\n            int mid = left + (right - left) / 2, need = 1, cur = 0;\n            for (int w : weights) {\n                if (cur + w > mid) {\n                    need++;\n                    cur = 0;\n                }\n                cur += w;\n            }\n            if (need > days) left = mid + 1;\n            else right = mid;\n        }\n        return left;\n    }\n};",
+  "timestamp": "2025-08-05T13:17:33.570728",
+  "code_extracted_previous": "public:\n    int shipWithinDays(vector<int>& weights, int days) {\n        int left = *max_element(weights.begin(), weights.end()), right = accumulate(weights.begin(), weights.end(), 0);\n        while (left < right) {\n            int mid = left + (right - left) / 2, need = 1, cur = 0;\n            for (int w : weights) {\n                if (cur + w > mid) {\n                    need++;\n                    cur = 0;\n                }\n                cur += w;\n            }\n            if (need > days) left = mid + 1;\n            else right = mid;\n        }\n        return left;\n    }\n};",
+  "starter_ok": true,
+  "starter_check_reason": "starter respeitado",
+  "reavaliado_em": "2025-08-17T12:23:35.946931"
+}

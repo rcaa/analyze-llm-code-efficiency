@@ -1,0 +1,15 @@
+{
+  "id": 535,
+  "modelo": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "linguagem": "Python3",
+  "status": "ok",
+  "categoria": "plausible",
+  "motivo": "contém import/includes",
+  "resposta": "solution: \n```python\nimport uuid\n\nclass Codec:\n\n    def __init__(self):\n        self.url_map = {}\n\n    def encode(self, longUrl: str) -> str:\n        \"\"\"Encodes a URL to a shortened URL.\n        \"\"\"\n        unique_id = str(uuid.uuid4())[:6]\n        self.url_map[unique_id] = longUrl\n        return f\"http://tinyurl.com/{unique_id}\"\n\n    def decode(self, shortUrl: str) -> str:\n        \"\"\"Decodes a shortened URL to its original URL.\n        \"\"\"\n        unique_id = shortUrl.split(\"/\")[-1]\n        return self.url_map.get(unique_id)\n\n# Your Codec object will be instantiated and called as such:\n# codec = Codec()\n# codec.decode(codec.encode(url))\n```\n\nefficiency: HIGH\ntime complexity: O(1)\nspace complexity: O(n)\nenergy implications: LOW\nexplanation: The solution utilizes a hash map to store the mapping between the shortened URL and the original URL. The `encode` method generates a unique 6-character identifier using UUID, stores the mapping, and returns the shortened URL. The `decode` method extracts the unique identifier from the shortened URL and retrieves the original URL from the hash map. This approach provides efficient lookups and insertions.",
+  "code": "class Codec:\n\n    def __init__(self):\n        self.url_map = {}\n\n    def encode(self, longUrl: str) -> str:\n        \"\"\"Encodes a URL to a shortened URL.\n        \"\"\"\n        unique_id = str(uuid.uuid4())[:6]\n        self.url_map[unique_id] = longUrl\n        return f\"http://tinyurl.com/{unique_id}\"\n\n    def decode(self, shortUrl: str) -> str:\n        \"\"\"Decodes a shortened URL to its original URL.\n        \"\"\"\n        unique_id = shortUrl.split(\"/\")[-1]\n        return self.url_map.get(unique_id)\n\n# Your Codec object will be instantiated and called as such:\n# codec = Codec()\n# codec.decode(codec.encode(url))",
+  "timestamp": "2025-08-05T14:55:28.048838",
+  "code_extracted_previous": "import uuid\n\nclass Codec:\n\n    def __init__(self):\n        self.url_map = {}\n\n    def encode(self, longUrl: str) -> str:\n        \"\"\"Encodes a URL to a shortened URL.\n        \"\"\"\n        unique_id = str(uuid.uuid4())[:6]\n        self.url_map[unique_id] = longUrl\n        return f\"http://tinyurl.com/{unique_id}\"\n\n    def decode(self, shortUrl: str) -> str:\n        \"\"\"Decodes a shortened URL to its original URL.\n        \"\"\"\n        unique_id = shortUrl.split(\"/\")[-1]\n        return self.url_map.get(unique_id)\n\n# Your Codec object will be instantiated and called as such:\n# codec = Codec()\n# codec.decode(codec.encode(url))",
+  "starter_ok": false,
+  "starter_check_reason": "ausente 'class Solution'",
+  "reavaliado_em": "2025-08-17T12:23:52.821164"
+}
