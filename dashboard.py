@@ -555,7 +555,7 @@ UI: Dict[str, Dict[str, str]] = {
 
 def t(key: str) -> str:
     """Get translated string for the current language."""
-    lang = st.session_state.get("ui_lang", "pt")
+    lang = st.session_state.get("ui_lang", "en")
     return UI[lang].get(key, key)
 
 
@@ -773,7 +773,7 @@ else:
 with st.sidebar:
     lang_choice = st.selectbox(
         "\U0001F310 Language / Idioma",
-        ["Portugues (Brasil)", "English"],
+        ["English", "Portugues (Brasil)"],
         index=0,
         key="lang_select",
     )
