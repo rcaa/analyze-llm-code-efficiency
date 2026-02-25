@@ -1,53 +1,30 @@
-# Análise de Consumo de Energia, Memória e Desempenho em Códigos Gerados por Large Language Models
+# Correctness, Execution Time, and Memory Usage of LLM-Generated Code: A Large-Scale Empirical Study on LeetCode
 
-## Sobre o Projeto
+## Authors
 
-Este repositório tem como objetivo analisar e comparar o consumo de energia, uso de memória e desempenho de algoritmos gerados por diferentes modelos de linguagem (Large Language Models - LLMs) para diversas linguagens de programação.
+- Adenilson Ramos [adenilson.ramos@ufape.edu.br](mailto:adenilson.ramos@ufape.edu.br)
+- Rodrigo Andrade [rodrigo.andrade@ufape.edu.br](mailto:rodrigo.andrade@ufape.edu.br)
 
-## Objetivo Geral
+## Abstract
 
-Avaliar e comparar a eficiência energética, utilização de memória e desempenho de códigos gerados por LLMs em diferentes linguagens de programação.
-
-## Objetivos Específicos
-
-- Medir o consumo de energia durante a execução de algoritmos gerados por LLMs.
-- Comparar o uso de memória entre diferentes linguagens de programação.
-- Avaliar o desempenho (tempo de execução) dos códigos produzidos por LLMs.
-- Identificar padrões e propor recomendações para uso eficiente de LLMs na geração de código.
-
-## Metodologia
-
-1. Seleção de problemas-alvo para implementação.
-2. Geração de soluções usando diferentes LLMs.
-3. Implementação dos algoritmos nas linguagens alvo (ex: Python, Java, C++).
-4. Execução e monitoramento dos algoritmos utilizando ferramentas de análise de desempenho, consumo de energia e uso de memória.
-5. Análise comparativa dos resultados.
+The integration of Large Language Models (LLMs) into software development has shifted automated code generation from a theoretical possibility to a practical necessity for modern developers. However, as these models are increasingly tasked with solving complex algorithmic problems, the focus must expand beyond simple functional correctness to include non-functional requirements such as computational efficiency and resource constraints. To address this, we conduct a large-scale empirical evaluation of 11 freely available LLMs hosted on the Groq Cloud platform. Using LeetCode as a standardized evaluation environment, we analyzed 10,666 judged submissions to assess how these models perform across a stratified sample of 336 algorithmic problems varying in difficulty (Easy, Medium, and Hard). Our investigation covers three critical dimensions: acceptance rate, execution time, and memory consumption across C++, Java, and Python3. The results reveal an overall acceptance rate of 42.7\%, with performance disparities between models. We found that while model choice is the primary determinant of whether a solution is correct, the choice of programming language is the main driver of execution efficiency. Compiled languages (C++ and Java) achieved higher acceptance and faster execution, whereas Python3 proved to be the most memory-efficient. Furthermore, we find a correlation between acceptance and memory usage, which suggests that models producing more correct solutions often generate more resource-intensive code. These findings provide a benchmark for selecting LLMs based on specific requirements, whether the priority is reliability, execution time, or a low memory consumption.
 
 
-## Estrutura do Repositório
+## Repository Structure
 
-- `/datasets`: Bases de dados e questões utilizadas para os experimentos.
-- `/data`: Resultados brutos dos experimentos, logs e outputs de execução dos códigos.
+- `/datasets`: Databases and questions used for the experiments.
+- `/data`: Raw experiment results, logs, and code execution outputs.
     - `/{modelo-llm}`: 
         - `/{language}`:  
-- `/src`: Códigos-fonte organizados por função:
-    - `/scraping`: Scripts para coleta de questões e dados.
-    - `/selection`: Algoritmos para seleção de problemas e desafios.
-    - `/generation`: Scripts para geração de código com LLMs.
-    - `/evaluation`: Scripts para avaliação do consumo de energia, memória e desempenho.
-- `/results`: Análises finais, tabelas, gráficos e relatórios interpretando os resultados.
-- `/docs`: Instruções de uso e artigos produzidos.
-- `/notebooks`: Jupyter Notebooks para exploração interativa dos dados (opcional).
+- `/src`: Source code organized by function:
+    - `/scraping`: Scripts for collecting questions and data.
+    - `/selection`: Algorithms for problem and challenge selection.
+    - `/generation`: Scripts for code generation using LLMs.
+    - `/evaluation`: Scripts for evaluating energy consumption, memory, and performance.
+- `/results`: Final analyses, tables, graphs, and reports interpreting the results.
+- `/docs`: Usage instructions and produced papers/articles.
+- `/notebooks`: Jupyter Notebooks for interactive data exploration.
 
-## Como Contribuir
-
-1. Fork este repositório.
-2. Crie uma branch com sua feature ou correção.
-3. Envie um pull request.
-
-## Contato
-
-Dúvidas ou sugestões? Abra uma issue ou entre em contato pelo e-mail: [adenilson.ramos@ufape.edu.br](mailto:adenilson.ramos@ufape.edu.br)
 
 ---
 
